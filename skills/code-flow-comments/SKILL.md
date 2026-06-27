@@ -1,9 +1,9 @@
 ---
 name: code-flow-comments
-description: Enforce structured step-by-step execution flow comments with ASCII branches for ALL new functions in the Antigravity/ACE codebase.
+description: Enforce structured step-by-step execution flow comments with ASCII branches for ALL new functions in the codebase.
 ---
 
-# Antigravity Strict Code Flow Comments Standard
+# Strict Code Flow Comments Standard
 
 **Mandatory Rule:**  
 **Every new function** — including small helpers, private functions, arrow functions, reducers, node handlers, utilities, and tests — **must** begin with a structured step-by-step execution flow comment.

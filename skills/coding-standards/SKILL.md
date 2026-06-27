@@ -1,11 +1,11 @@
 ---
-name: antigravity-coding-standards
-description: Enforce Antigravity/ACE coding standards including structured step-by-step execution flow comments with ASCII branches for ALL new functions. Use whenever generating, editing, or reviewing JavaScript/TypeScript code for the ACE LangGraph agent or related Antigravity systems.
+name: coding-standards
+description: Enforce coding standards including structured step-by-step execution flow comments with ASCII branches for ALL new functions. Use whenever generating, editing, or reviewing code.
 ---
 
-# Antigravity Coding Standards
+# Coding Standards
 
-**Mandatory for all code contributions to Antigravity/ACE.**
+**Mandatory for all code contributions**
 
 ## 1. Function Documentation (Strict Rule)
 
