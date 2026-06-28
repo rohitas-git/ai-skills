@@ -45,6 +45,8 @@ function functionName(params) {
 - Keep the comment **concise yet complete** — 6 to 25 lines recommended.
 - Update the flow comment **every time** the function logic changes meaningfully.
 - For complex functions, you may add a short pseudo-code style line under major steps.
+- **JSDoc Coexistence**: Always preserve JSDoc parameters (e.g. `@route`, `@param`, `@typedef`) on public entry points (routes, controllers, exports) in addition to the Execution Flow. JSDoc documents the static interface contract (useful for IDEs and swagger), whereas the Execution Flow comment documents the implementation logic.
+
 
 ### Good Example
 

@@ -48,7 +48,8 @@ function functionName(params) {
 - **Modular & readable**: Prefer small, single-responsibility functions.
 - **State Management**: Explicitly document any state mutations in the flow comment.
 - **Error Handling**: Always handle and document key error paths in Execution Flow.
-- **Comments**: Use JSDoc for public APIs in addition to the execution flow.
+- **Comments**: Use JSDoc for public APIs/entry points (routes, controllers, exports) in addition to the execution flow. Always preserve JSDoc parameters (like `@route`, `@param`) to document the static interface, while the Execution Flow documents the dynamic implementation logic.
+
 
 ## 3. Enforcement
 
