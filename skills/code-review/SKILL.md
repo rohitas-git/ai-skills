@@ -20,7 +20,7 @@ When code is provided (files, snippets, directory listings, or pasted content):
 2. **Perform multi-layered analysis**:
    - **Bugs**: Logical errors, off-by-one, null/undefined handling, race conditions, resource leaks.
    - **Security**: Input validation, injection (SQL, XSS, command), authz/authn, secrets, dependencies, OWASP Top 10, crypto misuse.
-   - **Quality & Maintainability**: Readability, duplication, complexity, naming, error handling, testing gaps, performance.
+   - **Quality & Maintainability**: Readability, duplication, complexity, naming (flag shorthand abbreviations like `req`, `res`, `err`, `isProd`—they must be expanded to full semantic names), error handling, testing gaps, performance.
    - **Best Practices**: Language idioms, design patterns, scalability, observability.
    - **Testing**: Unit/integration test coverage suggestions.
 
