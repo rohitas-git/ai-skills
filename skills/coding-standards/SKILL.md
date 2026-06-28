@@ -44,6 +44,7 @@ function functionName(params) {
 ## 2. General Coding Standards
 
 - **Clear, descriptive naming**: Functions, variables, and files must be self-explanatory (e.g. `resetTransientFields`, `assembleCreativeOutput`).
+  - **Avoid Abbreviations**: Do not use short-hand abbreviations for standard variables/parameters. Always use full semantic names (e.g., `request` instead of `req`, `response` instead of `res`, `error` instead of `err`, `isProduction` instead of `isProd`).
 - **Modular & readable**: Prefer small, single-responsibility functions.
 - **State Management**: Explicitly document any state mutations in the flow comment.
 - **Error Handling**: Always handle and document key error paths in Execution Flow.
