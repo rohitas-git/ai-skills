@@ -21,6 +21,7 @@ When the user requests help with a git commit message:
 
 1. Determine the desired mode:
    - brief: Short, one-line summary (ideal for most commits)
+   - balanced: One-line summary followed by 3-5 bullet points of high-level changes
    - detailed: Multi-paragraph with scope, impact, and key changes
 
 2. Determine change scope:
@@ -41,6 +42,7 @@ When the user requests help with a git commit message:
 5. Generate the commit message:
    - Follow Conventional Commits format when suitable: `type(scope): description`
    - For brief mode: Keep under 72 characters, imperative mood
+   - For balanced mode: Subject line + bullet points summarizing logic changes (3-5 lines)
    - For detailed mode: Include body and footer if breaking changes or references
    - Make it specific to the actual changes shown
 
@@ -52,6 +54,15 @@ When the user requests help with a git commit message:
 - Capitalize first letter, no period at end for subject line
 
 ## Examples
+
+**Balanced:**
+```
+feat(auth): implement JWT token refresh
+
+- Added TokenExpiredError handling to checkAuth middleware
+- Integrated redis caching for token blacklist
+- Standardized API response for unauthenticated clients
+```
 
 **Brief, staged:**
 `feat(auth): implement JWT token refresh`
