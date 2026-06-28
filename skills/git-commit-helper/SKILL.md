@@ -1,0 +1,70 @@
+---
+name: git-commit-helper
+description: Helps generate high-quality git commit messages by analyzing staged changes, untracked files, or both. Supports brief and detailed modes. Use when user asks for commit message, git commit description, based on changes, diff summary, or similar git workflow assistance.
+---
+
+# Git Commit Helper
+
+## Overview
+
+This skill specializes in crafting conventional, clear, and informative git commit messages. It uses git commands to inspect changes and follows best practices like Conventional Commits where appropriate.
+
+## Usage Triggers
+- "write a commit message"
+- "suggest commit description"
+- "brief commit for these changes"
+- "detailed commit message based on staged files"
+
+## Instructions
+
+When the user requests help with a git commit message:
+
+1. Determine the desired mode:
+   - brief: Short, one-line summary (ideal for most commits)
+   - detailed: Multi-paragraph with scope, impact, and key changes
+
+2. Determine change scope:
+   - staged (default): Use `git diff --cached`
+   - untracked: New files
+   - both: Full picture
+
+3. Use the bundled script to fetch changes:
+   ```
+   ./scripts/get-git-changes.sh [staged|untracked|both] [summary|full]
+   ```
+
+4. Analyze the output:
+   - Identify primary type of change (feat, fix, docs, refactor, style, test, chore, etc.)
+   - Note key files and what was modified
+   - Summarize impact or purpose
+
+5. Generate the commit message:
+   - Follow Conventional Commits format when suitable: `type(scope): description`
+   - For brief mode: Keep under 72 characters, imperative mood
+   - For detailed mode: Include body and footer if breaking changes or references
+   - Make it specific to the actual changes shown
+
+## Best Practices for Commit Messages
+- Use present tense, imperative mood ("Add feature" not "Added feature")
+- Be specific: "Fix login validation" > "Fix bug"
+- Group related changes
+- Reference issues if mentioned (e.g., "Fixes #123")
+- Capitalize first letter, no period at end for subject line
+
+## Examples
+
+**Brief, staged:**
+`feat(auth): implement JWT token refresh`
+
+**Detailed:**
+```
+feat(api): add user profile endpoint
+
+- Implemented GET /api/profile with authentication
+- Added response caching for 5 minutes
+- Updated OpenAPI spec
+
+Closes #456
+```
+
+Always ask for clarification if changes are unclear or user has specific preferences (e.g., emoji prefixes, JIRA tickets).
