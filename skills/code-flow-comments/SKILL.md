@@ -6,26 +6,32 @@ description: Enforce structured step-by-step execution flow comments with ASCII 
 # Strict Code Flow Comments Standard
 
 **Mandatory Rule:**  
-**Every new function** — including small helpers, private functions, arrow functions, reducers, node handlers, utilities, and tests — **must** begin with a structured step-by-step execution flow comment.
+**Every new and modified function** — including small helpers, private functions, arrow functions, reducers, node handlers, utilities, and tests — **must** begin with a structured metadata block (Purpose, Args, Returns) followed by an optional structured step-by-step execution flow comment if it has multi-step logic.
 
-This applies to **all new code**. Existing functions should be updated when significantly modified.
+This applies to **all new and modified code**. Existing functions and their comments must be updated whenever they are touched.
 
 ### Required Format (Strict)
 
 ```js
 /**
- * functionName - One-line clear purpose.
+ * functionName - Brief description.
+ * Purpose: High-level intent.
+ * Args:
+ *   paramName (type): Description.
+ * Returns:
+ *   type: Description.
  *
  * Execution Flow:
  * 1. [Step 1 description]
- *    └─ Input: { dataShape }
+ *    └─ Input: { dataShape } (Keep root input references simple)
  *    └─ Logic: key decision or transformation
  * 2. [Step 2 description]
- *    └─ Call: externalFunction() or LLM/tool
- *    └─ Output: { expectedShape }
+ *    └─ Call: externalFunction()
+ *       └─ Input: { intermediateShape } — description of intermediate parameters
+ *       └─ Output: { intermediateResult } — description of returned result
  * 3. [Step 3 description]
  *    └─ Side effects: state mutation, DB write, etc.
- * 4. Return / Early exit
+ * 4. Return / Early exit (Keep root output references simple)
  */
 function functionName(params) {
   // implementation
@@ -45,6 +51,7 @@ function functionName(params) {
 - Keep the comment **concise yet complete** — 6 to 25 lines recommended.
 - Update the flow comment **every time** the function logic changes meaningfully.
 - For complex functions, you may add a short pseudo-code style line under major steps.
+- **Inline Comments**: For complicated code blocks inside a function, write brief inline comments to explain the logic.
 - **JSDoc Coexistence**: Always preserve JSDoc parameters (e.g. `@route`, `@param`, `@typedef`) on public entry points (routes, controllers, exports) in addition to the Execution Flow. JSDoc documents the static interface contract (useful for IDEs and swagger), whereas the Execution Flow comment documents the implementation logic.
 
 
