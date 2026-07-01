@@ -1,0 +1,13 @@
+{
+  "extraKnownMarketplaces": {
+    "Esonhugh-Marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "esonhugh/marketplace"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "mattpocock-skills@Esonhugh-Marketplace": true
+  }
+}
