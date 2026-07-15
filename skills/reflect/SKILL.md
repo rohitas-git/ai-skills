@@ -57,6 +57,8 @@ Reflect enables **continual learning** from user feedback. It scans conversation
 - Review diffs carefully before approving.
 - Use this skill at the end of productive sessions.
 - Check Git history for audit trail.
+- Treat explicit user workflow overrides as the highest-priority signal, especially when they contradict an existing skill default.
+- When a correction changes default code-commenting behavior, update the conflicting skill text so future runs follow the new default without needing repeated reminders.
 
 **Local Git Repo**: Skills directory is Git-aware. Push happens automatically after approval.
 

@@ -2,7 +2,8 @@
   "source": "/Users/rohitasbansal/Development/AI-Skills/skills",
   "targets": [
     "/Users/rohitasbansal/.gemini/config/skills",
-    "/Users/rohitasbansal/.claude/skills"
+    "/Users/rohitasbansal/.claude/skills",
+    "/Users/rohitasbansal/.codex/skills"
   ],
   "description": "List of directories where skill symlinks should be created"
 }
