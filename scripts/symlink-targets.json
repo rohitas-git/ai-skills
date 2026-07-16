@@ -1,9 +1,16 @@
 {
   "source": "/Users/rohitasbansal/Development/AI-Skills/skills",
   "targets": [
-    "/Users/rohitasbansal/.gemini/config/skills",
+    "/Users/rohitasbansal/.agents/skills",
     "/Users/rohitasbansal/.claude/skills",
-    "/Users/rohitasbansal/.codex/skills"
+    "/Users/rohitasbansal/.codex/skills",
+    "/Users/rohitasbansal/.cursor/skills",
+    "/Users/rohitasbansal/.gemini/antigravity/skills",
+    "/Users/rohitasbansal/.gemini/config/skills",
+    "/Users/rohitasbansal/.gemini/skills",
+    "/Users/rohitasbansal/.grok/skills",
+    "/Users/rohitasbansal/.kiro/skills",
+    "/Users/rohitasbansal/.zcode/skills"
   ],
-  "description": "List of directories where skill symlinks should be created"
+  "description": "Global skill symlink targets for AI agents/harnesses under ~"
 }
