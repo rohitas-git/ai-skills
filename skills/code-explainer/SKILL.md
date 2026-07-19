@@ -25,6 +25,9 @@ This skill delivers clear, audience-adapted explanations of code. It adjusts dep
 
 ## Explanation Modes (Depth Control)
 
+- **Plain Brief** (simple + short request)  
+  Compact plain-English explanation. Give only the purpose, the practical meaning, and the key consequence. Avoid multi-level sections, long gotchas, teaching scaffolds, diagrams, and further-learning suggestions unless asked.
+
 - **Brief** (~1 min read)  
   Short, high-signal summary. Key points only.
 
@@ -38,9 +41,10 @@ This skill delivers clear, audience-adapted explanations of code. It adjusts dep
 
 1. **Identify scope** — line/block/function/file/module.
 2. **Detect language** and relevant concepts.
-3. **Apply requested levels & modes** (default to Standard + Junior if unspecified).
+3. **Apply requested levels & modes** (default to Standard + Junior if unspecified). If the user combines simplicity and brevity ("simple terms briefly", "plain English", "simple and short", "ELI5 but short"), use Plain Brief even if no audience level is specified.
 4. **Structure the response clearly**:
-   - Start with a short **Overall Purpose**.
+   - For Plain Brief: use 1 short paragraph or 3-4 bullets covering what it does, why it matters, and the main risk or outcome.
+   - For other modes: start with a short **Overall Purpose**.
    - Then sections for each requested level/mode combination (clearly labeled).
    - Use code snippets, diagrams (text-based), analogies as appropriate.
    - End with **Key Takeaways** and optional **Further Learning** suggestions.

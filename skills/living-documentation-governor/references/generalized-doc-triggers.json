@@ -1,0 +1,49 @@
+{
+  "baseRef": "origin/main",
+  "rules": [
+    {
+      "id": "documentation-governance",
+      "paths": [
+        "docs/doc-triggers.json",
+        "scripts/check-doc-triggers.*",
+        "scripts/git-hooks/**",
+        "scripts/install-git-hooks.sh",
+        "docs/*governance*.md",
+        "docs/*doc-trigger*.md"
+      ],
+      "docs": [
+        "docs/doc-governance.md",
+        "docs/README.md"
+      ]
+    },
+    {
+      "id": "core-architecture",
+      "paths": ["src/**", "app/**", "lib/**", "index.*", "config/*", "ecosystem.config.*"],
+      "docs": ["docs/architecture.md", "docs/CONTEXT.md"]
+    },
+    {
+      "id": "authentication",
+      "paths": [
+        "src/middlewares/auth*.js",
+        "src/middlewares/check*Auth.*",
+        "app/createApp.*"
+      ],
+      "docs": ["docs/guides/authentication.md", "docs/adr/0004-layered-auth.md"]
+    },
+    {
+      "id": "orchestration-and-prompts",
+      "paths": [
+        "src/prompts.*",
+        "src/ai/promptBuilder.*",
+        "src/graph/nodes/planner.*",
+        "src/graph/nodes/worker.*"
+      ],
+      "docs": ["docs/guides/prompts-and-orchestration.md"]
+    },
+    {
+      "id": "data-models",
+      "paths": ["src/models/**", "src/schemas/**"],
+      "docs": ["docs/architecture/data-models.md"]
+    }
+  ]
+}

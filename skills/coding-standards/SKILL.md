@@ -1,52 +1,53 @@
 ---
 name: coding-standards
-description: Enforce coding standards including structured step-by-step execution flow comments with ASCII branches for ALL new functions. Use whenever generating, editing, or reviewing code.
+description: >
+  Enforce lean coding standards for naming, modularity, error handling, and
+  comments. Use whenever generating, editing, or reviewing code. For file layout
+  and function order (newspaper / stepdown), use stepdown-rule. For API docs use
+  code-comments; for one-line block comments use inline-comments; for numbered
+  Execution Flow trees use execution-flow-comments.
 ---
 
 # Coding Standards
 
 **Mandatory for all code contributions**
 
-## 1. Commenting Default
+## 1. Commenting
 
-Unless the user explicitly asks for JSDoc, execution-flow comments, or another formal comment style, **do not add structured metadata blocks or execution-flow comments by default**.
-
-Default behavior:
-- Add **no comment** for obvious code that reads cleanly on its own.
-- For non-trivial new or modified functions/callbacks, prefer a **brief 1-2 line comment above the function** explaining its purpose.
-- Inside a function body, add **short comments only above genuinely complex blocks**.
-- Keep comments lightweight and practical; avoid comment boilerplate that repeats the code.
-
-### Default Format
+- **API / surface docs** → **code-comments** (JSDoc, docstrings, GoDoc, etc.)
+- **One-line notes above internal blocks** → **inline-comments**
+- **Numbered steps + `└─` trees** → **execution-flow-comments** (only when requested or project-mandated)
+- Prefer intention-revealing names over comments
+- Default: comment **why**, not what — no execution-flow unless that skill is active
+- No comment for obvious code
 
 ```js
-// Keep the draft selection in sync with the latest server payload.
-function functionName(params) {
+/**
+ * Keeps draft selection in sync with the latest server payload.
+ * @param {DraftState} state
+ * @param {ServerPayload} payload
+ * @returns {DraftState}
+ */
+function reconcileDraftSelection(state, payload) {
   // Reconcile optimistic rows with persisted rows before rendering.
   // implementation
 }
 ```
 
-### Guidelines
-- Prefer code clarity first; comments should support readability, not compensate for weak naming.
-- Use plain language and keep comments short.
-- Only document behavior that is hard to infer quickly from the code itself.
-- If the user or project explicitly requests JSDoc or structured flow comments, follow that request for the touched code.
+## 2. File layout
 
-## 2. General Coding Standards
+Follow **stepdown-rule** (newspaper metaphor): public/high-level first, helpers last; callers above callees where the language allows. Do not duplicate that skill here — load **stepdown-rule** when structuring or reviewing file order.
 
-- **Clear, descriptive naming**: Functions, variables, and files must be self-explanatory (e.g. `resetTransientFields`, `assembleCreativeOutput`).
-  - **Avoid Abbreviations**: Do not use short-hand abbreviations for standard variables/parameters. Always use full semantic names (e.g., `request` instead of `req`, `response` instead of `res`, `error` instead of `err`, `isProduction` instead of `isProd`).
-- **Modular & readable**: Prefer small, single-responsibility functions.
-- **State Management**: Keep state mutations easy to follow in code structure and naming.
-- **Error Handling**: Handle key error paths clearly in code; add short comments only where the control flow is non-obvious.
-- **Comments**: Do not add JSDoc or execution-flow blocks unless the user or project explicitly asks for them.
-- **Inline Comments**: For complicated code blocks inside a function, write brief inline comments to explain the logic.
+## 3. General standards
 
+- **Clear, descriptive naming**: Self-explanatory functions, variables, files (e.g. `resetTransientFields`).
+  - Prefer full semantic names (`request` not `req`, `response` not `res`, `error` not `err`, `isProduction` not `isProd`).
+- **Modular & readable**: Small, single-responsibility functions.
+- **State management**: Mutations easy to follow via structure and naming.
+- **Error handling**: Key error paths clear; short comments only when control flow is non-obvious.
 
-## 3. Enforcement
+## 4. Enforcement
 
-- Apply these standards to **all new and modified code**.
-- When modifying existing comments, simplify them unless the user has asked to preserve a more formal style.
-- When reviewing PRs or generated code, verify compliance.
-- Existing code should be gradually updated when touched.
+- Apply to **all new and modified code**.
+- On review: naming, comments, modularity, and (via **stepdown-rule**) top-down layout.
+- Boy Scout Rule: improve layout/comments in regions you touch; do not force whole-file reshuffles unless asked.

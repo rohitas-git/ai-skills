@@ -1,5 +1,5 @@
 ---
-name: clean-craftsmanship
+name: clean-craftmanship
 description: Use for questions about clean code, clean architecture, SOLID principles, writing maintainable software, code structure and design, Uncle Bob recommendations, refactoring, code smells, dependency management, or building systems that are easy to change. Triggered by SRP, OCP, LSP, ISP, DIP, dependency rule, screaming architecture, humble objects, or requests to improve code readability, testability, or long-term maintainability.
 ---
 

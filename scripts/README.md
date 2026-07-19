@@ -5,21 +5,28 @@ This directory contains scripts to automate the creation and management of skill
 ## Files
 
 - **sync-skills-symlinks.sh** - Main script that creates symlinks for all skills
-- **symlink-targets.json** - Configuration file listing all target directories
+- **symlink-targets.json** - Configuration file listing targets and nested skill roots
 
 ## Configuration
 
-Edit `symlink-targets.json` to add or remove target directories:
+Edit `symlink-targets.json` to add or remove target directories and nested monorepos:
 
 ```json
 {
   "source": "/Users/rohitasbansal/Development/AI-Skills/skills",
+  "nestedSkillRoots": [
+    "agent-skills/skills"
+  ],
   "targets": [
     "/Users/rohitasbansal/.gemini/config/skills",
     "/other/path/to/skills"
   ]
 }
 ```
+
+- **source** — canonical skills directory
+- **targets** — agent/IDE skill directories that receive top-level symlinks
+- **nestedSkillRoots** — paths relative to `source` that hold monorepo skill packages (each child dir with `SKILL.md` is flattened to the top level of every target)
 
 ## Usage
 
@@ -34,16 +41,20 @@ The script is automatically run after git pull/merge via the `.git/hooks/post-me
 ## What It Does
 
 1. Reads the source skills directory from config
-2. For each target directory in config:
-   - Checks which skills have symlinks
-   - Creates missing symlinks
-   - Reports skipped existing symlinks
-3. Displays a summary of created/skipped symlinks
+2. Collects skills from:
+   - Top-level dirs under `source` that contain `SKILL.md`
+   - Nested monorepo roots listed in `nestedSkillRoots` (e.g. `agent-skills/skills/*`)
+3. On name collision, **top-level skills win** over nested ones
+4. For each target directory:
+   - Ingests any new real skill dirs from the target into source
+   - Prunes broken links and non-skill junk previously linked by mistake
+   - Creates/refreshes skill symlinks (including flattened nested skills)
+5. Displays a summary of created/skipped/pruned symlinks
 
 ## Adding New Skills
 
-When you add a new skill to the `skills/` directory:
-1. Run `./sync-skills-symlinks.sh` manually, OR
-2. Commit and push the changes (the post-merge hook will run on next pull)
+**Top-level skill:** add `skills/<name>/SKILL.md`, then run the sync script.
 
-All symlinks will be automatically created in all configured target directories.
+**Nested monorepo skill:** add under a configured root, e.g. `skills/agent-skills/skills/<name>/SKILL.md`, then run the sync script. It will appear as `~/.…/skills/<name>` in every target.
+
+Or commit and push — the post-merge hook runs sync on the next pull.

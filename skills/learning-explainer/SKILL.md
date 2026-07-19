@@ -1,6 +1,10 @@
 ---
 name: learning-explainer
-description: Unified skill for summarizing resources and explaining them across audience levels (child to frontier researcher) with mental models, diagrams, progressive deep-dive, user knowledge probe, compact mode, and verification. Default: no CLT. Use for any learning or explanation request.
+description: >
+  Unified skill for summarizing resources and explaining them across audience
+  levels (child to frontier researcher) with mental models, diagrams, progressive
+  deep-dive, user knowledge probe, compact mode, and verification. Default is no
+  CLT. Use for any learning or explanation request.
 ---
 
 # Learning Explainer
@@ -9,6 +13,9 @@ description: Unified skill for summarizing resources and explaining them across 
 This unified skill merges resource summarization with adaptive multi-level explanations. It is designed for high flexibility, token efficiency (via modular references), and pedagogical quality.
 
 ## Core Workflow
+0. **Honor Brief Plain-English Overrides**  
+   If the user asks for a brief/simple/plain-English explanation (for example "explain in simple terms briefly", "simple and short", "plain English", or "ELI5 but short"), answer directly in 1 short paragraph or 3-4 bullets. Skip the knowledge probe, mental model requirement, diagram descriptions, confidence score, and progressive follow-up structure unless the user explicitly asks for them. The user is asking for compression, not a lesson plan.
+
 1. **Start with Knowledge Probe**  
    Assess the user's familiarity and goals (see `knowledge-probe.md`).
 
@@ -45,6 +52,7 @@ This unified skill merges resource summarization with adaptive multi-level expla
 
 ## Best Practices
 - Respect explicit user requests (especially for CLT or specific levels).
+- Treat explicit simple/brief wording as a stronger instruction than the default rich explanation template.
 - Offer branching choices after each response.
 - Maintain coherence across progressive deep-dives.
 - End responses with a clear next-step invitation.
