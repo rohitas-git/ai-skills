@@ -2,6 +2,8 @@
 
 Flat live skills under `skills/`. Domain structure lives in **hubs** + **wikis**, not folders.
 
+**Naming (hard):** live skills are `{depth}-{kebab-slug}` — `0-` domain hubs, `1-` their children, `2+` deeper. See [depth-prefix-names.md](./skills/0-skill-manager/references/depth-prefix-names.md) and [CLAUDE.md](./CLAUDE.md).
+
 ## Quickstart
 
 1. `/0-setup-rohitas-skills` once per consumer repo  
@@ -12,10 +14,10 @@ Flat live skills under `skills/`. Domain structure lives in **hubs** + **wikis**
 
 | Path | Purpose |
 |------|---------|
-| [skills/](./skills/) | Live skills (`skills/<name>/`) |
-| [inbox/](./inbox/) | Staging |
+| [skills/](./skills/) | Live skills (`skills/{depth}-{slug}/`) |
+| [inbox/](./inbox/) | Staging (same depth-prefix names) |
 | [archive/](./archive/) | Tombstones + vendor packs |
-| [hubs/](./hubs/) | Domain hub workflows |
+| [hubs/](./hubs/) | Domain hub packages (`hubs/0-{hub}/`, sub-hubs `1-`) |
 | [wikis/index.md](./wikis/index.md) | Categorized skill index |
 | [guidelines/](./guidelines/) | Layout + catalog docs |
 | [CLAUDE.md](./CLAUDE.md) | Agent hard rules |

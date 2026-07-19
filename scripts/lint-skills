@@ -14,13 +14,15 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "skills"
 HUBS_DIR = CATALOG / "hubs"
-FLOWS = CATALOG / "skills" / "butler" / "references" / "flows.md"
+FLOWS = CATALOG / "skills" / "0-butler" / "references" / "flows.md"
 # Domain packages with live skills
 LIVE_BUCKETS = ["skills"]  # flat live skill parent
 BUCKETS = ["skills", "inbox", "archive"]
 PROMOTED = {"skills"}  # root README points at skills/; promotion is "not archive/inbox"
-HARD_DEP_SKILLS = {"to-spec", "to-tickets", "triage"}
+HARD_DEP_SKILLS = {"1-to-spec", "1-to-tickets", "0-triage"}
 FORBIDDEN_LIVE = {"using-agent-skills", "setup-matt-pocock-skills"}
+# Live skills: {depth}-{kebab-slug} (CLAUDE.md / depth-prefix-names.md hard rule)
+DEPTH_PREFIX = re.compile(r"^[0-9]+-[a-z0-9]+(-[a-z0-9]+)*$")
 # workflow.json may list ops verbs that are not skills
 NON_SKILL_TOKENS = {
     "create",
@@ -32,6 +34,7 @@ NON_SKILL_TOKENS = {
     "ingest",
     "organize",
     "lint",
+    "atomize",
     "Spec",
     "Standards",
     "Maintainability",
@@ -93,7 +96,7 @@ def collect_hub_members() -> set[str]:
                         members.add(s)
     if FLOWS.is_file():
         text = FLOWS.read_text(encoding="utf-8", errors="replace")
-        for m in re.finditer(r"`([a-z0-9][a-z0-9-]*)`", text):
+        for m in re.finditer(r"`([0-9]+-[a-z0-9]+(?:-[a-z0-9]+)*)`", text):
             name = m.group(1)
             if name not in NON_SKILL_TOKENS:
                 members.add(name)
@@ -158,8 +161,8 @@ def main() -> int:
 
     if any((CATALOG / b / "setup-matt-pocock-skills").exists() for b in LIVE_BUCKETS):
         findings.append(("critical", "forbidden", "setup-matt-pocock-skills still present"))
-    if not (CATALOG / "skills" / "setup-rohitas-skills" / "SKILL.md").exists():
-        findings.append(("critical", "forbidden", "setup-rohitas-skills missing"))
+    if not (CATALOG / "skills" / "0-setup-rohitas-skills" / "SKILL.md").exists():
+        findings.append(("critical", "forbidden", "0-setup-rohitas-skills missing"))
 
     if any((CATALOG / b / "ask-matt").exists() for b in LIVE_BUCKETS):
         findings.append(
@@ -168,16 +171,20 @@ def main() -> int:
     if not (CATALOG / "archive" / "ask-matt" / "SKILL.md").exists():
         findings.append(("warn", "tombstone", "ask-matt tombstone missing under archive/"))
 
-    if not (CATALOG / "skills" / "butler" / "SKILL.md").exists():
-        findings.append(("critical", "forbidden", "butler skill missing"))
-    if not (CATALOG / "skills" / "skill-linter" / "SKILL.md").exists():
-        findings.append(("critical", "forbidden", "skill-linter missing (ADR 0006)"))
+    if not (CATALOG / "skills" / "0-butler" / "SKILL.md").exists():
+        findings.append(("critical", "forbidden", "0-butler skill missing"))
+    if not (CATALOG / "skills" / "1-skill-linter" / "SKILL.md").exists():
+        findings.append(("critical", "forbidden", "1-skill-linter missing (ADR 0006)"))
 
-    tdd_hits = [p for p in CATALOG.rglob("**/tdd/SKILL.md") if not any(x in p.parts for x in ("vendor", "archive", "hubs", "guidelines", "wikis"))]
+    tdd_hits = [
+        p
+        for p in CATALOG.rglob("**/1-tdd/SKILL.md")
+        if not any(x in p.parts for x in ("vendor", "archive", "hubs", "guidelines", "wikis"))
+    ]
     tdd_hits += [
         p for p in CATALOG.rglob("**/test-driven-development/SKILL.md") if "vendor" not in p.parts
     ]
-    if len([p for p in tdd_hits if p.parent.name == "tdd"]) != 1:
+    if len([p for p in tdd_hits if p.parent.name == "1-tdd"]) != 1:
         findings.append(("warn", "tdd", f"unexpected tdd paths: {tdd_hits}"))
     if any(p.parent.name == "test-driven-development" and "vendor" not in p.parts for p in tdd_hits):
         findings.append(("critical", "tdd", "second TDD skill outside vendor"))
@@ -186,6 +193,27 @@ def main() -> int:
     if HUBS_DIR.is_dir():
         for wf in sorted(HUBS_DIR.glob("*/workflow.json")):
             hub_dir = wf.parent
+            if not DEPTH_PREFIX.match(hub_dir.name):
+                findings.append(
+                    (
+                        "critical",
+                        "depth-hub",
+                        f"hub package dir {hub_dir.name!r} must be depth-prefixed (0- for domain hubs, 1- for sub-hubs)",
+                    )
+                )
+            try:
+                data = json.loads(wf.read_text(encoding="utf-8"))
+                hub = data.get("hub") or ""
+                if hub and hub != hub_dir.name:
+                    findings.append(
+                        ("critical", "depth-hub", f"{hub_dir.name}: workflow hub={hub!r} != dir")
+                    )
+                if hub and not DEPTH_PREFIX.match(str(hub)):
+                    findings.append(
+                        ("critical", "depth-hub", f"{hub_dir.name}: workflow hub={hub!r} missing depth prefix")
+                    )
+            except json.JSONDecodeError:
+                findings.append(("critical", "hub-workflow-json", f"invalid JSON: {wf}"))
             if not (hub_dir / "hub.html").is_file():
                 findings.append(("critical", "hub-html", f"missing hub.html for {hub_dir.name}"))
         if not (HUBS_DIR / "manifest.json").is_file():
@@ -214,6 +242,24 @@ def main() -> int:
             name = meta.get("name", "")
             if name and name != d.name:
                 findings.append(("critical", "name-dir", f"{rel}: name={name!r} != dir"))
+            # Depth-prefix hard rule (live + inbox only)
+            if bucket in ("skills", "inbox"):
+                if not DEPTH_PREFIX.match(d.name):
+                    findings.append(
+                        (
+                            "critical",
+                            "depth-prefix",
+                            f"{rel}: dir must be {{depth}}-{{kebab-slug}} (e.g. 0-butler, 1-to-tickets)",
+                        )
+                    )
+                if name and not DEPTH_PREFIX.match(name):
+                    findings.append(
+                        (
+                            "critical",
+                            "depth-prefix",
+                            f"{rel}: frontmatter name={name!r} missing depth prefix",
+                        )
+                    )
             fm = text.split("---", 2)[1] if text.startswith("---") else ""
             if "description:" not in fm:
                 findings.append(("critical", "frontmatter", f"{rel}: missing description"))
@@ -232,8 +278,10 @@ def main() -> int:
                 if "disable-model-invocation: true" not in fm:
                     model_invoked.append(rel)
 
-            if d.name in HARD_DEP_SKILLS and "setup-rohitas-skills" not in text:
-                findings.append(("critical", "hard-dep", f"{d.name} missing /setup-rohitas-skills pointer"))
+            if d.name in HARD_DEP_SKILLS and "0-setup-rohitas-skills" not in text and "setup-rohitas-skills" not in text:
+                findings.append(
+                    ("critical", "hard-dep", f"{d.name} missing /0-setup-rohitas-skills pointer")
+                )
 
             if d.name in FORBIDDEN_LIVE and bucket in PROMOTED:
                 findings.append(

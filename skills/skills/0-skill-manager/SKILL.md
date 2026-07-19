@@ -47,11 +47,12 @@ See [hard-rules.md](./references/hard-rules.md). Always:
 1. No wiki/concept atoms.
 2. Confirm before multi-file mutate; dry-run default.
 3. Never promote `using-agent-skills`.
-4. Prefer merge into an existing hub child over a second peer skill.
-5. Every live skill must be a **hub member** (parent hub + link type) — ADR 0006.
-6. At pipeline forks, ensure an **F# ask-user** question exists in flows.md (or propose one).
-7. **skill-lint** after create/place/ingest — zero critical before treat as healthy (load `/1-skill-linter`).
-8. Sprawl / multi-pipeline mega-skills → split or **sub-domain hub** (1-skill-linter refs), not silent growth.
+4. **Depth-prefix names** — live skills are `{depth}-{slug}` only ([depth-prefix-names.md](./references/depth-prefix-names.md)); lint `depth-prefix` critical.
+5. Prefer merge into an existing hub child over a second peer skill.
+6. Every live skill must be a **hub member** (parent hub + link type) — ADR 0006.
+7. At pipeline forks, ensure an **F# ask-user** question exists in flows.md (or propose one).
+8. **skill-lint** after create/place/ingest — zero critical before treat as healthy (load `/1-skill-linter`).
+9. Sprawl / multi-pipeline mega-skills → split or **sub-domain hub** (1-skill-linter refs), not silent growth.
 
 ## Integration test (ingest / place / new-hub)
 
@@ -65,9 +66,10 @@ All must pass before apply:
 | 4 | Hard vs soft setup correct |
 | 5 | Matt-short or progressive disclosure |
 | 6 | Forbidden names / no dual meta-router |
-| 7 | **Hub slot** — parent hub + link type (wrapper\|hard\|soft\|pipeline\|on-ramp\|leaf\|axis\|satellite\|sub-hub) |
-| 8 | **Forks** — branch skills have F# questions |
-| 9 | **skill-lint** — `/1-skill-linter` mode skill (or hub) reports **Gate: PASS** (0 critical) |
+| 7 | **Depth-prefix** — `{depth}-{slug}`; hub = `0-`; child = `1-`+; name==dir |
+| 8 | **Hub slot** — parent hub + link type (wrapper\|hard\|soft\|pipeline\|on-ramp\|leaf\|axis\|satellite\|sub-hub) |
+| 9 | **Forks** — branch skills have F# questions |
+| 10 | **skill-lint** — `/1-skill-linter` mode skill (or hub) reports **Gate: PASS** (0 critical) |
 
 ## Handoffs
 

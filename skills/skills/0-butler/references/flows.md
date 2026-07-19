@@ -8,6 +8,18 @@
 
 Each **workflow domain** has exactly one **★ top skill (hub)**. Children link by type: `wrapper` · `hard` · `soft` · `pipeline` · `on-ramp` · `leaf` · `axis` · `satellite` · `sub-hub`.
 
+### Depth-prefix names (hard)
+
+Live skill id = **`{depth}-{kebab-slug}`** (dir, frontmatter `name`, slash, hub package).
+
+| Depth | Role |
+|------:|------|
+| **0-** | ★ domain hubs + hub-of-hubs (`0-butler`) |
+| **1-** | Direct children of a domain hub (incl. sub-hubs) |
+| **2+** | Nested only under a shallower parent |
+
+Dual membership → **minimum** depth. No bare unprefixed live skills. SSOT: `skills/0-skill-manager/references/depth-prefix-names.md`. Lint: `depth-prefix` / `depth-hub` critical.
+
 ### Fork (◆)
 
 Any branch in a pipeline is a **fork**. Agents **must ask the user** one question (recommended option first) and wait — never silent branch.

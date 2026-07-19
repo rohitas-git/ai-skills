@@ -4,6 +4,8 @@
 
 Every **live** skill under flat `skills/` leaves (and vault/personal) must be a **child** of at least one domain hub workflow.
 
+Live skill ids are **depth-prefixed**: `{depth}-{kebab-slug}` (hard rule — `0-skill-manager/references/depth-prefix-names.md`). Membership strings in `workflow.json` / flows.md must use that full name (e.g. `1-to-tickets`, not `to-tickets`).
+
 ## How to resolve membership
 
 A skill `name` is a member if any of:

@@ -2,16 +2,28 @@
 
 ```text
 skills-root/
-  skills/<name>/SKILL.md     # live only
-  inbox/<name>/              # staging
-  archive/<name>/            # tombstones
-  archive/vendor/            # offline packs
-  hubs/{hub}/hub.html        # + workflow.json
+  skills/{depth}-{slug}/SKILL.md   # live only; depth-prefix hard rule
+  inbox/{depth}-{slug}/            # staging (same naming)
+  archive/<name>/                  # tombstones (may keep old names)
+  archive/vendor/                  # offline packs (upstream names)
+  hubs/{depth}-{hub}/hub.html      # + workflow.json; matches hub skill
   hubs/flows-chart.html
-  guidelines/                # this tree
+  guidelines/                      # this tree
   wikis/index.md
   wikis/log.md
 ```
+
+## Depth-prefix names (hard)
+
+Live skill **directory**, frontmatter **`name`**, slash command, and hub package dir:
+
+| Depth | Meaning | Example |
+|------:|---------|---------|
+| **0** | ★ domain hub / hub-of-hubs | `0-butler`, `0-implement` |
+| **1** | Child of a domain hub (incl. sub-hub) | `1-to-tickets`, `1-code-review` |
+| **2+** | Deeper under a parent | `2-…` |
+
+Dual membership → minimum depth. Bare unprefixed live skills are forbidden. Full rule: `skills/0-skill-manager/references/depth-prefix-names.md`.
 
 ## Discovery
 

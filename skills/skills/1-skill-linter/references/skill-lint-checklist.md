@@ -8,7 +8,9 @@ Severity: **critical** · **warn** · **info**
 
 | Code | Sev | Check |
 |------|-----|--------|
-| `name-dir` | critical | frontmatter `name` == directory name |
+| `depth-prefix` | **critical** | live dir + frontmatter `name` match `^\d+-[a-z0-9]+(-[a-z0-9]+)*$` (depth-prefix hard rule; see 0-skill-manager `depth-prefix-names.md`) |
+| `name-dir` | critical | frontmatter `name` == directory name (includes prefix) |
+| `depth-hub` | critical | ★ domain hub skills use depth **0**; sub-hub package skills use depth **1** |
 | `frontmatter` | critical | `name` and `description` present |
 | `description-quality` | warn | description ≥ ~40 chars; signals when-to-use / triggers |
 | `description-triggers` | warn | model-invoked (no `disable-model-invocation`): description has trigger phrasing (“Use when…”) |
@@ -66,6 +68,7 @@ Prefer **thin + chain** over new domain hubs. Sub-domain only for whole trees.
 |------|-----|--------|
 | `gate-place` | critical | place/ingest target fails any critical (A–D) |
 | `gate-hub-slot` | critical | new skill has no planned parent hub + link type |
+| `gate-depth-prefix` | critical | **new** skill lacks `{depth}-{slug}` name/dir or hub package name mismatch |
 | `gate-lean` | critical | **new** skill SKILL.md > 180 lines and no disclosure map — must thin before place |
 
 ## Catalog-level (delegate / include)

@@ -3,9 +3,10 @@
 ## Create
 
 1. Hand off to **`/0-skill-creator`** (or `/1-create-skill` wrapper) for SKILL.md body + optional refs/evals.
-2. When the folder is ready, run **place** or **ingest** (integration test rows 1–9 → confirm → indexes/flows/hub workflow).
-3. Do not leave orphans without a parent hub.
-4. Run **`/1-skill-linter`** mode **skill** — require **Gate: PASS** before calling the skill healthy.
+2. **Name as `{depth}-{slug}`** before place ([depth-prefix-names.md](./depth-prefix-names.md)); frontmatter `name` == dir.
+3. When the folder is ready, run **place** or **ingest** (integration test → confirm → indexes/flows/hub workflow).
+4. Do not leave orphans without a parent hub.
+5. Run **`/1-skill-linter`** mode **skill** — require **Gate: PASS** (includes `depth-prefix`) before calling the skill healthy.
 
 ## Read / list
 
@@ -25,7 +26,7 @@ Allowed without 0-skill-creator:
 - README + root promo lines
 - flows.md hub slot / link type
 - skills-lock path
-- frontmatter `name` == dir (if renaming with organize)
+- frontmatter `name` == dir (if renaming with organize; keep depth-prefix form)
 
 Body/instruction craft → skill-creator.
 

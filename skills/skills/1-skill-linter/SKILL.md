@@ -43,6 +43,7 @@ Report catalog and skill health. You **do not** rehouse, place, or rewrite skill
 
 ## What “pass” looks like (Matt default)
 
+- **Depth-prefix name (hard):** dir + frontmatter `name` = `{depth}-{kebab-slug}` (`0-` hub, `1-` child, …). Codes: `depth-prefix`, `depth-hub`. Rule: `0-skill-manager/references/depth-prefix-names.md`.
 - `SKILL.md` is a **thin router**: frontmatter, short purpose, ordered Process/Dispatch/Steps, hard rules bullets, Related/next chain.
 - Heavy templates, rubrics, glossaries live in **sibling `.md` or `references/`** with context pointers.
 - Skill sits on a **chain**: parent hub + link type; pipeline skills name **next** (and often prev); hard-deps call `/0-setup-rohitas-skills` when required.
@@ -57,7 +58,7 @@ Good examples: `/0-implement`, `/1-tdd`, `/1-to-spec`, `/1-grill-with-docs`.
 ./scripts/lint-skills
 ```
 
-Script covers name-dir, ref-exists, hub-member, lean/sprawl line counts. Full Matt-shape, chain-next, and disclosure judgment stay with this skill (agent).
+Script covers name-dir, ref-exists, hub-member, lean/sprawl line counts. Prefer also flagging missing depth-prefix. Full Matt-shape, chain-next, depth judgment, and disclosure stay with this skill (agent).
 
 ## Handoffs
 
@@ -73,9 +74,10 @@ When report flags missing Boundary, cousin trigger collision, or dual full proce
 ## Hard rules
 
 1. **Report only** — no multi-file catalog writes.
-2. **Lean SKILL.md** — main file stays Matt-thin; depth is disclosed, not inlined.
-3. **Chain** — live skills have hub membership + chain slot; pipeline skills expose next steps.
-4. **Hub membership** — orphans are critical (ADR 0006).
-5. **No invent** — do not invent skills or hubs; only report gaps.
-6. **Sprawl** — prefer thin + chain + split; sub-domain hub last.
-7. **New skill gate** — 0-skill-manager must not place/ingest with skill-lint criticals (`gate-lean` included).
+2. **Depth-prefix names** — live skills must be `{depth}-{slug}`; bare names are **critical** (`depth-prefix` / `depth-hub` / `gate-depth-prefix`).
+3. **Lean SKILL.md** — main file stays Matt-thin; progressive disclosure, not inlined books.
+4. **Chain** — live skills have hub membership + chain slot; pipeline skills expose next steps.
+5. **Hub membership** — orphans are critical (ADR 0006).
+6. **No invent** — do not invent skills or hubs; only report gaps.
+7. **Sprawl** — prefer thin + chain + split; sub-domain hub last (sub-hub packages are `1-`).
+8. **New skill gate** — 0-skill-manager must not place/ingest with skill-lint criticals (`depth-prefix`, `gate-lean` included).
