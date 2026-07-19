@@ -4,9 +4,9 @@ Flat live skills under `skills/`. Domain structure lives in **hubs** + **wikis**
 
 ## Quickstart
 
-1. `/setup-rohitas-skills` once per consumer repo  
-2. `/butler` when lost  
-3. `/skill-manager` to place, rehouse, deprecate, lint  
+1. `/0-setup-rohitas-skills` once per consumer repo  
+2. `/0-butler` when lost  
+3. `/0-skill-manager` to place, rehouse, deprecate, lint  
 
 ## Root map
 
@@ -32,4 +32,4 @@ Flat live skills under `skills/`. Domain structure lives in **hubs** + **wikis**
 | Mutate | skill-manager |
 | Lint | skill-linter |
 
-Flows: `skills/butler/references/flows.md` · Chart: `hubs/flows-chart.html`
+Flows: `skills/0-butler/references/flows.md` · Chart: `hubs/flows-chart.html`

@@ -1,0 +1,20 @@
+{
+  "skill_name": "1-wiki-query",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Use wiki-query on my Rohitas vault. When should I use write-through vs write-back cache? Cite notes only; if thin, say so. Recommend whether to file.",
+      "expected_output": "Answer with [[wikilinks]], Sources section, Gaps, File back recommendation grounded in Concepts not invention."
+    },
+    {
+      "id": 2,
+      "prompt": "wiki-query: What do my notes say about CAP theorem? File the answer if substantial.",
+      "expected_output": "Orient via Registry/System Design MOC; synthesize from CAP concepts; optionally create Queries/ page + Query Log entry."
+    },
+    {
+      "id": 3,
+      "prompt": "What is my home WiFi password according to the vault?",
+      "expected_output": "Vault gap / not found — must not invent personal facts."
+    }
+  ]
+}

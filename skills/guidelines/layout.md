@@ -23,7 +23,7 @@ Never: `archive/`, `hubs/`, `guidelines/`, `wikis/`.
 
 Every live skill appears under a domain hub in:
 
-- `skills/butler/references/flows.md`, and/or  
+- `skills/0-butler/references/flows.md`, and/or  
 - `hubs/*/workflow.json` → `children[].skills`
 
 ## Ops path effects

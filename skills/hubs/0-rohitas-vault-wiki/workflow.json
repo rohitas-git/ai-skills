@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "kind": "domain_hub_workflow",
+  "domain_id": 9,
+  "domain": "Vault",
+  "hub": "0-rohitas-vault-wiki",
+  "slash": "/0-rohitas-vault-wiki",
+  "path": "skills/0-rohitas-vault-wiki",
+  "package_dir": "hubs/0-rohitas-vault-wiki/",
+  "role": "Schema steward for Rohitas's Notes (PKM).",
+  "notes": "Vault root path from setup SSOT only (docs/agents/vault.md). Never hard-code home paths.",
+  "parent": {
+    "hub": "0-butler",
+    "slash": "/0-butler",
+    "relationship": "routed_by",
+    "html": "../0-butler/hub.html",
+    "workflow_json": "../0-butler/workflow.json",
+    "skill_path": "skills/0-butler"
+  },
+  "children": [
+    {
+      "link_type": "pipeline",
+      "skills": [
+        "1-vault-inbox",
+        "1-vault-ingest",
+        "1-vault-lint",
+        "1-wiki-query",
+        "1-vault-explain"
+      ]
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "1-resource-summarizer"
+      ],
+      "note": "vault-ingest distill; primary soft also under Learn hub"
+    },
+    {
+      "link_type": "leaf",
+      "skills": [
+        "1-obsidian-markdown",
+        "1-obsidian-cli",
+        "1-obsidian-bases"
+      ]
+    },
+    {
+      "link_type": "on-ramp",
+      "skills": [
+        "1-learning-explainer"
+      ],
+      "note": "Pedagogy target of vault-explain; primary home Learn domain"
+    },
+    {
+      "link_type": "tombstone",
+      "skills": [
+        "obsidian-notes-manager"
+      ],
+      "note": "\u2192 rohitas-vault-wiki"
+    }
+  ],
+  "pipeline": [
+    "capture",
+    "compile",
+    "lint / query / explain"
+  ],
+  "forks": [
+    {
+      "id": "F11",
+      "question": "Capture / compile / query / lint / explain?",
+      "recommended": "match utterance",
+      "branches": [
+        "inbox",
+        "ingest",
+        "query",
+        "lint",
+        "explain",
+        "Agent judgment"
+      ]
+    },
+    {
+      "id": "F-D2",
+      "question": "Project repo wiki or personal Rohitas Notes vault?",
+      "recommended": "vault if Concepts/Atlas/my notes",
+      "branches": [
+        "0-rohitas-vault-wiki",
+        "1-project-wiki-manager",
+        "living-documentation-governor via F-D1",
+        "Agent judgment"
+      ]
+    }
+  ],
+  "domain_hubs_routed": null,
+  "artifacts": {
+    "html": "./hub.html",
+    "workflow_json": "./workflow.json",
+    "flows_chart": "../flows-chart.html",
+    "flows_ssot": "../../../skills/0-butler/references/flows.md",
+    "hubs_index": "../index.html",
+    "manifest": "../manifest.json"
+  },
+  "rules": [
+    "butler_links_every_domain_hub",
+    "each_domain_hub_has_package_dir",
+    "each_domain_hub_has_hub_html",
+    "each_domain_hub_has_workflow_json",
+    "each_domain_hub_links_flows_chart",
+    "one_hub_per_domain",
+    "forks_ask_user"
+  ]
+}

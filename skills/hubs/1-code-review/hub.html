@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Domain hub · code-review — Review</title>
+<style>
+
+  :root {
+    --bg: #0b0f14; --panel: #151c27; --text: #e8eef7; --muted: #8b9bb4;
+    --line: #2d3a4d; --butler: #f472b6; --hub: #3d8bfd; --fork: #fbbf24;
+    --mgr: #c084fc; --misc: #2dd4bf; --vault: #34d399;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.45; }
+  header { padding: 1.2rem 1.5rem; border-bottom: 1px solid var(--line); }
+  header h1 { margin: 0 0 0.35rem; font-size: 1.35rem; }
+  header p { margin: 0; color: var(--muted); max-width: 85ch; font-size: 0.95rem; }
+  nav.top { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; padding: 0.75rem 1.5rem; border-bottom: 1px solid var(--line); font-size: 0.88rem; }
+  nav.top a { color: #7dd3fc; text-decoration: none; }
+  nav.top a:hover { text-decoration: underline; }
+  nav.top .here { color: var(--text); font-weight: 650; }
+  main { padding: 1.25rem 1.5rem 3rem; display: grid; gap: 1.2rem; max-width: 960px; }
+  section { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1.1rem 1.2rem; }
+  h2 { margin: 0 0 0.55rem; font-size: 1.05rem; }
+  .meta { color: var(--muted); font-size: 0.88rem; margin: 0 0 0.75rem; }
+  .badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 999px; font-size: 0.75rem; font-weight: 650; border: 1px solid var(--line); margin-right: 0.35rem; }
+  .badge.hub { color: #93c5fd; border-color: var(--hub); background: #1a3358; }
+  ul { margin: 0.25rem 0 0; padding-left: 1.2rem; }
+  li { margin: 0.25rem 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+  th, td { text-align: left; padding: 0.4rem 0.5rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  code { color: #bae6fd; font-size: 0.9em; }
+  pre { background: #0f1520; border: 1px solid var(--line); border-radius: 8px; padding: 0.75rem 0.9rem; overflow-x: auto; font-size: 0.82rem; color: #cbd5e1; white-space: pre-wrap; }
+  footer { padding: 0 1.5rem 2rem; color: var(--muted); font-size: 0.85rem; max-width: 960px; }
+  a { color: #7dd3fc; }
+  .chart-cta { display: inline-block; margin-top: 0.35rem; padding: 0.45rem 0.8rem; border-radius: 8px; border: 1px solid var(--hub); background: #1a3358; color: #e0f2fe; text-decoration: none; font-weight: 650; font-size: 0.9rem; }
+  .butler-cta { display: inline-block; margin-top: 0.35rem; padding: 0.45rem 0.8rem; border-radius: 8px; border: 1px solid var(--butler); background: #4a1830; color: #fce7f3; text-decoration: none; font-weight: 650; font-size: 0.9rem; }
+  .nav-hubs { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .nav-hubs a { font-size: 0.8rem; padding: 0.2rem 0.45rem; border: 1px solid var(--line); border-radius: 6px; text-decoration: none; color: #7dd3fc; }
+  .nav-hubs a.current { border-color: var(--hub); color: var(--text); background: #1a3358; }
+  .nav-hubs a.butler-link { border-color: var(--butler); color: #fbcfe8; }
+  .parent-box { border: 1px solid var(--butler); background: #2a1220; border-radius: 8px; padding: 0.75rem 0.9rem; }
+  .parent-box strong { color: #fbcfe8; }
+
+</style>
+</head>
+<body>
+<header>
+  <h1>sub-hub code-review <span style="color:var(--muted);font-weight:500">· Domain 4 · Review</span></h1>
+  <p>Multi-axis closer for Ship — sub-hub under /0-review.</p>
+</header>
+<nav class="top">
+  <a class="butler-cta" href="../0-butler/hub.html">★ butler (hub of hubs)</a>
+  <a class="chart-cta" href="../../flows-chart.html">Full flows chart</a>
+  <a href="../../flows-chart.html#domain-hub-matrix">Domain matrix</a>
+  <a href="./workflow.json">workflow.json</a>
+  <a href="../../../productivity/0-butler/references/flows.md">flows.md SSOT</a>
+  <a href="../index.html">hubs index</a>
+  <span class="here">package: <code>hubs/1-code-review/</code></span>
+</nav>
+<main>
+
+<section>
+  <h2>Parent — butler</h2>
+  <div class="parent-box">
+    <strong>Routed by ★ butler</strong> (hub of hubs).<br/>
+    Enter this domain via <a href="../0-butler/hub.html">/0-butler</a> orient/query (or F7), then this hub.
+    Catalog mutations → <a href="../0-skill-manager/hub.html">/0-skill-manager</a>.
+    <br/>Parent domain hub: <a href="../0-review/hub.html"><code>/0-review</code></a> (sub-hub).
+  </div>
+  <p class="meta">
+    Parent skill: <code>productivity/butler</code> ·
+    This package: <code>hubs/1-code-review/</code>
+  </p>
+</section>
+<section>
+  <h2>Identity</h2>
+  <p class="meta">
+    <span class="badge hub">sub-hub</span>
+    slash: <code>/1-code-review</code> ·
+    skill path: <code>engineering/1-code-review/</code> ·
+    package: <code>hubs/1-code-review/</code>
+  </p>
+  <p>Default = scan and run applicable axes; ask F6 only to force/skip. Parent domain hub is /0-review.</p>
+</section>
+<section>
+  <h2>Children</h2>
+  <ul>
+    <li><strong>axis:</strong> Spec, Standards, Maintainability</li>
+<li><strong>cousin:</strong> check-work, ponytail-review</li>
+<li><strong>soft:</strong> software-architect, security-and-hardening</li>
+<li><strong>tombstone:</strong> code-review-v2 <span class='meta'>(→ code-review)</span></li>
+  </ul>
+</section>
+<section>
+  <h2>Pipeline</h2>
+  <pre>scan applicable axes
+report
+commit when green</pre>
+</section>
+<section>
+  <h2>Forks (ask user)</h2>
+  <table>
+    <thead><tr><th>ID</th><th>Question</th><th>Recommended</th><th>Branches</th></tr></thead>
+    <tbody>
+      <tr><td><code>F6</code></td><td>Review axes apply?</td><td>Every applicable</td><td>force/skip axes only on user override</td></tr>
+    </tbody>
+  </table>
+</section>
+<section>
+  <h2>See also</h2>
+  <p>
+    <a class="butler-cta" href="../0-butler/hub.html">★ butler</a>
+    <a class="chart-cta" href="../../flows-chart.html">Open flows-chart.html</a>
+    <a class="chart-cta" href="./workflow.json" style="margin-left:0.4rem">workflow.json</a>
+  </p>
+  <p class="meta">House map + fork index: chart. Machine-readable workflow: JSON. Routing apex: butler. Package layout: ADR 0005.</p>
+  <h2 style="margin-top:1rem">All domain hubs</h2>
+  <div class="nav-hubs">
+    <a href="../0-butler/hub.html" class="butler-link">butler</a>
+<a href="../0-setup-rohitas-skills/hub.html" class="">setup-rohitas-skills</a>
+<a href="../0-grilling/hub.html" class="">grilling</a>
+<a href="../0-implement/hub.html" class="">implement</a>
+<a href="../0-review/hub.html" class="current">review</a>
+<a href="../0-triage/hub.html" class="">triage</a>
+<a href="../0-diagnosing-bugs/hub.html" class="">diagnosing-bugs</a>
+<a href="../0-wayfinder/hub.html" class="">wayfinder</a>
+<a href="../0-improve-codebase-architecture/hub.html" class="">improve-codebase-architecture</a>
+<a href="../0-rohitas-vault-wiki/hub.html" class="">rohitas-vault-wiki</a>
+<a href="../0-skill-manager/hub.html" class="">skill-manager</a>
+<a href="../0-skill-creator/hub.html" class="">skill-creator</a>
+<a href="../0-ponytail/hub.html" class="">ponytail</a>
+<a href="../0-learn/hub.html" class="">learn</a>
+<a href="../0-office/hub.html" class="">office</a>
+  </div>
+</section>
+</main>
+<footer>
+  Package <code>hubs/1-code-review/</code> for <code>/1-code-review</code> · parent: <a href="../0-butler/hub.html">butler</a>
+   · domain: <a href="../0-review/hub.html">/0-review</a> ·
+  SSOT: <code>skills/productivity/0-butler/references/flows.md</code> ·
+  chart: <a href="../../flows-chart.html">flows-chart.html</a> ·
+  workflow: <a href="./workflow.json">workflow.json</a>
+</footer>
+</body>
+</html>

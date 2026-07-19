@@ -45,7 +45,7 @@
 | 11 | [11-cousin-budget-vault-ssot.md](./issues/11-cousin-budget-vault-ssot.md) | 02, 03, 07 | Routing budget + vault paths |
 | 12 | [12-polish-smoke-readme.md](./issues/12-polish-smoke-readme.md) | 07, 08, 09, 11 | Polish + metrics |
 
-Work the **frontier** with `/implement`, clearing context between tickets.
+Work the **frontier** with `/0-implement`, clearing context between tickets.
 
 ## Status
 

@@ -8,7 +8,7 @@
 
 **Parent:** Spec issue https://github.com/rohitas-git/ai-skills/issues/1 · local `SPEC.md`
 
-- [x] `lint-checklist.md` covers: name==dir, frontmatter, bucket/README membership, root promotion rule, model-invoked budget, trigger collisions, hard-dep `/setup-rohitas-skills` on to-spec/to-tickets/triage, forbidden names, broken links, vault SSOT, sprawl, deprecated successors
+- [x] `lint-checklist.md` covers: name==dir, frontmatter, bucket/README membership, root promotion rule, model-invoked budget, trigger collisions, hard-dep `/0-setup-rohitas-skills` on to-spec/1-to-tickets/0-triage, forbidden names, broken links, vault SSOT, sprawl, deprecated successors
 - [x] Lint produces a structured report by severity (not only free prose)
 - [x] Organize op: move/rename/deprecate updates indexes + flows + tombstones with confirm-before-write
 - [x] After a successful lint on the real catalog, critical findings are either fixed or filed as follow-ups

@@ -7,11 +7,11 @@ disable-model-invocation: true
 > **DEPRECATED.** Do not use this skill as a daily entry point. Its description was poison-wide and stole routing from architecture work.
 >
 > **Successors:**
-> - Vocabulary / deep modules → `/codebase-design`
-> - Survey + deepen opportunities → `/improve-codebase-architecture`
-> - Grandmaster system design review → `/software-architect` (kept in engineering when you explicitly want that persona)
+> - Vocabulary / deep modules → `/1-codebase-design`
+> - Survey + deepen opportunities → `/0-improve-codebase-architecture`
+> - Grandmaster system design review → `/1-software-architect` (kept in engineering when you explicitly want that persona)
 >
-> Prefer those over this tombstone. Catalog steward: `/butler`.
+> Prefer those over this tombstone. Catalog steward: `/0-butler`.
 
 
 

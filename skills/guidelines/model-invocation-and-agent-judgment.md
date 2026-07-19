@@ -6,8 +6,8 @@
 
 | Exception (model may auto-load) | Why |
 |---------------------------------|-----|
-| `coding-standards` | Always-on while writing/reviewing code |
-| `ponytail` | Always-on lazy ladder while coding |
+| `1-coding-standards` | Always-on while writing/reviewing code |
+| `0-ponytail` | Always-on lazy ladder while coding |
 
 All other skills are user- or butler-invoked so they do not steal context.
 

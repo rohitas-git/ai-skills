@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "kind": "domain_hub_workflow",
+  "domain_id": 1,
+  "domain": "Setup",
+  "hub": "0-setup-rohitas-skills",
+  "slash": "/0-setup-rohitas-skills",
+  "path": "skills/0-setup-rohitas-skills",
+  "package_dir": "hubs/0-setup-rohitas-skills/",
+  "role": "One-time precondition + SSOT for a consumer repo.",
+  "notes": "Gate before Design/Ship pipelines. Writes docs/agents/ SSOT including optional vault root.",
+  "parent": {
+    "hub": "0-butler",
+    "slash": "/0-butler",
+    "relationship": "routed_by",
+    "html": "../0-butler/hub.html",
+    "workflow_json": "../0-butler/workflow.json",
+    "skill_path": "skills/0-butler"
+  },
+  "children": [
+    {
+      "link_type": "hard",
+      "skills": [
+        "1-to-spec",
+        "1-to-tickets",
+        "0-triage"
+      ]
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "1-tdd",
+        "0-diagnosing-bugs",
+        "0-improve-codebase-architecture"
+      ]
+    },
+    {
+      "link_type": "ssot",
+      "docs": [
+        "issue-tracker",
+        "triage-labels",
+        "domain",
+        "vault"
+      ]
+    }
+  ],
+  "pipeline": [
+    "run once per consumer repo"
+  ],
+  "forks": [
+    {
+      "id": "F1",
+      "question": "Setup already done (docs/agents/ present)?",
+      "recommended": "Skip if present",
+      "branches": [
+        "run setup",
+        "skip \u2192 Design/Ship",
+        "Agent judgment"
+      ]
+    }
+  ],
+  "domain_hubs_routed": null,
+  "artifacts": {
+    "html": "./hub.html",
+    "workflow_json": "./workflow.json",
+    "flows_chart": "../flows-chart.html",
+    "flows_ssot": "../../../skills/0-butler/references/flows.md",
+    "hubs_index": "../index.html",
+    "manifest": "../manifest.json"
+  },
+  "rules": [
+    "butler_links_every_domain_hub",
+    "each_domain_hub_has_package_dir",
+    "each_domain_hub_has_hub_html",
+    "each_domain_hub_has_workflow_json",
+    "each_domain_hub_links_flows_chart",
+    "one_hub_per_domain",
+    "forks_ask_user"
+  ]
+}

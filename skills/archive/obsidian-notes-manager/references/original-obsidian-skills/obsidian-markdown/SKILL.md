@@ -189,8 +189,8 @@ Reviewed in [[Meeting Notes 2024-01-10#Decisions]].
 
 ## References
 
-- [Obsidian Flavored Markdown](https://grok-help.obsidian.md/obsidian-flavored-markdown)
-- [Internal links](https://grok-help.obsidian.md/links)
-- [Embed files](https://grok-help.obsidian.md/embeds)
-- [Callouts](https://grok-help.obsidian.md/callouts)
-- [Properties](https://grok-help.obsidian.md/properties)
+- [Obsidian Flavored Markdown](https://1-grok-help.obsidian.md/obsidian-flavored-markdown)
+- [Internal links](https://1-grok-help.obsidian.md/links)
+- [Embed files](https://1-grok-help.obsidian.md/embeds)
+- [Callouts](https://1-grok-help.obsidian.md/callouts)
+- [Properties](https://1-grok-help.obsidian.md/properties)

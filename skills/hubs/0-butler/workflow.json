@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "kind": "domain_hub_workflow",
+  "domain_id": 0,
+  "domain": "House",
+  "hub": "0-butler",
+  "slash": "/0-butler",
+  "path": "skills/0-butler",
+  "package_dir": "hubs/0-butler/",
+  "role": "Hub of hubs \u2014 route / orient only; never mutate the catalog.",
+  "notes": "Butler is the house concierge. Prefer domain hub first, then child skill. At every fork, ask the user once with a recommended option.",
+  "parent": null,
+  "children": [
+    {
+      "link_type": "routing",
+      "skills": [
+        "0-setup-rohitas-skills",
+        "0-grilling",
+        "0-implement",
+        "0-review",
+        "0-triage",
+        "0-diagnosing-bugs",
+        "0-wayfinder",
+        "0-improve-codebase-architecture",
+        "0-rohitas-vault-wiki",
+        "0-skill-manager",
+        "0-skill-creator",
+        "0-ponytail",
+        "0-learn",
+        "0-office"
+      ]
+    },
+    {
+      "link_type": "delegate",
+      "skills": [
+        "0-skill-manager"
+      ],
+      "note": "All catalog mutations"
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "1-grok-help",
+        "1-context-monitor",
+        "1-strategic-compact",
+        "1-response-effort-calibrator",
+        "1-handoff"
+      ],
+      "note": "Session meta / dual design handoff"
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "1-pi-agent-rust"
+      ],
+      "note": "Project-specific residual (not a domain hub)"
+    }
+  ],
+  "pipeline": [
+    "orient",
+    "query",
+    "domain hub or skill-manager"
+  ],
+  "forks": [
+    {
+      "id": "F7",
+      "question": "What kind of work?",
+      "recommended": "Feature \u2192 Design",
+      "branches": [
+        "Design",
+        "Triage",
+        "Diagnose",
+        "Fog",
+        "Architecture",
+        "Vault",
+        "Misc",
+        "Catalog facilities",
+        "Learn",
+        "Simplify",
+        "Agent judgment"
+      ]
+    }
+  ],
+  "domain_hubs_routed": [
+    "0-setup-rohitas-skills",
+    "0-grilling",
+    "0-implement",
+    "0-review",
+    "0-triage",
+    "0-diagnosing-bugs",
+    "0-wayfinder",
+    "0-improve-codebase-architecture",
+    "0-rohitas-vault-wiki",
+    "0-skill-manager",
+    "0-skill-creator",
+    "0-ponytail",
+    "0-learn",
+    "0-office"
+  ],
+  "artifacts": {
+    "html": "./hub.html",
+    "workflow_json": "./workflow.json",
+    "flows_chart": "../flows-chart.html",
+    "flows_ssot": "../../../skills/0-butler/references/flows.md",
+    "hubs_index": "../index.html",
+    "manifest": "../manifest.json"
+  },
+  "rules": [
+    "butler_links_every_domain_hub",
+    "each_domain_hub_has_package_dir",
+    "each_domain_hub_has_hub_html",
+    "each_domain_hub_has_workflow_json",
+    "each_domain_hub_links_flows_chart",
+    "one_hub_per_domain",
+    "forks_ask_user"
+  ]
+}

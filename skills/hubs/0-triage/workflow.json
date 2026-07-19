@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "kind": "domain_hub_workflow",
+  "domain_id": 5,
+  "domain": "Triage",
+  "hub": "0-triage",
+  "slash": "/0-triage",
+  "path": "skills/0-triage",
+  "package_dir": "hubs/0-triage/",
+  "role": "Issue / external PR state machine; on-ramp into Ship.",
+  "notes": "Never re-triage to-tickets output. F7 entry when work arrives as issues/PRs.",
+  "parent": {
+    "hub": "0-butler",
+    "slash": "/0-butler",
+    "relationship": "routed_by",
+    "html": "../0-butler/hub.html",
+    "workflow_json": "../0-butler/workflow.json",
+    "skill_path": "skills/0-butler"
+  },
+  "children": [
+    {
+      "link_type": "on-ramp",
+      "skills": [
+        "0-implement"
+      ],
+      "note": "merge into Ship"
+    }
+  ],
+  "pipeline": [
+    "categorise",
+    "verify",
+    "grill if needed",
+    "agent-ready brief",
+    "0-implement"
+  ],
+  "forks": [],
+  "domain_hubs_routed": null,
+  "artifacts": {
+    "html": "./hub.html",
+    "workflow_json": "./workflow.json",
+    "flows_chart": "../flows-chart.html",
+    "flows_ssot": "../../../skills/0-butler/references/flows.md",
+    "hubs_index": "../index.html",
+    "manifest": "../manifest.json"
+  },
+  "rules": [
+    "butler_links_every_domain_hub",
+    "each_domain_hub_has_package_dir",
+    "each_domain_hub_has_hub_html",
+    "each_domain_hub_has_workflow_json",
+    "each_domain_hub_links_flows_chart",
+    "one_hub_per_domain",
+    "forks_ask_user"
+  ]
+}

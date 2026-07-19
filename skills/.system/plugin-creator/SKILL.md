@@ -233,7 +233,7 @@ For the exact canonical sample JSON for both plugin manifests and marketplace en
 After editing `SKILL.md`, run:
 
 ```bash
-python3 ../skill-creator/scripts/quick_validate.py .
+python3 ../0-skill-creator/scripts/quick_validate.py .
 ```
 
 Before handing back a generated plugin, run:

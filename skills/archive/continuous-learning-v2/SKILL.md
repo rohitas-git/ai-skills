@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 > **DEPRECATED.** Instinct/hooks continuous-learning is out of the promoted catalog.
 >
-> **Successors:** `/session-skill-reflect` (session corrections → skill edits); `/butler` for catalog lint/organize.
+> **Successors:** `/1-session-skill-reflect` (session corrections → skill edits); `/0-butler` for catalog lint/organize.
 
 
 ## Historical note

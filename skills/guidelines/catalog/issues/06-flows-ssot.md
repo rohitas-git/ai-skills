@@ -8,7 +8,7 @@
 
 **Parent:** Spec issue https://github.com/rohitas-git/ai-skills/issues/1 · local `SPEC.md`
 
-- [x] `butler/references/flows.md` documents precondition: `/setup-rohitas-skills`
+- [x] `butler/references/flows.md` documents precondition: `/0-setup-rohitas-skills`
 - [x] Main flow: grill-with-docs | grill-me → optional handoff⇄prototype → multi-session? to-spec → to-tickets → implement* else implement*; implement → tdd → code-review
 - [x] On-ramps documented: triage, diagnosing-bugs, wayfinder (exit only via to-spec…), improve-codebase-architecture
 - [x] Vocabulary + vault chains documented

@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "kind": "domain_hub_workflow",
+  "domain_id": 13,
+  "domain": "Learn",
+  "hub": "0-learn",
+  "slash": "/0-learn",
+  "path": "skills/0-learn",
+  "package_dir": "hubs/0-learn/",
+  "role": "Domain router for intellectual understanding \u2014 explain, tutor, code walkthrough, course, story, summarize.",
+  "notes": "Not a product build path. vault-explain is Vault on-ramp that hard-loads learning-explainer. Tutor mode is disclosed under learn/references (not a separate skill). code-explainer is engineering path, soft child here.",
+  "parent": {
+    "hub": "0-butler",
+    "slash": "/0-butler",
+    "relationship": "routed_by",
+    "html": "../0-butler/hub.html",
+    "workflow_json": "../0-butler/workflow.json",
+    "skill_path": "skills/0-butler"
+  },
+  "children": [
+    {
+      "link_type": "leaf",
+      "skills": [
+        "1-learning-explainer"
+      ],
+      "note": "Structured multi-level explain SSOT; default F-L1 for concepts"
+    },
+    {
+      "link_type": "leaf",
+      "skills": [
+        "1-code-explainer"
+      ],
+      "note": "Source-code walkthrough; soft cross from engineering/"
+    },
+    {
+      "link_type": "satellite",
+      "skills": [
+        "1-teach"
+      ],
+      "note": "Multi-session workspace course"
+    },
+    {
+      "link_type": "leaf",
+      "skills": [
+        "1-story-teacher"
+      ]
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "1-resource-summarizer"
+      ],
+      "note": "Also used by vault-ingest distill; dual soft under Vault domain notes"
+    },
+    {
+      "link_type": "on-ramp",
+      "skills": [
+        "1-vault-explain"
+      ],
+      "note": "Primary home Vault; hard-loads learning-explainer for pedagogy"
+    }
+  ],
+  "pipeline": [
+    "orient / F-L1",
+    "optional F-L2 if long source",
+    "load one mode",
+    "optional cross-mode offer"
+  ],
+  "forks": [
+    {
+      "id": "F-L1",
+      "question": "What kind of learning help?",
+      "recommended": "Structured explain (/1-learning-explainer) for concepts/ELI5; code-explainer if object is code",
+      "branches": [
+        "1-learning-explainer",
+        "tutor-mode (learn/references)",
+        "1-code-explainer",
+        "1-teach",
+        "1-story-teacher",
+        "1-resource-summarizer",
+        "vault-explain if vault Concept",
+        "Agent judgment"
+      ]
+    },
+    {
+      "id": "F-L2",
+      "question": "Long source present \u2014 summarize first?",
+      "recommended": "Yes if raw blob is huge before explain/story",
+      "branches": [
+        "resource-summarizer first",
+        "skip straight to explain/tutor/story",
+        "Agent judgment"
+      ]
+    }
+  ],
+  "domain_hubs_routed": null,
+  "artifacts": {
+    "html": "./hub.html",
+    "workflow_json": "./workflow.json",
+    "flows_chart": "../flows-chart.html",
+    "flows_ssot": "../../../skills/0-butler/references/flows.md",
+    "hubs_index": "../index.html",
+    "manifest": "../manifest.json"
+  },
+  "rules": [
+    "butler_links_every_domain_hub",
+    "each_domain_hub_has_package_dir",
+    "each_domain_hub_has_hub_html",
+    "each_domain_hub_has_workflow_json",
+    "each_domain_hub_links_flows_chart",
+    "one_hub_per_domain",
+    "forks_ask_user",
+    "atomic_boundary"
+  ]
+}

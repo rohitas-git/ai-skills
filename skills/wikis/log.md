@@ -7,4 +7,4 @@
 <!-- END OF LOG -->
 ## 2026-07-19 | vendor-harvest | Merge high-value vendor pieces + place 9 lean skills | Updated winners + hubs + flows
 ## 2026-07-19 | vendor-harvest-2 | planning/idea/context/docs/git → merge into winners (no peer promote) | to-tickets, implement, grilling, strategic-compact, git-commit-helper, shipping-and-launch, living-documentation-governor, archive/vendor/README
-## 2026-07-19 | vendor-harvest-3 | Full-body ingest: all vendor skills+shared refs → winner references/ (no peer promote; skip using-agent-skills) | 9 lean full-guides + merges into grill/to-spec/to-tickets/implement/tdd/research/diagnose/code-review/ponytail/security/git/living-docs/strategic-compact
+## 2026-07-19 | vendor-harvest-3 | Full-body ingest: all vendor skills+shared refs → winner references/ (no peer promote; skip using-agent-skills) | 9 lean full-guides + merges into grill/1-to-spec/1-to-tickets/0-implement/1-tdd/1-research/diagnose/1-code-review/0-ponytail/security/git/living-docs/strategic-compact

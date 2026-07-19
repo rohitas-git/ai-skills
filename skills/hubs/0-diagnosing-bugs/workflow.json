@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "kind": "domain_hub_workflow",
+  "domain_id": 6,
+  "domain": "Diagnose",
+  "hub": "0-diagnosing-bugs",
+  "slash": "/0-diagnosing-bugs",
+  "path": "skills/0-diagnosing-bugs",
+  "package_dir": "hubs/0-diagnosing-bugs/",
+  "role": "Hard bugs and performance regressions.",
+  "notes": "On-ramp into product path after root cause is clear enough to build a fix.",
+  "parent": {
+    "hub": "0-butler",
+    "slash": "/0-butler",
+    "relationship": "routed_by",
+    "html": "../0-butler/hub.html",
+    "workflow_json": "../0-butler/workflow.json",
+    "skill_path": "skills/0-butler"
+  },
+  "children": [
+    {
+      "link_type": "pipeline",
+      "skills": [
+        "1-tdd"
+      ]
+    },
+    {
+      "link_type": "on-ramp",
+      "skills": [
+        "0-improve-codebase-architecture"
+      ],
+      "note": "optional"
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "1-performance-optimization",
+        "1-browser-testing-with-devtools"
+      ],
+      "note": "Vendor harvest: perf + browser runtime"
+    }
+  ],
+  "pipeline": [
+    "reproduce",
+    "minimise",
+    "hypothesise",
+    "instrument",
+    "fix",
+    "regression-test"
+  ],
+  "forks": [],
+  "domain_hubs_routed": null,
+  "artifacts": {
+    "html": "./hub.html",
+    "workflow_json": "./workflow.json",
+    "flows_chart": "../flows-chart.html",
+    "flows_ssot": "../../../skills/0-butler/references/flows.md",
+    "hubs_index": "../index.html",
+    "manifest": "../manifest.json"
+  },
+  "rules": [
+    "butler_links_every_domain_hub",
+    "each_domain_hub_has_package_dir",
+    "each_domain_hub_has_hub_html",
+    "each_domain_hub_has_workflow_json",
+    "each_domain_hub_links_flows_chart",
+    "one_hub_per_domain",
+    "forks_ask_user"
+  ]
+}

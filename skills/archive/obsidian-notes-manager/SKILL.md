@@ -4,12 +4,12 @@ description: "DEPRECATED tombstone. Use rohitas-vault-wiki (+ vault-* ops) for R
 disable-model-invocation: true
 ---
 
-> **DEPRECATED.** For **Rohitas’s Notes**, the sole schema steward is **`/rohitas-vault-wiki`**.
+> **DEPRECATED.** For **Rohitas’s Notes**, the sole schema steward is **`/0-rohitas-vault-wiki`**.
 >
 > **Successors:**
-> - Schema / Atlas / structure → `/rohitas-vault-wiki`
-> - Ops: `/vault-inbox`, `/vault-ingest`, `/vault-lint`, `/vault-explain`, `/wiki-query`
-> - Syntax/CLI/Bases primitives remain: `/obsidian-markdown`, `/obsidian-cli`, `/obsidian-bases`
+> - Schema / Atlas / structure → `/0-rohitas-vault-wiki`
+> - Ops: `/1-vault-inbox`, `/1-vault-ingest`, `/1-vault-lint`, `/1-vault-explain`, `/1-wiki-query`
+> - Syntax/CLI/Bases primitives remain: `/1-obsidian-markdown`, `/1-obsidian-cli`, `/1-obsidian-bases`
 >
 > Do not use this skill as the default vault steward.
 

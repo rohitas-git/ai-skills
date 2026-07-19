@@ -8,9 +8,9 @@
 
 **Parent:** Spec issue https://github.com/rohitas-git/ai-skills/issues/1 · local `SPEC.md`
 
-- [x] `grilling` is the interview SSOT; grill-me / grill-with-docs are thin wrappers (or equivalent single-body design)
-- [x] `to-spec`, `to-tickets`, `triage` hard-dep one-liners point at `/setup-rohitas-skills` (not setup-matt-…)
+- [x] `0-grilling` is the interview SSOT; grill-me / grill-with-docs are thin wrappers (or equivalent single-body design)
+- [x] `1-to-spec`, `1-to-tickets`, `0-triage` hard-dep one-liners point at `/0-setup-rohitas-skills` (not setup-matt-…)
 - [x] Soft deps (tdd, diagnosing-bugs, improve-codebase-architecture) use CONTEXT/ADR if present only—no forced setup spam
-- [x] Single `tdd` skill remains; useful ideas from vendor test-driven-development merged selectively; no second TDD skill in discovery
+- [x] Single `1-tdd` skill remains; useful ideas from vendor test-driven-development merged selectively; no second TDD skill in discovery
 - [x] implement skill text (or flows) states it drives tdd then code-review
 - [x] wayfinder / triage docs match flows (wayfinder exits via to-spec; do not re-triage to-tickets output)

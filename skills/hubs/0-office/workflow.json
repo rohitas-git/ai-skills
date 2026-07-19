@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "kind": "domain_hub_workflow",
+  "domain_id": 14,
+  "domain": "Misc / office",
+  "hub": "0-office",
+  "slash": "/0-office",
+  "path": "skills/0-office",
+  "package_dir": "hubs/0-office/",
+  "role": "Office/media artifact leaves (hub \u2192 leaf tree).",
+  "notes": "Flat tree under /0-office. Pick leaf by artifact type at F-misc.",
+  "parent": {
+    "hub": "0-butler",
+    "slash": "/0-butler",
+    "relationship": "routed_by",
+    "html": "../0-butler/hub.html",
+    "workflow_json": "../0-butler/workflow.json",
+    "skill_path": "skills/0-butler"
+  },
+  "children": [
+    {
+      "link_type": "leaf",
+      "skills": [
+        "1-docx",
+        "1-pptx",
+        "1-xlsx",
+        "1-diagram-maker",
+        "1-imagine",
+        "1-hatch-pet",
+        "1-json-canvas",
+        "1-defuddle"
+      ]
+    }
+  ],
+  "pipeline": [
+    "hub \u2192 leaf (not a long chain)"
+  ],
+  "forks": [
+    {
+      "id": "F-misc",
+      "question": "What artifact type?",
+      "recommended": "from extension/context",
+      "branches": [
+        "document",
+        "slides",
+        "sheet",
+        "diagram",
+        "image",
+        "canvas",
+        "web",
+        "pet",
+        "Agent judgment"
+      ]
+    }
+  ],
+  "domain_hubs_routed": null,
+  "artifacts": {
+    "html": "./hub.html",
+    "workflow_json": "./workflow.json",
+    "flows_chart": "../flows-chart.html",
+    "flows_ssot": "../../../skills/0-butler/references/flows.md",
+    "hubs_index": "../index.html",
+    "manifest": "../manifest.json"
+  },
+  "rules": [
+    "butler_links_every_domain_hub",
+    "each_domain_hub_has_package_dir",
+    "each_domain_hub_has_hub_html",
+    "each_domain_hub_has_workflow_json",
+    "each_domain_hub_links_flows_chart",
+    "one_hub_per_domain",
+    "forks_ask_user"
+  ]
+}

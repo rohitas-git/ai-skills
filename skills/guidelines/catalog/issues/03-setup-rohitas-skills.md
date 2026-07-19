@@ -8,7 +8,7 @@
 
 **Parent:** Spec issue https://github.com/rohitas-git/ai-skills/issues/1 · local `SPEC.md`
 
-- [x] `setup-rohitas-skills` renamed to `setup-rohitas-skills` (directory, frontmatter `name`, lock entry, cross-references)
+- [x] `0-setup-rohitas-skills` renamed to `0-setup-rohitas-skills` (directory, frontmatter `name`, lock entry, cross-references)
 - [x] User-facing copy says Rohitas skills (no “Matt Pocock’s skills” as product name)
 - [x] Skill still walks issue tracker → triage labels → domain docs one section at a time and writes `docs/agents/*` plus `## Agent skills` block
 - [x] Vault root SSOT is written (e.g. `docs/agents/vault.md` or equivalent section) and documented for personal vault skills

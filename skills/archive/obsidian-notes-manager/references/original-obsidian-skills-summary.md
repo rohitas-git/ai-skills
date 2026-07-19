@@ -11,7 +11,7 @@ This folder contains the **original, unmodified skills** from the official [kepa
 ## Included Original Skills
 
 ### obsidian-markdown (Primary)
-**Location:** `original-obsidian-skills/obsidian-markdown/`
+**Location:** `original-obsidian-skills/1-obsidian-markdown/`
 
 - `SKILL.md` — Core instructions for creating/editing Obsidian-flavored Markdown
 - `references/PROPERTIES.md` — Detailed property/frontmatter reference
@@ -25,10 +25,10 @@ This folder contains the **original, unmodified skills** from the official [kepa
 
 ### Other Skills in the Official Repo (Not Yet Copied)
 The full repo also contains:
-- `obsidian-bases` — For Obsidian Bases (database views)
-- `json-canvas` — For JSON Canvas files (visual whiteboards)
-- `obsidian-cli` — CLI interactions with Obsidian
-- `defuddle` — Clean web page extraction to Markdown
+- `1-obsidian-bases` — For Obsidian Bases (database views)
+- `1-json-canvas` — For JSON Canvas files (visual whiteboards)
+- `1-obsidian-cli` — CLI interactions with Obsidian
+- `1-defuddle` — Clean web page extraction to Markdown
 
 If you need any of these added in untouched form, let me know and I can include them.
 

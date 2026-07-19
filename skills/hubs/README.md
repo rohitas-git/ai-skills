@@ -9,4 +9,4 @@ Machine + human hub packages. Live skill bodies are under `../skills/`.
 | `flows-chart.html` | Visual map |
 | `manifest.json` / `index.html` | Package index |
 
-Pipelines/forks SSOT: `../skills/butler/references/flows.md`.
+Pipelines/forks SSOT: `../skills/0-butler/references/flows.md`.

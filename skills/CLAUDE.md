@@ -24,7 +24,7 @@ No other top-level directories. Root files: this file, `README.md`, `AGENTS.md`,
 5. deprecate: `skills/<name>` → `archive/<name>`.
 6. new-hub: write `hubs/{hub}/`.
 7. Main `SKILL.md` stays lean; depth in `references/`.
-8. **`disable-model-invocation: true` by default.** Only omit it for true always-on skills (today: `coding-standards`, `ponytail`). Prefer user/butler invoke over auto-steal.
+8. **`disable-model-invocation: true` by default.** Only omit it for true always-on skills (today: `1-coding-standards`, `0-ponytail`). Prefer user/butler invoke over auto-steal.
 9. **Forks** always offer **Agent judgment** — agent picks the best branch and proceeds without further questions on that fork.
 
 ## Forbidden

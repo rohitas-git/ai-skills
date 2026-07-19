@@ -4,7 +4,7 @@ description: "DEPRECATED tombstone. Use reflect for session→skill learnings; b
 disable-model-invocation: true
 ---
 
-> **DEPRECATED.** Session meta for skill improvement is **`/session-skill-reflect`**; catalog structure is **`/butler`** (lint/organize).
+> **DEPRECATED.** Session meta for skill improvement is **`/1-session-skill-reflect`**; catalog structure is **`/0-butler`** (lint/organize).
 >
 > Do not load this as a persistent observer layer during tasks.
 

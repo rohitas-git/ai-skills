@@ -40,7 +40,7 @@
 | `todo` | - | Blue, checkbox |
 | `tip` | `hint`, `important` | Cyan, flame |
 | `success` | `check`, `done` | Green, checkmark |
-| `question` | `grok-help`, `faq` | Yellow, question mark |
+| `question` | `1-grok-help`, `faq` | Yellow, question mark |
 | `warning` | `caution`, `attention` | Orange, warning |
 | `failure` | `fail`, `missing` | Red, X |
 | `danger` | `error` | Red, zap |

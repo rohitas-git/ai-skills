@@ -1,0 +1,17 @@
+{
+  "skill_name": "1-pr-summarizer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Summarize the git status and diff of the current branch to draft a PR description.",
+      "expected_output": "A structured PR description following the template with Summary, Proposed Changes, Testing, and Impact sections.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Summarize the following terminal test failure log for a PR comment:\n\n27 failed\n[chromium] › tests/provider.spec.ts:889:1 › decision modal — defer shows schedule follow-up input\nTimeoutError: page.waitForSelector: Timeout 5000ms exceeded.\n  at openDecisionModal (tests/provider.spec.ts:718:14)\n  at tests/provider.spec.ts:894:9",
+      "expected_output": "A structured PR comment summarizing the test failure with status, pipeline status, and failure details.",
+      "files": []
+    }
+  ]
+}
