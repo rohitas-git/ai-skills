@@ -10,7 +10,7 @@ disable-model-invocation: true
 | Need | Skill |
 |------|--------|
 | Deepening scan + HTML candidates + grill pick | **improve-codebase-architecture** (this) |
-| Grandmaster architecture survey/persona | `/1-software-architect` |
+| Grandmaster architecture survey/persona | `/2-software-architect` |
 | Vocabulary for deep modules | `/1-codebase-design` |
 | Coding standards while editing | `/1-coding-standards` (F-C1) |
 | Clean principles discussion | `/1-clean-craftsmanship` (F-C1) |

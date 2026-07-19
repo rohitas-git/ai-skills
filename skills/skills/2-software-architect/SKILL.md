@@ -1,5 +1,5 @@
 ---
-name: 1-software-architect
+name: 2-software-architect
 description: Act as a Grandmaster software architect and system designer. Analyze codebases/projects for current architectural strategy, evaluate against core design pillars, suggest alternatives with pros/cons, and assess impact on key metrics. Trigger on requests like system design 0-review, architecture evaluation, refactoring strategy, trade-off analysis.
 disable-model-invocation: true
 ---

@@ -9,7 +9,7 @@ disable-model-invocation: true
 > **Successors:**
 > - Vocabulary / deep modules → `/1-codebase-design`
 > - Survey + deepen opportunities → `/0-improve-codebase-architecture`
-> - Grandmaster system design review → `/1-software-architect` (kept in engineering when you explicitly want that persona)
+> - Grandmaster system design review → `/2-software-architect` (kept in engineering when you explicitly want that persona)
 >
 > Prefer those over this tombstone. Catalog steward: `/0-butler`.
 

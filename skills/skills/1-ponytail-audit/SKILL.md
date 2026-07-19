@@ -1,7 +1,7 @@
 ---
 name: 1-ponytail-audit
 description: >
-  Whole-repo audit for over-engineering. Like 1-ponytail-review, but scans the
+  Whole-repo audit for over-engineering. Like 2-ponytail-review, but scans the
   entire codebase instead of a diff: a ranked list of what to delete, simplify,
   or replace with stdlib/native equivalents. Use when the user says "audit this
   codebase", "audit for over-engineering", "what can I delete from this repo",
@@ -10,12 +10,12 @@ description: >
 disable-model-invocation: true
 ---
 
-1-ponytail-review, repo-wide. Scan the whole tree instead of a diff. Rank
+2-ponytail-review, repo-wide. Scan the whole tree instead of a diff. Rank
 findings biggest cut first.
 
 ## Tags
 
-Same as 1-ponytail-review:
+Same as 2-ponytail-review:
 
 - `delete:` dead code, unused flexibility, speculative feature. Replacement: nothing.
 - `stdlib:` hand-rolled thing the standard library ships. Name the function.
@@ -30,7 +30,7 @@ marks out-of-scope. Audit only the production src tree unless told otherwise.
 
 ## Output
 
-Ranked list, biggest cut first. Same one-liner format as 1-ponytail-review:
+Ranked list, biggest cut first. Same one-liner format as 2-ponytail-review:
 `<file>:L<line>: <tag> <what>. <replacement>.`
 
 End with: `net: -<N> lines possible across <M> findings.`

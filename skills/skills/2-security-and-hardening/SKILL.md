@@ -1,5 +1,5 @@
 ---
-name: 1-security-and-hardening
+name: 2-security-and-hardening
 description: >
   Hardens code against vulnerabilities while building or remediating. Use when
   handling user input, auth, data storage, external integrations, or after a

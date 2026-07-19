@@ -18,11 +18,12 @@ No other top-level directories. Root files: this file, `README.md`, `AGENTS.md`,
 ## Skill rules
 
 1. One skill = `skills/<name>/` named after frontmatter `name`.
-2. **Depth-prefix names (hard):** live `name` / dir / slash / hub package = `{depth}-{kebab-slug}` from **domain hub tree depth**.
-   - **0-** = ★ domain hubs (incl. hub-of-hubs `0-butler`) — hub identity wins even if dual-listed under another hub
-   - **1-** = children of a domain hub (incl. sub-hubs); sub-hub identity stays **1-** even if also pipeline under another domain
-   - **2+** = only when **primary** parent is depth `(N-1)` (not because of a soft dual under a sub-hub)
-   - **Dual membership:** one **primary** hub for naming; extra dual listings do **not** change the number. Prefer `"primary": true` when ambiguous.
+2. **Depth-prefix names (hard):** live `name` / dir / slash / hub package = `{depth}-{kebab-slug}` from **hub-tree depth** (0 … max tree depth; **no artificial cap**).
+   - **0-** = ★ domain hubs (incl. `0-butler`) — hub identity wins even if dual-listed elsewhere
+   - **1-** = children of domain hubs; **sub-hubs** at parent+1 (today often 1)
+   - **2-** = children of depth-1 hubs (e.g. under a sub-hub → `2-verify-work`)
+   - **3- / 4- / 5- / 6- / …** = same recurrence: `max(parent_hub_depth + 1)` (nested sub-hubs and their children)
+   - Dual membership: depth uses **deepest** hub parent; optional `"primary": true` is for ownership/docs only
    - No bare unprefixed live skills. Detail: `skills/0-skill-manager/references/depth-prefix-names.md`. Lint: `depth-prefix`, `depth-graph` critical.
 3. Dual membership is **logical only** (hubs + flows) — no second copy/symlink.
 4. Route: **`/0-butler`**. Mutate: **`/0-skill-manager`**. Lint: **`/1-skill-linter`** (Gate: PASS on place/ingest).

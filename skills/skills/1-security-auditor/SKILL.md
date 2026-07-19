@@ -4,7 +4,7 @@ description: >
   Multi-phase security and quality auditor for codebases and projects. Use for
   security audit, vulnerability 0-review, OWASP 0-review, full or scoped project
   audit, or high-confidence findings with concrete impact. Sub-hub under /0-review.
-  Not multi-axis PR 0-review (/1-code-review) or build-time patterns (/1-security-and-hardening).
+  Not multi-axis PR 0-review (/1-code-review) or build-time patterns (/2-security-and-hardening).
 disable-model-invocation: true
 ---
 
@@ -14,7 +14,7 @@ disable-model-invocation: true
 | Need | Skill |
 |------|--------|
 | Multi-phase security/quality audit + findings | **security-auditor** (this) |
-| Harden while coding / after findings | `/1-security-and-hardening` |
+| Harden while coding / after findings | `/2-security-and-hardening` |
 | Multi-axis PR/diff 0-review | `/1-code-review` |
 | Pick 0-review mode | `/0-review` F-R1 |
 
@@ -103,10 +103,10 @@ If the user did not name a path or PR, ask once: **full project** (recommended) 
 - For differential audits (PR or changed files only), follow `references/differential-pr-audit.md` while still performing lightweight surrounding-context recon.
 - After the final verified findings, offer a concise prioritized remediation plan using the framework in `references/remediation-prioritization.md`.
 - Use `references/false-positives.md` aggressively in validation to keep signal high.
-- For prevention patterns while remediating → `/1-security-and-hardening`.
+- For prevention patterns while remediating → `/2-security-and-hardening`.
 
 ## Related
 
 - **Parent domain:** `/0-review` (this skill is a **sub-hub**)
-- **Soft next:** `/1-security-and-hardening` (remediate / prevent)
+- **Soft next:** `/2-security-and-hardening` (remediate / prevent)
 - **Not for:** multi-axis diff/PR closer → `/1-code-review`; large-repo plan-first → `/1-codebase-review-strategy`

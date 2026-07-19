@@ -59,7 +59,7 @@ Does the change fit the system's design?
 
 ### 4. Security
 
-For detailed security guidance, see `1-security-and-hardening`. Does the change introduce vulnerabilities?
+For detailed security guidance, see `2-security-and-hardening`. Does the change introduce vulnerabilities?
 
 - Is user input validated and sanitized?
 - Are secrets kept out of code, logs, and version control?
@@ -293,7 +293,7 @@ Part of code 0-review is dependency 0-review:
 4. **Mind the transitive graph.** Most installed packages are ones nobody chose directly. Review the lockfile diff, not just `package.json`; a single direct bump can pull in dozens of indirect changes.
 5. **Keep the lockfile honest.** Commit it, 0-review its diff, and never hand-edit it. The lockfile is the thing that actually pins what ships.
 
-For triaging `npm audit` findings and supply-chain risk (typosquatting, compromised maintainers), follow the `1-security-and-hardening` skill — this section covers the upgrade *workflow*, that one covers the security verdict.
+For triaging `npm audit` findings and supply-chain risk (typosquatting, compromised maintainers), follow the `2-security-and-hardening` skill — this section covers the upgrade *workflow*, that one covers the security verdict.
 
 ## The Review Checklist
 

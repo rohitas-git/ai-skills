@@ -27,7 +27,7 @@ Level sticks until changed or session end.
 | Skill | Trigger | What it does |
 |-------|---------|--------------| 
 | **ponytail** | `/0-ponytail` | Lazy mode itself. Simplest solution that works. |
-| **ponytail-review** | `/1-ponytail-review` | Over-engineering 0-review: `L42: yagni: factory, one product. Inline.` |
+| **ponytail-review** | `/2-ponytail-review` | Over-engineering 0-review: `L42: yagni: factory, one product. Inline.` |
 | **ponytail-gain** | `/1-ponytail-gain` | Measured-impact scoreboard: less code, less cost, more speed. |
 | **ponytail-help** | `/1-ponytail-help` | This card. |
 

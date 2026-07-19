@@ -117,5 +117,5 @@ Good interfaces make testing natural:
 ## Don't use when
 
 - Full codebase survey of deepening opportunities → `/0-improve-codebase-architecture`
-- Grandmaster system design persona review → `/1-software-architect` (user-invoked)
+- Grandmaster system design persona review → `/2-software-architect` (user-invoked)
 - Deprecated catch-all architecture skill → do not use `software-architecture` (tombstone)

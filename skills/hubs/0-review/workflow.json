@@ -35,17 +35,17 @@
     {
       "link_type": "soft",
       "skills": [
-        "1-security-and-hardening",
-        "1-software-architect"
+        "2-security-and-hardening",
+        "2-software-architect"
       ],
-      "note": "hardening shared with both sub-hubs; 1-software-architect dual-primary under Architecture",
+      "note": "hardening shared with both sub-hubs; 2-software-architect dual-primary under Architecture",
       "primary": true
     },
     {
       "link_type": "cousin",
       "skills": [
-        "1-verify-work",
-        "1-ponytail-review"
+        "2-verify-work",
+        "2-ponytail-review"
       ],
       "note": "Mid-build verify and over-engineering 0-review cousins"
     },
@@ -61,7 +61,7 @@
     "orient",
     "F-R1 pick mode",
     "sub-hub or skill",
-    "optional 1-security-and-hardening remediation"
+    "optional 2-security-and-hardening remediation"
   ],
   "forks": [
     {
@@ -71,7 +71,7 @@
       "branches": [
         "1-code-review",
         "1-security-auditor",
-        "1-software-architect",
+        "2-software-architect",
         "codebase-review-strategy first",
         "Agent judgment"
       ]

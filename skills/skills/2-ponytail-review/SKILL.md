@@ -1,12 +1,12 @@
 ---
-name: 1-ponytail-review
+name: 2-ponytail-review
 description: >
   Code 0-review focused exclusively on over-engineering. Finds what to delete:
   reinvented standard library, unneeded dependencies, speculative abstractions,
   dead flexibility. One line per finding: location, what to cut, what replaces
   it. Use when the user says "review for over-engineering", "what can we
   delete", "is this over-engineered", "simplify review", or invokes
-  /1-ponytail-review. Complements correctness-focused 0-review, this one only
+  /2-ponytail-review. Complements correctness-focused 0-review, this one only
   hunts complexity.
 disable-model-invocation: true
 ---
@@ -62,4 +62,4 @@ Does not apply the fixes, only lists them.
 ## Don't use when
 
 - Full multi-axis 0-review (Spec/Standards/Maintainability) → `/1-code-review`
-- Mid-build self-verify → `/1-verify-work`
+- Mid-build self-verify → `/2-verify-work`

@@ -83,7 +83,7 @@ Legend:
 | Cluster | Skills | Kind | Recommendation |
 |---------|--------|------|----------------|
 | **Grill** | `0-grilling`, `1-grill-me`, `1-grill-with-docs` | **Wrapper** | Spec-compliant. Keep; ensure grill-me / grill-with-docs stay thin. |
-| **Architecture** | `1-codebase-design`, `0-improve-codebase-architecture`, `1-software-architect` + deprecated `software-architecture` | **Complement + cousin** | design = vocabulary; improve = survey; architect = persona. Keep three; **software-architect** already user-invoked. Don’t re-promote deprecated. |
+| **Architecture** | `1-codebase-design`, `0-improve-codebase-architecture`, `2-software-architect` + deprecated `software-architecture` | **Complement + cousin** | design = vocabulary; improve = survey; architect = persona. Keep three; **software-architect** already user-invoked. Don’t re-promote deprecated. |
 | **Comment family** | `1-coding-standards`, `1-code-comments`, `1-inline-comments`, `1-execution-flow-comments`, `1-stepdown-rule` | **Complement** | Well-boundaried table in coding-standards. Keep; not true dups. |
 | **Ponytail family** | `0-ponytail` + 5 satellites | **Complement** | Spec: satellites user-invoked. Keep; only `0-ponytail` model-invoked. |
 | **Vault ops** | `1-vault-inbox`, `1-vault-ingest`, `1-vault-lint`, `1-vault-explain`, `1-wiki-query` | **Complement** | Chain ops — good. |

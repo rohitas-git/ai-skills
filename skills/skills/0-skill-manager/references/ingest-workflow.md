@@ -36,7 +36,7 @@ Fail any row → do not promote; propose merge, rewrite, or defer.
 ## Apply steps (after confirm)
 
 1. Place under correct bucket (`git mv` / move).
-2. **Depth-prefix name (hard):** set dir + frontmatter `name` to `{depth}-{kebab-slug}` per [depth-prefix-names.md](./depth-prefix-names.md) (★ hub → `0-`; hub child → `1-`; …). Ensure `name` == directory name. Never leave a bare unprefixed live skill.
+2. **Depth-prefix name (hard):** set dir + frontmatter `name` to `{depth}-{kebab-slug}` per [depth-prefix-names.md](./depth-prefix-names.md) (★ hub → `0-`; hub child → `1-`; under sub-hub → `2-`; deeper nesting → `3-` / `4-` / `5-` / `6-` / … via `max(parent+1)`). Ensure `name` == directory name. Never leave a bare unprefixed live skill.
 3. Add one-line entry to bucket README.
 4. If promoted bucket: add line to root README; if not: ensure root does **not** list it.
 5. Update `flows.md` **and** parent `hubs/{hub}/workflow.json` children so the skill is a hub member.

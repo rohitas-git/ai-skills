@@ -90,7 +90,7 @@ app.use((req, res, next) => {
 });
 ```
 
-**Never log secrets, tokens, passwords, or full PII.** This is a hard rule from the `1-security-and-hardening` skill — telemetry pipelines are a classic data-leak path. Allowlist fields; don't log whole request bodies.
+**Never log secrets, tokens, passwords, or full PII.** This is a hard rule from the `2-security-and-hardening` skill — telemetry pipelines are a classic data-leak path. Allowlist fields; don't log whole request bodies.
 
 ### 4. Metrics
 

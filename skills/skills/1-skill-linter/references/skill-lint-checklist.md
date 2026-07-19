@@ -10,9 +10,9 @@ Severity: **critical** · **warn** · **info**
 |------|-----|--------|
 | `depth-prefix` | **critical** | live dir + frontmatter `name` match `^\d+-[a-z0-9]+(-[a-z0-9]+)*$` (depth-prefix hard rule; see 0-skill-manager `depth-prefix-names.md`) |
 | `name-dir` | critical | frontmatter `name` == directory name (includes prefix) |
-| `depth-hub` | critical | ★ domain hub skills use depth **0**; sub-hub package skills use depth **1** (hub identity over dual edges) |
-| `depth-graph` | **critical** | name prefix equals **primary** hub-tree depth; dual memberships ignored for the number |
-| `depth-dual` | info | skill has ≥2 hub parents — primary must be unambiguous or `"primary": true` |
+| `depth-hub` | critical | ★ domain hub skills use depth **0**; sub-hub package depth = parent+1 (often **1**; nested → **2+**; hub identity over dual edges) |
+| `depth-graph` | **critical** | name prefix equals hub-tree depth: hub identity or `max(parent_depth+1)` for **any** depth 0…max (incl. **3–6+**) |
+| `depth-dual` | info | skill has ≥2 hub parents — depth uses deepest parent |
 | `frontmatter` | critical | `name` and `description` present |
 | `description-quality` | warn | description ≥ ~40 chars; signals when-to-use / triggers |
 | `description-triggers` | warn | model-invoked (no `disable-model-invocation`): description has trigger phrasing (“Use when…”) |

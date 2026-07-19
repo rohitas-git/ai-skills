@@ -45,7 +45,7 @@ The depth behind these items lives in `code-review-and-quality` (the five-axis 0
 - [ ] Documentation describes the current state in timeless language, not the change history
 
 ### Ship-readiness
-- [ ] Security implications reviewed for any untrusted input, auth, or data handling (see `1-security-and-hardening`)
+- [ ] Security implications reviewed for any untrusted input, auth, or data handling (see `2-security-and-hardening`)
 - [ ] Observability in place for new critical paths (logs, metrics, traces) (see `1-observability-and-instrumentation`)
 - [ ] Rollback path exists for anything risky (see `1-shipping-and-launch`)
 - [ ] The human has reviewed and approved before merge or deploy

@@ -18,7 +18,7 @@
 Attach an **existing** skill directory to a **domain hub** documented in flows.md.
 
 1. Identify skill path + proposed hub + link type + pipeline slot (if any).
-2. **Assign depth-prefix name** ([depth-prefix-names.md](./depth-prefix-names.md)): from **primary** parent only — hub parent depth **0** → **`1-{slug}`**; primary under a sub-hub → **`2-{slug}`**. Dual soft listings on other hubs do **not** change the number. Domain/sub-hub identity always `0-` / `1-`. Rename dir + frontmatter **before** place if still bare. Optional `"primary": true` on the primary child group when dual.
+2. **Assign depth-prefix name** ([depth-prefix-names.md](./depth-prefix-names.md)): `depth = max(parent_hub_depth + 1)` over hub parents (domain/sub-hub identity → package depth). Domain hub parent → often **`1-{slug}`**; under a depth-1 sub-hub → **`2-{slug}`**; under depth 2 → **`3-{slug}`**; under 3/4/5 → **`4-` / `5-` / `6-`** (no artificial cap). Rename dir + frontmatter **before** place if still bare.
 3. Integration test (checks 1–9, including **skill-lint** `depth-prefix` / `name-dir`).
 4. Dry-run plan: flows.md diff, hub `workflow.json` children, README lines, lock.
 5. Confirm → apply → run **`/1-skill-linter`** mode **skill** (must Gate: PASS).

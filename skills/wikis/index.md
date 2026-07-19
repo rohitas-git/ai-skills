@@ -32,10 +32,10 @@
 | Page | Description | Sources |
 |------|-------------|---------|
 | [[1-code-review]] | Multi-axis 0-review of changes since a fixed point: Spec (ticket/PRD fidelity), Standards (repo docs +… | `skills/1-code-review` |
-| [[1-ponytail-review]] | Code 0-review focused exclusively on over-engineering. Finds what to delete: reinvented standard libra… | `skills/1-ponytail-review` |
-| [[1-security-and-hardening]] | Hardens code against vulnerabilities while building or remediating. Use when handling user input, au… | `skills/1-security-and-hardening` |
-| [[1-software-architect]] | Act as a Grandmaster software architect and system designer. Analyze codebases/projects for current … | `skills/1-software-architect` |
-| [[1-verify-work]] | Check your work with a verification subagent that reviews diffs, runs builds and tests, and evaluate… | `skills/1-verify-work` |
+| [[2-ponytail-review]] | Code 0-review focused exclusively on over-engineering. Finds what to delete: reinvented standard libra… | `skills/2-ponytail-review` |
+| [[2-security-and-hardening]] | Hardens code against vulnerabilities while building or remediating. Use when handling user input, au… | `skills/2-security-and-hardening` |
+| [[2-software-architect]] | Act as a Grandmaster software architect and system designer. Analyze codebases/projects for current … | `skills/2-software-architect` |
+| [[2-verify-work]] | Check your work with a verification subagent that reviews diffs, runs builds and tests, and evaluate… | `skills/2-verify-work` |
 
 ## Hub: 0-diagnosing-bugs
 
@@ -111,7 +111,7 @@
 | Page | Description | Sources |
 |------|-------------|---------|
 | [[0-ponytail]] | Forces the laziest solution that actually works, simplest, shortest, most minimal. Channels a senior… | `skills/0-ponytail` |
-| [[1-ponytail-audit]] | Whole-repo audit for over-engineering. Like 1-ponytail-review, but scans the entire codebase instead o… | `skills/1-ponytail-audit` |
+| [[1-ponytail-audit]] | Whole-repo audit for over-engineering. Like 2-ponytail-review, but scans the entire codebase instead o… | `skills/1-ponytail-audit` |
 | [[1-ponytail-debt]] | Harvest every `0-ponytail:` comment in the codebase into a debt ledger, so the deliberate shortcuts an… | `skills/1-ponytail-debt` |
 | [[1-ponytail-gain]] | Show ponytail's measured impact as a compact scoreboard: less code, less cost, more speed, from the … | `skills/1-ponytail-gain` |
 | [[1-ponytail-help]] | Quick-reference card for all 0-ponytail modes, skills, and commands. One-shot display, not a persisten… | `skills/1-ponytail-help` |

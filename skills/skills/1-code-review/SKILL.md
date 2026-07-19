@@ -14,12 +14,12 @@ disable-model-invocation: true
 | Need | Skill |
 |------|--------|
 | Multi-axis diff/PR 0-review (Spec/Standards/Maintainability) | **code-review** (this) |
-| Mid-build verify (not full multi-axis) | `/1-verify-work` |
+| Mid-build verify (not full multi-axis) | `/2-verify-work` |
 | Security/quality audit phases | `/1-security-auditor` |
 | Which 0-review mode? | `/0-review` (F-R1) |
-| Over-engineering only | `/1-ponytail-review` |
-| Architecture persona review | `/1-software-architect` |
-| Hardening while building | `/1-security-and-hardening` |
+| Over-engineering only | `/2-ponytail-review` |
+| Architecture persona review | `/2-software-architect` |
+| Hardening while building | `/2-security-and-hardening` |
 
 
 Review the diff between `HEAD` and a **fixed point** on up to three axes:
@@ -95,12 +95,12 @@ Within each axis, optional severity labels and sizing notes: [references/severit
 ## Don't use when
 
 - Unsure which 0-review mode → domain hub `/0-review` (F-R1)
-- Mid-implement self-verify until green → `/1-verify-work`
-- Over-engineering-only delete pass → `/1-ponytail-review`
+- Mid-implement self-verify until green → `/2-verify-work`
+- Over-engineering-only delete pass → `/2-ponytail-review`
 - Whole-repo 0-review planning by size tier → `/1-codebase-review-strategy`
 - Full security / OWASP audit → `/1-security-auditor`
-- Architecture 0-review of design/system → `/1-software-architect`
-- Prevention patterns while coding → `/1-security-and-hardening`
+- Architecture 0-review of design/system → `/2-software-architect`
+- Prevention patterns while coding → `/2-security-and-hardening`
 - Architecture deepening survey → `/0-improve-codebase-architecture`
 - PR description / summary text only → `/1-pr-summarizer`
 - Deprecated → do not use `/code-review-v2` (tombstone → this skill)
@@ -109,6 +109,6 @@ Within each axis, optional severity labels and sizing notes: [references/severit
 
 - **Parent domain:** `/0-review` (this skill is a **sub-hub**; Ship closer still lands here)
 - **Axes:** Spec, Standards, Maintainability
-- **Cousins:** `/1-verify-work`, `/1-ponytail-review`
-- **Soft:** `/1-software-architect` (architecture 0-review), `/1-security-and-hardening`
+- **Cousins:** `/2-verify-work`, `/2-ponytail-review`
+- **Soft:** `/2-software-architect` (architecture 0-review), `/2-security-and-hardening`
 - **Sibling sub-hub:** `/1-security-auditor`

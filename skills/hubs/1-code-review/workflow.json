@@ -31,15 +31,15 @@
     {
       "link_type": "cousin",
       "skills": [
-        "1-verify-work",
-        "1-ponytail-review"
+        "2-verify-work",
+        "2-ponytail-review"
       ]
     },
     {
       "link_type": "soft",
       "skills": [
-        "1-software-architect",
-        "1-security-and-hardening"
+        "2-software-architect",
+        "2-security-and-hardening"
       ]
     },
     {

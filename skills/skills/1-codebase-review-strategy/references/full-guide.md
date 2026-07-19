@@ -305,5 +305,5 @@ This framework ensures reviews are consistent, appropriately scoped, **and expli
 ## Related
 
 - **Parent domain:** `/0-review` (**on-ramp** — plan tier/effort, then load a sub-hub)
-- **After plan:** `/1-code-review` · `/1-security-auditor` · `/1-software-architect` as goal dictates
+- **After plan:** `/1-code-review` · `/1-security-auditor` · `/2-software-architect` as goal dictates
 - **Domain router:** `/0-review`

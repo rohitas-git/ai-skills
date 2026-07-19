@@ -20,7 +20,7 @@ disable-model-invocation: true
 | Enforce lean standards while coding | `/1-coding-standards` |
 | Deep module / seam vocabulary | `/1-codebase-design` |
 | Scan repo for deepening opportunities | `/0-improve-codebase-architecture` |
-| Grandmaster system design 0-review | `/1-software-architect` |
+| Grandmaster system design 0-review | `/2-software-architect` |
 | Comment form (API / inline / flow) | `/1-code-comments` · `/1-inline-comments` · `/1-execution-flow-comments` |
 
 ## Hard redirect / fork F-C1
@@ -99,7 +99,7 @@ Compact reference from Robert C. Martin’s *Clean Code* and *Clean Architecture
 - Enforcing style on a live edit → `/1-coding-standards` (F-C1).
 - Module seam design vocabulary → `/1-codebase-design`.
 - Whole-repo deepening survey → `/0-improve-codebase-architecture`.
-- Grandmaster architecture persona report → `/1-software-architect`.
+- Grandmaster architecture persona report → `/2-software-architect`.
 - Pure syntax or language-specific trivia (language docs).
 - Verbatim book quotes or page numbers (copyright).
 - Early greenfield where speed of exploration dominates (still allow clean naming).

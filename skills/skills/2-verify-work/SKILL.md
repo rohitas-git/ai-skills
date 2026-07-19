@@ -1,16 +1,16 @@
 ---
-name: 1-verify-work
+name: 2-verify-work
 description: >
   Check your work with a verification subagent that reviews diffs, runs builds
   and tests, and evaluates correctness. Read this file for instructions. Use when
-  asked to "check work", "verify changes", "self-verify", "/1-verify-work", "/check",
+  asked to "check work", "verify changes", "self-verify", "/2-verify-work", "/check",
   "/verify", or "/self-verify".
 metadata:
   short-description: "Verify changes with a subagent"
 disable-model-invocation: true
 ---
 
-# /1-verify-work -- Self-Verification
+# /2-verify-work -- Self-Verification
 
 ## Boundary
 
@@ -19,7 +19,7 @@ disable-model-invocation: true
 | Mid-build verification subagent (diffs, build, tests) | **verify-work** (this) |
 | Multi-axis change/PR 0-review closer | `/1-code-review` |
 | Security audit | `/1-security-auditor` |
-| Over-engineering 0-review only | `/1-ponytail-review` |
+| Over-engineering 0-review only | `/2-ponytail-review` |
 | Ship 0-implement loop | `/0-implement` |
 
 **Not for:** open-ended “which review?” → `/0-review` F-R1. Prefer this mid-build; prefer `/1-code-review` as Ship closer.

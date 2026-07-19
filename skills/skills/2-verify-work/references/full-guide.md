@@ -1,8 +1,8 @@
-# 1-verify-work — full guide
+# 2-verify-work — full guide
 
 > Progressive disclosure body moved from SKILL.md for Matt-lean main file.
 
-# /1-verify-work -- Self-Verification
+# /2-verify-work -- Self-Verification
 ## Boundary
 
 | Need | Skill |
@@ -10,7 +10,7 @@
 | Mid-build verification subagent (diffs, build, tests) | **verify-work** (this) |
 | Multi-axis change/PR 0-review closer | `/1-code-review` |
 | Security audit | `/1-security-auditor` |
-| Over-engineering 0-review only | `/1-ponytail-review` |
+| Over-engineering 0-review only | `/2-ponytail-review` |
 | Ship 0-implement loop | `/0-implement` |
 
 **Not for:** open-ended “which review?” → `/0-review` F-R1. Prefer this mid-build; prefer `/1-code-review` as Ship closer.
@@ -21,7 +21,7 @@ fixing issues until it passes.
 
 ## Usage
 
-`/1-verify-work [focus area]`
+`/2-verify-work [focus area]`
 
 The optional focus area tells the verifier to pay special attention to specific
 aspects of the changes (e.g. "auth logic and JWT handling").
@@ -32,7 +32,7 @@ Determine which mode you are in before proceeding:
 
 - **Same-turn mode**: There is a user task alongside this skill (e.g. headless
   `--check`). **Complete the task fully first**, then proceed to Step 1 below.
-- **Standalone mode**: There is no task — just `/1-verify-work` (or the alias `/check`) or the skill was invoked
+- **Standalone mode**: There is no task — just `/2-verify-work` (or the alias `/check`) or the skill was invoked
   after a previous turn. Proceed directly to Step 1.
 
 ## Steps
@@ -294,4 +294,4 @@ VERDICT: FAIL
 ## Don't use when
 
 - Post-implement full 0-review closer → multi-axis `/1-code-review` (Spec + Standards + Maintainability)
-- Over-engineering-only pass → `/1-ponytail-review`
+- Over-engineering-only pass → `/2-ponytail-review`

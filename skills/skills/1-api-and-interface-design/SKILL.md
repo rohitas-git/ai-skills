@@ -25,5 +25,5 @@ Lean catalog skill. **Full vendor body:** [references/full-guide.md](./reference
 
 ## Related
 
-- Architecture soft · with `/1-codebase-design` · not full system persona `/1-software-architect`
+- Architecture soft · with `/1-codebase-design` · not full system persona `/2-software-architect`
 - Upstream harvest only; winner name is **`/1-api-and-interface-design`**

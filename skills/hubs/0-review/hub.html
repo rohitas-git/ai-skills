@@ -88,9 +88,11 @@
 <section>
   <h2>Children</h2>
   <ul>
-    <li><strong>sub-hub:</strong> 1-code-review, security-auditor</li>
-<li><strong>on-ramp:</strong> codebase-review-strategy</li>
-<li><strong>soft:</strong> 1-security-and-hardening, 1-software-architect <span class='meta'>(hardening shared with both sub-hubs; 1-software-architect dual-primary under Architecture)</span></li>
+    <li><strong>sub-hub:</strong> 1-code-review, 1-security-auditor</li>
+<li><strong>on-ramp:</strong> 1-codebase-review-strategy</li>
+<li><strong>soft:</strong> 2-security-and-hardening, 2-software-architect <span class='meta'>(hardening shared with both sub-hubs; 2-software-architect dual-primary under Architecture)</span></li>
+<li><strong>cousin:</strong> 2-verify-work, 2-ponytail-review</li>
+<li><strong>soft:</strong> 1-doubt-driven-development</li>
   </ul>
 </section>
 <section>
@@ -98,14 +100,14 @@
   <pre>orient
 F-R1 pick mode
 sub-hub or skill
-optional 1-security-and-hardening remediation</pre>
+optional 2-security-and-hardening remediation</pre>
 </section>
 <section>
   <h2>Forks (ask user)</h2>
   <table>
     <thead><tr><th>ID</th><th>Question</th><th>Recommended</th><th>Branches</th></tr></thead>
     <tbody>
-      <tr><td><code>F-R1</code></td><td>What kind of review?</td><td>Multi-axis change 0-review if PR/ship/diff</td><td>code-review · 1-security-auditor · 1-software-architect · 1-codebase-review-strategy first</td></tr>
+      <tr><td><code>F-R1</code></td><td>What kind of review?</td><td>Multi-axis change 0-review if PR/ship/diff</td><td>1-code-review · 1-security-auditor · 2-software-architect · 1-codebase-review-strategy first · Agent judgment</td></tr>
 <tr><td><code>F6</code></td><td>(inside 1-code-review) axes applicable?</td><td>Every applicable</td><td>Spec / Standards / Maintainability on or soft-skip</td></tr>
 <tr><td><code>F-R2</code></td><td>(inside 1-security-auditor) audit scope?</td><td>Full project unless path/PR named</td><td>full · scoped module · differential/PR</td></tr>
     </tbody>

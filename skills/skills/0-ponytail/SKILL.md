@@ -23,7 +23,7 @@ license: MIT
 | Need | Skill |
 |------|--------|
 | Always-on lazy/minimal coding mode | **ponytail** (this) |
-| Diff 0-review for over-engineering only | `/1-ponytail-review` |
+| Diff 0-review for over-engineering only | `/2-ponytail-review` |
 | Whole-repo over-engineering audit | `/1-ponytail-audit` |
 | Harvest `0-ponytail:` debt comments | `/1-ponytail-debt` |
 | Scoreboard of savings | `/1-ponytail-gain` |

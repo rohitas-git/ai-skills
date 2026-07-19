@@ -10,15 +10,17 @@ Each **workflow domain** has exactly one **★ top skill (hub)**. Children link 
 
 ### Depth-prefix names (hard)
 
-Live skill id = **`{depth}-{kebab-slug}`** (dir, frontmatter `name`, slash, hub package) from **domain hub tree depth**.
+Live skill id = **`{depth}-{kebab-slug}`** (dir, frontmatter `name`, slash, hub package) for **full hub-tree depth** (0 … max).
 
 | Depth | Role |
 |------:|------|
 | **0-** | ★ domain hubs + hub-of-hubs (`0-butler`) — hub identity always |
-| **1-** | Children of a domain hub (incl. sub-hubs); sub-hub identity always `1-` |
-| **2+** | Only when **primary** parent is depth `(N-1)` |
+| **1-** | Children of a domain hub; sub-hubs at parent+1 (today `1-code-review`) |
+| **2-** | Children of depth-1 hubs — e.g. under a sub-hub → `2-verify-work`, `2-security-and-hardening` |
+| **3-** | Children of depth-2 parents / nested sub-hubs |
+| **4- / 5- / 6-** | Same recurrence: `max(parent_depth + 1)` (no artificial cap; 7+ continues) |
 
-**Dual domain:** one **primary** hub for the number; extra dual soft/on-ramp/cousin listings do **not** change the prefix (no min-depth rename). SSOT: `skills/0-skill-manager/references/depth-prefix-names.md`. Lint: `depth-prefix` / `depth-hub` / `depth-graph` critical.
+**Dual domain:** depth uses the **deepest** hub parent; `"primary": true` is ownership/docs only. SSOT: `skills/0-skill-manager/references/depth-prefix-names.md`. Lint: `depth-prefix` / `depth-hub` / `depth-graph` critical.
 
 ### Fork (◆)
 
@@ -96,7 +98,7 @@ flows.md remains SSOT for pipelines/forks; HTML/JSON are projections. **new-hub*
 | | |
 |--|--|
 | **★ Hub** | `/0-implement` |
-| **Children** | **pipeline:** `1-to-spec` → `1-to-tickets` → `0-implement` → `1-tdd` → `1-code-review` → commit · **soft (style):** `1-coding-standards`, `1-code-comments`, `1-inline-comments`, `1-execution-flow-comments`, `1-stepdown-rule` · **cousin:** `1-verify-work` · **soft (git/PR):** `1-git-commit-helper`, `1-pr-summarizer`, `1-resolving-merge-conflicts` · **soft:** `1-research` · **soft (vendor harvest):** `1-shipping-and-launch`, `1-observability-and-instrumentation`, `1-ci-cd-and-automation`, `1-frontend-ui-engineering` |
+| **Children** | **pipeline:** `1-to-spec` → `1-to-tickets` → `0-implement` → `1-tdd` → `1-code-review` → commit · **soft (style):** `1-coding-standards`, `1-code-comments`, `1-inline-comments`, `1-execution-flow-comments`, `1-stepdown-rule` · **cousin:** `2-verify-work` · **soft (git/PR):** `1-git-commit-helper`, `1-pr-summarizer`, `1-resolving-merge-conflicts` · **soft:** `1-research` · **soft (vendor harvest):** `1-shipping-and-launch`, `1-observability-and-instrumentation`, `1-ci-cd-and-automation`, `1-frontend-ui-engineering` |
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
@@ -121,12 +123,12 @@ flows.md remains SSOT for pipelines/forks; HTML/JSON are projections. **new-hub*
 | | |
 |--|--|
 | **★ Hub** | `/0-review` |
-| **Children** | **sub-hub:** `1-code-review` · **sub-hub:** `1-security-auditor` · **soft:** `1-doubt-driven-development` · **on-ramp:** `1-codebase-review-strategy` · **soft (shared):** `1-security-and-hardening` · **soft (dual):** `1-software-architect` (primary Domain 8) |
-| **Pipeline** | orient → **F-R1** pick mode → sub-hub / skill → optional remediation via `/1-security-and-hardening` |
+| **Children** | **sub-hub:** `1-code-review` · **sub-hub:** `1-security-auditor` · **soft:** `1-doubt-driven-development` · **on-ramp:** `1-codebase-review-strategy` · **soft (shared):** `2-security-and-hardening` · **soft (dual):** `2-software-architect` (primary Domain 8) |
+| **Pipeline** | orient → **F-R1** pick mode → sub-hub / skill → optional remediation via `/2-security-and-hardening` |
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F-R1** | What kind of review? | Multi-axis **change** 0-review if PR/ship/diff | `/1-code-review` · `/1-security-auditor` · `/1-software-architect` · `/1-codebase-review-strategy` first · **Agent judgment** |
+| **F-R1** | What kind of review? | Multi-axis **change** 0-review if PR/ship/diff | `/1-code-review` · `/1-security-auditor` · `/2-software-architect` · `/1-codebase-review-strategy` first · **Agent judgment** |
 | **F6** | (inside `/1-code-review`) axes applicable? | every applicable | Spec / Standards / Maintainability on or soft-skip · **Agent judgment** |
 | **F-R2** | (inside `/1-security-auditor`) audit scope? | full project unless path/PR named | full · scoped module · differential/PR · **Agent judgment** |
 
@@ -135,16 +137,16 @@ flows.md remains SSOT for pipelines/forks; HTML/JSON are projections. **new-hub*
 | | |
 |--|--|
 | **Role** | Multi-axis diff/PR closer (Ship + branch 0-review) |
-| **Children** | **axis:** Spec, Standards, Maintainability · **cousin:** `1-verify-work`, `1-ponytail-review` · **soft:** `1-software-architect`, `1-security-and-hardening` · **†** `code-review-v2` |
+| **Children** | **axis:** Spec, Standards, Maintainability · **cousin:** `2-verify-work`, `2-ponytail-review` · **soft:** `2-software-architect`, `2-security-and-hardening` · **†** `code-review-v2` |
 
 ### Sub-hub `/1-security-auditor`
 
 | | |
 |--|--|
 | **Role** | Multi-phase security/quality audit + structured findings |
-| **Children** | **soft:** `1-security-and-hardening` (remediate / prevent after findings) |
+| **Children** | **soft:** `2-security-and-hardening` (remediate / prevent after findings) |
 
-`1-security-and-hardening` is listed under **both** sub-hubs (shared soft). Architecture deepen/survey stays Domain 8; only the persona dual-softs into Review for architecture *review*.
+`2-security-and-hardening` is listed under **both** sub-hubs (shared soft). Architecture deepen/survey stays Domain 8; only the persona dual-softs into Review for architecture *review*.
 
 ---
 
@@ -185,7 +187,7 @@ flows.md remains SSOT for pipelines/forks; HTML/JSON are projections. **new-hub*
 | | |
 |--|--|
 | **★ Hub** | `/0-improve-codebase-architecture` |
-| **Children** | **vocab:** `1-codebase-design` · **persona:** `1-software-architect` · **soft (principles):** `1-clean-craftsmanship` · **soft (always-on style):** `1-coding-standards` (also Ship) · **soft (docs):** `1-project-wiki-manager`, `1-living-documentation-governor` · **soft (vendor harvest):** `1-api-and-interface-design`, `1-deprecation-and-migration` · **†** `software-architecture` |
+| **Children** | **vocab:** `1-codebase-design` · **persona:** `2-software-architect` · **soft (principles):** `1-clean-craftsmanship` · **soft (always-on style):** `1-coding-standards` (also Ship) · **soft (docs):** `1-project-wiki-manager`, `1-living-documentation-governor` · **soft (vendor harvest):** `1-api-and-interface-design`, `1-deprecation-and-migration` · **†** `software-architecture` |
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
@@ -253,7 +255,7 @@ Not a product feature pipeline — **mutates the catalog**.
 | | |
 |--|--|
 | **★ Hub** | `/0-ponytail` |
-| **Children** | **satellite:** 1-ponytail-review, 1-ponytail-audit, 1-ponytail-debt, 1-ponytail-gain, 1-ponytail-help |
+| **Children** | **satellite:** `2-ponytail-review`, `1-ponytail-audit`, `1-ponytail-debt`, `1-ponytail-gain`, `1-ponytail-help` |
 
 Optional; not Ship closer.
 
@@ -344,7 +346,7 @@ Butler asks **F7** when intent is unclear.
                ▼
         ★ 0-implement → 1-tdd → 1-code-review (F6; Review sub-hub) → commit
                │
-        open-ended “review?” → ★ /0-review (F-R1) → 1-code-review | 1-security-auditor | 1-software-architect | strategy
+        open-ended “review?” → ★ /0-review (F-R1) → 1-code-review | 1-security-auditor | 2-software-architect | strategy
 ```
 
 ## Residual — Personal

@@ -198,7 +198,7 @@ def main() -> int:
                     (
                         "critical",
                         "depth-hub",
-                        f"hub package dir {hub_dir.name!r} must be depth-prefixed (0- for domain hubs, 1- for sub-hubs)",
+                        f"hub package dir {hub_dir.name!r} must be depth-prefixed (0- domain hubs; sub-hubs parent+1 → 1-/2-/3-/…)",
                     )
                 )
             try:
@@ -221,11 +221,11 @@ def main() -> int:
     else:
         findings.append(("warn", "hub-dir", f"hub packages dir missing: {HUBS_DIR}"))
 
-    # Depth-graph: name prefix must match primary hub-tree depth (dual membership adjusted)
-    def expected_primary_depth(
+    # Depth-graph: name prefix = full hub-tree depth (max parent_depth+1; hub identity special-cased)
+    def expected_tree_depth(
         live: set[str],
     ) -> tuple[dict[str, int], dict[str, str], dict[str, list]]:
-        """Return expected depth, primary parent, and all parents per skill."""
+        """Return expected depth, deepest parent label, and all parents per skill."""
         wfs: dict[str, dict] = {}
         if HUBS_DIR.is_dir():
             for wf in HUBS_DIR.glob("*/workflow.json"):
@@ -236,73 +236,63 @@ def main() -> int:
                 hub = data.get("hub")
                 if isinstance(hub, str) and hub:
                     wfs[hub] = data
-        domain = {h for h, d in wfs.items() if not d.get("parent_domain_hub")}
-        sub = {h for h, d in wfs.items() if d.get("parent_domain_hub")}
-        hdepth = {h: (1 if h in sub else 0) for h in wfs}
-        prio = {
-            "pipeline": 100,
-            "hard": 90,
-            "wrapper": 80,
-            "sub-hub": 85,
-            "leaf": 70,
-            "satellite": 65,
-            "on-ramp": 60,
-            "pull-in": 55,
-            "detour": 50,
-            "persona": 45,
-            "vocab": 45,
-            "craft": 40,
-            "next": 35,
-            "cousin": 30,
-            "routing": 25,
-            "delegate": 20,
-            "handoff": 15,
-            "soft": 10,
-            "axis": 5,
-        }
+        # Hub package depths (domain 0; nested sub-hub = parent+1)
+        hdepth: dict[str, int] = {}
+        for h, d in wfs.items():
+            if not d.get("parent_domain_hub"):
+                hdepth[h] = 0
+        changed = True
+        while changed:
+            changed = False
+            for h, d in wfs.items():
+                pd = d.get("parent_domain_hub")
+                if not pd:
+                    continue
+                parent = pd if pd in wfs else None
+                if parent is None:
+                    for cand in wfs:
+                        bare = cand.split("-", 1)[-1] if "-" in cand else cand
+                        if cand == pd or bare == pd or cand.endswith("-" + str(pd)):
+                            parent = cand
+                            break
+                if parent is None:
+                    nd = 1
+                elif parent not in hdepth:
+                    continue
+                else:
+                    nd = hdepth[parent] + 1
+                if hdepth.get(h) != nd:
+                    hdepth[h] = nd
+                    changed = True
         parents: dict[str, list] = {s: [] for s in live}
         for hub, data in wfs.items():
             for group in data.get("children") or []:
                 lt = group.get("link_type") or "soft"
                 if lt in ("tombstone", "ops", "ssot"):
                     continue
-                primary_group = group.get("primary") is True
                 for s in group.get("skills") or []:
                     if not isinstance(s, str) or s in NON_SKILL_TOKENS or s == hub:
                         continue
                     if s not in live:
                         continue
-                    parents[s].append((hub, hdepth.get(hub, 0), lt, primary_group))
+                    parents[s].append((hub, hdepth.get(hub, 0), lt))
         expected: dict[str, int] = {}
-        primary_of: dict[str, str] = {}
+        deepest_of: dict[str, str] = {}
         for s in live:
-            if s in domain:
-                expected[s] = 0
-                primary_of[s] = s
-                continue
-            if s in sub:
-                expected[s] = 1
-                primary_of[s] = s
+            if s in hdepth and s in wfs:
+                expected[s] = hdepth[s]
+                deepest_of[s] = f"hub-identity:{s}"
                 continue
             ps = parents.get(s) or []
             if not ps:
                 continue
-            explicit = [p for p in ps if p[3]]
-            if explicit:
-                pool = explicit
-            else:
-                best = max(prio.get(lt, 1) for _, _, lt, _ in ps)
-                pool = [p for p in ps if prio.get(p[2], 1) == best]
-                min_pd = min(p[1] for p in pool)
-                pool = [p for p in pool if p[1] == min_pd]
-            pool.sort(key=lambda x: x[0])
-            parent, pd, lt, _ = pool[0]
-            expected[s] = pd + 1
-            primary_of[s] = f"{parent}({lt})"
-        return expected, primary_of, parents
+            best = max(ps, key=lambda p: p[1])
+            expected[s] = best[1] + 1
+            deepest_of[s] = f"{best[0]}(d={best[1]},{best[2]})"
+        return expected, deepest_of, parents
 
     live_names = {d.name for d in skills_in_bucket("skills")}
-    exp_depth, primary_of, all_parents = expected_primary_depth(live_names)
+    exp_depth, deepest_of, all_parents = expected_tree_depth(live_names)
     for name in sorted(live_names):
         m = re.match(r"^(\d+)-", name)
         if not m:
@@ -314,7 +304,7 @@ def main() -> int:
                 (
                     "critical",
                     "depth-graph",
-                    f"skills/{name}: no hub parents and not a domain/sub-hub — cannot assign primary depth",
+                    f"skills/{name}: no hub parents and not a domain/sub-hub — cannot assign tree depth",
                 )
             )
             continue
@@ -323,7 +313,7 @@ def main() -> int:
                 (
                     "critical",
                     "depth-graph",
-                    f"skills/{name}: name depth={actual} but primary hub-tree depth={exp} via {primary_of.get(name)}",
+                    f"skills/{name}: name depth={actual} but hub-tree depth={exp} via {deepest_of.get(name)}",
                 )
             )
         if len(all_parents.get(name) or []) >= 2:
@@ -331,7 +321,7 @@ def main() -> int:
                 (
                     "info",
                     "depth-dual",
-                    f"skills/{name}: dual membership; primary={primary_of.get(name)}; parents={[p[0] for p in all_parents[name]]}",
+                    f"skills/{name}: dual membership; deepest={deepest_of.get(name)}; parents={[p[0] for p in all_parents[name]]}",
                 )
             )
 

@@ -5,11 +5,12 @@
 3. **Never promote `using-agent-skills`** — dual meta-router is forbidden.
 4. **Never invent skills in query** — recommend only skills that exist on disk under discoverable buckets (or explicit deprecated tombstones when explaining successors).
 5. **Prefer merge** — if a candidate collides with an existing skill's job, merge content into the winner rather than adding a peer.
-6. **Depth-prefix names (hard)** — live skill dir, frontmatter `name`, slash, and hub package (if any) **must** be `{depth}-{kebab-slug}` from **hub-tree primary depth**:
-   - **0-** ★ domain hubs (incl. `0-butler`) — identity wins over dual soft/hard edges to other hubs
-   - **1-** children of domain hubs; **sub-hubs** stay `1-` even if also pipeline under another domain
-   - **2+** only when **primary** parent is deeper; soft dual under a sub-hub does **not** force `2-`
-   - **Dual membership:** one primary for naming; dual listings never rename. Optional `"primary": true` on the primary child group.
+6. **Depth-prefix names (hard)** — live skill dir, frontmatter `name`, slash, and hub package (if any) **must** be `{depth}-{kebab-slug}` for **full hub-tree depth** (0…max; **no artificial cap**):
+   - **0-** ★ domain hubs (incl. `0-butler`) — identity wins over dual edges
+   - **1-** children of domain hubs; **sub-hubs** at parent_depth+1 (today often 1)
+   - **2-** children of depth-1 hubs (sub-hub children → `2-…`)
+   - **3- / 4- / 5- / 6- / …** same recurrence: `max(parent_hub_depth + 1)` over all hub parents
+   - Dual membership: depth = **deepest** attachment; `"primary": true` is ownership/docs only (may still rename if dual adds a deeper parent)
    - Bare unprefixed live names are **forbidden**. Vendor archive keeps upstream names until place/ingest assigns depth.
    - Full rule: [depth-prefix-names.md](./depth-prefix-names.md). Lint: `depth-prefix`, `depth-hub`, `depth-graph`.
 7. **Hard setup deps** — `1-to-spec`, `1-to-tickets`, `0-triage` must point at `/0-setup-rohitas-skills`. Soft deps (1-tdd, 0-diagnosing-bugs, 0-improve-codebase-architecture, vocabulary skills) use CONTEXT/ADR if present only.
@@ -26,7 +27,7 @@
 17. **skill-lint gate** — create/place/ingest/new-hub require `/1-skill-linter` **Gate: PASS** (0 critical) before the skill is considered healthy; lint op loads skill-linter.
 18. **Matt lean SKILL.md** — main file stays thin (router + steps + chain blurb); depth in `references/` / siblings. 1-skill-linter enforces lean/disclosure; new skills fail `gate-lean` if SKILL.md is fat without a disclosure map (1-writing-great-skills).
 19. **Chaining** — place skills on a hub chain with link type; pipeline skills name next (e.g. 0-implement → 1-tdd → 1-code-review). Do not ship essay-only orphans.
-20. **Sprawl → thin, chain, split, then sub-domain** — oversized skills: progressive disclosure first, then child skills or sub-domain hub (`parent_domain_hub` + 0-butler apex). Sub-hub packages are **1-** depth.
+20. **Sprawl → thin, chain, split, then sub-domain** — oversized skills: progressive disclosure first, then child skills or sub-domain hub (`parent_domain_hub` + 0-butler apex). Sub-hub package depth = **parent_depth + 1** (often **1-**; nested → **2- / 3- / …**).
 21. **Atomic skills** — one primary job per skill; **Boundary** table for cousins; hard redirect asks the user (never silent cousin load). See [atomic-skills.md](./atomic-skills.md). Apply via **`/1-skill-atomize`**.
 22. **Forks on collision** — when two live skills share triggers, document an F# ask-user fork in flows.md and both skill bodies (recommended option first).
 23. **Wiki index** — after place/ingest/organize/deprecate, update `wikis/index.md` and append `wikis/log.md` (1-project-wiki-manager index pattern).

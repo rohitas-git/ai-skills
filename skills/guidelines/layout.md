@@ -15,15 +15,20 @@ skills-root/
 
 ## Depth-prefix names (hard)
 
-Live skill **directory**, frontmatter **`name`**, slash command, and hub package dir — number = **hub-tree primary depth**:
+Live skill **directory**, frontmatter **`name`**, slash command, and hub package dir — number = **hub-tree depth** (0 … max):
 
 | Depth | Meaning | Example |
 |------:|---------|---------|
-| **0** | ★ domain hub / hub-of-hubs (identity wins over dual edges) | `0-butler`, `0-implement` |
-| **1** | Child of a domain hub; sub-hubs stay `1-` even if also pipeline elsewhere | `1-to-tickets`, `1-code-review` |
-| **2+** | Primary parent only is deeper (soft dual under a sub-hub does not force this) | `2-…` |
+| **0** | ★ domain hub / hub-of-hubs | `0-butler`, `0-implement` |
+| **1** | Child of a domain hub; sub-hub packages | `1-to-tickets`, `1-code-review` |
+| **2** | Child of a depth-1 hub (e.g. under a sub-hub) | `2-verify-work`, `2-security-and-hardening` |
+| **3** | Child of a depth-2 parent / nested sub-hub | `3-{slug}` when max parent depth is 2 |
+| **4** | Child of a depth-3 parent | `4-{slug}` |
+| **5** | Child of a depth-4 parent | `5-{slug}` |
+| **6** | Child of a depth-5 parent | `6-{slug}` |
+| **7+** | Same recurrence — no artificial ceiling | `depth = max(parent_depth + 1)` |
 
-**Dual domain:** one primary for naming; dual listings never rename. Full rule: `skills/0-skill-manager/references/depth-prefix-names.md`.
+Dual membership uses **deepest** parent for the number. Full rule: `skills/0-skill-manager/references/depth-prefix-names.md`.
 
 ## Discovery
 

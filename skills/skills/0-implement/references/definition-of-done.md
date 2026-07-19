@@ -45,7 +45,7 @@ A slice is done only when **its AC** and **the standing DoD** both pass.
 
 ### Ship-readiness (feature / release floor)
 
-- [ ] Security for untrusted input / auth / data (`/1-security-and-hardening`)
+- [ ] Security for untrusted input / auth / data (`/2-security-and-hardening`)
 - [ ] Observability on new critical paths (`/1-observability-and-instrumentation`)
 - [ ] Rollback path if risky (`/1-shipping-and-launch`)
 - [ ] Human 0-review when the change needs it
