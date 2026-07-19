@@ -4,13 +4,13 @@
 
 **Blocked by:** 02 — Skills rehoused into buckets
 
-**Status:** ready-for-agent
+**Status:** done
 
 **Parent:** Spec issue https://github.com/rohitas-git/ai-skills/issues/1 · local `SPEC.md`
 
-- [ ] `productivity/butler/` (or assigned bucket) contains `SKILL.md` with session start + op dispatch (~80–120 lines)
-- [ ] `disable-model-invocation: true`; triggers include which-skill / ingest / lint / organize language
-- [ ] Reference stubs exist: `catalog-layout.md`, `flows.md`, `ingest-workflow.md`, `lint-checklist.md`, `query-workflow.md`, `hard-rules.md`
-- [ ] Hard rules state: no concept atoms; confirm before multi-file mutate; never promote `using-agent-skills`
-- [ ] Butler listed in productivity bucket README and root README (promoted)
-- [ ] Does not replace `writing-great-skills`, `create-skill`, or `reflect`—only cites handoffs to them
+- [x] `productivity/butler/` (or assigned bucket) contains `SKILL.md` with session start + op dispatch (~80–120 lines)
+- [x] `disable-model-invocation: true`; triggers include which-skill / ingest / lint / organize language
+- [x] Reference stubs exist: `catalog-layout.md`, `flows.md`, `ingest-workflow.md`, `lint-checklist.md`, `query-workflow.md`, `hard-rules.md`
+- [x] Hard rules state: no concept atoms; confirm before multi-file mutate; never promote `using-agent-skills`
+- [x] Butler listed in productivity bucket README and root README (promoted)
+- [x] Does not replace `writing-great-skills`, `create-skill`, or `reflect`—only cites handoffs to them

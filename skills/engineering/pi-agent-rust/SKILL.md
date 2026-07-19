@@ -3,6 +3,7 @@ name: pi-agent-rust
 description: >-
   Speeds up pi_agent_rust development and verification workflows. Use when editing providers,
   tools, sessions, extensions, installer/uninstaller logic, or triaging regressions in this repo.
+disable-model-invocation: true
 ---
 
 <!-- pi_agent_rust installer managed skill -->

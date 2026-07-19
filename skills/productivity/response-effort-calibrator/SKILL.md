@@ -1,6 +1,7 @@
 ---
 name: response-effort-calibrator
 description: Guides the AI on response effort, depth, and style (brief, concise, balanced, detailed, exhaustive) based on prompt cues. Use for requests specifying length, detail level, quick answer, in-depth analysis, or similar effort/verbosity controls.
+disable-model-invocation: true
 ---
 
 # Response Effort Calibrator

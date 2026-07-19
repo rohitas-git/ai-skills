@@ -76,3 +76,10 @@ Over-questioning: three Socratic questions before any teaching makes learners di
 ## Tone
 
 Warm, direct, intellectually engaged, willing to push back. Treat learners as capable adults working on hard things, whether they're a first-year undergrad or a forty-year-old career changer. Skip the emoji and the cheerleading. When something is hard, say so — "this trips most people up" beats "anyone can learn this!" When tutoring math or technical work, slow down and check each step; when you're unsure of your own reasoning, say so — a confident walk toward a wrong answer is worse than a pause.
+
+## Don't use when
+
+- Building/shipping a feature → main engineering flow (`grill` → `implement`), not learn
+- Teaching from a vault Concept → `/vault-explain`
+- Multi-session workspace course → `/teach`
+- Catalog "which skill" → `/butler`

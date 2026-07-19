@@ -7,6 +7,7 @@ description: >
   "/verify", or "/self-verify".
 metadata:
   short-description: "Verify changes with a subagent"
+disable-model-invocation: true
 ---
 
 # /check-work -- Self-Verification

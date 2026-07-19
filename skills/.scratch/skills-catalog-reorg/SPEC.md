@@ -17,7 +17,7 @@ Reorganize the catalog to **Matt Pocock structure and chaining**, with:
 
 1. **Six buckets** under the catalog root, with Matt promotion rules (only `engineering|productivity|misc` in the root README).
 2. **`butler`** — a user-invoked steward skill (project-wiki-manager pattern for **skills**, not wiki atoms) with four ops: **query**, **ingest**, **lint**, **organize**. Owns `flows.md` (chaining SSOT). Absorbs `ask-matt`.
-3. **`setup-rohitas-skills`** — rename of `setup-matt-pocock-skills`; configures issue tracker, triage labels, domain docs, and vault path SSOT for consumer skills.
+3. **`setup-rohitas-skills`** — rename of `setup-rohitas-skills`; configures issue tracker, triage labels, domain docs, and vault path SSOT for consumer skills.
 4. **Primary engineering path:** grill → (optional prototype via handoff) → **`to-spec` → `to-tickets` → `implement`** (drives `tdd` + `code-review`), with documented on-ramps.
 5. **Selective agent-skills integration** only via butler ingest (never whole pack / never `using-agent-skills`); e.g. merge TDD material into single `tdd`.
 6. Residual agent-skills under **`vendor/`** (out of discovery). Optional later: `scripts/lint-skills` mirroring butler lint.
@@ -48,7 +48,7 @@ Reorganize the catalog to **Matt Pocock structure and chaining**, with:
 22. As a developer, I want triage to never re-triage tickets produced by to-tickets, so that AFK tickets stay agent-ready.
 23. As a developer, I want setup-rohitas-skills to configure issue tracker, triage labels, and domain docs, so that hard-dep skills have config.
 24. As a vault user, I want vault root configured once (setup or rohitas-vault-wiki SSOT), so that absolute paths are not copy-pasted across skills.
-25. As a catalog owner, I want setup-matt-pocock-skills renamed to setup-rohitas-skills everywhere, so that branding matches ownership.
+25. As a catalog owner, I want setup-rohitas-skills renamed to setup-rohitas-skills everywhere, so that branding matches ownership.
 26. As a catalog owner, I want ask-matt retired after butler query ships, so that there is one router.
 27. As a catalog owner, I want software-architecture deprecated, so that its poison-wide triggers stop stealing work.
 28. As a catalog owner, I want agent-skills parked under vendor by default, so that using-agent-skills cannot co-route.
@@ -94,7 +94,7 @@ Reorganize the catalog to **Matt Pocock structure and chaining**, with:
 All must pass: (1) gap in flows, (2) no collision / prefer merge, (3) explicit prev/next, (4) hard vs soft setup correct, (5) Matt-short or progressive-disclosure plan, (6) never promote `using-agent-skills`.
 
 ### setup-rohitas-skills
-- Rename from `setup-matt-pocock-skills` (dir, name, lock, all pointers).
+- Rename from `setup-rohitas-skills` (dir, name, lock, all pointers).
 - Keeps Matt setup shape: issue tracker, triage labels, domain docs → `docs/agents/*` + `## Agent skills` block.
 - Adds vault root SSOT (e.g. `docs/agents/vault.md` or domain section).
 - Branding: Rohitas skills.
@@ -119,7 +119,7 @@ All must pass: (1) gap in flows, (2) no collision / prefer merge, (3) explicit p
 
 ### Deprecations / renames
 - `ask-matt` → absorbed by butler query (tombstone).
-- `setup-matt-pocock-skills` → `setup-rohitas-skills`.
+- `setup-rohitas-skills` → `setup-rohitas-skills`.
 - `software-architecture` → deprecated Week 1.
 - Prefer one create-skill path if create-skill and skill-creator both exist.
 
@@ -157,7 +157,7 @@ Modules under test (logical):
 - butler references (checklist fidelity)
 - catalog layout invariants
 - hard-dep string presence on named skills
-- single tdd / no ask-matt / no setup-matt-pocock-skills / no using-agent-skills in discovery after cutover
+- single tdd / no ask-matt / no setup-rohitas-skills / no using-agent-skills in discovery after cutover
 
 ## Out of Scope
 

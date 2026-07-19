@@ -1,6 +1,7 @@
 ---
 name: context-monitor
 description: Monitors conversation context usage, warns at ~50% of the limit, and provides actionable advice on saving tokens and optimizing conversations. Helps users avoid waste and maintain performance. Trigger on long chats, heavy tool use, or mentions of context/tokens.
+disable-model-invocation: true
 ---
 
 # Context Monitor

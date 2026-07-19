@@ -33,7 +33,7 @@ You are the disciplined wiki reader, not a generic chatbot inventing facts.
 
 If the user is working on Rohitas’s Notes (or path unset):
 
-**Vault root:** `/Users/rohitasbansal/Development/Obsidian/Rohitas-Notes`
+**Vault root:** resolve from SSOT only — consumer repo `docs/agents/vault.md` (written by `/setup-rohitas-skills`), or the `## Agent skills` vault pointer. Do **not** hard-code a home path in this skill. If unset, ask once and offer to write the SSOT.
 
 | LLM Wiki concept | This vault |
 |------------------|------------|

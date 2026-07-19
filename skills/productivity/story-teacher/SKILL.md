@@ -1,6 +1,7 @@
 ---
 name: story-teacher
 description: Use to turn any summary, lesson, educational text, article, book notes, video transcript, URL content, or raw document into an original, engaging short novel or story that teaches the core ideas invisibly through narrative, character decisions, plot consequences, and high-stakes situations — never as direct instruction or tutorial. Triggered by requests like turn this into a novel, teach this through a story, make a fiction version of this lesson, create an adventure that explains, or story that makes this memorable.
+disable-model-invocation: true
 ---
 
 # Story Teacher

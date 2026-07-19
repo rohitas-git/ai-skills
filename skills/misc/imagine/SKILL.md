@@ -10,6 +10,7 @@ description: >
   images.
 metadata:
   short-description: "Prompting and workflow guidance for Imagine image tools"
+disable-model-invocation: true
 ---
 
 # Imagine

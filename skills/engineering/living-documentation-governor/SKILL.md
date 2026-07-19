@@ -1,6 +1,7 @@
 ---
 name: living-documentation-governor
 description: Use for maintaining living project documentation, enforcing code-to-docs synchronization via trigger maps, deciding knowledge placement into living docs vs archive vs ADRs vs glossary, performing grounded Q&A, and running documentation quality audits. Works with any coding project. Activates on doc maintenance, code change impact analysis, project knowledge questions, or governance setup.
+disable-model-invocation: true
 ---
 
 # Living Documentation Governor

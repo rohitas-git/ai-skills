@@ -6,6 +6,7 @@ description: >
   multi-step functions. Use when the user asks for execution flow, step-by-step
   flow comments, ASCII └─ trees, or /execution-flow-comments. Do not use for
   API docs (code-comments) or single-line block notes (inline-comments).
+disable-model-invocation: true
 ---
 
 # Execution Flow Comments

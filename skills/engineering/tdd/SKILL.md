@@ -34,3 +34,14 @@ Ask: "What's the public interface, and which seams should we test?"
 - **Red before green.** Write the failing test first, then only enough code to pass it. Don't anticipate future tests or add speculative features.
 - **One slice at a time.** One seam, one test, one minimal implementation per cycle.
 - **Refactoring is not part of the loop.** It belongs to the review stage (see the `code-review` skill), not the red → green implementation cycle.
+
+## Related material (merged / non-peer)
+
+There is **one** TDD skill in this catalog: this one. Vendor pack `test-driven-development` (under `vendor/agent-skills`) is **not** a second discoverable peer. Useful ideas absorbed here:
+
+- Prefer vertical slices (one failing test → minimal code) over bulk test inventories.
+- Name tests as specifications of behavior, not implementation methods.
+- Refuse to skip the red step when "we already know it works."
+
+Do not install or promote a second TDD skill via butler ingest.
+

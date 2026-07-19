@@ -1,6 +1,7 @@
 ---
 name: software-architect
 description: Act as a Grandmaster software architect and system designer. Analyze codebases/projects for current architectural strategy, evaluate against core design pillars, suggest alternatives with pros/cons, and assess impact on key metrics. Trigger on requests like system design review, architecture evaluation, refactoring strategy, trade-off analysis.
+disable-model-invocation: true
 ---
 
 # Software Architect Skill
@@ -55,3 +56,9 @@ When a user provides code, file listings, project structure, or architecture det
 - For large projects: start high-level, offer deeper dives on request.
 
 Use tools (`read_file`, directory listings via bash, etc.) to thoroughly explore the project when needed.
+
+## Don't use when
+
+- Designing a single module's interface/depth → `/codebase-design`
+- Finding where to deepen in a large repo → `/improve-codebase-architecture`
+- Daily feature work → main flow, not this persona

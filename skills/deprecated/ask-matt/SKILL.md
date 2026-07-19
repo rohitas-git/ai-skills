@@ -1,8 +1,17 @@
 ---
 name: ask-matt
-description: Ask which skill or flow fits your situation. A router over the skills in this repo.
+description: "DEPRECATED tombstone. Use butler (query) for which-skill routing. Former Matt flow graph lives in butler/references/flows.md."
 disable-model-invocation: true
 ---
+
+> **DEPRECATED.** Routing is owned by **`/butler`** (query op).
+>
+> **Successor:** `butler` — load `productivity/butler/references/flows.md` + query-workflow.
+>
+> The historical main-flow narrative is preserved below for archaeology only; do not treat this skill as a live router.
+
+
+## Historical content (archived)
 
 # Ask Matt
 
@@ -64,15 +73,3 @@ Two model-invoked references that run *beneath* the other skills — each the si
 - **`/compact`** (built-in) — stay in the **same conversation**, letting the earlier turns be summarized. Use it at **intentional breaks between phases**, when you don't mind losing the verbatim history. Don't compact mid-phase — the agent can lose its way. `/handoff` forks; `/compact` continues.
 
 ## Standalone
-
-Off the main flow entirely.
-
-- **`/grill-me`** — the same relentless interview as `/grill-with-docs`, but for when you have **no codebase**. Stateless: it saves nothing locally, builds no `CONTEXT.md`. Reach for it to sharpen any plan or design that doesn't live in a repo.
-- **`/prototype`** — a small, throwaway program that answers one design question: does this state model feel right, or what should this UI look like. Throwaway from day one — keep the answer, delete the code. It's the detour in step 2 of the main flow, but reach for it any time a design question is hard to settle on paper.
-- **`/research`** — delegate reading legwork to a **background agent**: it investigates a question against **primary sources**, then leaves a cited Markdown file in the repo. Keep working while it reads. The file it produces is something to take *into* the main flow at `/grill-with-docs` — research feeds the thinking, it doesn't replace it.
-- **`/teach`** — learn a concept over multiple sessions, using the current directory as a stateful workspace.
-- **`/writing-great-skills`** — reference for writing and editing skills well.
-
-## Precondition
-
-**`/setup-matt-pocock-skills`** — run before your first engineering flow to configure the issue tracker, triage labels, and doc layout the other skills assume. Custom issue trackers also work.

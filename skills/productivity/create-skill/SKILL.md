@@ -5,6 +5,7 @@ description: >
   Use when the user wants to create a skill, scaffold a skill, or runs /create-skill.
 metadata:
   short-description: "Create a new Grok skill"
+disable-model-invocation: true
 ---
 
 # Create Skill
@@ -79,3 +80,6 @@ Also write any supporting files (scripts, references) using the same create meth
 - Prefer referencing existing CLI tools over writing custom scripts.
 - Do NOT skip creating the directory. The file will fail to save without it.
 - Always use absolute paths when creating files to avoid writing to the wrong location.
+## Catalog citizenship
+
+After scaffolding a skill folder, hand off to **`/butler` ingest** so the skill is bucketed, indexed, and optionally chained in `flows.md`. Do not leave new skills only as loose folders.

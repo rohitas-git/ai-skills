@@ -1,10 +1,10 @@
 ---
-name: setup-matt-pocock-skills
-description: Configure this repo for the engineering skills — set up its issue tracker, triage label vocabulary, and domain doc layout. Run once before first use of the other engineering skills.
+name: setup-rohitas-skills
+description: Configure this repo for Rohitas engineering skills — issue tracker, triage labels, domain docs, and optional vault root SSOT. Run once before first use of the other engineering skills. User-invoked.
 disable-model-invocation: true
 ---
 
-# Setup Matt Pocock's Skills
+# Setup Rohitas Skills
 
 Scaffold the per-repo configuration that the engineering skills assume:
 
@@ -110,6 +110,32 @@ Then write the docs files using the seed templates in this skill folder as a sta
 - [domain.md](./domain.md) — domain doc consumer rules + layout
 
 For "other" issue trackers, write `docs/agents/issue-tracker.md` from scratch using the user's description.
+
+
+### 4b. Vault root SSOT (optional but recommended)
+
+If personal vault skills (`rohitas-vault-wiki`, `vault-*`, `wiki-query`) will run against this machine, record the vault root once:
+
+Write `docs/agents/vault.md` with:
+
+```markdown
+# Vault root (SSOT)
+
+Absolute path to the Obsidian vault root used by personal vault skills.
+
+- **vault_root:** `/path/to/vault`
+- **notes:** edit this file when the vault moves; vault skills must read this path (or the `## Agent skills` vault pointer) instead of hard-coding home paths.
+```
+
+Add a vault sub-block under `## Agent skills` when writing:
+
+```markdown
+### Vault root
+
+[one-line path or "not configured"]. See `docs/agents/vault.md`.
+```
+
+Skip this section if the user has no vault and does not want one configured.
 
 ### 5. Done
 

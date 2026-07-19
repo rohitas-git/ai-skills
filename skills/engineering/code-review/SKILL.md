@@ -190,3 +190,9 @@ Treat these as presumptive blockers unless the author can justify them clearly:
 - the PR duplicates an existing helper or puts logic in the wrong layer when there is a clear canonical home
 
 If those conditions are not met, leave explicit, actionable feedback and push for a cleaner decomposition.
+
+## Don't use when
+
+- Self-verify mid-implement with a lighter pass → `/check-work` (if installed)
+- Architecture deepening survey (not a diff review) → `/improve-codebase-architecture`
+- PR summary text only → `/pr-summarizer`

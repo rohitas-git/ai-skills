@@ -5,6 +5,7 @@ description: >
   levels (child to frontier researcher) with mental models, diagrams, progressive
   deep-dive, user knowledge probe, compact mode, and verification. Default is no
   CLT. Use for any learning or explanation request.
+disable-model-invocation: true
 ---
 
 # Learning Explainer

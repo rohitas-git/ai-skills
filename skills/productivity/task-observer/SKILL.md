@@ -14,6 +14,7 @@ description: >
   For reliable activation, pair this description with a CLAUDE.md instruction
   or harness-level session-start hook (see Recommended Activation Setup) —
   description-level matching alone is not enforceable.
+disable-model-invocation: true
 ---
 
 # Task Observer — Continuous Skill Discovery & Improvement
@@ -1522,3 +1523,6 @@ environments.
 | Log archival? | Event-driven — resolved entries are archived on the next log write |
 | Simplification signals? | Watch for one-off rules, never-used sections, elaborate workflows users skip, and contradictions |
 | Handoff doc analysis? | Systematically extract implied observations from action items, open questions, and narrative sections |
+## Progressive disclosure
+
+Keep this SKILL.md as the dispatcher. Long agent loops and scripts stay under `agents/` / `scripts/` when present; do not inline full observer protocols into the frontmatter description.

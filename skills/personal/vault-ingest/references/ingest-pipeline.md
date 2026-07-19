@@ -2,7 +2,7 @@
 
 ## 1. Orient
 
-1. Confirm vault: `/Users/rohitasbansal/Development/Obsidian/Rohitas-Notes`
+1. Confirm vault root from SSOT (`docs/agents/vault.md`)
 2. Load `rohitas-vault-wiki` → `vault-profile.md`, folder map, hard rules
 3. Skim `README.md` (Registry) for areas
 

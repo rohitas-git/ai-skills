@@ -1,6 +1,6 @@
 # Hard Rules — rohitas-vault-wiki
 
-1. Vault path: `/Users/rohitasbansal/Development/Obsidian/Rohitas-Notes` unless user moves it again.
+1. Vault path: `$VAULT_ROOT (from docs/agents/vault.md)` unless user moves it again.
 2. Never wipe Atlas/Inbox without processing.
 3. **Atlas = hubs only**, and only as `* MOC.md` files. **Concepts = atoms only** — never `type: hub` and never MOC files in Concepts.
 4. Title Case filenames; unique Archive titles.

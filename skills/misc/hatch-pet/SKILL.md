@@ -1,6 +1,7 @@
 ---
 name: hatch-pet
 description: Create, repair, validate, visually QA, and package Codex-compatible v2 animated pets from character art, generated images, company or prospect brand cues, or visual references. Use for any new Codex pet, custom mascot, non-pixel pet style, brand-inspired pet, existing-pet repair, or 8x11 spritesheet workflow requiring all 9 standard animation rows, 16 look directions, deterministic assembly, QA artifacts, and spriteVersionNumber 2 packaging.
+disable-model-invocation: true
 ---
 
 # Hatch Pet
@@ -921,3 +922,6 @@ If frame inspection or final visual QA fails, read `qa/review.json`, regenerate 
 - Look directions follow the fixed clockwise order and form a cohesive, readable loop at normal pet size. Cardinals must be unmistakable. Intermediate blind uncertainty is acceptable as a reviewed warning when labeled normal-size review confirms the intended direction and the loop does not reverse.
 - Non-pixel styles are accepted when readable at pet size and consistent across rows.
 - `${CODEX_HOME:-$HOME/.codex}/pets/<pet-name>/pet.json` and `${CODEX_HOME:-$HOME/.codex}/pets/<pet-name>/spritesheet.webp` are staged together for custom pets.
+## Progressive disclosure
+
+Keep SKILL.md as the entry workflow. Heavy frame tables, QA rubrics, and pack layout details belong in `references/` (add as needed) rather than expanding the always-loaded description.

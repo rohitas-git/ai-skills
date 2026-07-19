@@ -6,6 +6,7 @@ Listed skills here are **promoted** (appear on the root catalog README).
 
 ## Skills
 
+- [butler](./butler/) — Catalog steward for this skills repo. Use when you are lost ("which skill?"), want to
 - [context-monitor](./context-monitor/) — Monitors conversation context usage, warns at ~50% of the limit, and provides actionable advice on saving tokens and optimizing conversat…
 - [continuous-learning-v2](./continuous-learning-v2/) — Instinct-based learning system that observes sessions via hooks, creates atomic instincts with confidence scoring, and evolves them into…
 - [create-skill](./create-skill/) — Interactively create a new Grok skill (SKILL.md + optional scripts/references).
@@ -32,3 +33,4 @@ Listed skills here are **promoted** (appear on the root catalog README).
 - [teach](./teach/) — Teach the user a new skill or concept, within this workspace.
 - [thinking-steel-manning](./thinking-steel-manning/) — Use before rejecting a proposal or when you're inclined to just agree with the user. Build the strongest version of the opposing case fir…
 - [writing-great-skills](./writing-great-skills/) — Reference for writing and editing skills well — the vocabulary and principles that make a skill predictable.
+

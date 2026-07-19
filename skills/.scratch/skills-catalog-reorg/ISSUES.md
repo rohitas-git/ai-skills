@@ -46,3 +46,7 @@
 | 12 | [12-polish-smoke-readme.md](./issues/12-polish-smoke-readme.md) | 07, 08, 09, 11 | Polish + metrics |
 
 Work the **frontier** with `/implement`, clearing context between tickets.
+
+## Status
+
+All tickets 01–12 implemented in catalog reorg commits.

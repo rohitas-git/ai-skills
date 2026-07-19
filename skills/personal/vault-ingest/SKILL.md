@@ -12,7 +12,7 @@ description: >
 
 Compile source material into the living vault (LLM Wiki **Ingest** op).
 
-**Vault root:** `/Users/rohitasbansal/Development/Obsidian/Rohitas-Notes`  
+**Vault root:** resolve from SSOT only — consumer repo `docs/agents/vault.md` (written by `/setup-rohitas-skills`), or the `## Agent skills` vault pointer. Do **not** hard-code a home path in this skill. If unset, ask once and offer to write the SSOT.
 **Schema:** always load **`rohitas-vault-wiki`** first.  
 **Distill:** long/raw → always load **`resource-summarizer`** (see contract).  
 **Teach after:** offer **`vault-explain`** → `learning-explainer`.

@@ -1,6 +1,7 @@
 ---
 name: project-wiki-manager
 description: Use to maintain a living structured interlinked Markdown wiki knowledge base from raw sources — ingest documents, synthesize concepts with full traceability, answer grounded questions, audit consistency, and compound knowledge over time in docs/wiki/. English-only for all wiki content.
+disable-model-invocation: true
 ---
 
 # Project Wiki Manager

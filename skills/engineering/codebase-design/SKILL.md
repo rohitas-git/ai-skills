@@ -112,3 +112,9 @@ Good interfaces make testing natural:
 
 - **Deepening a cluster given its dependencies** — see [DEEPENING.md](DEEPENING.md): dependency categories, seam discipline, and replace-don't-layer testing.
 - **Exploring alternative interfaces** — see [DESIGN-IT-TWICE.md](DESIGN-IT-TWICE.md): spin up parallel sub-agents to design the interface several radically different ways, then compare on depth, locality, and seam placement.
+
+## Don't use when
+
+- Full codebase survey of deepening opportunities → `/improve-codebase-architecture`
+- Grandmaster system design persona review → `/software-architect` (user-invoked)
+- Deprecated catch-all architecture skill → do not use `software-architecture` (tombstone)

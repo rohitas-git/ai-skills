@@ -5,7 +5,7 @@
 | Field | Value |
 |-------|--------|
 | Vault name | Rohitas's Notes |
-| Path | `/Users/rohitasbansal/Development/Obsidian/Rohitas-Notes` |
+| Path | ``docs/agents/vault.md` → vault_root` |
 | Model | Single PKM |
 | Schema skill | `rohitas-vault-wiki` |
 | Content skill | `resource-summarizer` (long/raw sources) |

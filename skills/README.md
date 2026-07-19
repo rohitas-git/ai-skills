@@ -15,8 +15,10 @@ These buckets are **not** listed as promoted:
 
 ## Quickstart
 
-1. Run **`setup-rohitas-skills`** once per consumer repo (after rename; currently still `setup-matt-pocock-skills` until ticket 03).
-2. Use **`butler`** to navigate the catalog, ingest skills, lint health, or reorganize (lands in later tickets).
+1. Run **`/setup-rohitas-skills`** once per consumer repo (issue tracker, triage labels, domain docs, optional vault root SSOT).
+2. Use **`/butler`** for navigation (query), catalog ops (ingest / lint / organize), and the chaining map in `productivity/butler/references/flows.md`.
+
+Orientation target: under two minutes to know setup + butler + where promoted skills live.
 
 ## Install note (multi-agent hosts)
 
@@ -46,7 +48,6 @@ Do **not** re-flatten this tree into a single directory of skills in git.
 
 ### Engineering
 
-- [ask-matt](./engineering/ask-matt/) — Ask which skill or flow fits your situation. A router over the skills in this repo.
 - [check-work](./engineering/check-work/) — Check your work with a verification subagent that reviews diffs, runs builds
 - [clean-craftmanship](./engineering/clean-craftmanship/) — Use for questions about clean code, clean architecture, SOLID principles, writing maintainable software, code structure and design, Uncle…
 - [code-comments](./engineering/code-comments/) — Write clear, professional API and surface documentation using the convention
@@ -71,9 +72,8 @@ Do **not** re-flatten this tree into a single directory of skills in git.
 - [prototype](./engineering/prototype/) — Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or logic feels rig…
 - [research](./engineering/research/) — Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use when the user want…
 - [resolving-merge-conflicts](./engineering/resolving-merge-conflicts/) — Use when you need to resolve an in-progress git merge/rebase conflict.
-- [setup-matt-pocock-skills](./engineering/setup-matt-pocock-skills/) — Configure this repo for the engineering skills — set up its issue tracker, triage label vocabulary, and domain doc layout. Run once befor…
+- [setup-rohitas-skills](./engineering/setup-rohitas-skills/) — Configure this repo for Rohitas engineering skills — issue tracker, triage labels, domain docs, and optional vault root SSOT. Run once be…
 - [software-architect](./engineering/software-architect/) — Act as a Grandmaster software architect and system designer. Analyze codebases/projects for current architectural strategy, evaluate agai…
-- [software-architecture](./engineering/software-architecture/) — Guide for quality focused software architecture. This skill should be used when users want to write code, design architecture, analyze co…
 - [stepdown-rule](./engineering/stepdown-rule/) — Enforce top-down file layout using the newspaper metaphor and stepdown rule
 - [tdd](./engineering/tdd/) — Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions "red-green-refactor", or wants integr…
 - [to-spec](./engineering/to-spec/) — Turn the current conversation into a spec and publish it to the project issue tracker — no interview, just synthesis of what you've alrea…
@@ -83,6 +83,7 @@ Do **not** re-flatten this tree into a single directory of skills in git.
 
 ### Productivity
 
+- [butler](./productivity/butler/) — Catalog steward for this skills repo. Use when you are lost ("which skill?"), want to
 - [context-monitor](./productivity/context-monitor/) — Monitors conversation context usage, warns at ~50% of the limit, and provides actionable advice on saving tokens and optimizing conversat…
 - [continuous-learning-v2](./productivity/continuous-learning-v2/) — Instinct-based learning system that observes sessions via hooks, creates atomic instincts with confidence scoring, and evolves them into…
 - [create-skill](./productivity/create-skill/) — Interactively create a new Grok skill (SKILL.md + optional scripts/references).
@@ -120,3 +121,17 @@ Do **not** re-flatten this tree into a single directory of skills in git.
 - [json-canvas](./misc/json-canvas/) — Create and edit JSON Canvas files (.canvas) with nodes, edges, groups, and connections. Use when working with .canvas files, creating vis…
 - [pptx](./misc/pptx/) — Use this skill any time a .pptx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks…
 - [xlsx](./misc/xlsx/) — Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit,…
+
+## Success metrics
+
+| Check | Status target |
+|-------|----------------|
+| Steward | `butler` |
+| Single TDD | `engineering/tdd` only (vendor pack not co-routed) |
+| Router | no live `ask-matt` |
+| Setup name | `setup-rohitas-skills` |
+| Vendor | `vendor/agent-skills` offline from default discovery |
+| Lint | `./scripts/lint-skills` → 0 critical |
+
+Smoke fixtures: `productivity/butler/references/smoke-fixtures.md`.
+

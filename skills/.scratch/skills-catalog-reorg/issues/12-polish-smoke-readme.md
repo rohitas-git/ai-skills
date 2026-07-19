@@ -4,13 +4,13 @@
 
 **Blocked by:** 07 — butler query; 08 — butler ingest; 09 — butler lint + organize; 11 — cousin budget vault SSOT
 
-**Status:** ready-for-agent
+**Status:** done
 
 **Parent:** Spec issue https://github.com/rohitas-git/ai-skills/issues/1 · local `SPEC.md`
 
-- [ ] Root README quickstart: run setup-rohitas-skills (once per repo) → use butler for navigation / catalog ops
-- [ ] Smoke fixture list documented (query utterances + expected skills; lint clean on promoted set or known exceptions)
-- [ ] Optional `scripts/lint-skills` present if not done in 09, aligned with lint-checklist
-- [ ] reflect / create-skill docs mention butler lint or ingest handoff
-- [ ] Any selective agent-skills promote (security, ship, API, UI, etc.) only via butler ingest with flows.md update—or explicitly deferred with note in vendor README
-- [ ] Success metrics from the spec are measurable (steward=butler, single tdd, no ask-matt, no setup-matt name in discovery, vendor dual-router offline)
+- [x] Root README quickstart: run setup-rohitas-skills (once per repo) → use butler for navigation / catalog ops
+- [x] Smoke fixture list documented (query utterances + expected skills; lint clean on promoted set or known exceptions)
+- [x] Optional `scripts/lint-skills` present if not done in 09, aligned with lint-checklist
+- [x] reflect / create-skill docs mention butler lint or ingest handoff
+- [x] Any selective agent-skills promote (security, ship, API, UI, etc.) only via butler ingest with flows.md update—or explicitly deferred with note in vendor README
+- [x] Success metrics from the spec are measurable (steward=butler, single tdd, no ask-matt, no setup-matt name in discovery, vendor dual-router offline)

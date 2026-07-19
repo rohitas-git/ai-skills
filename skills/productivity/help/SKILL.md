@@ -7,6 +7,7 @@ description: >
   detect a user is having trouble with setup or onboarding.
 metadata:
   short-description: "Grok docs — config, MCP, auth, skills, commands"
+disable-model-invocation: true
 ---
 
 # Grok Help

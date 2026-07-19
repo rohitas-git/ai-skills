@@ -4,7 +4,7 @@
 
 **Blocked by:** None — can start immediately.
 
-**Status:** ready-for-agent
+**Status:** done
 
 **Parent:** Spec issue https://github.com/rohitas-git/ai-skills/issues/1 · local `SPEC.md`
 

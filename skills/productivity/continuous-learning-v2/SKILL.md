@@ -4,6 +4,7 @@ description: Instinct-based learning system that observes sessions via hooks, cr
 metadata:
   origin: ECC
 version: 2.1.0
+disable-model-invocation: true
 ---
 
 # Continuous Learning v2.1 - Instinct

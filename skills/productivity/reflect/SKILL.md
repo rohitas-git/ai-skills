@@ -1,6 +1,7 @@
 ---
 name: reflect
 description: Self-improving system for skills. Analyze session for corrections/approvals, extract learnings, propose/update skill files, and push changes to GitHub (git@github.com:rohitas-git/ai-skills.git). Trigger with /reflect or "reflect on skill X".
+disable-model-invocation: true
 ---
 
 # Reflect — Self-Improving Skills System
@@ -63,3 +64,6 @@ Reflect enables **continual learning** from user feedback. It scans conversation
 **Local Git Repo**: Skills directory is Git-aware. Push happens automatically after approval.
 
 **Safety**: Backups in `.backups/` folder, YAML validation, rollback via Git.
+## Catalog hygiene handoff
+
+If session learnings imply catalog structure, routing, or deprecation changes, optionally hand off to **`/butler` lint** and/or **`/butler` organize**. Reflect edits skill bodies; butler owns indexes, flows, and tombstones.

@@ -1,8 +1,6 @@
 {
   "source": "/Users/rohitasbansal/Development/AI-Skills/skills",
-  "nestedSkillRoots": [
-    "agent-skills/skills"
-  ],
+  "nestedSkillRoots": [],
   "targets": [
     "/Users/rohitasbansal/.agents/skills",
     "/Users/rohitasbansal/.claude/skills",
@@ -15,5 +13,5 @@
     "/Users/rohitasbansal/.kiro/skills",
     "/Users/rohitasbansal/.zcode/skills"
   ],
-  "description": "Global skill symlink targets for AI agents/harnesses under ~. nestedSkillRoots are monorepo paths (relative to source) whose child skill dirs are also linked at the top level of each target."
+  "description": "Global skill symlink targets. Catalog skills live under skills/<bucket>/<name>. vendor/ packs are out of default discovery; promote only via butler ingest."
 }

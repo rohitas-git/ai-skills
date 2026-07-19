@@ -1,0 +1,176 @@
+#!/usr/bin/env python3
+"""Mirror butler lint-checklist for non-LLM / CI runs.
+
+Exit 0 if no critical findings; exit 1 if any critical.
+"""
+from __future__ import annotations
+
+import json
+import re
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+CATALOG = ROOT / "skills"
+BUCKETS = ["engineering", "productivity", "misc", "personal", "in-progress", "deprecated"]
+PROMOTED = {"engineering", "productivity", "misc"}
+HARD_DEP_SKILLS = {"to-spec", "to-tickets", "triage"}
+FORBIDDEN_LIVE = {"using-agent-skills", "setup-matt-pocock-skills"}
+
+
+def skills_in_bucket(bucket: str) -> list[Path]:
+    base = CATALOG / bucket
+    if not base.is_dir():
+        return []
+    out = []
+    for d in sorted(base.iterdir()):
+        if d.is_dir() and (d / "SKILL.md").is_file():
+            out.append(d)
+    return out
+
+
+def frontmatter(text: str) -> dict[str, str]:
+    if not text.startswith("---"):
+        return {}
+    parts = text.split("---", 2)
+    if len(parts) < 3:
+        return {}
+    meta = {}
+    for line in parts[1].splitlines():
+        if ":" in line and not line.startswith(" "):
+            k, v = line.split(":", 1)
+            meta[k.strip()] = v.strip().strip('"').strip("'")
+    return meta
+
+
+def main() -> int:
+    findings: list[tuple[str, str, str]] = []  # severity, code, message
+
+    # vendor dual-router offline
+    nested = []
+    cfg = ROOT / "scripts" / "symlink-targets.json"
+    if cfg.exists():
+        nested = json.loads(cfg.read_text()).get("nestedSkillRoots") or []
+    if any("agent-skills" in n for n in nested):
+        findings.append(("critical", "vendor", "nestedSkillRoots still includes agent-skills — dual-router risk"))
+
+    using = list(CATALOG.rglob("using-agent-skills/SKILL.md"))
+    for u in using:
+        if "vendor" in u.parts:
+            findings.append(("info", "forbidden", f"using-agent-skills present under vendor only: {u.relative_to(ROOT)}"))
+        else:
+            findings.append(("critical", "forbidden", f"using-agent-skills discoverable outside vendor: {u}"))
+
+    # setup rename
+    if (CATALOG / "engineering" / "setup-matt-pocock-skills").exists():
+        findings.append(("critical", "forbidden", "setup-matt-pocock-skills still present"))
+    if not (CATALOG / "engineering" / "setup-rohitas-skills" / "SKILL.md").exists():
+        findings.append(("critical", "forbidden", "setup-rohitas-skills missing"))
+
+    # ask-matt not live router
+    if (CATALOG / "engineering" / "ask-matt").exists():
+        findings.append(("critical", "forbidden", "ask-matt still under engineering (should be deprecated)"))
+    if not (CATALOG / "deprecated" / "ask-matt" / "SKILL.md").exists():
+        findings.append(("warn", "tombstone", "ask-matt tombstone missing under deprecated/"))
+
+    # butler present
+    if not (CATALOG / "productivity" / "butler" / "SKILL.md").exists():
+        findings.append(("critical", "forbidden", "butler skill missing"))
+
+    # single tdd
+    tdd_hits = [p for p in CATALOG.rglob("**/tdd/SKILL.md") if "vendor" not in p.parts]
+    tdd_hits += [p for p in CATALOG.rglob("**/test-driven-development/SKILL.md") if "vendor" not in p.parts]
+    if len([p for p in tdd_hits if p.parent.name == "tdd"]) != 1:
+        findings.append(("warn", "tdd", f"unexpected tdd paths: {tdd_hits}"))
+    if any(p.parent.name == "test-driven-development" and "vendor" not in p.parts for p in tdd_hits):
+        findings.append(("critical", "tdd", "second TDD skill outside vendor"))
+
+    model_invoked = []
+    root_readme = (CATALOG / "README.md").read_text(encoding="utf-8") if (CATALOG / "README.md").exists() else ""
+
+    for bucket in BUCKETS:
+        readme = CATALOG / bucket / "README.md"
+        readme_text = readme.read_text(encoding="utf-8") if readme.exists() else ""
+        for d in skills_in_bucket(bucket):
+            text = (d / "SKILL.md").read_text(encoding="utf-8", errors="replace")
+            meta = frontmatter(text)
+            name = meta.get("name", "")
+            if name and name != d.name:
+                findings.append(("critical", "name-dir", f"{bucket}/{d.name}: name={name!r} != dir"))
+            if "description" not in meta and "description:" not in text.split("---", 2)[1] if text.startswith("---") else True:
+                # description may be multiline
+                fm = text.split("---", 2)[1] if text.startswith("---") else ""
+                if "description:" not in fm:
+                    findings.append(("critical", "frontmatter", f"{bucket}/{d.name}: missing description"))
+
+            if f"[{d.name}]" not in readme_text and d.name not in readme_text:
+                findings.append(("warn", "bucket-readme", f"{bucket}/{d.name} not listed in bucket README"))
+
+            if bucket in PROMOTED:
+                fm = text.split("---", 2)[1] if text.startswith("---") else ""
+                if "disable-model-invocation: true" not in fm:
+                    model_invoked.append(f"{bucket}/{d.name}")
+                # root promo
+                if d.name not in root_readme and f"/{d.name}/" not in root_readme:
+                    findings.append(("warn", "root-promo", f"promoted skill {d.name} missing from root README"))
+            else:
+                # non-promoted should not appear as primary list items ideally — soft
+                pass
+
+            if d.name in HARD_DEP_SKILLS:
+                if "setup-rohitas-skills" not in text:
+                    findings.append(("critical", "hard-dep", f"{d.name} missing /setup-rohitas-skills pointer"))
+
+            if d.name in FORBIDDEN_LIVE and bucket in PROMOTED:
+                findings.append(("critical", "forbidden", f"forbidden live skill in promoted bucket: {d.name}"))
+
+            # vault hard-code home paths
+            if "/Users/" in text and "vault" in d.name.lower() or (bucket == "personal" and "/Users/" in text):
+                if "/Users/" in text:
+                    findings.append(("warn", "vault-ssot", f"{bucket}/{d.name} still contains /Users/ absolute path"))
+
+    if len(model_invoked) > 25:
+        findings.append(("warn", "model-budget", f"model-invoked promoted count {len(model_invoked)} > 25: {model_invoked}"))
+
+    # lock paths
+    lock_path = CATALOG / "skills-lock.json"
+    if lock_path.exists():
+        lock = json.loads(lock_path.read_text())
+        for sk, meta in lock.get("skills", {}).items():
+            sp = meta.get("skillPath", "")
+            # skillPath like skills/engineering/foo/SKILL.md relative to monorepo or catalog
+            candidates = [ROOT / sp, CATALOG / sp, CATALOG / sp.removeprefix("skills/")]
+            if not any(c.is_file() for c in candidates):
+                findings.append(("critical", "lock", f"lock path missing for {sk}: {sp}"))
+
+    # deprecated successors
+    dep_readme = CATALOG / "deprecated" / "README.md"
+    if dep_readme.exists():
+        dep_text = dep_readme.read_text()
+        for d in skills_in_bucket("deprecated"):
+            if d.name not in dep_text:
+                findings.append(("warn", "tombstone", f"deprecated/{d.name} not in deprecated README"))
+
+    # report
+    by = {"critical": [], "warn": [], "info": []}
+    for sev, code, msg in findings:
+        by.setdefault(sev, []).append(f"- [{code}] {msg}")
+
+    print("# Catalog lint")
+    print(f"**Catalog root:** {CATALOG}")
+    print(
+        f"**Summary:** {len(by['critical'])} critical, {len(by['warn'])} warn, {len(by['info'])} info"
+    )
+    print(f"**Model-invoked promoted:** {len(model_invoked)}")
+    for sev in ("critical", "warn", "info"):
+        print(f"\n## {sev}")
+        if by[sev]:
+            print("\n".join(by[sev]))
+        else:
+            print("- (none)")
+
+    return 1 if by["critical"] else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

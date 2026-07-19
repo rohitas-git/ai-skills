@@ -11,7 +11,7 @@ description: >
 
 Teach a **compiled Concept** from the vault. This skill is a **thin router**: vault binding + mandatory **`learning-explainer`**.
 
-**Vault root:** `/Users/rohitasbansal/Development/Obsidian/Rohitas-Notes`  
+**Vault root:** resolve from SSOT only — consumer repo `docs/agents/vault.md` (written by `/setup-rohitas-skills`), or the `## Agent skills` vault pointer. Do **not** hard-code a home path in this skill. If unset, ask once and offer to write the SSOT.
 **Schema:** `rohitas-vault-wiki` for path resolution only.  
 **Pedagogy:** always load **`learning-explainer`** — do not reimplement levels, CLT, probes, or mental-model frameworks here.
 

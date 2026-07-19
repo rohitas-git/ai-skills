@@ -61,7 +61,7 @@ Permanent Concepts missing useful structure vs `Guides/Note Templates.md` (soft 
 ## Tooling tips
 
 ```bash
-cd "/Users/rohitasbansal/Development/Obsidian/Rohitas-Notes"
+cd "$(vault_root from docs/agents/vault.md)"
 ls Inbox/
 rg -n '^type:|^status:' Concepts Atlas --glob '*.md' | head
 rg -n '\[\[[^\]]+\]\]' Concepts Atlas --glob '*.md' | head

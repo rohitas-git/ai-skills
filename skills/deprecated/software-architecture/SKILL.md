@@ -1,10 +1,19 @@
 ---
 name: software-architecture
-description: "Guide for quality focused software architecture. This skill should be used when users want to write code, design architecture, analyze code, in any case that relates to software development."
-risk: unknown
-source: community
-date_added: "2026-02-27"
+description: "DEPRECATED tombstone. Use codebase-design, improve-codebase-architecture, or software-architect instead."
+disable-model-invocation: true
 ---
+
+> **DEPRECATED.** Do not use this skill as a daily entry point. Its description was poison-wide and stole routing from architecture work.
+>
+> **Successors:**
+> - Vocabulary / deep modules → `/codebase-design`
+> - Survey + deepen opportunities → `/improve-codebase-architecture`
+> - Grandmaster system design review → `/software-architect` (kept in engineering when you explicitly want that persona)
+>
+> Prefer those over this tombstone. Catalog steward: `/butler`.
+
+
 
 # Software Architecture Development Skill
 

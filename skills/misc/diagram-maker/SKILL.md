@@ -5,6 +5,7 @@ metadata:
   openclaw:
     emoji: 🧭
   mcpmarket-version: 1.0.0
+disable-model-invocation: true
 ---
 # Diagram Maker
 

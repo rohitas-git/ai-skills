@@ -1,6 +1,7 @@
 ---
 name: codebase-review-strategy
 description: Use when reviewing any codebase of unknown or varying size. Determines repo tier from measurable metrics, selects optimal thinking effort and workflow, and supplies structured prompt templates plus best practices for efficient yet thorough AI agent reviews. Triggered by requests to review complete codebases, assess code quality, plan refactoring, perform security audits, prepare onboarding materials or evaluate maintainability.
+disable-model-invocation: true
 ---
 
 # Codebase Review Strategy

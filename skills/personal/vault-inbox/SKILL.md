@@ -11,7 +11,7 @@ description: >
 
 **Purpose:** Store information on the go. Capture only — do not classify, distill, or write Concepts.
 
-**Vault root:** `/Users/rohitasbansal/Development/Obsidian/Rohitas-Notes`  
+**Vault root:** resolve from SSOT only — consumer repo `docs/agents/vault.md` (written by `/setup-rohitas-skills`), or the `## Agent skills` vault pointer. Do **not** hard-code a home path in this skill. If unset, ask once and offer to write the SSOT.
 **Schema:** load **`rohitas-vault-wiki`** (`references/vault-profile.md`) for path + Title Case naming only.
 
 ## When to use

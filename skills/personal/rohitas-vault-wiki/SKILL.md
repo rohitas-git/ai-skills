@@ -10,7 +10,7 @@ description: >
 
 # Rohitas Vault Wiki
 
-**Vault root:** `/Users/rohitasbansal/Development/Obsidian/Rohitas-Notes`
+**Vault root:** resolve from SSOT only — consumer repo `docs/agents/vault.md` (written by `/setup-rohitas-skills`), or the `## Agent skills` vault pointer. Do **not** hard-code a home path in this skill. If unset, ask once and offer to write the SSOT.
 
 Single-PKM steward and **schema source of truth**. Do **not** use Notes/MOCs/Resources defaults or dual `raw/`/`wiki/` unless the user reopens that decision.
 

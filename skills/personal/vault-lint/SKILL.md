@@ -11,7 +11,7 @@ description: >
 
 LLM Wiki **Lint** op: periodic health check of the compiled vault.
 
-**Vault root:** `/Users/rohitasbansal/Development/Obsidian/Rohitas-Notes`  
+**Vault root:** resolve from SSOT only — consumer repo `docs/agents/vault.md` (written by `/setup-rohitas-skills`), or the `## Agent skills` vault pointer. Do **not** hard-code a home path in this skill. If unset, ask once and offer to write the SSOT.
 **Schema:** load **`rohitas-vault-wiki`**.  
 **Default:** **report only** — no auto-fix unless user says “fix”.
 

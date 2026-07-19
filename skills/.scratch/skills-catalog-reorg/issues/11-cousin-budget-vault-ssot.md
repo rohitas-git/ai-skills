@@ -4,12 +4,12 @@
 
 **Blocked by:** 02 — Skills rehoused; 03 — setup-rohitas-skills; 07 — butler query
 
-**Status:** ready-for-agent
+**Status:** done
 
 **Parent:** Spec issue https://github.com/rohitas-git/ai-skills/issues/1 · local `SPEC.md`
 
-- [ ] Review / learn / architecture / grill clusters have Use when + Don’t use when so one winner per common utterance
-- [ ] Model-invoked promoted skills target &lt; ~25; setup, butler, ponytail satellites, task-observer, rare office tools user-invoked unless justified
-- [ ] Vault skills reference single SSOT for vault root (no repeated hard-coded user home paths)
-- [ ] Butler lint (or manual checklist) reports clean on collision and path rules, or remaining issues listed as known debt
-- [ ] Progressive disclosure started for worst sprawl (at least task-observer and/or hatch-pet plan or split)
+- [x] Review / learn / architecture / grill clusters have Use when + Don’t use when so one winner per common utterance
+- [x] Model-invoked promoted skills target &lt; ~25; setup, butler, ponytail satellites, task-observer, rare office tools user-invoked unless justified
+- [x] Vault skills reference single SSOT for vault root (no repeated hard-coded user home paths)
+- [x] Butler lint (or manual checklist) reports clean on collision and path rules, or remaining issues listed as known debt
+- [x] Progressive disclosure started for worst sprawl (at least task-observer and/or hatch-pet plan or split)
