@@ -1,6 +1,6 @@
 # Personal
 
-Personal knowledge, vault, and wiki skills. **Not promoted** on the root README — discover via bucket index or butler.
+Vault. **Not promoted.**
 
 ## Skills
 
@@ -13,4 +13,3 @@ Personal knowledge, vault, and wiki skills. **Not promoted** on the root README 
 - [vault-ingest](./vault-ingest/) — Ingest knowledge into Rohitas's Notes: process chat text, Inbox files, or URLs;
 - [vault-lint](./vault-lint/) — Health-check Rohitas's Notes vault: broken wikilinks, orphans, misplaced hubs,
 - [wiki-query](./wiki-query/) — Answer questions against a personal LLM wiki / Obsidian vault using Karpathy-style
-

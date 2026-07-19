@@ -1,44 +1,31 @@
 # Skills catalog
 
-Rohitas skills catalog, organized in Matt Pocock–style buckets.
-
-## Promotion rule
-
-Only skills in **engineering**, **productivity**, and **misc** are promoted (listed below and treated as the default daily set).
-
-These buckets are **not** listed as promoted:
-
-- `personal/` — personal vault / knowledge workflows
-- `in-progress/` — drafts not ready for daily use
-- `deprecated/` — tombstones with successors (git-only; not host-installed)
-- `vendor/` — third-party packs (promote only via butler ingest)
+Rohitas skills — Matt buckets + **hub-of-hubs** routing.
 
 ## Quickstart
 
-1. Run **`/setup-rohitas-skills`** once per consumer repo (issue tracker, triage labels, domain docs, optional vault root SSOT).
-2. Use **`/butler`** for navigation (query), catalog ops (ingest / lint / organize), and the chaining map in `productivity/butler/references/flows.md`.
+1. **`/setup-rohitas-skills`** once per consumer repo.
+2. **`/butler`** when lost (routes to domain hubs; does not mutate the catalog).
+3. **`/skill-manager`** to add, place, rehouse, deprecate, or lint skills.
 
-## Install note (multi-agent hosts)
+## Promotion rule
 
-Skills live under bucket paths:
+Root lists only **engineering**, **productivity**, **misc**. Not promoted: personal, in-progress, deprecated (git-only), vendor.
 
-```text
-skills/<bucket>/<skill-name>/SKILL.md
-```
+## Install
 
-Hosts that only scan one level deep should use `scripts/sync-skills-symlinks.sh`, which flattens **discoverable** bucket children (`engineering`, `productivity`, `misc`, `personal`, `in-progress` — **not** `deprecated` or `vendor`) into top-level skill names under each agent skills dir.
+`skills/<bucket>/<name>/SKILL.md` · `scripts/sync-skills-symlinks.sh` flattens discoverable buckets (not deprecated/vendor).
 
 ## Buckets
 
-| Bucket | Purpose | Promoted? |
-|--------|---------|-----------|
-| [engineering/](./engineering/) | Build, test, review, diagnose, ship | Yes |
-| [productivity/](./productivity/) | Grill, route, session hygiene, skill craft | Yes |
-| [misc/](./misc/) | Office tools and cross-cutting utilities | Yes |
-| [personal/](./personal/) | Vault / personal knowledge | No |
-| [in-progress/](./in-progress/) | Drafts | No |
-| [deprecated/](./deprecated/) | Tombstones (git-only) | No |
-| [vendor/](./vendor/) | Third-party packs | No |
+| Bucket | Hub notes |
+|--------|-----------|
+| [engineering/](./engineering/) | setup, grilling/implement/review, on-ramps |
+| [productivity/](./productivity/) | **butler**, **skill-manager**, author, ponytail, learn |
+| [misc/](./misc/) | **misc** hub + office leaves |
+| [personal/](./personal/) | rohitas-vault-wiki + vault-* |
+| [deprecated/](./deprecated/) | tombstones |
+| [vendor/](./vendor/) | offline packs |
 
 ## Promoted skills
 
@@ -72,16 +59,17 @@ Hosts that only scan one level deep should use `scripts/sync-skills-symlinks.sh`
 - [stepdown-rule](./engineering/stepdown-rule/) — Enforce top-down file layout using the newspaper metaphor and stepdown rule
 - [tdd](./engineering/tdd/) — Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions "red-green-refactor", or wants integr…
 - [to-spec](./engineering/to-spec/) — Turn the current conversation into a spec and publish it to the project issue tracker — no interview, just synthesis of what you've alrea…
-- [to-tickets](./engineering/to-tickets/) — Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, published to the…
+- [to-tickets](./engineering/to-tickets/) — Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, published to the …
 - [triage](./engineering/triage/) — Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write agent-ready briefs.
 - [wayfinder](./engineering/wayfinder/) — Plan a huge chunk of work — more than one agent session can hold — as a shared map of decision tickets on your issue tracker, and resolve…
 
 ### Productivity
 
-- [butler](./productivity/butler/) — Catalog steward for this skills repo. Use when you are lost ("which skill?"), want to
+- [butler](./productivity/butler/) — Hub of hubs for this skills catalog — real-life butler. Use when lost ("which skill?"),
+- [skill-manager](./productivity/skill-manager/) — Catalog facilities manager: CRUD skills, place them under a domain hub workflow,
 - [context-monitor](./productivity/context-monitor/) — Monitors conversation context usage, warns at ~50% of the limit, and provides actionable advice on saving tokens and optimizing conversat…
-- [create-skill](./productivity/create-skill/) — Thin entry for authoring skills. Loads skill-creator (create/improve/eval SSOT),
-- [find-skills](./productivity/find-skills/) — Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is there a skill that…
+- [create-skill](./productivity/create-skill/) — Thin entry for authoring skills. Loads skill-creator (body craft/eval), then
+- [find-skills](./productivity/find-skills/) — Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is there a skill that …
 - [grill-me](./productivity/grill-me/) — A relentless interview to sharpen a plan or design.
 - [grilling](./productivity/grilling/) — Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'grill' t…
 - [handoff](./productivity/handoff/) — Compact the current conversation into a handoff document for another agent to pick up.
@@ -98,7 +86,7 @@ Hosts that only scan one level deep should use `scripts/sync-skills-symlinks.sh`
 - [resource-summarizer](./productivity/resource-summarizer/) — Summarizes key information from resources like videos PDFs text or images using 80-20 rule Feynman technique Cornell method and other lea…
 - [response-effort-calibrator](./productivity/response-effort-calibrator/) — Guides the AI on response effort, depth, and style (brief, concise, balanced, detailed, exhaustive) based on prompt cues. Use for request…
 - [skill-creator](./productivity/skill-creator/) — Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch,…
-- [story-teacher](./productivity/story-teacher/) — Use to turn any summary, lesson, educational text, article, book notes, video transcript, URL content, or raw document into an original,…
+- [story-teacher](./productivity/story-teacher/) — Use to turn any summary, lesson, educational text, article, book notes, video transcript, URL content, or raw document into an original, …
 - [strategic-compact](./productivity/strategic-compact/) — Suggests manual context compaction at logical intervals to preserve context through task phases rather than arbitrary auto-compaction.
 - [teach](./productivity/teach/) — Teach the user a new skill or concept, within this workspace.
 - [thinking-steel-manning](./productivity/thinking-steel-manning/) — Use before rejecting a proposal or when you're inclined to just agree with the user. Build the strongest version of the opposing case fir…
@@ -106,6 +94,7 @@ Hosts that only scan one level deep should use `scripts/sync-skills-symlinks.sh`
 
 ### Misc
 
+- [misc](./misc/misc/) — Hub for office/media and cross-cutting tool skills (docx, pptx, xlsx, diagrams, images,
 - [defuddle](./misc/defuddle/) — Extract clean markdown content from web pages using Defuddle CLI, removing clutter and navigation to save tokens. Use instead of WebFetch…
 - [diagram-maker](./misc/diagram-maker/) — Create SVG/HTML or Excalidraw diagrams for concepts, architecture, flows, and whiteboards.
 - [docx](./misc/docx/) — Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files). Triggers include: any mention o…
@@ -117,17 +106,11 @@ Hosts that only scan one level deep should use `scripts/sync-skills-symlinks.sh`
 
 ## Success metrics
 
-| Check | Status target |
-|-------|----------------|
-| Steward | `butler` |
-| Single TDD | `engineering/tdd` only |
-| Router | no live `ask-matt` |
-| Setup name | `setup-rohitas-skills` |
-| Review closer | multi-axis `code-review` |
-| Author path | `skill-creator` body; `create-skill` wrapper |
-| Vendor | offline from default discovery |
-| Deprecated | not host-discovered |
-| Lint | `./scripts/lint-skills` → 0 critical |
+| Check | Target |
+|-------|--------|
+| Hub of hubs | butler (route only) |
+| Catalog mutate | skill-manager |
+| Misc hub | misc → leaves |
+| Lint | ./scripts/lint-skills → 0 critical |
 
-Smoke fixtures: `productivity/butler/references/smoke-fixtures.md`.
-
+Flows: `productivity/butler/references/flows.md` · Chart: `.scratch/skills-catalog-reorg/flows-chart.html`

@@ -1,24 +1,21 @@
 ---
 name: create-skill
 description: >
-  Thin entry for authoring skills. Loads skill-creator (create/improve/eval SSOT),
-  then butler ingest for catalog citizenship. Use when scaffolding or improving a skill,
-  or /create-skill.
+  Thin entry for authoring skills. Loads skill-creator (body craft/eval), then
+  skill-manager for catalog place/ingest. Use when scaffolding a skill or /create-skill.
 disable-model-invocation: true
 ---
 
 # Create Skill
 
-This skill is a **thin wrapper**. The authoring body SSOT is **`/skill-creator`** (draft → eval → improve).
+Thin wrapper.
 
-## Process
-
-1. Load and follow **`skill-creator`** end-to-end for create/edit/optimize/eval work.
-2. When the skill folder is ready for this catalog, hand off to **`/butler` ingest** (integration test → confirm → indexes/flows/lock).
-3. Craft theory (predictability, progressive disclosure) remains **`/writing-great-skills`** — not replaced here.
+1. Load **`/skill-creator`** for create/edit/eval of the skill body.
+2. When ready for this catalog, load **`/skill-manager`** place or ingest (hub slot required).
+3. Craft theory → `/writing-great-skills`. Routing → `/butler`.
 
 ## Don't use when
 
-- Installing skills from the public ecosystem → `/find-skills`
-- Catalog routing only ("which skill?") → `/butler` query
-- Editing catalog layout / deprecations without a new skill body → `/butler` organize
+- Which skill should I use? → `/butler`
+- Lint/rehouse only → `/skill-manager`
+- Install from public ecosystem → `/find-skills`

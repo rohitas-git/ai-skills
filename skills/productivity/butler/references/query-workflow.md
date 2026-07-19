@@ -1,47 +1,46 @@
-# Query workflow
+# Query workflow (butler)
 
-Answer: **which skill or flow should I use?**
+Answer: **which domain hub / skill / flow?**
 
-## Inputs (only)
+## Inputs only
 
-1. **`flows.md`** — chaining SSOT
-2. **Bucket README indexes** — engineering, productivity, misc, personal, in-progress, deprecated
-3. **On-disk skills** — directories with `SKILL.md` under discoverable buckets
-4. User utterance + optional repo signals (has CONTEXT.md? issue tracker?)
+1. **flows.md** — hub map, pipelines, forks  
+2. Bucket READMEs + on-disk skills  
+3. User utterance + light repo signals (docs/agents present? CONTEXT.md?)
 
-**Never invent** a skill name that is not on disk. If the right skill is missing, say so and offer **ingest** or a documented vendor candidate path.
+**Never invent** skills. Missing skill → offer **`/skill-manager` ingest**.
 
 ## Algorithm
 
-1. Classify intent: main-flow feature, bug, triage, vault, catalog meta, office tool, learning, architecture, unknown.
-2. Map to flows.md row or standalone list.
-3. Resolve concrete skill directory; read frontmatter `description` only if needed to disambiguate cousins.
-4. Recommend **one primary** skill (or ordered path of 2–4 skills).
-5. Optionally list **why not** for 1–2 cousins in the same cluster.
-6. If setup never run and hard-dep path chosen, mention `/setup-rohitas-skills` first.
+1. **Classify domain** (or ask **F7**: what kind of work?) with recommended default.
+2. Name the **★ domain hub**.
+3. If a **fork** applies, **ask one F# question** (recommend first); wait.
+4. Resolve child skill on the chosen branch.
+5. Optional “why not” for one cousin.
+6. If hard-dep path and no `docs/agents/`, recommend `/setup-rohitas-skills` first (**F1**).
+
+## Mutation intent
+
+If the user wants to add/move/deprecate/lint/create a hub → **stop query** and open **`/skill-manager`** with a one-line brief.
 
 ## Output template
 
 ```markdown
-**Use:** `/skill-name` (or path: a → b → c)
-**Why:** one sentence
-**Why not:** `/cousin` — one sentence (optional)
-**Next:** concrete first action
+**Domain hub:** `/…`
+**Use:** `/…`
+**Why:** …
+**Fork:** … (if waiting on user)
+**Next:** …
 ```
 
-## Manual smoke fixtures
+## Smoke
 
-| # | Utterance | Expected primary |
-|---|-----------|------------------|
-| 1 | "which skill should I use?" / "I'm lost in the catalog" | `butler` (query self) or present flows overview then ask one clarifying Q |
-| 2 | "stress-test this plan" / "grill me" | `grill-with-docs` (if codebase) or `grill-me` |
-| 3 | "turn this into a spec / tickets" | `to-spec` then `to-tickets` |
-| 4 | "this bug is weird / diagnose this" | `diagnosing-bugs` |
-| 5 | "put this in my vault" / "query my notes" | `vault-ingest` / `wiki-query` (vault chain) |
-| 6 | "implement these tickets" | `implement` |
-
-Run these after catalog moves; failures mean flows.md or indexes drifted.
-
-## ask-matt succession
-
-`ask-matt` is **deprecated**. Its graph lives here + `flows.md`. Tombstone points to **butler**.
+| Utterance | Expected |
+|-----------|----------|
+| which skill / lost | butler orient + F7 or hub list |
+| grill me | Design hub `grilling` / grill-* after F2 |
+| implement tickets | Ship hub `implement` |
+| add a skill to the catalog | **skill-manager** (delegate) |
+| lint the catalog | **skill-manager** |
+| put this in my vault | Vault hub `rohitas-vault-wiki` / vault-* |
+| make a spreadsheet | Misc hub `misc` → xlsx (F-misc if ambiguous) |

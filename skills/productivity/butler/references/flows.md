@@ -1,145 +1,254 @@
-# Flows — chaining SSOT
+# Flows — hub map + pipelines + forks (SSOT)
 
-Single source of truth for how catalog skills chain. **Butler query** and agents must follow this map; do not invent competing full-graph routers.
+**Butler** reads this map to route. **skill-manager** writes hub slots when placing skills.
 
-Skill names below are slash-invokable names (`/name`). All must exist on disk under a catalog bucket (or be documented as deprecated with a successor).
+## Patterns
 
----
+### Hub
 
-## Precondition
+Each **workflow domain** has exactly one **★ top skill (hub)**. Children link by type: `wrapper` · `hard` · `soft` · `pipeline` · `on-ramp` · `leaf` · `axis` · `satellite`.
 
-**`/setup-rohitas-skills`** — run once per consumer repo before engineering flows that need an issue tracker, triage labels, domain docs, or vault root SSOT.
+### Fork (◆)
 
-Hard-dep skills (`to-spec`, `to-tickets`, `triage`) **must** point at this setup skill. Soft-dep skills read `CONTEXT.md` / ADRs when present and degrade gracefully without cargo-cult setup spam.
-
----
-
-## Main flow: idea → ship
-
-Most feature work travels here.
-
-1. **Interview**
-   - **With a codebase:** `/grill-with-docs` (stateful → `CONTEXT.md` + ADRs).
-   - **No codebase / pure plan:** `/grill-me`.
-   - Both are thin wrappers over **`/grilling`** (interview SSOT body).
-2. **Optional prototype detour** — if a question needs a runnable answer (state, UI feel):
-   - `/handoff` out → fresh session → `/prototype` → `/handoff` back.
-3. **Multi-session?**
-   - **Yes:** `/to-spec` → `/to-tickets` → **`/implement`** per ticket (clear context between tickets).
-   - **No:** `/implement` in the same window.
-4. **Inside implement:** drives **`/tdd`** (red-green slices) then multi-axis **`/code-review`** (Spec + Standards + Maintainability; every applicable axis), then commit.
-
-### Context hygiene
-
-Keep grill → spec → tickets in one unbroken window when possible (smart zone ~120k). If the window fills before tickets: `/handoff`, continue fresh. Each `/implement` starts clean from the ticket.
-
-### Single-session shortcut
-
-After grill, if the change is small and fully specified in-thread: skip to-spec/to-tickets and go straight to `/implement`.
+Any branch in a pipeline is a **fork**. Agents **must ask the user** one question (recommended option first) and wait — never silent branch.
 
 ---
 
-## On-ramps
+## Domain 0 — House (hub of hubs)
 
-Merge onto the main flow by name — do not invent ad hoc pipelines.
+| | |
+|--|--|
+| **★ Hub** | `/butler` |
+| **Children** | All domain hubs below (routing targets) |
+| **Mutations** | **Not here** → `/skill-manager` |
 
-| Situation | Skill | Merge point |
-|-----------|-------|-------------|
-| Bugs/requests piling up (raw issues you didn't create) | `/triage` | agent-ready issues → `/implement` |
-| Something broken / hard bug / regression | `/diagnosing-bugs` | fix with regression test; post-mortem may → `/improve-codebase-architecture` |
-| Huge foggy effort (multi-session map of decisions) | `/wayfinder` | **exit only via** `/to-spec` → `/to-tickets` → `/implement` — never implement raw fog maps |
-| Codebase health / deepening opportunities | `/improve-codebase-architecture` | chosen idea → main flow at `/grill-with-docs` |
-
-### Triage rule
-
-**Do not re-triage** tickets produced by `/to-tickets` — they are already agent-ready.
-
-### Wayfinder rule
-
-Wayfinder produces **decisions, not deliverables**. When the map clears: `/to-spec` collapses decisions into a buildable plan, then tickets and implement.
+**Pipeline:** orient → query → domain hub (or delegate skill-manager).
 
 ---
 
-## Vocabulary (underneath)
+## Domain 1 — Setup
 
-Pulled in by main-path skills; reach for them when **words** are the problem, not process:
+| | |
+|--|--|
+| **★ Hub** | `/setup-rohitas-skills` |
+| **Children** | **hard:** `to-spec`, `to-tickets`, `triage` · **soft:** `tdd`, `diagnosing-bugs`, `improve-codebase-architecture`, vocabulary skills · **SSOT:** issue-tracker, triage-labels, domain, vault |
 
-- `/domain-modeling` — ubiquitous language, ADRs, glossary discipline
-- `/codebase-design` — deep modules, seams, interface depth
-- `/coding-standards` — lean naming/modularity comments bar (with stepdown / code-comments as specialized)
+**Pipeline:** run once per consumer repo.
 
-These are **not** entry points competing with grill / to-spec.
-
----
-
-## Vault chain (personal)
-
-Personal knowledge is a **separate** chain from engineering. Documented here so butler query can route vault questions without inventing steps.
-
-1. Fast capture → `/vault-inbox`
-2. Process into Concepts → `/vault-ingest` (uses schema from `/rohitas-vault-wiki`)
-3. Explain a Concept → `/vault-explain` (pedagogy via learning-explainer)
-4. Health-check vault → `/vault-lint`
-5. Answer from notes → `/wiki-query`
-6. Schema / Atlas / structure SSOT → `/rohitas-vault-wiki`
-
-**Vault root path** comes only from setup SSOT (`docs/agents/vault.md` or `## Agent skills` vault pointer) — never hard-coded home paths in skill bodies.
-
-Project wikis (in-repo `docs/wiki/`) use `/project-wiki-manager` — not butler, not vault atoms.
+| Fork | Question | Recommended | Branches |
+|------|----------|-------------|----------|
+| **F1** | Setup already done (`docs/agents/` present)? | Skip if present | run setup · skip → Design/Ship |
 
 ---
 
-## Meta (catalog craft)
+## Domain 2 — Design
 
-| Intent | Path |
-|--------|------|
-| Scaffold a new skill | `/create-skill` (or `/skill-creator`) → **butler ingest** |
-| Predictability / craft theory | `/writing-great-skills` (not replaced by butler) |
-| Session learnings → skill edits | `/reflect` → optional **butler lint** / **organize** |
-| Lost / which skill | **butler query** (successor of ask-matt) |
+| | |
+|--|--|
+| **★ Hub** | `/grilling` |
+| **Children** | **wrapper:** `grill-me`, `grill-with-docs` · **pull-in:** `domain-modeling` · **detour:** `handoff` ⇄ `prototype` |
 
----
+| Fork | Question | Recommended | Branches |
+|------|----------|-------------|----------|
+| **F2** | Codebase present? | Yes → grill-with-docs | `grill-with-docs` · `grill-me` |
+| **F3** | Need a runnable prototype answer? | No | stay in grill · handoff⇄prototype |
+| **F4** | Multi-session build? | Yes if >1 implement slice | yes → Ship multi · no → Ship single |
 
-## Standalone (off main flow)
-
-Useful alone; not required steps on every feature:
-
-- `/research` — background primary-source reading → file to take into grill
-- `/prototype` — throwaway design answer
-- `/teach` — multi-session learning workspace
-- `/handoff` — cross-session bridge
-- Office/media: `/docx`, `/pptx`, `/xlsx`, `/diagram-maker`, etc. (misc bucket)
+**Merge out:** → Domain 3 Ship.
 
 ---
 
-## Cousin clusters (exclusive winners)
+## Domain 3 — Ship
 
-When routing, pick one winner; note "why not" for cousins in query:
+| | |
+|--|--|
+| **★ Hub** | `/implement` |
+| **Children** | **pipeline:** `to-spec` → `to-tickets` → `implement` → `tdd` → `code-review` → commit · **cousin:** `check-work` (mid-build only) |
 
-| Cluster | Winner(s) | Not for |
-|---------|-----------|---------|
-| Grill / interview | grilling via grill-me / grill-with-docs | interview-me (vendor), wayfinder (too heavy for one-session plans) |
-| Review | multi-axis `code-review` (Spec/Standards/Maintainability) | check-work = mid-build self-verify; ponytail-review = over-engineering only; code-review-v2 deprecated |
-| Learn / teach | learn, learning-explainer, teach, story-teacher by intent | don't steal grill |
-| Architecture | codebase-design + improve-codebase-architecture + software-architect | deprecated software-architecture |
+| Fork | Question | Recommended | Branches |
+|------|----------|-------------|----------|
+| **F4** | (entry) multi-session? | as Design | to-spec path · direct implement |
+| **F5** | This slice done? | run closer | tdd→code-review→commit · more tickets |
+| **F6** | (inside code-review) axes applicable? | every applicable | Spec / Standards / Maintainability on or soft-skip |
 
----
-
-## ASCII map
+**Multi-session pipeline:**
 
 ```text
-setup-rohitas-skills (once)
-        │
-        ▼
- grill-with-docs | grill-me
-        │
-        ├─ optional: handoff ⇄ prototype
-        │
-        ├─ multi-session? ──► to-spec ──► to-tickets ──► implement*
-        │                                              │
-        └─ single-session ──► implement* ◄─────────────┘
-                                    │
-                              tdd → code-review (multi-axis) → commit
+to-spec → to-tickets → implement* → tdd → code-review (multi-axis) → commit
+```
 
-On-ramps: triage, diagnosing-bugs, wayfinder→to-spec…, improve-codebase-architecture
+**Single-session:** `implement*` → tdd → code-review → commit.
+
+---
+
+## Domain 4 — Review
+
+| | |
+|--|--|
+| **★ Hub** | `/code-review` |
+| **Children** | **axis:** Spec, Standards, Maintainability · **cousin:** `check-work`, `ponytail-review`, `codebase-review-strategy` · **†** `code-review-v2` |
+
+Fork **F6** — ask only to force/skip axes when user wants override; default = scan and run applicable.
+
+---
+
+## Domain 5 — Triage
+
+| | |
+|--|--|
+| **★ Hub** | `/triage` |
+| **Children** | merge → `implement` |
+| **Rule** | Never re-triage `to-tickets` output |
+
+---
+
+## Domain 6 — Diagnose
+
+| | |
+|--|--|
+| **★ Hub** | `/diagnosing-bugs` |
+| **Children** | `tdd`; optional on-ramp → `improve-codebase-architecture` |
+
+---
+
+## Domain 7 — Fog map
+
+| | |
+|--|--|
+| **★ Hub** | `/wayfinder` |
+| **Children** | exit **only** → `to-spec` (then Ship) |
+
+| Fork | Question | Recommended | Branches |
+|------|----------|-------------|----------|
+| **F8** | Fog clear enough to build? | only when buildable | stay wayfinder · → to-spec |
+
+---
+
+## Domain 8 — Architecture
+
+| | |
+|--|--|
+| **★ Hub** | `/improve-codebase-architecture` |
+| **Children** | **vocab:** `codebase-design` · **persona:** `software-architect` · **†** `software-architecture` |
+
+| Fork | Question | Recommended | Branches |
+|------|----------|-------------|----------|
+| **F9** | Take a deepening idea to Design? | if user picks one | stay · → grill-with-docs |
+
+---
+
+## Domain 9 — Vault
+
+| | |
+|--|--|
+| **★ Hub** | `/rohitas-vault-wiki` |
+| **Children** | **pipeline/ops:** `vault-inbox` → `vault-ingest` → `vault-lint` / `wiki-query` / `vault-explain` · **leaf primitives:** `obsidian-markdown`, `obsidian-cli`, `obsidian-bases` · **†** `obsidian-notes-manager` |
+
+| Fork | Question | Recommended | Branches |
+|------|----------|-------------|----------|
+| **F11** | Capture / compile / query / lint / explain? | match utterance | inbox · ingest · query · lint · explain |
+
+Vault root path from setup SSOT only.
+
+---
+
+## Domain 10 — Catalog facilities
+
+| | |
+|--|--|
+| **★ Hub** | `/skill-manager` |
+| **Children** | ops: create/read/update/delete/place/new-hub/ingest/organize/lint · handoff body craft → `skill-creator` |
+
+Not a product feature pipeline — **mutates the catalog**.
+
+---
+
+## Domain 11 — Author body
+
+| | |
+|--|--|
+| **★ Hub** | `/skill-creator` |
+| **Children** | **wrapper:** `create-skill` · craft: `writing-great-skills` · next: skill-manager place |
+
+| Fork | Question | Recommended | Branches |
+|------|----------|-------------|----------|
+| **F10** | Ingest/place into catalog now? | yes when ready | stay crafting · skill-manager place/ingest |
+
+---
+
+## Domain 12 — Simplify
+
+| | |
+|--|--|
+| **★ Hub** | `/ponytail` |
+| **Children** | **satellite:** ponytail-review, audit, debt, gain, help |
+
+Optional; not Ship closer.
+
+---
+
+## Domain 13 — Learn
+
+| | |
+|--|--|
+| **★ Hub** | `/learn` |
+| **Children** | `learning-explainer`, `teach`, `story-teacher`, `resource-summarizer` |
+
+---
+
+## Domain 14 — Misc / office
+
+| | |
+|--|--|
+| **★ Hub** | `/misc` |
+| **Children** | **leaf:** `docx`, `pptx`, `xlsx`, `diagram-maker`, `imagine`, `hatch-pet`, `json-canvas`, `defuddle` |
+
+| Fork | Question | Recommended | Branches |
+|------|----------|-------------|----------|
+| **F-misc** | What artifact type? | from extension/context | document · slides · sheet · diagram · image · canvas · web · pet |
+
+**Tree:** hub → leaf (not a long chain).
+
+---
+
+## Global entry fork
+
+| Fork | Question | Recommended | Branches |
+|------|----------|-------------|----------|
+| **F7** | What kind of work? | feature → Design | Design · Triage · Diagnose · Fog · Architecture · Vault · Misc · Catalog facilities · Learn · Simplify |
+
+Butler asks **F7** when intent is unclear.
+
+---
+
+## Deprecated (†)
+
+| Tombstone | Successor hub / skill |
+|-----------|------------------------|
+| ask-matt | butler |
+| code-review-v2 | code-review |
+| software-architecture | improve-codebase-architecture / codebase-design |
+| obsidian-notes-manager | rohitas-vault-wiki |
+| task-observer | reflect + skill-manager |
+| continuous-learning-v2 | reflect |
+
+---
+
+## ASCII — main product path
+
+```text
+        ★ butler (route only)
+               │
+        ★ setup-rohitas-skills  (F1)
+               │
+        ★ grilling  (F2 wrappers · F3 proto · F4 multi?)
+               │
+     ┌─────────┴─────────┐
+   multi               single
+     │                   │
+  to-spec                │
+  to-tickets             │
+     └─────────┬─────────┘
+               ▼
+        ★ implement → tdd → ★ code-review (F6 axes) → commit
 ```

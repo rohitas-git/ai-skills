@@ -1,8 +1,6 @@
 # Engineering
 
-Skills for building software: design, implement, test, review, diagnose, and ship.
-
-Listed skills here are **promoted** (appear on the root catalog README).
+Build, test, review, diagnose, ship. **Promoted.**
 
 ## Skills
 
@@ -34,7 +32,6 @@ Listed skills here are **promoted** (appear on the root catalog README).
 - [stepdown-rule](./stepdown-rule/) — Enforce top-down file layout using the newspaper metaphor and stepdown rule
 - [tdd](./tdd/) — Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions "red-green-refactor", or wants integr…
 - [to-spec](./to-spec/) — Turn the current conversation into a spec and publish it to the project issue tracker — no interview, just synthesis of what you've alrea…
-- [to-tickets](./to-tickets/) — Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, published to the…
+- [to-tickets](./to-tickets/) — Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, published to the …
 - [triage](./triage/) — Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write agent-ready briefs.
 - [wayfinder](./wayfinder/) — Plan a huge chunk of work — more than one agent session can hold — as a shared map of decision tickets on your issue tracker, and resolve…
-

@@ -1,11 +1,10 @@
 # Misc
 
-Cross-cutting tools and office/media utilities that are not pure engineering or productivity workflows.
-
-Listed skills here are **promoted** (appear on the root catalog README).
+Office/media hub + leaves. **Promoted.**
 
 ## Skills
 
+- [misc](./misc/) — Hub for office/media and cross-cutting tool skills (docx, pptx, xlsx, diagrams, images,
 - [defuddle](./defuddle/) — Extract clean markdown content from web pages using Defuddle CLI, removing clutter and navigation to save tokens. Use instead of WebFetch…
 - [diagram-maker](./diagram-maker/) — Create SVG/HTML or Excalidraw diagrams for concepts, architecture, flows, and whiteboards.
 - [docx](./docx/) — Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files). Triggers include: any mention o…
@@ -14,4 +13,3 @@ Listed skills here are **promoted** (appear on the root catalog README).
 - [json-canvas](./json-canvas/) — Create and edit JSON Canvas files (.canvas) with nodes, edges, groups, and connections. Use when working with .canvas files, creating vis…
 - [pptx](./pptx/) — Use this skill any time a .pptx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks…
 - [xlsx](./xlsx/) — Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit,…
-
