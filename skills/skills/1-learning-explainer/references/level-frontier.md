@@ -1,7 +1,7 @@
 # Level: Frontier / Cutting-Edge Research
 
 ## Purpose
-Explain concepts at the current research frontier for experts, researchers, and advanced practitioners. Focus on latest developments, active debates, open problems, and future directions.
+Explain concepts at the current 1-research frontier for experts, researchers, and advanced practitioners. Focus on latest developments, active debates, open problems, and future directions.
 
 ## Audience Characteristics
 - Deep expertise in the field or closely related areas
@@ -11,10 +11,10 @@ Explain concepts at the current research frontier for experts, researchers, and 
 
 ## Goals
 - Summarize the current state of the art
-- Highlight recent breakthroughs and active research fronts
+- Highlight recent breakthroughs and active 1-research fronts
 - Present major debates and competing hypotheses
 - Identify open questions and promising future directions
-- Stimulate critical thinking and research ideas
+- Stimulate critical thinking and 1-research ideas
 
 ## Vocabulary & Style Guidelines
 - Advanced technical language appropriate for experts
@@ -27,7 +27,7 @@ Explain concepts at the current research frontier for experts, researchers, and 
 2. **Recent breakthroughs** (last 3–5 years)
 3. **Active debates and controversies**
 4. **Key open problems and challenges**
-5. **Promising research directions** and emerging methods
+5. **Promising 1-research directions** and emerging methods
 6. **Broader implications** (scientific, technological, societal)
 
 ## Example (Photosynthesis – Frontier level)

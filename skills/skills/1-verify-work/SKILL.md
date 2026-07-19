@@ -17,10 +17,10 @@ disable-model-invocation: true
 | Need | Skill |
 |------|--------|
 | Mid-build verification subagent (diffs, build, tests) | **verify-work** (this) |
-| Multi-axis change/PR review closer | `/1-code-review` |
+| Multi-axis change/PR 0-review closer | `/1-code-review` |
 | Security audit | `/1-security-auditor` |
-| Over-engineering review only | `/1-ponytail-review` |
-| Ship implement loop | `/0-implement` |
+| Over-engineering 0-review only | `/1-ponytail-review` |
+| Ship 0-implement loop | `/0-implement` |
 
 **Not for:** open-ended “which review?” → `/0-review` F-R1. Prefer this mid-build; prefer `/1-code-review` as Ship closer.
 

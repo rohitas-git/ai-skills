@@ -45,7 +45,7 @@ Can you actually build this? Not just technically, but practically.
 - What's the critical path? What has to happen first?
 
 **Red flags:**
-- "We just need to solve [very hard research problem] first"
+- "We just need to solve [very hard 1-research problem] first"
 - Multiple dependencies that all need to work simultaneously
 - MVP still requires months of work — likely not minimal enough
 

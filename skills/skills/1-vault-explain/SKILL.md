@@ -2,9 +2,9 @@
 name: 1-vault-explain
 description: >
   Explain a Rohitas's Notes Concept for learning — grounds in the vault note then
-  redirects to learning-explainer for pedagogy (levels, probe, mental models).
-  Use when the user says explain this concept, teach what was just added, explain
-  [[Note]] from the vault, or /1-vault-explain. Pairs with vault-ingest post-ingest.
+  redirects to 1-learning-explainer for pedagogy (levels, probe, mental models).
+  Use when the user says explain this concept, 1-teach what was just added, explain
+  [[Note]] from the vault, or /1-vault-explain. Pairs with 1-vault-ingest post-ingest.
 disable-model-invocation: true
 ---
 
@@ -53,7 +53,7 @@ Teach a **compiled Concept** from the vault. This skill is a **thin router**: va
    - Optional: capture learning gaps via `1-vault-inbox`
 
 6. **Close**  
-   - Offer progressive deepen (learning-explainer), quiz, or “file gap to Inbox”
+   - Offer progressive deepen (1-learning-explainer), quiz, or “file gap to Inbox”
 
 ## Completion criterion
 
@@ -64,7 +64,7 @@ Teach a **compiled Concept** from the vault. This skill is a **thin router**: va
 ## Hard rules
 
 1. **Must** invoke `1-learning-explainer` — no parallel pedagogy  
-2. Must not fork resource-summarizer either (if note is huge, still explain from Concept; optional light skim)  
+2. Must not fork 1-resource-summarizer either (if note is huge, still explain from Concept; optional light skim)  
 3. Schema ownership remains `0-rohitas-vault-wiki`  
 4. English explanations default; match user language if they write in another language for the chat layer  
 

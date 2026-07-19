@@ -1,10 +1,10 @@
 ---
 name: 1-code-review
 description: >
-  Multi-axis review of changes since a fixed point: Spec (ticket/PRD fidelity),
+  Multi-axis 0-review of changes since a fixed point: Spec (ticket/PRD fidelity),
   Standards (repo docs + smell baseline), and Maintainability (structure, spaghetti,
   code-judo). Runs every applicable axis after a short scan; soft-skips axes without
-  inputs. Use as implement's closer, for branch/PR review, or "review since X".
+  inputs. Use as implement's closer, for branch/PR 0-review, or "review since X".
 disable-model-invocation: true
 ---
 
@@ -13,10 +13,10 @@ disable-model-invocation: true
 
 | Need | Skill |
 |------|--------|
-| Multi-axis diff/PR review (Spec/Standards/Maintainability) | **code-review** (this) |
+| Multi-axis diff/PR 0-review (Spec/Standards/Maintainability) | **code-review** (this) |
 | Mid-build verify (not full multi-axis) | `/1-verify-work` |
 | Security/quality audit phases | `/1-security-auditor` |
-| Which review mode? | `/0-review` (F-R1) |
+| Which 0-review mode? | `/0-review` (F-R1) |
 | Over-engineering only | `/1-ponytail-review` |
 | Architecture persona review | `/1-software-architect` |
 | Hardening while building | `/1-security-and-hardening` |
@@ -68,7 +68,7 @@ Spawn parallel general-purpose sub-agents (one per applicable axis). Each loads 
 ### 4. Aggregate (do not cross-rerank)
 
 ```markdown
-# Code review since <fixed-point>
+# Code 0-review since <fixed-point>
 
 **Axes run:** …
 **Axes skipped:** … (reasons)
@@ -94,12 +94,12 @@ Within each axis, optional severity labels and sizing notes: [references/severit
 
 ## Don't use when
 
-- Unsure which review mode → domain hub `/0-review` (F-R1)
+- Unsure which 0-review mode → domain hub `/0-review` (F-R1)
 - Mid-implement self-verify until green → `/1-verify-work`
 - Over-engineering-only delete pass → `/1-ponytail-review`
-- Whole-repo review planning by size tier → `/1-codebase-review-strategy`
+- Whole-repo 0-review planning by size tier → `/1-codebase-review-strategy`
 - Full security / OWASP audit → `/1-security-auditor`
-- Architecture review of design/system → `/1-software-architect`
+- Architecture 0-review of design/system → `/1-software-architect`
 - Prevention patterns while coding → `/1-security-and-hardening`
 - Architecture deepening survey → `/0-improve-codebase-architecture`
 - PR description / summary text only → `/1-pr-summarizer`
@@ -110,5 +110,5 @@ Within each axis, optional severity labels and sizing notes: [references/severit
 - **Parent domain:** `/0-review` (this skill is a **sub-hub**; Ship closer still lands here)
 - **Axes:** Spec, Standards, Maintainability
 - **Cousins:** `/1-verify-work`, `/1-ponytail-review`
-- **Soft:** `/1-software-architect` (architecture review), `/1-security-and-hardening`
+- **Soft:** `/1-software-architect` (architecture 0-review), `/1-security-and-hardening`
 - **Sibling sub-hub:** `/1-security-auditor`

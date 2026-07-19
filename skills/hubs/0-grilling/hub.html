@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Domain hub · grilling — Design</title>
+<title>Domain hub · 0-grilling — Design</title>
 <style>
 
   :root {
@@ -55,11 +55,11 @@
 </head>
 <body>
 <header>
-  <h1>★ grilling <span style="color:var(--muted);font-weight:500">· Domain 2 · Design</span></h1>
+  <h1>★ 0-grilling <span style="color:var(--muted);font-weight:500">· Domain 2 · Design</span></h1>
   <p>Interview / stress-test plans (Design SSOT).</p>
 </header>
 <nav class="top">
-  <a class="butler-cta" href="../0-butler/hub.html">★ butler (hub of hubs)</a>
+  <a class="butler-cta" href="../0-butler/hub.html">★ 0-butler (hub of hubs)</a>
   <a class="chart-cta" href="../../flows-chart.html">Full flows chart</a>
   <a href="../../flows-chart.html#domain-hub-matrix">Domain matrix</a>
   <a href="./workflow.json">workflow.json</a>
@@ -96,16 +96,16 @@
 <section>
   <h2>Children</h2>
   <ul>
-    <li><strong>wrapper:</strong> grill-me, grill-with-docs</li>
+    <li><strong>wrapper:</strong> 1-grill-me, grill-with-docs</li>
 <li><strong>pull-in:</strong> domain-modeling</li>
-<li><strong>detour:</strong> handoff, prototype</li>
+<li><strong>detour:</strong> 1-handoff, prototype</li>
   </ul>
 </section>
 
 <section>
   <h2>Pipeline</h2>
   <pre>grill wrappers
-optional prototype detour
+optional 1-prototype detour
 merge out → Ship</pre>
 </section>
 
@@ -116,8 +116,8 @@ merge out → Ship</pre>
     <thead><tr><th>ID</th><th>Question</th><th>Recommended</th><th>Branches</th></tr></thead>
     <tbody>
       <tr><td><code>F2</code></td><td>Codebase present?</td><td>Yes → grill-with-docs</td><td>grill-with-docs · grill-me</td></tr>
-<tr><td><code>F3</code></td><td>Need a runnable prototype answer?</td><td>No</td><td>stay in grill · handoff⇄prototype</td></tr>
-<tr><td><code>F4</code></td><td>Multi-session build?</td><td>Yes if &gt;1 implement slice</td><td>yes → Ship multi · no → Ship single</td></tr>
+<tr><td><code>F3</code></td><td>Need a runnable 1-prototype answer?</td><td>No</td><td>stay in grill · handoff⇄prototype</td></tr>
+<tr><td><code>F4</code></td><td>Multi-session build?</td><td>Yes if &gt;1 0-implement slice</td><td>yes → Ship multi · no → Ship single</td></tr>
     </tbody>
   </table>
 </section>

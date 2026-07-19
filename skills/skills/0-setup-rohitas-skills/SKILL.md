@@ -1,6 +1,6 @@
 ---
 name: 0-setup-rohitas-skills
-description: Configure this repo for Rohitas engineering skills — issue tracker, triage labels, domain docs, and optional vault root SSOT. Run once before first use of the other engineering skills. User-invoked.
+description: Configure this repo for Rohitas engineering skills — issue tracker, 0-triage labels, domain docs, and optional vault root SSOT. Run once before first use of the other engineering skills. User-invoked.
 disable-model-invocation: true
 ---
 
@@ -9,7 +9,7 @@ disable-model-invocation: true
 Scaffold the per-repo configuration that the engineering skills assume:
 
 - **Issue tracker** — where issues live (GitHub by default; local markdown is also supported out of the box)
-- **Triage labels** — the strings used for the five canonical triage roles
+- **Triage labels** — the strings used for the five canonical 0-triage roles
 - **Domain docs** — where `CONTEXT.md` and ADRs live, and the consumer rules for reading them
 
 This is a prompt-driven skill, not a deterministic script. Explore, present what you found, confirm with the user, then write.
@@ -52,9 +52,9 @@ Record the choice in `docs/agents/issue-tracker.md`. The GitHub and GitLab templ
 
 If it is installed, ask exactly one question:
 
-> Do you want to keep the default triage labels? (recommended: **yes**)
+> Do you want to keep the default 0-triage labels? (recommended: **yes**)
 
-The defaults are the five canonical roles, each label string equal to its name: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. On **yes**, write them as-is. Only if the user says no — usually because their tracker already uses other names (e.g. `bug:triage` for `needs-triage`) — collect the overrides so `0-triage` applies existing labels instead of creating duplicates.
+The defaults are the five canonical roles, each label string equal to its name: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. On **yes**, write them as-is. Only if the user says no — usually because their tracker already uses other names (e.g. `bug:0-triage` for `needs-triage`) — collect the overrides so `0-triage` applies existing labels instead of creating duplicates.
 
 **Section C — Domain docs.** Default to **single-context** — one `CONTEXT.md` + `docs/adr/` at the repo root. This fits almost every repo; write it without asking.
 

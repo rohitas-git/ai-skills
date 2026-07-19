@@ -48,11 +48,11 @@ A slice is done only when **its AC** and **the standing DoD** both pass.
 - [ ] Security for untrusted input / auth / data (`/1-security-and-hardening`)
 - [ ] Observability on new critical paths (`/1-observability-and-instrumentation`)
 - [ ] Rollback path if risky (`/1-shipping-and-launch`)
-- [ ] Human review when the change needs it
+- [ ] Human 0-review when the change needs it
 
 ## How to apply
 
-- **Per ticket / implement slice:** Correctness + Quality before check-off.
+- **Per ticket / 0-implement slice:** Correctness + Quality before check-off.
 - **Per feature:** Integration + Documentation before “feature complete.”
 - **Per release:** Full list + `/1-shipping-and-launch` deploy gates.
 

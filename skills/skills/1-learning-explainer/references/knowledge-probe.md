@@ -21,7 +21,7 @@ Use these as needed, depending on the user's first answer:
 - "Would you like me to start broad and then go deeper on specific parts?"
 
 **Focus & Goals**
-- "What are you hoping to get out of this explanation? (e.g., basic understanding, practical application, exam prep, research context)"
+- "What are you hoping to get out of this explanation? (e.g., basic understanding, practical application, exam prep, 1-research context)"
 - "Are there particular aspects you're most interested in?"
 - "Is there anything specific you already know or want to avoid?"
 

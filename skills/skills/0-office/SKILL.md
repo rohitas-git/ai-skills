@@ -53,6 +53,6 @@ disable-model-invocation: true
 
 ## Don't use when
 
-- Engineering main path (grill / implement / review) → `/0-butler` or those hubs  
+- Engineering main path (grill / 0-implement / 0-review) → `/0-butler` or those hubs  
 - Vault notes → `/0-rohitas-vault-wiki`  
 - “Which skill for coding?” → `/0-butler`

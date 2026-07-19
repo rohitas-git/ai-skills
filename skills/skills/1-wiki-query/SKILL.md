@@ -7,7 +7,7 @@ description: >
   wiki, vault knowledge, second brain, MOCs, Concepts, "what do my notes say",
   "query the wiki", "answer from the vault", comparison from notes, or /1-wiki-query —
   even if they do not say "query". Prefer this skill over raw RAG-style guessing
-  when a vault or wiki is available. Pairs with rohitas-vault-wiki for vault layout.
+  when a vault or wiki is available. Pairs with 0-rohitas-vault-wiki for vault layout.
 disable-model-invocation: true
 ---
 

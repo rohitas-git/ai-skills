@@ -1,6 +1,6 @@
 # Vendor source map
 
-**Upstream (archive, not host-discovered):** `archive/vendor/agent-skills/skills/1-observability-and-instrumentation/SKILL.md`
+**Upstream (archive, not host-discovered):** `archive/vendor/agent-skills/skills/observability-and-instrumentation/SKILL.md`
 
 Promoted as a **lean** catalog skill. For depth, read the upstream sections:
 

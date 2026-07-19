@@ -2,11 +2,11 @@
 
 | Utterance | Expected |
 |-----------|----------|
-| which skill / lost | butler (orient/query) |
-| grill me | Design hub grilling / grill-* |
-| implement tickets | implement |
+| which skill / lost | 0-butler (orient/query) |
+| grill me | Design hub 0-grilling / grill-* |
+| 0-implement tickets | 0-implement |
 | add/rehouse/lint skill | **skill-manager** |
 | spreadsheet / deck | misc hub → xlsx/pptx |
-| vault capture | rohitas-vault-wiki / vault-inbox |
+| vault capture | 0-rohitas-vault-wiki / 1-vault-inbox |
 
 Lint: `./scripts/lint-skills` (0 critical).

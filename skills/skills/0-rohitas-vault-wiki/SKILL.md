@@ -3,8 +3,8 @@ name: 0-rohitas-vault-wiki
 description: >
   Steward Rohitas's Notes Obsidian vault — Atlas hubs, Concepts atoms, Inbox capture,
   Guides/Projects/Archives, Dashboard-aligned frontmatter, Title Case notes, ROOT +
-  Knowledge Engineering. Schema source for vault-inbox, vault-ingest, vault-lint,
-  vault-explain, and wiki-query. Orchestrates resource-summarizer for long/raw sources.
+  Knowledge Engineering. Schema source for 1-vault-inbox, 1-vault-ingest, 1-vault-lint,
+  1-vault-explain, and wiki-query. Orchestrates 1-resource-summarizer for long/raw sources.
   Use for Rohitas's Notes, vault structure, Atlas MOCs, Concepts, or /0-rohitas-vault-wiki.
 disable-model-invocation: true
 ---
@@ -26,9 +26,9 @@ Single-PKM steward and **schema source of truth**. Do **not** use Notes/MOCs/Res
 | **vault-explain** | Teach a Concept → **`1-learning-explainer`** | `/1-vault-explain` |
 | **wiki-query** | Query + file answers | `/1-wiki-query` |
 | **resource-summarizer** | Long/raw distill (80/20, Feynman) — do not fork | (invoked by ingest) |
-| **learning-explainer** | Pedagogy for explain — do not fork | (invoked by vault-explain) |
+| **learning-explainer** | Pedagogy for explain — do not fork | (invoked by 1-vault-explain) |
 
-**Route by intent:** clear capture → `1-vault-inbox`; process knowledge → `1-vault-ingest`; health → `1-vault-lint`; teach concept → `1-vault-explain`; Q&A → `1-wiki-query`. Load this skill’s profile for path/schema whenever any sibling runs.
+**Route by intent:** clear capture → `1-vault-inbox`; process knowledge → `1-vault-ingest`; health → `1-vault-lint`; 1-teach concept → `1-vault-explain`; Q&A → `1-wiki-query`. Load this skill’s profile for path/schema whenever any sibling runs.
 
 ## Dual-skill distill
 
@@ -129,7 +129,7 @@ Follow vault guide **`Guides/Note Templates.md`**. Prefer named templates (conce
 - **Project wiki** → `/1-project-wiki-manager`
 - **Living docs / triggers** → `/1-living-documentation-governor`
 
-Ask once; never silent-redirect. Do not implement project `docs/wiki` or doc-triggers here.
+Ask once; never silent-redirect. Do not 0-implement project `docs/wiki` or doc-triggers here.
 
 ## Out of scope
 

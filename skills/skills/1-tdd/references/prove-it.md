@@ -8,7 +8,7 @@ When a bug is reported, **do not start by trying to fix it.** Prove the bug with
 Bug report
     → write a test that demonstrates the bug
     → test FAILS (confirms the bug exists)
-    → implement the fix
+    → 0-implement the fix
     → test PASSES (proves the fix)
     → run the suite (no regressions)
 ```

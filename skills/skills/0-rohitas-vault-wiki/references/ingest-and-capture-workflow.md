@@ -7,7 +7,7 @@ Ops skills: **`1-vault-inbox`** (capture), **`1-vault-ingest`** (compile). This 
 ### 1. Capture
 Drop into `Inbox/` via **`1-vault-inbox`** or manual drop. Low friction — no takeaway debate.
 
-### 2. Classify (wiki / vault-ingest)
+### 2. Classify (wiki / 1-vault-ingest)
 - ephemeral → discard/bookmark  
 - hub/MOC → `Atlas/{Topic} MOC.md` only (never Concepts)  
 - single concept → Concepts (`type: concept` only)  
@@ -27,7 +27,7 @@ Map into vault shape (summary + bullets + Related). **No** full Cornell template
 ### 4. Index-first retrieve
 Before create: `README.md` → relevant Atlas MOC → search `Concepts/` (title, tags, `topic`, keywords).
 
-### 5. Plan & confirm (vault-ingest)
+### 5. Plan & confirm (1-vault-ingest)
 Present key takeaways + Ingest plan (create / update / conflicts / archive). Wait for confirm on multi-page or conflict work.
 
 ### 6. Write / update

@@ -44,13 +44,13 @@ Fail any row → do not promote; propose merge, rewrite, or defer.
 7. Run **`/1-skill-linter`** mode **skill** on the new path — require **Gate: PASS**.
 8. Never create wiki/concept atoms.
 
-## create-skill handoff
+## 1-create-skill 1-handoff
 
 `1-create-skill` / `0-skill-creator` scaffold bodies only. Then **skill-manager** place/ingest for catalog citizenship, including **skill-lint**. Routing stays with **butler**.
 
 ## Demo dry-run
 
-Example: dry-run ingest of `vendor/agent-skills/skills/1-security-and-hardening` (or any candidate):
+Example: dry-run ingest of `vendor/agent-skills/skills/security-and-hardening` (or any candidate):
 
 1. Load SKILL.md
 2. Fill integration-test table (expect: may pass gap for security, fail if collision with future security skill, must not promote using-agent-skills)

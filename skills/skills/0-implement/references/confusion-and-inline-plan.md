@@ -27,7 +27,7 @@ C) Ask — likely intentional; don't override
 
 ## Inline plan (multi-step slice)
 
-Before executing a multi-step implement slice, emit a short plan:
+Before executing a multi-step 0-implement slice, emit a short plan:
 
 ```text
 PLAN:

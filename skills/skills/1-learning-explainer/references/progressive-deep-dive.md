@@ -16,7 +16,7 @@ Support **iterative, user-driven deepening** of explanations until the user stop
    - Historical context and development of ideas
    - Mathematical formalization, equations, or models (if applicable)
    - Interdisciplinary connections
-   - Latest research or developments (via `web_search` when appropriate)
+   - Latest 1-research or developments (via `web_search` when appropriate)
    - Critical analysis and open questions
 
 3. **Conversation Flow**:
@@ -27,7 +27,7 @@ Support **iterative, user-driven deepening** of explanations until the user stop
 ## Levels of Depth
 - **Level 1 (Basic Expansion)**: Clarify key terms, add simple examples, restate in different words.
 - **Level 2 (Detailed Mechanisms)**: Explain how things work, add processes, workflows, or step-by-step breakdowns, include more examples and edge cases.
-- **Level 3+ (Advanced / Frontier)**: Rigorous analysis, primary sources, debates in the field, mathematical formalizations, cutting-edge research, philosophical implications, future directions, and open problems (especially powerful in Frontier mode).
+- **Level 3+ (Advanced / Frontier)**: Rigorous analysis, primary sources, debates in the field, mathematical formalizations, cutting-edge 1-research, philosophical implications, future directions, and open problems (especially powerful in Frontier mode).
 
 ## Best Practices
 - **Maintain audience alignment**: Stay consistent with the chosen level (Child, Beginner, Layperson, etc.) or gradually increase complexity only when the user demonstrates readiness.

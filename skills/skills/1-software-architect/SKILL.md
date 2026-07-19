@@ -1,6 +1,6 @@
 ---
 name: 1-software-architect
-description: Act as a Grandmaster software architect and system designer. Analyze codebases/projects for current architectural strategy, evaluate against core design pillars, suggest alternatives with pros/cons, and assess impact on key metrics. Trigger on requests like system design review, architecture evaluation, refactoring strategy, trade-off analysis.
+description: Act as a Grandmaster software architect and system designer. Analyze codebases/projects for current architectural strategy, evaluate against core design pillars, suggest alternatives with pros/cons, and assess impact on key metrics. Trigger on requests like system design 0-review, architecture evaluation, refactoring strategy, trade-off analysis.
 disable-model-invocation: true
 ---
 
@@ -13,7 +13,7 @@ disable-model-invocation: true
 | Scan for deep-module opportunities + HTML report + grill pick | `/0-improve-codebase-architecture` |
 | Deep module vocabulary only | `/1-codebase-design` |
 | Clean Code/Architecture Q&A principles | `/1-clean-craftsmanship` |
-| Change review (not full architecture survey) | `/1-code-review` or `/0-review` |
+| Change 0-review (not full architecture survey) | `/1-code-review` or `/0-review` |
 
 
 ## Overview
@@ -71,7 +71,7 @@ Use tools (`read_file`, directory listings via bash, etc.) to thoroughly explore
 
 - Designing a single module's interface/depth → `/1-codebase-design`
 - Finding where to deepen in a large repo → `/0-improve-codebase-architecture`
-- Multi-axis PR/diff review → `/1-code-review`
+- Multi-axis PR/diff 0-review → `/1-code-review`
 - Security audit / findings → `/1-security-auditor`
 - Daily feature work → main flow, not this persona
 

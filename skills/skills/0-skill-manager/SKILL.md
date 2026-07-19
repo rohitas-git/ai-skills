@@ -4,8 +4,8 @@ description: >
   Catalog facilities manager: CRUD skills, place them under a domain hub workflow,
   create new hubs, ingest/promote, organize (move/rename/deprecate), atomize overlapping
   skills, and lint catalog health. Use when adding, rehousing, or deprecating skills —
-  not for "which skill should I use?" (that is butler). User-invoked. Triggers:
-  skill-manager, ingest skill, rehouse, deprecate skill, new hub, lint skills, place
+  not for "which skill should I use?" (that is 0-butler). User-invoked. Triggers:
+  0-skill-manager, ingest skill, rehouse, deprecate skill, new hub, lint skills, place
   skill, organize catalog, atomize skills.
 disable-model-invocation: true
 ---
@@ -51,7 +51,7 @@ See [hard-rules.md](./references/hard-rules.md). Always:
 5. Every live skill must be a **hub member** (parent hub + link type) — ADR 0006.
 6. At pipeline forks, ensure an **F# ask-user** question exists in flows.md (or propose one).
 7. **skill-lint** after create/place/ingest — zero critical before treat as healthy (load `/1-skill-linter`).
-8. Sprawl / multi-pipeline mega-skills → split or **sub-domain hub** (skill-linter refs), not silent growth.
+8. Sprawl / multi-pipeline mega-skills → split or **sub-domain hub** (1-skill-linter refs), not silent growth.
 
 ## Integration test (ingest / place / new-hub)
 

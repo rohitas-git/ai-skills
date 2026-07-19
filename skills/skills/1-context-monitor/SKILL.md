@@ -44,7 +44,7 @@ This skill tracks conversation context consumption and intervenes helpfully when
    Quick tips to optimize tokens:
    - Start a fresh chat (best for performance)
    - Ask me for a summary of key points so far
-   - Use briefer prompts or the response-effort-calibrator skill
+   - Use briefer prompts or the 1-response-effort-calibrator skill
    - Avoid repasting long code/files — refer to them instead
 
    Would you like a concise summary of our conversation to continue in a new session?

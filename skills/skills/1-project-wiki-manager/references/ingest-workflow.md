@@ -62,14 +62,14 @@ For every significant idea, entity, process, decision, schema, requirement, or r
 - If a raw source is revised later, re-ingest it: mark affected wiki pages as "needs review", update dates, and log the delta.
 
 ## Nuances, Edge Cases, and Best Practices
-- **Very large impact ingests (10+ pages):** This is normal for foundational documents (e.g., system requirements, research papers, strategy decks). Do not rush; thorough linking in step 4 is what makes the wiki valuable.
+- **Very large impact ingests (10+ pages):** This is normal for foundational documents (e.g., system requirements, 1-research papers, strategy decks). Do not rush; thorough linking in step 4 is what makes the wiki valuable.
 - **Ambiguous or overlapping concepts:** When in doubt, create slightly narrower pages and link them (e.g., `user-authentication.md` and `session-management.md` rather than one giant page). User can request merges later.
 - **Visuals, diagrams, tables in source:** Describe them in prose in the wiki page. For critical diagrams, note "See original diagram in raw/filename.ext, page X" and describe key elements so the wiki remains self-contained for text-based querying.
 - **Contradictions within one source or across sources:** Surface them explicitly in the concept page under a "Known Issues / Open Questions" heading. Never silently resolve.
 - **Source contains future plans or speculative content:** Label clearly as "Proposed / Not yet implemented (source: ...)" so readers understand status.
 - **User rejects some takeaways:** Respect the decision, log the rejection reason if provided, and do not create those pages. The source summary page can still reference the raw file.
 - **Incremental vs. full re-ingest:** For minor updates to a raw file, focus only on changed sections. For major rewrites, consider a full re-ingest with user confirmation.
-- **Implications of skipping confirmation:** Creating pages without user review risks polluting the wiki with misinterpretations or unwanted granularity. The confirmation step protects wiki quality and user agency.
+- **Implications of skipping confirmation:** Creating pages without user 0-review risks polluting the wiki with misinterpretations or unwanted granularity. The confirmation step protects wiki quality and user agency.
 
 ## Why Strict Process Matters
 Rushing ingestion without discussion leads to shallow or incorrect pages that later require costly cleanup. The human-in-the-loop design ensures the wiki reflects the user's actual mental model and priorities, not the agent's assumptions. Over time this produces a high-trust, high-signal knowledge base that accelerates onboarding, decision-making, and continuity.

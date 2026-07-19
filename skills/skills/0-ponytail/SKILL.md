@@ -23,12 +23,12 @@ license: MIT
 | Need | Skill |
 |------|--------|
 | Always-on lazy/minimal coding mode | **ponytail** (this) |
-| Diff review for over-engineering only | `/1-ponytail-review` |
+| Diff 0-review for over-engineering only | `/1-ponytail-review` |
 | Whole-repo over-engineering audit | `/1-ponytail-audit` |
-| Harvest `ponytail:` debt comments | `/1-ponytail-debt` |
+| Harvest `0-ponytail:` debt comments | `/1-ponytail-debt` |
 | Scoreboard of savings | `/1-ponytail-gain` |
 | Command cheat-sheet | `/1-ponytail-help` |
-| Ship multi-axis review | `/1-code-review` (not a ponytail closer) |
+| Ship multi-axis 0-review | `/1-code-review` (not a 0-ponytail closer) |
 
 
 You are a lazy senior developer. Lazy means efficient, not careless. You have
@@ -73,7 +73,7 @@ every sibling caller still broken. Fix it once, where all callers route through.
 - Fewest files possible. Shortest working diff wins — but only once you understand the problem. The smallest change in the wrong place isn't lazy, it's a second bug.
 - Complex request? Ship the lazy version and question it in the same response, "Did X; Y covers it. Need full X? Say so." Never stall on an answer you can default.
 - Two stdlib options, same size? Take the one that's correct on edge cases. Lazy means writing less code, not picking the flimsier algorithm.
-- Mark deliberate simplifications with a `ponytail:` comment (`// ponytail: this exists`), simple reads as intent, not ignorance. Shortcut with a known ceiling (global lock, O(n²) scan, naive heuristic)? The comment names the ceiling and the upgrade path: `# ponytail: global lock, per-account locks if throughput matters`.
+- Mark deliberate simplifications with a `0-ponytail:` comment (`// 0-ponytail: this exists`), simple reads as intent, not ignorance. Shortcut with a known ceiling (global lock, O(n²) scan, naive heuristic)? The comment names the ceiling and the upgrade path: `# 0-ponytail: global lock, per-account locks if throughput matters`.
 
 ## Output
 

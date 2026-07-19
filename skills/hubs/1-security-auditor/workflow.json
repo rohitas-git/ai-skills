@@ -8,7 +8,7 @@
   "path": "skills/1-security-auditor",
   "package_dir": "hubs/1-security-auditor/",
   "role": "Multi-phase security/quality audit + structured findings \u2014 sub-hub under /0-review.",
-  "notes": "F-R2 chooses full vs scoped vs differential. Soft-link security-and-hardening for remediation.",
+  "notes": "F-R2 chooses full vs scoped vs differential. Soft-link 1-security-and-hardening for remediation.",
   "parent": {
     "hub": "0-butler",
     "slash": "/0-butler",
@@ -35,7 +35,7 @@
     "report",
     "structured findings",
     "independent verification",
-    "optional security-and-hardening remediation"
+    "optional 1-security-and-hardening remediation"
   ],
   "forks": [
     {

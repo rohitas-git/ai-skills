@@ -32,7 +32,7 @@ Apply this to every change before declaring it done.
 - [ ] Changes are scoped to the task; no unrelated refactors snuck in
 - [ ] Linting and formatting pass
 
-The depth behind these items lives in `code-review-and-quality` (the five-axis review) and `code-simplification` (reducing complexity without changing behavior).
+The depth behind these items lives in `code-review-and-quality` (the five-axis 0-review) and `code-simplification` (reducing complexity without changing behavior).
 
 ### Integration
 - [ ] Change works with the rest of the system, not just in isolation
@@ -64,4 +64,4 @@ Tailor the list to the project once, then reuse it unchanged. A Definition of Do
 - "Tests pass" used as a synonym for done while docs, regressions, or runtime verification are skipped.
 - A different bar applied depending on deadline pressure.
 - Acceptance criteria treated as the whole bar, with no standing quality floor.
-- "Done" declared before human review on changes that need it.
+- "Done" declared before human 0-review on changes that need it.

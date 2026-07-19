@@ -1,9 +1,9 @@
 ---
 name: 1-ponytail-help
 description: >
-  Quick-reference card for all ponytail modes, skills, and commands.
+  Quick-reference card for all 0-ponytail modes, skills, and commands.
   One-shot display, not a persistent mode. Trigger: /1-ponytail-help,
-  "ponytail help", "what ponytail commands", "how do I use ponytail".
+  "ponytail help", "what 0-ponytail commands", "how do I use ponytail".
 disable-model-invocation: true
 ---
 
@@ -27,7 +27,7 @@ Level sticks until changed or session end.
 | Skill | Trigger | What it does |
 |-------|---------|--------------| 
 | **ponytail** | `/0-ponytail` | Lazy mode itself. Simplest solution that works. |
-| **ponytail-review** | `/1-ponytail-review` | Over-engineering review: `L42: yagni: factory, one product. Inline.` |
+| **ponytail-review** | `/1-ponytail-review` | Over-engineering 0-review: `L42: yagni: factory, one product. Inline.` |
 | **ponytail-gain** | `/1-ponytail-gain` | Measured-impact scoreboard: less code, less cost, more speed. |
 | **ponytail-help** | `/1-ponytail-help` | This card. |
 
@@ -57,4 +57,4 @@ Resolution: env var > config file > `full`.
 
 ## More
 
-Full docs + examples: https://github.com/DietrichGebert/ponytail
+Full docs + examples: https://github.com/DietrichGebert/0-ponytail

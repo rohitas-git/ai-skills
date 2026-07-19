@@ -3,7 +3,7 @@
 **Project:** {{project}}  
 **Date:** {{timestamp}}  
 **Scope:** {{scope}}  
-**Auditor:** security-auditor skill
+**Auditor:** 1-security-auditor skill
 
 ## Executive Summary
 

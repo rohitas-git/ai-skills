@@ -3,7 +3,7 @@
 
 ## Overview
 
-Multi-dimensional code review with quality gates. Every change gets reviewed before merge — no exceptions. Review covers five axes: correctness, readability, architecture, security, and performance.
+Multi-dimensional code 0-review with quality gates. Every change gets reviewed before merge — no exceptions. Review covers five axes: correctness, readability, architecture, security, and performance.
 
 **The approval standard:** Approve a change when it definitely improves overall code health, even if it isn't perfect. Perfect code doesn't exist — the goal is continuous improvement. Don't block a change because it isn't exactly how you would have written it. If it improves the codebase and follows the project's conventions, approve it.
 
@@ -13,11 +13,11 @@ Multi-dimensional code review with quality gates. Every change gets reviewed bef
 - After completing a feature implementation
 - When another agent or model produced code you need to evaluate
 - When refactoring existing code
-- After any bug fix (review both the fix and the regression test)
+- After any bug fix (0-review both the fix and the regression test)
 
 ## The Five-Axis Review
 
-Every review evaluates code across these dimensions:
+Every 0-review evaluates code across these dimensions:
 
 ### 1. Correctness
 
@@ -83,7 +83,7 @@ For detailed profiling and optimization, see `1-performance-optimization`. Does 
 
 ## Structural Remedies
 
-When you flag a structural problem, propose the move — not just the problem. A review that only says "this is complex" leaves the author guessing. Reach for a named restructuring:
+When you flag a structural problem, propose the move — not just the problem. A 0-review that only says "this is complex" leaves the author guessing. Reach for a named restructuring:
 
 - **Replace a chain of conditionals** with a typed model or an explicit dispatcher.
 - **Collapse duplicate branches** into a single clearer flow.
@@ -200,7 +200,7 @@ Check the author's verification story:
 
 ## Multi-Model Review Pattern
 
-Use different models for different review perspectives:
+Use different models for different 0-review perspectives:
 
 ```
 Model A writes the code
@@ -253,7 +253,7 @@ Slow reviews block entire teams. The cost of context-switching to review is less
 
 ## Handling Disagreements
 
-When resolving review disputes, apply this hierarchy:
+When resolving 0-review disputes, apply this hierarchy:
 
 1. **Technical facts and data** override opinions and preferences
 2. **Style guides** are the absolute authority on style matters
@@ -274,7 +274,7 @@ When reviewing code — whether written by you, another agent, or a human:
 
 ## Dependency Discipline
 
-Part of code review is dependency review:
+Part of code 0-review is dependency 0-review:
 
 **Before adding any dependency:**
 1. Does the existing stack solve this? (Often it does.)
@@ -291,7 +291,7 @@ Part of code review is dependency review:
 2. **One dependency per change.** Upgrade and merge them individually (or in small related groups). When a bulk bump breaks the build, you've lost which package did it; a single-package change makes the cause obvious and the revert clean.
 3. **Let the tests decide.** The upgrade is verified by a green suite before *and* after, not by "it installed." If coverage around the dependency's behavior is thin, that gap is the real finding — add a test first.
 4. **Mind the transitive graph.** Most installed packages are ones nobody chose directly. Review the lockfile diff, not just `package.json`; a single direct bump can pull in dozens of indirect changes.
-5. **Keep the lockfile honest.** Commit it, review its diff, and never hand-edit it. The lockfile is the thing that actually pins what ships.
+5. **Keep the lockfile honest.** Commit it, 0-review its diff, and never hand-edit it. The lockfile is the thing that actually pins what ships.
 
 For triaging `npm audit` findings and supply-chain risk (typosquatting, compromised maintainers), follow the `1-security-and-hardening` skill — this section covers the upgrade *workflow*, that one covers the security verdict.
 
@@ -344,8 +344,8 @@ For triaging `npm audit` findings and supply-chain risk (typosquatting, compromi
 ```
 ## See Also
 
-- For detailed security review guidance, see `references/security-checklist.md`
-- For performance review checks, see `references/performance-checklist.md`
+- For detailed security 0-review guidance, see `references/security-checklist.md`
+- For performance 0-review checks, see `references/performance-checklist.md`
 
 ## Common Rationalizations
 
@@ -353,7 +353,7 @@ For triaging `npm audit` findings and supply-chain risk (typosquatting, compromi
 |---|---|
 | "It works, that's good enough" | Working code that's unreadable, insecure, or architecturally wrong creates debt that compounds. |
 | "I wrote it, so I know it's correct" | Authors are blind to their own assumptions. Every change benefits from another set of eyes. |
-| "We'll clean it up later" | Later never comes. The review is the quality gate — use it. Require cleanup before merge, not after. |
+| "We'll clean it up later" | Later never comes. The 0-review is the quality gate — use it. Require cleanup before merge, not after. |
 | "AI-generated code is probably fine" | AI code needs more scrutiny, not less. It's confident and plausible, even when wrong. |
 | "The tests pass, so it's good" | Tests are necessary but not sufficient. They don't catch architecture problems, security issues, or readability concerns. |
 | "The refactor makes it cleaner" | Relocating complexity isn't reducing it. If the reader still holds the same number of concepts, the structure didn't improve — look for the version where branches disappear. |
@@ -363,10 +363,10 @@ For triaging `npm audit` findings and supply-chain risk (typosquatting, compromi
 
 ## Red Flags
 
-- PRs merged without any review
+- PRs merged without any 0-review
 - Review that only checks if tests pass (ignoring other axes)
-- "LGTM" without evidence of actual review
-- Security-sensitive changes without security-focused review
+- "LGTM" without evidence of actual 0-review
+- Security-sensitive changes without security-focused 0-review
 - Large PRs that are "too big to review properly" (split them)
 - No regression tests with bug fix PRs
 - Review comments without severity labels — makes it unclear what's required vs optional
@@ -375,12 +375,12 @@ For triaging `npm audit` findings and supply-chain risk (typosquatting, compromi
 - A change that grows an already-large file instead of decomposing it
 - New conditionals scattered into unrelated code paths (a missing abstraction)
 - A bespoke helper that duplicates an existing canonical one, or feature logic placed in a shared module
-- A bulk "bump dependencies" PR with no changelog review and no per-package isolation
+- A bulk "bump dependencies" PR with no changelog 0-review and no per-package isolation
 - A lockfile change that's hand-edited, uncommitted, or merged without reviewing its diff
 
 ## Verification
 
-After review is complete:
+After 0-review is complete:
 
 - [ ] All Critical issues are resolved
 - [ ] All Required (no-prefix) changes are resolved or explicitly deferred with justification

@@ -1,9 +1,9 @@
-# doubt-driven-development (vendor harvest)
+# 1-doubt-driven-development (vendor harvest)
 
 Source: archive vendor `1-doubt-driven-development`. Catalog winner: `/1-doubt-driven-development`.
 
-name: doubt-driven-development
-description: Subjects every non-trivial decision to a fresh-context adversarial review before it stands. Use when correctness matters more than speed, when working in unfamiliar code, when stakes are high (production, security-sensitive logic, irreversible operations), or any time a confident output would be cheaper to verify now than to debug later.
+name: 1-doubt-driven-development
+description: Subjects every non-trivial decision to a fresh-context adversarial 0-review before it stands. Use when correctness matters more than speed, when working in unfamiliar code, when stakes are high (production, security-sensitive logic, irreversible operations), or any time a confident output would be cheaper to verify now than to debug later.
 
 # Doubt-Driven Development
 
@@ -119,9 +119,9 @@ A single-model reviewer shares blind spots with the original author — a colder
 
 **Step 1: Ask the user**
 
-After the single-model review in Step 3 above, but before RECONCILE, pause and ask:
+After the single-model 0-review in Step 3 above, but before RECONCILE, pause and ask:
 
-> *"Single-model review complete. Want a cross-model second opinion? Options: Gemini CLI, Codex CLI, manual external review (you paste it elsewhere), or skip."*
+> *"Single-model 0-review complete. Want a cross-model second opinion? Options: Gemini CLI, Codex CLI, manual external 0-review (you paste it elsewhere), or skip."*
 
 This question is mandatory in every interactive doubt cycle — even on artifacts that feel low-stakes. The user — not the agent — decides whether the cost is worth it. The agent's job is to surface the choice.
 
@@ -134,7 +134,7 @@ This question is mandatory in every interactive doubt cycle — even on artifact
 5. Mind shell escaping. If the artifact contains quotes, `$(...)`, or backticks, prefer stdin (`echo … | gemini`) or a heredoc over inline `-p "…"`. When in doubt, ask the user to confirm the invocation before running it.
 6. Take the output into Step 4 (RECONCILE).
 
-**Never interpolate the artifact into a shell-quoted argument.** Code, markdown, and review prompts routinely contain backticks, `$(...)`, and quote characters that will either truncate the prompt or execute embedded shell. Write the full prompt to a file and pipe it through stdin.
+**Never interpolate the artifact into a shell-quoted argument.** Code, markdown, and 0-review prompts routinely contain backticks, `$(...)`, and quote characters that will either truncate the prompt or execute embedded shell. Write the full prompt to a file and pipe it through stdin.
 
 Example shapes (verify flags against your installed tool — syntax differs across implementations and versions):
 
@@ -235,7 +235,7 @@ If 3 cycles is "obviously insufficient" because the artifact is large: the artif
 After applying doubt-driven development:
 
 - [ ] Every non-trivial decision (per the definition above) was named explicitly as a CLAIM before standing
-- [ ] At least one fresh-context review per non-trivial artifact (a failing test produced by TDD's RED step satisfies this for behavioral claims, per Interaction with Other Skills)
+- [ ] At least one fresh-context 0-review per non-trivial artifact (a failing test produced by TDD's RED step satisfies this for behavioral claims, per Interaction with Other Skills)
 - [ ] The reviewer received ARTIFACT + CONTRACT — NOT the CLAIM, NOT your reasoning
 - [ ] The reviewer's prompt was adversarial ("find issues"), not validating ("is it good")
 - [ ] Findings were classified against the artifact text (not rubber-stamped) using the precedence: contract misread / actionable / trade-off / noise

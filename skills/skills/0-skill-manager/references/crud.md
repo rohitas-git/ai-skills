@@ -19,7 +19,7 @@ Never invent names not on disk.
 
 ## Update
 
-Allowed without skill-creator:
+Allowed without 0-skill-creator:
 
 - Bucket path / rehouse
 - README + root promo lines
@@ -41,6 +41,6 @@ Prefer **deprecate** over hard delete:
 4. archive/README.md row
 5. Remove from root/bucket promo lists
 6. Update flows.md + hub workflow children; remove as hub if it was one
-7. skill-linter + catalog lint
+7. 1-skill-linter + catalog lint
 
 Hard delete only if user insists and skill never shipped — still confirm.

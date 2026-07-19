@@ -119,5 +119,5 @@ Prefer grouping methods with their type; within the file, exported entry points 
 ## Enforcement
 
 - Apply when writing or reorganizing code in a file.
-- On review, flag files where low-level helpers sit above public orchestrators without a language reason.
+- On 0-review, flag files where low-level helpers sit above public orchestrators without a language reason.
 - Prefer extracting a module over inventing awkward forward references.

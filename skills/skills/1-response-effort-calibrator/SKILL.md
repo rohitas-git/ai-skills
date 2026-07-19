@@ -17,7 +17,7 @@ This skill standardizes how the agent interprets user instructions about respons
 - **Simple terms + brief / Plain English + short**: 1 short paragraph or 3-4 bullets. Use everyday words, define unavoidable jargon in-line, skip background, examples, caveats, and follow-up offers unless they materially affect correctness.
 - **Balanced / Standard**: Normal helpful response — context, explanation, pros/cons if relevant. ~200-400 words.
 - **Detailed / In-depth**: Comprehensive coverage with examples, reasoning steps, alternatives, potential edge cases. Structured (headings, lists).
-- **Exhaustive / Thorough / Full analysis**: Leave no stone unturned — deep research (use tools), multiple angles, comparisons, long-term implications, references. Can be multi-section.
+- **Exhaustive / Thorough / Full analysis**: Leave no stone unturned — deep 1-research (use tools), multiple angles, comparisons, long-term implications, references. Can be multi-section.
 
 ## Instructions
 
@@ -32,7 +32,7 @@ This skill standardizes how the agent interprets user instructions about respons
    - If the user asks for both simplicity and brevity, prioritize a compact plain-language answer over teaching structure.
    - If conflicting cues, ask for clarification or default to balanced + note the choice.
    - Structure output to match: Use bullets/headings for higher effort; keep dense for lower.
-   - For tool use: Scale research depth (e.g., brief = 1-2 searches; detailed = multiple tools + synthesis).
+   - For tool use: Scale 1-research depth (e.g., brief = 1-2 searches; detailed = multiple tools + synthesis).
 
 4. **Tone & Quality Controls** (always maintain):
    - Stay helpful, truthful, and clear regardless of length.
@@ -44,7 +44,7 @@ This skill standardizes how the agent interprets user instructions about respons
 **User**: "Briefly explain quantum computing."
 → Response: Short definition + 1-2 key principles.
 
-**User**: "Explain these review findings in simple terms briefly."
+**User**: "Explain these 0-review findings in simple terms briefly."
 → Response: 3-4 plain-English bullets about the practical problems and why they matter.
 
 **User**: "Give a detailed comparison of React vs Vue."

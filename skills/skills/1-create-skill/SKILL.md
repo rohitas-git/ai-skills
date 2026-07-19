@@ -1,8 +1,8 @@
 ---
 name: 1-create-skill
 description: >
-  Thin entry for authoring skills. Loads skill-creator (body craft/eval), then
-  skill-manager for catalog place/ingest. Use when scaffolding a skill or /1-create-skill.
+  Thin entry for authoring skills. Loads 0-skill-creator (body craft/eval), then
+  0-skill-manager for catalog place/ingest. Use when scaffolding a skill or /1-create-skill.
 disable-model-invocation: true
 ---
 

@@ -148,7 +148,7 @@ priority: high
 This initiative aims to [[improve-knowledge-workflow]] by adopting modern PKM practices in [[Obsidian]].
 
 > [!important] Key Milestone
-> First working prototype due ==August 15th==.
+> First working 1-prototype due ==August 15th==.
 
 ## Goals
 - [x] Define core principles

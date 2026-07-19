@@ -35,9 +35,9 @@
 
 ## Next
 - If FAIL: do not apply place/ingest. Fix lean/chain first.
-- If fat SKILL.md: `/0-skill-creator` thin to Matt shape (writing-great-skills).
+- If fat SKILL.md: `/0-skill-creator` thin to Matt shape (1-writing-great-skills).
 - If orphans: `/0-skill-manager` place (dry-run) with parent hub + link type.
 - If sprawl after thin attempt: sprawl-and-subdomain.md → skill-manager.
 ```
 
-Always include **Gate: PASS|FAIL** so skill-manager integration test row 9 is unambiguous.
+Always include **Gate: PASS|FAIL** so 0-skill-manager integration test row 9 is unambiguous.

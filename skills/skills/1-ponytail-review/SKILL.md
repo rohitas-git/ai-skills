@@ -1,12 +1,12 @@
 ---
 name: 1-ponytail-review
 description: >
-  Code review focused exclusively on over-engineering. Finds what to delete:
+  Code 0-review focused exclusively on over-engineering. Finds what to delete:
   reinvented standard library, unneeded dependencies, speculative abstractions,
   dead flexibility. One line per finding: location, what to cut, what replaces
   it. Use when the user says "review for over-engineering", "what can we
   delete", "is this over-engineered", "simplify review", or invokes
-  /1-ponytail-review. Complements correctness-focused review, this one only
+  /1-ponytail-review. Complements correctness-focused 0-review, this one only
   hunts complexity.
 disable-model-invocation: true
 ---
@@ -53,13 +53,13 @@ If there is nothing to cut, say `Lean already. Ship.` and stop.
 ## Boundaries
 
 Scope: over-engineering and complexity only. Correctness bugs, security holes,
-and performance are explicitly out of scope. Route them to a normal review
+and performance are explicitly out of scope. Route them to a normal 0-review
 pass, not this one. A single smoke test or `assert`-based
-self-check is the ponytail minimum, not bloat, never flag it for deletion.
+self-check is the 0-ponytail minimum, not bloat, never flag it for deletion.
 Does not apply the fixes, only lists them.
-"stop ponytail-review" or "normal mode": revert to verbose review style.
+"stop ponytail-review" or "normal mode": revert to verbose 0-review style.
 
 ## Don't use when
 
-- Full multi-axis review (Spec/Standards/Maintainability) → `/1-code-review`
+- Full multi-axis 0-review (Spec/Standards/Maintainability) → `/1-code-review`
 - Mid-build self-verify → `/1-verify-work`

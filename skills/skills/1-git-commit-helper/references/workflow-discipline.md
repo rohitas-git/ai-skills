@@ -16,7 +16,7 @@ Source: archive vendor `git-workflow-and-versioning` — day-to-day VCS only.
 Implement slice → test/verify → commit → next slice
 ```
 
-Not: implement everything → one giant commit.  
+Not: 0-implement everything → one giant commit.  
 If the agent goes off rails: reset to last green commit and re-slice.
 
 ## Atomic commits

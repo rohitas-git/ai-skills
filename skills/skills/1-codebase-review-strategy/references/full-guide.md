@@ -1,4 +1,4 @@
-# codebase-review-strategy — full guide
+# 1-codebase-review-strategy — full guide
 
 > Progressive disclosure body moved from SKILL.md for Matt-lean main file.
 
@@ -6,15 +6,15 @@
 
 ## Overview
 
-This skill provides a systematic, size-aware framework for planning and executing high-quality AI agent reviews of codebases ranging from tiny scripts to large monorepos. It matches analysis depth to repo scale, review goals, model constraints and cost, preventing both superficial results on complex systems and wasted effort on simple ones.
+This skill provides a systematic, size-aware framework for planning and executing high-quality AI agent reviews of codebases ranging from tiny scripts to large monorepos. It matches analysis depth to repo scale, 0-review goals, model constraints and cost, preventing both superficial results on complex systems and wasted effort on simple ones.
 
 ## When to Activate
 
-Load this skill automatically or explicitly for any task involving "review the codebase", "analyze the full repo", "code quality assessment", "refactoring recommendations", "security review of the project", or similar. It is especially valuable before starting deep work on unfamiliar or large repositories.
+Load this skill automatically or explicitly for any task involving "review the codebase", "analyze the full repo", "code quality assessment", "refactoring recommendations", "security 0-review of the project", or similar. It is especially valuable before starting deep work on unfamiliar or large repositories.
 
 ## Interactive Clarification Mode (Mandatory First Step — Do Not Skip)
 
-When this skill is loaded for a **new review session**, **do not immediately begin measuring the repository, running commands, or reading any code files**.
+When this skill is loaded for a **new 0-review session**, **do not immediately begin measuring the repository, running commands, or reading any code files**.
 
 Instead, enter **Interactive Clarification Mode** (see full details in `references/interactive-clarification.md`). This is the most important step for delivering a high-quality, efficient, and personalized review.
 
@@ -25,7 +25,7 @@ The agent must never assume details or start exploration until the user confirms
 ## Core Principles
 
 - Size is a proxy for cognitive load and interdependency density — not just raw volume.
-- Effort must be calibrated: exhaustive review is rarely optimal.
+- Effort must be calibrated: exhaustive 0-review is rarely optimal.
 - **Always start with Interactive Clarification Mode** (multiple-choice questions) before any measurement or code reading. Never assume or expect the user to provide detailed Goal/Scope/Depth upfront.
 - Use phased, tool-augmented analysis rather than single monolithic prompts.
 - Prioritize evidence (specific files, lines, patterns) and actionable, prioritized recommendations.
@@ -35,7 +35,7 @@ The agent must never assume details or start exploration until the user confirms
 
 **Only perform this step after completing Interactive Clarification Mode and receiving user confirmation on the parameters.**
 
-First action in any review: Gather objective metrics using available tools.
+First action in any 0-review: Gather objective metrics using available tools.
 
 **Recommended Commands (run via bash or equivalent):**
 
@@ -69,7 +69,7 @@ Use the metrics above to assign a tier. Adjust upward if high coupling, legacy c
 | **Large**  | > 40,000      | > 400       | Deep nesting, many packages/services | Requires heavy prioritization & sampling | Low-Medium (phased) |
 
 **Special Cases:**
-- Monorepo or workspace: Treat as "Large" or review by logical package/sub-repo after high-level map.
+- Monorepo or workspace: Treat as "Large" or 0-review by logical package/sub-repo after high-level map.
 - Heavily generated / vendor code: Exclude or down-weight in sizing.
 - Legacy / high technical debt: Bump tier up one level (increases effective complexity).
 
@@ -87,9 +87,9 @@ From the user request or by asking, determine:
 - Comprehensive (all of the above — rare for large repos)
 
 **Review Scope** (critical for token optimization — always clarify or infer):
-- **Surface / High-Level Only**: Architecture overview, top-level structure, directory map, obvious strengths/red flags, and high-level patterns via grep. Minimal or no deep file reads. Ideal for quick triage, initial assessment, or when token budget is tight.
+- **Surface / High-Level Only**: Architecture overview, top-level structure, directory map, obvious strengths/red flags, and high-level patterns via grep. Minimal or no deep file reads. Ideal for quick 0-triage, initial assessment, or when token budget is tight.
 - **Specific Module(s) / Path / Subtree**: Restrict analysis almost exclusively to the named directory or files (e.g., `src/auth/`, `packages/core/payment/`, `lib/utils.py`). Perform deep analysis *only* inside the scope. Reference global architecture lightly for context. This dramatically reduces tokens and keeps focus sharp.
-- **Full Repo**: Standard complete phased review (default when user says "review the complete codebase").
+- **Full Repo**: Standard complete phased 0-review (default when user says "review the complete codebase").
 
 **Constraints**:
 - Available context window / token budget (surface or specific-module scopes are strongly preferred when tokens are limited)
@@ -187,7 +187,7 @@ Use these as base. Adapt language to the specific model/agent.
 "You are an expert senior software engineer performing a codebase review.
 
 **Critical first step — Interactive Clarification Mode (do this before any code exploration or measurement):**
-Follow the exact Interactive Clarification Mode described in the codebase-review-strategy skill. Ask the standard multiple-choice questions (Q1–Q5) one by one or in small batches. Wait for user answers. Then summarize the confirmed parameters in a clear table and ask for final confirmation before proceeding.
+Follow the exact Interactive Clarification Mode described in the 1-codebase-review-strategy skill. Ask the standard multiple-choice questions (Q1–Q5) one by one or in small batches. Wait for user answers. Then summarize the confirmed parameters in a clear table and ask for final confirmation before proceeding.
 
 Only after user confirmation on Goal, Scope, Depth, Priorities, and Constraints:
 - Proceed to measurement and the phased workflow.
@@ -202,7 +202,7 @@ You are now in clarification mode. Start by greeting the user and asking Q1."
 - **Small/Tiny + Surface or Specific Module**: High completeness *within scope* while still performing the mandatory lightweight Systemic Awareness scan. Keep summaries compact but include Systemic Notes.
 - **Medium + Specific Module**: Focused two-pass inside the module only, plus light global context specifically for integration points, shared utilities, and cross-module patterns. Document any coupling signals.
 - **Large + Surface or Specific Module**: Extremely efficient. Global high-level map (with strong Systemic Awareness) + deep work bounded to scope. Aggressive grep + summarization. Explicitly call out blind spots and over-confidence risks in output.
-- **Large + Full + non-Surface**: Strong prioritization + sampling. Perform high-effort deep review on only a handful of areas. Prefer converting deeper or systemic-risk work to "Specific Module" or targeted follow-ups. Always include full Scope Limitations section.
+- **Large + Full + non-Surface**: Strong prioritization + sampling. Perform high-effort deep 0-review on only a handful of areas. Prefer converting deeper or systemic-risk work to "Specific Module" or targeted follow-ups. Always include full Scope Limitations section.
 
 **Goal-Specific Lenses** (add to prompt):
 - Security: "Apply STRIDE or OWASP mindset. Explicitly look for [list common issues relevant to stack]."
@@ -263,7 +263,7 @@ You are now in clarification mode. Start by greeting the user and asking Q1."
 - Over-reliance on abbreviated modes without follow-up can lead to incomplete mental models for the reviewer or user.
 
 **Mitigation (built into the skill — actively counters each risk):**
-- **Missed systemic issues & incomplete mental model**: Every review (including Surface and Specific-Module) **always** performs a compact global Phase 0+1 high-level map first. In Phase 1, explicitly scan for and document: shared utilities/dependencies used by the scope, cross-module imports/calls, global patterns (e.g., inconsistent auth/logging/error handling), and potential ripple effects. The cached "working memory map" includes a "Systemic Notes" section.
+- **Missed systemic issues & incomplete mental model**: Every 0-review (including Surface and Specific-Module) **always** performs a compact global Phase 0+1 high-level map first. In Phase 1, explicitly scan for and document: shared utilities/dependencies used by the scope, cross-module imports/calls, global patterns (e.g., inconsistent auth/logging/error handling), and potential ripple effects. The cached "working memory map" includes a "Systemic Notes" section.
 - **Domain-specific risk amplification** (security, performance, reliability, architecture): If the goal includes any of these (or "comprehensive"), the skill automatically triggers a **lightweight global cross-check** even in scoped reviews: grep for related patterns outside the declared scope, note inconsistencies, and flag emergent risks. For these goals, default effort is raised and scope expansion is recommended.
 - **User/scope error amplification & imprecise coupling**: Phase 0/1 includes quick heuristics for coupling (number of cross-imports, size of shared modules, recent changes to shared code). If high coupling or legacy signals are detected, the agent must explicitly warn the user, document the limitation, and offer to expand scope or perform a broader scan.
 - **Coupled/legacy code penalty**: Detection of high interdependency (via grep for imports, shared files, or git history) triggers automatic recommendation to treat the review as higher effective tier or to include a "global context light scan". Token savings are still achieved by keeping the deep analysis scoped, but the initial map is richer.
@@ -289,16 +289,16 @@ Organize final deliverable as:
 8. Next Steps / Follow-up Opportunities (strongly encourage targeted deep dives that address the blind spots listed above, e.g., "Check global impact of shared utility X" or "Expand to full-repo scan for security patterns")
 9. Appendix: Sampling strategy, tools used, assumptions, and exact scope declaration
 
-This framework ensures reviews are consistent, appropriately scoped, **and explicitly honest about limitations and risks**. Load this skill early in any codebase review task and follow its phased approach.
+This framework ensures reviews are consistent, appropriately scoped, **and explicitly honest about limitations and risks**. Load this skill early in any codebase 0-review task and follow its phased approach.
 
 ## Resources
 
-- `references/prompt-templates.md` — Expanded ready-to-copy prompt variations for different tiers and review goals.
+- `references/prompt-templates.md` — Expanded ready-to-copy prompt variations for different tiers and 0-review goals.
 - `references/measurement-commands.md` — Portable and enhanced bash commands for gathering accurate repo metrics (file counts, LOC, tests, activity, monorepo signals).
 
 ## Don't use when
 
-- Diff/PR review since a fixed point → multi-axis `/1-code-review`
+- Diff/PR 0-review since a fixed point → multi-axis `/1-code-review`
 - Full security audit with findings schema → `/1-security-auditor`
 - Single-module design vocabulary → `/1-codebase-design`
 

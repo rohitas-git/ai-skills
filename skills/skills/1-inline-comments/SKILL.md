@@ -5,9 +5,9 @@ description: >
   slightly complex snippets inside function bodies. Use when annotating
   implementation blocks, dense conditionals, multi-step pipelines, or
   non-obvious branches. Do not use for public API docs, JSDoc, docstrings,
-  GoDoc, or language-native surface documentation (use code-comments for those).
+  GoDoc, or language-native surface documentation (use 1-code-comments for those).
   Do not write execution-flow or step-by-step walkthrough comments (use
-  execution-flow-comments for those).
+  1-execution-flow-comments for those).
 disable-model-invocation: true
 ---
 

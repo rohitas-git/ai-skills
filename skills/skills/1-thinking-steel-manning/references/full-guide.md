@@ -1,4 +1,4 @@
-# thinking-steel-manning — full guide
+# 1-thinking-steel-manning — full guide
 
 > Progressive disclosure body moved from SKILL.md for Matt-lean main file.
 
@@ -16,7 +16,7 @@ Steel-manning is the opposite of straw-manning. Instead of attacking the weakest
 - Evaluating alternative approaches
 - Conflict resolution
 - Validating your own decisions
-- Code review discussions
+- Code 0-review discussions
 - Architecture debates
 - When you disagree with someone's proposal
 - Before rejecting an idea
@@ -40,7 +40,7 @@ This skill is the direct counter to **sycophancy** — the pull to validate what
 - **The matter is settled fact, not a position.** Don't steel-man a factual error, a security anti-pattern, or a violated requirement — correct it. Steel-manning is for genuine trade-offs and judgment calls, not for manufacturing a defense of something wrong.
 - **You already agree for good, stated reasons.** If you've actually weighed it, don't perform a fake debate; say why you agree.
 - **Trivial or fully reversible choices** where the cost of being wrong is near zero — the deliberation isn't worth the budget.
-- **An emergency requiring immediate action** — steel-man the post-incident review, not the live fire.
+- **An emergency requiring immediate action** — steel-man the post-incident 0-review, not the live fire.
 
 ## Trigger Card
 
@@ -50,7 +50,7 @@ Before rejecting a proposal or when you're inclined to just agree with the user:
 2. **Find what's actually true in it** — even if you reject the conclusion, what valid insight or concern does it surface?
 3. **Engage that strongest version** — respond to what was actually claimed, not a weak version. If your position still holds, great; if not, update.
 
-Skip for trivial or fully reversible choices where the cost of being wrong is near zero. In an emergency, steel-man the post-incident review, not the live fire.
+Skip for trivial or fully reversible choices where the cost of being wrong is near zero. In an emergency, steel-man the post-incident 0-review, not the live fire.
 
 ## The Steel-Manning Process
 

@@ -3,7 +3,7 @@ name: 1-tdd
 description: >
   Test-driven development (red → green at agreed seams). Use for features or bugs
   test-first, red-green-refactor phrasing, integration tests, or Prove-It bug
-  reproduction. Ship pipeline after implement; before code-review. Sole TDD skill
+  reproduction. Ship pipeline after 0-implement; before code-review. Sole TDD skill
   in this catalog (vendor test-driven-development is merged, not a peer).
 disable-model-invocation: true
 ---
@@ -33,7 +33,7 @@ When exploring, read `CONTEXT.md` / ADRs so names match domain language.
 - **Red before green.** A test that passes on first run proves nothing about new behavior.
 - **One slice at a time.** One seam, one test, one minimal implementation.
 - **Vertical slices**, not horizontal “all tests then all code.”
-- **Refactor is not the third mandatory step of every micro-cycle** — review owns structural cleanup (`/1-code-review`). Tiny renames after green are fine if tests stay green.
+- **Refactor is not the third mandatory step of every micro-cycle** — 0-review owns structural cleanup (`/1-code-review`). Tiny renames after green are fine if tests stay green.
 
 ## Anti-patterns (always)
 
@@ -44,7 +44,7 @@ When exploring, read `CONTEXT.md` / ADRs so names match domain language.
 
 ## Related
 
-- **Parent hub:** `/0-implement` (Ship pipeline: implement → **tdd** → code-review)
+- **Parent hub:** `/0-implement` (Ship pipeline: 0-implement → **tdd** → 1-code-review)
 - **Also soft:** Diagnose hub when debugging with tests
 - **Next:** `/1-code-review`
 - **Not a peer:** archive vendor `test-driven-development` (merged here only)

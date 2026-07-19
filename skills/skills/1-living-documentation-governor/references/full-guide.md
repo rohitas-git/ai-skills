@@ -1,4 +1,4 @@
-# living-documentation-governor — full guide
+# 1-living-documentation-governor — full guide
 
 > Progressive disclosure body moved from SKILL.md for Matt-lean main file.
 
@@ -13,7 +13,7 @@
 | Living docs + triggers + code drift | **living-documentation-governor** (this) |
 | In-repo concept wiki (`docs/raw` → `docs/wiki`) | `/1-project-wiki-manager` |
 | Personal Rohitas’s Notes vault | `/0-rohitas-vault-wiki` |
-| Active glossary/ADR while grilling design | `/1-domain-modeling` |
+| Active glossary/ADR while 0-grilling design | `/1-domain-modeling` |
 
 ## Hard redirect / forks
 

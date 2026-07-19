@@ -8,7 +8,7 @@
   "path": "skills/0-wayfinder",
   "package_dir": "hubs/0-wayfinder/",
   "role": "Multi-session fog map when one agent session cannot hold the work.",
-  "notes": "Do not jump straight to implement from wayfinder; exit is to-spec only.",
+  "notes": "Do not jump straight to implement from 0-wayfinder; exit is 1-to-spec only.",
   "parent": {
     "hub": "0-butler",
     "slash": "/0-butler",

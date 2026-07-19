@@ -8,7 +8,7 @@
   "path": "skills/0-triage",
   "package_dir": "hubs/0-triage/",
   "role": "Issue / external PR state machine; on-ramp into Ship.",
-  "notes": "Never re-triage to-tickets output. F7 entry when work arrives as issues/PRs.",
+  "notes": "Never re-triage 1-to-tickets output. F7 entry when work arrives as issues/PRs.",
   "parent": {
     "hub": "0-butler",
     "slash": "/0-butler",

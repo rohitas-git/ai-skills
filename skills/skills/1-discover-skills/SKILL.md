@@ -70,7 +70,7 @@ npx skills find [query] [--owner <owner>]
 For example:
 
 - User asks "how do I make my React app faster?" → `npx skills find react performance`
-- User asks "can you help me with PR reviews?" → `npx skills find pr review`
+- User asks "can you help me with PR reviews?" → `npx skills find pr 0-review`
 - User asks "I need to create a changelog" → `npx skills find changelog`
 
 ### Step 4: Verify Quality Before Recommending
@@ -123,7 +123,7 @@ When searching, consider these common categories:
 | Testing         | testing, jest, playwright, e2e           |
 | DevOps          | deploy, docker, kubernetes, ci-cd        |
 | Documentation   | docs, readme, changelog, api-docs        |
-| Code Quality    | review, lint, refactor, best-practices   |
+| Code Quality    | 0-review, lint, refactor, best-practices   |
 | Design          | ui, ux, design-system, accessibility     |
 | Productivity    | workflow, automation, git                |
 

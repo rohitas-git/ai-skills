@@ -1,8 +1,8 @@
-# api-and-interface-design (vendor harvest)
+# 1-api-and-interface-design (vendor harvest)
 
 Source: archive vendor `1-api-and-interface-design`. Catalog winner: `/1-api-and-interface-design`.
 
-name: api-and-interface-design
+name: 1-api-and-interface-design
 description: Guides stable API and interface design. Use when designing APIs, module boundaries, or any public interface. Use when creating REST or GraphQL endpoints, defining type contracts between modules, or establishing boundaries between frontend and backend.
 
 # API and Interface Design

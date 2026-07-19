@@ -33,7 +33,7 @@ You **mutate** (after dry-run confirm). You are **not** the report-only linter a
 
 - Lint findings only, no reorg → `/1-skill-linter`
 - Physical move/rename/tombstone without atomize → `/0-skill-manager` organize
-- Greenfield skill body → `/0-skill-creator` then skill-manager place
+- Greenfield skill body → `/0-skill-creator` then 0-skill-manager place
 
 Ask once if ambiguous; never silent-branch.
 
@@ -55,7 +55,7 @@ Ask once if ambiguous; never silent-branch.
 ## Process
 
 1. **Orient** — catalog root, buckets, flows.md.
-2. **Detect** — content-overlap clusters (descriptions + blurb). **Exclude** intentional hub links (wrapper/pipeline/satellite/axis/hard/soft children of same hub, e.g. grilling ↔ grill-me). See [workflow.md](./references/workflow.md).
+2. **Detect** — content-overlap clusters (descriptions + blurb). **Exclude** intentional hub links (wrapper/pipeline/satellite/axis/hard/soft children of same hub, e.g. 0-grilling ↔ 1-grill-me). See [workflow.md](./references/workflow.md).
 3. **Rank** — High (same job packaging) · Medium (trigger confusion) · Low (shared theme, clear split).
 4. **Plan** — For each in-scope cluster: one-job lines, Boundary tables, F# forks, flows + hub `workflow.json` slots, README blurbs. Present dry-run.
 5. **Confirm** — F-A3; wait for user.
@@ -78,7 +78,7 @@ Ask once if ambiguous; never silent-branch.
 5. No wiki/concept atoms.
 6. Forks always **ask the user** (recommended first); never silent cousin load.
 7. skill-lint Gate: PASS before treating pass as done.
-8. Do not own butler routing or skill-linter report format.
+8. Do not own 0-butler routing or 1-skill-linter report format.
 
 ## Related
 

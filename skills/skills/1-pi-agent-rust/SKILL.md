@@ -100,7 +100,7 @@ cargo fmt --check
 ```
 
 For an expanded command cookbook, see `references/COMMANDS.md`.
-For deep incident triage, see `references/DEBUGGING-PLAYBOOKS.md`.
+For deep incident 0-triage, see `references/DEBUGGING-PLAYBOOKS.md`.
 
 ## Critical Files
 

@@ -26,5 +26,5 @@ Lean catalog skill. **Full vendor body:** [references/full-guide.md](./reference
 
 ## Related
 
-- Ship soft under `/0-implement` · after code-review green · not feature build (`/0-implement`/`/1-tdd`)
+- Ship soft under `/0-implement` · after 1-code-review green · not feature build (`/0-implement`/`/1-tdd`)
 - Upstream harvest only; winner name is **`/1-shipping-and-launch`**

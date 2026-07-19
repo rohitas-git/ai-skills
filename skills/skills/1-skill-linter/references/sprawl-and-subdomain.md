@@ -4,9 +4,9 @@ Aligned with **Matt lean** ([matt-lean-structure.md](./matt-lean-structure.md)):
 
 ## Prefer (in order)
 
-1. **Thin SKILL.md** — progressive disclosure to `references/` / sibling files (writing-great-skills ladder).
+1. **Thin SKILL.md** — progressive disclosure to `references/` / sibling files (1-writing-great-skills ladder).
 2. **Chain** — place under domain hub; name prev/next; do not embed other skills’ jobs.
-3. **Split skill** — by invocation or by sequence (writing-great-skills).
+3. **Split skill** — by invocation or by sequence (1-writing-great-skills).
 4. **Sub-domain hub** — only if a multi-skill tree needs its own map under a parent domain.
 
 ## Thresholds (defaults)
@@ -27,7 +27,7 @@ Aligned with **Matt lean** ([matt-lean-structure.md](./matt-lean-structure.md)):
 When split alone is not enough (large tree under one domain):
 
 1. **Name** the sub-hub (`{sub}`) — slash name == hub skill dir if a hub skill exists.
-2. skill-manager **new-hub** package (ADR 0005 layout, flat):
+2. 0-skill-manager **new-hub** package (ADR 0005 layout, flat):
 
    ```text
    hubs/{sub}/
@@ -36,7 +36,7 @@ When split alone is not enough (large tree under one domain):
    ```
 
 3. **workflow.json** fields:
-   - `parent`: butler (house apex)
+   - `parent`: 0-butler (house apex)
    - `parent_domain_hub`: owning domain (e.g. `0-skill-manager`, `0-learn`)
    - `children`: extracted skills + link types (Matt chain)
 4. Parent domain: `link_type: "sub-hub"` → `{sub}`.
@@ -54,4 +54,4 @@ When split alone is not enough (large tree under one domain):
 - [subdomain-candidate] path — 512 lines → split or sub-hub; first try thin + chain
 ```
 
-Do not create a sub-hub without skill-manager + human confirm.
+Do not create a sub-hub without 0-skill-manager + human confirm.

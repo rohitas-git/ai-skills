@@ -16,7 +16,7 @@
 | [[flows]] | Domain hubs + forks | skills/0-butler/references/flows.md |
 | [[hubs]] | Hub packages | hubs/ |
 
-## Hub: butler
+## Hub: 0-butler
 
 | Page | Description | Sources |
 |------|-------------|---------|
@@ -27,24 +27,24 @@
 | [[1-response-effort-calibrator]] | Guides the AI on response effort, depth, and style (brief, concise, balanced, detailed, exhaustive) … | `skills/1-response-effort-calibrator` |
 | [[1-strategic-compact]] | Suggests manual context compaction at logical intervals to preserve context through task phases rath… | `skills/1-strategic-compact` |
 
-## Hub: code-review
+## Hub: 1-code-review
 
 | Page | Description | Sources |
 |------|-------------|---------|
-| [[1-code-review]] | Multi-axis review of changes since a fixed point: Spec (ticket/PRD fidelity), Standards (repo docs +… | `skills/1-code-review` |
-| [[1-ponytail-review]] | Code review focused exclusively on over-engineering. Finds what to delete: reinvented standard libra… | `skills/1-ponytail-review` |
+| [[1-code-review]] | Multi-axis 0-review of changes since a fixed point: Spec (ticket/PRD fidelity), Standards (repo docs +… | `skills/1-code-review` |
+| [[1-ponytail-review]] | Code 0-review focused exclusively on over-engineering. Finds what to delete: reinvented standard libra… | `skills/1-ponytail-review` |
 | [[1-security-and-hardening]] | Hardens code against vulnerabilities while building or remediating. Use when handling user input, au… | `skills/1-security-and-hardening` |
 | [[1-software-architect]] | Act as a Grandmaster software architect and system designer. Analyze codebases/projects for current … | `skills/1-software-architect` |
 | [[1-verify-work]] | Check your work with a verification subagent that reviews diffs, runs builds and tests, and evaluate… | `skills/1-verify-work` |
 
-## Hub: diagnosing-bugs
+## Hub: 0-diagnosing-bugs
 
 | Page | Description | Sources |
 |------|-------------|---------|
 | [[0-diagnosing-bugs]] | Diagnosis loop for hard bugs and performance regressions. Use when the user says "diagnose"/"debug t… | `skills/0-diagnosing-bugs` |
 | [[1-tdd]] | Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions … | `skills/1-tdd` |
 
-## Hub: grilling
+## Hub: 0-grilling
 
 | Page | Description | Sources |
 |------|-------------|---------|
@@ -52,10 +52,10 @@
 | [[1-grill-me]] | A relentless interview to sharpen a plan or design. | `skills/1-grill-me` |
 | [[1-grill-with-docs]] | A relentless interview to sharpen a plan or design, which also creates docs (ADR's and glossary) as … | `skills/1-grill-with-docs` |
 | [[0-grilling]] | Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test … | `skills/0-grilling` |
-| [[1-prototype]] | Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whe… | `skills/1-prototype` |
+| [[1-prototype]] | Build a throwaway 1-prototype to answer a design question. Use when the user wants to sanity-check whe… | `skills/1-prototype` |
 | [[1-thinking-steel-manning]] | Use before rejecting a proposal or when you're inclined to just agree with the user. Build the stron… | `skills/1-thinking-steel-manning` |
 
-## Hub: implement
+## Hub: 0-implement
 
 | Page | Description | Sources |
 |------|-------------|---------|
@@ -69,7 +69,7 @@
 | [[1-resolving-merge-conflicts]] | "Use when you need to resolve an in-progress git merge/rebase conflict." | `skills/1-resolving-merge-conflicts` |
 | [[1-stepdown-rule]] | Enforce top-down file layout using the newspaper metaphor and stepdown rule (callers above callees, … | `skills/1-stepdown-rule` |
 
-## Hub: improve-codebase-architecture
+## Hub: 0-improve-codebase-architecture
 
 | Page | Description | Sources |
 |------|-------------|---------|
@@ -80,7 +80,7 @@
 | [[1-living-documentation-governor]] | Code-synced living documentation: trigger maps, placement into guides/ADR/ glossary/archive, drift c… | `skills/1-living-documentation-governor` |
 | [[1-project-wiki-manager]] | Karpathy-style in-repo project wiki: docs/raw/ → docs/wiki/ concept pages, grounded Q&A, audit, comp… | `skills/1-project-wiki-manager` |
 
-## Hub: learn
+## Hub: 0-learn
 
 | Page | Description | Sources |
 |------|-------------|---------|
@@ -92,7 +92,7 @@
 | [[1-teach]] | Multi-session teaching workspace in the current directory (MISSION.md, lessons, learning-records). U… | `skills/1-teach` |
 | [[1-vault-explain]] | Explain a Rohitas's Notes Concept for learning — grounds in the vault note then redirects to learnin… | `skills/1-vault-explain` |
 
-## Hub: office
+## Hub: 0-office
 
 | Page | Description | Sources |
 |------|-------------|---------|
@@ -106,24 +106,24 @@
 | [[1-pptx]] | "Use this skill any time a .pptx file is involved in any way — as input, output, or both. This inclu… | `skills/1-pptx` |
 | [[1-xlsx]] | "Use this skill any time a spreadsheet file is the primary input or output. This means any task wher… | `skills/1-xlsx` |
 
-## Hub: ponytail
+## Hub: 0-ponytail
 
 | Page | Description | Sources |
 |------|-------------|---------|
 | [[0-ponytail]] | Forces the laziest solution that actually works, simplest, shortest, most minimal. Channels a senior… | `skills/0-ponytail` |
-| [[1-ponytail-audit]] | Whole-repo audit for over-engineering. Like ponytail-review, but scans the entire codebase instead o… | `skills/1-ponytail-audit` |
-| [[1-ponytail-debt]] | Harvest every `ponytail:` comment in the codebase into a debt ledger, so the deliberate shortcuts an… | `skills/1-ponytail-debt` |
+| [[1-ponytail-audit]] | Whole-repo audit for over-engineering. Like 1-ponytail-review, but scans the entire codebase instead o… | `skills/1-ponytail-audit` |
+| [[1-ponytail-debt]] | Harvest every `0-ponytail:` comment in the codebase into a debt ledger, so the deliberate shortcuts an… | `skills/1-ponytail-debt` |
 | [[1-ponytail-gain]] | Show ponytail's measured impact as a compact scoreboard: less code, less cost, more speed, from the … | `skills/1-ponytail-gain` |
-| [[1-ponytail-help]] | Quick-reference card for all ponytail modes, skills, and commands. One-shot display, not a persisten… | `skills/1-ponytail-help` |
+| [[1-ponytail-help]] | Quick-reference card for all 0-ponytail modes, skills, and commands. One-shot display, not a persisten… | `skills/1-ponytail-help` |
 
-## Hub: review
+## Hub: 0-review
 
 | Page | Description | Sources |
 |------|-------------|---------|
 | [[1-codebase-review-strategy]] | Use when reviewing any codebase of unknown or varying size. Determines repo tier from measurable met… | `skills/1-codebase-review-strategy` |
-| [[0-review]] | Domain hub for verification modes — multi-axis change review, security audit, architecture review, a… | `skills/0-review` |
+| [[0-review]] | Domain hub for verification modes — multi-axis change 0-review, security audit, architecture 0-review, a… | `skills/0-review` |
 
-## Hub: rohitas-vault-wiki
+## Hub: 0-rohitas-vault-wiki
 
 | Page | Description | Sources |
 |------|-------------|---------|
@@ -136,28 +136,28 @@
 | [[1-vault-lint]] | Health-check Rohitas's Notes vault: broken wikilinks, orphans, misplaced hubs, frontmatter, contradi… | `skills/1-vault-lint` |
 | [[1-wiki-query]] | Answer questions against a personal LLM wiki / Obsidian vault using Karpathy-style query workflow (i… | `skills/1-wiki-query` |
 
-## Hub: security-auditor
+## Hub: 1-security-auditor
 
 | Page | Description | Sources |
 |------|-------------|---------|
 | [[1-security-auditor]] | Multi-phase security and quality auditor for codebases and projects. Use for security audit, vulnera… | `skills/1-security-auditor` |
 
-## Hub: setup-rohitas-skills
+## Hub: 0-setup-rohitas-skills
 
 | Page | Description | Sources |
 |------|-------------|---------|
-| [[0-setup-rohitas-skills]] | Configure this repo for Rohitas engineering skills — issue tracker, triage labels, domain docs, and … | `skills/0-setup-rohitas-skills` |
+| [[0-setup-rohitas-skills]] | Configure this repo for Rohitas engineering skills — issue tracker, 0-triage labels, domain docs, and … | `skills/0-setup-rohitas-skills` |
 | [[1-to-tickets]] | Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring … | `skills/1-to-tickets` |
 
-## Hub: skill-creator
+## Hub: 0-skill-creator
 
 | Page | Description | Sources |
 |------|-------------|---------|
-| [[1-create-skill]] | Thin entry for authoring skills. Loads skill-creator (body craft/eval), then skill-manager for catal… | `skills/1-create-skill` |
+| [[1-create-skill]] | Thin entry for authoring skills. Loads 0-skill-creator (body craft/eval), then 0-skill-manager for catal… | `skills/1-create-skill` |
 | [[0-skill-creator]] | Create, edit, and evaluate agent skills (body craft, evals, description optimization). Use when auth… | `skills/0-skill-creator` |
 | [[1-writing-great-skills]] | Reference for writing and editing skills well — the vocabulary and principles that make a skill pred… | `skills/1-writing-great-skills` |
 
-## Hub: skill-manager
+## Hub: 0-skill-manager
 
 | Page | Description | Sources |
 |------|-------------|---------|
@@ -167,13 +167,13 @@
 | [[1-skill-linter]] | Health-check agent skills for Matt-style lean SKILL.md, chaining (prev/next/hub), references, hub me… | `skills/1-skill-linter` |
 | [[0-skill-manager]] | Catalog facilities manager: CRUD skills, place them under a domain hub workflow, create new hubs, in… | `skills/0-skill-manager` |
 
-## Hub: triage
+## Hub: 0-triage
 
 | Page | Description | Sources |
 |------|-------------|---------|
 | [[0-triage]] | Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if … | `skills/0-triage` |
 
-## Hub: wayfinder
+## Hub: 0-wayfinder
 
 | Page | Description | Sources |
 |------|-------------|---------|

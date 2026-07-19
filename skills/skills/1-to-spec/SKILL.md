@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 This skill takes the current conversation context and codebase understanding and produces a spec (you may know this document as a PRD). Do NOT interview the user — just synthesize what you already know.
 
-The issue tracker and triage label vocabulary should have been provided to you — run `/0-setup-rohitas-skills` if not.
+The issue tracker and 0-triage label vocabulary should have been provided to you — run `/0-setup-rohitas-skills` if not.
 
 **Vendor depth** (assumptions dump, six-area template, living-spec, gates): [references/vendor-spec-full.md](./references/vendor-spec-full.md). Prefer this skill’s tracker template below for publish shape; pull extra fields (Boundaries Always/Ask/Never, Commands, Success Criteria) from the vendor body when the feature needs them.
 
@@ -18,7 +18,7 @@ The issue tracker and triage label vocabulary should have been provided to you �
 
 Check with the user that these seams match their expectations.
 
-3. Write the spec using the template below, then publish it to the project issue tracker. Apply the `ready-for-agent` triage label - no need for additional triage.
+3. Write the spec using the template below, then publish it to the project issue tracker. Apply the `ready-for-agent` 0-triage label - no need for additional triage.
 
 <spec-template>
 

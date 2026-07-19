@@ -4,7 +4,7 @@
 - *Clean Code: A Handbook of Agile Software Craftsmanship* (2008/2009) — Focuses on writing readable, maintainable code at the module/class/function level.
 - *Clean Architecture: A Craftsman's Guide to Software Structure and Design* (2017/2018) — Focuses on system-level structure, boundaries, independence, and long-term maintainability.
 
-**Summary Approach Used** (per resource-summarizer guidelines):
+**Summary Approach Used** (per 1-resource-summarizer guidelines):
 - 80/20 Rule: Concentrated on the ~20% of content that delivers 80% of lasting value — core principles, rules of thumb, why they matter, and practical implications. Skipped most code listings, specific refactoring walkthroughs (e.g., full Args class or SerialDate), and repetitive examples.
 - Feynman Technique: Explained concepts as if teaching a smart beginner or colleague. Used analogies (kitchen drawers, building foundation, Swiss Army knife). Flagged subtle points and trade-offs.
 - Progressive Summarization & Active Processing: Paraphrased in plain language; organized hierarchically; noted connections between ideas across both books.
@@ -180,7 +180,7 @@ Already introduced in Clean Code, but expanded here with architectural implicati
   - Never let a framework or DB dictate your core entities or use cases.
   - Use Dependency Inversion (DIP) + interfaces + factories/DI to enforce this.
 - **Screaming Architecture**: When you look at the package structure or top-level modules, you should see the *use cases and business rules* screaming at you — not "Spring Boot + Hibernate + React". The architecture is about the problem domain, not the tools.
-- **Boundaries**: Draw lines early (even if you implement the crossing later). Use plugins, facades, humble objects (presenters, DB gateways, service listeners) to keep hard-to-test or volatile parts isolated.
+- **Boundaries**: Draw lines early (even if you 0-implement the crossing later). Use plugins, facades, humble objects (presenters, DB gateways, service listeners) to keep hard-to-test or volatile parts isolated.
 - **Partial Boundaries**: For early stages or simple apps, skip the last step (full plugin) or use one-dimensional boundaries/facades. Don't over-engineer upfront.
 - **DB/Web/Frameworks are Details**: They change often and should not pollute core logic. You should be able to swap Postgres for Mongo, or web UI for CLI, with minimal core changes.
 - **The Main Component**: The composition root (where all wiring happens) is the ultimate detail. It depends on everything but is changed rarely after initial setup.
@@ -248,7 +248,7 @@ Paradigms (structured/OO/functional) → SOLID → Component Cohesion/Coupling �
 - Legacy modernization: how to apply these principles incrementally without big-bang rewrite.
 
 **Recommended Next Steps for Learner**:
-1. Pick one module in your current codebase. Apply SRP + good naming + small functions. Run tests. Notice the difference in review speed.
+1. Pick one module in your current codebase. Apply SRP + good naming + small functions. Run tests. Notice the difference in 0-review speed.
 2. Draw the current architecture of a system you work on. Does it scream the use cases? Where do dependencies point outward?
 3. Introduce a boundary (even a simple interface + humble object) around one volatile part (e.g., email sender, payment gateway).
 4. Read the original books for the rich examples and deeper dives the summary necessarily omits.

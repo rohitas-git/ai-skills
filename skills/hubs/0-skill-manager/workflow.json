@@ -8,7 +8,7 @@
   "path": "skills/0-skill-manager",
   "package_dir": "hubs/0-skill-manager/",
   "role": "Mutates the catalog: CRUD, place, new-hub, ingest, organize, atomize, lint.",
-  "notes": "Butler delegates all multi-file catalog writes here. skill-manager writes flows.md hub slots. Lint via skill-linter (ADR 0006). Atomize via skill-atomize. Every live skill must be a hub member.",
+  "notes": "Butler delegates all multi-file catalog writes here. 0-skill-manager writes flows.md hub slots. Lint via 1-skill-linter (ADR 0006). Atomize via skill-atomize. Every live skill must be a hub member.",
   "parent": {
     "hub": "0-butler",
     "slash": "/0-butler",
@@ -38,7 +38,7 @@
       "skills": [
         "1-skill-linter"
       ],
-      "note": "lint op loads skill-linter; mandatory after create/place/ingest"
+      "note": "lint op loads 1-skill-linter; mandatory after create/place/ingest"
     },
     {
       "link_type": "pipeline",

@@ -20,7 +20,7 @@ disable-model-invocation: true
 | Enforce lean standards while coding | `/1-coding-standards` |
 | Deep module / seam vocabulary | `/1-codebase-design` |
 | Scan repo for deepening opportunities | `/0-improve-codebase-architecture` |
-| Grandmaster system design review | `/1-software-architect` |
+| Grandmaster system design 0-review | `/1-software-architect` |
 | Comment form (API / inline / flow) | `/1-code-comments` · `/1-inline-comments` · `/1-execution-flow-comments` |
 
 ## Hard redirect / fork F-C1

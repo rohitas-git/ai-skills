@@ -10,7 +10,7 @@ Primary inspiration: [Karpathy LLM Wiki gist](https://gist.github.com/karpathy/4
 | **Query** | `1-wiki-query` |
 | **Lint** | `1-vault-lint` |
 
-Plus capture (`1-vault-inbox`) and teach (`1-vault-explain`).
+Plus capture (`1-vault-inbox`) and 1-teach (`1-vault-explain`).
 
 ## Compiler analogy
 

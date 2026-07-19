@@ -1,8 +1,8 @@
-# performance-optimization (vendor harvest)
+# 1-performance-optimization (vendor harvest)
 
 Source: archive vendor `1-performance-optimization`. Catalog winner: `/1-performance-optimization`.
 
-name: performance-optimization
+name: 1-performance-optimization
 description: Optimizes application performance across frontend, backend, queries, and databases. Use when performance requirements exist, when you suspect performance regressions, when Core Web Vitals or load times need improvement, when N+1 query patterns need fixing, or when profiling reveals bottlenecks.
 
 # Performance Optimization
@@ -335,7 +335,7 @@ For detailed performance checklists, optimization commands, and anti-pattern ref
 - N+1 query patterns in data fetching
 - List endpoints without pagination
 - Images without dimensions, lazy loading, or responsive sizes
-- Bundle size growing without review
+- Bundle size growing without 0-review
 - No performance monitoring in production
 - `React.memo` and `useMemo` everywhere (overusing is as bad as underusing)
 

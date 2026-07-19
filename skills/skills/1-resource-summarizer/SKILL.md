@@ -3,7 +3,7 @@ name: 1-resource-summarizer
 description: >
   Distills long resources (PDF, video/transcript, article, image) into learning-focused
   notes using 80/20, Feynman, Cornell, and progressive summarization. Use for summarize,
-  extract insights, study notes from a source. Soft under /0-learn; also vault-ingest distill.
+  extract insights, study notes from a source. Soft under /0-learn; also 1-vault-ingest distill.
   Not multi-level teach-from-scratch (/1-learning-explainer) or multi-session course (/1-teach).
 disable-model-invocation: true
 ---
@@ -49,7 +49,7 @@ This skill extracts and summarizes core information from resources (text, PDFs, 
    - **Key Takeaways**: Prioritized bullets (5-10), with impact/why important.
    - **Feynman Explanations**: Simple teachable versions of core ideas + analogies.
    - **Structured Notes**: Cornell-style (cues/questions for review) or outline/mind-map elements.
-   - **Gaps & Questions**: Areas needing more research + self-test prompts.
+   - **Gaps & Questions**: Areas needing more 1-research + self-test prompts.
    - **Visuals/Quotes**: Describe images/charts; key verbatim excerpts.
    - **Action Items/Implications**: Practical applications for learning/retention.
    - **Review Prompts**: Spaced repetition ideas or blank-sheet recall exercise.

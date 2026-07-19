@@ -70,4 +70,4 @@ Prefer **thin + chain** over new domain hubs. Sub-domain only for whole trees.
 
 ## Catalog-level (delegate / include)
 
-Catalog promotion, dual-router, lock, tombstones remain in skill-manager [lint-checklist.md](../../0-skill-manager/references/lint-checklist.md) and `scripts/lint-skills`. skill-linter **catalog** mode includes hub-member + lean + chain checks for all live skills.
+Catalog promotion, dual-router, lock, tombstones remain in 0-skill-manager [lint-checklist.md](../../0-skill-manager/references/lint-checklist.md) and `scripts/lint-skills`. 1-skill-linter **catalog** mode includes hub-member + lean + chain checks for all live skills.

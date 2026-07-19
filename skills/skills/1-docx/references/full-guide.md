@@ -1,4 +1,4 @@
-# docx — full guide
+# 1-docx — full guide
 
 > Progressive disclosure body moved from SKILL.md for Matt-lean main file.
 
@@ -21,7 +21,7 @@ A .docx file is a ZIP archive containing XML files.
 Legacy `.doc` files must be converted before editing:
 
 ```bash
-python scripts/0-office/soffice.py --headless --convert-to docx document.doc
+python scripts/0-office/soffice.py --headless --convert-to 1-docx document.doc
 ```
 
 ### Reading Content
@@ -53,7 +53,7 @@ python scripts/accept_changes.py input.docx output.docx
 
 ## Creating New Documents
 
-Generate .docx files with JavaScript, then validate. Install: `npm install -g docx`
+Generate .docx files with JavaScript, then validate. Install: `npm install -g 1-docx`
 
 ### Setup
 ```javascript
@@ -583,6 +583,6 @@ After running `comment.py` (see Step 2), add markers to document.xml. For replie
 ## Dependencies
 
 - **pandoc**: Text extraction
-- **docx**: `npm install -g docx` (new documents)
+- **docx**: `npm install -g 1-docx` (new documents)
 - **LibreOffice**: PDF conversion (auto-configured for sandboxed environments via `scripts/0-office/soffice.py`)
 - **Poppler**: `pdftoppm` for images

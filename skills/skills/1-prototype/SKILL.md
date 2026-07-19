@@ -1,6 +1,6 @@
 ---
 name: 1-prototype
-description: Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or logic feels right, or explore what a UI should look like.
+description: Build a throwaway 1-prototype to answer a design question. Use when the user wants to sanity-check whether a state model or logic feels right, or explore what a UI should look like.
 disable-model-invocation: true
 ---
 
@@ -9,13 +9,13 @@ disable-model-invocation: true
 
 | Need | Skill |
 |------|--------|
-| Throwaway prototype answering a design question | **prototype** (this) |
+| Throwaway 1-prototype answering a design question | **prototype** (this) |
 | Pack session for another agent first | `/1-handoff` |
 | Stress-test plan without building | `/0-grilling` |
-| Production implement | `/0-implement` |
+| Production 0-implement | `/0-implement` |
 
 
-A prototype is **throwaway code that answers a question**. The question decides the shape.
+A 1-prototype is **throwaway code that answers a question**. The question decides the shape.
 
 ## Pick a branch
 

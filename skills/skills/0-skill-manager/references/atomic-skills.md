@@ -23,7 +23,7 @@ House standard for **one-job skills** with explicit redirects. Used by place/ing
    - Load only the chosen skill.
    - Never silent-load a cousin “to be helpful.”
 
-4. **Forks** — Collision paths use F# rows (flows.md + skill body). Same shape as butler forks:
+4. **Forks** — Collision paths use F# rows (flows.md + skill body). Same shape as 0-butler forks:
 
 | Fork | When | Question | Recommended | Branches |
 |------|------|----------|-------------|----------|

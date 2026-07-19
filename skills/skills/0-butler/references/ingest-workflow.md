@@ -1,4 +1,4 @@
-# Moved to skill-manager
+# Moved to 0-skill-manager
 
 Catalog **ingest / lint / organize** live under **`/0-skill-manager`**.
 

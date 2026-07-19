@@ -48,7 +48,7 @@ These rules are non-negotiable. They protect the integrity, trustworthiness, and
 Each constraint addresses a specific failure mode observed in long-lived knowledge bases:
 - Immutability prevents the "telephone game" where synthesized pages drift from reality.
 - English-only ensures a single consistent language for search, linking, and future agents or humans.
-- No-speculation preserves trust; users quickly learn they can rely on every statement.
+- No-speculation preserves trust; users quickly 0-learn they can rely on every statement.
 - Confirmation steps protect against over-eager or misaligned automation.
 - Strict index/log updates prevent the wiki from becoming a collection of orphaned or invisible pages.
 

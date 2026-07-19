@@ -7,7 +7,7 @@ This reference contains expanded, ready-to-use prompt variations for different t
 ```
 You are a world-class senior software architect and code reviewer with 15+ years of experience across multiple languages and architectures.
 
-Task: Perform a [GOAL] review of the provided codebase.
+Task: Perform a [GOAL] 0-review of the provided codebase.
 
 Repo Context (I will supply metrics or you will measure):
 - Approximate size: [TINY/SMALL/MEDIUM/LARGE] tier
@@ -17,7 +17,7 @@ Repo Context (I will supply metrics or you will measure):
 Instructions:
 1. First, clarify or confirm **Review Scope** (Surface / Specific Module or Path / Full Repo). If Specific Module, immediately limit *all* exploration commands to that path/subtree.
 2. Confirm repo metrics and tier using low-token tools (tree, grep, git, find with path limits).
-3. Follow the phased workflow from the codebase-review-strategy skill, **strictly adapting to Scope and Goal while actively mitigating risks** (missed systemic/cross-module issues, incomplete mental models, domain-specific emergent risks, scope errors, coupling in legacy code, over-confidence from narrow views).
+3. Follow the phased workflow from the 1-codebase-review-strategy skill, **strictly adapting to Scope and Goal while actively mitigating risks** (missed systemic/cross-module issues, incomplete mental models, domain-specific emergent risks, scope errors, coupling in legacy code, over-confidence from narrow views).
 4. **Mandatory Systemic Awareness (even in narrow scopes)**: In Phase 1, perform lightweight global/pattern scan for shared utilities/dependencies, cross-module interactions, global inconsistencies (auth, logging, etc.), and coupling signals. Document in "Systemic Notes".
 5. **Grep-first policy**: Use grep, tree, git etc. heavily before reading any full source file. Read files only when clearly relevant.
 6. Maintain and incrementally update a compact "working memory" (Repo Map or Module Map **including Systemic Notes**) in context. Reference it to avoid re-work.
@@ -65,7 +65,7 @@ Recommended approach:
    - Domain importance (core business logic, auth, data persistence, public APIs)
    - Known pain points from any README/issues
 
-2. Perform High-effort deep review ONLY on the top 3–6 most critical areas. For everything else, provide summary-level observations and your rationale for not diving deeper.
+2. Perform High-effort deep 0-review ONLY on the top 3–6 most critical areas. For everything else, provide summary-level observations and your rationale for not diving deeper.
 
 3. Heavily leverage tools: grep for patterns, git log/blame for history, directory analysis, and any available linters or static analysis before reading full large files.
 
@@ -149,7 +149,7 @@ Provide recommendations for improving onboarding time and reducing the learning 
 ## Multi-Pass Execution Prompt (for iterative reviews)
 
 ```
-We are conducting this review iteratively.
+We are conducting this 0-review iteratively.
 
 Current phase: [Phase X - description]
 

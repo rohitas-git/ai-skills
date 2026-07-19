@@ -1,6 +1,6 @@
 # Axis: Spec
 
-Does the diff faithfully implement the originating issue / PRD / spec?
+Does the diff faithfully 0-implement the originating issue / PRD / spec?
 
 ## When this axis is applicable
 
@@ -9,7 +9,7 @@ Runnable when a **spec source** exists (scan order):
 1. Issue references in commit messages (`#123`, `Closes #45`, etc.) — fetch via `docs/agents/issue-tracker.md` (run `/0-setup-rohitas-skills` if missing)
 2. Path the user passed
 3. PRD/spec under `docs/`, `specs/`, or `.scratch/` matching branch/feature
-4. Ticket/spec text already in the conversation (e.g. implement was fed a ticket)
+4. Ticket/spec text already in the conversation (e.g. 0-implement was fed a ticket)
 
 If none: **soft-skip** and report `Spec: skipped — no spec source`.
 

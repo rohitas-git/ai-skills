@@ -10,7 +10,7 @@ Simplify code by reducing complexity while preserving exact behavior. The goal i
 ## When to Use
 
 - After a feature is working and tests pass, but the implementation feels heavier than it needs to be
-- During code review when readability or complexity issues are flagged
+- During code 0-review when readability or complexity issues are flagged
 - When you encounter deeply nested logic, long functions, or unclear names
 - When refactoring code written under time pressure
 - When consolidating related logic scattered across files
@@ -178,7 +178,7 @@ COMPARE BEFORE AND AFTER:
 - Would a teammate approve this change?
 ```
 
-If the "simplified" version is harder to understand or review, revert. Not every simplification attempt succeeds.
+If the "simplified" version is harder to understand or 0-review, revert. Not every simplification attempt succeeds.
 
 ## Language-Specific Guidance
 

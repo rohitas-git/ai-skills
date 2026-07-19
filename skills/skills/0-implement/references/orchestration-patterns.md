@@ -51,7 +51,7 @@ Multiple personas operate on the same input concurrently, each producing an inde
 
 ```
                     ┌─→ code-reviewer    ─┐
-/ship → fan out  ───┼─→ security-auditor ─┤→ merge → go/no-go + rollback
+/ship → fan out  ───┼─→ 1-security-auditor ─┤→ merge → go/no-go + rollback
                     └─→ test-engineer    ─┘
 ```
 
@@ -98,7 +98,7 @@ user runs:  /spec  →  /plan  →  /build  →  /test  →  /0-review  →  /sh
 When a task requires reading large amounts of material that shouldn't pollute the main context, spawn a research sub-agent that returns only a digest.
 
 ```
-main agent → research sub-agent (reads 50 files) → digest → main agent continues
+main agent → 1-research sub-agent (reads 50 files) → digest → main agent continues
 ```
 
 **Use when:**
@@ -110,7 +110,7 @@ main agent → research sub-agent (reads 50 files) → digest → main agent con
 
 **Cost:** one isolated sub-agent context. Worth it any time the alternative is loading hundreds of files into the main context.
 
-**On Claude Code, use the built-in `Explore` subagent** rather than defining a custom research persona. `Explore` runs on Haiku, is denied write/edit tools, and is purpose-built for this pattern. Define a custom research subagent only when `Explore` doesn't fit (e.g. you need a domain-specific system prompt the model wouldn't infer).
+**On Claude Code, use the built-in `Explore` subagent** rather than defining a custom 1-research persona. `Explore` runs on Haiku, is denied write/edit tools, and is purpose-built for this pattern. Define a custom 1-research subagent only when `Explore` doesn't fit (e.g. you need a domain-specific system prompt the model wouldn't infer).
 
 ---
 
@@ -134,7 +134,7 @@ Claude Code has two parallelism primitives. Pattern 3 (parallel fan-out with mer
 | Status | Stable | Experimental — requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` |
 | Cost | Lower | Higher — each teammate is a separate Claude instance |
 
-**The personas in this repo work in both modes.** When spawned as subagents (e.g. by `/ship`), they report findings to the main session. When spawned as teammates (`Spawn a teammate using the security-auditor agent type…`), they can challenge each other's findings directly. The persona definition is the same; only the spawning context changes.
+**The personas in this repo work in both modes.** When spawned as subagents (e.g. by `/ship`), they report findings to the main session. When spawned as teammates (`Spawn a teammate using the 1-security-auditor agent type…`), they can challenge each other's findings directly. The persona definition is the same; only the spawning context changes.
 
 One subtlety: the `skills` and `mcpServers` frontmatter fields in a persona are honored when it runs as a subagent but **ignored when it runs as a teammate** — teammates load skills and MCP servers from your project and user settings, the same as a regular session. If a persona depends on a specific skill or MCP server being loaded, configure it at the session level so it's available in both modes.
 
@@ -153,11 +153,11 @@ Before defining a custom subagent, check whether one of these covers the role:
 
 | Built-in | Purpose |
 |----------|---------|
-| `Explore` | Read-only codebase search and analysis. Use this for Pattern 5 (research isolation). |
-| `Plan` | Read-only research during plan mode. |
+| `Explore` | Read-only codebase search and analysis. Use this for Pattern 5 (1-research isolation). |
+| `Plan` | Read-only 1-research during plan mode. |
 | `general-purpose` | Multi-step tasks needing both exploration and modification. |
 
-Don't redefine these. Layer your specialist personas (code-reviewer, security-auditor, test-engineer) on top of them.
+Don't redefine these. Layer your specialist personas (code-reviewer, 1-security-auditor, test-engineer) on top of them.
 
 ### Frontmatter restrictions for plugin agents
 
@@ -227,7 +227,7 @@ three teammates using the existing agent types:
 
   - code-reviewer  — investigate race conditions and blocking calls
                      in the checkout code path
-  - security-auditor — investigate auth checks, session handling,
+  - 1-security-auditor — investigate auth checks, session handling,
                        and any synchronous network calls added recently
   - test-engineer  — propose tests that would distinguish between the
                      hypotheses and check coverage gaps in checkout
@@ -262,7 +262,7 @@ Always cleanup through the lead, not a teammate (per the docs: teammates lack fu
 
 ### Cost expectation
 
-Three Sonnet teammates running for ~10–15 minutes of investigation costs noticeably more than the same three personas spawned as subagents by `/ship`. The justification is *quality of conclusion* — for production debugging where the wrong fix is expensive, the extra tokens are a bargain. For a routine PR review, stick with `/ship`.
+Three Sonnet teammates running for ~10–15 minutes of investigation costs noticeably more than the same three personas spawned as subagents by `/ship`. The justification is *quality of conclusion* — for production debugging where the wrong fix is expensive, the extra tokens are a bargain. For a routine PR 0-review, stick with `/ship`.
 
 ### Anti-pattern in this scenario
 
@@ -273,7 +273,7 @@ Do **not** rebuild this as a `/debug` slash command that fans out subagents. Sub
 - Production-bound verdict on a known diff → use `/ship` (subagents).
 - One specialist perspective on one artifact → direct persona invocation.
 - Sequential lifecycle (spec → plan → build) → user-driven slash commands (Pattern 4).
-- Read-heavy research with a small digest → built-in `Explore` subagent.
+- Read-heavy 1-research with a small digest → built-in `Explore` subagent.
 
 Reach for Agent Teams only when teammates **need** to challenge each other to produce the right answer.
 

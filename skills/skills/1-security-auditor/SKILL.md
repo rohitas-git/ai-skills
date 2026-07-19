@@ -2,9 +2,9 @@
 name: 1-security-auditor
 description: >
   Multi-phase security and quality auditor for codebases and projects. Use for
-  security audit, vulnerability review, OWASP review, full or scoped project
+  security audit, vulnerability 0-review, OWASP 0-review, full or scoped project
   audit, or high-confidence findings with concrete impact. Sub-hub under /0-review.
-  Not multi-axis PR review (/1-code-review) or build-time patterns (/1-security-and-hardening).
+  Not multi-axis PR 0-review (/1-code-review) or build-time patterns (/1-security-and-hardening).
 disable-model-invocation: true
 ---
 
@@ -15,8 +15,8 @@ disable-model-invocation: true
 |------|--------|
 | Multi-phase security/quality audit + findings | **security-auditor** (this) |
 | Harden while coding / after findings | `/1-security-and-hardening` |
-| Multi-axis PR/diff review | `/1-code-review` |
-| Pick review mode | `/0-review` F-R1 |
+| Multi-axis PR/diff 0-review | `/1-code-review` |
+| Pick 0-review mode | `/0-review` F-R1 |
 
 
 ## Overview
@@ -52,7 +52,7 @@ Load and follow:
 - `references/ai-llm-agent-risks.md` (when AI/LLM/agent components exist)
 - `references/supply-chain.md` (dependencies, CI, containers)
 
-Run multiple specialized review passes (or parallel sub-agents if available). Produce candidate findings with evidence, location, scenario, and estimated impact.
+Run multiple specialized 0-review passes (or parallel sub-agents if available). Produce candidate findings with evidence, location, scenario, and estimated impact.
 
 For differential or PR-only audits, also load and follow `references/differential-pr-audit.md`.
 

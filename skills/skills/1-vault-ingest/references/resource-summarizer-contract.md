@@ -1,4 +1,4 @@
-# resource-summarizer contract (vault-ingest)
+# 1-resource-summarizer contract (1-vault-ingest)
 
 **Do not reimplement** summarizer techniques in this skill. **Load and follow** the **`1-resource-summarizer`** skill.
 
@@ -22,7 +22,7 @@ From summarizer output, keep:
 | Feynman explanations | Own-words concept body |
 | Gaps & questions | `## Open questions` or incubating stubs |
 | Action items | Only if durable strategy — else skip |
-| Full Cornell cues / review prompts | **Drop** from permanent notes |
+| Full Cornell cues / 0-review prompts | **Drop** from permanent notes |
 
 ## Ownership
 

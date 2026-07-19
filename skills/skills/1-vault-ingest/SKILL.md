@@ -3,7 +3,7 @@ name: 1-vault-ingest
 description: >
   Ingest knowledge into Rohitas's Notes: process chat text, Inbox files, or URLs;
   create or update Concepts; report inconsistencies; log; offer vault-explain.
-  Uses resource-summarizer for long sources and rohitas-vault-wiki for schema.
+  Uses 1-resource-summarizer for long sources and 0-rohitas-vault-wiki for schema.
   Use when the user says ingest, process inbox, update vault with, put this in
   the wiki, compile this source, or /1-vault-ingest.
 disable-model-invocation: true
@@ -64,7 +64,7 @@ Load full steps from `references/ingest-pipeline.md`. Summary:
 - Update: … (delta)
 - Conflicts: … (need your call)
 - Archive: → Archives/… (Source).md ?
-- Distilled with: resource-summarizer | light | none
+- Distilled with: 1-resource-summarizer | light | none
 ```
 
 ## Inconsistencies (required when found)
@@ -84,7 +84,7 @@ Do **not** silent-resolve. Details: `references/merge-and-contradiction.md`.
 - Conflicts resolved per user or listed open  
 - Summarizer used when gate fires  
 - Ingest Log entry written  
-- Explain handoff offered for new/substantially updated Concepts  
+- Explain 1-handoff offered for new/substantially updated Concepts  
 
 ## Hard rules
 

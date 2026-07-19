@@ -38,7 +38,7 @@ Apply **Clean Code** discipline with **language-native professional conventions*
    Numbered steps, ASCII trees (`└─`), and “Execution Flow” blocks belong to **execution-flow-comments** only when that skill is active.
 
 5. **Keep docs accurate and lean**  
-   Only document what a reader cannot learn quickly from names and types. Delete outdated, redundant, or dead comments. No commented-out code.
+   Only document what a reader cannot 0-learn quickly from names and types. Delete outdated, redundant, or dead comments. No commented-out code.
 
 ## Language Conventions (use the one in context)
 

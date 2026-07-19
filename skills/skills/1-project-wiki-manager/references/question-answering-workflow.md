@@ -67,7 +67,7 @@ This answer drew on raw sources or synthesis not yet captured in dedicated wiki 
 **Suggested category in index**: Core Concepts (or other)
 **Content to add**: Brief outline of what should be persisted (key facts, links, citations).
 
-Would you like me to create this page now (after your review of the draft)?
+Would you like me to create this page now (after your 0-review of the draft)?
 ```
 
 If the entire answer had no wiki coverage at all, use a variant:

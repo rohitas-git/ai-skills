@@ -54,4 +54,4 @@ Use this when the user requests a review of changed files only, a pull request, 
 - Multiple related findings suggest a systemic problem beyond the diff.
 - The PR is very large or touches many modules (consider splitting or doing a full audit later).
 
-Always respect the user’s declared scope while giving them a clear signal if the differential review has important blind spots.
+Always respect the user’s declared scope while giving them a clear signal if the differential 0-review has important blind spots.

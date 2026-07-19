@@ -60,7 +60,7 @@ When the user requests help with a git commit message:
 
 **Balanced:**
 ```
-feat(auth): implement JWT token refresh
+feat(auth): 0-implement JWT token refresh
 
 - Added TokenExpiredError handling to checkAuth middleware
 - Integrated redis caching for token blacklist
@@ -68,7 +68,7 @@ feat(auth): implement JWT token refresh
 ```
 
 **Brief, staged:**
-`feat(auth): implement JWT token refresh`
+`feat(auth): 0-implement JWT token refresh`
 
 **Detailed:**
 ```

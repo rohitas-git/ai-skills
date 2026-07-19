@@ -43,7 +43,7 @@ You **route** then load one mode. Do not invent a parallel pedagogy outside the 
 
 - Not a product path — ship via `/0-grilling` → `/0-implement`, not here.
 - Not vault compile/query — `/1-vault-ingest`, `/1-wiki-query`; teaching a compiled Concept is `/1-vault-explain`.
-- **Explain SSOT** is `/1-learning-explainer` (and vault-explain always hands off there). Do not reimplement levels/CLT in the hub.
+- **Explain SSOT** is `/1-learning-explainer` (and 1-vault-explain always hands off there). Do not reimplement levels/CLT in the hub.
 - **Tutor SSOT** is [tutor-mode.md](./references/tutor-mode.md) — Socratic practice, integrity, pressure handling.
 - At every fork, ask once with recommended option; never silent branch.
 

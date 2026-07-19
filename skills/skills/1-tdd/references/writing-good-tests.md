@@ -51,7 +51,7 @@ it('test 3', ...);
 |--------------|-----|
 | Flaky (time/order) | Deterministic inputs; isolate state |
 | Testing the framework | Test only application code |
-| Snapshot abuse | Rare snapshots; review every change |
+| Snapshot abuse | Rare snapshots; 0-review every change |
 | No isolation | Each test owns setup/teardown |
 | Mocking everything | Prefer real/fake; mock only slow/nondeterministic boundaries |
 

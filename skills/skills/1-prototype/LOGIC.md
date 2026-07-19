@@ -15,7 +15,7 @@ If the question is "what should this look like" — wrong branch. Use [UI.md](UI
 
 ### 1. State the question
 
-Before writing code, write down what state model and what question you're prototyping. One paragraph, in the prototype's README or a comment at the top of the file. A logic prototype that answers the wrong question is pure waste — make the question explicit so it can be checked later, whether the user is watching now or returning to it AFK.
+Before writing code, write down what state model and what question you're prototyping. One paragraph, in the prototype's README or a comment at the top of the file. A logic 1-prototype that answers the wrong question is pure waste — make the question explicit so it can be checked later, whether the user is watching now or returning to it AFK.
 
 ### 2. Pick the language
 
@@ -72,8 +72,8 @@ Once the prototype has answered its question, capture the answer, then capture t
 
 ## Anti-patterns
 
-- **Don't add tests.** A prototype that needs tests is no longer a prototype.
+- **Don't add tests.** A 1-prototype that needs tests is no longer a prototype.
 - **Don't wire it to the real database.** Use an in-memory store unless the question is specifically about persistence.
-- **Don't generalise.** No "what if we wanted to support X later." The prototype answers one question.
+- **Don't generalise.** No "what if we wanted to support X later." The 1-prototype answers one question.
 - **Don't blur the logic and the TUI together.** If the reducer / state machine references `console.log`, prompts, or terminal escape codes, it's no longer portable. Keep the TUI as a thin shell over a pure module.
 - **Don't ship the TUI shell into production.** The shell is optimised for being driven by hand from a terminal. The logic module behind it is the bit worth keeping.

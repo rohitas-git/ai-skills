@@ -1,4 +1,4 @@
-# verify-work — full guide
+# 1-verify-work — full guide
 
 > Progressive disclosure body moved from SKILL.md for Matt-lean main file.
 
@@ -8,10 +8,10 @@
 | Need | Skill |
 |------|--------|
 | Mid-build verification subagent (diffs, build, tests) | **verify-work** (this) |
-| Multi-axis change/PR review closer | `/1-code-review` |
+| Multi-axis change/PR 0-review closer | `/1-code-review` |
 | Security audit | `/1-security-auditor` |
-| Over-engineering review only | `/1-ponytail-review` |
-| Ship implement loop | `/0-implement` |
+| Over-engineering 0-review only | `/1-ponytail-review` |
+| Ship 0-implement loop | `/0-implement` |
 
 **Not for:** open-ended “which review?” → `/0-review` F-R1. Prefer this mid-build; prefer `/1-code-review` as Ship closer.
 
@@ -79,7 +79,7 @@ Determine what to verify:
 === WORKFLOW ===
 
 Every verification runs two phases. Phase A (Trace Review) always runs.
-Phase B (Code Review) runs when code review is relevant to the task.
+Phase B (Code Review) runs when code 0-review is relevant to the task.
 
 --- PHASE A: TRACE REVIEW ---
 
@@ -93,9 +93,9 @@ whether its outputs were correct. Run this for every verification.
    checklist of deliverables or success criteria.
 
    Include all task types:
-   - Code tasks (implement feature, fix bug, refactor)
+   - Code tasks (0-implement feature, fix bug, refactor)
    - Operational tasks (submit the eval job, deploy to staging, kick off CI)
-   - Git/PR tasks (push the branch, create the PR, address review comments)
+   - Git/PR tasks (push the branch, create the PR, address 0-review comments)
    - Research tasks (analyze data, investigate a failure, find root cause)
    - Q&A tasks (explain how X works, compare approaches, answer a question)
    - Configuration tasks (update settings, add environment variables, modify configs)
@@ -130,14 +130,14 @@ whether its outputs were correct. Run this for every verification.
 Run this phase when the task involves code in any way. Examples:
 - The agent wrote or modified code during this session
 - The user asked the agent to review existing code (security audit,
-  code review, architecture review)
+  code 0-review, architecture 0-review)
 - The task involved evaluating code correctness, performance, or security
 - The changes include code-like configuration (BUILD files, CI configs,
   k8s manifests, IaC)
 
 Skip this phase only if the session was purely non-code with no code
 involvement at all (general Q&A, operational tasks with no code context,
-data analysis, research).
+data analysis, 1-research).
 
 4. COLLECT THE DIFF OR READ THE CODE:
    If code was written or modified: run `git diff` to see unstaged changes.
@@ -162,7 +162,7 @@ data analysis, research).
 
    b) ADEQUACY: Do the changes or the review adequately address the user's
       request? Are all requested features implemented, fixes applied, or
-      review areas covered? Were all non-code tasks completed (not just the
+      0-review areas covered? Were all non-code tasks completed (not just the
       code part)? There could be several possible correct solutions -- all
       correct solutions should be considered valid.
 
@@ -256,7 +256,7 @@ Write a structured verification report:
 
 ## Checklist
 The user's requirements restated as a numbered list of concrete items.
-Include all task types (code, operational, research, Q&A, etc.).
+Include all task types (code, operational, 1-research, Q&A, etc.).
 
 ## Action Trace
 For each checklist item: what was done, what tools/commands were used, and
@@ -293,5 +293,5 @@ VERDICT: FAIL
 
 ## Don't use when
 
-- Post-implement full review closer → multi-axis `/1-code-review` (Spec + Standards + Maintainability)
+- Post-implement full 0-review closer → multi-axis `/1-code-review` (Spec + Standards + Maintainability)
 - Over-engineering-only pass → `/1-ponytail-review`

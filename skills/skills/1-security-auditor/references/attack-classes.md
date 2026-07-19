@@ -37,7 +37,7 @@ Secrets in source, logs, or error messages; PII leakage; excessive data in API r
 Workflow bypasses, race conditions in multi-step processes, price/quantity manipulation, coupon abuse, infinite loops via user input, privilege confusion across roles.
 
 ### Client-Side (when applicable)
-XSS (reflected, stored, DOM), CSRF, clickjacking, prototype pollution, open redirects, insecure postMessage, CSP bypasses.
+XSS (reflected, stored, DOM), CSRF, clickjacking, 1-prototype pollution, open redirects, insecure postMessage, CSP bypasses.
 
 ### AI / LLM / Agent-Specific (when the project contains these)
 Prompt injection, indirect prompt injection, tool/function calling abuse, excessive agency, sensitive data in prompts or embeddings, jailbreak surfaces, insecure plugin or skill loading.

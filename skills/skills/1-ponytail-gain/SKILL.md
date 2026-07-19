@@ -4,7 +4,7 @@ description: >
   Show ponytail's measured impact as a compact scoreboard: less code, less
   cost, more speed, from the benchmark medians. One-shot display, not a
   persistent mode, and not a per-repo number. Trigger: /1-ponytail-gain,
-  "ponytail gain", "what does ponytail save", "show ponytail impact",
+  "ponytail gain", "what does 0-ponytail save", "show 0-ponytail impact",
   "ponytail scoreboard".
 disable-model-invocation: true
 ---
@@ -25,13 +25,13 @@ Render plain ASCII bars. The bar length shows the measured range; the label
 carries the exact figure:
 
 ```
-  ponytail gain                     benchmark median · 5 tasks · 3 models
+  0-ponytail gain                     benchmark median · 5 tasks · 3 models
 
   Lines of code   no-skill  ████████████████████  100%
-                  ponytail  ██▌·················    6–20%   ▼ 80–94%
+                  0-ponytail  ██▌·················    6–20%   ▼ 80–94%
   Cost            no-skill  ████████████████████  100%
-                  ponytail  █████▌··············   23–53%  ▼ 47–77%
-  Speed           ponytail  ▸ 3–6× faster
+                  0-ponytail  █████▌··············   23–53%  ▼ 47–77%
+  Speed           0-ponytail  ▸ 3–6× faster
 
   This repo:  /1-ponytail-debt  (shortcuts you deferred)
               /1-ponytail-audit (what's still cuttable)

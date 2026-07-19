@@ -1,8 +1,8 @@
-# observability-and-instrumentation (vendor harvest)
+# 1-observability-and-instrumentation (vendor harvest)
 
 Source: archive vendor `1-observability-and-instrumentation`. Catalog winner: `/1-observability-and-instrumentation`.
 
-name: observability-and-instrumentation
+name: 1-observability-and-instrumentation
 description: Instruments code so production behavior is visible and diagnosable. Use when adding logging, metrics, tracing, or alerting. Use when shipping any feature that runs in production and you need evidence it works. Use when production issues are reported but you can't tell what happened from the available data.
 
 # Observability and Instrumentation
@@ -39,7 +39,7 @@ QUESTIONS ON-CALL WILL ASK:
 → Every signal below must help answer one of these.
 ```
 
-If you can't name the questions, you're not ready to instrument — you'll log everything and learn nothing.
+If you can't name the questions, you're not ready to instrument — you'll log everything and 0-learn nothing.
 
 ### 2. Pick the right signal for each question
 

@@ -56,7 +56,7 @@
 <header>
   <h1>Hub of hubs · domain hubs · pipelines · forks</h1>
   <p>
-    <strong>★ butler</strong> routes only (real-life butler). <strong>★ skill-manager</strong> mutates the catalog.
+    <strong>★ butler</strong> routes only (real-life 0-butler). <strong>★ skill-manager</strong> mutates the catalog.
     Each domain has one hub; children hang off it. <strong>◆ forks</strong> = ask the user (recommend first).
     SSOT: <code>butler/references/flows.md</code>
   </p>
@@ -82,7 +82,7 @@
   <a href="./hubs/0-office/hub.html">misc</a>
 </div>
 <div class="legend">
-  <span><i class="sw" style="background:#f472b6"></i> butler (hub of hubs)</span>
+  <span><i class="sw" style="background:#f472b6"></i> 0-butler (hub of hubs)</span>
   <span><i class="sw" style="background:#3d8bfd"></i> domain hub</span>
   <span><i class="sw" style="background:#c084fc"></i> skill-manager</span>
   <span><i class="sw" style="background:#fbbf24"></i> fork (ask user)</span>
@@ -93,7 +93,7 @@
 <main>
 <section>
   <h2>0. House map (multi-lane free layout)</h2>
-  <p class="note">Top: butler apex. Middle: product path with ◆ forks. Sides: skill-manager, vault, misc tree. At every ◆ ask the user once.</p>
+  <p class="note">Top: 0-butler apex. Middle: product path with ◆ forks. Sides: 0-skill-manager, vault, misc tree. At every ◆ ask the user once.</p>
   <div class="svg-wrap">
     <svg viewBox="0 0 1320 980" width="1320" height="980" role="img" aria-label="Hub hierarchy and forks">
       <defs>
@@ -124,12 +124,12 @@
       <text class="t" x="530" y="48" text-anchor="middle">★ butler</text>
       <text class="s" x="530" y="62" text-anchor="middle">hub of hubs · query · orient</text>
 
-      <!-- F7 under butler -->
+      <!-- F7 under 0-butler -->
       <path class="edge edge-fork" d="M530 72 V 95"/>
       <polygon class="fork" points="530,100 575,122 530,144 485,122"/>
       <text class="s" x="530" y="126" text-anchor="middle" style="fill:#fde68a">F7 kind?</text>
 
-      <!-- skill-manager -->
+      <!-- 0-skill-manager -->
       <rect class="mgr" x="1120" y="140" width="160" height="50" rx="8"/>
       <text class="t" x="1200" y="162" text-anchor="middle">★ skill-manager</text>
       <text class="s" x="1200" y="178" text-anchor="middle">CRUD · place · lint</text>
@@ -138,7 +138,7 @@
       <text class="s" x="1200" y="210" text-anchor="middle">create · place · new-hub</text>
       <text class="s" x="1200" y="224" text-anchor="middle">ingest · organize · lint</text>
       <rect class="child" x="1135" y="240" width="130" height="28" rx="5"/>
-      <text class="s" x="1200" y="258" text-anchor="middle">→ skill-creator body</text>
+      <text class="s" x="1200" y="258" text-anchor="middle">→ 0-skill-creator body</text>
 
       <!-- Setup hub -->
       <rect class="hub" x="100" y="170" width="180" height="40" rx="7"/>
@@ -184,7 +184,7 @@
       <text class="s" x="320" y="408">F4 yes</text>
       <text class="s" x="500" y="450">F4 no →</text>
 
-      <!-- tdd + code-review -->
+      <!-- 1-tdd + 1-code-review -->
       <rect class="child" x="360" y="530" width="60" height="28" rx="5"/>
       <text class="s" x="390" y="548" text-anchor="middle">tdd</text>
       <rect class="hub" x="440" y="530" width="130" height="28" rx="5"/>
@@ -273,14 +273,14 @@
       <text class="s" x="620" y="200">F7 → misc</text>
 
       <text class="s" x="660" y="850" text-anchor="middle">At every ◆ : ask user one question · recommend first · wait · never silent branch</text>
-      <text class="s" x="660" y="870" text-anchor="middle">† deprecated not host-installed · skill-manager writes flows hub slots · butler only reads</text>
+      <text class="s" x="660" y="870" text-anchor="middle">† deprecated not host-installed · 0-skill-manager writes flows hub slots · 0-butler only reads</text>
     </svg>
   </div>
 </section>
 
 <section id="domain-hub-matrix">
   <h2>1. Domain hub matrix</h2>
-  <p class="note">Each ★ hub has package dir <code>hubs/{hub}/</code> with <code>hub.html</code> + <code>workflow.json</code> (parent: butler). Index: <a href="./hubs/index.html">hubs/</a> · <a href="./hubs/manifest.json">manifest.json</a>.</p>
+  <p class="note">Each ★ hub has package dir <code>hubs/{hub}/</code> with <code>hub.html</code> + <code>workflow.json</code> (parent: 0-butler). Index: <a href="./hubs/index.html">hubs/</a> · <a href="./hubs/manifest.json">manifest.json</a>.</p>
   <table>
     <thead><tr><th>#</th><th>Domain</th><th>★ Hub</th><th>Role</th></tr></thead>
     <tbody>
@@ -288,7 +288,7 @@
       <tr><td>1</td><td>Setup</td><td><a href="./hubs/0-setup-rohitas-skills/hub.html"><code>setup-rohitas-skills</code></a></td><td>Precondition + SSOT</td></tr>
       <tr><td>2</td><td>Design</td><td><a href="./hubs/0-grilling/hub.html"><code>grilling</code></a></td><td>Interview SSOT</td></tr>
       <tr><td>3</td><td>Ship</td><td><a href="./hubs/0-implement/hub.html"><code>implement</code></a></td><td>Build driver</td></tr>
-      <tr><td>4</td><td>Review</td><td><a href="./hubs/0-review/hub.html"><code>review</code></a></td><td>Router + sub-hubs code-review / security-auditor</td></tr>
+      <tr><td>4</td><td>Review</td><td><a href="./hubs/0-review/hub.html"><code>review</code></a></td><td>Router + sub-hubs 1-code-review / security-auditor</td></tr>
       <tr><td>5</td><td>Triage</td><td><a href="./hubs/0-triage/hub.html"><code>triage</code></a></td><td>On-ramp → Ship</td></tr>
       <tr><td>6</td><td>Diagnose</td><td><a href="./hubs/0-diagnosing-bugs/hub.html"><code>diagnosing-bugs</code></a></td><td>On-ramp → fix path</td></tr>
       <tr><td>7</td><td>Fog map</td><td><a href="./hubs/0-wayfinder/hub.html"><code>wayfinder</code></a></td><td>Exit only → to-spec</td></tr>
@@ -297,7 +297,7 @@
       <tr><td>10</td><td>Catalog facilities</td><td><a href="./hubs/0-skill-manager/hub.html"><code>skill-manager</code></a></td><td>CRUD · hubs · lint</td></tr>
       <tr><td>11</td><td>Author body</td><td><a href="./hubs/0-skill-creator/hub.html"><code>skill-creator</code></a></td><td>Craft / eval</td></tr>
       <tr><td>12</td><td>Simplify</td><td><a href="./hubs/0-ponytail/hub.html"><code>ponytail</code></a></td><td>Optional YAGNI mode</td></tr>
-      <tr><td>13</td><td>Learn</td><td><a href="./hubs/0-learn/hub.html"><code>learn</code></a></td><td>Router: explain · tutor · teach · story · summarize</td></tr>
+      <tr><td>13</td><td>Learn</td><td><a href="./hubs/0-learn/hub.html"><code>learn</code></a></td><td>Router: explain · tutor · 1-teach · story · summarize</td></tr>
       <tr><td>14</td><td>Misc</td><td><a href="./hubs/0-office/hub.html"><code>misc</code></a></td><td>Office/media leaves</td></tr>
     </tbody>
   </table>
@@ -310,9 +310,9 @@
     <tbody>
       <tr><td>F1</td><td>Setup already done?</td><td>Skip if docs/agents exists</td></tr>
       <tr><td>F2</td><td>Codebase present?</td><td>grill-with-docs</td></tr>
-      <tr><td>F3</td><td>Need prototype detour?</td><td>No</td></tr>
+      <tr><td>F3</td><td>Need 1-prototype detour?</td><td>No</td></tr>
       <tr><td>F4</td><td>Multi-session build?</td><td>Yes if large</td></tr>
-      <tr><td>F5</td><td>Slice done → closer?</td><td>tdd → code-review → commit</td></tr>
+      <tr><td>F5</td><td>Slice done → closer?</td><td>tdd → 1-code-review → commit</td></tr>
       <tr><td>F6</td><td>Review axes apply?</td><td>Every applicable</td></tr>
       <tr><td>F7</td><td>What kind of work?</td><td>Feature → Design</td></tr>
       <tr><td>F8</td><td>Fog clear to build?</td><td>Only when buildable → to-spec</td></tr>

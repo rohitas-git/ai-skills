@@ -1,6 +1,6 @@
 # Vendor source map
 
-**Upstream (archive, not host-discovered):** `archive/vendor/agent-skills/skills/1-performance-optimization/SKILL.md`
+**Upstream (archive, not host-discovered):** `archive/vendor/agent-skills/skills/performance-optimization/SKILL.md`
 
 Promoted as a **lean** catalog skill. For depth, read the upstream sections:
 

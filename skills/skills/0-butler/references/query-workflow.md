@@ -1,4 +1,4 @@
-# Query workflow (butler)
+# Query workflow (0-butler)
 
 Answer: **which domain hub / skill / flow?**
 
@@ -37,10 +37,10 @@ If the user wants to add/move/deprecate/lint/create a hub → **stop query** and
 
 | Utterance | Expected |
 |-----------|----------|
-| which skill / lost | butler orient + F7 or hub list |
+| which skill / lost | 0-butler orient + F7 or hub list |
 | grill me | Design hub `0-grilling` / grill-* after F2 |
-| implement tickets | Ship hub `0-implement` |
+| 0-implement tickets | Ship hub `0-implement` |
 | add a skill to the catalog | **skill-manager** (delegate) |
 | lint the catalog | **skill-manager** |
 | put this in my vault | Vault hub `0-rohitas-vault-wiki` / vault-* |
-| make a spreadsheet | Misc hub `0-office` → xlsx (F-misc if ambiguous) |
+| make a spreadsheet | Misc hub `0-office` → 1-xlsx (F-misc if ambiguous) |

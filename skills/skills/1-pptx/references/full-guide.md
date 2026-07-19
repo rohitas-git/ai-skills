@@ -1,4 +1,4 @@
-# pptx — full guide
+# 1-pptx — full guide
 
 > Progressive disclosure body moved from SKILL.md for Matt-lean main file.
 

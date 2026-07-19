@@ -28,8 +28,8 @@ Flat live skills under `skills/`. Domain structure lives in **hubs** + **wikis**
 
 | Role | Skill |
 |------|--------|
-| Route | butler |
-| Mutate | skill-manager |
-| Lint | skill-linter |
+| Route | 0-butler |
+| Mutate | 0-skill-manager |
+| Lint | 1-skill-linter |
 
 Flows: `skills/0-butler/references/flows.md` · Chart: `hubs/flows-chart.html`

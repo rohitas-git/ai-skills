@@ -1,4 +1,4 @@
-# xlsx — full guide
+# 1-xlsx — full guide
 
 > Progressive disclosure body moved from SKILL.md for Matt-lean main file.
 

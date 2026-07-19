@@ -2,7 +2,7 @@
 name: 1-skill-linter
 description: >
   Health-check agent skills for Matt-style lean SKILL.md, chaining (prev/next/hub),
-  references, hub membership, and sprawl. Reports only — skill-manager applies fixes.
+  references, hub membership, and sprawl. Reports only — 0-skill-manager applies fixes.
   Use after create/place/ingest, for catalog lint, or /1-skill-linter. Parent hub:
   skill-manager.
 disable-model-invocation: true
@@ -38,7 +38,7 @@ Report catalog and skill health. You **do not** rehouse, place, or rewrite skill
 3. Enforce **lean main SKILL.md** + **Matt shape** via [matt-lean-structure.md](./references/matt-lean-structure.md).
 4. Resolve hub membership + chain slot via [hub-membership.md](./references/hub-membership.md).
 5. Apply sprawl / sub-domain rules from [sprawl-and-subdomain.md](./references/sprawl-and-subdomain.md) only after thin+chain options.
-6. Print structured report. **Critical > 0** ⇒ fail gate for skill-manager apply.
+6. Print structured report. **Critical > 0** ⇒ fail gate for 0-skill-manager apply.
 7. If fixes needed: hand off **`/0-skill-creator`** (thin body), **`/0-skill-manager`** (place / new-hub / organize), and/or **`/1-skill-atomize`** (overlap → Boundary + forks) — do not mutate yourself.
 
 ## What “pass” looks like (Matt default)
@@ -78,4 +78,4 @@ When report flags missing Boundary, cousin trigger collision, or dual full proce
 4. **Hub membership** — orphans are critical (ADR 0006).
 5. **No invent** — do not invent skills or hubs; only report gaps.
 6. **Sprawl** — prefer thin + chain + split; sub-domain hub last.
-7. **New skill gate** — skill-manager must not place/ingest with skill-lint criticals (`gate-lean` included).
+7. **New skill gate** — 0-skill-manager must not place/ingest with skill-lint criticals (`gate-lean` included).

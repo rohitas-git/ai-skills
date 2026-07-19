@@ -1,4 +1,4 @@
-# Source-driven research (merged from vendor)
+# Source-driven 1-research (merged from vendor)
 
 Source: archive vendor `source-driven-development`.
 

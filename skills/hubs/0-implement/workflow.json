@@ -8,7 +8,7 @@
   "path": "skills/0-implement",
   "package_dir": "hubs/0-implement/",
   "role": "Build driver for the product path.",
-  "notes": "Ship closer is multi-axis code-review, not ponytail.",
+  "notes": "Ship closer is multi-axis 1-code-review, not ponytail.",
   "parent": {
     "hub": "0-butler",
     "slash": "/0-butler",
@@ -33,7 +33,7 @@
       "skills": [
         "1-coding-standards"
       ],
-      "note": "Always-on lean style; F-C1 vs clean-craftsmanship (Architecture)"
+      "note": "Always-on lean style; F-C1 vs 1-clean-craftsmanship (Architecture)"
     },
     {
       "link_type": "cousin",
@@ -60,7 +60,7 @@
         "1-resolving-merge-conflicts",
         "1-research"
       ],
-      "note": "Git/PR and research softs"
+      "note": "Git/PR and 1-research softs"
     },
     {
       "link_type": "soft",
@@ -74,8 +74,8 @@
     }
   ],
   "pipeline": [
-    "multi: to-spec \u2192 to-tickets \u2192 implement* \u2192 tdd \u2192 code-review \u2192 commit",
-    "single: implement* \u2192 tdd \u2192 code-review \u2192 commit"
+    "multi: 1-to-spec \u2192 1-to-tickets \u2192 implement* \u2192 1-tdd \u2192 1-code-review \u2192 commit",
+    "single: implement* \u2192 1-tdd \u2192 1-code-review \u2192 commit"
   ],
   "forks": [
     {
@@ -100,7 +100,7 @@
     },
     {
       "id": "F6",
-      "question": "(inside code-review) axes applicable?",
+      "question": "(inside 1-code-review) axes applicable?",
       "recommended": "every applicable",
       "branches": [
         "Spec",

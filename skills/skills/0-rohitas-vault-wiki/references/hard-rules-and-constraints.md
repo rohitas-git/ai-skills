@@ -1,4 +1,4 @@
-# Hard Rules — rohitas-vault-wiki
+# Hard Rules — 0-rohitas-vault-wiki
 
 1. Vault path: `$VAULT_ROOT (from docs/agents/vault.md)` unless user moves it again.
 2. Never wipe Atlas/Inbox without processing.

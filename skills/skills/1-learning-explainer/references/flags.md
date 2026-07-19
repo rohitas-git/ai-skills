@@ -10,7 +10,7 @@ Use these phrases to request a specific audience level:
 | **Layperson**   | layperson, normal person, everyday explanation, general audience, in simple terms |
 | **Specialist**  | specialist, practitioner, professional, how it works in practice, for someone who works with this |
 | **Academic**    | academic, graduate, scholarly, university level, rigorous, with theory and evidence |
-| **Frontier**    | frontier, cutting-edge, research level, expert, state of the art, latest developments, open problems |
+| **Frontier**    | frontier, cutting-edge, 1-research level, expert, state of the art, latest developments, open problems |
 
 ## Mode & Format Flags
 - `--compact` or "keep it short", "compact version", "brief summary"
@@ -29,7 +29,7 @@ Use these phrases to request a specific audience level:
   → Use web_search for verification or recent developments
 
 - `--quiz` or "add questions", "test me"
-  → Include self-assessment or review questions
+  → Include self-assessment or 0-review questions
 
 ## Combined Usage Examples
 - "Explain photosynthesis at layperson level with diagrams"

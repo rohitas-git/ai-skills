@@ -13,7 +13,7 @@ Suggests manual `/compact` at strategic points in your workflow rather than rely
 ## When to Activate
 
 - Running long sessions that approach context limits (200K+ tokens)
-- Working on multi-phase tasks (research → plan → implement → test)
+- Working on multi-phase tasks (1-research → plan → 0-implement → test)
 - Switching between unrelated tasks within the same session
 - After completing a major milestone and starting new work
 - When responses slow down or become less coherent (context pressure)
@@ -26,7 +26,7 @@ Auto-compaction triggers at arbitrary points:
 - Can interrupt complex multi-step operations
 
 Strategic compaction at logical boundaries:
-- **After exploration, before execution** — Compact research context, keep implementation plan
+- **After exploration, before execution** — Compact 1-research context, keep implementation plan
 - **After completing a milestone** — Fresh start for next phase
 - **Before major context shifts** — Clear exploration context before different task
 

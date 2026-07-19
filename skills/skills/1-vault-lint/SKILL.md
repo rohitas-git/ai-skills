@@ -4,7 +4,7 @@ description: >
   Health-check Rohitas's Notes vault: broken wikilinks, orphans, misplaced hubs,
   frontmatter, contradictions, duplicates, Registry drift. Report-only by default.
   Use when the user says lint vault, health check notes, find contradictions,
-  orphan notes, wiki audit, or /1-vault-lint. Loads rohitas-vault-wiki for schema.
+  orphan notes, wiki audit, or /1-vault-lint. Loads 0-rohitas-vault-wiki for schema.
 disable-model-invocation: true
 ---
 

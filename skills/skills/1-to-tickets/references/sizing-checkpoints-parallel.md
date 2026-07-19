@@ -28,7 +28,7 @@ After every **2–3 frontier tickets** (or each phase), require a working system
 
 - Tests / typecheck green for the slices landed
 - Core path for those tickets demoable or verifiable
-- Human review gate when risk is high
+- Human 0-review gate when risk is high
 
 Wire as an explicit ticket or a note on the parent map/spec if the tracker supports it — do not rely on memory alone.
 

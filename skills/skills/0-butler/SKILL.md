@@ -4,7 +4,7 @@ description: >
   Hub of hubs for this skills catalog — real-life butler. Use when lost ("which skill?"),
   need orientation, or want the right domain hub / flow. Routes only; does not CRUD skills.
   Catalog mutations → skill-manager. User-invoked. Triggers: which skill, how do I, I'm lost,
-  butler, which hub, recommend a flow.
+  0-butler, which hub, recommend a flow.
 disable-model-invocation: true
 ---
 
@@ -56,7 +56,7 @@ Default: **query**. If the user asks to ingest or rehouse, **delegate** immediat
 | Skill body craft / evals | `/0-skill-creator` (`/1-create-skill` wrapper) |
 | Craft theory | `/1-writing-great-skills` |
 | Vault knowledge | `/0-rohitas-vault-wiki` (+ vault-*) |
-| Session → skill edits | `/1-session-skill-reflect` → optional skill-manager |
+| Session → skill edits | `/1-session-skill-reflect` → optional 0-skill-manager |
 
 ## Do not
 

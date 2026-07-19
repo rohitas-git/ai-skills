@@ -1,6 +1,6 @@
 # Vendor source map
 
-**Upstream (archive, not host-discovered):** `archive/vendor/agent-skills/skills/1-api-and-interface-design/SKILL.md`
+**Upstream (archive, not host-discovered):** `archive/vendor/agent-skills/skills/api-and-interface-design/SKILL.md`
 
 Promoted as a **lean** catalog skill. For depth, read the upstream sections:
 

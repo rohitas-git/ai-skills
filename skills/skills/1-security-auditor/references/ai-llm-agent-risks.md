@@ -43,7 +43,7 @@ Load this reference when the project contains LLM calls, prompt construction, ag
 - Skills or plugins loaded from untrusted sources without integrity checks or sandboxing.
 - Skills that contain prompt-injection payloads, malicious code, or excessive permissions.
 - Dynamic tool registration based on untrusted input.
-- Insufficient review or allow-listing of available skills/tools.
+- Insufficient 0-review or allow-listing of available skills/tools.
 
 ## Supply Chain & Model Risks
 - Use of untrusted or unpinned model versions / fine-tunes.

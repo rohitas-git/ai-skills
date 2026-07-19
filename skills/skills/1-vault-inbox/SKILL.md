@@ -3,7 +3,7 @@ name: 1-vault-inbox
 description: >
   Fast-capture notes into Rohitas's Notes Inbox while using agentic AI — no full
   ingest, no Concepts. Use when the user says add to inbox, capture this, quick
-  vault note, inbox dump, save for later, or /1-vault-inbox. Loads rohitas-vault-wiki
+  vault note, inbox dump, save for later, or /1-vault-inbox. Loads 0-rohitas-vault-wiki
   for path and naming only. Process later with vault-ingest.
 disable-model-invocation: true
 ---
@@ -27,7 +27,7 @@ disable-model-invocation: true
 ## Workflow
 
 1. Resolve vault root (default above unless user overrides).
-2. Load rohitas-vault-wiki naming rules only — **skip** full ingest pipeline.
+2. Load 0-rohitas-vault-wiki naming rules only — **skip** full ingest pipeline.
 3. Choose filename:
    - User-provided title → Title Case + `.md`
    - Clear first heading/line → Title Case slug
@@ -59,7 +59,7 @@ tags: []
 
 - File exists at `Inbox/<Name>.md`
 - **No** writes to `Concepts/`, `Atlas/`, Registry, or Archives
-- No takeaway debate or resource-summarizer unless user asked to process now (then hand off to `1-vault-ingest`)
+- No takeaway debate or 1-resource-summarizer unless user asked to process now (then hand off to `1-vault-ingest`)
 
 ## Hard rules
 

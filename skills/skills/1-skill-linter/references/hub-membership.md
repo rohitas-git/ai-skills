@@ -15,7 +15,7 @@ A skill `name` is a member if any of:
 ## Not membership targets
 
 - Ops verbs in workflow JSON that are not skills: `create`, `read`, `update`, `delete`, `place`, `new-hub`, `ingest`, `organize`, `lint` (unless a real skill with that name exists).
-- Axis labels that are not skills: `Spec`, `Standards`, `Maintainability` (code-review axes).
+- Axis labels that are not skills: `Spec`, `Standards`, `Maintainability` (1-code-review axes).
 - Deprecated tombstones and vendor packs.
 
 ## Orphans
@@ -26,7 +26,7 @@ If a live skill is not a member:
 [critical] hub-member path — skill not listed under any domain hub workflow
 ```
 
-**Remediation:** skill-manager **place** (parent hub + link type). Do not invent a new domain unless **new-hub** is justified.
+**Remediation:** 0-skill-manager **place** (parent hub + link type). Do not invent a new domain unless **new-hub** is justified.
 
 ## Sub-hub skills
 

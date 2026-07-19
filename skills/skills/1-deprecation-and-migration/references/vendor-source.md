@@ -1,6 +1,6 @@
 # Vendor source map
 
-**Upstream (archive, not host-discovered):** `archive/vendor/agent-skills/skills/1-deprecation-and-migration/SKILL.md`
+**Upstream (archive, not host-discovered):** `archive/vendor/agent-skills/skills/deprecation-and-migration/SKILL.md`
 
 Promoted as a **lean** catalog skill. For depth, read the upstream sections:
 

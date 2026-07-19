@@ -1,4 +1,4 @@
-# skill-atomize — detection & apply detail
+# 1-skill-atomize — detection & apply detail
 
 Load from SKILL.md when scanning or applying a pass.
 
@@ -15,14 +15,14 @@ Load from SKILL.md when scanning or applying a pass.
 Examples of intentional (do not “fix” by merging):
 
 - `/0-grilling` ↔ `1-grill-me` / `1-grill-with-docs`
-- `/0-skill-manager` ↔ `1-skill-linter` / create-skill path
+- `/0-skill-manager` ↔ `1-skill-linter` / 1-create-skill path
 - Vault ops under `/0-rohitas-vault-wiki`
 - Ship pipeline `1-to-spec` → `1-to-tickets` → `0-implement`
 
 ## Detection recipe
 
 1. Inventory live skills under `skills/`, `productivity/`, `misc/`, `personal/` (name + description + first ~400 body chars).
-2. Cluster by theme keywords (review, learn/explain, wiki/docs, architecture, security, context, etc.).
+2. Cluster by theme keywords (0-review, learn/explain, wiki/docs, architecture, security, context, etc.).
 3. For each pair in a cluster, score:
    - Shared triggers in descriptions
    - Shared procedure (not just shared domain word)
@@ -38,7 +38,7 @@ Examples of intentional (do not “fix” by merging):
 
 ### Medium
 
-- Adjacent jobs, fuzzy trigger (verify vs review closer)
+- Adjacent jobs, fuzzy trigger (verify vs 0-review closer)
 - Shared vocabulary, different artifact
 
 ### Low
@@ -59,7 +59,7 @@ Examples of intentional (do not “fix” by merging):
 
 ## Contract SSOT
 
-Always enforce [atomic-skills.md](../../0-skill-manager/references/atomic-skills.md). If the contract is missing, create/update it under skill-manager references first (Phase 0).
+Always enforce [atomic-skills.md](../../0-skill-manager/references/atomic-skills.md). If the contract is missing, create/update it under 0-skill-manager references first (Phase 0).
 
 ## Resolution modes (F-A2)
 
@@ -80,7 +80,7 @@ Always enforce [atomic-skills.md](../../0-skill-manager/references/atomic-skills
 ## Non-goals
 
 - Butler query routing redesign
-- Full skill-creator eval loop for every body
+- Full 0-skill-creator eval loop for every body
 - Vendor pack rewrites
 - Promoting `using-agent-skills`
 

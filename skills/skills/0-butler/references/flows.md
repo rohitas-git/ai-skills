@@ -27,18 +27,18 @@ Concrete branches still appear first; **Agent judgment** is always listed last a
 | | |
 |--|--|
 | **★ Hub** | `/0-butler` |
-| **Children** | All domain hubs below (routing targets): setup-rohitas-skills, grilling, implement, review, triage, diagnosing-bugs, wayfinder, improve-codebase-architecture, rohitas-vault-wiki, skill-manager, skill-creator, ponytail, learn, misc |
+| **Children** | All domain hubs below (routing targets): 0-setup-rohitas-skills, 0-grilling, 0-implement, 0-review, 0-triage, 0-diagnosing-bugs, 0-wayfinder, 0-improve-codebase-architecture, 0-rohitas-vault-wiki, 0-skill-manager, 0-skill-creator, 0-ponytail, 0-learn, misc |
 | **Session meta (soft)** | `1-grok-help`, `1-context-monitor`, `1-strategic-compact`, `1-response-effort-calibrator`, `1-handoff` (dual design) |
 | **Mutations** | **Not here** → `/0-skill-manager` |
 
-**Pipeline:** orient → query → domain hub (or delegate skill-manager).
+**Pipeline:** orient → query → domain hub (or delegate 0-skill-manager).
 
-**Artifacts (ADR 0005):** every domain hub (including butler) has a **flat package dir** (flat package under catalog `hubs/`):
+**Artifacts (ADR 0005):** every domain hub (including 0-butler) has a **flat package dir** (flat package under catalog `hubs/`):
 
 ```text
 hubs/{hub}/
-  hub.html          # non-butler pages parent-link butler; butler lists every hub
-  workflow.json     # parent → butler (null only for butler)
+  hub.html          # non-butler pages parent-link 0-butler; 0-butler lists every hub
+  workflow.json     # parent → 0-butler (null only for butler)
 ```
 
 Also: `hubs/index.html`, `hubs/manifest.json`, `hubs/flows-chart.html`.
@@ -71,9 +71,9 @@ flows.md remains SSOT for pipelines/forks; HTML/JSON are projections. **new-hub*
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F2** | Codebase present? | Yes → grill-with-docs | `1-grill-with-docs` · `1-grill-me` · **Agent judgment** |
-| **F3** | Need a runnable prototype answer? | No | stay in grill · handoff⇄prototype · **Agent judgment** |
-| **F4** | Multi-session build? | Yes if >1 implement slice | yes → Ship multi · no → Ship single · **Agent judgment** |
+| **F2** | Codebase present? | Yes → 1-grill-with-docs | `1-grill-with-docs` · `1-grill-me` · **Agent judgment** |
+| **F3** | Need a runnable 1-prototype answer? | No | stay in grill · handoff⇄prototype · **Agent judgment** |
+| **F4** | Multi-session build? | Yes if >1 0-implement slice | yes → Ship multi · no → Ship single · **Agent judgment** |
 
 **Merge out:** → Domain 3 Ship.
 
@@ -88,17 +88,17 @@ flows.md remains SSOT for pipelines/forks; HTML/JSON are projections. **new-hub*
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F4** | (entry) multi-session? | as Design | to-spec path · direct implement · **Agent judgment** |
+| **F4** | (entry) multi-session? | as Design | 1-to-spec path · direct 0-implement · **Agent judgment** |
 | **F5** | This slice done? | run closer | tdd→code-review→commit · more tickets · **Agent judgment** |
-| **F6** | (inside code-review sub-hub) axes applicable? | every applicable | Spec / Standards / Maintainability on or soft-skip · **Agent judgment** |
+| **F6** | (inside 1-code-review sub-hub) axes applicable? | every applicable | Spec / Standards / Maintainability on or soft-skip · **Agent judgment** |
 
 **Multi-session pipeline:**
 
 ```text
-to-spec → to-tickets → implement* → tdd → code-review (multi-axis) → commit
+1-to-spec → 1-to-tickets → implement* → 1-tdd → 1-code-review (multi-axis) → commit
 ```
 
-**Single-session:** `implement*` → tdd → code-review → commit.
+**Single-session:** `implement*` → 1-tdd → 1-code-review → commit.
 
 **Note:** Ship lands on **`/1-code-review`** (Review **sub-hub**), not domain hub `/0-review`. Open-ended “which review?” → `/0-review` F-R1.
 
@@ -114,7 +114,7 @@ to-spec → to-tickets → implement* → tdd → code-review (multi-axis) → c
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F-R1** | What kind of review? | Multi-axis **change** review if PR/ship/diff | `/1-code-review` · `/1-security-auditor` · `/1-software-architect` · `/1-codebase-review-strategy` first · **Agent judgment** |
+| **F-R1** | What kind of review? | Multi-axis **change** 0-review if PR/ship/diff | `/1-code-review` · `/1-security-auditor` · `/1-software-architect` · `/1-codebase-review-strategy` first · **Agent judgment** |
 | **F6** | (inside `/1-code-review`) axes applicable? | every applicable | Spec / Standards / Maintainability on or soft-skip · **Agent judgment** |
 | **F-R2** | (inside `/1-security-auditor`) audit scope? | full project unless path/PR named | full · scoped module · differential/PR · **Agent judgment** |
 
@@ -122,7 +122,7 @@ to-spec → to-tickets → implement* → tdd → code-review (multi-axis) → c
 
 | | |
 |--|--|
-| **Role** | Multi-axis diff/PR closer (Ship + branch review) |
+| **Role** | Multi-axis diff/PR closer (Ship + branch 0-review) |
 | **Children** | **axis:** Spec, Standards, Maintainability · **cousin:** `1-verify-work`, `1-ponytail-review` · **soft:** `1-software-architect`, `1-security-and-hardening` · **†** `code-review-v2` |
 
 ### Sub-hub `/1-security-auditor`
@@ -164,7 +164,7 @@ to-spec → to-tickets → implement* → tdd → code-review (multi-axis) → c
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F8** | Fog clear enough to build? | only when buildable | stay wayfinder · → to-spec · **Agent judgment** |
+| **F8** | Fog clear enough to build? | only when buildable | stay 0-wayfinder · → 1-to-spec · **Agent judgment** |
 
 ---
 
@@ -177,7 +177,7 @@ to-spec → to-tickets → implement* → tdd → code-review (multi-axis) → c
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F9** | Take a deepening idea to Design? | if user picks one | stay · → grill-with-docs · **Agent judgment** |
+| **F9** | Take a deepening idea to Design? | if user picks one | stay · → 1-grill-with-docs · **Agent judgment** |
 | **F-C1** | Enforce standards on code now, or discuss clean-code principles? | coding while editing | `/1-coding-standards` · `/1-clean-craftsmanship` · **Agent judgment** |
 | **F-D1** | Concept wiki (`docs/wiki`) or living docs + code triggers? | wiki if raw→concepts · living if drift/triggers | `/1-project-wiki-manager` · `/1-living-documentation-governor` · **Agent judgment** |
 
@@ -207,7 +207,7 @@ Vault root path from setup SSOT only.
 | | |
 |--|--|
 | **★ Hub** | `/0-skill-manager` |
-| **Children** | ops: create/read/update/delete/place/new-hub/ingest/organize/lint/atomize · **pipeline:** `1-skill-linter` · **pipeline:** `1-skill-atomize` · **soft:** `1-session-skill-reflect`, `1-discover-skills` · handoff body craft → `0-skill-creator` |
+| **Children** | ops: create/read/update/delete/place/new-hub/ingest/organize/lint/atomize · **pipeline:** `1-skill-linter` · **pipeline:** `1-skill-atomize` · **soft:** `1-session-skill-reflect`, `1-discover-skills` · 1-handoff body craft → `0-skill-creator` |
 
 Not a product feature pipeline — **mutates the catalog**.
 
@@ -217,7 +217,7 @@ Not a product feature pipeline — **mutates the catalog**.
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F-A1** | (inside skill-atomize) How far this pass? | high-overlap only | high · high+medium · full · **Agent judgment** |
+| **F-A1** | (inside 1-skill-atomize) How far this pass? | high-overlap only | high · high+medium · full · **Agent judgment** |
 | **F-A2** | Collision resolution? | keep both + Boundary + forks | keep-both · merge · split · **Agent judgment** |
 | **F-A3** | Apply multi-file writes? | dry-run then confirm | dry-run · apply · **Agent judgment** |
 
@@ -228,11 +228,11 @@ Not a product feature pipeline — **mutates the catalog**.
 | | |
 |--|--|
 | **★ Hub** | `/0-skill-creator` |
-| **Children** | **wrapper:** `1-create-skill` · craft: `1-writing-great-skills` · next: skill-manager place |
+| **Children** | **wrapper:** `1-create-skill` · craft: `1-writing-great-skills` · next: 0-skill-manager place |
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F10** | Ingest/place into catalog now? | yes when ready | stay crafting · skill-manager place/ingest · **Agent judgment** |
+| **F10** | Ingest/place into catalog now? | yes when ready | stay crafting · 0-skill-manager place/ingest · **Agent judgment** |
 
 ---
 
@@ -241,7 +241,7 @@ Not a product feature pipeline — **mutates the catalog**.
 | | |
 |--|--|
 | **★ Hub** | `/0-ponytail` |
-| **Children** | **satellite:** ponytail-review, audit, debt, gain, help |
+| **Children** | **satellite:** 1-ponytail-review, 1-ponytail-audit, 1-ponytail-debt, 1-ponytail-gain, 1-ponytail-help |
 
 Optional; not Ship closer.
 
@@ -261,18 +261,18 @@ Optional; not Ship closer.
 | Tutor | tutor-mode refs under `/0-learn` | stuck on a problem, quiz, walk-through |
 | Code walkthrough | `/1-code-explainer` | explain source code in editor/repo |
 | Workspace course | `/1-teach` | multi-session directory lessons |
-| Story | `/1-story-teacher` | teach via fiction |
+| Story | `/1-story-teacher` | 1-teach via fiction |
 | Summarize source | `/1-resource-summarizer` | distill long artifact for notes |
 | Vault Concept | `/1-vault-explain` | explain `[[Note]]` from vault |
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F-L1** | What kind of learning help? | Structured **explain** for concepts; **code-explainer** if object is code | explainer · tutor · code-explainer · teach · story · summarizer · vault-explain · **Agent judgment** |
+| **F-L1** | What kind of learning help? | Structured **explain** for concepts; **code-explainer** if object is code | explainer · tutor · 1-code-explainer · 1-teach · story · summarizer · 1-vault-explain · **Agent judgment** |
 | **F-L2** | Long source — summarize first? | Yes if raw blob is huge | summarizer first · skip to explain/tutor/story · **Agent judgment** |
 
 **Not for:** product ship (`/0-implement`), catalog routing (`/0-butler`), vault compile/query (`/1-vault-ingest`, `/1-wiki-query`).
 
-**Cross-domain:** Vault `1-vault-explain` hard-loads `1-learning-explainer`. `1-resource-summarizer` is soft under Learn and used by vault-ingest distill. `1-code-explainer` lives under `skills/1-code-explainer` as Learn child (hub membership).
+**Cross-domain:** Vault `1-vault-explain` hard-loads `1-learning-explainer`. `1-resource-summarizer` is soft under Learn and used by 1-vault-ingest distill. `1-code-explainer` lives under `skills/1-code-explainer` as Learn child (hub membership).
 
 ---
 
@@ -305,11 +305,11 @@ Butler asks **F7** when intent is unclear.
 
 | Tombstone | Successor hub / skill |
 |-----------|------------------------|
-| ask-matt | butler |
-| code-review-v2 | code-review |
-| software-architecture | improve-codebase-architecture / codebase-design |
-| obsidian-notes-manager | rohitas-vault-wiki |
-| task-observer | reflect + skill-manager |
+| ask-matt | 0-butler |
+| code-review-v2 | 1-code-review |
+| software-architecture | 0-improve-codebase-architecture / 1-codebase-design |
+| obsidian-notes-manager | 0-rohitas-vault-wiki |
+| task-observer | reflect + 0-skill-manager |
 | continuous-learning-v2 | reflect |
 
 ---
@@ -317,22 +317,22 @@ Butler asks **F7** when intent is unclear.
 ## ASCII — main product path
 
 ```text
-        ★ butler (route only)
+        ★ 0-butler (route only)
                │
-        ★ setup-rohitas-skills  (F1)
+        ★ 0-setup-rohitas-skills  (F1)
                │
-        ★ grilling  (F2 wrappers · F3 proto · F4 multi?)
+        ★ 0-grilling  (F2 wrappers · F3 proto · F4 multi?)
                │
      ┌─────────┴─────────┐
    multi               single
      │                   │
-  to-spec                │
-  to-tickets             │
+  1-to-spec                │
+  1-to-tickets             │
      └─────────┬─────────┘
                ▼
-        ★ implement → tdd → code-review (F6; Review sub-hub) → commit
+        ★ 0-implement → 1-tdd → 1-code-review (F6; Review sub-hub) → commit
                │
-        open-ended “review?” → ★ /0-review (F-R1) → code-review | security-auditor | software-architect | strategy
+        open-ended “review?” → ★ /0-review (F-R1) → 1-code-review | 1-security-auditor | 1-software-architect | strategy
 ```
 
 ## Residual — Personal

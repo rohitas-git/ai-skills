@@ -1,6 +1,6 @@
 # Matt Pocock lean SKILL.md + chaining
 
-skill-linter treats **Matt-style** skills as the house default for structure. Canonical theory: `/1-writing-great-skills`. Canonical thin examples: `/0-implement`, `/1-tdd`, `/1-to-spec`, `/1-grill-with-docs`.
+1-skill-linter treats **Matt-style** skills as the house default for structure. Canonical theory: `/1-writing-great-skills`. Canonical thin examples: `/0-implement`, `/1-tdd`, `/1-to-spec`, `/1-grill-with-docs`.
 
 ## Goal
 
@@ -43,7 +43,7 @@ description: …   # triggers for model-invoked; short human summary if user-inv
 
 **Progressive disclosure:** if only some branches need a blob, pointer it out of `SKILL.md`.
 
-## Lean size gates (skill-linter defaults)
+## Lean size gates (1-skill-linter defaults)
 
 | Lines in SKILL.md | Code | Meaning |
 |-------------------|------|---------|
@@ -61,7 +61,7 @@ description: …   # triggers for model-invoked; short human summary if user-inv
 |------|-----|----------------|
 | `lean` | warn | SKILL.md ≤ 180 lines, or ≤ 250 with clear load map to refs |
 | `lean-soft` | info | 121–180 without map — nudge thinner |
-| `matt-shape` | warn | Has ordered Process/Dispatch/Steps **or** is intentionally all-reference with short body (like writing-great-skills core is long but discloses glossary — prefer disclose) |
+| `matt-shape` | warn | Has ordered Process/Dispatch/Steps **or** is intentionally all-reference with short body (like 1-writing-great-skills core is long but discloses glossary — prefer disclose) |
 | `disclosure` | warn | If SKILL.md > 120 and has `references/` or sibling `.md`, SKILL.md must **link** them with when-to-load wording |
 | `completion` | info | Steps imply done/not-done (completion criteria), not open-ended essay |
 | `no-book` | warn | SKILL.md is not primarily long prose chapters without steps or pointers |
@@ -69,12 +69,12 @@ description: …   # triggers for model-invoked; short human summary if user-inv
 
 ## Chaining checks (Matt flow)
 
-Skills live on a **chain**, not in isolation. Align with butler `flows.md` and hub `workflow.json`.
+Skills live on a **chain**, not in isolation. Align with 0-butler `flows.md` and hub `workflow.json`.
 
 | Code | Sev | Pass criteria |
 |------|-----|----------------|
 | `chain-slot` | warn | Live skill documents **parent hub** and role (pipeline / on-ramp / leaf / wrapper / hard / soft / satellite) — via flows, workflow.json, or short “Build path / Related” in SKILL.md |
-| `chain-next` | warn | Pipeline skills name **next** skill(s) (e.g. implement → tdd → code-review) |
+| `chain-next` | warn | Pipeline skills name **next** skill(s) (e.g. 0-implement → 1-tdd → 1-code-review) |
 | `chain-prev` | info | Pipeline skills name **previous** when not an entry hub |
 | `hard-dep-setup` | critical | `1-to-spec`, `1-to-tickets`, `0-triage` point at `/0-setup-rohitas-skills` |
 | `hub-member` | critical | Listed under a domain hub (ADR 0006) — chaining requires membership |
@@ -83,8 +83,8 @@ Skills live on a **chain**, not in isolation. Align with butler `flows.md` and h
 ### Chaining patterns (good)
 
 ```text
-setup-rohitas-skills  →  grilling  →  to-spec → to-tickets → implement → tdd → code-review
-                              ↑ on-ramps: triage, diagnosing-bugs, wayfinder, improve-arch
+0-setup-rohitas-skills  →  0-grilling  →  1-to-spec → 1-to-tickets → 0-implement → 1-tdd → 1-code-review
+                              ↑ on-ramps: 0-triage, 0-diagnosing-bugs, 0-wayfinder, improve-arch
 ```
 
 Thin hub skills only **point**:
@@ -97,7 +97,7 @@ Thin hub skills only **point**:
 
 ### Bad
 
-- Monolith that embeds setup + design + ship + review in one SKILL.md
+- Monolith that embeds setup + design + ship + 0-review in one SKILL.md
 - No next/prev and not a leaf/tool under misc
 - Orphan skill with no hub slot (breaks chain index)
 
@@ -105,8 +105,8 @@ Thin hub skills only **point**:
 
 1. **Thin SKILL.md** — move templates, long tables, deep theory to `references/` or sibling files; leave steps + pointers.
 2. **Add chain blurb** — Build path / Related with `/prev` and `/next`.
-3. **Place** under domain hub via skill-manager if orphan.
-4. **Split** if multi-pipeline (writing-great-skills: by invocation or by sequence).
+3. **Place** under domain hub via 0-skill-manager if orphan.
+4. **Split** if multi-pipeline (1-writing-great-skills: by invocation or by sequence).
 5. **Sub-domain hub** only if a whole tree needs its own map (sprawl-and-subdomain.md).
 
-Handoff rewrites to `/0-skill-creator` + place via `/0-skill-manager`. skill-linter does not edit the linted skill.
+Handoff rewrites to `/0-skill-creator` + place via `/0-skill-manager`. 1-skill-linter does not edit the linted skill.

@@ -1,7 +1,7 @@
 ---
 name: 1-doubt-driven-development
 description: >
-  Fresh-context adversarial review of non-trivial decisions before they stand (CLAIM→EXTRACT→DOUBT→RECONCILE). Use when correctness stakes are high, unfamiliar code, or confident output is cheaper to verify now than debug later.
+  Fresh-context adversarial 0-review of non-trivial decisions before they stand (CLAIM→EXTRACT→DOUBT→RECONCILE). Use when correctness stakes are high, unfamiliar code, or confident output is cheaper to verify now than debug later.
 disable-model-invocation: true
 ---
 
@@ -25,5 +25,5 @@ Lean catalog skill. **Full vendor body:** [references/full-guide.md](./reference
 
 ## Related
 
-- Parent `/0-review` soft · after implement mid-flight · not multi-axis closer `/1-code-review`
+- Parent `/0-review` soft · after 0-implement mid-flight · not multi-axis closer `/1-code-review`
 - Upstream harvest only; winner name is **`/1-doubt-driven-development`**

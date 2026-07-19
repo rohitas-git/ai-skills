@@ -28,7 +28,7 @@ Provide a rigorous, scholarly explanation suitable for students, researchers, or
 3. **Key evidence and methods** used to study it
 4. **Major theoretical frameworks** or models
 5. **Limitations, debates, and critiques**
-6. **Current open questions** and research directions
+6. **Current open questions** and 1-research directions
 
 ## Example (Photosynthesis – Academic level)
 "Photosynthesis is the light-driven reduction of CO₂ to carbohydrates coupled with the oxidation of water, occurring in oxygenic photoautotrophs.

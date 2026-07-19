@@ -1,8 +1,8 @@
-# deprecation-and-migration (vendor harvest)
+# 1-deprecation-and-migration (vendor harvest)
 
 Source: archive vendor `1-deprecation-and-migration`. Catalog winner: `/1-deprecation-and-migration`.
 
-name: deprecation-and-migration
+name: 1-deprecation-and-migration
 description: Manages deprecation and migration. Use when removing old systems, APIs, or features. Use when migrating users from one implementation to another. Use when deciding whether to maintain or sunset existing code.
 
 # Deprecation and Migration

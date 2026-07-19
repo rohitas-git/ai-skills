@@ -3,8 +3,8 @@ name: 1-coding-standards
 description: >
   Always-on lean coding standards for naming, modularity, error handling, and
   comments while generating or reviewing code. Not Clean Code/Architecture Q&A
-  (/1-clean-craftsmanship). For file layout use stepdown-rule; API docs → code-comments;
-  one-line blocks → inline-comments; numbered flow trees → execution-flow-comments.
+  (/1-clean-craftsmanship). For file layout use 1-stepdown-rule; API docs → 1-code-comments;
+  one-line blocks → 1-inline-comments; numbered flow trees → execution-flow-comments.
   Soft under Ship / Architecture.
 ---
 
@@ -70,5 +70,5 @@ Follow **stepdown-rule** (newspaper metaphor). Do not duplicate that skill — l
 ## 4. Enforcement
 
 - Apply to **all new and modified code**.
-- On review: naming, comments, modularity, and (via **stepdown-rule**) top-down layout.
+- On 0-review: naming, comments, modularity, and (via **stepdown-rule**) top-down layout.
 - Boy Scout Rule: improve layout/comments in regions you touch; do not force whole-file reshuffles unless asked.

@@ -18,7 +18,7 @@ Security-first practices while **building or remediating**. Treat untrusted inpu
 - Applying fixes after `/1-security-auditor` or `/1-code-review` security-adjacent findings
 - Pre-commit / pre-release hardening pass on a change
 
-**Not for:** multi-phase project audit + findings schema → `/1-security-auditor`. Multi-axis PR review → `/1-code-review`.
+**Not for:** multi-phase project audit + findings schema → `/1-security-auditor`. Multi-axis PR 0-review → `/1-code-review`.
 
 ## Process
 
@@ -43,4 +43,4 @@ Security-first practices while **building or remediating**. Treat untrusted inpu
 - **Parent domain:** `/0-review` (soft on both sub-hubs)
 - **Soft of:** `/1-code-review`, `/1-security-auditor`
 - **Audit instead:** `/1-security-auditor`
-- **Ship closer:** `/1-code-review` after implement/tdd
+- **Ship closer:** `/1-code-review` after implement/1-tdd

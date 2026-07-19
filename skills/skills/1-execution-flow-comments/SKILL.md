@@ -5,7 +5,7 @@ description: >
   trees (Input, Output, Variable, Branch, Logic, Call, Side effect) above
   multi-step functions. Use when the user asks for execution flow, step-by-step
   flow comments, ASCII └─ trees, or /1-execution-flow-comments. Do not use for
-  API docs (code-comments) or single-line block notes (inline-comments).
+  API docs (1-code-comments) or single-line block notes (1-inline-comments).
 disable-model-invocation: true
 ---
 

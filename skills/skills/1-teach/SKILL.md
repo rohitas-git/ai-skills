@@ -35,7 +35,7 @@ Treat the current directory as a teaching workspace. The state of their learning
 
 ## Philosophy
 
-To learn at a deep level, the user needs three things:
+To 0-learn at a deep level, the user needs three things:
 
 - **Knowledge**, captured from high-quality, high-trust resources
 - **Skills**, acquired through highly-relevant interactive lessons devised by you, based on the knowledge
@@ -104,7 +104,7 @@ The user may specify an exact thing they want to learn. If they don't, figure ou
 
 ## Knowledge
 
-Lessons should be designed around a skill the user is going to learn. The knowledge in the lesson should be only what's required to acquire that skill. You teach the knowledge first, then get the user to practice the skills via an interactive feedback loop.
+Lessons should be designed around a skill the user is going to learn. The knowledge in the lesson should be only what's required to acquire that skill. You 1-teach the knowledge first, then get the user to practice the skills via an interactive feedback loop.
 
 Knowledge should first be gathered from trusted resources. Use `RESOURCES.md` to keep track of them. Lessons should be littered with citations - links to external resources to back up any claim made. This increases the trustworthiness of the lesson.
 

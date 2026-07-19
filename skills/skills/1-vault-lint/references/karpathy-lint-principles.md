@@ -9,7 +9,7 @@ From [LLM Wiki gist](https://gist.github.com/karpathy/442a6bf555914893e9891c1151
 - Orphan pages with no inbound links  
 - Important concepts mentioned but lacking their own page  
 - Missing cross-references  
-- Data gaps that could be filled with a source or web research  
+- Data gaps that could be filled with a source or web 1-research  
 
 Also useful: suggest new questions to investigate and sources to seek.
 

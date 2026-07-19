@@ -13,7 +13,7 @@ Always. Every code change flows through git.
 
 ### Trunk-Based Development (Recommended)
 
-Keep `main` always deployable. Work in short-lived feature branches that merge back within 1-3 days. Long-lived development branches are hidden costs — they diverge, create merge conflicts, and delay integration. DORA research consistently shows trunk-based development correlates with high-performing engineering teams.
+Keep `main` always deployable. Work in short-lived feature branches that merge back within 1-3 days. Long-lived development branches are hidden costs — they diverge, create merge conflicts, and delay integration. DORA 1-research consistently shows trunk-based development correlates with high-performing engineering teams.
 
 ```
 main ──●──●──●──●──●──●──●──●──●──  (always deployable)
@@ -186,7 +186,7 @@ This pattern means you never lose more than one increment of work. If an agent g
 
 ## Change Summaries
 
-After any modification, provide a structured summary. This makes review easier, documents scope discipline, and surfaces unintended changes:
+After any modification, provide a structured summary. This makes 0-review easier, documents scope discipline, and surfaces unintended changes:
 
 ```
 CHANGES MADE:

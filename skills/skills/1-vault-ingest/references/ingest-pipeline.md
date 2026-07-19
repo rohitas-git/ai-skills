@@ -1,4 +1,4 @@
-# Ingest pipeline (vault-ingest)
+# Ingest pipeline (1-vault-ingest)
 
 ## 1. Orient
 

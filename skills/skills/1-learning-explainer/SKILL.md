@@ -3,9 +3,9 @@ name: 1-learning-explainer
 description: >
   Structured multi-level explanations (child through frontier) with knowledge
   probe, mental models, diagrams, progressive deep-dive, and optional CLT.
-  Use for "explain X", ELI5, audience-level teaching, or vault-explain pedagogy.
+  Use for "explain X", ELI5, audience-level teaching, or 1-vault-explain pedagogy.
   Default explain mode under /0-learn. Not code walkthroughs (/1-code-explainer),
-  multi-session courses (/1-teach), Socratic problem practice (learn tutor-mode),
+  multi-session courses (/1-teach), Socratic problem practice (0-learn tutor-mode),
   or raw summarization alone (/1-resource-summarizer).
 disable-model-invocation: true
 ---

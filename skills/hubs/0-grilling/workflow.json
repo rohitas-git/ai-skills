@@ -48,7 +48,7 @@
   ],
   "pipeline": [
     "grill wrappers",
-    "optional prototype detour",
+    "optional 1-prototype detour",
     "merge out \u2192 Ship"
   ],
   "forks": [
@@ -64,7 +64,7 @@
     },
     {
       "id": "F3",
-      "question": "Need a runnable prototype answer?",
+      "question": "Need a runnable 1-prototype answer?",
       "recommended": "No",
       "branches": [
         "stay in grill",
@@ -75,7 +75,7 @@
     {
       "id": "F4",
       "question": "Multi-session build?",
-      "recommended": "Yes if >1 implement slice",
+      "recommended": "Yes if >1 0-implement slice",
       "branches": [
         "yes \u2192 Ship multi",
         "no \u2192 Ship single",

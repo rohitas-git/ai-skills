@@ -1,4 +1,4 @@
-# hatch-pet — full guide
+# 1-hatch-pet — full guide
 
 > Progressive disclosure body moved from SKILL.md for Matt-lean main file.
 
@@ -6,7 +6,7 @@
 
 ## Overview
 
-Create a Codex-compatible v2 animated pet from a concept, brand cue, company/prospect name, one or more reference images, or any combination of those inputs. Every newly hatched pet is an 8x11 atlas with the 9 standard animation rows plus 16 clockwise look directions and is packaged with `spriteVersionNumber: 2`. The intermediate 8x9 atlas exists only to assemble and review rows 0-8; never package it as a new pet.
+Create a Codex-compatible v2 animated pet from a concept, brand cue, company/prospect name, one or more reference images, or any combination of those inputs. Every newly hatched pet is an 8x11 atlas with the 9 standard animation rows plus 16 clockwise look directions and is packaged with `spriteVersionNumber: 2`. The intermediate 8x9 atlas exists only to assemble and 0-review rows 0-8; never package it as a new pet.
 
 User-facing inputs are optional. If the user omits a pet name, infer one from the concept, brand, company, or reference filenames; if that is not possible, choose a short friendly name. If the user omits a description, infer one from the concept or references. If the user omits reference images, generate the base pet from text first, then use that base as the canonical reference for every animation row.
 
@@ -33,7 +33,7 @@ ${CODEX_HOME:-$HOME/.codex}/skills/.system/imagegen/SKILL.md
 
 Do not call the Image API, image CLI, or any other image-generation path directly. Let `$imagegen` choose its own built-in-first path and fallback rules. If `$imagegen` says a fallback requires confirmation, ask the user before continuing.
 
-When invoking `$imagegen`, pass the generated pet prompt as the authoritative visual spec. Pet prompts should stay concise, state-specific, sprite-production oriented, and grounded in the listed input images. Keep longer policy and QA rules in this skill and the deterministic review scripts rather than expanding them into every image prompt. Do not wrap prompts in the generic `$imagegen` shared prompt schema.
+When invoking `$imagegen`, pass the generated pet prompt as the authoritative visual spec. Pet prompts should stay concise, state-specific, sprite-production oriented, and grounded in the listed input images. Keep longer policy and QA rules in this skill and the deterministic 0-review scripts rather than expanding them into every image prompt. Do not wrap prompts in the generic `$imagegen` shared prompt schema.
 
 Use this skill's scripts for deterministic image work only: preparing layout guides and prompts, mirroring approved `running-left`, extracting frames, validating rows, composing the final atlas, and creating contact-sheet plus motion-preview QA media. Parent-owned shell/`jq` steps handle manifest updates, packaging, and cleanup.
 
@@ -64,13 +64,13 @@ Discovery worker responsibilities:
 - cover identity/category, audience/use context, visual system, personality/tone, product/domain motifs, mascot translation cues, avoidances, and evidence/confidence
 - mark mascot guidance that is inferred from sources as inference
 - avoid copying logos, readable marks, UI screenshots, slogans, or text
-- end with a compact `Generation handoff` section containing only `brand_name`, `brand_brief`, `avatar_seed`, `avoid`, and `brand_sources`
+- end with a compact `Generation 1-handoff` section containing only `brand_name`, `brand_brief`, `avatar_seed`, `avoid`, and `brand_sources`
 - do not generate images, prepare run folders, or edit unrelated files
 
 Use this discovery worker prompt:
 
 ```text
-Research a brand for hatch-pet mascot creation.
+Research a brand for 1-hatch-pet mascot creation.
 
 Brand/product/prospect: <brand name>
 User context: <short user request>
@@ -88,7 +88,7 @@ Use web search. Prefer official brand, product, docs, about, press, or brand pag
 
 Do not copy logos, readable marks, UI screenshots, slogans, or text. Clearly label mascot guidance that is inferred rather than directly sourced.
 
-End the brief with a `Generation handoff` section containing exactly:
+End the brief with a `Generation 1-handoff` section containing exactly:
 - brand_name=<canonical brand/product name>
 - brand_brief=<one sentence, max 45 words, covering palette/tone/domain motifs/personality>
 - avatar_seed=<short mascot-safe visual idea, no logo copying>
@@ -104,7 +104,7 @@ avoid=<same short avoid list from Generation handoff>
 brand_sources=<same comma-separated URLs from Generation handoff>
 ```
 
-The parent should save the markdown brief before preparing the run, then pass it to `prepare_pet_run.py` as `--brand-discovery-file` together with `--brand-name`, `--brand-brief`, repeated `--brand-source`, and a concise `--pet-notes` value based on `avatar_seed` when the user did not provide a better avatar description. Keep the full brief for review; only the compact handoff fields should shape prompts. If web search is unavailable and the user gave only a bare brand name, ask for brand cues before generating.
+The parent should save the markdown brief before preparing the run, then pass it to `prepare_pet_run.py` as `--brand-discovery-file` together with `--brand-name`, `--brand-brief`, repeated `--brand-source`, and a concise `--pet-notes` value based on `avatar_seed` when the user did not provide a better avatar description. Keep the full brief for review; only the compact 1-handoff fields should shape prompts. If web search is unavailable and the user gave only a bare brand name, ask for brand cues before generating.
 
 ## Generation Contract
 
@@ -188,7 +188,7 @@ What each step means:
 - `Getting <Pet> ready.` Choose or confirm the pet name, description, source images, style preset, style notes, and working folder. For bare brand/product/company requests, first run the brand discovery worker and capture the compact brand brief, source URLs, and avatar seed.
 - `Imagining <Pet>'s main look.` Generate the pet's main reference image. This becomes the visual source of truth.
 - `Picturing <Pet>'s poses.` Generate and approve rows `0-8`, write the pet-specific look mechanics plan, then generate rows `9-10`. Only mirror `running-left` if `running-right` clearly works when flipped.
-- `Hatching <Pet>.` Assemble the 8x11 atlas, review standard motion plus all 16 look directions, fix every failed cell or row, package `spriteVersionNumber: 2`, and report the output paths.
+- `Hatching <Pet>.` Assemble the 8x11 atlas, 0-review standard motion plus all 16 look directions, fix every failed cell or row, package `spriteVersionNumber: 2`, and report the output paths.
 
 Only mark a step complete when the real file, image, or decision exists. If this is a repair run, start from the first relevant step instead of restarting the whole checklist.
 
@@ -224,7 +224,7 @@ Use elapsed-time checkpoints:
 - At 30 minutes, continue only when the remaining work is clearly converging and bounded, such as final validation, one targeted repair, or packaging.
 - Keep recording elapsed time, retries, validation failures, and QA cost throughout the run, but do not pause or stop solely because elapsed time crosses 45 or 60 minutes. Continue until the pet passes, the user cancels, or a genuine external blocker prevents further progress.
 
-Never use the time target to skip blind direction QA, labeled semantics, continuity review, atlas validation, despill validation, final visual QA, or any other acceptance criterion.
+Never use the time target to skip blind direction QA, labeled semantics, continuity 0-review, atlas validation, despill validation, final visual QA, or any other acceptance criterion.
 
 ## Default Workflow
 
@@ -333,7 +333,7 @@ jq --arg id "$JOB_ID" --arg source "$SOURCE" --arg at "$UPDATED_AT" '(.jobs[] | 
 mv "$TMP_MANIFEST" "$RUN_DIR/imagegen-jobs.json"
 ```
 
-After `decoded/look-anchors-approved.png` exists and all four cardinals have passed semantic review, mark `look-cardinals` complete. Row 9 then becomes ready immediately.
+After `decoded/look-anchors-approved.png` exists and all four cardinals have passed semantic 0-review, mark `look-cardinals` complete. Row 9 then becomes ready immediately.
 
 If the copied source is under `${CODEX_HOME:-$HOME/.codex}/generated_images`, delete the original generated file after the decoded copy exists:
 
@@ -358,7 +358,7 @@ esac
 
 That script mirrors each generated frame slot in place so the leftward row preserves the rightward row's temporal order. Do not replace it with a whole-strip mirror that reverses animation timing.
 
-6. When all nine incrementally validated standard row jobs are complete, build and review the intermediate rows `0-8`:
+6. When all nine incrementally validated standard row jobs are complete, build and 0-review the intermediate rows `0-8`:
 
 ```bash
 RUN_DIR=/absolute/path/to/run
@@ -434,7 +434,7 @@ run/
   qa/review.json
 ```
 
-Inspect `qa/contact-sheet.png` and `qa/previews/*.gif` before generating look rows. `qa/review.json` plus visual motion review are the intermediate gates. The standard contact sheet intentionally predates chroma cleanup, so visible key-color fringe there is not a failure; judge chroma only on the cleaned final v2 atlas. Block progress if any standard row changes identity, style, prop handedness, or silhouette, or if playback pops, reverses cadence, faces the wrong direction, or is visually inert. Do not package or clean up yet.
+Inspect `qa/contact-sheet.png` and `qa/previews/*.gif` before generating look rows. `qa/review.json` plus visual motion 0-review are the intermediate gates. The standard contact sheet intentionally predates chroma cleanup, so visible key-color fringe there is not a failure; judge chroma only on the cleaned final v2 atlas. Block progress if any standard row changes identity, style, prop handedness, or silhouette, or if playback pops, reverses cadence, faces the wrong direction, or is visually inert. Do not package or clean up yet.
 
 ## Required V2 Look-Direction Stage
 
@@ -455,7 +455,7 @@ After copying row 9 into `decoded/look-row-9.png`, register and edge-check it wi
   --registration-manifest-output "$RUN_DIR/qa/look-row-9-registration.json"
 ```
 
-Inspect the eight registered cells at normal pet size in `000` through `157.5` order. Record the row-9 semantic and adjacent-continuity review, resynthesize the complete row for any hard failure, and mark `look-row-9` complete only after this check passes. That completion makes row 10 ready in `imagegen-jobs.json`.
+Inspect the eight registered cells at normal pet size in `000` through `157.5` order. Record the row-9 semantic and adjacent-continuity 0-review, resynthesize the complete row for any hard failure, and mark `look-row-9` complete only after this check passes. That completion makes row 10 ready in `imagegen-jobs.json`.
 
 Generate only the additional look-direction visuals with `$imagegen`:
 
@@ -491,26 +491,26 @@ row 10: 180, 202.5, 225, 247.5, 270, 292.5, 315, 337.5
 
 ### Direction Acceptance Policy
 
-Judge the completed 16-pose loop as an animation family. Cardinals must match their single axis exactly. Intermediate directions should preserve the intended axes, but isolated blind-review uncertainty is evidence for labeled loop review rather than an automatic regeneration trigger.
+Judge the completed 16-pose loop as an animation family. Cardinals must match their single axis exactly. Intermediate directions should preserve the intended axes, but isolated blind-review uncertainty is evidence for labeled loop 0-review rather than an automatic regeneration trigger.
 
 Hard failures require row regeneration:
 
 - a cardinal anchor is wrong or ambiguous: `000` up, `090` screen-right, `180` down, or `270` screen-left
 - a blind cardinal classification contradicts or cannot confirm `000` up, `090` screen-right, `180` down, or `270` screen-left
-- labeled normal-size review confirms that an intermediate pose points into the wrong principal quadrant, reverses the loop, or loses a required axis badly enough to read as a different direction
+- labeled normal-size 0-review confirms that an intermediate pose points into the wrong principal quadrant, reverses the loop, or loses a required axis badly enough to read as a different direction
 - the ordered loop visibly reverses, backtracks, crosses into the wrong principal quadrant, or contains a conspicuous snap, identity change, scale pop, registration jump, or broken prop attachment
-- the source or atlas has a deterministic structural failure, or visual review confirms clipping, an accidental transparent interior hole, a seam band, replacement eyes, or a materially broken sprite
+- the source or atlas has a deterministic structural failure, or visual 0-review confirms clipping, an accidental transparent interior hole, a seam band, replacement eyes, or a materially broken sprite
 - whole-sprite rotation, deformation, or eye mechanics visibly break the pet's identity or make the motion feel incoherent
 
 Review warnings do not require regeneration by themselves:
 
 - an intermediate pose is similar to a neighbor, a diagonal cue is subtle, or the pet uses less body movement than the ideal mechanics plan
-- blind reviewers disagree, return `ambiguous`, or produce an opposite-sign majority for an intermediate direction, provided labeled normal-size review confirms the intended direction and the ordered loop remains coherent
+- blind reviewers disagree, return `ambiguous`, or produce an opposite-sign majority for an intermediate direction, provided labeled normal-size 0-review confirms the intended direction and the ordered loop remains coherent
 - continuity metrics report a diff, center, area, or alpha-hole candidate without a visible snap, pop, seam, or broken silhouette in the QA sheet or animation loop
 
 Before accepting the v2 atlas, create a focused direction QA sheet showing the neutral/rest frame next to all 16 look cells, labeled by degree and expected direction, at approximately the in-app display size. Run the adjacent continuity measurement separately and treat its findings as motion-review evidence, not automatic direction failures.
 
-Perform an explicit semantic review for every direction and record `pass`, `warning`, or `fail`, plus separate visible evidence for its horizontal and vertical axes. A warning may accept blind-review uncertainty for an intermediate pose when labeled normal-size review confirms the intended axes and the ordered loop remains coherent. It may not waive a wrong or ambiguous cardinal, a labeled wrong-quadrant pose, or a visible reversal. If a direction receives `fail`, strengthen the containing row's instructions and resynthesize that complete coherent row. Never replace the final normalized cell directly.
+Perform an explicit semantic 0-review for every direction and record `pass`, `warning`, or `fail`, plus separate visible evidence for its horizontal and vertical axes. A warning may accept blind-review uncertainty for an intermediate pose when labeled normal-size 0-review confirms the intended axes and the ordered loop remains coherent. It may not waive a wrong or ambiguous cardinal, a labeled wrong-quadrant pose, or a visible reversal. If a direction receives `fail`, strengthen the containing row's instructions and resynthesize that complete coherent row. Never replace the final normalized cell directly.
 
 Look rows must have transparent backgrounds after assembly. Do not accept or install the pet if `qa/look-directions.png` or `qa/contact-sheet-extended.png` shows chroma-key panels behind any look cell. If generated look rows contain slight chroma-key lighting variation, rerun assembly with a wider `--chroma-threshold` instead of packaging the opaque key color. Validation must pass without opaque chroma-key-pixel errors.
 
@@ -619,7 +619,7 @@ Apply the hidden answer key only to the consensus verdict:
   --json-out "$RUN_DIR/qa/direction-blind-validation.json"
 ```
 
-The hidden answer key contains seven horizontal pairs and seven vertical pairs. The cardinal pairs (`000` vs `180` and `090` vs `270`) are hard gates: a mismatch or ambiguous majority keeps validation at `ok: false`. All intermediate pairs are review gates: mismatches, same-direction votes, and ambiguous majorities are preserved as warnings while validation remains `ok: true`. The blind pass is mandatory, but intermediate warnings are resolved by labeled normal-size loop review instead of repeated regeneration by default.
+The hidden answer key contains seven horizontal pairs and seven vertical pairs. The cardinal pairs (`000` vs `180` and `090` vs `270`) are hard gates: a mismatch or ambiguous majority keeps validation at `ok: false`. All intermediate pairs are 0-review gates: mismatches, same-direction votes, and ambiguous majorities are preserved as warnings while validation remains `ok: true`. The blind pass is mandatory, but intermediate warnings are resolved by labeled normal-size loop 0-review instead of repeated regeneration by default.
 
 ### Blind Review Severity Resolution
 
@@ -628,7 +628,7 @@ After receiving a blind or final visual QA `pass`/`fail` result:
 1. If it passes, continue immediately.
 2. If it fails, inspect the worker's semantic reasons, repair note, labeled direction sheet, `qa/direction-semantics.json`, and `qa/look-continuity.json` before regenerating anything.
 3. Classify the failure as `major` or `minor`:
-   - `major`: wrong or ambiguous cardinal; labeled normal-size review confirms a wrong principal quadrant or visible reversal; conspicuous snap, scale pop, identity change, broken attachment, clipping, interior seam/hole, or deterministic validation failure.
+   - `major`: wrong or ambiguous cardinal; labeled normal-size 0-review confirms a wrong principal quadrant or visible reversal; conspicuous snap, scale pop, identity change, broken attachment, clipping, interior seam/hole, or deterministic validation failure.
    - `minor`: exact pupil or nose placement differs from the numerical ideal; a near-vertical horizontal cue is subtle; isolated reviewers disagree or return `ambiguous`; an intermediate blind majority conflicts but the labeled ordered loop still reads correctly; continuity metrics warn without a visible defect.
 4. Major failures require repair. Minor failures may be overridden and the installation pipeline continues.
 5. Record every override in `qa/blind-review-resolution.json` with `decision: "accept"`, `severity: "minor"`, the failed checks, the labeled/continuity evidence that makes them acceptable, and `reviewed_by: "parent"` or `"user"`. Never override a major failure.
@@ -664,7 +664,7 @@ jq -n --arg id "$PET_ID" --arg displayName "$DISPLAY_NAME" --arg description "$D
 Write `qa/run-summary.json` after packaging:
 
 ```bash
-jq -n --arg run_dir "$RUN_DIR" --arg spritesheet "$RUN_DIR/final/spritesheet-extended.webp" --arg validation "$RUN_DIR/final/validation-extended.json" --arg chroma_despill "$RUN_DIR/qa/chroma-despill-extended.json" --arg contact_sheet "$RUN_DIR/qa/contact-sheet-extended.png" --arg direction_sheet "$RUN_DIR/qa/look-directions.png" --arg direction_semantics "$RUN_DIR/qa/direction-semantics.json" --arg blind_direction_validation "$RUN_DIR/qa/direction-blind-validation.json" --arg blind_review_resolution "$RUN_DIR/qa/blind-review-resolution.json" --arg continuity "$RUN_DIR/qa/look-continuity.json" --arg review "$RUN_DIR/qa/review.json" --arg package "$PET_DIR" '{ok: true, spriteVersionNumber: 2, run_dir: $run_dir, spritesheet: $spritesheet, validation: $validation, chroma_despill: $chroma_despill, contact_sheet: $contact_sheet, direction_sheet: $direction_sheet, direction_semantics: $direction_semantics, blind_direction_validation: $blind_direction_validation, blind_review_resolution: $blind_review_resolution, continuity: $continuity, review: $review, package: $package}' > "$RUN_DIR/qa/run-summary.json"
+jq -n --arg run_dir "$RUN_DIR" --arg spritesheet "$RUN_DIR/final/spritesheet-extended.webp" --arg validation "$RUN_DIR/final/validation-extended.json" --arg chroma_despill "$RUN_DIR/qa/chroma-despill-extended.json" --arg contact_sheet "$RUN_DIR/qa/contact-sheet-extended.png" --arg direction_sheet "$RUN_DIR/qa/look-directions.png" --arg direction_semantics "$RUN_DIR/qa/direction-semantics.json" --arg blind_direction_validation "$RUN_DIR/qa/direction-blind-validation.json" --arg blind_review_resolution "$RUN_DIR/qa/blind-review-resolution.json" --arg continuity "$RUN_DIR/qa/look-continuity.json" --arg 0-review "$RUN_DIR/qa/review.json" --arg package "$PET_DIR" '{ok: true, spriteVersionNumber: 2, run_dir: $run_dir, spritesheet: $spritesheet, validation: $validation, chroma_despill: $chroma_despill, contact_sheet: $contact_sheet, direction_sheet: $direction_sheet, direction_semantics: $direction_semantics, blind_direction_validation: $blind_direction_validation, blind_review_resolution: $blind_review_resolution, continuity: $continuity, 0-review: $review, package: $package}' > "$RUN_DIR/qa/run-summary.json"
 ```
 
 After all QA and packaging succeed, keep `pet_request.json`, `final/spritesheet-extended.webp`, `final/validation-extended.json`, `qa/chroma-despill-extended.json`, `qa/contact-sheet-extended.png`, `qa/look-directions.png`, `qa/direction-semantics.json`, `qa/direction-blind-pairs.png`, `qa/direction-blind-answer-key.json`, `qa/direction-blind-verdicts.json`, `qa/direction-blind-validation.json`, `qa/blind-review-resolution.json` when an override was used, `qa/look-continuity.json`, `qa/previews/`, `qa/review.json`, and `qa/run-summary.json`. Remove prompts, layout guides, generated row strips, extracted frames, PNG intermediates, the 8x9 intermediate atlas, and the imagegen job manifest unless the user wants debug artifacts.
@@ -726,7 +726,7 @@ Final visual QA worker responsibilities:
 
 Model choice for workers:
 
-- Prefer a smaller capable model for brand discovery, since it returns a compact research brief rather than doing orchestration.
+- Prefer a smaller capable model for brand discovery, since it returns a compact 1-research brief rather than doing orchestration.
 - Prefer a smaller capable model for visual workers, such as `gpt-5.4-mini` with medium reasoning, when model override is available.
 - Use the parent/default model only for orchestration or when a smaller worker model is unavailable.
 - Dynamically keep up to three generation workers active while at least three independent jobs are ready and capacity permits; backfill slots as workers finish. Use fewer workers when dependencies expose fewer jobs. Run final visual QA as a single worker after deterministic image processing. Close workers after their result has been consumed.
@@ -735,7 +735,7 @@ Model choice for workers:
 Use this base worker prompt:
 
 ```text
-Generate the hatch-pet base image.
+Generate the 1-hatch-pet base image.
 
 Run dir: <absolute run dir>
 Job id: base
@@ -756,7 +756,7 @@ qa_note=<one sentence>
 Use this cardinal-strip worker prompt:
 
 ```text
-Generate one hatch-pet four-cardinal anchor strip.
+Generate one 1-hatch-pet four-cardinal anchor strip.
 
 Run dir: <absolute run dir>
 Job id: look-cardinals
@@ -776,7 +776,7 @@ qa_note=<one sentence with concrete landmark evidence for all four cardinals>
 Use this row worker prompt:
 
 ```text
-Generate one hatch-pet row.
+Generate one 1-hatch-pet row.
 
 Run dir: <absolute run dir>
 Row id: <row-id>
@@ -801,7 +801,7 @@ qa_note=<one sentence>
 Use this blind direction QA worker prompt in a fresh worker that has not seen the labeled direction sheet. Spawn it without prior conversation context when the worker system supports context isolation (for example, `fork_turns="none"`):
 
 ```text
-Classify one required gaze axis in an unlabeled hatch-pet A/B challenge.
+Classify one required gaze axis in an unlabeled 1-hatch-pet A/B challenge.
 
 Blind sheet: <absolute run dir>/qa/direction-blind-pairs.png
 
@@ -822,7 +822,7 @@ Include every pair shown in the sheet.
 Use this final visual QA worker prompt:
 
 ```text
-Visually QA one finalized hatch-pet contact sheet.
+Visually QA one finalized 1-hatch-pet contact sheet.
 
 Run dir: <absolute run dir>
 Contact sheet: <absolute run dir>/qa/contact-sheet.png
@@ -840,7 +840,7 @@ Inspect the contact sheet and the preview GIFs visually. Confirm the same pet id
 
 Require `qa/direction-blind-validation.json` to have `ok: true`, or require an explicit accepted minor override in `qa/blind-review-resolution.json`. Cardinal mismatches or ambiguity are major and block packaging. For intermediate warnings or a worker-level fail, inspect the labeled normal-size pose and ordered loop; accept when the issue is minor and there is no wrong-quadrant pose or reversal.
 
-Inspect the 16 direction cells as a labeled ordered loop against the neutral frame and review `qa/look-continuity.json`. Produce a `pass`, `warning`, or `fail` semantic verdict for every expected direction: `000 up`, `022.5 up-right`, `045 up-right`, `067.5 up-right`, `090 right`, `112.5 down-right`, `135 down-right`, `157.5 down-right`, `180 down`, `202.5 down-left`, `225 down-left`, `247.5 down-left`, `270 left`, `292.5 up-left`, `315 up-left`, and `337.5 up-left`. Record separate horizontal and vertical landmark evidence for every diagonal. Fail wrong or ambiguous cardinals, labeled wrong-quadrant poses, and visible reversals. Record blind uncertainty on intermediate poses as warnings when labeled review and loop context confirm the intended direction.
+Inspect the 16 direction cells as a labeled ordered loop against the neutral frame and 0-review `qa/look-continuity.json`. Produce a `pass`, `warning`, or `fail` semantic verdict for every expected direction: `000 up`, `022.5 up-right`, `045 up-right`, `067.5 up-right`, `090 right`, `112.5 down-right`, `135 down-right`, `157.5 down-right`, `180 down`, `202.5 down-left`, `225 down-left`, `247.5 down-left`, `270 left`, `292.5 up-left`, `315 up-left`, and `337.5 up-left`. Record separate horizontal and vertical landmark evidence for every diagonal. Fail wrong or ambiguous cardinals, labeled wrong-quadrant poses, and visible reversals. Record blind uncertainty on intermediate poses as warnings when labeled 0-review and loop context confirm the intended direction.
 
 Fail rows with identity drift, missing/blank frames, copied guide marks, white/nontransparent backgrounds, cropped bodies, slot overlap, detached effects, shadows/glows/smears/dust, motion that does not match the row state, unintended size popping, wrong facing direction, reversed or non-alternating gait, or idle loops that are effectively static. Judge chroma only on the cleaned extended contact sheet, not the pre-cleanup standard contact sheet. Do not fail or retry a row for magenta/chroma fringe after the final despill report and v2 atlas validation pass; those deterministic results are authoritative.
 
@@ -885,17 +885,17 @@ If frame inspection or final visual QA fails, read `qa/review.json`, regenerate 
 - Treat visual identity or style drift as a blocker even when deterministic validation has no errors.
 - Treat a contact sheet that shows cropped references, repeated tiles, white cell backgrounds, or non-sprite fragments as failed.
 - Treat preview GIFs that show extraction-induced size popping, reversed directional timing, wrong facing direction, or inert idle loops as failed.
-- Apply the Direction Acceptance Policy to look cells. Cardinals are hard gates. Intermediate blind uncertainty is a warning unless labeled normal-size review confirms a wrong quadrant, missing axis, or loop reversal.
-- Treat a missing explicit per-direction semantic gaze review as failed even when the focused QA sheet and continuity JSON exist.
+- Apply the Direction Acceptance Policy to look cells. Cardinals are hard gates. Intermediate blind uncertainty is a warning unless labeled normal-size 0-review confirms a wrong quadrant, missing axis, or loop reversal.
+- Treat a missing explicit per-direction semantic gaze 0-review as failed even when the focused QA sheet and continuity JSON exist.
 - Treat missing `qa/direction-semantics.json` as failed. The file must include every expected direction with `verdict`, `expected`, `observed`, and `reason` fields. Packaging requires no `fail` verdicts; reviewed `warning` verdicts are allowed.
-- Treat missing or failed `qa/direction-blind-validation.json` as failed. Each of the three isolated blind reviewers must see only the randomized A/B sheet, never degree labels, the answer key, or another verdict. Cardinal mismatches or ambiguity fail validation; intermediate mismatches or ambiguity remain review warnings.
+- Treat missing or failed `qa/direction-blind-validation.json` as failed. Each of the three isolated blind reviewers must see only the randomized A/B sheet, never degree labels, the answer key, or another verdict. Cardinal mismatches or ambiguity fail validation; intermediate mismatches or ambiguity remain 0-review warnings.
 - Never use the same worker for blind A/B classification after it has seen the labeled direction sheet or direction prompts. Label-conditioned classification is not independent evidence.
 - Do not let the parent agent self-approve a repaired look direction. Run an independent final visual QA worker on `qa/look-directions.png` or ask the user to inspect it before packaging.
 - After an independent blind or final QA fail, the parent may override only a minor issue under Blind Review Severity Resolution. Record the evidence in `qa/blind-review-resolution.json`; never override a major failure.
 - For humanoid cardinal verdicts, record concrete screen-coordinate landmark evidence in `qa/direction-semantics.json`. Intermediate verdicts may use holistic head, face, posture, and ordered-loop evidence; exact pupil or nose placement is advisory rather than mandatory.
 - Treat look rows that rotate, skew, or tilt the whole sprite to fake gaze as failed unless the pet is literally a rotating object and the look mechanics decision explicitly justifies whole-object rotation.
 - Treat pupil-only motion or underused natural mechanics as a warning unless it visibly breaks identity, direction meaning, or loop cohesion.
-- Treat adjacent continuity metrics as review evidence. Fail only when visual QA confirms a conspicuous snap, pop, registration jump, identity change, broken silhouette, or semantic discontinuity.
+- Treat adjacent continuity metrics as 0-review evidence. Fail only when visual QA confirms a conspicuous snap, pop, registration jump, identity change, broken silhouette, or semantic discontinuity.
 - Treat forbidden detached effects, shadows, glows, smears, dust, landing marks, wave marks, speed lines, or motion trails as failed rows. Chroma-key-adjacent generation artifacts are handled only by the single deterministic despill pass and never trigger image retries after that pass reports success.
 - Treat `qa/review.json` errors as blockers. Warnings require visual review.
 
@@ -912,12 +912,12 @@ If frame inspection or final visual QA fails, read `qa/review.json`, regenerate 
 - A focused neutral-plus-16-directions QA sheet has been produced and inspected before packaging.
 - A randomized unlabeled horizontal-and-vertical axis pair sheet has been classified by three isolated blind workers and combined by strict majority. Both cardinal pairs pass. `qa/direction-blind-validation.json` has `ok: true`, or a worker-level/intermediate failure has an accepted minor resolution in `qa/blind-review-resolution.json` backed by labeled and continuity evidence.
 - Every expected direction has an explicit `pass`, `warning`, or `fail` semantic verdict with horizontal and vertical axis evidence where applicable; no wrong cardinal, labeled wrong-quadrant pose, or visible reversal remains.
-- `qa/direction-semantics.json` records verdicts for all 16 directions from an independent visual QA worker or explicit user inspection, including review notes for accepted warnings.
+- `qa/direction-semantics.json` records verdicts for all 16 directions from an independent visual QA worker or explicit user inspection, including 0-review notes for accepted warnings.
 - `qa/look-continuity.json` has been reviewed; metric warnings are acceptable when the normal-size ordered loop has no visible snap, pop, identity change, or semantic discontinuity.
 - `qa/review.json` has no errors.
-- Row-by-row review confirms the animation cycles are complete enough for the Codex app.
+- Row-by-row 0-review confirms the animation cycles are complete enough for the Codex app.
 - Motion previews do not show unintended size popping, reversed directional cadence, or wrong row semantics.
-- Look directions follow the fixed clockwise order and form a cohesive, readable loop at normal pet size. Cardinals must be unmistakable. Intermediate blind uncertainty is acceptable as a reviewed warning when labeled normal-size review confirms the intended direction and the loop does not reverse.
+- Look directions follow the fixed clockwise order and form a cohesive, readable loop at normal pet size. Cardinals must be unmistakable. Intermediate blind uncertainty is acceptable as a reviewed warning when labeled normal-size 0-review confirms the intended direction and the loop does not reverse.
 - Non-pixel styles are accepted when readable at pet size and consistent across rows.
 - `${CODEX_HOME:-$HOME/.codex}/pets/<pet-name>/pet.json` and `${CODEX_HOME:-$HOME/.codex}/pets/<pet-name>/spritesheet.webp` are staged together for custom pets.
 ## Progressive disclosure

@@ -47,7 +47,7 @@ Reflect enables **continual learning** from user feedback. It scans conversation
    - Push to `git@github.com:rohitas-git/ai-skills.git`.
 
 ### Supported Commands
-- `/1-session-skill-reflect <skill>` — Analyze and propose updates for specific skill (e.g. `/1-session-skill-reflect code-review`)
+- `/1-session-skill-reflect <skill>` — Analyze and propose updates for specific skill (e.g. `/1-session-skill-reflect 1-code-review`)
 - `/1-session-skill-reflect` — Analyze recent session across skills
 - `/session-skill-reflect-status` — Show Git status and last reflections
 
@@ -73,8 +73,8 @@ Reflect enables **continual learning** from user feedback. It scans conversation
 **Local Git Repo**: Skills directory is Git-aware. Push happens automatically after approval.
 
 **Safety**: Backups in `.backups/` folder, YAML validation, rollback via Git.
-## Catalog hygiene handoff
+## Catalog hygiene 1-handoff
 
-If session learnings imply catalog structure, routing, or deprecation changes, optionally hand off to **`/0-skill-manager` lint** and/or **`/0-butler` organize**. Reflect edits skill bodies; butler owns indexes, flows, and tombstones.
+If session learnings imply catalog structure, routing, or deprecation changes, optionally hand off to **`/0-skill-manager` lint** and/or **`/0-butler` organize**. Reflect edits skill bodies; 0-butler owns indexes, flows, and tombstones.
 
 Do not load deprecated `task-observer` or `continuous-learning-v2`.

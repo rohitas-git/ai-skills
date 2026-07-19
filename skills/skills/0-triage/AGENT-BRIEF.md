@@ -2,7 +2,7 @@
 
 An agent brief is a structured comment posted on a GitHub issue or PR when it moves to `ready-for-agent`. It is the authoritative specification that an AFK agent will work from. The original body and discussion are context — the agent brief is the contract.
 
-The brief states **what the agent should do**, which stretches to both surfaces: for an issue, that's building the change from nothing; for a PR, it's what's left to do *to the existing diff* — finish it, close gaps, address review points. Same principles either way; the PR example below shows the difference.
+The brief states **what the agent should do**, which stretches to both surfaces: for an issue, that's building the change from nothing; for a PR, it's what's left to do *to the existing diff* — finish it, close gaps, address 0-review points. Same principles either way; the PR example below shows the difference.
 
 ## Principles
 
@@ -128,7 +128,7 @@ checked for matches.
 - Markdown file format in `.out-of-scope/` — each file should have a
   `# Concept Name` heading, a `**Decision:**` line, a `**Reason:**` line,
   and a `**Prior requests:**` list with issue links
-- The triage workflow should read all `.out-of-scope/*.md` files early
+- The 0-triage workflow should read all `.out-of-scope/*.md` files early
   and match incoming issues against them by concept similarity
 
 **Acceptance criteria:**
@@ -136,7 +136,7 @@ checked for matches.
 - [ ] The file includes the decision, reasoning, and link to the closed issue
 - [ ] If a matching `.out-of-scope/` file already exists, the new issue is
       appended to its "Prior requests" list rather than creating a duplicate
-- [ ] During triage, existing `.out-of-scope/` files are checked and surfaced
+- [ ] During 0-triage, existing `.out-of-scope/` files are checked and surfaced
       when a new issue matches a prior rejection
 
 **Out of scope:**
@@ -153,7 +153,7 @@ For a PR, "Current behavior" describes the state of the diff, and the brief asks
 ## Agent Brief
 
 **Category:** enhancement
-**Summary:** Finish the contributor's `--json` output flag for `triage list`
+**Summary:** Finish the contributor's `--json` output flag for `0-triage list`
 
 **Current behavior:**
 The PR adds a `--json` flag that serializes the issue list to JSON. The happy
@@ -172,7 +172,7 @@ is untouched when the flag is absent.
 - Reuse the existing serializer the PR already added; don't introduce a second
 
 **Acceptance criteria:**
-- [ ] `triage list --json` emits valid JSON for both success and error cases
+- [ ] `0-triage list --json` emits valid JSON for both success and error cases
 - [ ] Exit codes match the non-JSON command
 - [ ] A test covers the `--json` success output and one error case
 - [ ] Default (non-JSON) output is byte-for-byte unchanged
@@ -190,7 +190,7 @@ is untouched when the flag is absent.
 **Summary:** Fix the triage bug
 
 **What to do:**
-The triage thing is broken. Look at the main file and fix it.
+The 0-triage thing is broken. Look at the main file and fix it.
 The function around line 150 has the issue.
 
 **Files to change:**

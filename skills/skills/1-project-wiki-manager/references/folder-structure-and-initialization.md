@@ -3,7 +3,7 @@
 ## Purpose and Rationale
 A consistent, predictable folder layout enables reliable automation, easy navigation, and long-term maintainability of the knowledge base. By isolating raw immutable sources from the editable wiki, the system prevents accidental corruption while allowing the wiki to evolve as a synthesized, interlinked view. This separation also makes it trivial to re-ingest updated sources or audit lineage.
 
-The design deliberately avoids any assumptions about or interaction with source code, binaries, or implementation folders. The wiki serves any knowledge domain — product planning, research notes, operational procedures, meeting outcomes, or technical concepts — as long as raw materials can be placed in `docs/raw/`.
+The design deliberately avoids any assumptions about or interaction with source code, binaries, or implementation folders. The wiki serves any knowledge domain — product planning, 1-research notes, operational procedures, meeting outcomes, or technical concepts — as long as raw materials can be placed in `docs/raw/`.
 
 ## Standard Folder Layout
 ```

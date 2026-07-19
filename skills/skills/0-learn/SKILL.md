@@ -2,7 +2,7 @@
 name: 0-learn
 description: >
   Domain hub for intellectual understanding — how/why something works, not shipping
-  code or vault compile. Use for learn, teach me, explain, ELI5, walk me through,
+  code or vault compile. Use for learn, 1-teach me, explain, ELI5, walk me through,
   quiz me, study this, rusty on, confusion signals, or terse concept names. Routes
   to the right Learn mode (explain, tutor, code walkthrough, multi-session course,
   story, summarize). Not for tasks, feature work, or Claude opinion/verdict prompts.
@@ -75,7 +75,7 @@ If the user is clearly on a cousin job while this hub is open: **ask F-L1/F-L2 o
 
 - Not a product path — ship via `/0-grilling` → `/0-implement`, not here.
 - Not vault compile/query — `/1-vault-ingest`, `/1-wiki-query`; teaching a compiled Concept is `/1-vault-explain`.
-- **Explain SSOT** is `/1-learning-explainer` (and vault-explain always hands off there). Do not reimplement levels/CLT in the hub.
+- **Explain SSOT** is `/1-learning-explainer` (and 1-vault-explain always hands off there). Do not reimplement levels/CLT in the hub.
 - **Tutor SSOT** is [tutor-mode.md](./references/tutor-mode.md) — Socratic practice, integrity, pressure handling.
 - **Code SSOT** is `/1-code-explainer` — do not multi-level-explain source as learning-explainer.
 - At every fork, ask once with recommended option; never silent branch.

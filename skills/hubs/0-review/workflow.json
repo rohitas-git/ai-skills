@@ -7,8 +7,8 @@
   "slash": "/0-review",
   "path": "skills/0-review",
   "package_dir": "hubs/0-review/",
-  "role": "Domain router for verification modes \u2014 change review, security audit, architecture review, strategy.",
-  "notes": "Ship closer still lands on sub-hub /1-code-review, not this hub. Open-ended review asks use F-R1.",
+  "role": "Domain router for verification modes \u2014 change 0-review, security audit, architecture 0-review, strategy.",
+  "notes": "Ship closer still lands on sub-hub /1-code-review, not this hub. Open-ended 0-review asks use F-R1.",
   "parent": {
     "hub": "0-butler",
     "slash": "/0-butler",
@@ -37,7 +37,7 @@
         "1-security-and-hardening",
         "1-software-architect"
       ],
-      "note": "hardening shared with both sub-hubs; software-architect dual-primary under Architecture"
+      "note": "hardening shared with both sub-hubs; 1-software-architect dual-primary under Architecture"
     },
     {
       "link_type": "cousin",
@@ -45,7 +45,7 @@
         "1-verify-work",
         "1-ponytail-review"
       ],
-      "note": "Mid-build verify and over-engineering review cousins"
+      "note": "Mid-build verify and over-engineering 0-review cousins"
     },
     {
       "link_type": "soft",
@@ -59,13 +59,13 @@
     "orient",
     "F-R1 pick mode",
     "sub-hub or skill",
-    "optional security-and-hardening remediation"
+    "optional 1-security-and-hardening remediation"
   ],
   "forks": [
     {
       "id": "F-R1",
       "question": "What kind of review?",
-      "recommended": "Multi-axis change review if PR/ship/diff",
+      "recommended": "Multi-axis change 0-review if PR/ship/diff",
       "branches": [
         "1-code-review",
         "1-security-auditor",
@@ -76,7 +76,7 @@
     },
     {
       "id": "F6",
-      "question": "(inside code-review) axes applicable?",
+      "question": "(inside 1-code-review) axes applicable?",
       "recommended": "Every applicable",
       "branches": [
         "Spec / Standards / Maintainability on or soft-skip",
@@ -85,7 +85,7 @@
     },
     {
       "id": "F-R2",
-      "question": "(inside security-auditor) audit scope?",
+      "question": "(inside 1-security-auditor) audit scope?",
       "recommended": "Full project unless path/PR named",
       "branches": [
         "full",

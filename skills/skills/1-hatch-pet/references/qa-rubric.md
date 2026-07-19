@@ -39,4 +39,4 @@ Do not package a pet until every section passes.
 
 ## Repair Policy
 
-Repair the smallest packaging-eligible scope: one standard row or one complete coherent look row. Never mix an individually generated repair cell into a new pet's final look row. Re-run assembly, deterministic validation, direction QA, continuity measurement, and semantic review after every relevant repair.
+Repair the smallest packaging-eligible scope: one standard row or one complete coherent look row. Never mix an individually generated repair cell into a new pet's final look row. Re-run assembly, deterministic validation, direction QA, continuity measurement, and semantic 0-review after every relevant repair.

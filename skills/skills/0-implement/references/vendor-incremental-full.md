@@ -3,7 +3,7 @@
 
 ## Overview
 
-Build in thin vertical slices — implement one piece, test it, verify it, then expand. Avoid implementing an entire feature in one pass. Each increment should leave the system in a working, testable state. This is the execution discipline that makes large features manageable.
+Build in thin vertical slices — 0-implement one piece, test it, verify it, then expand. Avoid implementing an entire feature in one pass. Each increment should leave the system in a working, testable state. This is the execution discipline that makes large features manageable.
 
 ## When to Use
 
@@ -88,7 +88,7 @@ If Slice 1 fails, you discover it before investing in Slices 2 and 3.
 
 Before writing any code, ask: "What is the simplest thing that could work?"
 
-After writing code, review it against these checks:
+After writing code, 0-review it against these checks:
 - Can this be done in fewer lines?
 - Are these abstractions earning their complexity?
 - Would a staff engineer look at this and say "why didn't you just..."?
@@ -181,7 +181,7 @@ Each increment should be independently revertable:
 When directing an agent to implement incrementally:
 
 ```
-"Let's implement Task 3 from the plan.
+"Let's 0-implement Task 3 from the plan.
 
 Start with just the database schema change and the API endpoint.
 Don't touch the UI yet — we'll do that in the next increment.

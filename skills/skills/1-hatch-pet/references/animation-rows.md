@@ -12,7 +12,7 @@ Every newly hatched pet uses an 8-column x 11-row atlas with 192x208 cells. The 
 | 5   | failed            |          0-7 | 140 ms each, final 240 ms                              |
 | 6   | waiting           |          0-5 | 150 ms each, final 260 ms                              |
 | 7   | running           |          0-5 | 120 ms each, final 220 ms                              |
-| 8   | review            |          0-5 | 150 ms each, final 280 ms                              |
+| 8   | 0-review            |          0-5 | 150 ms each, final 280 ms                              |
 | 9   | look directions A |          0-7 | 000, 022.5, 045, 067.5, 090, 112.5, 135, 157.5 degrees |
 | 10  | look directions B |          0-7 | 180, 202.5, 225, 247.5, 270, 292.5, 315, 337.5 degrees |
 

@@ -1,4 +1,4 @@
-# wiki-query — full guide
+# 1-wiki-query — full guide
 
 > Progressive disclosure body moved from SKILL.md for Matt-lean main file.
 
@@ -138,7 +138,7 @@ Not found in compiled notes (checked: README, [MOCs], search for …).
 
 **Options:**
 1. Answer from general knowledge (label as *not from vault*)
-2. Ingest a source with **vault-ingest** (schema: rohitas-vault-wiki) first
+2. Ingest a source with **vault-ingest** (schema: 0-rohitas-vault-wiki) first
 3. Create a stub Concept + open questions for ROOT study
 4. Health-check related area with **vault-lint** if structure looks broken
 ```
@@ -182,7 +182,7 @@ At larger scale, hybrid search (FTS/embeddings) is optional; until then index + 
 5. Hubs stay in Atlas as `* MOC.md` — never create hubs in Concepts  
 6. Query pages live in `Queries/` with `type: query`  
 7. Coordinate layout with `0-rohitas-vault-wiki`; this skill owns **query + file-back**  
-8. Sibling ops: `1-vault-inbox` (capture), `1-vault-ingest` (compile), `1-vault-lint` (health), `1-vault-explain` (teach Concept)  
+8. Sibling ops: `1-vault-inbox` (capture), `1-vault-ingest` (compile), `1-vault-lint` (health), `1-vault-explain` (1-teach Concept)  
 
 ## References
 

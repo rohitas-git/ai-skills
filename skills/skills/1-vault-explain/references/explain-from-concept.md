@@ -1,4 +1,4 @@
-# Explain from Concept (binding for learning-explainer)
+# Explain from Concept (binding for 1-learning-explainer)
 
 ## Resolve path
 
@@ -14,7 +14,7 @@ rg -n -i 'title-or-keywords' Concepts --glob '*.md'
 
 Prefer exact Title Case filename match.
 
-## Context pack for learning-explainer
+## Context pack for 1-learning-explainer
 
 Pass as the “resource” to explain:
 
@@ -38,5 +38,5 @@ topic: …
 ## After explanation
 
 If user says “add that analogy to the note” → switch to **vault-ingest** / schema skill with a small update plan.  
-If user says “I still don’t get X” → progressive deep-dive inside learning-explainer, still grounded.  
+If user says “I still don’t get X” → progressive deep-dive inside 1-learning-explainer, still grounded.  
 If the vault note is thin → say so; offer ROOT deepen or new source ingest.

@@ -8,7 +8,7 @@
   "path": "skills/0-learn",
   "package_dir": "hubs/0-learn/",
   "role": "Domain router for intellectual understanding \u2014 explain, tutor, code walkthrough, course, story, summarize.",
-  "notes": "Not a product build path. vault-explain is Vault on-ramp that hard-loads learning-explainer. Tutor mode is disclosed under learn/references (not a separate skill). code-explainer is engineering path, soft child here.",
+  "notes": "Not a product build path. 1-vault-explain is Vault on-ramp that hard-loads learning-explainer. Tutor mode is disclosed under learn/references (not a separate skill). 1-code-explainer is engineering path, soft child here.",
   "parent": {
     "hub": "0-butler",
     "slash": "/0-butler",
@@ -50,14 +50,14 @@
       "skills": [
         "1-resource-summarizer"
       ],
-      "note": "Also used by vault-ingest distill; dual soft under Vault domain notes"
+      "note": "Also used by 1-vault-ingest distill; dual soft under Vault domain notes"
     },
     {
       "link_type": "on-ramp",
       "skills": [
         "1-vault-explain"
       ],
-      "note": "Primary home Vault; hard-loads learning-explainer for pedagogy"
+      "note": "Primary home Vault; hard-loads 1-learning-explainer for pedagogy"
     }
   ],
   "pipeline": [
@@ -70,7 +70,7 @@
     {
       "id": "F-L1",
       "question": "What kind of learning help?",
-      "recommended": "Structured explain (/1-learning-explainer) for concepts/ELI5; code-explainer if object is code",
+      "recommended": "Structured explain (/1-learning-explainer) for concepts/ELI5; 1-code-explainer if object is code",
       "branches": [
         "1-learning-explainer",
         "tutor-mode (learn/references)",
