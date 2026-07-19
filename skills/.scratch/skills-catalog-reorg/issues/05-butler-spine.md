@@ -1,0 +1,16 @@
+# 05 — butler spine (four ops, no atoms)
+
+**What to build:** A user-invoked **butler** skill exists as catalog steward: thin dispatcher + reference stubs for query, ingest, lint, organize; hard rules forbid wiki atoms and dual routers.
+
+**Blocked by:** 02 — Skills rehoused into buckets
+
+**Status:** ready-for-agent
+
+**Parent:** Spec issue https://github.com/rohitas-git/ai-skills/issues/1 · local `SPEC.md`
+
+- [ ] `productivity/butler/` (or assigned bucket) contains `SKILL.md` with session start + op dispatch (~80–120 lines)
+- [ ] `disable-model-invocation: true`; triggers include which-skill / ingest / lint / organize language
+- [ ] Reference stubs exist: `catalog-layout.md`, `flows.md`, `ingest-workflow.md`, `lint-checklist.md`, `query-workflow.md`, `hard-rules.md`
+- [ ] Hard rules state: no concept atoms; confirm before multi-file mutate; never promote `using-agent-skills`
+- [ ] Butler listed in productivity bucket README and root README (promoted)
+- [ ] Does not replace `writing-great-skills`, `create-skill`, or `reflect`—only cites handoffs to them

@@ -37,7 +37,28 @@ SKIP_NAMES = {
     "SKILL.md",
     "README.md",
     "LICENSE",
-    "agent-skills",  # monorepo bundle; nested children are linked via nestedSkillRoots
+    "CLAUDE.md",
+    "AGENTS.md",
+    "agent-skills",  # legacy monorepo name; prefer vendor/agent-skills (not discovered)
+    "vendor",  # third-party packs — out of default discovery
+    "engineering",
+    "productivity",
+    "misc",
+    "personal",
+    "in-progress",
+    "deprecated",
+}
+
+# Bucket dirs that hold discoverable skills (one level of children with SKILL.md).
+# vendor is intentionally excluded. personal/in-progress/deprecated ARE discovered
+# for host install (symlinked) but are not "promoted" on root README.
+DISCOVER_BUCKETS = {
+    "engineering",
+    "productivity",
+    "misc",
+    "personal",
+    "in-progress",
+    "deprecated",
 }
 
 
@@ -124,10 +145,16 @@ def is_skill_dir(path):
 def collect_skill_paths(source_path, nested_roots):
     """
     Map skill_name -> absolute path.
-    Top-level source skills win over nested monorepo skills on name collision.
+
+    Discovery order (later cannot override earlier):
+    1. Top-level skill dirs (legacy flat layout)
+    2. Children of DISCOVER_BUCKETS (Matt-style catalog)
+    3. nestedSkillRoots monorepo packs (opt-in; vendor packs should not be listed)
+
+    vendor/ is never auto-scanned. Top-level / bucket skills win on name collision.
     """
     skills = {}  # name -> path
-    origins = {}  # name -> "top-level" | nested root relpath
+    origins = {}  # name -> origin label
 
     if os.path.isdir(source_path):
         for name in sorted(os.listdir(source_path)):
@@ -137,6 +164,23 @@ def collect_skill_paths(source_path, nested_roots):
             if is_skill_dir(path):
                 skills[name] = path
                 origins[name] = "top-level"
+
+        # Bucket children: skills/<bucket>/<skill>/SKILL.md
+        for bucket in sorted(DISCOVER_BUCKETS):
+            bucket_path = os.path.join(source_path, bucket)
+            if not os.path.isdir(bucket_path):
+                continue
+            for name in sorted(os.listdir(bucket_path)):
+                if name in SKIP_NAMES or name.startswith("."):
+                    continue
+                path = os.path.join(bucket_path, name)
+                if not is_skill_dir(path):
+                    continue
+                if name in skills:
+                    # Prefer earlier origin; skip duplicate
+                    continue
+                skills[name] = path
+                origins[name] = f"bucket:{bucket}"
 
     nested_added = []
     nested_skipped = []
