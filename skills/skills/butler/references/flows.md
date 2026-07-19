@@ -84,7 +84,7 @@ flows.md remains SSOT for pipelines/forks; HTML/JSON are projections. **new-hub*
 | | |
 |--|--|
 | **★ Hub** | `/implement` |
-| **Children** | **pipeline:** `to-spec` → `to-tickets` → `implement` → `tdd` → `code-review` → commit · **soft (style):** `coding-standards`, `code-comments`, `inline-comments`, `execution-flow-comments`, `stepdown-rule` · **cousin:** `verify-work` · **soft (git/PR):** `git-commit-helper`, `pr-summarizer`, `resolving-merge-conflicts` · **soft:** `research` |
+| **Children** | **pipeline:** `to-spec` → `to-tickets` → `implement` → `tdd` → `code-review` → commit · **soft (style):** `coding-standards`, `code-comments`, `inline-comments`, `execution-flow-comments`, `stepdown-rule` · **cousin:** `verify-work` · **soft (git/PR):** `git-commit-helper`, `pr-summarizer`, `resolving-merge-conflicts` · **soft:** `research` · **soft (vendor harvest):** `shipping-and-launch`, `observability-and-instrumentation`, `ci-cd-and-automation`, `frontend-ui-engineering` |
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
@@ -109,7 +109,7 @@ to-spec → to-tickets → implement* → tdd → code-review (multi-axis) → c
 | | |
 |--|--|
 | **★ Hub** | `/review` |
-| **Children** | **sub-hub:** `code-review` · **sub-hub:** `security-auditor` · **on-ramp:** `codebase-review-strategy` · **soft (shared):** `security-and-hardening` · **soft (dual):** `software-architect` (primary Domain 8) |
+| **Children** | **sub-hub:** `code-review` · **sub-hub:** `security-auditor` · **soft:** `doubt-driven-development` · **on-ramp:** `codebase-review-strategy` · **soft (shared):** `security-and-hardening` · **soft (dual):** `software-architect` (primary Domain 8) |
 | **Pipeline** | orient → **F-R1** pick mode → sub-hub / skill → optional remediation via `/security-and-hardening` |
 
 | Fork | Question | Recommended | Branches |
@@ -151,7 +151,7 @@ to-spec → to-tickets → implement* → tdd → code-review (multi-axis) → c
 | | |
 |--|--|
 | **★ Hub** | `/diagnosing-bugs` |
-| **Children** | `tdd`; optional on-ramp → `improve-codebase-architecture` |
+| **Children** | `tdd`; optional on-ramp → `improve-codebase-architecture` · **soft (vendor harvest):** `performance-optimization`, `browser-testing-with-devtools` |
 
 ---
 
@@ -173,7 +173,7 @@ to-spec → to-tickets → implement* → tdd → code-review (multi-axis) → c
 | | |
 |--|--|
 | **★ Hub** | `/improve-codebase-architecture` |
-| **Children** | **vocab:** `codebase-design` · **persona:** `software-architect` · **soft (principles):** `clean-craftsmanship` · **soft (always-on style):** `coding-standards` (also Ship) · **soft (docs):** `project-wiki-manager`, `living-documentation-governor` · **†** `software-architecture` |
+| **Children** | **vocab:** `codebase-design` · **persona:** `software-architect` · **soft (principles):** `clean-craftsmanship` · **soft (always-on style):** `coding-standards` (also Ship) · **soft (docs):** `project-wiki-manager`, `living-documentation-governor` · **soft (vendor harvest):** `api-and-interface-design`, `deprecation-and-migration` · **†** `software-architecture` |
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|

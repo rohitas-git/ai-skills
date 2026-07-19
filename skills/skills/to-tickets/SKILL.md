@@ -10,6 +10,8 @@ Break a plan, spec, or conversation into a set of **tickets** — tracer-bullet 
 
 The issue tracker and triage label vocabulary should have been provided to you — run `/setup-rohitas-skills` if not.
 
+**Sizing / checkpoints / parallel:** [references/sizing-checkpoints-parallel.md](./references/sizing-checkpoints-parallel.md). **Full vendor planning body:** [references/vendor-planning-full.md](./references/vendor-planning-full.md). Standing quality bar: [`implement/references/definition-of-done.md`](../implement/references/definition-of-done.md).
+
 ## Process
 
 ### 1. Gather context
@@ -79,6 +81,8 @@ Do NOT close or modify any parent issue.
 - [ ] Acceptance criterion 1
 - [ ] Acceptance criterion 2
 
+**Verification (optional but preferred):** how to prove done (targeted test, build, or manual check) — commands go stale less when phrased as “run the suite for X” rather than brittle paths.
+
 </local-ticket-template>
 
 <issue-template>
@@ -95,6 +99,10 @@ The end-to-end behaviour this ticket makes work, from the user's perspective —
 
 - [ ] Criterion 1
 - [ ] Criterion 2
+
+## Verification (optional)
+
+How to prove the criteria (suite focus, build, or manual check). Prefer stable phrasing over brittle file paths.
 
 ## Blocked by
 

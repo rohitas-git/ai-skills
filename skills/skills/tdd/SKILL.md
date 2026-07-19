@@ -1,48 +1,50 @@
 ---
 name: tdd
-description: Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions "red-green-refactor", or wants integration tests.
+description: >
+  Test-driven development (red → green at agreed seams). Use for features or bugs
+  test-first, red-green-refactor phrasing, integration tests, or Prove-It bug
+  reproduction. Ship pipeline after implement; before code-review. Sole TDD skill
+  in this catalog (vendor test-driven-development is merged, not a peer).
 disable-model-invocation: true
 ---
 
 # Test-Driven Development
 
-TDD is the red → green loop. This skill is the reference that makes that loop produce tests worth keeping: what a good test is, where tests go, the anti-patterns, and the rules of the loop. Every section applies on every cycle — consult them before and during the loop, not after.
+**One skill.** Vendor pack `test-driven-development` is **not** a second peer — useful material is merged under `references/`.
 
-When exploring the codebase, read `CONTEXT.md` (if it exists) so test names and interface vocabulary match the project's domain language, and respect ADRs in the area you're touching.
+TDD here is the **red → green** loop at **pre-agreed seams**. Deeper cleanup after green belongs to **`/code-review`**, not bulk “refactor as step 3 of every cycle.”
 
-## What a good test is
+When exploring, read `CONTEXT.md` / ADRs so names match domain language.
 
-Tests verify behavior through public interfaces, not implementation details. Code can change entirely; tests shouldn't. A good test reads like a specification — "user can checkout with valid cart" tells you exactly what capability exists — and survives refactors because it doesn't care about internal structure.
+## Process
 
-See [tests.md](tests.md) for examples and [mocking.md](mocking.md) for mocking guidelines.
-
-## Seams — where tests go
-
-A **seam** is the public boundary you test at: the interface where you observe behavior without reaching inside. Tests live at seams, never against internals.
-
-**Test only at pre-agreed seams.** Before writing any test, write down the seams under test and confirm them with the user. No test is written at an unconfirmed seam. You can't test everything — agreeing the seams up front is how testing effort lands on the critical paths and complex logic instead of every edge case.
-
-Ask: "What's the public interface, and which seams should we test?"
-
-## Anti-patterns
-
-- **Implementation-coupled** — mocks internal collaborators, tests private methods, or verifies through a side channel (querying the database instead of using the interface). The tell: the test breaks when you refactor but behavior hasn't changed.
-- **Tautological** — the assertion recomputes the expected value the way the code does (`expect(add(a, b)).toBe(a + b)`, a snapshot derived by hand the same way, a constant asserted equal to itself), so it passes by construction and can never disagree with the code. Expected values must come from an independent source of truth — a known-good literal, a worked example, the spec.
-- **Horizontal slicing** — writing all tests first, then all implementation. Bulk tests verify _imagined_ behavior: you test the _shape_ of things rather than user-facing behavior, the tests go insensitive to real changes, and you commit to test structure before understanding the implementation. Work in **vertical slices** instead — one test → one implementation → repeat, each test a **tracer bullet** that responds to what the last cycle taught you.
+1. **Confirm seams** with the user — public boundaries only. No test at an unconfirmed seam.
+2. **Pick the slice**
+   - New behavior → failing test first (red), then minimal code (green).
+   - Bug → **Prove-It**: [references/prove-it.md](./references/prove-it.md) (failing reproduction before fix).
+3. **Write the test** as a behavior spec (see [tests.md](./tests.md), [references/writing-good-tests.md](./references/writing-good-tests.md)).
+4. **Green** — only enough implementation to pass. No speculative features.
+5. **Suite** — full relevant suite; no skipped tests to “make CI green.”
+6. **Closer** — Ship path continues to **`/code-review`** (maintainability/refactor pressure lives there).
+7. **Portfolio** — shape effort with [references/test-pyramid.md](./references/test-pyramid.md). UI runtime extras: [references/browser-and-runtime.md](./references/browser-and-runtime.md). Mocking: [mocking.md](./mocking.md). Vendor patterns pack: [references/testing-patterns-vendor.md](./references/testing-patterns-vendor.md). Full vendor TDD body: [references/vendor-tdd-full.md](./references/vendor-tdd-full.md).
 
 ## Rules of the loop
 
-- **Red before green.** Write the failing test first, then only enough code to pass it. Don't anticipate future tests or add speculative features.
-- **One slice at a time.** One seam, one test, one minimal implementation per cycle.
-- **Refactoring is not part of the loop.** It belongs to the review stage (see the `code-review` skill), not the red → green implementation cycle.
+- **Red before green.** A test that passes on first run proves nothing about new behavior.
+- **One slice at a time.** One seam, one test, one minimal implementation.
+- **Vertical slices**, not horizontal “all tests then all code.”
+- **Refactor is not the third mandatory step of every micro-cycle** — review owns structural cleanup (`/code-review`). Tiny renames after green are fine if tests stay green.
 
-## Related material (merged / non-peer)
+## Anti-patterns (always)
 
-There is **one** TDD skill in this catalog: this one. Vendor pack `test-driven-development` (under `vendor/agent-skills`) is **not** a second discoverable peer. Useful ideas absorbed here:
+- **Implementation-coupled** — private methods, internal mocks, DB side-channels.
+- **Tautological** — expected value recomputed the same way as production code.
+- **Horizontal slicing** — bulk imagined tests before any implementation feedback.
+- **Prove without fail** — “fix first, test later” or bug fix without a failing reproduction.
 
-- Prefer vertical slices (one failing test → minimal code) over bulk test inventories.
-- Name tests as specifications of behavior, not implementation methods.
-- Refuse to skip the red step when "we already know it works."
+## Related
 
-Do not install or promote a second TDD skill via butler ingest.
-
+- **Parent hub:** `/implement` (Ship pipeline: implement → **tdd** → code-review)
+- **Also soft:** Diagnose hub when debugging with tests
+- **Next:** `/code-review`
+- **Not a peer:** archive vendor `test-driven-development` (merged here only)

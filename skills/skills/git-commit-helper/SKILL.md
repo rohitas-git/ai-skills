@@ -10,6 +10,8 @@ disable-model-invocation: true
 
 This skill specializes in crafting conventional, clear, and informative git commit messages. It uses git commands to inspect changes and follows best practices like Conventional Commits where appropriate.
 
+**Workflow discipline** (trunk-based, atomic save-points, change summaries, hygiene): [references/workflow-discipline.md](./references/workflow-discipline.md). Full vendor git body: [references/vendor-git-workflow-full.md](./references/vendor-git-workflow-full.md). Release versioning/changelog: `/shipping-and-launch` → [versioning-changelog.md](../shipping-and-launch/references/versioning-changelog.md).
+
 ## Usage Triggers
 - "write a commit message"
 - "suggest commit description"

@@ -8,6 +8,8 @@ disable-model-invocation: true
 
 A discipline for hard bugs. Skip phases only when explicitly justified.
 
+Vendor extras: [references/vendor-debugging-extras.md](./references/vendor-debugging-extras.md). Full vendor debugging body: [references/vendor-debugging-full.md](./references/vendor-debugging-full.md). Soft: `/performance-optimization`, `/browser-testing-with-devtools` when placed.
+
 When exploring the codebase, read `CONTEXT.md` (if it exists) to get a clear mental model of the relevant modules, and check ADRs in the area you're touching.
 
 ## Phase 1 — Build a feedback loop

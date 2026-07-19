@@ -10,6 +10,8 @@ disable-model-invocation: true
 | Interview / stress-test a plan (body) | **grilling** (this) |
 | Same interview, no docs | `/grill-me` (thin wrapper → this) |
 | Interview + ADRs/glossary as you go | `/grill-with-docs` (wrapper + `/domain-modeling`) |
+| Raw / vague idea — expand options first | [references/divergent-lenses.md](./references/divergent-lenses.md) · full [vendor-idea-refine-full.md](./references/vendor-idea-refine-full.md) · [idea-frameworks.md](./references/idea-frameworks.md) · [idea-refinement-criteria.md](./references/idea-refinement-criteria.md) · [idea-examples.md](./references/idea-examples.md) |
+| Underspecified intent (who/why/success) | [references/interview-intent.md](./references/interview-intent.md) (vendor interview-me harvest) then this skill |
 | Steel-man before reject/agree | `/thinking-steel-manning` |
 | Multi-session fog map | `/wayfinder` |
 | Spec from already-decided thread | `/to-spec` |
@@ -17,6 +19,16 @@ disable-model-invocation: true
 
 **Fork F2:** Codebase present? → prefer `/grill-with-docs` if yes, `/grill-me` if no.
 
+## Progressive disclosure
+
+| Load when | File |
+|-----------|------|
+| Hypothesis + Q/GUESS intent interview | [references/interview-intent.md](./references/interview-intent.md) |
+| Divergent expand before grill | [references/divergent-lenses.md](./references/divergent-lenses.md) |
+| Ideation frameworks (SCAMPER, HMW, …) | [references/idea-frameworks.md](./references/idea-frameworks.md) |
+| Value / feasibility / differentiation rubric | [references/idea-refinement-criteria.md](./references/idea-refinement-criteria.md) |
+| Worked ideation sessions | [references/idea-examples.md](./references/idea-examples.md) |
+| Full idea-refine body | [references/vendor-idea-refine-full.md](./references/vendor-idea-refine-full.md) |
 
 Interview me relentlessly about every aspect of this until we reach a shared understanding. Walk down each branch of the decision tree, resolving dependencies between decisions one-by-one. For each question, provide your recommended answer.
 

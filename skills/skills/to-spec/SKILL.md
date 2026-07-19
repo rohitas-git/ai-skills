@@ -8,6 +8,8 @@ This skill takes the current conversation context and codebase understanding and
 
 The issue tracker and triage label vocabulary should have been provided to you — run `/setup-rohitas-skills` if not.
 
+**Vendor depth** (assumptions dump, six-area template, living-spec, gates): [references/vendor-spec-full.md](./references/vendor-spec-full.md). Prefer this skill’s tracker template below for publish shape; pull extra fields (Boundaries Always/Ask/Never, Commands, Success Criteria) from the vendor body when the feature needs them.
+
 ## Process
 
 1. Explore the repo to understand the current state of the codebase, if you haven't already. Use the project's domain glossary vocabulary throughout the spec, and respect any ADRs in the area you're touching.

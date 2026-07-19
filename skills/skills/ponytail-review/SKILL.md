@@ -14,6 +14,8 @@ disable-model-invocation: true
 Review diffs for unnecessary complexity. One line per finding: location, what
 to cut, what replaces it. The diff's best outcome is getting shorter.
 
+Before delete-without-reason: [references/chesterton-and-patterns.md](./references/chesterton-and-patterns.md). Full vendor simplification body: [references/vendor-simplification-full.md](./references/vendor-simplification-full.md).
+
 ## Format
 
 `L<line>: <tag> <what>. <replacement>.`, or `<file>:L<line>: ...` for

@@ -61,6 +61,16 @@
         "research"
       ],
       "note": "Git/PR and research softs"
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "shipping-and-launch",
+        "observability-and-instrumentation",
+        "ci-cd-and-automation",
+        "frontend-ui-engineering"
+      ],
+      "note": "Vendor harvest: launch, o11y, CI, UI craft"
     }
   ],
   "pipeline": [

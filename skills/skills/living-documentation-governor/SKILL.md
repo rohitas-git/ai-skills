@@ -30,6 +30,8 @@ disable-model-invocation: true
 | Load when | File |
 |-----------|------|
 | Full workflow / detail | [references/full-guide.md](./references/full-guide.md) |
+| Bare project README shape | [references/project-readme-skeleton.md](./references/project-readme-skeleton.md) |
+| Full vendor docs+ADRs body | [references/vendor-docs-adrs-full.md](./references/vendor-docs-adrs-full.md) |
 | Detail | [references/page-template.md](./references/page-template.md) |
 | Detail | [references/trigger-enforcement.md](./references/trigger-enforcement.md) |
 | Detail | [references/git-hooks-setup.md](./references/git-hooks-setup.md) |

@@ -8,6 +8,8 @@ disable-model-invocation: true
 
 Suggests manual `/compact` at strategic points in your workflow rather than relying on arbitrary auto-compaction.
 
+**What to pack / hierarchy / trust:** [references/context-hierarchy.md](./references/context-hierarchy.md). Full vendor context body: [references/vendor-context-full.md](./references/vendor-context-full.md).
+
 ## When to Activate
 
 - Running long sessions that approach context limits (200K+ tokens)

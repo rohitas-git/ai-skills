@@ -90,6 +90,8 @@ Spawn parallel general-purpose sub-agents (one per applicable axis). Each loads 
 
 Do **not** merge axes into one priority list — a Standards pass must not hide a Spec fail.
 
+Within each axis, optional severity labels and sizing notes: [references/severity-and-sizing.md](./references/severity-and-sizing.md). Full vendor five-axis body: [references/vendor-code-review-full.md](./references/vendor-code-review-full.md).
+
 ## Don't use when
 
 - Unsure which review mode → domain hub `/review` (F-R1)

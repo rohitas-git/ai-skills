@@ -30,6 +30,14 @@
         "improve-codebase-architecture"
       ],
       "note": "optional"
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "performance-optimization",
+        "browser-testing-with-devtools"
+      ],
+      "note": "Vendor harvest: perf + browser runtime"
     }
   ],
   "pipeline": [

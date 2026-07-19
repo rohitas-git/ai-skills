@@ -46,6 +46,13 @@
         "ponytail-review"
       ],
       "note": "Mid-build verify and over-engineering review cousins"
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "doubt-driven-development"
+      ],
+      "note": "Vendor harvest: adversarial decision review"
     }
   ],
   "pipeline": [

@@ -28,7 +28,7 @@ Security-first practices while **building or remediating**. Treat untrusted inpu
 4. **Supply chain** — lockfile boundary, audits by reachability, script policy. Load [supply-chain.md](./references/supply-chain.md).
 5. **Secrets & rate limits** — env hygiene, auth throttling. Load [secrets-and-rate-limiting.md](./references/secrets-and-rate-limiting.md).
 6. **AI/LLM surfaces** (if present) — treat model output as untrusted. Load [llm-security.md](./references/llm-security.md).
-7. **Verify** — checklist + red flags. Load [security-checklist.md](./references/security-checklist.md), short [inline-checklist-and-see-also.md](./references/inline-checklist-and-see-also.md), and [rationalizations-red-flags-verification.md](./references/rationalizations-red-flags-verification.md).
+7. **Verify** — checklist + red flags. Load [security-checklist.md](./references/security-checklist.md), pack [security-checklist-vendor-pack.md](./references/security-checklist-vendor-pack.md), short [inline-checklist-and-see-also.md](./references/inline-checklist-and-see-also.md), and [rationalizations-red-flags-verification.md](./references/rationalizations-red-flags-verification.md).
 
 ## Hard rules
 
