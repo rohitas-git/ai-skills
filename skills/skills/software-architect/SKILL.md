@@ -5,6 +5,16 @@ disable-model-invocation: true
 ---
 
 # Software Architect Skill
+## Boundary
+
+| Need | Skill |
+|------|--------|
+| Architecture persona: evaluate strategy, alternatives, roadmap | **software-architect** (this) |
+| Scan for deep-module opportunities + HTML report + grill pick | `/improve-codebase-architecture` |
+| Deep module vocabulary only | `/codebase-design` |
+| Clean Code/Architecture Q&A principles | `/clean-craftsmanship` |
+| Change review (not full architecture survey) | `/code-review` or `/review` |
+
 
 ## Overview
 

@@ -73,7 +73,8 @@
         "ingest",
         "query",
         "lint",
-        "explain"
+        "explain",
+        "Agent judgment"
       ]
     },
     {
@@ -83,7 +84,8 @@
       "branches": [
         "rohitas-vault-wiki",
         "project-wiki-manager",
-        "living-documentation-governor via F-D1"
+        "living-documentation-governor via F-D1",
+        "Agent judgment"
       ]
     }
   ],

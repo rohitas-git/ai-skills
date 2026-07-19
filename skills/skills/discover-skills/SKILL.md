@@ -5,6 +5,15 @@ disable-model-invocation: true
 ---
 
 # Find Skills
+## Boundary
+
+| Need | Skill |
+|------|--------|
+| Discover/install skills from ecosystem | **discover-skills** (this) |
+| Author a new skill body | `/create-skill` → `/skill-creator` |
+| Place into this catalog | `/skill-manager` |
+| Which local skill to use | `/butler` |
+
 
 This skill helps you discover and install skills from the open agent skills ecosystem.
 

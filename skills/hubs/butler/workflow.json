@@ -47,6 +47,13 @@
         "handoff"
       ],
       "note": "Session meta / dual design handoff"
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "pi-agent-rust"
+      ],
+      "note": "Project-specific residual (not a domain hub)"
     }
   ],
   "pipeline": [
@@ -69,7 +76,8 @@
         "Misc",
         "Catalog facilities",
         "Learn",
-        "Simplify"
+        "Simplify",
+        "Agent judgment"
       ]
     }
   ],

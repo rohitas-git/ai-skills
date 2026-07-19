@@ -38,7 +38,8 @@
       "recommended": "only when buildable",
       "branches": [
         "stay wayfinder",
-        "\u2192 to-spec"
+        "\u2192 to-spec",
+        "Agent judgment"
       ]
     }
   ],

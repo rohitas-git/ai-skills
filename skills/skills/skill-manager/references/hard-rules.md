@@ -25,3 +25,5 @@
 
 18. **Wiki index** — after place/ingest/organize/deprecate, update `wikis/index.md` and append `wikis/log.md` (project-wiki-manager index pattern).
 19. **Skills/ symlinks** — after place/rename, refresh `skills/<name>` symlink to primary domain path.
+
+**Agent judgment:** every user-facing fork must offer **Agent judgment** (agent chooses best branch and proceeds without more questions on that fork).

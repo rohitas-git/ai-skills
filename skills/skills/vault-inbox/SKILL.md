@@ -5,6 +5,7 @@ description: >
   ingest, no Concepts. Use when the user says add to inbox, capture this, quick
   vault note, inbox dump, save for later, or /vault-inbox. Loads rohitas-vault-wiki
   for path and naming only. Process later with vault-ingest.
+disable-model-invocation: true
 ---
 
 # Vault Inbox

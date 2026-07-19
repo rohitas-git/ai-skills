@@ -7,6 +7,7 @@ description: >
   Shell, and SQL. Use when writing, reorganizing, or reviewing source file
   structure, function order, module layout, or when the user mentions stepdown,
   newspaper layout, call hierarchy order, or /stepdown-rule.
+disable-model-invocation: true
 ---
 
 # Stepdown Rule (Newspaper Metaphor)

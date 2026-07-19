@@ -74,7 +74,8 @@
       "recommended": "if user picks one",
       "branches": [
         "stay",
-        "\u2192 grill-with-docs"
+        "\u2192 grill-with-docs",
+        "Agent judgment"
       ]
     },
     {
@@ -83,7 +84,8 @@
       "recommended": "coding-standards while editing",
       "branches": [
         "coding-standards",
-        "clean-craftsmanship"
+        "clean-craftsmanship",
+        "Agent judgment"
       ]
     },
     {
@@ -92,7 +94,8 @@
       "recommended": "wiki if raw\u2192concepts; living if drift/triggers",
       "branches": [
         "project-wiki-manager",
-        "living-documentation-governor"
+        "living-documentation-governor",
+        "Agent judgment"
       ]
     }
   ],

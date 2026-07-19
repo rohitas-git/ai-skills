@@ -78,7 +78,8 @@
         "teach",
         "story-teacher",
         "resource-summarizer",
-        "vault-explain if vault Concept"
+        "vault-explain if vault Concept",
+        "Agent judgment"
       ]
     },
     {
@@ -87,7 +88,8 @@
       "recommended": "Yes if raw blob is huge before explain/story",
       "branches": [
         "resource-summarizer first",
-        "skip straight to explain/tutor/story"
+        "skip straight to explain/tutor/story",
+        "Agent judgment"
       ]
     }
   ],

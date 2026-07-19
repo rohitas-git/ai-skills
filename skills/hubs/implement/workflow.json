@@ -74,7 +74,8 @@
       "recommended": "as Design",
       "branches": [
         "to-spec path",
-        "direct implement"
+        "direct implement",
+        "Agent judgment"
       ]
     },
     {
@@ -83,7 +84,8 @@
       "recommended": "run closer",
       "branches": [
         "tdd\u2192code-review\u2192commit",
-        "more tickets"
+        "more tickets",
+        "Agent judgment"
       ]
     },
     {
@@ -94,7 +96,8 @@
         "Spec",
         "Standards",
         "Maintainability",
-        "soft-skip"
+        "soft-skip",
+        "Agent judgment"
       ]
     }
   ],

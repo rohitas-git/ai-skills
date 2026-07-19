@@ -81,3 +81,5 @@ All must pass before apply:
 ## Layout
 
 See [catalog-layout.md](./references/catalog-layout.md). Domain hubs live in [flows.md](../butler/references/flows.md). Atomic one-job skills: [atomic-skills.md](./references/atomic-skills.md).
+
+**Agent judgment:** every user-facing fork must offer **Agent judgment** (agent chooses best branch and proceeds without more questions on that fork).

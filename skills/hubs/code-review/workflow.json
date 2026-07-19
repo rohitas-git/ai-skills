@@ -61,7 +61,8 @@
       "question": "Review axes apply?",
       "recommended": "Every applicable",
       "branches": [
-        "force/skip axes only on user override"
+        "force/skip axes only on user override",
+        "Agent judgment"
       ]
     }
   ],

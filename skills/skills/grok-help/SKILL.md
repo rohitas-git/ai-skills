@@ -11,6 +11,14 @@ disable-model-invocation: true
 ---
 
 # Grok Help
+## Boundary
+
+| Need | Skill |
+|------|--------|
+| Grok TUI/docs/config help | **grok-help** (this) |
+| Catalog which-skill routing | `/butler` |
+| Catalog mutations | `/skill-manager` |
+
 
 Answer the user's question about Grok setup, configuration, or features.
 

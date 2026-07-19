@@ -6,9 +6,22 @@ description: >
   Uses resource-summarizer for long sources and rohitas-vault-wiki for schema.
   Use when the user says ingest, process inbox, update vault with, put this in
   the wiki, compile this source, or /vault-ingest.
+disable-model-invocation: true
 ---
 
 # Vault Ingest
+## Boundary
+
+| Need | Skill |
+|------|--------|
+| Compile sources into Rohitas vault Concepts | **vault-ingest** (this) |
+| Fast capture only (no Concepts) | `/vault-inbox` |
+| Distill long source first | `/resource-summarizer` |
+| Query vault | `/wiki-query` |
+| Lint vault health | `/vault-lint` |
+| Teach a Concept after ingest | `/vault-explain` |
+| Project repo wiki (not personal vault) | `/project-wiki-manager` (F-D2) |
+
 
 Compile source material into the living vault (LLM Wiki **Ingest** op).
 

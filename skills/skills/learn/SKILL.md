@@ -6,6 +6,7 @@ description: >
   quiz me, study this, rusty on, confusion signals, or terse concept names. Routes
   to the right Learn mode (explain, tutor, code walkthrough, multi-session course,
   story, summarize). Not for tasks, feature work, or Claude opinion/verdict prompts.
+disable-model-invocation: true
 ---
 
 # Learn (domain hub)

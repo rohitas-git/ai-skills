@@ -9,6 +9,18 @@ disable-model-invocation: true
 ---
 
 # Code Review (multi-axis)
+## Boundary
+
+| Need | Skill |
+|------|--------|
+| Multi-axis diff/PR review (Spec/Standards/Maintainability) | **code-review** (this) |
+| Mid-build verify (not full multi-axis) | `/verify-work` |
+| Security/quality audit phases | `/security-auditor` |
+| Which review mode? | `/review` (F-R1) |
+| Over-engineering only | `/ponytail-review` |
+| Architecture persona review | `/software-architect` |
+| Hardening while building | `/security-and-hardening` |
+
 
 Review the diff between `HEAD` and a **fixed point** on up to three axes:
 

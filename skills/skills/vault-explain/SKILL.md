@@ -5,6 +5,7 @@ description: >
   redirects to learning-explainer for pedagogy (levels, probe, mental models).
   Use when the user says explain this concept, teach what was just added, explain
   [[Note]] from the vault, or /vault-explain. Pairs with vault-ingest post-ingest.
+disable-model-invocation: true
 ---
 
 # Vault Explain

@@ -74,7 +74,8 @@
       "branches": [
         "high",
         "high+medium",
-        "full catalog"
+        "full catalog",
+        "Agent judgment"
       ]
     },
     {
@@ -84,7 +85,8 @@
       "branches": [
         "keep-both",
         "merge/tombstone",
-        "split thinner"
+        "split thinner",
+        "Agent judgment"
       ]
     },
     {
@@ -93,7 +95,8 @@
       "recommended": "dry-run first then confirm",
       "branches": [
         "dry-run only",
-        "apply after confirm"
+        "apply after confirm",
+        "Agent judgment"
       ]
     }
   ],

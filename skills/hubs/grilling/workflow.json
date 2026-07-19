@@ -58,7 +58,8 @@
       "recommended": "Yes \u2192 grill-with-docs",
       "branches": [
         "grill-with-docs",
-        "grill-me"
+        "grill-me",
+        "Agent judgment"
       ]
     },
     {
@@ -67,7 +68,8 @@
       "recommended": "No",
       "branches": [
         "stay in grill",
-        "handoff\u21c4prototype"
+        "handoff\u21c4prototype",
+        "Agent judgment"
       ]
     },
     {
@@ -76,7 +78,8 @@
       "recommended": "Yes if >1 implement slice",
       "branches": [
         "yes \u2192 Ship multi",
-        "no \u2192 Ship single"
+        "no \u2192 Ship single",
+        "Agent judgment"
       ]
     }
   ],

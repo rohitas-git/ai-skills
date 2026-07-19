@@ -8,6 +8,7 @@ description: >
   GoDoc, or language-native surface documentation (use code-comments for those).
   Do not write execution-flow or step-by-step walkthrough comments (use
   execution-flow-comments for those).
+disable-model-invocation: true
 ---
 
 # Inline Comments

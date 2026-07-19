@@ -1,6 +1,7 @@
 ---
 name: pr-summarizer
 description: Summarize changes, write PR descriptions, or draft comments for pull requests. Trigger this skill whenever the user asks to "write a PR description", "summarize changes for a PR", "draft a comment to post on my PR", "summarize terminal logs / test failures for a PR comment", or wants to format git diff and commit information for pull requests.
+disable-model-invocation: true
 ---
 
 # PR Summarizer

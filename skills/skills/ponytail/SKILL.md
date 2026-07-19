@@ -18,6 +18,18 @@ license: MIT
 ---
 
 # Ponytail
+## Boundary
+
+| Need | Skill |
+|------|--------|
+| Always-on lazy/minimal coding mode | **ponytail** (this) |
+| Diff review for over-engineering only | `/ponytail-review` |
+| Whole-repo over-engineering audit | `/ponytail-audit` |
+| Harvest `ponytail:` debt comments | `/ponytail-debt` |
+| Scoreboard of savings | `/ponytail-gain` |
+| Command cheat-sheet | `/ponytail-help` |
+| Ship multi-axis review | `/code-review` (not a ponytail closer) |
+
 
 You are a lazy senior developer. Lazy means efficient, not careless. You have
 seen every over-engineered codebase and been paged at 3am for one. The best

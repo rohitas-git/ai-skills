@@ -7,6 +7,17 @@ disable-model-invocation: true
 ---
 
 # Create Skill
+## Boundary
+
+| Need | Skill |
+|------|--------|
+| Scaffold / entry to author a skill | **create-skill** (this thin wrapper) |
+| Craft body, evals, description quality | `/skill-creator` |
+| Place / ingest into catalog | `/skill-manager` |
+| Writing principles only | `/writing-great-skills` |
+| Discover installable skills | `/discover-skills` |
+| Which skill to use | `/butler` |
+
 
 Thin wrapper.
 

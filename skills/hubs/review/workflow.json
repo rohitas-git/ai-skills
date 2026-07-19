@@ -63,7 +63,8 @@
         "code-review",
         "security-auditor",
         "software-architect",
-        "codebase-review-strategy first"
+        "codebase-review-strategy first",
+        "Agent judgment"
       ]
     },
     {
@@ -71,7 +72,8 @@
       "question": "(inside code-review) axes applicable?",
       "recommended": "Every applicable",
       "branches": [
-        "Spec / Standards / Maintainability on or soft-skip"
+        "Spec / Standards / Maintainability on or soft-skip",
+        "Agent judgment"
       ]
     },
     {
@@ -81,7 +83,8 @@
       "branches": [
         "full",
         "scoped module",
-        "differential/PR"
+        "differential/PR",
+        "Agent judgment"
       ]
     }
   ],

@@ -1,13 +1,28 @@
 ---
 name: office
 description: >
-  Hub for office/media and cross-cutting tool skills (docx, pptx, xlsx, diagrams, images,
-  canvas, web extract). Use when the task is a document/sheet/slide/diagram/image/canvas
-  but the exact leaf skill is unclear. User-invoked router; leaves do the work.
+  Domain hub for office/media tools — Word, slides, sheets, diagrams,
+  images, canvas, web extract, pets. Route via F-misc artifact type.
 disable-model-invocation: true
 ---
 
 # Misc (hub)
+## Boundary
+
+| Need | Skill |
+|------|--------|
+| Route to office/media tool skill | **office** (this hub) |
+| Word | `/docx` |
+| Slides | `/pptx` |
+| Spreadsheet | `/xlsx` |
+| Diagram | `/diagram-maker` |
+| Image gen/edit | `/imagine` |
+| Canvas | `/json-canvas` |
+| Web → clean markdown | `/defuddle` |
+| Animated pet package | `/hatch-pet` |
+
+**Fork F-misc:** pick artifact type from extension/context.
+
 
 ★ **Domain hub** for office / media / small tools. You **route** to a leaf skill; you do not replace it.
 

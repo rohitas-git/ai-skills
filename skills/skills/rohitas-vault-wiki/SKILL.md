@@ -6,6 +6,7 @@ description: >
   Knowledge Engineering. Schema source for vault-inbox, vault-ingest, vault-lint,
   vault-explain, and wiki-query. Orchestrates resource-summarizer for long/raw sources.
   Use for Rohitas's Notes, vault structure, Atlas MOCs, Concepts, or /rohitas-vault-wiki.
+disable-model-invocation: true
 ---
 
 # Rohitas Vault Wiki

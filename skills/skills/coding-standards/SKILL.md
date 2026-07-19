@@ -30,8 +30,9 @@ description: >
 
 - **Standards on code** (this) — **recommended** when editing or reviewing a diff
 - **Principles Q&A** → `/clean-craftsmanship`
+- **Agent judgment** — agent picks between standards vs principles and proceeds
 
-Ask once if ambiguous; never replace mid-implement with a long craftsmanship essay.
+Ask once if ambiguous; never replace mid-implement with a long craftsmanship essay. Always offer **Agent judgment**.
 
 ## 1. Commenting
 

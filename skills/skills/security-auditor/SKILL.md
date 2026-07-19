@@ -9,6 +9,15 @@ disable-model-invocation: true
 ---
 
 # Security Auditor
+## Boundary
+
+| Need | Skill |
+|------|--------|
+| Multi-phase security/quality audit + findings | **security-auditor** (this) |
+| Harden while coding / after findings | `/security-and-hardening` |
+| Multi-axis PR/diff review | `/code-review` |
+| Pick review mode | `/review` F-R1 |
+
 
 ## Overview
 

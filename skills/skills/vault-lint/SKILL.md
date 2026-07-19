@@ -5,6 +5,7 @@ description: >
   frontmatter, contradictions, duplicates, Registry drift. Report-only by default.
   Use when the user says lint vault, health check notes, find contradictions,
   orphan notes, wiki audit, or /vault-lint. Loads rohitas-vault-wiki for schema.
+disable-model-invocation: true
 ---
 
 # Vault Lint

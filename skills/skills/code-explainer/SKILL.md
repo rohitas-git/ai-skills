@@ -6,6 +6,7 @@ description: >
   Trigger on "explain this code", "what does this function do", "break down this
   file". Not general concept teaching (/learning-explainer), Socratic tutoring
   (/learn tutor-mode), or vault Concepts (/vault-explain). Soft under /learn.
+disable-model-invocation: true
 ---
 
 # Code Explainer

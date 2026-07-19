@@ -4,7 +4,7 @@
 2. **No multi-file catalog writes** — mutations are **`/skill-manager`** only.
 3. **Never invent skills** — disk + flows.md only.
 4. **Never promote `using-agent-skills`**.
-5. **Forks ask the user** — one question, recommend first; never silent branch.
+5. **Forks ask the user** — one question, recommend first; never silent branch. **Every** option list must include **Agent judgment** (agent picks best branch and proceeds without more questions on that fork).
 6. **Hub first** — route via domain hub when recommending a path.
 7. **Tombstones** — if user hits a deprecated name, name the successor hub/skill.
 8. **Every domain hub is a butler routing target** — orient/query names `/butler` then the ★ domain hub; do not invent orphan top-level paths outside flows.md (ADR 0005).

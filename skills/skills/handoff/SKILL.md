@@ -4,6 +4,15 @@ description: Compact the current conversation into a handoff document for anothe
 argument-hint: "What will the next session be used for?"
 disable-model-invocation: true
 ---
+## Boundary
+
+| Need | Skill |
+|------|--------|
+| Compact session for next agent | **handoff** (this) |
+| Runnable design answer (logic/UI throwaway) | `/prototype` |
+| Continue grill after break | `/grilling` |
+| Catalog session → skill learnings | `/session-skill-reflect` |
+
 
 Write a handoff document summarising the current conversation so a fresh agent can continue the work. Save to the temporary directory of the user's OS - not the current workspace.
 

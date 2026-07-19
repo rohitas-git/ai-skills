@@ -39,7 +39,7 @@ Ask once if ambiguous; never silent-branch.
 
 ## Session start
 
-1. Resolve **catalog root** (`skills/`, `productivity/`, `misc/`, `CLAUDE.md`).
+1. Resolve **catalog root** (six folders: `skills/`, `inbox/`, `archive/`, `hubs/`, `guidelines/`, `wikis/`).
 2. State: flows SSOT `skills/butler/references/flows.md`, [atomic-skills.md](../skill-manager/references/atomic-skills.md).
 3. Default **dry-run** until user confirms multi-file writes.
 4. Ask scope + resolution if not already decided (forks below).
@@ -48,9 +48,9 @@ Ask once if ambiguous; never silent-branch.
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F-A1** | How far this pass? | High-overlap clusters only | high · high+medium · full catalog |
-| **F-A2** | When two skills collide? | Keep both + Boundary + ask-user forks | keep-both · merge/tombstone · split thinner |
-| **F-A3** | Apply multi-file changes now? | Dry-run first, then confirm | dry-run only · apply after confirm |
+| **F-A1** | How far this pass? | High-overlap clusters only | high · high+medium · full catalog · **Agent judgment** |
+| **F-A2** | When two skills collide? | Keep both + Boundary + ask-user forks | keep-both · merge/tombstone · split thinner · **Agent judgment** |
+| **F-A3** | Apply multi-file changes now? | Dry-run first, then confirm | dry-run only · apply after confirm · **Agent judgment** |
 
 ## Process
 

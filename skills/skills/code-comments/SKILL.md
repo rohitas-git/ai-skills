@@ -8,6 +8,7 @@ description: >
   invokes execution-flow-comments. Use when writing or reviewing public/exported
   docs and contracts. For one-line comments above internal code blocks, use
   inline-comments. For numbered Execution Flow trees, use execution-flow-comments.
+disable-model-invocation: true
 ---
 
 # Code Comments

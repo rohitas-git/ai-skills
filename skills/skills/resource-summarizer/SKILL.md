@@ -5,9 +5,20 @@ description: >
   notes using 80/20, Feynman, Cornell, and progressive summarization. Use for summarize,
   extract insights, study notes from a source. Soft under /learn; also vault-ingest distill.
   Not multi-level teach-from-scratch (/learning-explainer) or multi-session course (/teach).
+disable-model-invocation: true
 ---
 
 # Resource Summarizer Skill
+## Boundary
+
+| Need | Skill |
+|------|--------|
+| Distill long PDF/video/article for learning notes | **resource-summarizer** (this) |
+| Multi-level teach-from-scratch | `/learning-explainer` |
+| Vault compile after distill | `/vault-ingest` (loads this for long sources) |
+| Explain vault Concept | `/vault-explain` |
+| Code walkthrough | `/code-explainer` |
+
 
 ## Overview
 

@@ -1,7 +1,22 @@
 ---
 name: grilling
 description: Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'grill' trigger phrases.
+disable-model-invocation: true
 ---
+## Boundary
+
+| Need | Skill |
+|------|--------|
+| Interview / stress-test a plan (body) | **grilling** (this) |
+| Same interview, no docs | `/grill-me` (thin wrapper → this) |
+| Interview + ADRs/glossary as you go | `/grill-with-docs` (wrapper + `/domain-modeling`) |
+| Steel-man before reject/agree | `/thinking-steel-manning` |
+| Multi-session fog map | `/wayfinder` |
+| Spec from already-decided thread | `/to-spec` |
+| Which skill? | `/butler` |
+
+**Fork F2:** Codebase present? → prefer `/grill-with-docs` if yes, `/grill-me` if no.
+
 
 Interview me relentlessly about every aspect of this until we reach a shared understanding. Walk down each branch of the decision tree, resolving dependencies between decisions one-by-one. For each question, provide your recommended answer.
 

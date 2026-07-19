@@ -83,3 +83,5 @@ Always enforce [atomic-skills.md](../../skill-manager/references/atomic-skills.m
 - Full skill-creator eval loop for every body
 - Vendor pack rewrites
 - Promoting `using-agent-skills`
+
+**Agent judgment:** every user-facing fork must offer **Agent judgment** (agent chooses best branch and proceeds without more questions on that fork).

@@ -45,7 +45,8 @@
       "branches": [
         "full",
         "scoped module",
-        "differential/PR"
+        "differential/PR",
+        "Agent judgment"
       ]
     }
   ],

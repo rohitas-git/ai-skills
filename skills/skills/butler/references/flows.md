@@ -12,6 +12,14 @@ Each **workflow domain** has exactly one **★ top skill (hub)**. Children link 
 
 Any branch in a pipeline is a **fork**. Agents **must ask the user** one question (recommended option first) and wait — never silent branch.
 
+**Every fork’s options must include:**
+
+| Option | Meaning |
+|--------|---------|
+| **Agent judgment** | The agent chooses the best branch (using the recommended default when unsure) and **proceeds without further fork questions** for this decision. User can still interrupt later. |
+
+Concrete branches still appear first; **Agent judgment** is always listed last among choices so the user can hand full control to the agent. Do not invent a different name for this option.
+
 ---
 
 ## Domain 0 — House (hub of hubs)
@@ -50,7 +58,7 @@ flows.md remains SSOT for pipelines/forks; HTML/JSON are projections. **new-hub*
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F1** | Setup already done (`docs/agents/` present)? | Skip if present | run setup · skip → Design/Ship |
+| **F1** | Setup already done (`docs/agents/` present)? | Skip if present | run setup · skip → Design/Ship · **Agent judgment** |
 
 ---
 
@@ -63,9 +71,9 @@ flows.md remains SSOT for pipelines/forks; HTML/JSON are projections. **new-hub*
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F2** | Codebase present? | Yes → grill-with-docs | `grill-with-docs` · `grill-me` |
-| **F3** | Need a runnable prototype answer? | No | stay in grill · handoff⇄prototype |
-| **F4** | Multi-session build? | Yes if >1 implement slice | yes → Ship multi · no → Ship single |
+| **F2** | Codebase present? | Yes → grill-with-docs | `grill-with-docs` · `grill-me` · **Agent judgment** |
+| **F3** | Need a runnable prototype answer? | No | stay in grill · handoff⇄prototype · **Agent judgment** |
+| **F4** | Multi-session build? | Yes if >1 implement slice | yes → Ship multi · no → Ship single · **Agent judgment** |
 
 **Merge out:** → Domain 3 Ship.
 
@@ -80,9 +88,9 @@ flows.md remains SSOT for pipelines/forks; HTML/JSON are projections. **new-hub*
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F4** | (entry) multi-session? | as Design | to-spec path · direct implement |
-| **F5** | This slice done? | run closer | tdd→code-review→commit · more tickets |
-| **F6** | (inside code-review sub-hub) axes applicable? | every applicable | Spec / Standards / Maintainability on or soft-skip |
+| **F4** | (entry) multi-session? | as Design | to-spec path · direct implement · **Agent judgment** |
+| **F5** | This slice done? | run closer | tdd→code-review→commit · more tickets · **Agent judgment** |
+| **F6** | (inside code-review sub-hub) axes applicable? | every applicable | Spec / Standards / Maintainability on or soft-skip · **Agent judgment** |
 
 **Multi-session pipeline:**
 
@@ -106,9 +114,9 @@ to-spec → to-tickets → implement* → tdd → code-review (multi-axis) → c
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F-R1** | What kind of review? | Multi-axis **change** review if PR/ship/diff | `/code-review` · `/security-auditor` · `/software-architect` · `/codebase-review-strategy` first |
-| **F6** | (inside `/code-review`) axes applicable? | every applicable | Spec / Standards / Maintainability on or soft-skip |
-| **F-R2** | (inside `/security-auditor`) audit scope? | full project unless path/PR named | full · scoped module · differential/PR |
+| **F-R1** | What kind of review? | Multi-axis **change** review if PR/ship/diff | `/code-review` · `/security-auditor` · `/software-architect` · `/codebase-review-strategy` first · **Agent judgment** |
+| **F6** | (inside `/code-review`) axes applicable? | every applicable | Spec / Standards / Maintainability on or soft-skip · **Agent judgment** |
+| **F-R2** | (inside `/security-auditor`) audit scope? | full project unless path/PR named | full · scoped module · differential/PR · **Agent judgment** |
 
 ### Sub-hub `/code-review`
 
@@ -156,7 +164,7 @@ to-spec → to-tickets → implement* → tdd → code-review (multi-axis) → c
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F8** | Fog clear enough to build? | only when buildable | stay wayfinder · → to-spec |
+| **F8** | Fog clear enough to build? | only when buildable | stay wayfinder · → to-spec · **Agent judgment** |
 
 ---
 
@@ -169,9 +177,9 @@ to-spec → to-tickets → implement* → tdd → code-review (multi-axis) → c
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F9** | Take a deepening idea to Design? | if user picks one | stay · → grill-with-docs |
-| **F-C1** | Enforce standards on code now, or discuss clean-code principles? | coding while editing | `/coding-standards` · `/clean-craftsmanship` |
-| **F-D1** | Concept wiki (`docs/wiki`) or living docs + code triggers? | wiki if raw→concepts · living if drift/triggers | `/project-wiki-manager` · `/living-documentation-governor` |
+| **F9** | Take a deepening idea to Design? | if user picks one | stay · → grill-with-docs · **Agent judgment** |
+| **F-C1** | Enforce standards on code now, or discuss clean-code principles? | coding while editing | `/coding-standards` · `/clean-craftsmanship` · **Agent judgment** |
+| **F-D1** | Concept wiki (`docs/wiki`) or living docs + code triggers? | wiki if raw→concepts · living if drift/triggers | `/project-wiki-manager` · `/living-documentation-governor` · **Agent judgment** |
 
 **Related atoms (not merge targets):** `coding-standards` ↔ `clean-craftsmanship` (F-C1); `project-wiki-manager` ↔ `living-documentation-governor` (F-D1); personal vault is Domain 9 (F-D2).
 
@@ -187,8 +195,8 @@ to-spec → to-tickets → implement* → tdd → code-review (multi-axis) → c
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F11** | Capture / compile / query / lint / explain? | match utterance | inbox · ingest · query · lint · explain |
-| **F-D2** | Project repo wiki or personal Rohitas’s Notes vault? | vault if Concepts/Atlas/my notes | `/rohitas-vault-wiki` · `/project-wiki-manager` (or F-D1 if living docs) |
+| **F11** | Capture / compile / query / lint / explain? | match utterance | inbox · ingest · query · lint · explain · **Agent judgment** |
+| **F-D2** | Project repo wiki or personal Rohitas’s Notes vault? | vault if Concepts/Atlas/my notes | `/rohitas-vault-wiki` · `/project-wiki-manager` (or F-D1 if living docs) · **Agent judgment** |
 
 Vault root path from setup SSOT only.
 
@@ -209,9 +217,9 @@ Not a product feature pipeline — **mutates the catalog**.
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F-A1** | (inside skill-atomize) How far this pass? | high-overlap only | high · high+medium · full |
-| **F-A2** | Collision resolution? | keep both + Boundary + forks | keep-both · merge · split |
-| **F-A3** | Apply multi-file writes? | dry-run then confirm | dry-run · apply |
+| **F-A1** | (inside skill-atomize) How far this pass? | high-overlap only | high · high+medium · full · **Agent judgment** |
+| **F-A2** | Collision resolution? | keep both + Boundary + forks | keep-both · merge · split · **Agent judgment** |
+| **F-A3** | Apply multi-file writes? | dry-run then confirm | dry-run · apply · **Agent judgment** |
 
 ---
 
@@ -224,7 +232,7 @@ Not a product feature pipeline — **mutates the catalog**.
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F10** | Ingest/place into catalog now? | yes when ready | stay crafting · skill-manager place/ingest |
+| **F10** | Ingest/place into catalog now? | yes when ready | stay crafting · skill-manager place/ingest · **Agent judgment** |
 
 ---
 
@@ -244,7 +252,7 @@ Optional; not Ship closer.
 | | |
 |--|--|
 | **★ Hub** | `/learn` |
-| **Children** | **leaf:** `learning-explainer` (structured explain SSOT) · **leaf (soft cross engineering):** `code-explainer` · **satellite:** `teach` (multi-session workspace) · **leaf:** `story-teacher` · **soft:** `resource-summarizer` · **on-ramp (Vault primary):** `vault-explain` → explainer · **tutor mode:** `learn/references/tutor-mode.md` (not a separate skill) |
+| **Children** | **leaf:** `learning-explainer` (structured explain SSOT) · **leaf (soft cross (code object)):** `code-explainer` · **satellite:** `teach` (multi-session workspace) · **leaf:** `story-teacher` · **soft:** `resource-summarizer` · **on-ramp (Vault primary):** `vault-explain` → explainer · **tutor mode:** `learn/references/tutor-mode.md` (not a separate skill) |
 | **Pipeline** | orient → **F-L1** pick mode → optional **F-L2** if long source → load one mode |
 
 | Mode | Skill / load | Default when |
@@ -259,16 +267,16 @@ Optional; not Ship closer.
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F-L1** | What kind of learning help? | Structured **explain** for concepts; **code-explainer** if object is code | explainer · tutor · code-explainer · teach · story · summarizer · vault-explain |
-| **F-L2** | Long source — summarize first? | Yes if raw blob is huge | summarizer first · skip to explain/tutor/story |
+| **F-L1** | What kind of learning help? | Structured **explain** for concepts; **code-explainer** if object is code | explainer · tutor · code-explainer · teach · story · summarizer · vault-explain · **Agent judgment** |
+| **F-L2** | Long source — summarize first? | Yes if raw blob is huge | summarizer first · skip to explain/tutor/story · **Agent judgment** |
 
 **Not for:** product ship (`/implement`), catalog routing (`/butler`), vault compile/query (`/vault-ingest`, `/wiki-query`).
 
-**Cross-domain:** Vault `vault-explain` hard-loads `learning-explainer`. `resource-summarizer` is soft under Learn and used by vault-ingest distill. `code-explainer` lives in `learn/` but is a Learn soft child (hub membership).
+**Cross-domain:** Vault `vault-explain` hard-loads `learning-explainer`. `resource-summarizer` is soft under Learn and used by vault-ingest distill. `code-explainer` lives under `skills/code-explainer` as Learn child (hub membership).
 
 ---
 
-## Domain 14 — Misc / office
+## Domain 14 — Office
 
 | | |
 |--|--|
@@ -277,7 +285,7 @@ Optional; not Ship closer.
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F-misc** | What artifact type? | from extension/context | document · slides · sheet · diagram · image · canvas · web · pet |
+| **F-misc** | What artifact type? | from extension/context | document · slides · sheet · diagram · image · canvas · web · pet · **Agent judgment** |
 
 **Tree:** hub → leaf (not a long chain).
 
@@ -287,7 +295,7 @@ Optional; not Ship closer.
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F7** | What kind of work? | feature → Design | Design · Triage · Diagnose · Fog · Architecture · Vault · Misc · Catalog facilities · Learn · Simplify |
+| **F7** | What kind of work? | feature → Design | Design · Triage · Diagnose · Fog · Architecture · Vault · Misc · Catalog facilities · Learn · Simplify · **Agent judgment** |
 
 Butler asks **F7** when intent is unclear.
 

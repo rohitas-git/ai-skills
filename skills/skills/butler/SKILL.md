@@ -32,7 +32,7 @@ Default: **query**. If the user asks to ingest or rehouse, **delegate** immediat
 ## Query rules
 
 1. Prefer **domain hub first**, then child skill.
-2. At every **fork (◆ / F#)**, **ask the user one question** with a **recommended** option — never silent branch.
+2. At every **fork (◆ / F#)**, **ask the user one question** with a **recommended** option — never silent branch. Options **must include Agent judgment** (agent picks best branch and proceeds).
 3. **Never invent** skills not on disk + flows.md.
 4. If the skill is missing, say so and offer **skill-manager ingest** (not invent).
 5. Hard rules summary: [hard-rules.md](./references/hard-rules.md) (query-side only).

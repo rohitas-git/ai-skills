@@ -5,6 +5,15 @@ disable-model-invocation: true
 ---
 
 # Reflect — Self-Improving Skills System
+## Boundary
+
+| Need | Skill |
+|------|--------|
+| Extract session learnings → propose skill updates | **session-skill-reflect** (this) |
+| Apply catalog place/rehouse/lint | `/skill-manager` |
+| Atomize overlap | `/skill-atomize` |
+| Compact for next agent (no skill edits) | `/handoff` |
+
 
 ## Overview
 

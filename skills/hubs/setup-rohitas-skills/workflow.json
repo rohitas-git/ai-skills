@@ -54,7 +54,8 @@
       "recommended": "Skip if present",
       "branches": [
         "run setup",
-        "skip \u2192 Design/Ship"
+        "skip \u2192 Design/Ship",
+        "Agent judgment"
       ]
     }
   ],

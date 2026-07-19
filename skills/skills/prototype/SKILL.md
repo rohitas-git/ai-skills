@@ -1,9 +1,19 @@
 ---
 name: prototype
 description: Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or logic feels right, or explore what a UI should look like.
+disable-model-invocation: true
 ---
 
 # Prototype
+## Boundary
+
+| Need | Skill |
+|------|--------|
+| Throwaway prototype answering a design question | **prototype** (this) |
+| Pack session for another agent first | `/handoff` |
+| Stress-test plan without building | `/grilling` |
+| Production implement | `/implement` |
+
 
 A prototype is **throwaway code that answers a question**. The question decides the shape.
 

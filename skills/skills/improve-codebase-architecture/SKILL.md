@@ -5,6 +5,16 @@ disable-model-invocation: true
 ---
 
 # Improve Codebase Architecture
+## Boundary
+
+| Need | Skill |
+|------|--------|
+| Deepening scan + HTML candidates + grill pick | **improve-codebase-architecture** (this) |
+| Grandmaster architecture survey/persona | `/software-architect` |
+| Vocabulary for deep modules | `/codebase-design` |
+| Coding standards while editing | `/coding-standards` (F-C1) |
+| Clean principles discussion | `/clean-craftsmanship` (F-C1) |
+
 
 Surface architectural friction and propose **deepening opportunities** — refactors that turn shallow modules into deep ones. The aim is testability and AI-navigability.
 

@@ -16,8 +16,8 @@ Report catalog and skill health. You **do not** rehouse, place, or rewrite skill
 
 ## Session start
 
-1. Resolve **catalog root** (`skills/`, `productivity/`, `misc/`, `CLAUDE.md`).
-2. Note hub SSOT: `skills/butler/references/flows.md` and packages under `.scratch/skills-catalog-reorg/hubs/`.
+1. Resolve **catalog root** (six folders: `skills/`, `inbox/`, `archive/`, `hubs/`, `guidelines/`, `wikis/`).
+2. Note hub SSOT: `skills/butler/references/flows.md` and packages under `hubs/`.
 3. Choose **mode** (ask if unclear). Default after create/place/ingest: **skill**.
 4. Load checklists under `references/` as needed — always apply **Matt lean + chaining**.
 5. Emit report per [report-format.md](./references/report-format.md).
@@ -28,7 +28,7 @@ Report catalog and skill health. You **do not** rehouse, place, or rewrite skill
 |------|--------|
 | **skill** | One skill directory (`bucket/name` or path) |
 | **hub** | One domain hub + skills listed in its workflow/flows children |
-| **catalog** | All live skills in engineering / productivity / misc / personal |
+| **catalog** | All live skills under `skills/` |
 | **diff** | Paths the user lists or git-changed skill dirs |
 
 ## Dispatch

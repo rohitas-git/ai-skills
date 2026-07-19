@@ -1,6 +1,7 @@
 ---
 name: git-commit-helper
 description: Helps generate high-quality git commit messages by analyzing staged changes, untracked files, or both. Supports brief and detailed modes. Use when user asks for commit message, git commit description, based on changes, diff summary, or similar git workflow assistance.
+disable-model-invocation: true
 ---
 
 # Git Commit Helper
