@@ -27,7 +27,7 @@ Most feature work travels here.
 3. **Multi-session?**
    - **Yes:** `/to-spec` → `/to-tickets` → **`/implement`** per ticket (clear context between tickets).
    - **No:** `/implement` in the same window.
-4. **Inside implement:** drives **`/tdd`** (red-green slices) then **`/code-review`**, then commit.
+4. **Inside implement:** drives **`/tdd`** (red-green slices) then multi-axis **`/code-review`** (Spec + Standards + Maintainability; every applicable axis), then commit.
 
 ### Context hygiene
 
@@ -119,7 +119,7 @@ When routing, pick one winner; note "why not" for cousins in query:
 | Cluster | Winner(s) | Not for |
 |---------|-----------|---------|
 | Grill / interview | grilling via grill-me / grill-with-docs | interview-me (vendor), wayfinder (too heavy for one-session plans) |
-| Review | code-review / code-review-v2 as documented | check-work only for verify-self after implement |
+| Review | multi-axis `code-review` (Spec/Standards/Maintainability) | check-work = mid-build self-verify; ponytail-review = over-engineering only; code-review-v2 deprecated |
 | Learn / teach | learn, learning-explainer, teach, story-teacher by intent | don't steal grill |
 | Architecture | codebase-design + improve-codebase-architecture + software-architect | deprecated software-architecture |
 
@@ -139,7 +139,7 @@ setup-rohitas-skills (once)
         │                                              │
         └─ single-session ──► implement* ◄─────────────┘
                                     │
-                              tdd → code-review → commit
+                              tdd → code-review (multi-axis) → commit
 
 On-ramps: triage, diagnosing-bugs, wayfinder→to-spec…, improve-codebase-architecture
 ```

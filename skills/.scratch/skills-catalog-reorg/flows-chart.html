@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Skills catalog — workflow map</title>
+<style>
+  :root {
+    --bg: #0f1419;
+    --panel: #1a2332;
+    --text: #e7ecf3;
+    --muted: #8b9bb4;
+    --line: #3d4f66;
+    --setup: #6b7c93;
+    --main: #3d8bfd;
+    --ramp: #f0a202;
+    --vocab: #8b5cf6;
+    --vault: #14b8a6;
+    --meta: #ec4899;
+    --stand: #64748b;
+    --dead: #94a3b8;
+    --ok: #22c55e;
+    --risk: #f87171;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.45;
+  }
+  header {
+    padding: 1.25rem 1.5rem 0.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+  header h1 { margin: 0 0 0.35rem; font-size: 1.35rem; font-weight: 650; }
+  header p { margin: 0; color: var(--muted); font-size: 0.95rem; max-width: 70ch; }
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 0.6rem 1rem;
+    padding: 0.85rem 1.5rem;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.85rem;
+  }
+  .legend span { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--muted); }
+  .swatch {
+    width: 12px; height: 12px; border-radius: 3px; display: inline-block;
+  }
+  main { padding: 1.25rem 1.5rem 3rem; display: grid; gap: 1.5rem; }
+  section {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 1rem 1.1rem 1.2rem;
+  }
+  section h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.05rem;
+    font-weight: 650;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  section h2 .tag {
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.04em;
+    text-transform: uppercase; padding: 0.15rem 0.45rem; border-radius: 999px;
+    background: #243044; color: var(--muted);
+  }
+  .note { color: var(--muted); font-size: 0.88rem; margin: 0 0 0.75rem; }
+  .svg-wrap { overflow-x: auto; }
+  svg { display: block; max-width: 100%; height: auto; }
+  .node {
+    fill: #243044;
+    stroke: var(--line);
+    stroke-width: 1.5;
+  }
+  .node-main { fill: #1e3a5f; stroke: var(--main); }
+  .node-setup { fill: #2a3140; stroke: var(--setup); }
+  .node-ramp { fill: #3d2e12; stroke: var(--ramp); }
+  .node-vocab { fill: #2e1f4d; stroke: var(--vocab); }
+  .node-vault { fill: #134e4a; stroke: var(--vault); }
+  .node-meta { fill: #4a1830; stroke: var(--meta); }
+  .node-stand { fill: #2a3340; stroke: var(--stand); }
+  .node-dead { fill: #2a3038; stroke: var(--dead); stroke-dasharray: 4 3; }
+  .node-decision { fill: #2a3140; stroke: var(--main); }
+  text {
+    fill: var(--text);
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 12px;
+    pointer-events: none;
+  }
+  text.sub { fill: var(--muted); font-size: 10px; }
+  text.title { font-size: 13px; font-weight: 600; }
+  .edge { fill: none; stroke: var(--line); stroke-width: 1.6; marker-end: url(#arrow); }
+  .edge-main { stroke: var(--main); stroke-width: 2; }
+  .edge-opt { stroke: var(--muted); stroke-dasharray: 5 4; }
+  .edge-ramp { stroke: var(--ramp); }
+  .edge-vault { stroke: var(--vault); }
+  .edge-meta { stroke: var(--meta); }
+  .edge-dead { stroke: var(--dead); stroke-dasharray: 3 3; }
+  table.dup {
+    width: 100%; border-collapse: collapse; font-size: 0.88rem;
+  }
+  table.dup th, table.dup td {
+    text-align: left; padding: 0.45rem 0.55rem; border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  table.dup th { color: var(--muted); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .badge {
+    display: inline-block; font-size: 0.72rem; font-weight: 650;
+    padding: 0.12rem 0.4rem; border-radius: 4px; margin-right: 0.25rem;
+  }
+  .badge-dup { background: #7f1d1d; color: #fecaca; }
+  .badge-cousin { background: #713f12; color: #fde68a; }
+  .badge-wrap { background: #14532d; color: #bbf7d0; }
+  .badge-ok { background: #1e3a5f; color: #bfdbfe; }
+  footer {
+    padding: 0 1.5rem 2rem; color: var(--muted); font-size: 0.85rem;
+  }
+  a { color: #7dd3fc; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Skills catalog — workflow map</h1>
+  <p>
+    Chaining SSOT from <code>butler/references/flows.md</code>, aligned with the catalog reorg spec.
+    Boxes are skills; dashed edges are optional. Open this file in a browser.
+  </p>
+</header>
+
+<div class="legend">
+  <span><i class="swatch" style="background:#3d8bfd"></i> Main engineering path</span>
+  <span><i class="swatch" style="background:#f0a202"></i> On-ramps</span>
+  <span><i class="swatch" style="background:#8b5cf6"></i> Vocabulary (underneath)</span>
+  <span><i class="swatch" style="background:#14b8a6"></i> Vault / personal</span>
+  <span><i class="swatch" style="background:#ec4899"></i> Catalog meta</span>
+  <span><i class="swatch" style="background:#94a3b8"></i> Deprecated</span>
+</div>
+
+<main>
+
+<section>
+  <h2>1. Main flow <span class="tag">idea → ship</span></h2>
+  <p class="note">Precondition once per consumer repo. Multi-session goes through to-spec → to-tickets; small work can jump to implement after grill.</p>
+  <div class="svg-wrap">
+    <svg viewBox="0 0 1100 520" width="1100" height="520" role="img" aria-label="Main engineering flow">
+      <defs>
+        <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#8b9bb4"/>
+        </marker>
+        <marker id="arrow-main" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#3d8bfd"/>
+        </marker>
+      </defs>
+
+      <!-- setup -->
+      <rect class="node node-setup" x="420" y="16" width="220" height="44" rx="8"/>
+      <text class="title" x="530" y="36" text-anchor="middle">setup-rohitas-skills</text>
+      <text class="sub" x="530" y="50" text-anchor="middle">once · tracker · labels · vault SSOT</text>
+
+      <path class="edge edge-main" style="marker-end:url(#arrow-main)" d="M530 60 V 88"/>
+
+      <!-- grill branch -->
+      <rect class="node node-main" x="250" y="96" width="150" height="48" rx="8"/>
+      <text class="title" x="325" y="116" text-anchor="middle">grill-with-docs</text>
+      <text class="sub" x="325" y="132" text-anchor="middle">has codebase</text>
+
+      <rect class="node node-main" x="430" y="96" width="120" height="48" rx="8"/>
+      <text class="title" x="490" y="116" text-anchor="middle">grill-me</text>
+      <text class="sub" x="490" y="132" text-anchor="middle">no codebase</text>
+
+      <rect class="node node-vocab" x="580" y="96" width="120" height="48" rx="8"/>
+      <text class="title" x="640" y="116" text-anchor="middle">grilling</text>
+      <text class="sub" x="640" y="132" text-anchor="middle">SSOT body</text>
+
+      <path class="edge edge-main" style="marker-end:url(#arrow-main)" d="M400 120 H 428"/>
+      <path class="edge edge-opt" d="M550 120 H 578"/>
+      <path class="edge edge-opt" d="M400 120 C 480 120, 520 120, 580 120"/>
+      <text class="sub" x="640" y="88" text-anchor="middle">wrappers load →</text>
+
+      <path class="edge edge-main" style="marker-end:url(#arrow-main)" d="M490 144 V 176"/>
+
+      <!-- optional prototype -->
+      <rect class="node node-stand" x="380" y="184" width="220" height="44" rx="8"/>
+      <text class="title" x="490" y="204" text-anchor="middle">handoff ⇄ prototype</text>
+      <text class="sub" x="490" y="218" text-anchor="middle">optional · runnable design Q</text>
+
+      <path class="edge edge-opt" style="marker-end:url(#arrow)" d="M490 228 V 256"/>
+
+      <!-- decision -->
+      <polygon class="node-decision" points="490,268 580,300 490,332 400,300"/>
+      <text class="title" x="490" y="296" text-anchor="middle">multi-</text>
+      <text class="title" x="490" y="310" text-anchor="middle">session?</text>
+
+      <!-- yes path -->
+      <path class="edge edge-main" style="marker-end:url(#arrow-main)" d="M580 300 H 640"/>
+      <text class="sub" x="610" y="292" text-anchor="middle">yes</text>
+
+      <rect class="node node-main" x="650" y="278" width="100" height="44" rx="8"/>
+      <text class="title" x="700" y="304" text-anchor="middle">to-spec</text>
+
+      <path class="edge edge-main" style="marker-end:url(#arrow-main)" d="M750 300 H 790"/>
+      <rect class="node node-main" x="800" y="278" width="110" height="44" rx="8"/>
+      <text class="title" x="855" y="304" text-anchor="middle">to-tickets</text>
+
+      <path class="edge edge-main" style="marker-end:url(#arrow-main)" d="M910 300 H 950"/>
+      <rect class="node node-main" x="960" y="278" width="110" height="44" rx="8"/>
+      <text class="title" x="1015" y="298" text-anchor="middle">implement*</text>
+      <text class="sub" x="1015" y="312" text-anchor="middle">per ticket</text>
+
+      <!-- no path -->
+      <path class="edge edge-main" style="marker-end:url(#arrow-main)" d="M490 332 V 370"/>
+      <text class="sub" x="470" y="356" text-anchor="end">no</text>
+      <rect class="node node-main" x="420" y="378" width="140" height="44" rx="8"/>
+      <text class="title" x="490" y="398" text-anchor="middle">implement*</text>
+      <text class="sub" x="490" y="412" text-anchor="middle">same window</text>
+
+      <!-- merge to tdd -->
+      <path class="edge edge-main" style="marker-end:url(#arrow-main)" d="M490 422 V 450"/>
+      <path class="edge edge-main" style="marker-end:url(#arrow-main)" d="M1015 322 V 450 H 560"/>
+
+      <rect class="node node-main" x="360" y="458" width="80" height="40" rx="8"/>
+      <text class="title" x="400" y="482" text-anchor="middle">tdd</text>
+
+      <path class="edge edge-main" style="marker-end:url(#arrow-main)" d="M440 478 H 470"/>
+      <rect class="node node-main" x="480" y="458" width="120" height="40" rx="8"/>
+      <text class="title" x="540" y="482" text-anchor="middle">code-review</text>
+
+      <path class="edge edge-main" style="marker-end:url(#arrow-main)" d="M600 478 H 630"/>
+      <rect class="node node-setup" x="640" y="458" width="100" height="40" rx="8"/>
+      <text class="title" x="690" y="482" text-anchor="middle">commit</text>
+
+      <!-- hard dep note -->
+      <text class="sub" x="855" y="260" text-anchor="middle">hard-dep → setup-rohitas-skills</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>2. On-ramps <span class="tag">merge onto main</span></h2>
+  <p class="note">Do not invent ad hoc pipelines. Wayfinder never implements raw fog maps. Do not re-triage to-tickets output.</p>
+  <div class="svg-wrap">
+    <svg viewBox="0 0 1000 280" width="1000" height="280" role="img" aria-label="On-ramps">
+      <defs>
+        <marker id="arrow2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#f0a202"/>
+        </marker>
+      </defs>
+
+      <rect class="node node-ramp" x="40" y="30" width="160" height="50" rx="8"/>
+      <text class="title" x="120" y="52" text-anchor="middle">triage</text>
+      <text class="sub" x="120" y="68" text-anchor="middle">raw incoming only</text>
+
+      <rect class="node node-ramp" x="40" y="110" width="160" height="50" rx="8"/>
+      <text class="title" x="120" y="132" text-anchor="middle">diagnosing-bugs</text>
+      <text class="sub" x="120" y="148" text-anchor="middle">tight repro loop</text>
+
+      <rect class="node node-ramp" x="40" y="190" width="160" height="50" rx="8"/>
+      <text class="title" x="120" y="212" text-anchor="middle">wayfinder</text>
+      <text class="sub" x="120" y="228" text-anchor="middle">fog map · decisions</text>
+
+      <rect class="node node-ramp" x="280" y="110" width="220" height="50" rx="8"/>
+      <text class="title" x="390" y="132" text-anchor="middle">improve-codebase-arch</text>
+      <text class="sub" x="390" y="148" text-anchor="middle">deepening survey</text>
+
+      <!-- targets -->
+      <rect class="node node-main" x="600" y="30" width="140" height="44" rx="8"/>
+      <text class="title" x="670" y="56" text-anchor="middle">implement*</text>
+
+      <rect class="node node-main" x="600" y="110" width="140" height="44" rx="8"/>
+      <text class="title" x="670" y="136" text-anchor="middle">to-spec …</text>
+
+      <rect class="node node-main" x="600" y="190" width="160" height="44" rx="8"/>
+      <text class="title" x="680" y="216" text-anchor="middle">grill-with-docs</text>
+
+      <path class="edge edge-ramp" style="marker-end:url(#arrow2)" d="M200 55 H 600"/>
+      <path class="edge edge-ramp" style="marker-end:url(#arrow2)" d="M200 135 H 280"/>
+      <path class="edge edge-ramp" style="marker-end:url(#arrow2)" d="M500 135 H 600"/>
+      <path class="edge edge-ramp" style="marker-end:url(#arrow2)" d="M200 215 H 600"/>
+      <path class="edge edge-ramp" style="marker-end:url(#arrow2)" d="M390 160 V 190 H 600"/>
+
+      <text class="sub" x="400" y="48">agent-ready issues</text>
+      <text class="sub" x="400" y="100">fix (+ maybe improve-arch)</text>
+      <text class="sub" x="400" y="248">exit only via to-spec → to-tickets → implement</text>
+      <text class="sub" x="800" y="135">idea → main flow</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>3. Vocabulary layer <span class="tag">underneath · not entry points</span></h2>
+  <div class="svg-wrap">
+    <svg viewBox="0 0 900 160" width="900" height="160" role="img" aria-label="Vocabulary">
+      <rect class="node node-main" x="40" y="50" width="160" height="44" rx="8"/>
+      <text class="title" x="120" y="76" text-anchor="middle">main path skills</text>
+
+      <path class="edge" d="M200 72 H 250"/>
+      <rect class="node node-vocab" x="260" y="20" width="160" height="40" rx="8"/>
+      <text class="title" x="340" y="44" text-anchor="middle">domain-modeling</text>
+
+      <rect class="node node-vocab" x="260" y="70" width="160" height="40" rx="8"/>
+      <text class="title" x="340" y="94" text-anchor="middle">codebase-design</text>
+
+      <rect class="node node-vocab" x="260" y="120" width="160" height="40" rx="8"/>
+      <text class="title" x="340" y="144" text-anchor="middle">coding-standards</text>
+
+      <path class="edge edge-opt" d="M250 72 C 250 40, 250 40, 260 40"/>
+      <path class="edge edge-opt" d="M250 72 H 260"/>
+      <path class="edge edge-opt" d="M250 72 C 250 140, 250 140, 260 140"/>
+
+      <text class="sub" x="520" y="50">pull-in specialists:</text>
+      <text class="sub" x="520" y="70">code-comments · inline-comments</text>
+      <text class="sub" x="520" y="90">execution-flow-comments · stepdown-rule</text>
+      <text class="sub" x="520" y="120">Architecture cousins (not vocabulary):</text>
+      <text class="sub" x="520" y="140">improve-codebase-architecture · software-architect</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>4. Vault chain <span class="tag">personal · separate from engineering</span></h2>
+  <div class="svg-wrap">
+    <svg viewBox="0 0 1050 200" width="1050" height="200" role="img" aria-label="Vault chain">
+      <defs>
+        <marker id="arrowv" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#14b8a6"/>
+        </marker>
+      </defs>
+
+      <rect class="node node-setup" x="20" y="20" width="180" height="40" rx="8"/>
+      <text class="title" x="110" y="44" text-anchor="middle">vault SSOT (setup)</text>
+
+      <rect class="node node-vault" x="20" y="100" width="130" height="44" rx="8"/>
+      <text class="title" x="85" y="126" text-anchor="middle">vault-inbox</text>
+
+      <path class="edge edge-vault" style="marker-end:url(#arrowv)" d="M150 122 H 190"/>
+      <rect class="node node-vault" x="200" y="100" width="130" height="44" rx="8"/>
+      <text class="title" x="265" y="126" text-anchor="middle">vault-ingest</text>
+
+      <path class="edge edge-vault" style="marker-end:url(#arrowv)" d="M330 122 H 370"/>
+      <rect class="node node-vault" x="380" y="100" width="150" height="44" rx="8"/>
+      <text class="title" x="455" y="120" text-anchor="middle">rohitas-vault-wiki</text>
+      <text class="sub" x="455" y="134" text-anchor="middle">schema SSOT</text>
+
+      <path class="edge edge-vault" style="marker-end:url(#arrowv)" d="M530 122 H 570"/>
+      <rect class="node node-vault" x="580" y="70" width="120" height="36" rx="8"/>
+      <text class="title" x="640" y="92" text-anchor="middle">vault-lint</text>
+
+      <rect class="node node-vault" x="580" y="118" width="120" height="36" rx="8"/>
+      <text class="title" x="640" y="140" text-anchor="middle">wiki-query</text>
+
+      <rect class="node node-vault" x="740" y="94" width="130" height="44" rx="8"/>
+      <text class="title" x="805" y="120" text-anchor="middle">vault-explain</text>
+
+      <path class="edge edge-vault" style="marker-end:url(#arrowv)" d="M700 88 H 740"/>
+      <path class="edge edge-vault" style="marker-end:url(#arrowv)" d="M700 136 H 740"/>
+      <path class="edge edge-opt" d="M870 116 H 900"/>
+      <rect class="node node-vocab" x="910" y="94" width="120" height="44" rx="8"/>
+      <text class="title" x="970" y="114" text-anchor="middle">learning-</text>
+      <text class="title" x="970" y="128" text-anchor="middle">explainer</text>
+
+      <text class="sub" x="265" y="170" text-anchor="middle">loads schema first</text>
+      <text class="sub" x="455" y="30" text-anchor="middle">project wikis → project-wiki-manager (engineering, not vault)</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>5. Catalog meta <span class="tag">butler steward</span></h2>
+  <div class="svg-wrap">
+    <svg viewBox="0 0 1000 260" width="1000" height="260" role="img" aria-label="Butler meta">
+      <defs>
+        <marker id="arrowm" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#ec4899"/>
+        </marker>
+      </defs>
+
+      <rect class="node node-meta" x="400" y="20" width="160" height="50" rx="8"/>
+      <text class="title" x="480" y="42" text-anchor="middle">butler</text>
+      <text class="sub" x="480" y="58" text-anchor="middle">query · ingest · lint · organize</text>
+
+      <rect class="node node-dead" x="40" y="30" width="120" height="40" rx="8"/>
+      <text class="title" x="100" y="54" text-anchor="middle">ask-matt †</text>
+      <path class="edge edge-dead" style="marker-end:url(#arrowm)" d="M160 50 H 400"/>
+      <text class="sub" x="280" y="42" text-anchor="middle">absorbed</text>
+
+      <rect class="node node-stand" x="80" y="120" width="140" height="40" rx="8"/>
+      <text class="title" x="150" y="144" text-anchor="middle">create-skill</text>
+      <path class="edge edge-meta" style="marker-end:url(#arrowm)" d="M220 140 H 360 V 70"/>
+      <text class="sub" x="280" y="120">→ ingest</text>
+
+      <rect class="node node-stand" x="80" y="180" width="140" height="40" rx="8"/>
+      <text class="title" x="150" y="204" text-anchor="middle">skill-creator</text>
+      <path class="edge edge-opt" d="M220 200 H 300"/>
+      <text class="sub" x="320" y="204">dup risk → prefer one</text>
+
+      <rect class="node node-stand" x="700" y="40" width="160" height="40" rx="8"/>
+      <text class="title" x="780" y="64" text-anchor="middle">writing-great-skills</text>
+      <text class="sub" x="780" y="100" text-anchor="middle">craft theory · not replaced</text>
+
+      <rect class="node node-stand" x="700" y="140" width="120" height="40" rx="8"/>
+      <text class="title" x="760" y="164" text-anchor="middle">reflect</text>
+      <path class="edge edge-meta" style="marker-end:url(#arrowm)" d="M700 160 H 580 V 70"/>
+      <text class="sub" x="640" y="150">optional lint/organize</text>
+
+      <rect class="node node-stand" x="400" y="160" width="200" height="70" rx="8"/>
+      <text class="title" x="500" y="188" text-anchor="middle">ops detail</text>
+      <text class="sub" x="500" y="206" text-anchor="middle">query ← flows.md + disk</text>
+      <text class="sub" x="500" y="220" text-anchor="middle">ingest ← integration gate</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>6. Standalone &amp; office</h2>
+  <p class="note">Useful off the main flow; not required every feature.</p>
+  <div class="svg-wrap">
+    <svg viewBox="0 0 900 120" width="900" height="120">
+      <rect class="node node-stand" x="20" y="30" width="100" height="40" rx="8"/>
+      <text class="title" x="70" y="54" text-anchor="middle">research</text>
+      <rect class="node node-stand" x="140" y="30" width="100" height="40" rx="8"/>
+      <text class="title" x="190" y="54" text-anchor="middle">prototype</text>
+      <rect class="node node-stand" x="260" y="30" width="80" height="40" rx="8"/>
+      <text class="title" x="300" y="54" text-anchor="middle">teach</text>
+      <rect class="node node-stand" x="360" y="30" width="90" height="40" rx="8"/>
+      <text class="title" x="405" y="54" text-anchor="middle">handoff</text>
+      <rect class="node node-stand" x="470" y="30" width="80" height="40" rx="8"/>
+      <text class="title" x="510" y="54" text-anchor="middle">docx</text>
+      <rect class="node node-stand" x="570" y="30" width="80" height="40" rx="8"/>
+      <text class="title" x="610" y="54" text-anchor="middle">pptx</text>
+      <rect class="node node-stand" x="670" y="30" width="80" height="40" rx="8"/>
+      <text class="title" x="710" y="54" text-anchor="middle">xlsx</text>
+      <rect class="node node-stand" x="770" y="30" width="110" height="40" rx="8"/>
+      <text class="title" x="825" y="54" text-anchor="middle">diagram-maker</text>
+      <text class="sub" x="20" y="100">research → often feeds grill · handoff bridges sessions · office tools are misc</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>7. Duplicate / redundant map <span class="tag">review findings</span></h2>
+  <table class="dup">
+    <thead>
+      <tr><th>Severity</th><th>Cluster</th><th>Skills</th><th>Action</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="badge badge-dup">DUP</span></td>
+        <td>Skill authoring</td>
+        <td><code>create-skill</code>, <code>skill-creator</code></td>
+        <td>Spec prefers one path — merge or tombstone the loser</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-dup">DUP</span></td>
+        <td>Vault steward</td>
+        <td><code>rohitas-vault-wiki</code>, <code>obsidian-notes-manager</code></td>
+        <td>Rohitas schema wins; demote generic steward for this vault</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-cousin">COUSIN</span></td>
+        <td>Review exit</td>
+        <td><code>code-review</code>, <code>code-review-v2</code>, <code>check-work</code></td>
+        <td>Pick one implement closer; check-work = self-verify only</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-cousin">COUSIN</span></td>
+        <td>Learn stack</td>
+        <td><code>learn</code>, <code>learning-explainer</code>, <code>teach</code>, <code>story-teacher</code>, <code>resource-summarizer</code></td>
+        <td>Exclusive Don’t use when; pull-ins not peers</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-cousin">COUSIN</span></td>
+        <td>Session meta</td>
+        <td><code>reflect</code>, <code>task-observer</code>, <code>continuous-learning-v2</code></td>
+        <td>Prefer reflect + butler for catalog; progressive-disclose rest</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-wrap">WRAPPER</span></td>
+        <td>Grill</td>
+        <td><code>grilling</code> ← <code>grill-me</code>, <code>grill-with-docs</code></td>
+        <td>OK per spec — keep thin</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-ok">OK</span></td>
+        <td>Comments family</td>
+        <td>coding-standards + 3 comment skills + stepdown</td>
+        <td>Bounded roles — not redundant</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-ok">OK</span></td>
+        <td>TDD / router / setup</td>
+        <td>single tdd · butler · setup-rohitas</td>
+        <td>Spec satisfied</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+</main>
+
+<footer>
+  Source of truth: <code>skills/productivity/butler/references/flows.md</code> ·
+  Written review: <a href="./SPEC-REVIEW.md">SPEC-REVIEW.md</a> ·
+  Lint: <code>./scripts/lint-skills</code>
+</footer>
+</body>
+</html>

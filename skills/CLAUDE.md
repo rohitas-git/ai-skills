@@ -28,3 +28,8 @@ skills/
 ## Install / discovery
 
 Hosts that only scan one level deep should use the repo symlink sync (`scripts/sync-skills-symlinks.sh`), which flattens bucket children to top-level skill names in agent skill dirs. Do not re-flatten this tree into a single directory of skills.
+
+## Deprecated
+
+Skills under `deprecated/` are tombstones only. They are **not** installed into agent skill directories by `scripts/sync-skills-symlinks.sh`. Do not re-add `deprecated` to discovery without an ADR.
+

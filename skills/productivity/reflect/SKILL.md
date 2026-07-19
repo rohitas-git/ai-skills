@@ -67,3 +67,5 @@ Reflect enables **continual learning** from user feedback. It scans conversation
 ## Catalog hygiene handoff
 
 If session learnings imply catalog structure, routing, or deprecation changes, optionally hand off to **`/butler` lint** and/or **`/butler` organize**. Reflect edits skill bodies; butler owns indexes, flows, and tombstones.
+
+Do not load deprecated `task-observer` or `continuous-learning-v2`.

@@ -297,3 +297,8 @@ This framework ensures reviews are consistent, appropriately scoped, **and expli
 
 - `references/prompt-templates.md` — Expanded ready-to-copy prompt variations for different tiers and review goals.
 - `references/measurement-commands.md` — Portable and enhanced bash commands for gathering accurate repo metrics (file counts, LOC, tests, activity, monorepo signals).
+
+## Don't use when
+
+- Diff/PR review since a fixed point → multi-axis `/code-review`
+- Single-module design vocabulary → `/codebase-design`

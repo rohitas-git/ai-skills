@@ -4,7 +4,7 @@ description: "Implement a piece of work based on a spec or set of tickets."
 disable-model-invocation: true
 ---
 
-**Build path:** drive `/tdd` (red → green slices at agreed seams), then `/code-review`, then commit. See butler `flows.md` main flow.
+**Build path:** drive `/tdd` (red → green slices at agreed seams), then multi-axis `/code-review` (Spec + Standards + Maintainability — every applicable axis), then commit. See butler `flows.md` main flow.
 
 
 Implement the work described by the user in the spec or tickets.

@@ -31,3 +31,11 @@ Expect **0 critical** on the promoted set. Known warns may remain (README blurb 
 | No setup-matt name | setup-rohitas-skills only |
 | Vendor dual-router offline | nestedSkillRoots empty; using-agent-skills only under vendor |
 | Model-invoked budget | promoted model-invoked &lt; ~25 |
+
+## Review closer
+
+| Utterance / path | Expected |
+|------------------|----------|
+| implement finishes build | multi-axis `code-review` |
+| review since main | `code-review` (not code-review-v2) |
+

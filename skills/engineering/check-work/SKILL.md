@@ -286,3 +286,8 @@ Then end with exactly:
 VERDICT: PASS
 or
 VERDICT: FAIL
+
+## Don't use when
+
+- Post-implement full review closer → multi-axis `/code-review` (Spec + Standards + Maintainability)
+- Over-engineering-only pass → `/ponytail-review`

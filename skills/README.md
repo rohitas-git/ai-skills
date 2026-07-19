@@ -10,15 +10,13 @@ These buckets are **not** listed as promoted:
 
 - `personal/` — personal vault / knowledge workflows
 - `in-progress/` — drafts not ready for daily use
-- `deprecated/` — tombstones with successors
+- `deprecated/` — tombstones with successors (git-only; not host-installed)
 - `vendor/` — third-party packs (promote only via butler ingest)
 
 ## Quickstart
 
 1. Run **`/setup-rohitas-skills`** once per consumer repo (issue tracker, triage labels, domain docs, optional vault root SSOT).
 2. Use **`/butler`** for navigation (query), catalog ops (ingest / lint / organize), and the chaining map in `productivity/butler/references/flows.md`.
-
-Orientation target: under two minutes to know setup + butler + where promoted skills live.
 
 ## Install note (multi-agent hosts)
 
@@ -28,9 +26,7 @@ Skills live under bucket paths:
 skills/<bucket>/<skill-name>/SKILL.md
 ```
 
-Hosts that only scan one level deep should use `scripts/sync-skills-symlinks.sh`, which flattens bucket children into top-level skill names under each agent skills dir (e.g. `~/.claude/skills/<name>` → catalog `skills/<bucket>/<name>`).
-
-Do **not** re-flatten this tree into a single directory of skills in git.
+Hosts that only scan one level deep should use `scripts/sync-skills-symlinks.sh`, which flattens **discoverable** bucket children (`engineering`, `productivity`, `misc`, `personal`, `in-progress` — **not** `deprecated` or `vendor`) into top-level skill names under each agent skills dir.
 
 ## Buckets
 
@@ -41,7 +37,7 @@ Do **not** re-flatten this tree into a single directory of skills in git.
 | [misc/](./misc/) | Office tools and cross-cutting utilities | Yes |
 | [personal/](./personal/) | Vault / personal knowledge | No |
 | [in-progress/](./in-progress/) | Drafts | No |
-| [deprecated/](./deprecated/) | Tombstones | No |
+| [deprecated/](./deprecated/) | Tombstones (git-only) | No |
 | [vendor/](./vendor/) | Third-party packs | No |
 
 ## Promoted skills
@@ -52,8 +48,7 @@ Do **not** re-flatten this tree into a single directory of skills in git.
 - [clean-craftmanship](./engineering/clean-craftmanship/) — Use for questions about clean code, clean architecture, SOLID principles, writing maintainable software, code structure and design, Uncle…
 - [code-comments](./engineering/code-comments/) — Write clear, professional API and surface documentation using the convention
 - [code-explainer](./engineering/code-explainer/) — Explain code (lines, blocks, functions, files, modules) at different audience levels (Noob, Learner, Junior, Senior) and depths (Brief, S…
-- [code-review](./engineering/code-review/) — Run an extremely strict maintainability review for abstraction quality, giant files, and spaghetti-condition growth. Use for a deep code…
-- [code-review-v2](./engineering/code-review-v2/) — Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes — Standards (does the code follow this repo's…
+- [code-review](./engineering/code-review/) — Multi-axis review of changes since a fixed point: Spec (ticket/PRD fidelity),
 - [codebase-design](./engineering/codebase-design/) — Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find deepening opportuni…
 - [codebase-review-strategy](./engineering/codebase-review-strategy/) — Use when reviewing any codebase of unknown or varying size. Determines repo tier from measurable metrics, selects optimal thinking effort…
 - [coding-standards](./engineering/coding-standards/) — Enforce lean coding standards for naming, modularity, error handling, and
@@ -85,8 +80,7 @@ Do **not** re-flatten this tree into a single directory of skills in git.
 
 - [butler](./productivity/butler/) — Catalog steward for this skills repo. Use when you are lost ("which skill?"), want to
 - [context-monitor](./productivity/context-monitor/) — Monitors conversation context usage, warns at ~50% of the limit, and provides actionable advice on saving tokens and optimizing conversat…
-- [continuous-learning-v2](./productivity/continuous-learning-v2/) — Instinct-based learning system that observes sessions via hooks, creates atomic instincts with confidence scoring, and evolves them into…
-- [create-skill](./productivity/create-skill/) — Interactively create a new Grok skill (SKILL.md + optional scripts/references).
+- [create-skill](./productivity/create-skill/) — Thin entry for authoring skills. Loads skill-creator (create/improve/eval SSOT),
 - [find-skills](./productivity/find-skills/) — Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is there a skill that…
 - [grill-me](./productivity/grill-me/) — A relentless interview to sharpen a plan or design.
 - [grilling](./productivity/grilling/) — Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'grill' t…
@@ -106,7 +100,6 @@ Do **not** re-flatten this tree into a single directory of skills in git.
 - [skill-creator](./productivity/skill-creator/) — Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch,…
 - [story-teacher](./productivity/story-teacher/) — Use to turn any summary, lesson, educational text, article, book notes, video transcript, URL content, or raw document into an original,…
 - [strategic-compact](./productivity/strategic-compact/) — Suggests manual context compaction at logical intervals to preserve context through task phases rather than arbitrary auto-compaction.
-- [task-observer](./productivity/task-observer/) — Monitors task execution for skill improvement opportunities. Use this skill
 - [teach](./productivity/teach/) — Teach the user a new skill or concept, within this workspace.
 - [thinking-steel-manning](./productivity/thinking-steel-manning/) — Use before rejecting a proposal or when you're inclined to just agree with the user. Build the strongest version of the opposing case fir…
 - [writing-great-skills](./productivity/writing-great-skills/) — Reference for writing and editing skills well — the vocabulary and principles that make a skill predictable.
@@ -127,10 +120,13 @@ Do **not** re-flatten this tree into a single directory of skills in git.
 | Check | Status target |
 |-------|----------------|
 | Steward | `butler` |
-| Single TDD | `engineering/tdd` only (vendor pack not co-routed) |
+| Single TDD | `engineering/tdd` only |
 | Router | no live `ask-matt` |
 | Setup name | `setup-rohitas-skills` |
-| Vendor | `vendor/agent-skills` offline from default discovery |
+| Review closer | multi-axis `code-review` |
+| Author path | `skill-creator` body; `create-skill` wrapper |
+| Vendor | offline from default discovery |
+| Deprecated | not host-discovered |
 | Lint | `./scripts/lint-skills` → 0 critical |
 
 Smoke fixtures: `productivity/butler/references/smoke-fixtures.md`.

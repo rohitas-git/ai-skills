@@ -487,3 +487,5 @@ Good luck!
 ## Catalog citizenship
 
 When a skill is ready for the Rohitas catalog, run **`/butler` ingest** (integration test → confirm → indexes). Craft theory stays with `writing-great-skills`.
+
+**Entry alias:** `/create-skill` is a thin wrapper that loads this skill.

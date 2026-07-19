@@ -58,7 +58,7 @@ DISCOVER_BUCKETS = {
     "misc",
     "personal",
     "in-progress",
-    "deprecated",
+    # deprecated: tombstones stay in git only — not host-installed
 }
 
 
