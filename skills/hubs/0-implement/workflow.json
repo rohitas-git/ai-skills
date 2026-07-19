@@ -26,21 +26,24 @@
         "0-implement",
         "1-tdd",
         "1-code-review"
-      ]
+      ],
+      "primary": true
     },
     {
       "link_type": "soft",
       "skills": [
         "1-coding-standards"
       ],
-      "note": "Always-on lean style; F-C1 vs 1-clean-craftsmanship (Architecture)"
+      "note": "Always-on lean style; F-C1 vs 1-clean-craftsmanship (Architecture)",
+      "primary": true
     },
     {
       "link_type": "cousin",
       "skills": [
         "1-verify-work"
       ],
-      "note": "mid-build only"
+      "note": "mid-build only",
+      "primary": true
     },
     {
       "link_type": "soft",

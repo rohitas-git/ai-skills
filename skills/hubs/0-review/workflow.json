@@ -23,7 +23,8 @@
       "skills": [
         "1-code-review",
         "1-security-auditor"
-      ]
+      ],
+      "primary": true
     },
     {
       "link_type": "on-ramp",
@@ -37,7 +38,8 @@
         "1-security-and-hardening",
         "1-software-architect"
       ],
-      "note": "hardening shared with both sub-hubs; 1-software-architect dual-primary under Architecture"
+      "note": "hardening shared with both sub-hubs; 1-software-architect dual-primary under Architecture",
+      "primary": true
     },
     {
       "link_type": "cousin",

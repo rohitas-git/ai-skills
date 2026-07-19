@@ -34,6 +34,7 @@ Severity:
 |------|--------|
 | `depth-prefix` | **critical** — live skill dir + `name` = `{depth}-{kebab-slug}`; no bare unprefixed live skills ([depth-prefix-names.md](./depth-prefix-names.md)) |
 | `depth-hub` | **critical** — ★ domain hubs are `0-*`; sub-hubs are `1-*`; hub package dir matches hub skill name |
+| `depth-graph` | **critical** — name prefix matches **primary** hub-tree depth; dual listings do not change depth |
 | `name-dir` | frontmatter `name` == directory name |
 | `frontmatter` | SKILL.md has name + description |
 | `bucket-readme` | every skill listed in its bucket README with one-line blurb |

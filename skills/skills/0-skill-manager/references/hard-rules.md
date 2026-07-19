@@ -5,12 +5,13 @@
 3. **Never promote `using-agent-skills`** — dual meta-router is forbidden.
 4. **Never invent skills in query** — recommend only skills that exist on disk under discoverable buckets (or explicit deprecated tombstones when explaining successors).
 5. **Prefer merge** — if a candidate collides with an existing skill's job, merge content into the winner rather than adding a peer.
-6. **Depth-prefix names (hard)** — live skill dir, frontmatter `name`, slash, and hub package (if any) **must** be `{depth}-{kebab-slug}`:
-   - **0-** ★ domain hubs (incl. `0-butler`)
-   - **1-** children of domain hubs (incl. sub-hubs)
-   - **2+** only under a shallower parent; dual membership → **min** depth
+6. **Depth-prefix names (hard)** — live skill dir, frontmatter `name`, slash, and hub package (if any) **must** be `{depth}-{kebab-slug}` from **hub-tree primary depth**:
+   - **0-** ★ domain hubs (incl. `0-butler`) — identity wins over dual soft/hard edges to other hubs
+   - **1-** children of domain hubs; **sub-hubs** stay `1-` even if also pipeline under another domain
+   - **2+** only when **primary** parent is deeper; soft dual under a sub-hub does **not** force `2-`
+   - **Dual membership:** one primary for naming; dual listings never rename. Optional `"primary": true` on the primary child group.
    - Bare unprefixed live names are **forbidden**. Vendor archive keeps upstream names until place/ingest assigns depth.
-   - Full rule: [depth-prefix-names.md](./depth-prefix-names.md). Lint codes: `depth-prefix`, `depth-hub`.
+   - Full rule: [depth-prefix-names.md](./depth-prefix-names.md). Lint: `depth-prefix`, `depth-hub`, `depth-graph`.
 7. **Hard setup deps** — `1-to-spec`, `1-to-tickets`, `0-triage` must point at `/0-setup-rohitas-skills`. Soft deps (1-tdd, 0-diagnosing-bugs, 0-improve-codebase-architecture, vocabulary skills) use CONTEXT/ADR if present only.
 8. **Tombstones** — deprecations stay under `archive/` with successor named in README and skill body.
 

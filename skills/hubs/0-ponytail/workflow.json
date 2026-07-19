@@ -26,7 +26,8 @@
         "1-ponytail-debt",
         "1-ponytail-gain",
         "1-ponytail-help"
-      ]
+      ],
+      "primary": true
     }
   ],
   "pipeline": [

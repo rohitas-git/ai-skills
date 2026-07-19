@@ -2,7 +2,7 @@
 
 Flat live skills under `skills/`. Domain structure lives in **hubs** + **wikis**, not folders.
 
-**Naming (hard):** live skills are `{depth}-{kebab-slug}` — `0-` domain hubs, `1-` their children, `2+` deeper. See [depth-prefix-names.md](./skills/0-skill-manager/references/depth-prefix-names.md) and [CLAUDE.md](./CLAUDE.md).
+**Naming (hard):** live skills are `{depth}-{kebab-slug}` from hub-tree **primary** depth — `0-` domain hubs, `1-` children/sub-hubs, `2+` only when primary parent is deeper. Dual-domain listings do not change the number. See [depth-prefix-names.md](./skills/0-skill-manager/references/depth-prefix-names.md) and [CLAUDE.md](./CLAUDE.md).
 
 ## Quickstart
 

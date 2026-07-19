@@ -48,7 +48,7 @@
       "note": "atomize op \u2014 overlap to one-job + Boundary + ask-user forks"
     },
     {
-      "link_type": "1-handoff",
+      "link_type": "handoff",
       "skills": [
         "0-skill-creator"
       ],

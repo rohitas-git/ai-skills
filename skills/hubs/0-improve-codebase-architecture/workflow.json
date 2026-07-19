@@ -29,7 +29,8 @@
       "skills": [
         "1-software-architect"
       ],
-      "note": "Primary home; dual soft under Review /1-code-review for architecture review"
+      "note": "Primary home; dual soft under Review /1-code-review for architecture review",
+      "primary": true
     },
     {
       "link_type": "soft",

@@ -10,15 +10,15 @@ Each **workflow domain** has exactly one **★ top skill (hub)**. Children link 
 
 ### Depth-prefix names (hard)
 
-Live skill id = **`{depth}-{kebab-slug}`** (dir, frontmatter `name`, slash, hub package).
+Live skill id = **`{depth}-{kebab-slug}`** (dir, frontmatter `name`, slash, hub package) from **domain hub tree depth**.
 
 | Depth | Role |
 |------:|------|
-| **0-** | ★ domain hubs + hub-of-hubs (`0-butler`) |
-| **1-** | Direct children of a domain hub (incl. sub-hubs) |
-| **2+** | Nested only under a shallower parent |
+| **0-** | ★ domain hubs + hub-of-hubs (`0-butler`) — hub identity always |
+| **1-** | Children of a domain hub (incl. sub-hubs); sub-hub identity always `1-` |
+| **2+** | Only when **primary** parent is depth `(N-1)` |
 
-Dual membership → **minimum** depth. No bare unprefixed live skills. SSOT: `skills/0-skill-manager/references/depth-prefix-names.md`. Lint: `depth-prefix` / `depth-hub` critical.
+**Dual domain:** one **primary** hub for the number; extra dual soft/on-ramp/cousin listings do **not** change the prefix (no min-depth rename). SSOT: `skills/0-skill-manager/references/depth-prefix-names.md`. Lint: `depth-prefix` / `depth-hub` / `depth-graph` critical.
 
 ### Fork (◆)
 

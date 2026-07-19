@@ -36,7 +36,8 @@
       "skills": [
         "1-handoff",
         "1-prototype"
-      ]
+      ],
+      "primary": true
     },
     {
       "link_type": "soft",

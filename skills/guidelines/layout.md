@@ -15,15 +15,15 @@ skills-root/
 
 ## Depth-prefix names (hard)
 
-Live skill **directory**, frontmatter **`name`**, slash command, and hub package dir:
+Live skill **directory**, frontmatter **`name`**, slash command, and hub package dir — number = **hub-tree primary depth**:
 
 | Depth | Meaning | Example |
 |------:|---------|---------|
-| **0** | ★ domain hub / hub-of-hubs | `0-butler`, `0-implement` |
-| **1** | Child of a domain hub (incl. sub-hub) | `1-to-tickets`, `1-code-review` |
-| **2+** | Deeper under a parent | `2-…` |
+| **0** | ★ domain hub / hub-of-hubs (identity wins over dual edges) | `0-butler`, `0-implement` |
+| **1** | Child of a domain hub; sub-hubs stay `1-` even if also pipeline elsewhere | `1-to-tickets`, `1-code-review` |
+| **2+** | Primary parent only is deeper (soft dual under a sub-hub does not force this) | `2-…` |
 
-Dual membership → minimum depth. Bare unprefixed live skills are forbidden. Full rule: `skills/0-skill-manager/references/depth-prefix-names.md`.
+**Dual domain:** one primary for naming; dual listings never rename. Full rule: `skills/0-skill-manager/references/depth-prefix-names.md`.
 
 ## Discovery
 

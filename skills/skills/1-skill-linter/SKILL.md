@@ -74,7 +74,7 @@ When report flags missing Boundary, cousin trigger collision, or dual full proce
 ## Hard rules
 
 1. **Report only** — no multi-file catalog writes.
-2. **Depth-prefix names** — live skills must be `{depth}-{slug}`; bare names are **critical** (`depth-prefix` / `depth-hub` / `gate-depth-prefix`).
+2. **Depth-prefix names** — live skills must be `{depth}-{slug}` matching **primary** hub-tree depth; dual memberships do not change the number (`depth-prefix` / `depth-hub` / `depth-graph` / `gate-depth-prefix`).
 3. **Lean SKILL.md** — main file stays Matt-thin; progressive disclosure, not inlined books.
 4. **Chain** — live skills have hub membership + chain slot; pipeline skills expose next steps.
 5. **Hub membership** — orphans are critical (ADR 0006).

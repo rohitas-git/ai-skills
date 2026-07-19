@@ -23,7 +23,8 @@
       "skills": [
         "1-learning-explainer"
       ],
-      "note": "Structured multi-level explain SSOT; default F-L1 for concepts"
+      "note": "Structured multi-level explain SSOT; default F-L1 for concepts",
+      "primary": true
     },
     {
       "link_type": "leaf",
@@ -50,7 +51,8 @@
       "skills": [
         "1-resource-summarizer"
       ],
-      "note": "Also used by 1-vault-ingest distill; dual soft under Vault domain notes"
+      "note": "Also used by 1-vault-ingest distill; dual soft under Vault domain notes",
+      "primary": true
     },
     {
       "link_type": "on-ramp",
