@@ -1,6 +1,9 @@
 {
   "source": "/Users/rohitasbansal/Development/AI-Skills/skills",
+  "discoverPackages": ["skills", "inbox"],
+  "neverDiscover": ["archive", "hubs", "guidelines", "wikis", "vendor", ".scratch", ".system", ".claude"],
   "nestedSkillRoots": [],
+  "ingestDestination": "inbox",
   "targets": [
     "/Users/rohitasbansal/.agents/skills",
     "/Users/rohitasbansal/.claude/skills",
@@ -13,5 +16,5 @@
     "/Users/rohitasbansal/.kiro/skills",
     "/Users/rohitasbansal/.zcode/skills"
   ],
-  "description": "Global skill symlink targets. Catalog skills live under skills/<bucket>/<name>. vendor/ packs are out of default discovery; promote only via butler ingest."
+  "description": "Host skill dirs receive flat top-level symlinks. Catalog source uses six-folder layout: live skills at skills/<name>/, staging at inbox/<name>/. Never host-discover archive/, hubs/, guidelines/, wikis/, or vendor packs."
 }

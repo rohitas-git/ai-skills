@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "kind": "domain_hub_workflow",
+  "domain_id": 12,
+  "domain": "Simplify",
+  "hub": "ponytail",
+  "slash": "/ponytail",
+  "path": "skills/ponytail",
+  "package_dir": "hubs/ponytail/",
+  "role": "Laziest solution that works \u2014 optional simplify mode.",
+  "notes": "Orthogonal to Ship. Use for YAGNI / delete / stdlib-first pressure.",
+  "parent": {
+    "hub": "butler",
+    "slash": "/butler",
+    "relationship": "routed_by",
+    "html": "../butler/hub.html",
+    "workflow_json": "../butler/workflow.json",
+    "skill_path": "skills/butler"
+  },
+  "children": [
+    {
+      "link_type": "satellite",
+      "skills": [
+        "ponytail-review",
+        "ponytail-audit",
+        "ponytail-debt",
+        "ponytail-gain",
+        "ponytail-help"
+      ]
+    }
+  ],
+  "pipeline": [
+    "optional; not the Ship closer"
+  ],
+  "forks": [],
+  "domain_hubs_routed": null,
+  "artifacts": {
+    "html": "./hub.html",
+    "workflow_json": "./workflow.json",
+    "flows_chart": "../flows-chart.html",
+    "flows_ssot": "../../../skills/butler/references/flows.md",
+    "hubs_index": "../index.html",
+    "manifest": "../manifest.json"
+  },
+  "rules": [
+    "butler_links_every_domain_hub",
+    "each_domain_hub_has_package_dir",
+    "each_domain_hub_has_hub_html",
+    "each_domain_hub_has_workflow_json",
+    "each_domain_hub_links_flows_chart",
+    "one_hub_per_domain",
+    "forks_ask_user"
+  ]
+}

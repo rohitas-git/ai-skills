@@ -1,60 +1,75 @@
-# Skill Symlink Automation
+# Skill symlink automation
 
-This directory contains scripts to automate the creation and management of skill symlinks.
+Scripts that flatten the **AI-Skills catalog** into host agent skill directories.
+
+## Layout (catalog source)
+
+```text
+skills/                 # catalog root (config "source")
+  skills/<name>/        # live skills — host-discovered
+  inbox/<name>/         # staging — host-discovered, not promoted
+  archive/              # tombstones — never host-discovered
+  hubs/ guidelines/ wikis/
+```
+
+See `skills/guidelines/layout.md` and ADR 0007 / ADR 0003.
 
 ## Files
 
-- **sync-skills-symlinks.sh** - Main script that creates symlinks for all skills
-- **symlink-targets.json** - Configuration file listing targets and nested skill roots
+| File | Role |
+|------|------|
+| **sync-skills-symlinks.sh** | Discover skills, optional ingest, prune, symlink |
+| **symlink-targets.json** | Source path, discover packages, host targets |
+| **lint-skills** | Catalog health (separate) |
 
-## Configuration
-
-Edit `symlink-targets.json` to add or remove target directories and nested monorepos:
+## Configuration (`symlink-targets.json`)
 
 ```json
 {
-  "source": "/Users/rohitasbansal/Development/AI-Skills/skills",
+  "source": "/path/to/AI-Skills/skills",
+  "discoverPackages": ["skills", "inbox"],
+  "neverDiscover": ["archive", "hubs", "guidelines", "wikis", "vendor"],
   "nestedSkillRoots": [],
-  "targets": [
-    "/Users/rohitasbansal/.gemini/config/skills",
-    "/other/path/to/skills"
-  ]
+  "ingestDestination": "inbox",
+  "targets": ["~/.claude/skills", "..."]
 }
 ```
 
-- **source** — canonical skills directory (Matt-style buckets under it)
-- **targets** — agent/IDE skill directories that receive top-level symlinks
-- **nestedSkillRoots** — optional monorepo packs relative to `source` (normally empty; vendor packs stay out of discovery)
-- Skills live at `skills/<bucket>/<skill-name>/SKILL.md`. The sync script flattens bucket children (and any leftover top-level skills) to top-level names in each target.
+| Key | Meaning |
+|-----|---------|
+| `source` | Catalog root (six-folder layout) |
+| `discoverPackages` | Children of these dirs with `SKILL.md` become flat host names |
+| `neverDiscover` | Never scan (archive, hubs, …) |
+| `nestedSkillRoots` | Optional monorepo packs relative to source (default empty; vendor not auto-scanned) |
+| `ingestDestination` | Where new real dirs from targets are moved (`inbox`) |
+| `targets` | Agent/IDE skill dirs receiving top-level symlinks |
 
 ## Usage
 
-### Manual Sync
 ```bash
+# From this directory
 ./sync-skills-symlinks.sh
+
+./sync-skills-symlinks.sh --dry-run      # report only
+./sync-skills-symlinks.sh --no-ingest    # do not move new skills from hosts
+./sync-skills-symlinks.sh --verbose      # list every create/prune
 ```
 
-### Automatic Sync
-The script is automatically run after git pull/merge via the `.git/hooks/post-merge` hook.
+Typically wired from a git `post-merge` hook after pull.
 
-## What It Does
+## What it does
 
-1. Reads the source skills directory from config
-2. Collects skills from:
-   - Top-level dirs under `source` that contain `SKILL.md` (legacy)
-   - Children of catalog buckets (`engineering`, `productivity`, `misc`, `personal`, `in-progress`, `deprecated`)
-   - Nested monorepo roots listed in `nestedSkillRoots` (usually empty; `vendor/` is never auto-scanned)
-3. On name collision, earlier discovery wins (top-level > bucket > nested)
-4. For each target directory:
-   - Ingests any new real skill dirs from the target into source
-   - Prunes broken links and non-skill junk previously linked by mistake
-   - Creates/refreshes skill symlinks (including flattened nested skills)
-5. Displays a summary of created/skipped/pruned symlinks
+1. **Discover** — `skills/*` and `inbox/*` that contain `SKILL.md` (plus optional nested roots). Live `skills/` wins name collisions over `inbox/`.
+2. **Ingest (phase 1)** — Real (non-symlink) skill dirs found only on a target and not in the catalog are moved to `source/inbox/<name>/`.
+3. **Link (phase 2)** — For each target:
+   - Prune broken links and catalog links that left discovery (e.g. archived).
+   - Create/fix flat `target/<name>` → absolute path of the skill directory.
+4. **Never** install `archive/`, hubs, guidelines, wikis, or whole vendor packs.
 
-## Adding New Skills
+## Adding skills
 
-**Bucket skill (preferred):** add `skills/<bucket>/<name>/SKILL.md` (bucket ∈ engineering|productivity|misc|personal|in-progress|deprecated), then run the sync script. Prefer **butler ingest** for catalog placement.
+1. Prefer **butler** → **skill-manager** place/ingest into `skills/` or `inbox/`.
+2. Or drop `inbox/<name>/SKILL.md`, then run this script.
+3. Or put a real skill folder in a host dir; next sync moves it into `inbox/`.
 
-**Nested monorepo / vendor skill:** do **not** put under default discovery. Park under `vendor/` and promote only via butler ingest. `nestedSkillRoots` remains for rare opt-in flatten only.
-
-Or commit and push — the post-merge hook runs sync on the next pull.
+**Do not** promote vendor packs by listing them in `nestedSkillRoots` unless intentional.

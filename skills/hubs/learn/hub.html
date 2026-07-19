@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Domain hub · learn — Learn</title>
+<style>
+  :root {
+    --bg: #0b0f14; --panel: #151c27; --text: #e8eef7; --muted: #8b9bb4;
+    --line: #2d3a4d; --butler: #f472b6; --hub: #3d8bfd;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.45; }
+  header { padding: 1.2rem 1.5rem; border-bottom: 1px solid var(--line); }
+  header h1 { margin: 0 0 0.35rem; font-size: 1.35rem; }
+  header p { margin: 0; color: var(--muted); max-width: 85ch; font-size: 0.95rem; }
+  nav.top { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; padding: 0.75rem 1.5rem; border-bottom: 1px solid var(--line); font-size: 0.88rem; }
+  nav.top a { color: #7dd3fc; text-decoration: none; }
+  main { padding: 1.25rem 1.5rem 3rem; display: grid; gap: 1.2rem; max-width: 960px; }
+  section { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1.1rem 1.2rem; }
+  h2 { margin: 0 0 0.55rem; font-size: 1.05rem; }
+  .meta { color: var(--muted); font-size: 0.88rem; margin: 0 0 0.75rem; }
+  .badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 999px; font-size: 0.75rem; font-weight: 650; border: 1px solid var(--line); margin-right: 0.35rem; }
+  .badge.hub { color: #93c5fd; border-color: var(--hub); background: #1a3358; }
+  ul { margin: 0.25rem 0 0; padding-left: 1.2rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+  th, td { text-align: left; padding: 0.4rem 0.5rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  code { color: #bae6fd; font-size: 0.9em; }
+  pre { background: #0f1520; border: 1px solid var(--line); border-radius: 8px; padding: 0.75rem 0.9rem; overflow-x: auto; font-size: 0.82rem; color: #cbd5e1; white-space: pre-wrap; }
+  footer { padding: 0 1.5rem 2rem; color: var(--muted); font-size: 0.85rem; max-width: 960px; }
+  a { color: #7dd3fc; }
+  .chart-cta, .butler-cta { display: inline-block; margin-top: 0.35rem; padding: 0.45rem 0.8rem; border-radius: 8px; text-decoration: none; font-weight: 650; font-size: 0.9rem; }
+  .chart-cta { border: 1px solid var(--hub); background: #1a3358; color: #e0f2fe; }
+  .butler-cta { border: 1px solid var(--butler); background: #4a1830; color: #fce7f3; }
+  .nav-hubs { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .nav-hubs a { font-size: 0.8rem; padding: 0.2rem 0.45rem; border: 1px solid var(--line); border-radius: 6px; text-decoration: none; color: #7dd3fc; }
+  .nav-hubs a.current { border-color: var(--hub); color: var(--text); background: #1a3358; }
+  .nav-hubs a.butler-link { border-color: var(--butler); color: #fbcfe8; }
+  .parent-box { border: 1px solid var(--butler); background: #2a1220; border-radius: 8px; padding: 0.75rem 0.9rem; }
+  .parent-box strong { color: #fbcfe8; }
+</style>
+</head>
+<body>
+<header>
+  <h1>★ learn <span style="color:var(--muted);font-weight:500">· Domain 13 · Learn</span></h1>
+  <p>Domain router for intellectual understanding — explain, tutor, course, story, summarize.</p>
+</header>
+<nav class="top">
+  <a class="butler-cta" href="../butler/hub.html">★ butler (hub of hubs)</a>
+  <a class="chart-cta" href="../../flows-chart.html">Full flows chart</a>
+  <a href="./workflow.json">workflow.json</a>
+  <a href="../../../productivity/butler/references/flows.md">flows.md SSOT</a>
+  <a href="../index.html">hubs index</a>
+  <span class="here">package: <code>hubs/learn/</code></span>
+</nav>
+<main>
+<section>
+  <h2>Parent — butler</h2>
+  <div class="parent-box">
+    <strong>Routed by ★ butler</strong>. Enter via /butler or F7 → Learn.
+    Catalog mutations → /skill-manager.
+  </div>
+</section>
+<section>
+  <h2>Identity</h2>
+  <p class="meta"><span class="badge hub">★ hub</span> slash: <code>/learn</code> · skill: <code>productivity/learn/</code></p>
+  <p>Not a product build path. vault-explain is Vault on-ramp that hard-loads learning-explainer. Tutor mode is disclosed under learn/references (not a separate skill).</p>
+</section>
+<section>
+  <h2>Children / modes</h2>
+  <ul>
+    <li><strong>leaf:</strong> learning-explainer <span class='meta'>(Structured multi-level explain SSOT; default F-L1 for concepts)</span></li>
+<li><strong>satellite:</strong> teach <span class='meta'>(Multi-session workspace course)</span></li>
+<li><strong>leaf:</strong> story-teacher</li>
+<li><strong>soft:</strong> resource-summarizer <span class='meta'>(Also used by vault-ingest distill; dual soft under Vault domain notes)</span></li>
+<li><strong>on-ramp:</strong> vault-explain <span class='meta'>(Primary home Vault; hard-loads learning-explainer for pedagogy)</span></li>
+<li><strong>tutor mode (refs):</strong> <code>learn/references/tutor-mode.md</code> — Socratic session practice</li>
+  </ul>
+</section>
+<section>
+  <h2>Pipeline</h2>
+  <pre>orient / F-L1
+optional F-L2 if long source
+load one mode
+optional cross-mode offer</pre>
+</section>
+<section>
+  <h2>Forks (ask user)</h2>
+  <table>
+    <thead><tr><th>ID</th><th>Question</th><th>Recommended</th><th>Branches</th></tr></thead>
+    <tbody>
+      <tr><td><code>F-L1</code></td><td>What kind of learning help?</td><td>Structured explain (/learning-explainer) for concepts/ELI5</td><td>learning-explainer · tutor-mode (learn/references) · teach · story-teacher · resource-summarizer · vault-explain if vault Concept</td></tr>
+<tr><td><code>F-L2</code></td><td>Long source present — summarize first?</td><td>Yes if raw blob is huge before explain/story</td><td>resource-summarizer first · skip straight to explain/tutor/story</td></tr>
+    </tbody>
+  </table>
+</section>
+<section>
+  <h2>See also</h2>
+  <p><a class="butler-cta" href="../butler/hub.html">★ butler</a>
+  <a class="chart-cta" href="../../flows-chart.html">flows chart</a></p>
+  <h2 style="margin-top:1rem">All domain hubs</h2>
+  <div class="nav-hubs"><a href="../butler/hub.html" class="butler-link">butler</a>
+<a href="../setup-rohitas-skills/hub.html" class="">setup-rohitas-skills</a>
+<a href="../grilling/hub.html" class="">grilling</a>
+<a href="../implement/hub.html" class="">implement</a>
+<a href="../review/hub.html" class="">review</a>
+<a href="../triage/hub.html" class="">triage</a>
+<a href="../diagnosing-bugs/hub.html" class="">diagnosing-bugs</a>
+<a href="../wayfinder/hub.html" class="">wayfinder</a>
+<a href="../improve-codebase-architecture/hub.html" class="">improve-codebase-architecture</a>
+<a href="../rohitas-vault-wiki/hub.html" class="">rohitas-vault-wiki</a>
+<a href="../skill-manager/hub.html" class="">skill-manager</a>
+<a href="../skill-creator/hub.html" class="">skill-creator</a>
+<a href="../ponytail/hub.html" class="">ponytail</a>
+<a href="../learn/hub.html" class="current">learn</a>
+<a href="../office/hub.html" class="">misc</a></div>
+</section>
+</main>
+<footer>
+  Domain hub package <code>hubs/learn/</code> · SSOT: <code>flows.md</code>
+</footer>
+</body>
+</html>

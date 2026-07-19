@@ -1,35 +1,30 @@
-# Skills catalog rules
+# Catalog rules (agents)
 
-This directory is the **skills catalog** (not an application). Agents editing skills must respect bucket layout.
+Hard rules only. Navigation → [README.md](./README.md). Layout detail → [guidelines/layout.md](./guidelines/layout.md). Index → [wikis/index.md](./wikis/index.md).
 
-## Bucket rules
+## Six folders
 
-1. **Promoted set** — only skills under `engineering/`, `productivity/`, and `misc/` appear on the root README and are the default daily catalog.
-2. **Personal / in-progress / deprecated / vendor** — never list on the root README; they are offline from promotion until intentionally moved.
-3. **One skill = one directory** named after frontmatter `name`, containing `SKILL.md` (plus optional references/scripts).
-4. **Stewardship** — catalog health, routing, ingest, and rehousing go through **`butler`** (user-invoked). Do not flatten buckets or invent a second meta-router.
+| Dir | Holds | Discovered? |
+|-----|--------|-------------|
+| `skills/` | Live skill bodies (`skills/<name>/SKILL.md`) | yes |
+| `inbox/` | New / in-progress skills | yes (not promoted) |
+| `archive/` | Tombstones + `archive/vendor/` | **no** |
+| `hubs/` | Hub packages (`hub.html`, `workflow.json`) | no |
+| `guidelines/` | Layout, reorg history, human guides | no |
+| `wikis/` | Catalog wiki (`index.md`, `log.md`) | no |
 
-## Layout
+No other top-level directories. Root files: this file, `README.md`, `AGENTS.md`, `skills-lock.json`.
 
-```text
-skills/
-  engineering/   # promoted
-  productivity/  # promoted
-  misc/          # promoted
-  personal/      # not promoted
-  in-progress/   # not promoted
-  deprecated/    # not promoted
-  vendor/        # not promoted; packs only
-  CLAUDE.md
-  README.md
-  skills-lock.json
-```
+## Skill rules
 
-## Install / discovery
+1. One skill = `skills/<name>/` named after frontmatter `name`.
+2. Dual membership is **logical only** (hubs + flows) — no second copy/symlink.
+3. Route: **butler**. Mutate: **skill-manager**. Lint: **skill-linter** (Gate: PASS on place/ingest).
+4. place: `inbox/<name>` → `skills/<name>` + hub slot + `wikis/index.md` + `wikis/log.md`.
+5. deprecate: `skills/<name>` → `archive/<name>`.
+6. new-hub: write `hubs/{hub}/`.
+7. Main `SKILL.md` stays lean; depth in `references/`.
 
-Hosts that only scan one level deep should use the repo symlink sync (`scripts/sync-skills-symlinks.sh`), which flattens bucket children to top-level skill names in agent skill dirs. Do not re-flatten this tree into a single directory of skills.
+## Forbidden
 
-## Deprecated
-
-Skills under `deprecated/` are tombstones only. They are **not** installed into agent skill directories by `scripts/sync-skills-symlinks.sh`. Do not re-add `deprecated` to discovery without an ADR.
-
+- Second meta-router · promoting `using-agent-skills` · discovering `archive/` · inventing skills not on disk + flows.

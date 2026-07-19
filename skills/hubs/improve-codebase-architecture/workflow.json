@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "kind": "domain_hub_workflow",
+  "domain_id": 8,
+  "domain": "Architecture",
+  "hub": "improve-codebase-architecture",
+  "slash": "/improve-codebase-architecture",
+  "path": "skills/improve-codebase-architecture",
+  "package_dir": "hubs/improve-codebase-architecture/",
+  "role": "Deepening opportunities and architecture improvement.",
+  "notes": "Architecture ideas that become build work merge into Design, then Ship.",
+  "parent": {
+    "hub": "butler",
+    "slash": "/butler",
+    "relationship": "routed_by",
+    "html": "../butler/hub.html",
+    "workflow_json": "../butler/workflow.json",
+    "skill_path": "skills/butler"
+  },
+  "children": [
+    {
+      "link_type": "vocab",
+      "skills": [
+        "codebase-design"
+      ]
+    },
+    {
+      "link_type": "persona",
+      "skills": [
+        "software-architect"
+      ],
+      "note": "Primary home; dual soft under Review /code-review for architecture review"
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "clean-craftsmanship"
+      ],
+      "note": "Clean Code/Architecture principles Q&A; F-C1 vs coding-standards"
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "coding-standards"
+      ],
+      "note": "Always-on lean style; also soft under Ship; F-C1"
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "project-wiki-manager",
+        "living-documentation-governor"
+      ],
+      "note": "Project knowledge atoms; F-D1 between them; F-D2 vs vault"
+    },
+    {
+      "link_type": "tombstone",
+      "skills": [
+        "software-architecture"
+      ],
+      "note": "\u2192 this hub / codebase-design"
+    }
+  ],
+  "pipeline": [
+    "scan",
+    "HTML report",
+    "pick idea",
+    "optional Design (grill-with-docs)"
+  ],
+  "forks": [
+    {
+      "id": "F9",
+      "question": "Take a deepening idea to Design?",
+      "recommended": "if user picks one",
+      "branches": [
+        "stay",
+        "\u2192 grill-with-docs"
+      ]
+    },
+    {
+      "id": "F-C1",
+      "question": "Enforce standards on code now, or discuss clean-code principles?",
+      "recommended": "coding-standards while editing",
+      "branches": [
+        "coding-standards",
+        "clean-craftsmanship"
+      ]
+    },
+    {
+      "id": "F-D1",
+      "question": "Concept wiki (docs/wiki) or living docs + code triggers?",
+      "recommended": "wiki if raw\u2192concepts; living if drift/triggers",
+      "branches": [
+        "project-wiki-manager",
+        "living-documentation-governor"
+      ]
+    }
+  ],
+  "domain_hubs_routed": null,
+  "artifacts": {
+    "html": "./hub.html",
+    "workflow_json": "./workflow.json",
+    "flows_chart": "../flows-chart.html",
+    "flows_ssot": "../../../skills/butler/references/flows.md",
+    "hubs_index": "../index.html",
+    "manifest": "../manifest.json"
+  },
+  "rules": [
+    "butler_links_every_domain_hub",
+    "each_domain_hub_has_package_dir",
+    "each_domain_hub_has_hub_html",
+    "each_domain_hub_has_workflow_json",
+    "each_domain_hub_links_flows_chart",
+    "one_hub_per_domain",
+    "forks_ask_user"
+  ]
+}

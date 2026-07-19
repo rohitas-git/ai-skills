@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "kind": "domain_hub_workflow_manifest",
+  "hub_of_hubs": "butler",
+  "layout": "hubs/{hub}/hub.html + hubs/{hub}/workflow.json",
+  "flows_ssot": "skills/skills/butler/references/flows.md",
+  "flows_chart": "../flows-chart.html",
+  "rule": "docs/adr/0005-domain-hub-artifacts-and-butler-links.md",
+  "requirements": [
+    "Every domain hub is a child routing target of butler",
+    "Every domain hub has package dir hubs/{hub}/",
+    "Every package has hub.html + workflow.json",
+    "Every non-butler hub page and workflow parent-link butler",
+    "Butler package lists every domain hub",
+    "Every hub page links flows-chart.html",
+    "One \u2605 hub skill per domain in flows.md"
+  ],
+  "hubs": [
+    {
+      "domain_id": 0,
+      "domain": "House",
+      "hub": "butler",
+      "dir": "./butler/",
+      "html": "./butler/hub.html",
+      "workflow_json": "./butler/workflow.json",
+      "parent": null,
+      "skill_path": "skills/butler"
+    },
+    {
+      "domain_id": 1,
+      "domain": "Setup",
+      "hub": "setup-rohitas-skills",
+      "dir": "./setup-rohitas-skills/",
+      "html": "./setup-rohitas-skills/hub.html",
+      "workflow_json": "./setup-rohitas-skills/workflow.json",
+      "parent": "butler",
+      "skill_path": "skills/setup-rohitas-skills"
+    },
+    {
+      "domain_id": 2,
+      "domain": "Design",
+      "hub": "grilling",
+      "dir": "./grilling/",
+      "html": "./grilling/hub.html",
+      "workflow_json": "./grilling/workflow.json",
+      "parent": "butler",
+      "skill_path": "skills/grilling"
+    },
+    {
+      "domain_id": 3,
+      "domain": "Ship",
+      "hub": "implement",
+      "dir": "./implement/",
+      "html": "./implement/hub.html",
+      "workflow_json": "./implement/workflow.json",
+      "parent": "butler",
+      "skill_path": "skills/implement"
+    },
+    {
+      "domain_id": 4,
+      "domain": "Review",
+      "hub": "review",
+      "dir": "./review/",
+      "html": "./review/hub.html",
+      "workflow_json": "./review/workflow.json",
+      "parent": "butler",
+      "skill_path": "skills/review",
+      "sub_hubs": [
+        {
+          "hub": "code-review",
+          "dir": "./code-review/",
+          "html": "./code-review/hub.html",
+          "workflow_json": "./code-review/workflow.json",
+          "skill_path": "skills/code-review"
+        },
+        {
+          "hub": "security-auditor",
+          "dir": "./security-auditor/",
+          "html": "./security-auditor/hub.html",
+          "workflow_json": "./security-auditor/workflow.json",
+          "skill_path": "skills/security-auditor"
+        }
+      ]
+    },
+    {
+      "domain_id": 5,
+      "domain": "Triage",
+      "hub": "triage",
+      "dir": "./triage/",
+      "html": "./triage/hub.html",
+      "workflow_json": "./triage/workflow.json",
+      "parent": "butler",
+      "skill_path": "skills/triage"
+    },
+    {
+      "domain_id": 6,
+      "domain": "Diagnose",
+      "hub": "diagnosing-bugs",
+      "dir": "./diagnosing-bugs/",
+      "html": "./diagnosing-bugs/hub.html",
+      "workflow_json": "./diagnosing-bugs/workflow.json",
+      "parent": "butler",
+      "skill_path": "skills/diagnosing-bugs"
+    },
+    {
+      "domain_id": 7,
+      "domain": "Fog map",
+      "hub": "wayfinder",
+      "dir": "./wayfinder/",
+      "html": "./wayfinder/hub.html",
+      "workflow_json": "./wayfinder/workflow.json",
+      "parent": "butler",
+      "skill_path": "skills/wayfinder"
+    },
+    {
+      "domain_id": 8,
+      "domain": "Architecture",
+      "hub": "improve-codebase-architecture",
+      "dir": "./improve-codebase-architecture/",
+      "html": "./improve-codebase-architecture/hub.html",
+      "workflow_json": "./improve-codebase-architecture/workflow.json",
+      "parent": "butler",
+      "skill_path": "skills/improve-codebase-architecture"
+    },
+    {
+      "domain_id": 9,
+      "domain": "Vault",
+      "hub": "rohitas-vault-wiki",
+      "dir": "./rohitas-vault-wiki/",
+      "html": "./rohitas-vault-wiki/hub.html",
+      "workflow_json": "./rohitas-vault-wiki/workflow.json",
+      "parent": "butler",
+      "skill_path": "personal/rohitas-vault-wiki"
+    },
+    {
+      "domain_id": 10,
+      "domain": "Catalog facilities",
+      "hub": "skill-manager",
+      "dir": "./skill-manager/",
+      "html": "./skill-manager/hub.html",
+      "workflow_json": "./skill-manager/workflow.json",
+      "parent": "butler",
+      "skill_path": "skills/skill-manager"
+    },
+    {
+      "domain_id": 11,
+      "domain": "Author body",
+      "hub": "skill-creator",
+      "dir": "./skill-creator/",
+      "html": "./skill-creator/hub.html",
+      "workflow_json": "./skill-creator/workflow.json",
+      "parent": "butler",
+      "skill_path": "skills/skill-creator"
+    },
+    {
+      "domain_id": 12,
+      "domain": "Simplify",
+      "hub": "ponytail",
+      "dir": "./ponytail/",
+      "html": "./ponytail/hub.html",
+      "workflow_json": "./ponytail/workflow.json",
+      "parent": "butler",
+      "skill_path": "skills/ponytail"
+    },
+    {
+      "domain_id": 13,
+      "domain": "Learn",
+      "hub": "learn",
+      "dir": "./learn/",
+      "html": "./learn/hub.html",
+      "workflow_json": "./learn/workflow.json",
+      "parent": "butler",
+      "skill_path": "skills/learn"
+    },
+    {
+      "domain_id": 14,
+      "domain": "Misc / office",
+      "hub": "office",
+      "dir": "./office/",
+      "html": "./office/hub.html",
+      "workflow_json": "./office/workflow.json",
+      "parent": "butler",
+      "skill_path": "misc/office"
+    }
+  ]
+}

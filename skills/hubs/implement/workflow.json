@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "kind": "domain_hub_workflow",
+  "domain_id": 3,
+  "domain": "Ship",
+  "hub": "implement",
+  "slash": "/implement",
+  "path": "skills/implement",
+  "package_dir": "hubs/implement/",
+  "role": "Build driver for the product path.",
+  "notes": "Ship closer is multi-axis code-review, not ponytail.",
+  "parent": {
+    "hub": "butler",
+    "slash": "/butler",
+    "relationship": "routed_by",
+    "html": "../butler/hub.html",
+    "workflow_json": "../butler/workflow.json",
+    "skill_path": "skills/butler"
+  },
+  "children": [
+    {
+      "link_type": "pipeline",
+      "skills": [
+        "to-spec",
+        "to-tickets",
+        "implement",
+        "tdd",
+        "code-review"
+      ]
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "coding-standards"
+      ],
+      "note": "Always-on lean style; F-C1 vs clean-craftsmanship (Architecture)"
+    },
+    {
+      "link_type": "cousin",
+      "skills": [
+        "verify-work"
+      ],
+      "note": "mid-build only"
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "code-comments",
+        "inline-comments",
+        "execution-flow-comments",
+        "stepdown-rule"
+      ],
+      "note": "Style / comment layout softs"
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "git-commit-helper",
+        "pr-summarizer",
+        "resolving-merge-conflicts",
+        "research"
+      ],
+      "note": "Git/PR and research softs"
+    }
+  ],
+  "pipeline": [
+    "multi: to-spec \u2192 to-tickets \u2192 implement* \u2192 tdd \u2192 code-review \u2192 commit",
+    "single: implement* \u2192 tdd \u2192 code-review \u2192 commit"
+  ],
+  "forks": [
+    {
+      "id": "F4",
+      "question": "(entry) multi-session?",
+      "recommended": "as Design",
+      "branches": [
+        "to-spec path",
+        "direct implement"
+      ]
+    },
+    {
+      "id": "F5",
+      "question": "This slice done?",
+      "recommended": "run closer",
+      "branches": [
+        "tdd\u2192code-review\u2192commit",
+        "more tickets"
+      ]
+    },
+    {
+      "id": "F6",
+      "question": "(inside code-review) axes applicable?",
+      "recommended": "every applicable",
+      "branches": [
+        "Spec",
+        "Standards",
+        "Maintainability",
+        "soft-skip"
+      ]
+    }
+  ],
+  "domain_hubs_routed": null,
+  "artifacts": {
+    "html": "./hub.html",
+    "workflow_json": "./workflow.json",
+    "flows_chart": "../flows-chart.html",
+    "flows_ssot": "../../../skills/butler/references/flows.md",
+    "hubs_index": "../index.html",
+    "manifest": "../manifest.json"
+  },
+  "rules": [
+    "butler_links_every_domain_hub",
+    "each_domain_hub_has_package_dir",
+    "each_domain_hub_has_hub_html",
+    "each_domain_hub_has_workflow_json",
+    "each_domain_hub_links_flows_chart",
+    "one_hub_per_domain",
+    "forks_ask_user"
+  ]
+}

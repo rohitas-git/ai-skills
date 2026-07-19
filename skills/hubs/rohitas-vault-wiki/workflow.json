@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "kind": "domain_hub_workflow",
+  "domain_id": 9,
+  "domain": "Vault",
+  "hub": "rohitas-vault-wiki",
+  "slash": "/rohitas-vault-wiki",
+  "path": "skills/rohitas-vault-wiki",
+  "package_dir": "hubs/rohitas-vault-wiki/",
+  "role": "Schema steward for Rohitas's Notes (PKM).",
+  "notes": "Vault root path from setup SSOT only (docs/agents/vault.md). Never hard-code home paths.",
+  "parent": {
+    "hub": "butler",
+    "slash": "/butler",
+    "relationship": "routed_by",
+    "html": "../butler/hub.html",
+    "workflow_json": "../butler/workflow.json",
+    "skill_path": "skills/butler"
+  },
+  "children": [
+    {
+      "link_type": "pipeline",
+      "skills": [
+        "vault-inbox",
+        "vault-ingest",
+        "vault-lint",
+        "wiki-query",
+        "vault-explain"
+      ]
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "resource-summarizer"
+      ],
+      "note": "vault-ingest distill; primary soft also under Learn hub"
+    },
+    {
+      "link_type": "leaf",
+      "skills": [
+        "obsidian-markdown",
+        "obsidian-cli",
+        "obsidian-bases"
+      ]
+    },
+    {
+      "link_type": "on-ramp",
+      "skills": [
+        "learning-explainer"
+      ],
+      "note": "Pedagogy target of vault-explain; primary home Learn domain"
+    },
+    {
+      "link_type": "tombstone",
+      "skills": [
+        "obsidian-notes-manager"
+      ],
+      "note": "\u2192 rohitas-vault-wiki"
+    }
+  ],
+  "pipeline": [
+    "capture",
+    "compile",
+    "lint / query / explain"
+  ],
+  "forks": [
+    {
+      "id": "F11",
+      "question": "Capture / compile / query / lint / explain?",
+      "recommended": "match utterance",
+      "branches": [
+        "inbox",
+        "ingest",
+        "query",
+        "lint",
+        "explain"
+      ]
+    },
+    {
+      "id": "F-D2",
+      "question": "Project repo wiki or personal Rohitas Notes vault?",
+      "recommended": "vault if Concepts/Atlas/my notes",
+      "branches": [
+        "rohitas-vault-wiki",
+        "project-wiki-manager",
+        "living-documentation-governor via F-D1"
+      ]
+    }
+  ],
+  "domain_hubs_routed": null,
+  "artifacts": {
+    "html": "./hub.html",
+    "workflow_json": "./workflow.json",
+    "flows_chart": "../flows-chart.html",
+    "flows_ssot": "../../../skills/butler/references/flows.md",
+    "hubs_index": "../index.html",
+    "manifest": "../manifest.json"
+  },
+  "rules": [
+    "butler_links_every_domain_hub",
+    "each_domain_hub_has_package_dir",
+    "each_domain_hub_has_hub_html",
+    "each_domain_hub_has_workflow_json",
+    "each_domain_hub_links_flows_chart",
+    "one_hub_per_domain",
+    "forks_ask_user"
+  ]
+}

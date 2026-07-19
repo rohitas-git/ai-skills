@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "kind": "domain_hub_workflow",
+  "domain_id": 4,
+  "domain": "Review",
+  "hub": "security-auditor",
+  "slash": "/security-auditor",
+  "path": "skills/security-auditor",
+  "package_dir": "hubs/security-auditor/",
+  "role": "Multi-phase security/quality audit + structured findings \u2014 sub-hub under /review.",
+  "notes": "F-R2 chooses full vs scoped vs differential. Soft-link security-and-hardening for remediation.",
+  "parent": {
+    "hub": "butler",
+    "slash": "/butler",
+    "relationship": "routed_by",
+    "html": "../butler/hub.html",
+    "workflow_json": "../butler/workflow.json",
+    "skill_path": "skills/butler",
+    "domain_hub": "review"
+  },
+  "parent_domain_hub": "review",
+  "children": [
+    {
+      "link_type": "soft",
+      "skills": [
+        "security-and-hardening"
+      ],
+      "note": "Remediate / prevent after findings; also soft under code-review"
+    }
+  ],
+  "pipeline": [
+    "recon",
+    "hunt",
+    "validate",
+    "report",
+    "structured findings",
+    "independent verification",
+    "optional security-and-hardening remediation"
+  ],
+  "forks": [
+    {
+      "id": "F-R2",
+      "question": "Audit scope?",
+      "recommended": "Full project unless path/PR named",
+      "branches": [
+        "full",
+        "scoped module",
+        "differential/PR"
+      ]
+    }
+  ],
+  "domain_hubs_routed": null,
+  "artifacts": {
+    "html": "./hub.html",
+    "workflow_json": "./workflow.json",
+    "flows_chart": "../flows-chart.html",
+    "flows_ssot": "../../../skills/butler/references/flows.md",
+    "hubs_index": "../index.html",
+    "manifest": "../manifest.json"
+  },
+  "rules": [
+    "butler_links_every_domain_hub",
+    "each_domain_hub_has_package_dir",
+    "each_domain_hub_has_hub_html",
+    "each_domain_hub_has_workflow_json",
+    "each_domain_hub_links_flows_chart",
+    "one_hub_per_domain",
+    "forks_ask_user",
+    "sub_hub_has_parent_domain_hub"
+  ]
+}

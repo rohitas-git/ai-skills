@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Skills — hub of hubs, pipelines &amp; forks</title>
+<style>
+  :root {
+    --bg: #0b0f14; --panel: #151c27; --text: #e8eef7; --muted: #8b9bb4;
+    --line: #2d3a4d; --butler: #f472b6; --hub: #3d8bfd; --fork: #fbbf24;
+    --mgr: #c084fc; --misc: #2dd4bf; --vault: #34d399; --dead: #64748b;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: ui-sans-serif, system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.45; }
+  header { padding: 1.2rem 1.5rem; border-bottom: 1px solid var(--line); }
+  header h1 { margin: 0 0 0.35rem; font-size: 1.35rem; }
+  header p { margin: 0; color: var(--muted); max-width: 85ch; font-size: 0.95rem; }
+  .legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; padding: 0.75rem 1.5rem; border-bottom: 1px solid var(--line); font-size: 0.82rem; color: var(--muted); }
+  .sw { width: 12px; height: 12px; border-radius: 3px; display: inline-block; vertical-align: middle; margin-right: 0.3rem; }
+  main { padding: 1.25rem 1.5rem 3rem; display: grid; gap: 1.4rem; }
+  section { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1.1rem 1.2rem; }
+  h2 { margin: 0 0 0.4rem; font-size: 1.05rem; }
+  .note { color: var(--muted); font-size: 0.88rem; margin: 0 0 0.8rem; }
+  .svg-wrap { overflow-x: auto; }
+  svg { display: block; }
+  text { fill: var(--text); font-family: ui-sans-serif, system-ui, sans-serif; font-size: 11.5px; pointer-events: none; }
+  .t { font-weight: 650; font-size: 12px; }
+  .s { fill: var(--muted); font-size: 10px; }
+  .lane { fill: #0f1520; stroke: var(--line); }
+  .hub { fill: #1a3358; stroke: var(--hub); stroke-width: 2.2; }
+  .butler { fill: #4a1830; stroke: var(--butler); stroke-width: 2.5; }
+  .mgr { fill: #2e1065; stroke: var(--mgr); stroke-width: 2; }
+  .misc { fill: #134e4a; stroke: var(--misc); stroke-width: 2; }
+  .vault { fill: #064e3b; stroke: var(--vault); stroke-width: 2; }
+  .child { fill: #1e293b; stroke: #475569; stroke-width: 1.3; }
+  .wrap { fill: #1e293b; stroke: var(--hub); stroke-dasharray: 4 2; }
+  .dead { fill: #1e293b; stroke: var(--dead); stroke-dasharray: 3 3; }
+  .fork { fill: #422006; stroke: var(--fork); stroke-width: 1.8; }
+  .edge { fill: none; stroke: #475569; stroke-width: 1.4; marker-end: url(#a); }
+  .edge-hub { stroke: var(--hub); stroke-width: 2; marker-end: url(#ah); }
+  .edge-fork { stroke: var(--fork); stroke-width: 1.6; marker-end: url(#af); }
+  .edge-mgr { stroke: var(--mgr); marker-end: url(#am); }
+  .edge-dash { stroke-dasharray: 5 4; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+  th, td { text-align: left; padding: 0.4rem 0.5rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  code { color: #bae6fd; font-size: 0.9em; }
+  footer { padding: 0 1.5rem 2rem; color: var(--muted); font-size: 0.85rem; }
+  a { color: #7dd3fc; }
+  .nav-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; padding: 0.75rem 1.5rem; border-bottom: 1px solid var(--line); font-size: 0.88rem; }
+  .nav-links a.cta { padding: 0.35rem 0.7rem; border-radius: 8px; border: 1px solid var(--hub); background: #1a3358; color: #e0f2fe; text-decoration: none; font-weight: 650; }
+  .nav-links a.cta:hover { background: #1e3a5f; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Hub of hubs · domain hubs · pipelines · forks</h1>
+  <p>
+    <strong>★ butler</strong> routes only (real-life butler). <strong>★ skill-manager</strong> mutates the catalog.
+    Each domain has one hub; children hang off it. <strong>◆ forks</strong> = ask the user (recommend first).
+    SSOT: <code>butler/references/flows.md</code>
+  </p>
+</header>
+<div class="nav-links">
+  <a class="cta" href="./hubs/index.html">Domain hub packages →</a>
+  <a href="./hubs/manifest.json">manifest.json</a>
+  <a href="./hubs/butler/hub.html">★ butler</a>
+  <a href="./hubs/butler/hub.html">butler</a>
+  <a href="./hubs/setup-rohitas-skills/hub.html">setup</a>
+  <a href="./hubs/grilling/hub.html">grilling</a>
+  <a href="./hubs/implement/hub.html">implement</a>
+  <a href="./hubs/review/hub.html">review</a>
+  <a href="./hubs/triage/hub.html">triage</a>
+  <a href="./hubs/diagnosing-bugs/hub.html">diagnose</a>
+  <a href="./hubs/wayfinder/hub.html">wayfinder</a>
+  <a href="./hubs/improve-codebase-architecture/hub.html">arch</a>
+  <a href="./hubs/rohitas-vault-wiki/hub.html">vault</a>
+  <a href="./hubs/skill-manager/hub.html">skill-manager</a>
+  <a href="./hubs/skill-creator/hub.html">skill-creator</a>
+  <a href="./hubs/ponytail/hub.html">ponytail</a>
+  <a href="./hubs/learn/hub.html">learn</a>
+  <a href="./hubs/office/hub.html">misc</a>
+</div>
+<div class="legend">
+  <span><i class="sw" style="background:#f472b6"></i> butler (hub of hubs)</span>
+  <span><i class="sw" style="background:#3d8bfd"></i> domain hub</span>
+  <span><i class="sw" style="background:#c084fc"></i> skill-manager</span>
+  <span><i class="sw" style="background:#fbbf24"></i> fork (ask user)</span>
+  <span><i class="sw" style="background:#2dd4bf"></i> misc hub / vault</span>
+  <span><i class="sw" style="border:1px dashed #3d8bfd;background:#1e293b"></i> wrapper</span>
+</div>
+
+<main>
+<section>
+  <h2>0. House map (multi-lane free layout)</h2>
+  <p class="note">Top: butler apex. Middle: product path with ◆ forks. Sides: skill-manager, vault, misc tree. At every ◆ ask the user once.</p>
+  <div class="svg-wrap">
+    <svg viewBox="0 0 1320 980" width="1320" height="980" role="img" aria-label="Hub hierarchy and forks">
+      <defs>
+        <marker id="a" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#475569"/></marker>
+        <marker id="ah" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#3d8bfd"/></marker>
+        <marker id="af" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#fbbf24"/></marker>
+        <marker id="am" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#c084fc"/></marker>
+      </defs>
+
+      <!-- Lanes -->
+      <rect class="lane" x="200" y="12" width="720" height="70" rx="10"/>
+      <text class="s" x="220" y="32">LANE · House meta (route only)</text>
+
+      <rect class="lane" x="40" y="100" width="1040" height="520" rx="10"/>
+      <text class="s" x="60" y="120">LANE · Product path (Setup → Design → Ship)</text>
+
+      <rect class="lane" x="1100" y="100" width="200" height="200" rx="10"/>
+      <text class="s" x="1115" y="120">LANE · Facilities</text>
+
+      <rect class="lane" x="1100" y="320" width="200" height="300" rx="10"/>
+      <text class="s" x="1115" y="340">LANE · Vault</text>
+
+      <rect class="lane" x="40" y="640" width="1260" height="200" rx="10"/>
+      <text class="s" x="60" y="660">LANE · Orthogonal hubs + Misc tree</text>
+
+      <!-- Butler apex -->
+      <rect class="butler" x="430" y="28" width="200" height="44" rx="8"/>
+      <text class="t" x="530" y="48" text-anchor="middle">★ butler</text>
+      <text class="s" x="530" y="62" text-anchor="middle">hub of hubs · query · orient</text>
+
+      <!-- F7 under butler -->
+      <path class="edge edge-fork" d="M530 72 V 95"/>
+      <polygon class="fork" points="530,100 575,122 530,144 485,122"/>
+      <text class="s" x="530" y="126" text-anchor="middle" style="fill:#fde68a">F7 kind?</text>
+
+      <!-- skill-manager -->
+      <rect class="mgr" x="1120" y="140" width="160" height="50" rx="8"/>
+      <text class="t" x="1200" y="162" text-anchor="middle">★ skill-manager</text>
+      <text class="s" x="1200" y="178" text-anchor="middle">CRUD · place · lint</text>
+      <path class="edge edge-mgr edge-dash" d="M630 50 H 1120"/>
+      <text class="s" x="900" y="44">delegate mutations</text>
+      <text class="s" x="1200" y="210" text-anchor="middle">create · place · new-hub</text>
+      <text class="s" x="1200" y="224" text-anchor="middle">ingest · organize · lint</text>
+      <rect class="child" x="1135" y="240" width="130" height="28" rx="5"/>
+      <text class="s" x="1200" y="258" text-anchor="middle">→ skill-creator body</text>
+
+      <!-- Setup hub -->
+      <rect class="hub" x="100" y="170" width="180" height="40" rx="7"/>
+      <text class="t" x="190" y="194" text-anchor="middle">★ setup-rohitas-skills</text>
+      <path class="edge edge-fork" d="M485 122 L 280 170"/>
+      <text class="s" x="340" y="150">feature path…</text>
+
+      <polygon class="fork" points="190,230 230,250 190,270 150,250"/>
+      <text class="s" x="190" y="254" text-anchor="middle" style="fill:#fde68a">F1</text>
+      <path class="edge edge-hub" d="M190 210 V 230"/>
+      <text class="s" x="250" y="252">setup done?</text>
+
+      <!-- Design hub -->
+      <rect class="hub" x="380" y="280" width="140" height="40" rx="7"/>
+      <text class="t" x="450" y="304" text-anchor="middle">★ grilling</text>
+      <path class="edge edge-hub" d="M190 270 V 300 H 380"/>
+
+      <rect class="wrap" x="300" y="340" width="110" height="32" rx="5"/>
+      <text class="s" x="355" y="360" text-anchor="middle">grill-with-docs</text>
+      <rect class="wrap" x="430" y="340" width="90" height="32" rx="5"/>
+      <text class="s" x="475" y="360" text-anchor="middle">grill-me</text>
+      <path class="edge" d="M420 320 V 340"/>
+      <path class="edge" d="M470 320 V 340"/>
+
+      <polygon class="fork" points="450,390 495,412 450,434 405,412"/>
+      <text class="s" x="450" y="416" text-anchor="middle" style="fill:#fde68a">F2–F4</text>
+      <path class="edge edge-fork" d="M450 320 V 390"/>
+      <text class="s" x="530" y="412">codebase? proto? multi?</text>
+
+      <!-- Ship hub -->
+      <rect class="hub" x="380" y="470" width="140" height="40" rx="7"/>
+      <text class="t" x="450" y="494" text-anchor="middle">★ implement</text>
+      <path class="edge edge-hub" d="M450 434 V 470"/>
+
+      <!-- multi branch -->
+      <rect class="child" x="200" y="420" width="80" height="28" rx="5"/>
+      <text class="s" x="240" y="438" text-anchor="middle">to-spec</text>
+      <rect class="child" x="200" y="460" width="90" height="28" rx="5"/>
+      <text class="s" x="245" y="478" text-anchor="middle">to-tickets</text>
+      <path class="edge edge-fork" d="M405 412 H 280 V 434"/>
+      <path class="edge" d="M240 448 V 460"/>
+      <path class="edge edge-hub" d="M290 474 H 380"/>
+      <text class="s" x="320" y="408">F4 yes</text>
+      <text class="s" x="500" y="450">F4 no →</text>
+
+      <!-- tdd + code-review -->
+      <rect class="child" x="360" y="530" width="60" height="28" rx="5"/>
+      <text class="s" x="390" y="548" text-anchor="middle">tdd</text>
+      <rect class="hub" x="440" y="530" width="130" height="28" rx="5"/>
+      <text class="s" x="505" y="548" text-anchor="middle">★ code-review</text>
+      <path class="edge edge-hub" d="M450 510 V 530"/>
+      <path class="edge edge-hub" d="M420 544 H 440"/>
+      <polygon class="fork" points="505,575 545,592 505,609 465,592"/>
+      <text class="s" x="505" y="596" text-anchor="middle" style="fill:#fde68a">F6</text>
+      <path class="edge edge-fork" d="M505 558 V 575"/>
+      <text class="s" x="580" y="596">axes applicable?</text>
+      <rect class="child" x="440" y="620" width="50" height="22" rx="4"/>
+      <text class="s" x="465" y="635" text-anchor="middle">Spec</text>
+      <rect class="child" x="498" y="620" width="70" height="22" rx="4"/>
+      <text class="s" x="533" y="635" text-anchor="middle">Standards</text>
+      <rect class="child" x="576" y="620" width="90" height="22" rx="4"/>
+      <text class="s" x="621" y="635" text-anchor="middle">Maintain.</text>
+
+      <!-- On-ramps left -->
+      <text class="s" x="60" y="200">On-ramps (F7)</text>
+      <rect class="child" x="50" y="220" width="90" height="26" rx="5"/>
+      <text class="s" x="95" y="237" text-anchor="middle">★ triage</text>
+      <rect class="child" x="50" y="255" width="110" height="26" rx="5"/>
+      <text class="s" x="105" y="272" text-anchor="middle">★ diagnose</text>
+      <rect class="child" x="50" y="290" width="100" height="26" rx="5"/>
+      <text class="s" x="100" y="307" text-anchor="middle">★ wayfinder</text>
+      <rect class="child" x="50" y="325" width="100" height="26" rx="5"/>
+      <text class="s" x="100" y="342" text-anchor="middle">★ improve-arch</text>
+      <path class="edge edge-dash" d="M140 233 H 200 V 490 H 380"/>
+      <path class="edge edge-dash" d="M160 303 H 200 V 420"/>
+      <text class="s" x="170" y="320">F8 → to-spec</text>
+
+      <!-- Vault -->
+      <rect class="vault" x="1120" y="360" width="160" height="40" rx="7"/>
+      <text class="t" x="1200" y="384" text-anchor="middle">★ rohitas-vault-wiki</text>
+      <path class="edge edge-fork" d="M575 122 H 1000 V 380 H 1120"/>
+      <rect class="child" x="1135" y="420" width="130" height="24" rx="4"/>
+      <text class="s" x="1200" y="436" text-anchor="middle">vault-inbox</text>
+      <rect class="child" x="1135" y="452" width="130" height="24" rx="4"/>
+      <text class="s" x="1200" y="468" text-anchor="middle">vault-ingest</text>
+      <rect class="child" x="1135" y="484" width="130" height="24" rx="4"/>
+      <text class="s" x="1200" y="500" text-anchor="middle">lint / query / explain</text>
+      <polygon class="fork" points="1200,530 1235,548 1200,566 1165,548"/>
+      <text class="s" x="1200" y="552" text-anchor="middle" style="fill:#fde68a">F11</text>
+      <path class="edge edge-fork" d="M1200 508 V 530"/>
+
+      <!-- Bottom orthogonal -->
+      <rect class="hub" x="60" y="700" width="130" height="36" rx="7"/>
+      <text class="t" x="125" y="722" text-anchor="middle">★ skill-creator</text>
+      <rect class="wrap" x="60" y="750" width="130" height="28" rx="5"/>
+      <text class="s" x="125" y="768" text-anchor="middle">create-skill wrap</text>
+      <path class="edge edge-mgr" d="M190 718 H 300 V 180 H 1120"/>
+      <text class="s" x="250" y="710">F10 → skill-manager</text>
+
+      <rect class="hub" x="240" y="700" width="100" height="36" rx="7"/>
+      <text class="t" x="290" y="722" text-anchor="middle">★ ponytail</text>
+      <rect class="hub" x="360" y="700" width="90" height="36" rx="7"/>
+      <text class="t" x="405" y="722" text-anchor="middle">★ learn</text>
+
+      <!-- Misc hub tree -->
+      <rect class="office" x="520" y="690" width="100" height="40" rx="7"/>
+      <text class="t" x="570" y="714" text-anchor="middle">★ misc</text>
+      <polygon class="fork" points="570,750 610,768 570,786 530,768"/>
+      <text class="s" x="570" y="772" text-anchor="middle" style="fill:#fde68a">F-misc</text>
+      <path class="edge edge-fork" d="M570 730 V 750"/>
+      <text class="s" x="640" y="772">artifact type?</text>
+
+      <rect class="child" x="680" y="700" width="70" height="24" rx="4"/>
+      <text class="s" x="715" y="716" text-anchor="middle">docx</text>
+      <rect class="child" x="760" y="700" width="70" height="24" rx="4"/>
+      <text class="s" x="795" y="716" text-anchor="middle">pptx</text>
+      <rect class="child" x="840" y="700" width="70" height="24" rx="4"/>
+      <text class="s" x="875" y="716" text-anchor="middle">xlsx</text>
+      <rect class="child" x="680" y="736" width="100" height="24" rx="4"/>
+      <text class="s" x="730" y="752" text-anchor="middle">diagram-maker</text>
+      <rect class="child" x="790" y="736" width="70" height="24" rx="4"/>
+      <text class="s" x="825" y="752" text-anchor="middle">imagine</text>
+      <rect class="child" x="680" y="772" width="80" height="24" rx="4"/>
+      <text class="s" x="720" y="788" text-anchor="middle">hatch-pet</text>
+      <rect class="child" x="770" y="772" width="90" height="24" rx="4"/>
+      <text class="s" x="815" y="788" text-anchor="middle">json-canvas</text>
+      <rect class="child" x="870" y="772" width="70" height="24" rx="4"/>
+      <text class="s" x="905" y="788" text-anchor="middle">defuddle</text>
+      <path class="edge" d="M610 768 H 680"/>
+
+      <path class="edge edge-dash" d="M575 122 H 570 V 690"/>
+      <text class="s" x="620" y="200">F7 → misc</text>
+
+      <text class="s" x="660" y="850" text-anchor="middle">At every ◆ : ask user one question · recommend first · wait · never silent branch</text>
+      <text class="s" x="660" y="870" text-anchor="middle">† deprecated not host-installed · skill-manager writes flows hub slots · butler only reads</text>
+    </svg>
+  </div>
+</section>
+
+<section id="domain-hub-matrix">
+  <h2>1. Domain hub matrix</h2>
+  <p class="note">Each ★ hub has package dir <code>hubs/{hub}/</code> with <code>hub.html</code> + <code>workflow.json</code> (parent: butler). Index: <a href="./hubs/index.html">hubs/</a> · <a href="./hubs/manifest.json">manifest.json</a>.</p>
+  <table>
+    <thead><tr><th>#</th><th>Domain</th><th>★ Hub</th><th>Role</th></tr></thead>
+    <tbody>
+      <tr><td>0</td><td>House</td><td><a href="./hubs/butler/hub.html"><code>butler</code></a></td><td>Route / orient / forks — no mutate</td></tr>
+      <tr><td>1</td><td>Setup</td><td><a href="./hubs/setup-rohitas-skills/hub.html"><code>setup-rohitas-skills</code></a></td><td>Precondition + SSOT</td></tr>
+      <tr><td>2</td><td>Design</td><td><a href="./hubs/grilling/hub.html"><code>grilling</code></a></td><td>Interview SSOT</td></tr>
+      <tr><td>3</td><td>Ship</td><td><a href="./hubs/implement/hub.html"><code>implement</code></a></td><td>Build driver</td></tr>
+      <tr><td>4</td><td>Review</td><td><a href="./hubs/review/hub.html"><code>review</code></a></td><td>Router + sub-hubs code-review / security-auditor</td></tr>
+      <tr><td>5</td><td>Triage</td><td><a href="./hubs/triage/hub.html"><code>triage</code></a></td><td>On-ramp → Ship</td></tr>
+      <tr><td>6</td><td>Diagnose</td><td><a href="./hubs/diagnosing-bugs/hub.html"><code>diagnosing-bugs</code></a></td><td>On-ramp → fix path</td></tr>
+      <tr><td>7</td><td>Fog map</td><td><a href="./hubs/wayfinder/hub.html"><code>wayfinder</code></a></td><td>Exit only → to-spec</td></tr>
+      <tr><td>8</td><td>Architecture</td><td><a href="./hubs/improve-codebase-architecture/hub.html"><code>improve-codebase-architecture</code></a></td><td>Deepening → Design</td></tr>
+      <tr><td>9</td><td>Vault</td><td><a href="./hubs/rohitas-vault-wiki/hub.html"><code>rohitas-vault-wiki</code></a></td><td>Schema steward</td></tr>
+      <tr><td>10</td><td>Catalog facilities</td><td><a href="./hubs/skill-manager/hub.html"><code>skill-manager</code></a></td><td>CRUD · hubs · lint</td></tr>
+      <tr><td>11</td><td>Author body</td><td><a href="./hubs/skill-creator/hub.html"><code>skill-creator</code></a></td><td>Craft / eval</td></tr>
+      <tr><td>12</td><td>Simplify</td><td><a href="./hubs/ponytail/hub.html"><code>ponytail</code></a></td><td>Optional YAGNI mode</td></tr>
+      <tr><td>13</td><td>Learn</td><td><a href="./hubs/learn/hub.html"><code>learn</code></a></td><td>Router: explain · tutor · teach · story · summarize</td></tr>
+      <tr><td>14</td><td>Misc</td><td><a href="./hubs/office/hub.html"><code>misc</code></a></td><td>Office/media leaves</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>2. Fork index (ask user)</h2>
+  <table>
+    <thead><tr><th>ID</th><th>Question (summary)</th><th>Recommended default</th></tr></thead>
+    <tbody>
+      <tr><td>F1</td><td>Setup already done?</td><td>Skip if docs/agents exists</td></tr>
+      <tr><td>F2</td><td>Codebase present?</td><td>grill-with-docs</td></tr>
+      <tr><td>F3</td><td>Need prototype detour?</td><td>No</td></tr>
+      <tr><td>F4</td><td>Multi-session build?</td><td>Yes if large</td></tr>
+      <tr><td>F5</td><td>Slice done → closer?</td><td>tdd → code-review → commit</td></tr>
+      <tr><td>F6</td><td>Review axes apply?</td><td>Every applicable</td></tr>
+      <tr><td>F7</td><td>What kind of work?</td><td>Feature → Design</td></tr>
+      <tr><td>F8</td><td>Fog clear to build?</td><td>Only when buildable → to-spec</td></tr>
+      <tr><td>F9</td><td>Arch idea → Design?</td><td>If user picks one</td></tr>
+      <tr><td>F10</td><td>Place skill in catalog now?</td><td>Yes when ready → skill-manager</td></tr>
+      <tr><td>F11</td><td>Vault op?</td><td>Match utterance</td></tr>
+      <tr><td>F-misc</td><td>Artifact type?</td><td>From extension/context</td></tr>
+    </tbody>
+  </table>
+</section>
+</main>
+<footer>
+  flows SSOT: <code>skills/productivity/butler/references/flows.md</code> ·
+  mutations: <code>skill-manager</code> ·
+  chart: this file ·
+  domain hub packages: <a href="./hubs/index.html">hubs/{hub}/</a> · <a href="./hubs/manifest.json">manifest</a> · rule: ADR 0005
+</footer>
+</body>
+</html>

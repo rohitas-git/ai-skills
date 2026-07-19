@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Mirror butler lint-checklist for non-LLM / CI runs.
+"""Mirror skill-manager / skill-linter checklists for non-LLM / CI runs.
 
 Exit 0 if no critical findings; exit 1 if any critical.
+See ADR 0005 (hub packages) and ADR 0006 (skill-linter + hub membership).
 """
 from __future__ import annotations
 
@@ -12,10 +13,39 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "skills"
-BUCKETS = ["engineering", "productivity", "misc", "personal", "in-progress", "deprecated"]
-PROMOTED = {"engineering", "productivity", "misc"}
+HUBS_DIR = CATALOG / "hubs"
+FLOWS = CATALOG / "skills" / "butler" / "references" / "flows.md"
+# Domain packages with live skills
+LIVE_BUCKETS = ["skills"]  # flat live skill parent
+BUCKETS = ["skills", "inbox", "archive"]
+PROMOTED = {"skills"}  # root README points at skills/; promotion is "not archive/inbox"
 HARD_DEP_SKILLS = {"to-spec", "to-tickets", "triage"}
 FORBIDDEN_LIVE = {"using-agent-skills", "setup-matt-pocock-skills"}
+# workflow.json may list ops verbs that are not skills
+NON_SKILL_TOKENS = {
+    "create",
+    "read",
+    "update",
+    "delete",
+    "place",
+    "new-hub",
+    "ingest",
+    "organize",
+    "lint",
+    "Spec",
+    "Standards",
+    "Maintainability",
+    "commit",
+}
+LEAN_SOFT_LINES = 120
+LEAN_WARN_LINES = 180
+SPRAWL_WARN_LINES = 250
+SUBDOMAIN_WARN_LINES = 400
+REF_COUNT_SUBDOMAIN = 5
+MD_LINK = re.compile(r"\]\(([^)]+)\)")
+PROCESS_HEADING = re.compile(
+    r"(?im)^#{1,3}\s+(process|dispatch|steps|workflow|session start|build path)\b"
+)
 
 
 def skills_in_bucket(bucket: str) -> list[Path]:
@@ -24,6 +54,8 @@ def skills_in_bucket(bucket: str) -> list[Path]:
         return []
     out = []
     for d in sorted(base.iterdir()):
+        if d.is_symlink():
+            continue  # dual-membership; primary counted in owning domain
         if d.is_dir() and (d / "SKILL.md").is_file():
             out.append(d)
     return out
@@ -43,116 +75,319 @@ def frontmatter(text: str) -> dict[str, str]:
     return meta
 
 
-def main() -> int:
-    findings: list[tuple[str, str, str]] = []  # severity, code, message
+def collect_hub_members() -> set[str]:
+    members: set[str] = set()
+    if HUBS_DIR.is_dir():
+        for wf in HUBS_DIR.glob("*/workflow.json"):
+            try:
+                data = json.loads(wf.read_text(encoding="utf-8"))
+            except json.JSONDecodeError:
+                continue
+            hub = data.get("hub")
+            if isinstance(hub, str) and hub:
+                members.add(hub)
+            for child in data.get("children") or []:
+                skills = child.get("skills") or []
+                for s in skills:
+                    if isinstance(s, str) and s and s not in NON_SKILL_TOKENS:
+                        members.add(s)
+    if FLOWS.is_file():
+        text = FLOWS.read_text(encoding="utf-8", errors="replace")
+        for m in re.finditer(r"`([a-z0-9][a-z0-9-]*)`", text):
+            name = m.group(1)
+            if name not in NON_SKILL_TOKENS:
+                members.add(name)
+        for m in re.finditer(r"\*\*★ Hub\*\*\s*\|\s*`/([^`]+)`", text):
+            members.add(m.group(1).strip())
+    return members
 
-    # vendor dual-router offline
+
+def check_relative_links(skill_dir: Path, text: str, findings: list, rel: str) -> None:
+    skip_exact = {"link", "url", "path", "href", "...", "file"}
+    for m in MD_LINK.finditer(text):
+        target = m.group(1).strip()
+        if target.startswith(("http://", "https://", "mailto:", "file:", "#")):
+            continue
+        # strip anchors
+        path_part = target.split("#", 1)[0].split("?", 1)[0]
+        if not path_part or path_part.startswith("/"):
+            continue
+        # example / placeholder links in skill docs
+        if path_part.lower() in skip_exact or "path/to" in path_part or path_part.startswith("<"):
+            continue
+        # only treat as filesystem paths when they look like relative files
+        if not (
+            path_part.startswith("./")
+            or path_part.startswith("../")
+            or path_part.startswith("references/")
+            or path_part.startswith("scripts/")
+            or path_part.endswith((".md", ".json", ".sh", ".py", ".txt", ".yaml", ".yml"))
+        ):
+            continue
+        resolved = (skill_dir / path_part).resolve()
+        try:
+            resolved.relative_to(ROOT.resolve())
+        except ValueError:
+            continue
+        if not resolved.exists():
+            findings.append(("critical", "ref-exists", f"{rel}: broken link → {target}"))
+
+
+def main() -> int:
+    findings: list[tuple[str, str, str]] = []
+
     nested = []
     cfg = ROOT / "scripts" / "symlink-targets.json"
     if cfg.exists():
         nested = json.loads(cfg.read_text()).get("nestedSkillRoots") or []
     if any("agent-skills" in n for n in nested):
-        findings.append(("critical", "vendor", "nestedSkillRoots still includes agent-skills — dual-router risk"))
+        findings.append(
+            ("critical", "vendor", "nestedSkillRoots still includes agent-skills — dual-router risk")
+        )
 
     using = list(CATALOG.rglob("using-agent-skills/SKILL.md"))
     for u in using:
         if "vendor" in u.parts:
-            findings.append(("info", "forbidden", f"using-agent-skills present under vendor only: {u.relative_to(ROOT)}"))
+            findings.append(
+                ("info", "forbidden", f"using-agent-skills present under vendor only: {u.relative_to(ROOT)}")
+            )
         else:
-            findings.append(("critical", "forbidden", f"using-agent-skills discoverable outside vendor: {u}"))
+            findings.append(
+                ("critical", "forbidden", f"using-agent-skills discoverable outside vendor: {u}")
+            )
 
-    # setup rename
-    if (CATALOG / "engineering" / "setup-matt-pocock-skills").exists():
+    if any((CATALOG / b / "setup-matt-pocock-skills").exists() for b in LIVE_BUCKETS):
         findings.append(("critical", "forbidden", "setup-matt-pocock-skills still present"))
-    if not (CATALOG / "engineering" / "setup-rohitas-skills" / "SKILL.md").exists():
+    if not (CATALOG / "skills" / "setup-rohitas-skills" / "SKILL.md").exists():
         findings.append(("critical", "forbidden", "setup-rohitas-skills missing"))
 
-    # ask-matt not live router
-    if (CATALOG / "engineering" / "ask-matt").exists():
-        findings.append(("critical", "forbidden", "ask-matt still under engineering (should be deprecated)"))
-    if not (CATALOG / "deprecated" / "ask-matt" / "SKILL.md").exists():
-        findings.append(("warn", "tombstone", "ask-matt tombstone missing under deprecated/"))
+    if any((CATALOG / b / "ask-matt").exists() for b in LIVE_BUCKETS):
+        findings.append(
+            ("critical", "forbidden", "ask-matt still under a live domain (should be archive)")
+        )
+    if not (CATALOG / "archive" / "ask-matt" / "SKILL.md").exists():
+        findings.append(("warn", "tombstone", "ask-matt tombstone missing under archive/"))
 
-    # butler present
-    if not (CATALOG / "productivity" / "butler" / "SKILL.md").exists():
+    if not (CATALOG / "skills" / "butler" / "SKILL.md").exists():
         findings.append(("critical", "forbidden", "butler skill missing"))
+    if not (CATALOG / "skills" / "skill-linter" / "SKILL.md").exists():
+        findings.append(("critical", "forbidden", "skill-linter missing (ADR 0006)"))
 
-    # single tdd
-    tdd_hits = [p for p in CATALOG.rglob("**/tdd/SKILL.md") if "vendor" not in p.parts]
-    tdd_hits += [p for p in CATALOG.rglob("**/test-driven-development/SKILL.md") if "vendor" not in p.parts]
+    tdd_hits = [p for p in CATALOG.rglob("**/tdd/SKILL.md") if not any(x in p.parts for x in ("vendor", "archive", "hubs", "guidelines", "wikis"))]
+    tdd_hits += [
+        p for p in CATALOG.rglob("**/test-driven-development/SKILL.md") if "vendor" not in p.parts
+    ]
     if len([p for p in tdd_hits if p.parent.name == "tdd"]) != 1:
         findings.append(("warn", "tdd", f"unexpected tdd paths: {tdd_hits}"))
     if any(p.parent.name == "test-driven-development" and "vendor" not in p.parts for p in tdd_hits):
         findings.append(("critical", "tdd", "second TDD skill outside vendor"))
 
-    model_invoked = []
-    root_readme = (CATALOG / "README.md").read_text(encoding="utf-8") if (CATALOG / "README.md").exists() else ""
+    # Hub package integrity (ADR 0005)
+    if HUBS_DIR.is_dir():
+        for wf in sorted(HUBS_DIR.glob("*/workflow.json")):
+            hub_dir = wf.parent
+            if not (hub_dir / "hub.html").is_file():
+                findings.append(("critical", "hub-html", f"missing hub.html for {hub_dir.name}"))
+        if not (HUBS_DIR / "manifest.json").is_file():
+            findings.append(("warn", "hub-workflow-json", "hubs/manifest.json missing"))
+    else:
+        findings.append(("warn", "hub-dir", f"hub packages dir missing: {HUBS_DIR}"))
+
+    hub_members = collect_hub_members()
+    model_invoked: list[str] = []
+    # Atomic root README: skill listing SSOT is wikis/index.md (not root README)
+    wiki_index = (
+        (CATALOG / "wikis" / "index.md").read_text(encoding="utf-8")
+        if (CATALOG / "wikis" / "index.md").exists()
+        else ""
+    )
+    orphans: list[str] = []
 
     for bucket in BUCKETS:
         readme = CATALOG / bucket / "README.md"
         readme_text = readme.read_text(encoding="utf-8") if readme.exists() else ""
         for d in skills_in_bucket(bucket):
+            rel = f"{bucket}/{d.name}"
             text = (d / "SKILL.md").read_text(encoding="utf-8", errors="replace")
+            lines = text.count("\n") + 1
             meta = frontmatter(text)
             name = meta.get("name", "")
             if name and name != d.name:
-                findings.append(("critical", "name-dir", f"{bucket}/{d.name}: name={name!r} != dir"))
-            if "description" not in meta and "description:" not in text.split("---", 2)[1] if text.startswith("---") else True:
-                # description may be multiline
-                fm = text.split("---", 2)[1] if text.startswith("---") else ""
-                if "description:" not in fm:
-                    findings.append(("critical", "frontmatter", f"{bucket}/{d.name}: missing description"))
+                findings.append(("critical", "name-dir", f"{rel}: name={name!r} != dir"))
+            fm = text.split("---", 2)[1] if text.startswith("---") else ""
+            if "description:" not in fm:
+                findings.append(("critical", "frontmatter", f"{rel}: missing description"))
 
-            if f"[{d.name}]" not in readme_text and d.name not in readme_text:
-                findings.append(("warn", "bucket-readme", f"{bucket}/{d.name} not listed in bucket README"))
+            # Flat skills/: index lives in wikis/, not a per-skill bucket README listing
+            if bucket == "skills":
+                if d.name not in wiki_index and f"[[{d.name}]]" not in wiki_index:
+                    findings.append(
+                        ("warn", "wiki-index", f"{rel} not listed in wikis/index.md")
+                    )
+            elif bucket != "archive":
+                if f"[{d.name}]" not in readme_text and d.name not in readme_text:
+                    findings.append(("warn", "bucket-readme", f"{rel} not listed in bucket README"))
 
             if bucket in PROMOTED:
-                fm = text.split("---", 2)[1] if text.startswith("---") else ""
                 if "disable-model-invocation: true" not in fm:
-                    model_invoked.append(f"{bucket}/{d.name}")
-                # root promo
-                if d.name not in root_readme and f"/{d.name}/" not in root_readme:
-                    findings.append(("warn", "root-promo", f"promoted skill {d.name} missing from root README"))
-            else:
-                # non-promoted should not appear as primary list items ideally — soft
-                pass
+                    model_invoked.append(rel)
 
-            if d.name in HARD_DEP_SKILLS:
-                if "setup-rohitas-skills" not in text:
-                    findings.append(("critical", "hard-dep", f"{d.name} missing /setup-rohitas-skills pointer"))
+            if d.name in HARD_DEP_SKILLS and "setup-rohitas-skills" not in text:
+                findings.append(("critical", "hard-dep", f"{d.name} missing /setup-rohitas-skills pointer"))
 
             if d.name in FORBIDDEN_LIVE and bucket in PROMOTED:
-                findings.append(("critical", "forbidden", f"forbidden live skill in promoted bucket: {d.name}"))
+                findings.append(
+                    ("critical", "forbidden", f"forbidden live skill in promoted bucket: {d.name}")
+                )
 
-            # vault hard-code home paths
-            if "/Users/" in text and "vault" in d.name.lower() or (bucket == "personal" and "/Users/" in text):
-                if "/Users/" in text:
-                    findings.append(("warn", "vault-ssot", f"{bucket}/{d.name} still contains /Users/ absolute path"))
+            if "/Users/" in text and ("vault" in d.name.lower() or bucket == "personal"):
+                findings.append(("warn", "vault-ssot", f"{rel} still contains /Users/ absolute path"))
+
+            # Relative links from SKILL.md
+            check_relative_links(d, text, findings, rel)
+
+            # references orphans
+            ref_dir = d / "references"
+            if ref_dir.is_dir():
+                linked = set()
+                for m in MD_LINK.finditer(text):
+                    tgt = m.group(1).split("#", 1)[0]
+                    if "references/" in tgt or tgt.startswith("./references"):
+                        linked.add(Path(tgt).name)
+                ref_files = [p for p in ref_dir.rglob("*") if p.is_file() and p.suffix in {".md", ".json", ".txt"}]
+                for rf in ref_files:
+                    if rf.name not in linked and f"references/{rf.name}" not in text and rf.name not in text:
+                        findings.append(
+                            ("warn", "ref-orphan", f"{rel}: references/{rf.relative_to(ref_dir)} not linked from SKILL.md")
+                        )
+                if len(ref_files) > REF_COUNT_SUBDOMAIN and lines > SPRAWL_WARN_LINES:
+                    findings.append(
+                        (
+                            "warn",
+                            "subdomain-candidate",
+                            f"{rel}: {lines} lines, {len(ref_files)} ref files — consider split or sub-domain hub",
+                        )
+                    )
+
+            # Matt lean + sprawl (main SKILL.md must stay thin)
+            has_refs_map = "references/" in text and (
+                "progressive" in text.lower()
+                or "load" in text.lower()
+                or "| " in text
+                or "](./references" in text
+                or "](references/" in text
+            )
+            has_sibling_pointer = bool(
+                re.search(r"\]\((?:\./)?[A-Za-z0-9_./-]+\.md\)", text)
+            )
+            disclosed = has_refs_map or (has_sibling_pointer and lines <= SPRAWL_WARN_LINES)
+            if lines > SUBDOMAIN_WARN_LINES:
+                findings.append(
+                    (
+                        "warn",
+                        "subdomain-candidate",
+                        f"{rel}: SKILL.md has {lines} lines — thin (Matt lean) then split or sub-domain hub",
+                    )
+                )
+            elif lines > SPRAWL_WARN_LINES and not has_refs_map:
+                findings.append(
+                    (
+                        "warn",
+                        "sprawl",
+                        f"{rel}: SKILL.md has {lines} lines without progressive disclosure — keep main file lean",
+                    )
+                )
+            elif lines > LEAN_WARN_LINES and not disclosed:
+                findings.append(
+                    (
+                        "warn",
+                        "lean",
+                        f"{rel}: SKILL.md has {lines} lines (Matt target ≤{LEAN_SOFT_LINES}; disclose refs if >{LEAN_WARN_LINES})",
+                    )
+                )
+            elif lines > LEAN_SOFT_LINES:
+                findings.append(
+                    (
+                        "info",
+                        "lean-soft",
+                        f"{rel}: SKILL.md has {lines} lines (soft lean target ≤{LEAN_SOFT_LINES})",
+                    )
+                )
+
+            # Matt shape: process/dispatch/steps, tiny router, or intentional all-reference
+            if lines > 100 and not PROCESS_HEADING.search(text):
+                intentional_ref = bool(
+                    re.search(
+                        r"(?i)all reference|reference for |## (invocation|information hierarchy|pruning|failure modes)\b",
+                        text,
+                    )
+                ) or (d / "GLOSSARY.md").is_file()
+                if not intentional_ref:
+                    findings.append(
+                        (
+                            "warn",
+                            "matt-shape",
+                            f"{rel}: no Process/Dispatch/Steps heading — Matt lean skills use ordered steps, tiny routers, or disclosed all-reference",
+                        )
+                    )
+
+            # chain blurb heuristics
+            chainish = bool(
+                re.search(
+                    r"(?i)(/tdd|/code-review|/implement|/to-spec|build path|related|next:|prev:|→)",
+                    text,
+                )
+            )
+            if bucket in LIVE_BUCKETS and d.name in hub_members and not chainish and lines > 30:
+                # leaf tools (misc) often skip chain prose
+                if True:  # flat skills: still emit chain-next info
+                    findings.append(
+                        (
+                            "info",
+                            "chain-next",
+                            f"{rel}: no obvious chain/next blurb — pipeline skills should name next skill(s)",
+                        )
+                    )
+
+            # hub membership (live only; personal residual = warn)
+            if bucket in LIVE_BUCKETS:
+                if d.name not in hub_members:
+                    orphans.append(rel)
+                    sev = "critical"
+                    findings.append(
+                        (
+                            sev,
+                            "hub-member",
+                            f"{rel}: not listed under any domain hub workflow (flows.md / hubs/*/workflow.json)",
+                        )
+                    )
 
     if len(model_invoked) > 25:
-        findings.append(("warn", "model-budget", f"model-invoked promoted count {len(model_invoked)} > 25: {model_invoked}"))
+        findings.append(
+            (
+                "warn",
+                "model-budget",
+                f"model-invoked promoted count {len(model_invoked)} > 25: {model_invoked[:12]}…",
+            )
+        )
 
-    # lock paths
     lock_path = CATALOG / "skills-lock.json"
     if lock_path.exists():
         lock = json.loads(lock_path.read_text())
         for sk, meta in lock.get("skills", {}).items():
             sp = meta.get("skillPath", "")
-            # skillPath like skills/engineering/foo/SKILL.md relative to monorepo or catalog
             candidates = [ROOT / sp, CATALOG / sp, CATALOG / sp.removeprefix("skills/")]
             if not any(c.is_file() for c in candidates):
                 findings.append(("critical", "lock", f"lock path missing for {sk}: {sp}"))
 
-    # deprecated successors
-    dep_readme = CATALOG / "deprecated" / "README.md"
+    dep_readme = CATALOG / "archive" / "README.md"
     if dep_readme.exists():
         dep_text = dep_readme.read_text()
-        for d in skills_in_bucket("deprecated"):
+        for d in skills_in_bucket("archive"):
             if d.name not in dep_text:
-                findings.append(("warn", "tombstone", f"deprecated/{d.name} not in deprecated README"))
+                findings.append(("warn", "tombstone", f"archive/{d.name} not in deprecated README"))
 
-    # report
-    by = {"critical": [], "warn": [], "info": []}
+    by: dict[str, list[str]] = {"critical": [], "warn": [], "info": []}
     for sev, code, msg in findings:
         by.setdefault(sev, []).append(f"- [{code}] {msg}")
 
@@ -162,6 +397,11 @@ def main() -> int:
         f"**Summary:** {len(by['critical'])} critical, {len(by['warn'])} warn, {len(by['info'])} info"
     )
     print(f"**Model-invoked promoted:** {len(model_invoked)}")
+    print(f"**Hub members indexed:** {len(hub_members)}")
+    print(f"**Hub-member orphans:** {len(orphans)}")
+    if orphans:
+        print(f"**Orphan sample:** {', '.join(orphans[:20])}{'…' if len(orphans) > 20 else ''}")
+    print("**Gate:** FAIL" if by["critical"] else "**Gate:** PASS")
     for sev in ("critical", "warn", "info"):
         print(f"\n## {sev}")
         if by[sev]:
