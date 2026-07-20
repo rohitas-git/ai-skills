@@ -10,7 +10,8 @@ Canonical skills live under [`skills/`](./skills/) in Matt-style buckets (`engin
 
 ## Tooling
 
-- [`scripts/sync-skills-symlinks.sh`](./scripts/sync-skills-symlinks.sh) — flatten bucket skills into agent skill dirs
+- [`scripts/setup.sh`](./scripts/setup.sh) — interactive setup (clone repo if needed, pick skills, pick targets, symlink)
+- [`scripts/sync-skills-symlinks.sh`](./scripts/sync-skills-symlinks.sh) — flatten catalog skills into agent skill dirs (used by setup.sh or directly)
 - [`scripts/lint-skills`](./scripts/lint-skills) — catalog structure lint (butler checklist mirror)
 
 ## Spec / tickets

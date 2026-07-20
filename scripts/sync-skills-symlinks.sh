@@ -28,22 +28,39 @@ CONFIG_FILE="${SCRIPT_DIR}/symlink-targets.json"
 DRY_RUN=0
 NO_INGEST=0
 VERBOSE=0
+CONFIG_FILE=""
 
 for arg in "$@"; do
   case "$arg" in
     --dry-run) DRY_RUN=1 ;;
     --no-ingest) NO_INGEST=1 ;;
     --verbose|-v) VERBOSE=1 ;;
+    --config) CONFIG_FILE="" ;; # handled below
     --help|-h)
       sed -n '2,22p' "$0" | sed 's/^# \{0,1\}//'
+      echo ""
+      echo "Options:"
+      echo "  --config <path>     Use alternative config file (default: ${SCRIPT_DIR}/symlink-targets.json)"
+      echo "  --dry-run           Report changes only, do not write filesystem"
+      echo "  --no-ingest         Skip Phase 1 (do not move new skills from targets → inbox)"
+      echo "  --verbose, -v       List every create/prune action"
       exit 0
       ;;
     *)
-      echo "Unknown option: $arg (try --help)" >&2
-      exit 2
+      if [[ "$prev_arg" == "--config" ]]; then
+        CONFIG_FILE="$arg"
+      else
+        echo "Unknown option: $arg (try --help)" >&2
+        exit 2
+      fi
       ;;
   esac
+  prev_arg="$arg"
 done
+
+if [[ -z "$CONFIG_FILE" ]]; then
+  CONFIG_FILE="${SCRIPT_DIR}/symlink-targets.json"
+fi
 
 if [[ ! -f "$CONFIG_FILE" ]]; then
   echo "Error: config not found: $CONFIG_FILE" >&2
@@ -272,6 +289,7 @@ def main() -> int:
     never = set(cfg.get("neverDiscover") or DEFAULT_NEVER)
     nested_roots: list[str] = list(cfg.get("nestedSkillRoots") or [])
     ingest_dest = cfg.get("ingestDestination") or "inbox"
+    include_filter: list[str] | None = cfg.get("include")
 
     if not os.path.isdir(source):
         print(c.wrap(f"Error: source not found: {source}", c.red), file=sys.stderr)
@@ -283,6 +301,13 @@ def main() -> int:
     skill_paths, origins, nested_added, nested_skipped = collect_skills(
         source, discover, nested_roots
     )
+
+    # Apply optional include allowlist
+    if include_filter:
+        allow = set(include_filter)
+        skill_paths = {k: v for k, v in skill_paths.items() if k in allow}
+        origins = {k: v for k, v in origins.items() if k in allow}
+
     known = set(skill_paths)
     source_real = os.path.realpath(source)
 
