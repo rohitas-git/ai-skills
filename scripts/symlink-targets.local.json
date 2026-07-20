@@ -1,0 +1,21 @@
+{
+  "source": "/Users/rohitasbansal/Development/AI-Skills/skills",
+  "discoverPackages": ["skills", "inbox"],
+  "neverDiscover": ["archive", "hubs", "guidelines", "wikis", "vendor", ".scratch", ".system", ".claude"],
+  "nestedSkillRoots": [],
+  "ingestDestination": "inbox",
+  "include": [
+    "0-butler"
+  ],  "targets": [
+    "~/.agents/skills",
+    "~/.claude/skills",
+    "~/.codex/skills",
+    "~/.cursor/skills",
+    "~/.gemini/antigravity/skills",
+    "~/.gemini/config/skills",
+    "~/.gemini/skills",
+    "~/.grok/skills",
+    "~/.kiro/skills",
+    "~/.zcode/skills"
+  ]
+}

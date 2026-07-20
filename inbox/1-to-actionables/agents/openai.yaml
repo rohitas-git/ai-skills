@@ -1,0 +1,6 @@
+interface:
+  display_name: "To Actionables"
+  short_description: "Ticket to human coding steps"
+  default_prompt: "Use $1-to-actionables on this ticket with --mode actionables --scope ticket; explore the live codebase and write a file-level coding checklist beside the ticket so I can implement it myself."
+policy:
+  allow_implicit_invocation: false

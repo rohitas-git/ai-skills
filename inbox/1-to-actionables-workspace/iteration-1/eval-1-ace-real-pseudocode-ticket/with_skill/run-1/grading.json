@@ -1,0 +1,13 @@
+{
+  "expectations": [
+    {"text": "Output file written to .scratch/data-driven-overhaul/actionables/03-prompt-template-engine--pseudocode.md", "passed": true, "evidence": "File written at the exact path with the '--pseudocode.md' suffix."},
+    {"text": "Has a Walkthrough section split into named Units (not a flat checklist)", "passed": true, "evidence": "Walkthrough section at L39 contains 6 named Units (schema, JSON, resolver, seed, model test, resolver test)."},
+    {"text": "Every Unit has Purpose, Inputs/outputs, Pseudocode, and a Touch list", "passed": true, "evidence": "Each Unit (e.g. Unit 1 L41-75) has Purpose, Inputs/outputs, Pseudocode, and 'Touch list (live paths)' subsections."},
+    {"text": "Touch list paths exist in the ACE repo at run time", "passed": true, "evidence": "Agent's VERIFY report lists confirmed paths including models/RuntimeConfig.js, lib/ai/modelResolver.js, lib/persistence/dbStatus.js; only the four 'create' files don't exist yet by design."},
+    {"text": "Units reference models/PromptTemplate.js, lib/ai/promptResolver.js, config/prompts-default.json, scripts/seedPrompts.js, graph/prompts.js", "passed": true, "evidence": "All five files named across the six Units' touch lists."},
+    {"text": "Includes End-to-end sequence section tying Units together", "passed": true, "evidence": "'End-to-end sequence' section at L377 walks through 7 numbered steps from schema landing to failure mode."},
+    {"text": "Pseudocode describes shape (LRU cache, resolver, fallback) without becoming a paste-ready implementation", "passed": true, "evidence": "Unit 3 pseudocode (L131-201) shows the cache shape, getTemplateDoc and compileTemplate signatures, and 'Shape notes' callouts explicitly marking non-paste-ready decisions."},
+    {"text": "Includes Final verification section", "passed": true, "evidence": "'Final verification' section at L387-393 lists 5 checks including the ticket jest commands and a manual spot-check."}
+  ],
+  "summary": {"passed": 8, "failed": 0, "total": 8, "pass_rate": 1.0}
+}

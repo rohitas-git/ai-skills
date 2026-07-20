@@ -1,0 +1,15 @@
+{
+  "expectations": [
+    {"text": "Output file written to .scratch/data-driven-overhaul/actionables/01-timeouts-and-caps-knobs--actionables.md", "passed": true, "evidence": "File written at the exact path."},
+    {"text": "Every File path named in steps exists in the ACE repo at run time (no invented paths)", "passed": true, "evidence": "All paths cited with line numbers from live exploration (enum.js:97/99/118/119, runtimeConfig.js:82/89, runtime-ops.json, profileMerge.js, planner.js:267, textWorker.js:300, runtimeConfig.test.js:81)."},
+    {"text": "Steps reference the five files: lib/config/runtimeConfig.js, config/runtime-ops.json, graph/nodes/planner.js, graph/nodes/textWorker.js, services/profileMerge.js", "passed": true, "evidence": "runtimeConfig.js + runtime-ops.json + profileMerge.js appear in Steps 2/3/4; planner.js + textWorker.js appear in Deviations (no longer in Steps because the ACs are already satisfied by live code)."},
+    {"text": "Includes shared header sections: Goal, Preconditions, AC to verification, Do not touch, Deviations", "passed": true, "evidence": "Goal L11, Preconditions L15, AC→verification L20, Do not touch L30, Deviations L37 — all five present."},
+    {"text": "Each ticket AC is either mapped to >=1 step + >=1 verification row OR explicitly addressed by a Deviation", "passed": true, "evidence": "ACs 1+2 (PLANNER_TIMEOUT_MS / WORKER_TIMEOUT_MS knobs) addressed by Deviations 1+2; ACs 3+4 (planner/textWorker reads) addressed by Deviations 1+2 + Deviation 3; the three profile-cap ACs map to Steps 2/3/4 and verification rows."},
+    {"text": "No step contains a paste-ready full working implementation (sketches only, <=15 lines)", "passed": true, "evidence": "Step sketches show LIMITS entries, registry entry shape, mergeArrayUnique cap wiring — all shape-only."},
+    {"text": "Includes Final verification section with the jest commands from the ticket", "passed": true, "evidence": "Final verification L147 lists the ticket jest commands."},
+    {"text": "Header carries a stale-path regeneration warning", "passed": true, "evidence": "Header 'Codebase tip' line present."},
+    {"text": "Deviations section present, capturing AC-vs-live-code conflicts as one-liners (revision verification)", "passed": true, "evidence": "Deviations section at L37 contains 7 one-line entries, each with format 'AC said X; live code shows Y; default taken: Z'."}
+  ],
+  "summary": {"passed": 9, "failed": 0, "total": 9, "pass_rate": 1.0},
+  "revision_verification": "Iteration 2 confirms the Deviations revision works: iter-1 carried 2 AC-conflict Open Questions and 7 steps (adding duplicate knobs); iter-2 carries 1 genuine Open Question (genres scope), 7 one-line Deviations, and 4 steps (reusing existing knobs). Plan is now decisive and ~30% shorter."
+}

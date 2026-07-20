@@ -1,0 +1,6 @@
+{
+  "eval_id": 0,
+  "eval_name": "ace-real-actionables-ticket",
+  "prompt": "/1-to-actionables --mode actionables --scope ticket on .../data-driven-overhaul/issues/01-timeouts-and-caps-knobs.md",
+  "assertions": []
+}

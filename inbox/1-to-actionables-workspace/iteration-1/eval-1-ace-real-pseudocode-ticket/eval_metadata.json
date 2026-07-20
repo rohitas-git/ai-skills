@@ -1,0 +1,6 @@
+{
+  "eval_id": 1,
+  "eval_name": "ace-real-pseudocode-ticket",
+  "prompt": "/1-to-actionables --mode pseudocode --scope ticket on .../data-driven-overhaul/issues/03-prompt-template-engine.md",
+  "assertions": []
+}

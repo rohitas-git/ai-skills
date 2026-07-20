@@ -1,0 +1,13 @@
+{
+  "expectations": [
+    {"text": "Output file written to .scratch/data-driven-overhaul/actionables/01-timeouts-and-caps-knobs--actionables.md", "passed": false, "evidence": "File saved as '01-timeouts-and-caps-knobs-actionables.md' (single dash, not the '--' separator the skill's naming convention requires)."},
+    {"text": "Every File path named in steps exists in the ACE repo at run time (no invented paths)", "passed": true, "evidence": "Agent explored the live repo and cited real line numbers (e.g. planner.js:267, runtimeConfig.js:32)."},
+    {"text": "Steps reference the five files: lib/config/runtimeConfig.js, config/runtime-ops.json, graph/nodes/planner.js, graph/nodes/textWorker.js, services/profileMerge.js", "passed": true, "evidence": "All five files referenced across the numbered steps."},
+    {"text": "Includes shared header sections: Goal, Preconditions, AC to verification, Do not touch", "passed": false, "evidence": "Has Goal (L6) and 'Out of scope' (L368) but no Preconditions section (uses 'Pre-flight' instead) and no AC→verification table (uses a 'Decisions made up front' block instead)."},
+    {"text": "Each ticket AC checkbox maps to at least one numbered step and at least one verification row", "passed": false, "evidence": "No explicit AC→step→verification mapping; coverage is implicit via numbered steps. Verification commands appear in Step 9 but aren't tied to specific ACs in a table."},
+    {"text": "No step contains a paste-ready full working implementation (sketches only, <=15 lines)", "passed": true, "evidence": "All code blocks are short sketches (registry entries, single assignments)."},
+    {"text": "Includes Final verification section with the jest commands from the ticket", "passed": true, "evidence": "Step 9 'Run the verification suites' lists the three jest commands."},
+    {"text": "Header carries a stale-path regeneration warning", "passed": false, "evidence": "No regeneration/staleness warning anywhere in the file header."}
+  ],
+  "summary": {"passed": 4, "failed": 4, "total": 8, "pass_rate": 0.5}
+}

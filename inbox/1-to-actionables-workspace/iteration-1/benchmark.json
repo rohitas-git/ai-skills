@@ -1,0 +1,500 @@
+{
+  "metadata": {
+    "skill_name": "1-to-actionables",
+    "skill_path": "/Users/rohitasbansal/Development/AI-Skills/skills/inbox/1-to-actionables",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-07-19T18:17:36Z",
+    "evals_run": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 8,
+        "failed": 0,
+        "total": 8,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Output file written to .scratch/data-driven-overhaul/actionables/01-timeouts-and-caps-knobs--actionables.md",
+          "passed": true,
+          "evidence": "File exists at the exact path with the `--actionables.md` suffix."
+        },
+        {
+          "text": "Every File path named in steps exists in the ACE repo at run time (no invented paths)",
+          "passed": true,
+          "evidence": "Agent's VERIFY report: 'All 8 source paths and 3 test paths were read live and confirmed \u2014 no VERIFY: markers were needed.'"
+        },
+        {
+          "text": "Steps reference the five files: lib/config/runtimeConfig.js, config/runtime-ops.json, graph/nodes/planner.js, graph/nodes/textWorker.js, services/profileMerge.js",
+          "passed": true,
+          "evidence": "Steps 1-6 name each of the five files explicitly."
+        },
+        {
+          "text": "Includes shared header sections: Goal, Preconditions, AC to verification, Do not touch",
+          "passed": true,
+          "evidence": "Goal L11, Preconditions L15, AC\u2192verification table L20, Do not touch L30."
+        },
+        {
+          "text": "Each ticket AC checkbox maps to at least one numbered step and at least one verification row",
+          "passed": true,
+          "evidence": "AC table at L20-28 has 5 rows mapping each AC to a verification command; Steps 1-7 cover them in order."
+        },
+        {
+          "text": "No step contains a paste-ready full working implementation (sketches only, <=15 lines)",
+          "passed": true,
+          "evidence": "All sketches are <=15 lines and show shape (registry entry shape, slice call) not full modules."
+        },
+        {
+          "text": "Includes Final verification section with the jest commands from the ticket",
+          "passed": true,
+          "evidence": "L207-213 lists the three ticket jest commands plus an extra textWorker regression run."
+        },
+        {
+          "text": "Header carries a stale-path regeneration warning",
+          "passed": true,
+          "evidence": "L6: 'Codebase tip: paths were valid at generation time \u2014 regenerate if the tree moved.'"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 8,
+        "failed": 0,
+        "total": 8,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Output file written to .scratch/data-driven-overhaul/actionables/03-prompt-template-engine--pseudocode.md",
+          "passed": true,
+          "evidence": "File written at the exact path with the '--pseudocode.md' suffix."
+        },
+        {
+          "text": "Has a Walkthrough section split into named Units (not a flat checklist)",
+          "passed": true,
+          "evidence": "Walkthrough section at L39 contains 6 named Units (schema, JSON, resolver, seed, model test, resolver test)."
+        },
+        {
+          "text": "Every Unit has Purpose, Inputs/outputs, Pseudocode, and a Touch list",
+          "passed": true,
+          "evidence": "Each Unit (e.g. Unit 1 L41-75) has Purpose, Inputs/outputs, Pseudocode, and 'Touch list (live paths)' subsections."
+        },
+        {
+          "text": "Touch list paths exist in the ACE repo at run time",
+          "passed": true,
+          "evidence": "Agent's VERIFY report lists confirmed paths including models/RuntimeConfig.js, lib/ai/modelResolver.js, lib/persistence/dbStatus.js; only the four 'create' files don't exist yet by design."
+        },
+        {
+          "text": "Units reference models/PromptTemplate.js, lib/ai/promptResolver.js, config/prompts-default.json, scripts/seedPrompts.js, graph/prompts.js",
+          "passed": true,
+          "evidence": "All five files named across the six Units' touch lists."
+        },
+        {
+          "text": "Includes End-to-end sequence section tying Units together",
+          "passed": true,
+          "evidence": "'End-to-end sequence' section at L377 walks through 7 numbered steps from schema landing to failure mode."
+        },
+        {
+          "text": "Pseudocode describes shape (LRU cache, resolver, fallback) without becoming a paste-ready implementation",
+          "passed": true,
+          "evidence": "Unit 3 pseudocode (L131-201) shows the cache shape, getTemplateDoc and compileTemplate signatures, and 'Shape notes' callouts explicitly marking non-paste-ready decisions."
+        },
+        {
+          "text": "Includes Final verification section",
+          "passed": true,
+          "evidence": "'Final verification' section at L387-393 lists 5 checks including the ticket jest commands and a manual spot-check."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Six actionables files written, one per ticket in data-driven-overhaul (01 through 06)",
+          "passed": true,
+          "evidence": "Six files written under .scratch/data-driven-overhaul/actionables/ (01 through 06) and copied to workspace outputs."
+        },
+        {
+          "text": "All six filenames match the pattern NN-slug--actionables.md",
+          "passed": true,
+          "evidence": "All six filenames use the '--actionables.md' suffix (e.g. 01-timeouts-and-caps-knobs--actionables.md)."
+        },
+        {
+          "text": "Each file maps its ticket's ACs to steps and verification rows",
+          "passed": true,
+          "evidence": "Each file follows the actionables template (T1 with-skill grading confirmed 8/8 expectations; T3 files follow the same template)."
+        },
+        {
+          "text": "Every File path across all six files exists in the ACE repo at run time",
+          "passed": true,
+          "evidence": "Agent's VERIFY report: 'All source paths cited in the steps were confirmed live this run'; VERIFY items are test paths the tickets name that don't exist (flagged in Open Questions, not faked)."
+        },
+        {
+          "text": "Cross-ticket dependencies are noted ('Blocked by: None' for 01/02/03, '03' for 04/05/06)",
+          "passed": true,
+          "evidence": "Index table in chat return lists blocked-by column showing 03 as blocker for tickets 04, 05, 06; chat explicitly notes '03 is the frontier that unblocks 04/05/06'."
+        },
+        {
+          "text": "Chat response includes an index table: ticket, mode, file path, blocked-by, ready",
+          "passed": true,
+          "evidence": "Subagent return includes a 6-row markdown table with exactly those columns."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Output file written to .scratch/actionables-index-file/actionables/01-scope-set-readme--actionables.md",
+          "passed": true,
+          "evidence": "File written at the exact path with the '--actionables.md' suffix."
+        },
+        {
+          "text": "Steps reference the three skill files the ticket names: SKILL.md, references/flags-and-modes.md, references/output-templates.md",
+          "passed": true,
+          "evidence": "Steps 1-6 reference all three files explicitly with line-region anchors."
+        },
+        {
+          "text": "Every File path in steps exists in the AI-Skills repo at run time",
+          "passed": true,
+          "evidence": "Agent confirmed all paths via ls + grep; zero VERIFY markers."
+        },
+        {
+          "text": "Includes shared header sections: Goal, Preconditions, AC to verification, Do not touch",
+          "passed": true,
+          "evidence": "Goal L11, Preconditions L15, AC\u2192verification table L20, Do not touch L30."
+        },
+        {
+          "text": "Each of the four ticket ACs maps to at least one step and one verification row",
+          "passed": true,
+          "evidence": "AC table at L20-28 has 5 rows; Order notes (L130) explicitly map AC1\u2192Step 1+3, AC2\u2192Step 4+5+6, AC3\u2192Step 2, AC4\u2192Step 4."
+        },
+        {
+          "text": "No step contains a paste-ready full working implementation",
+          "passed": true,
+          "evidence": "All sketches are short markdown/text fragments showing the row/line to add."
+        },
+        {
+          "text": "Header carries a stale-path regeneration warning",
+          "passed": true,
+          "evidence": "L6: 'Codebase tip: paths were valid at generation time \u2014 regenerate if the tree moved.'"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 4,
+        "failed": 4,
+        "total": 8,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Output file written to .scratch/data-driven-overhaul/actionables/01-timeouts-and-caps-knobs--actionables.md",
+          "passed": false,
+          "evidence": "File saved as '01-timeouts-and-caps-knobs-actionables.md' (single dash, not the '--' separator the skill's naming convention requires)."
+        },
+        {
+          "text": "Every File path named in steps exists in the ACE repo at run time (no invented paths)",
+          "passed": true,
+          "evidence": "Agent explored the live repo and cited real line numbers (e.g. planner.js:267, runtimeConfig.js:32)."
+        },
+        {
+          "text": "Steps reference the five files: lib/config/runtimeConfig.js, config/runtime-ops.json, graph/nodes/planner.js, graph/nodes/textWorker.js, services/profileMerge.js",
+          "passed": true,
+          "evidence": "All five files referenced across the numbered steps."
+        },
+        {
+          "text": "Includes shared header sections: Goal, Preconditions, AC to verification, Do not touch",
+          "passed": false,
+          "evidence": "Has Goal (L6) and 'Out of scope' (L368) but no Preconditions section (uses 'Pre-flight' instead) and no AC\u2192verification table (uses a 'Decisions made up front' block instead)."
+        },
+        {
+          "text": "Each ticket AC checkbox maps to at least one numbered step and at least one verification row",
+          "passed": false,
+          "evidence": "No explicit AC\u2192step\u2192verification mapping; coverage is implicit via numbered steps. Verification commands appear in Step 9 but aren't tied to specific ACs in a table."
+        },
+        {
+          "text": "No step contains a paste-ready full working implementation (sketches only, <=15 lines)",
+          "passed": true,
+          "evidence": "All code blocks are short sketches (registry entries, single assignments)."
+        },
+        {
+          "text": "Includes Final verification section with the jest commands from the ticket",
+          "passed": true,
+          "evidence": "Step 9 'Run the verification suites' lists the three jest commands."
+        },
+        {
+          "text": "Header carries a stale-path regeneration warning",
+          "passed": false,
+          "evidence": "No regeneration/staleness warning anywhere in the file header."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.625,
+        "passed": 5,
+        "failed": 3,
+        "total": 8,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Output file written to .scratch/data-driven-overhaul/actionables/03-prompt-template-engine--pseudocode.md",
+          "passed": false,
+          "evidence": "File saved as '03-prompt-template-engine-walkthrough.md' \u2014 uses 'walkthrough' suffix instead of the skill's '--pseudocode.md' naming convention."
+        },
+        {
+          "text": "Has a Walkthrough section split into named Units (not a flat checklist)",
+          "passed": true,
+          "evidence": "Six named UNIT sections (UNIT 1 through UNIT 6) starting at L102."
+        },
+        {
+          "text": "Every Unit has Purpose, Inputs/outputs, Pseudocode, and a Touch list",
+          "passed": false,
+          "evidence": "Units have 'Goal' and Pseudocode but no explicit 'Inputs / outputs:' subsection and no 'Touch list' subsection (paths are inlined in prose and a top-level 'Repo conventions to mimic' section instead)."
+        },
+        {
+          "text": "Touch list paths exist in the ACE repo at run time",
+          "passed": true,
+          "evidence": "All inlined paths (modelResolver.js, promptBuilder.js, dbStatus.js, AIModel.test.js, graph/prompts.js) are real."
+        },
+        {
+          "text": "Units reference models/PromptTemplate.js, lib/ai/promptResolver.js, config/prompts-default.json, scripts/seedPrompts.js, graph/prompts.js",
+          "passed": true,
+          "evidence": "All five files appear across the six Units."
+        },
+        {
+          "text": "Includes End-to-end sequence section tying Units together",
+          "passed": false,
+          "evidence": "Has 'Build order' section (L87) which is functionally similar but not labeled 'End-to-end sequence' as the template requires; no runtime-failure-mode walkthrough."
+        },
+        {
+          "text": "Pseudocode describes shape (LRU cache, resolver, fallback) without becoming a paste-ready implementation",
+          "passed": true,
+          "evidence": "UNIT 3 pseudocode is more elaborated than the skill version but still pseudocode-shaped with decision callouts."
+        },
+        {
+          "text": "Includes Final verification section",
+          "passed": true,
+          "evidence": "Section 4 'Verification steps' at L505 lists the ticket jest commands and seed runs."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 3,
+        "failed": 3,
+        "total": 6,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Six actionables files written, one per ticket in data-driven-overhaul (01 through 06)",
+          "passed": true,
+          "evidence": "Six files saved to without_skill/outputs/ (one per ticket)."
+        },
+        {
+          "text": "All six filenames match the pattern NN-slug--actionables.md",
+          "passed": false,
+          "evidence": "Filenames are 'NN-slug.md' (e.g. 01-timeouts-and-caps-knobs.md) \u2014 no '--actionables.md' suffix; the mode tag is dropped."
+        },
+        {
+          "text": "Each file maps its ticket's ACs to steps and verification rows",
+          "passed": false,
+          "evidence": "Spot-checked 01-timeouts-and-caps-knobs.md: has 'Files to change' numbered list but no AC\u2192verification table; no 'Steps' with File/Find/Change/Done-when structure."
+        },
+        {
+          "text": "Every File path across all six files exists in the ACE repo at run time",
+          "passed": true,
+          "evidence": "Agent's return notes real exploration with line numbers (planner.js:267, runtimeConfig.js:32, etc.) and no invented paths."
+        },
+        {
+          "text": "Cross-ticket dependencies are noted ('Blocked by: None' for 01/02/03, '03' for 04/05/06)",
+          "passed": false,
+          "evidence": "Chat return notes dependencies for 04/05/06 in prose, but per-file docs don't carry a 'Blocked by' header field \u2014 the cross-ticket structure isn't materialized in the files themselves."
+        },
+        {
+          "text": "Chat response includes an index table: ticket, mode, file path, blocked-by, ready",
+          "passed": true,
+          "evidence": "Chat return has a 6-row table mapping plan file \u2192 ticket, though columns differ slightly from the template (no explicit 'ready?' column)."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Output file written to .scratch/actionables-index-file/actionables/01-scope-set-readme--actionables.md",
+          "passed": true,
+          "evidence": "File written at the exact path; baseline agent adopted the skill's '--actionables.md' naming convention (the skill files are visible in the repo, so the template was discoverable)."
+        },
+        {
+          "text": "Steps reference the three skill files the ticket names: SKILL.md, references/flags-and-modes.md, references/output-templates.md",
+          "passed": true,
+          "evidence": "Steps 1-6 reference all three files with line anchors."
+        },
+        {
+          "text": "Every File path in steps exists in the AI-Skills repo at run time",
+          "passed": true,
+          "evidence": "All paths real; baseline confirmed via grep."
+        },
+        {
+          "text": "Includes shared header sections: Goal, Preconditions, AC to verification, Do not touch",
+          "passed": true,
+          "evidence": "Goal L11, Preconditions L15, AC\u2192verification table L20, Do not touch L29 \u2014 full template adopted."
+        },
+        {
+          "text": "Each of the four ticket ACs maps to at least one step and one verification row",
+          "passed": true,
+          "evidence": "AC table L22-27 has 4 rows; Steps 1-6 cover them in order with explicit Order notes."
+        },
+        {
+          "text": "No step contains a paste-ready full working implementation",
+          "passed": true,
+          "evidence": "All sketches are short markdown fragments."
+        },
+        {
+          "text": "Header carries a stale-path regeneration warning",
+          "passed": true,
+          "evidence": "L6: 'Codebase tip: paths were valid at generation time \u2014 regenerate if the tree moved.' \u2014 baseline copied this line verbatim from the skill template it discovered."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.6562,
+        "stddev": 0.2366,
+        "min": 0.5,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.34",
+      "time_seconds": "+0.0",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

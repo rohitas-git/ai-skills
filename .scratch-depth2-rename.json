@@ -1,0 +1,27 @@
+{
+  "rename": {
+    "1-ponytail-review": "2-ponytail-review",
+    "1-security-and-hardening": "2-security-and-hardening",
+    "1-software-architect": "2-software-architect",
+    "1-verify-work": "2-verify-work"
+  },
+  "hub_depth": {
+    "0-rohitas-vault-wiki": 0,
+    "0-wayfinder": 0,
+    "0-office": 0,
+    "0-grilling": 0,
+    "0-improve-codebase-architecture": 0,
+    "0-triage": 0,
+    "0-skill-manager": 0,
+    "0-learn": 0,
+    "0-implement": 0,
+    "0-review": 0,
+    "0-butler": 0,
+    "0-setup-rohitas-skills": 0,
+    "0-diagnosing-bugs": 0,
+    "0-ponytail": 0,
+    "0-skill-creator": 0,
+    "1-security-auditor": 1,
+    "1-code-review": 1
+  }
+}

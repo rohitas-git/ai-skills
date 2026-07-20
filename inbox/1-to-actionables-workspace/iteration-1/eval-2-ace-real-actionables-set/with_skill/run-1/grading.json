@@ -1,0 +1,11 @@
+{
+  "expectations": [
+    {"text": "Six actionables files written, one per ticket in data-driven-overhaul (01 through 06)", "passed": true, "evidence": "Six files written under .scratch/data-driven-overhaul/actionables/ (01 through 06) and copied to workspace outputs."},
+    {"text": "All six filenames match the pattern NN-slug--actionables.md", "passed": true, "evidence": "All six filenames use the '--actionables.md' suffix (e.g. 01-timeouts-and-caps-knobs--actionables.md)."},
+    {"text": "Each file maps its ticket's ACs to steps and verification rows", "passed": true, "evidence": "Each file follows the actionables template (T1 with-skill grading confirmed 8/8 expectations; T3 files follow the same template)."},
+    {"text": "Every File path across all six files exists in the ACE repo at run time", "passed": true, "evidence": "Agent's VERIFY report: 'All source paths cited in the steps were confirmed live this run'; VERIFY items are test paths the tickets name that don't exist (flagged in Open Questions, not faked)."},
+    {"text": "Cross-ticket dependencies are noted ('Blocked by: None' for 01/02/03, '03' for 04/05/06)", "passed": true, "evidence": "Index table in chat return lists blocked-by column showing 03 as blocker for tickets 04, 05, 06; chat explicitly notes '03 is the frontier that unblocks 04/05/06'."},
+    {"text": "Chat response includes an index table: ticket, mode, file path, blocked-by, ready", "passed": true, "evidence": "Subagent return includes a 6-row markdown table with exactly those columns."}
+  ],
+  "summary": {"passed": 6, "failed": 0, "total": 6, "pass_rate": 1.0}
+}

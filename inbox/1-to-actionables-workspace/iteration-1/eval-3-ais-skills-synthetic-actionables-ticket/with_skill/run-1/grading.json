@@ -1,0 +1,12 @@
+{
+  "expectations": [
+    {"text": "Output file written to .scratch/actionables-index-file/actionables/01-scope-set-readme--actionables.md", "passed": true, "evidence": "File written at the exact path with the '--actionables.md' suffix."},
+    {"text": "Steps reference the three skill files the ticket names: SKILL.md, references/flags-and-modes.md, references/output-templates.md", "passed": true, "evidence": "Steps 1-6 reference all three files explicitly with line-region anchors."},
+    {"text": "Every File path in steps exists in the AI-Skills repo at run time", "passed": true, "evidence": "Agent confirmed all paths via ls + grep; zero VERIFY markers."},
+    {"text": "Includes shared header sections: Goal, Preconditions, AC to verification, Do not touch", "passed": true, "evidence": "Goal L11, Preconditions L15, AC→verification table L20, Do not touch L30."},
+    {"text": "Each of the four ticket ACs maps to at least one step and one verification row", "passed": true, "evidence": "AC table at L20-28 has 5 rows; Order notes (L130) explicitly map AC1→Step 1+3, AC2→Step 4+5+6, AC3→Step 2, AC4→Step 4."},
+    {"text": "No step contains a paste-ready full working implementation", "passed": true, "evidence": "All sketches are short markdown/text fragments showing the row/line to add."},
+    {"text": "Header carries a stale-path regeneration warning", "passed": true, "evidence": "L6: 'Codebase tip: paths were valid at generation time — regenerate if the tree moved.'"}
+  ],
+  "summary": {"passed": 7, "failed": 0, "total": 7, "pass_rate": 1.0}
+}

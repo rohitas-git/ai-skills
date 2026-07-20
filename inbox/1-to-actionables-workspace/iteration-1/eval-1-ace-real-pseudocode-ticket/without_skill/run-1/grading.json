@@ -1,0 +1,13 @@
+{
+  "expectations": [
+    {"text": "Output file written to .scratch/data-driven-overhaul/actionables/03-prompt-template-engine--pseudocode.md", "passed": false, "evidence": "File saved as '03-prompt-template-engine-walkthrough.md' — uses 'walkthrough' suffix instead of the skill's '--pseudocode.md' naming convention."},
+    {"text": "Has a Walkthrough section split into named Units (not a flat checklist)", "passed": true, "evidence": "Six named UNIT sections (UNIT 1 through UNIT 6) starting at L102."},
+    {"text": "Every Unit has Purpose, Inputs/outputs, Pseudocode, and a Touch list", "passed": false, "evidence": "Units have 'Goal' and Pseudocode but no explicit 'Inputs / outputs:' subsection and no 'Touch list' subsection (paths are inlined in prose and a top-level 'Repo conventions to mimic' section instead)."},
+    {"text": "Touch list paths exist in the ACE repo at run time", "passed": true, "evidence": "All inlined paths (modelResolver.js, promptBuilder.js, dbStatus.js, AIModel.test.js, graph/prompts.js) are real."},
+    {"text": "Units reference models/PromptTemplate.js, lib/ai/promptResolver.js, config/prompts-default.json, scripts/seedPrompts.js, graph/prompts.js", "passed": true, "evidence": "All five files appear across the six Units."},
+    {"text": "Includes End-to-end sequence section tying Units together", "passed": false, "evidence": "Has 'Build order' section (L87) which is functionally similar but not labeled 'End-to-end sequence' as the template requires; no runtime-failure-mode walkthrough."},
+    {"text": "Pseudocode describes shape (LRU cache, resolver, fallback) without becoming a paste-ready implementation", "passed": true, "evidence": "UNIT 3 pseudocode is more elaborated than the skill version but still pseudocode-shaped with decision callouts."},
+    {"text": "Includes Final verification section", "passed": true, "evidence": "Section 4 'Verification steps' at L505 lists the ticket jest commands and seed runs."}
+  ],
+  "summary": {"passed": 5, "failed": 3, "total": 8, "pass_rate": 0.625}
+}

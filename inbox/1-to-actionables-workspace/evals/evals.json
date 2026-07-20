@@ -1,0 +1,70 @@
+{
+  "skill_name": "1-to-actionables",
+  "evals": [
+    {
+      "id": 1,
+      "name": "ace-real-actionables-ticket",
+      "prompt": "/1-to-actionables --mode actionables --scope ticket on /Users/rohitasbansal/Work/iiCreators/Artiste-Corner-ACE-Backend/.scratch/data-driven-overhaul/issues/01-timeouts-and-caps-knobs.md",
+      "repo": "/Users/rohitasbansal/Work/iiCreators/Artiste-Corner-ACE-Backend",
+      "expected_output": "One actionables MD file written beside the ticket under .scratch/data-driven-overhaul/actionables/, with real ACE repo paths, vertical-slice step order, every AC mapped to a step and a verification row, and no full implementation dump.",
+      "expectations": [
+        "Output file written to .scratch/data-driven-overhaul/actionables/01-timeouts-and-caps-knobs--actionables.md",
+        "Every File path named in steps exists in the ACE repo at run time (no invented paths)",
+        "Steps reference the five files the ticket calls out: lib/config/runtimeConfig.js, config/runtime-ops.json, graph/nodes/planner.js, graph/nodes/textWorker.js, services/profileMerge.js",
+        "Includes shared header sections: Goal, Preconditions, Acceptance criteria to verification, Do not touch",
+        "Each ticket AC checkbox maps to at least one numbered step and at least one verification row",
+        "No step contains a paste-ready full working implementation (sketches only, <=15 lines)",
+        "Includes Final verification section with the jest commands from the ticket",
+        "Header carries a stale-path regeneration warning"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "ace-real-pseudocode-ticket",
+      "prompt": "/1-to-actionables --mode pseudocode --scope ticket on /Users/rohitasbansal/Work/iiCreators/Artiste-Corner-ACE-Backend/.scratch/data-driven-overhaul/issues/03-prompt-template-engine.md",
+      "repo": "/Users/rohitasbansal/Work/iiCreators/Artiste-Corner-ACE-Backend",
+      "expected_output": "One pseudocode MD file written beside the ticket, structured as named Walkthrough units each with Purpose, Inputs/outputs, Pseudocode, and a Touch list of real files; ends with end-to-end sequence and final verification.",
+      "expectations": [
+        "Output file written to .scratch/data-driven-overhaul/actionables/03-prompt-template-engine--pseudocode.md",
+        "Has a Walkthrough section split into named Units (not a flat checklist)",
+        "Every Unit has Purpose, Inputs/outputs, Pseudocode, and a Touch list",
+        "Touch list paths exist in the ACE repo at run time",
+        "Units reference the four files the ticket creates plus the source graph/prompts.js: models/PromptTemplate.js, lib/ai/promptResolver.js, config/prompts-default.json, scripts/seedPrompts.js, graph/prompts.js",
+        "Includes End-to-end sequence section tying Units together",
+        "Pseudocode describes shape (LRU cache, resolver, fallback) without becoming a paste-ready implementation",
+        "Includes Final verification section"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "ace-real-actionables-set",
+      "prompt": "/1-to-actionables --mode actionables --scope set on /Users/rohitasbansal/Work/iiCreators/Artiste-Corner-ACE-Backend/.scratch/data-driven-overhaul/issues/",
+      "repo": "/Users/rohitasbansal/Work/iiCreators/Artiste-Corner-ACE-Backend",
+      "expected_output": "One actionables file per ticket (six total) written under .scratch/data-driven-overhaul/actionables/ with NN-slug--actionables.md naming, plus a chat index table. Cross-ticket blocked-by is honored or noted; frontier ticket is flagged as the start row.",
+      "expectations": [
+        "Six actionables files written, one per ticket in data-driven-overhaul (01 through 06)",
+        "All six filenames match the pattern NN-slug--actionables.md",
+        "Each file maps its ticket's ACs to steps and verification rows",
+        "Every File path across all six files exists in the ACE repo at run time",
+        "Cross-ticket dependencies are noted (data-driven-overhaul tickets say 'Blocked by: None', so dep notes may be 'none' but must be present)",
+        "Chat response includes an index table: ticket, mode, file path, blocked-by, ready"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "ais-skills-synthetic-actionables-ticket",
+      "prompt": "/1-to-actionables --mode actionables --scope ticket on /Users/rohitasbansal/Development/AI-Skills/skills/.scratch/actionables-index-file/issues/01-scope-set-readme.md",
+      "repo": "/Users/rohitasbansal/Development/AI-Skills/skills",
+      "expected_output": "One actionables MD file written beside the ticket under .scratch/actionables-index-file/actionables/, with paths into the 1-to-actionables skill folder itself (SKILL.md, references/flags-and-modes.md, references/output-templates.md). Tests the skill on a non-application repo.",
+      "expectations": [
+        "Output file written to .scratch/actionables-index-file/actionables/01-scope-set-readme--actionables.md",
+        "Steps reference the three skill files the ticket names: SKILL.md, references/flags-and-modes.md, references/output-templates.md",
+        "Every File path in steps exists in the AI-Skills repo at run time",
+        "Includes shared header sections: Goal, Preconditions, AC to verification, Do not touch",
+        "Each of the four ticket ACs maps to at least one step and one verification row",
+        "No step contains a paste-ready full working implementation",
+        "Header carries a stale-path regeneration warning"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "expectations": [
+    {"text": "Output file written to .scratch/data-driven-overhaul/actionables/01-timeouts-and-caps-knobs--actionables.md", "passed": false, "evidence": "File saved as '01-timeouts-and-caps-knobs-actionables.md' (single dash, not '--' separator)."},
+    {"text": "Every File path named in steps exists in the ACE repo at run time (no invented paths)", "passed": true, "evidence": "Agent explored live and cited real line numbers."},
+    {"text": "Steps reference the five files: lib/config/runtimeConfig.js, config/runtime-ops.json, graph/nodes/planner.js, graph/nodes/textWorker.js, services/profileMerge.js", "passed": true, "evidence": "All five files referenced."},
+    {"text": "Includes shared header sections: Goal, Preconditions, AC to verification, Do not touch, Deviations", "passed": false, "evidence": "Missing Preconditions (uses 'Pre-flight'), AC→verification table (uses 'Decisions' block), and Deviations (no such section). Has Goal + 'Out of scope'."},
+    {"text": "Each ticket AC is either mapped to >=1 step + >=1 verification row OR explicitly addressed by a Deviation", "passed": false, "evidence": "ACs are covered implicitly via numbered steps and a 'Decisions' block, but no explicit AC→step→verification table or Deviations section."},
+    {"text": "No step contains a paste-ready full working implementation (sketches only, <=15 lines)", "passed": true, "evidence": "All sketches are short."},
+    {"text": "Includes Final verification section with the jest commands from the ticket", "passed": true, "evidence": "Step 9 lists the jest commands."},
+    {"text": "Header carries a stale-path regeneration warning", "passed": false, "evidence": "No stale-path warning."},
+    {"text": "Deviations section present, capturing AC-vs-live-code conflicts as one-liners (revision verification)", "passed": false, "evidence": "Baseline has no Deviations section; the AC-vs-code conflicts surface as a 'Decisions made up front' block instead."}
+  ],
+  "summary": {"passed": 4, "failed": 5, "total": 9, "pass_rate": 0.444}
+}

@@ -1,0 +1,6 @@
+{
+  "eval_id": 2,
+  "eval_name": "ace-real-actionables-set",
+  "prompt": "/1-to-actionables --mode actionables --scope set on .../data-driven-overhaul/issues/",
+  "assertions": []
+}

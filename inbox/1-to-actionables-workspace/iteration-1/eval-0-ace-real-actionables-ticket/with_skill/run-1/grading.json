@@ -1,0 +1,13 @@
+{
+  "expectations": [
+    {"text": "Output file written to .scratch/data-driven-overhaul/actionables/01-timeouts-and-caps-knobs--actionables.md", "passed": true, "evidence": "File exists at the exact path with the `--actionables.md` suffix."},
+    {"text": "Every File path named in steps exists in the ACE repo at run time (no invented paths)", "passed": true, "evidence": "Agent's VERIFY report: 'All 8 source paths and 3 test paths were read live and confirmed — no VERIFY: markers were needed.'"},
+    {"text": "Steps reference the five files: lib/config/runtimeConfig.js, config/runtime-ops.json, graph/nodes/planner.js, graph/nodes/textWorker.js, services/profileMerge.js", "passed": true, "evidence": "Steps 1-6 name each of the five files explicitly."},
+    {"text": "Includes shared header sections: Goal, Preconditions, AC to verification, Do not touch", "passed": true, "evidence": "Goal L11, Preconditions L15, AC→verification table L20, Do not touch L30."},
+    {"text": "Each ticket AC checkbox maps to at least one numbered step and at least one verification row", "passed": true, "evidence": "AC table at L20-28 has 5 rows mapping each AC to a verification command; Steps 1-7 cover them in order."},
+    {"text": "No step contains a paste-ready full working implementation (sketches only, <=15 lines)", "passed": true, "evidence": "All sketches are <=15 lines and show shape (registry entry shape, slice call) not full modules."},
+    {"text": "Includes Final verification section with the jest commands from the ticket", "passed": true, "evidence": "L207-213 lists the three ticket jest commands plus an extra textWorker regression run."},
+    {"text": "Header carries a stale-path regeneration warning", "passed": true, "evidence": "L6: 'Codebase tip: paths were valid at generation time — regenerate if the tree moved.'"}
+  ],
+  "summary": {"passed": 8, "failed": 0, "total": 8, "pass_rate": 1.0}
+}

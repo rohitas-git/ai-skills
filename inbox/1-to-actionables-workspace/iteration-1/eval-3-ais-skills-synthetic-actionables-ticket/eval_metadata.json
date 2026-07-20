@@ -1,0 +1,6 @@
+{
+  "eval_id": 3,
+  "eval_name": "ais-skills-synthetic-actionables-ticket",
+  "prompt": "/1-to-actionables --mode actionables --scope ticket on .../skills/.scratch/actionables-index-file/issues/01-scope-set-readme.md",
+  "assertions": []
+}

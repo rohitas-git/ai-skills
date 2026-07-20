@@ -1,0 +1,11 @@
+{
+  "expectations": [
+    {"text": "Six actionables files written, one per ticket in data-driven-overhaul (01 through 06)", "passed": true, "evidence": "Six files saved to without_skill/outputs/ (one per ticket)."},
+    {"text": "All six filenames match the pattern NN-slug--actionables.md", "passed": false, "evidence": "Filenames are 'NN-slug.md' (e.g. 01-timeouts-and-caps-knobs.md) — no '--actionables.md' suffix; the mode tag is dropped."},
+    {"text": "Each file maps its ticket's ACs to steps and verification rows", "passed": false, "evidence": "Spot-checked 01-timeouts-and-caps-knobs.md: has 'Files to change' numbered list but no AC→verification table; no 'Steps' with File/Find/Change/Done-when structure."},
+    {"text": "Every File path across all six files exists in the ACE repo at run time", "passed": true, "evidence": "Agent's return notes real exploration with line numbers (planner.js:267, runtimeConfig.js:32, etc.) and no invented paths."},
+    {"text": "Cross-ticket dependencies are noted ('Blocked by: None' for 01/02/03, '03' for 04/05/06)", "passed": false, "evidence": "Chat return notes dependencies for 04/05/06 in prose, but per-file docs don't carry a 'Blocked by' header field — the cross-ticket structure isn't materialized in the files themselves."},
+    {"text": "Chat response includes an index table: ticket, mode, file path, blocked-by, ready", "passed": true, "evidence": "Chat return has a 6-row table mapping plan file → ticket, though columns differ slightly from the template (no explicit 'ready?' column)."}
+  ],
+  "summary": {"passed": 3, "failed": 3, "total": 6, "pass_rate": 0.5}
+}

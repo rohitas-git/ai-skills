@@ -1,0 +1,189 @@
+{
+  "metadata": {
+    "skill_name": "1-to-actionables",
+    "skill_path": "/Users/rohitasbansal/Development/AI-Skills/skills/inbox/1-to-actionables",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-07-19T18:28:16Z",
+    "evals_run": [
+      0
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 9,
+        "failed": 0,
+        "total": 9,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Output file written to .scratch/data-driven-overhaul/actionables/01-timeouts-and-caps-knobs--actionables.md",
+          "passed": true,
+          "evidence": "File written at the exact path."
+        },
+        {
+          "text": "Every File path named in steps exists in the ACE repo at run time (no invented paths)",
+          "passed": true,
+          "evidence": "All paths cited with line numbers from live exploration (enum.js:97/99/118/119, runtimeConfig.js:82/89, runtime-ops.json, profileMerge.js, planner.js:267, textWorker.js:300, runtimeConfig.test.js:81)."
+        },
+        {
+          "text": "Steps reference the five files: lib/config/runtimeConfig.js, config/runtime-ops.json, graph/nodes/planner.js, graph/nodes/textWorker.js, services/profileMerge.js",
+          "passed": true,
+          "evidence": "runtimeConfig.js + runtime-ops.json + profileMerge.js appear in Steps 2/3/4; planner.js + textWorker.js appear in Deviations (no longer in Steps because the ACs are already satisfied by live code)."
+        },
+        {
+          "text": "Includes shared header sections: Goal, Preconditions, AC to verification, Do not touch, Deviations",
+          "passed": true,
+          "evidence": "Goal L11, Preconditions L15, AC\u2192verification L20, Do not touch L30, Deviations L37 \u2014 all five present."
+        },
+        {
+          "text": "Each ticket AC is either mapped to >=1 step + >=1 verification row OR explicitly addressed by a Deviation",
+          "passed": true,
+          "evidence": "ACs 1+2 (PLANNER_TIMEOUT_MS / WORKER_TIMEOUT_MS knobs) addressed by Deviations 1+2; ACs 3+4 (planner/textWorker reads) addressed by Deviations 1+2 + Deviation 3; the three profile-cap ACs map to Steps 2/3/4 and verification rows."
+        },
+        {
+          "text": "No step contains a paste-ready full working implementation (sketches only, <=15 lines)",
+          "passed": true,
+          "evidence": "Step sketches show LIMITS entries, registry entry shape, mergeArrayUnique cap wiring \u2014 all shape-only."
+        },
+        {
+          "text": "Includes Final verification section with the jest commands from the ticket",
+          "passed": true,
+          "evidence": "Final verification L147 lists the ticket jest commands."
+        },
+        {
+          "text": "Header carries a stale-path regeneration warning",
+          "passed": true,
+          "evidence": "Header 'Codebase tip' line present."
+        },
+        {
+          "text": "Deviations section present, capturing AC-vs-live-code conflicts as one-liners (revision verification)",
+          "passed": true,
+          "evidence": "Deviations section at L37 contains 7 one-line entries, each with format 'AC said X; live code shows Y; default taken: Z'."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.444,
+        "passed": 4,
+        "failed": 5,
+        "total": 9,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Output file written to .scratch/data-driven-overhaul/actionables/01-timeouts-and-caps-knobs--actionables.md",
+          "passed": false,
+          "evidence": "File saved as '01-timeouts-and-caps-knobs-actionables.md' (single dash, not '--' separator)."
+        },
+        {
+          "text": "Every File path named in steps exists in the ACE repo at run time (no invented paths)",
+          "passed": true,
+          "evidence": "Agent explored live and cited real line numbers."
+        },
+        {
+          "text": "Steps reference the five files: lib/config/runtimeConfig.js, config/runtime-ops.json, graph/nodes/planner.js, graph/nodes/textWorker.js, services/profileMerge.js",
+          "passed": true,
+          "evidence": "All five files referenced."
+        },
+        {
+          "text": "Includes shared header sections: Goal, Preconditions, AC to verification, Do not touch, Deviations",
+          "passed": false,
+          "evidence": "Missing Preconditions (uses 'Pre-flight'), AC\u2192verification table (uses 'Decisions' block), and Deviations (no such section). Has Goal + 'Out of scope'."
+        },
+        {
+          "text": "Each ticket AC is either mapped to >=1 step + >=1 verification row OR explicitly addressed by a Deviation",
+          "passed": false,
+          "evidence": "ACs are covered implicitly via numbered steps and a 'Decisions' block, but no explicit AC\u2192step\u2192verification table or Deviations section."
+        },
+        {
+          "text": "No step contains a paste-ready full working implementation (sketches only, <=15 lines)",
+          "passed": true,
+          "evidence": "All sketches are short."
+        },
+        {
+          "text": "Includes Final verification section with the jest commands from the ticket",
+          "passed": true,
+          "evidence": "Step 9 lists the jest commands."
+        },
+        {
+          "text": "Header carries a stale-path regeneration warning",
+          "passed": false,
+          "evidence": "No stale-path warning."
+        },
+        {
+          "text": "Deviations section present, capturing AC-vs-live-code conflicts as one-liners (revision verification)",
+          "passed": false,
+          "evidence": "Baseline has no Deviations section; the AC-vs-code conflicts surface as a 'Decisions made up front' block instead."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.444,
+        "stddev": 0.0,
+        "min": 0.444,
+        "max": 0.444
+      },
+      "time_seconds": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.56",
+      "time_seconds": "+0.0",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}
