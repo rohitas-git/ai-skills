@@ -15,7 +15,9 @@
 
 **Discovery:** `skills/` + `inbox/` only.
 
-**Wiki:** `wikis/index.md` + `wikis/log.md` (update on place/ingest/organize).
+**Wiki:** `wikis/index.md` + `wikis/log.md` (update on place/ingest/organize).  
+**Version / history:** root `catalog.yaml` + `docs/FEATURE-LOG.md` (bump on ADR / convention change).  
+**Butler route skim:** `skills/0-butler/references/route-index.md` (generated).
 
 **Hub packages:** `hubs/{hub}/hub.html` + `workflow.json`.
 

@@ -2,13 +2,32 @@
 name: 1-clean-craftsmanship
 description: >
   Q&A / principle reference from Clean Code and Clean Architecture (why, trade-offs,
-  SOLID, Uncle Bob framing). Not the always-on code style enforcer (/1-coding-standards).
-  Not a codebase deepening survey (/0-improve-codebase-architecture) or deep-module
-  vocab (/1-codebase-design). Soft under Architecture domain.
+  SOLID, Uncle Bob framing). Not the always-on code style enforcer
+  (/1-coding-standards). Not a codebase deepening survey
+  (/0-improve-codebase-architecture) or deep-module vocab (/1-codebase-design). Soft
+  under Architecture domain. Use when: Q&A / principle reference from Clean Code and
+  Clean Architecture (why, trade-offs, SOLID, Uncle Bob. Hub:
+  /0-improve-codebase-architecture.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-improve-codebase-architecture
+    role: soft
+    when:
+      - "Q&A / principle reference from Clean Code and Clean Architecture (why, trade-offs, SOLID, Uncle Bob"
+    triggers:
+      - "1-clean-craftsmanship"
+      - "clean craftsmanship"
+    requires_setup: false
 ---
 
 # Clean Craftsmanship
+
+## Process
+
+1. Follow the steps and hard rules in this skill.
+2. Load linked `references/` only when the branch needs them.
+
 
 **Atomic job:** principle-level advice from Clean Code + Clean Architecture — **why** and trade-offs, not default codegen style.
 

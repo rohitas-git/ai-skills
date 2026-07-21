@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "kind": "domain_hub_workflow",
+  "domain_id": 15,
+  "domain": "UI/UX",
+  "hub": "0-ui-ux",
+  "slash": "/0-ui-ux",
+  "path": "skills/0-ui-ux",
+  "package_dir": "hubs/0-ui-ux/",
+  "role": "Visual design & UI craft hub — design intelligence, brand, tokens, styling, creative, banners, HTML slides.",
+  "notes": "Hub → leaf tree. Primary pipeline leaf is 1-ui-ux-pro-max. Soft dual: 1-frontend-ui-engineering (Ship primary).",
+  "parent": {
+    "hub": "0-butler",
+    "slash": "/0-butler",
+    "relationship": "routed_by",
+    "html": "../0-butler/hub.html",
+    "workflow_json": "../0-butler/workflow.json",
+    "skill_path": "skills/0-butler"
+  },
+  "children": [
+    {
+      "link_type": "pipeline",
+      "skills": [
+        "1-ui-ux-pro-max"
+      ],
+      "note": "Primary design-intelligence entry"
+    },
+    {
+      "link_type": "leaf",
+      "skills": [
+        "1-brand",
+        "1-design-system",
+        "1-ui-styling",
+        "1-design",
+        "1-banner-design",
+        "1-slides"
+      ]
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "1-frontend-ui-engineering"
+      ],
+      "note": "Ship primary; dual for a11y production UI after design"
+    }
+  ],
+  "pipeline": [
+    "hub → F-UI1 → leaf",
+    "optional: 1-ui-ux-pro-max → 1-design-system → 1-ui-styling → Ship"
+  ],
+  "forks": [
+    {
+      "id": "F-UI1",
+      "question": "What kind of UI/UX work?",
+      "recommended": "design intelligence for app/web UI → /1-ui-ux-pro-max",
+      "branches": [
+        "design intelligence",
+        "brand",
+        "tokens",
+        "shadcn/tailwind",
+        "creative (logo/CIP/icons)",
+        "banners",
+        "HTML slides",
+        "production a11y UI",
+        "Agent judgment"
+      ]
+    }
+  ],
+  "domain_hubs_routed": null,
+  "artifacts": {
+    "html": "./hub.html",
+    "workflow_json": "./workflow.json",
+    "flows_chart": "../flows-chart.html",
+    "flows_ssot": "../../../skills/0-butler/references/flows.md",
+    "hubs_index": "../index.html",
+    "manifest": "../manifest.json"
+  },
+  "rules": [
+    "butler_links_every_domain_hub",
+    "each_domain_hub_has_package_dir",
+    "each_domain_hub_has_hub_html",
+    "each_domain_hub_has_workflow_json",
+    "each_domain_hub_links_flows_chart",
+    "one_hub_per_domain",
+    "forks_ask_user"
+  ]
+}

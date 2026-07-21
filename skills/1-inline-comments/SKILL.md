@@ -1,17 +1,32 @@
 ---
 name: 1-inline-comments
 description: >
-  Add concise one-line comments immediately above non-obvious code blocks or
-  slightly complex snippets inside function bodies. Use when annotating
-  implementation blocks, dense conditionals, multi-step pipelines, or
-  non-obvious branches. Do not use for public API docs, JSDoc, docstrings,
-  GoDoc, or language-native surface documentation (use 1-code-comments for those).
-  Do not write execution-flow or step-by-step walkthrough comments (use
-  1-execution-flow-comments for those).
+  Add concise one-line comments immediately above non-obvious code blocks or slightly
+  complex snippets inside function bodies. Use when annotating implementation blocks,
+  dense conditionals, multi-step pipelines, or non-obvious branches. Do not use for
+  public API docs, JSDoc, docstrings, GoDoc, or language-native surface documentation
+  (use 1-code-comments for those). Do not write execution-flow or step-by-step
+  walkthrough comments (use 1-execution-flow-comments for those). Hub: /0-implement.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-implement
+    role: soft
+    when:
+      - "annotating implementation blocks, dense conditionals, multi-step pipelines, or non-obvious branches"
+    triggers:
+      - "1-inline-comments"
+      - "inline comments"
+    requires_setup: false
 ---
 
 # Inline Comments
+
+## Process
+
+1. Follow the steps and hard rules in this skill.
+2. Load linked `references/` only when the branch needs them.
+
 
 Place **short line comments above code blocks**, not API docs. Scope is *inside* implementations: a branch, a few dense lines, a pipeline step.
 

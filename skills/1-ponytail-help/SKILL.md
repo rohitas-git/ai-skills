@@ -1,13 +1,32 @@
 ---
 name: 1-ponytail-help
 description: >
-  Quick-reference card for all 0-ponytail modes, skills, and commands.
-  One-shot display, not a persistent mode. Trigger: /1-ponytail-help,
-  "ponytail help", "what 0-ponytail commands", "how do I use ponytail".
+  Quick-reference card for all 0-ponytail modes, skills, and commands. One-shot display,
+  not a persistent mode. Trigger: /1-ponytail-help, "ponytail help", "what 0-ponytail
+  commands", "how do I use ponytail" Use when: Quick-reference card for all 0-ponytail
+  modes, skills, and commands. Hub: /0-ponytail.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-ponytail
+    role: satellite
+    when:
+      - "Quick-reference card for all 0-ponytail modes, skills, and commands"
+    triggers:
+      - "1-ponytail-help"
+      - "ponytail help"
+      - "what 0-ponytail commands"
+      - "how do I use ponytail"
+    requires_setup: false
 ---
 
 # Ponytail Help
+
+## Process
+
+1. Follow the steps and hard rules in this skill.
+2. Load linked `references/` only when the branch needs them.
+
 
 Display this reference card when invoked. One-shot, do NOT change mode,
 write flag files, or persist anything.

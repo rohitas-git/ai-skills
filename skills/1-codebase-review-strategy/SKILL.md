@@ -1,7 +1,23 @@
 ---
 name: 1-codebase-review-strategy
-description: Use when reviewing any codebase of unknown or varying size. Determines repo tier from measurable metrics, selects optimal thinking effort and workflow, and supplies structured prompt templates plus best practices for efficient yet thorough AI agent reviews. Triggered by requests to review complete codebases, assess code quality, plan refactoring, perform security audits, prepare onboarding materials or evaluate maintainability.
+description: >
+  Use when reviewing any codebase of unknown or varying size. Determines repo tier from
+  measurable metrics, selects optimal thinking effort and workflow, and supplies
+  structured prompt templates plus best practices for efficient yet thorough AI agent
+  reviews. Triggered by requests to review complete codebases, assess code quality, plan
+  refactoring, perform security audits, prepare onboarding materials or evaluate
+  maintainability. Hub: /0-review.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-review
+    role: on-ramp
+    when:
+      - "reviewing any codebase of unknown or varying size"
+    triggers:
+      - "1-codebase-review-strategy"
+      - "codebase review strategy"
+    requires_setup: false
 ---
 
 # Codebase Review Strategy

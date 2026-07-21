@@ -1,0 +1,39 @@
+# Catalog product metadata (conventions + tooling — not individual skill versions).
+# Semver: MAJOR = breaking house rules · MINOR = new convention/capability · PATCH = hygiene/docs.
+# On accepted ADR or convention change: bump version here and append docs/FEATURE-LOG.md.
+
+name: rohitas-ai-skills-catalog
+version: "1.0.1"
+schema_version: 1
+
+# Highest ADR that defines current house law (informative; all ADRs still apply).
+adr_floor: "0009"
+
+conventions:
+  depth_prefix: true          # ADR-style; see skills/0-skill-manager/references/depth-prefix-names.md
+  route_surface: required     # metadata.catalog only — ADR 0009
+  hub_membership: required    # ADR 0006
+  six_folders: true           # ADR 0008
+  agent_judgment_on_forks: true
+
+paths:
+  live_skills: skills/
+  inbox: inbox/
+  archive: archive/
+  hubs: hubs/
+  adrs: docs/adr/
+  feature_log: docs/FEATURE-LOG.md
+  route_index: skills/0-butler/references/route-index.md
+  route_surface_spec: skills/0-skill-manager/references/skill-route-surface.md
+  flows_ssot: skills/0-butler/references/flows.md
+
+scripts:
+  lint: scripts/lint-skills
+  route_index: scripts/generate-route-index
+  setup: scripts/setup.sh
+
+# Bump policy (agents: skill-manager after ADR accept)
+version_policy:
+  major: "Breaking rename of folders, route-surface shape, or discovery roots"
+  minor: "New accepted ADR or new required frontmatter/lint gate"
+  patch: "Hygiene, docs, generator fixes, warn cleanup without rule change"

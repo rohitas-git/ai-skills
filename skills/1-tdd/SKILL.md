@@ -1,11 +1,31 @@
 ---
 name: 1-tdd
 description: >
-  Test-driven development (red → green at agreed seams). Use for features or bugs
-  test-first, red-green-refactor phrasing, integration tests, or Prove-It bug
-  reproduction. Ship pipeline after 0-implement; before code-review. Sole TDD skill
-  in this catalog (vendor test-driven-development is merged, not a peer).
+  Test-driven development (red → green at agreed seams). Use when features or bugs are
+  test-first, red-green-refactor phrasing, or Prove-It bug reproduction. Not for: post-green multi-axis
+  review (1-code-review), whole-ship orchestration (0-implement). Hub: /0-implement.
+  Triggers: tdd, test-first, red green, prove it.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-implement
+    role: pipeline
+    when:
+      - "red-green at agreed seams"
+      - "test-first feature or bug"
+      - "prove-it reproduction"
+    not_when:
+      - "multi-axis review after green → 1-code-review"
+      - "no implementation context → 0-implement first"
+    next: [1-code-review]
+    prev: [0-implement]
+    cousins: [2-verify-work]
+    triggers:
+      - "tdd"
+      - "test-first"
+      - "red green"
+      - "prove it"
+    requires_setup: false
 ---
 
 # Test-Driven Development
@@ -26,7 +46,7 @@ When exploring, read `CONTEXT.md` / ADRs so names match domain language.
 4. **Green** — only enough implementation to pass. No speculative features.
 5. **Suite** — full relevant suite; no skipped tests to “make CI green.”
 6. **Closer** — Ship path continues to **`/1-code-review`** (maintainability/refactor pressure lives there).
-7. **Portfolio** — shape effort with [references/test-pyramid.md](./references/test-pyramid.md). UI runtime extras: [references/browser-and-runtime.md](./references/browser-and-runtime.md). Mocking: [mocking.md](./mocking.md). Vendor patterns pack: [references/testing-patterns-vendor.md](./references/testing-patterns-vendor.md). Full vendor TDD body: [references/vendor-tdd-full.md](./references/vendor-tdd-full.md).
+7. **Portfolio** — shape effort with [references/test-pyramid.md](./references/test-pyramid.md). UI runtime extras: [references/browser-and-runtime.md](./references/browser-and-runtime.md). Mocking: [mocking.md](./mocking.md). Vendor patterns pack: [references/testing-patterns-vendor.md](./references/testing-patterns-vendor.md). Full vendor TDD body: [references/vendor-tdd-full.md](./references/vendor-tdd-full.md). Superpowers TDD harvest: [references/superpowers-tdd-full.md](./references/superpowers-tdd-full.md) · anti-patterns: [references/superpowers/testing-anti-patterns.md](./references/superpowers/testing-anti-patterns.md).
 
 ## Rules of the loop
 

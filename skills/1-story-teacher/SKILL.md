@@ -1,7 +1,27 @@
 ---
 name: 1-story-teacher
-description: Use to turn any summary, lesson, educational text, article, book notes, video transcript, URL content, or raw document into an original, engaging short novel or story that teaches the core ideas invisibly through narrative, character decisions, plot consequences, and high-stakes situations — never as direct instruction or tutorial. Triggered by requests like turn this into a novel, teach this through a story, make a fiction version of this lesson, create an adventure that explains, or story that makes this memorable.
+description: >
+  Turn educational material into an original short story that teaches core ideas through
+  narrative. Use when turn this into a novel/story that teaches. Not for: direct multi-level explain
+  (1-learning-explainer) or code walkthrough (1-code-explainer). Hub: /0-learn.
+  Triggers: story that teaches, teach through story, fiction version of lesson.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-learn
+    role: leaf
+    when:
+      - "teach via narrative/story"
+      - "fiction that encodes lessons"
+    not_when:
+      - "direct explain → 1-learning-explainer"
+      - "code explain → 1-code-explainer"
+    cousins: [1-learning-explainer, 1-resource-summarizer]
+    triggers:
+      - "story that teaches"
+      - "teach through story"
+      - "fiction lesson"
+    requires_setup: false
 ---
 
 # Story Teacher

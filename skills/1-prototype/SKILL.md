@@ -1,10 +1,29 @@
 ---
 name: 1-prototype
-description: Build a throwaway 1-prototype to answer a design question. Use when the user wants to sanity-check whether a state model or logic feels right, or explore what a UI should look like.
+description: >
+  Build a throwaway 1-prototype to answer a design question. Use when the user wants to
+  sanity-check whether a state model or logic feels right, or explore what a UI should
+  look like. Hub: /0-grilling.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-grilling
+    role: detour
+    when:
+      - "the user wants to sanity-check whether a state model or logic feels right, or explore what a UI shou"
+    triggers:
+      - "1-prototype"
+      - "prototype"
+    requires_setup: false
 ---
 
 # Prototype
+
+## Process
+
+1. Follow the steps and hard rules in this skill.
+2. Load linked `references/` only when the branch needs them.
+
 ## Boundary
 
 | Need | Skill |

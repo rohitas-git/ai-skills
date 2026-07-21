@@ -55,6 +55,13 @@
         "1-doubt-driven-development"
       ],
       "note": "Vendor harvest: adversarial decision review"
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "1-receive-review"
+      ],
+      "note": "Superpowers harvest: process incoming review feedback"
     }
   ],
   "pipeline": [

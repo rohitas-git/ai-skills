@@ -1,23 +1,40 @@
 ---
 name: 0-ponytail
 description: >
-  Forces the laziest solution that actually works, simplest, shortest, most
-  minimal. Channels a senior dev who has seen everything: question whether the
-  task needs to exist at all (YAGNI), reach for the standard library before
-  custom code, native platform features before dependencies, one line before
-  fifty. Supports intensity levels: lite, full (default), ultra. Use on ANY
-  coding task: writing, adding, refactoring, fixing, reviewing, or designing
-  code, and choosing libraries or dependencies. Also use whenever the user
-  says "0-ponytail", "be lazy", "lazy mode", "simplest solution", "minimal
-  solution", "yagni", "do less", or "shortest path", or complains about
-  over-engineering, bloat, boilerplate, or unnecessary dependencies. Do NOT
-  use for non-coding requests (general knowledge, prose, translation,
-  summaries, recipes).
+  Forces the laziest solution that actually works — YAGNI, stdlib first, minimal code.
+  Use on coding tasks when the user wants simplest/minimal/lazy, or says ponytail/yagni/do less.
+  Not for: multi-axis correctness review (1-code-review), over-engineering-only review (2-ponytail-review).
+  Hub: /0-ponytail. Triggers: ponytail, be lazy, yagni, simplest solution, do less.
+disable-model-invocation: true
 argument-hint: "[lite|full|ultra]"
 license: MIT
+metadata:
+  catalog:
+    hub: 0-ponytail
+    role: hub
+    when:
+      - "want laziest working solution"
+      - "YAGNI / minimal / stdlib first"
+    not_when:
+      - "full multi-axis review → 1-code-review"
+      - "delete-only review pass → 2-ponytail-review"
+    next: [2-ponytail-review]
+    triggers:
+      - "ponytail"
+      - "be lazy"
+      - "yagni"
+      - "simplest solution"
+      - "do less"
+    requires_setup: false
 ---
 
 # Ponytail
+
+## Process
+
+1. Follow the steps and hard rules in this skill.
+2. Load linked `references/` only when the branch needs them.
+
 ## Boundary
 
 | Need | Skill |

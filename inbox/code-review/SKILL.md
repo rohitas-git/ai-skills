@@ -6,6 +6,12 @@ disable-model-invocation: true
 
 # Strict Code Quality Review
 
+## Process
+
+1. Follow the steps and hard rules in this skill.
+2. Load linked `references/` only when the branch needs them.
+
+
 Use this skill for an unusually strict review focused on implementation quality, maintainability, abstraction quality, and codebase health.
 
 Above all, this skill should push the reviewer to be **ambitious** about code structure. Do not merely identify local cleanup opportunities. Actively search for "code judo" moves: restructurings that preserve behavior while making the implementation dramatically simpler, smaller, more direct, and more elegant.
@@ -190,3 +196,7 @@ Treat these as presumptive blockers unless the author can justify them clearly:
 - the PR duplicates an existing helper or puts logic in the wrong layer when there is a clear canonical home
 
 If those conditions are not met, leave explicit, actionable feedback and push for a cleaner decomposition.
+
+## Progressive disclosure
+
+Long host review scaffold — load only the checklist sections needed. Catalog twin: `/1-code-review` when placed.

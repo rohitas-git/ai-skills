@@ -32,6 +32,25 @@
     {
       "link_type": "soft",
       "skills": [
+        "1-write-plan",
+        "1-git-worktrees",
+        "1-subagent-implement",
+        "1-execute-plan",
+        "1-finish-branch"
+      ],
+      "note": "Superpowers harvest: plan path (write \u2192 worktree \u2192 F-SP execute \u2192 finish)",
+      "primary": true
+    },
+    {
+      "link_type": "satellite",
+      "skills": [
+        "1-parallel-agents"
+      ],
+      "note": "Independent multi-domain parallel agents; dual soft under Diagnose"
+    },
+    {
+      "link_type": "soft",
+      "skills": [
         "1-coding-standards"
       ],
       "note": "Always-on lean style; F-C1 vs 1-clean-craftsmanship (Architecture)",
@@ -73,12 +92,14 @@
         "1-ci-cd-and-automation",
         "1-frontend-ui-engineering"
       ],
-      "note": "Vendor harvest: launch, o11y, CI, UI craft"
+      "note": "Vendor harvest: launch, o11y, CI, UI craft; 1-frontend-ui-engineering also soft dual under 0-ui-ux",
+      "primary": true
     }
   ],
   "pipeline": [
     "multi: 1-to-spec \u2192 1-to-tickets \u2192 implement* \u2192 1-tdd \u2192 1-code-review \u2192 commit",
-    "single: implement* \u2192 1-tdd \u2192 1-code-review \u2192 commit"
+    "single: implement* \u2192 1-tdd \u2192 1-code-review \u2192 commit",
+    "optional plan: 1-write-plan \u2192 1-git-worktrees? \u2192 F-SP \u2192 subagent-implement|execute-plan \u2192 closer \u2192 1-finish-branch"
   ],
   "forks": [
     {
@@ -88,6 +109,16 @@
       "branches": [
         "to-spec path",
         "direct implement",
+        "Agent judgment"
+      ]
+    },
+    {
+      "id": "F-SP",
+      "question": "Execute plan same session or new session?",
+      "recommended": "same if subagents available",
+      "branches": [
+        "1-subagent-implement",
+        "1-execute-plan",
         "Agent judgment"
       ]
     },

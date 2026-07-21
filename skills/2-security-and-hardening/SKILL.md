@@ -1,11 +1,26 @@
 ---
 name: 2-security-and-hardening
 description: >
-  Hardens code against vulnerabilities while building or remediating. Use when
-  handling user input, auth, data storage, external integrations, or after a
-  security audit when applying fixes. Not a full audit workflow (use
-  /1-security-auditor). Soft under Review sub-hubs /1-code-review and /1-security-auditor.
+  Hardens code while building or remediating. Use when handling input/auth/storage or
+  applying security fixes. Not for: full security audit workflow (1-security-auditor). Hub: /1-security-auditor.
+  Triggers: harden, security fix while building, input validation.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 1-security-auditor
+    role: soft
+    when:
+      - "harden while building"
+      - "apply security fixes"
+    not_when:
+      - "full audit → 1-security-auditor"
+    cousins: [1-security-auditor, 1-code-review]
+    triggers:
+      - "harden"
+      - "security fix"
+      - "input validation"
+      - "auth hardening"
+    requires_setup: false
 ---
 
 # Security and Hardening

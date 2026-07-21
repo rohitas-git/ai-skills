@@ -90,21 +90,25 @@
     skill path: <code>engineering/0-setup-rohitas-skills/</code> ·
     package: <code>hubs/0-setup-rohitas-skills/</code>
   </p>
-  <p>Gate before Design/Ship pipelines. Writes docs/agents/ SSOT including optional vault root.</p>
+  <p>Gate before Design/Ship. Core SSOT: issue-tracker, domain, optional vault. Triage labels only when F2=Yes (opt-in); soft-mention <code>/0-triage</code> at Done if skipped.</p>
 </section>
 
 <section>
   <h2>Children</h2>
   <ul>
-    <li><strong>hard:</strong> 1-to-spec, 1-to-tickets, triage</li>
-<li><strong>soft:</strong> 1-tdd, 0-diagnosing-bugs, improve-codebase-architecture</li>
-<li><strong>ssot:</strong> issue-tracker, triage-labels, domain, vault</li>
+    <li><strong>hard:</strong> 1-to-spec, 1-to-tickets</li>
+    <li><strong>on-ramp (opt-in):</strong> 0-triage</li>
+    <li><strong>soft:</strong> 1-tdd, 0-diagnosing-bugs, improve-codebase-architecture</li>
+    <li><strong>ssot:</strong> issue-tracker, domain, vault</li>
+    <li><strong>ssot (opt-in):</strong> triage-labels</li>
   </ul>
 </section>
 
 <section>
   <h2>Pipeline</h2>
-  <pre>run once per consumer repo</pre>
+  <pre>run once per consumer repo
+core: issue tracker → domain → optional vault
+F2 triage opt-in (default No); soft-mention if skipped</pre>
 </section>
 
 
@@ -113,7 +117,8 @@
   <table>
     <thead><tr><th>ID</th><th>Question</th><th>Recommended</th><th>Branches</th></tr></thead>
     <tbody>
-      <tr><td><code>F1</code></td><td>Setup already done (docs/agents/ present)?</td><td>Skip if present</td><td>run setup · skip → Design/Ship</td></tr>
+      <tr><td><code>F1</code></td><td>Setup already done (docs/agents/ present)?</td><td>Skip if present</td><td>run setup · skip → Design/Ship · Agent judgment</td></tr>
+      <tr><td><code>F2</code></td><td>Configure /0-triage labels? (incoming issues/PRs — not grill→tickets→ship)</td><td><strong>No</strong></td><td>No · Yes → labels · Agent judgment</td></tr>
     </tbody>
   </table>
 </section>
@@ -142,6 +147,7 @@
 <a href="../0-ponytail/hub.html" class="">ponytail</a>
 <a href="../0-learn/hub.html" class="">learn</a>
 <a href="../0-office/hub.html" class="">office</a>
+<a href="../0-ui-ux/hub.html" class="">ui-ux</a>
   </div>
 </section>
 </main>

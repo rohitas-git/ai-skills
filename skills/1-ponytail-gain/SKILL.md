@@ -1,15 +1,35 @@
 ---
 name: 1-ponytail-gain
 description: >
-  Show ponytail's measured impact as a compact scoreboard: less code, less
-  cost, more speed, from the benchmark medians. One-shot display, not a
-  persistent mode, and not a per-repo number. Trigger: /1-ponytail-gain,
-  "ponytail gain", "what does 0-ponytail save", "show 0-ponytail impact",
-  "ponytail scoreboard".
+  Show ponytail's measured impact as a compact scoreboard: less code, less cost, more
+  speed, from the benchmark medians. One-shot display, not a persistent mode, and not a
+  per-repo number. Trigger: /1-ponytail-gain, "ponytail gain", "what does 0-ponytail
+  save", "show 0-ponytail impact", "ponytail scoreboard" Use when: Show ponytail's
+  measured impact as a compact scoreboard: less code, less cost, more speed, from the.
+  Hub: /0-ponytail.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-ponytail
+    role: satellite
+    when:
+      - "Show ponytail's measured impact as a compact scoreboard: less code, less cost, more speed, from the"
+    triggers:
+      - "1-ponytail-gain"
+      - "ponytail gain"
+      - "what does 0-ponytail save"
+      - "show 0-ponytail impact"
+      - "ponytail scoreboard"
+    requires_setup: false
 ---
 
 # Ponytail Gain
+
+## Process
+
+1. Follow the steps and hard rules in this skill.
+2. Load linked `references/` only when the branch needs them.
+
 
 Display this scoreboard when invoked. One-shot: do NOT change mode, write flag
 files, or persist anything.
@@ -49,3 +69,8 @@ this card points there instead of inventing one.
 
 One-shot display. Edits nothing, changes no mode.
 "stop ponytail" or "normal mode": revert.
+
+
+## Related
+
+**Next:** `/0-ponytail`. Parent hub: `/0-ponytail`.

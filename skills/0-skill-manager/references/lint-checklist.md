@@ -51,14 +51,18 @@ Severity:
 | `lock` | skills-lock paths match on-disk locations for locked skills |
 | `hub-integrity` | each flows.md domain has exactly one ★ hub skill on disk |
 | `hub-children` | children listed under a hub exist on disk (or are axes/docs) |
-| `hub-dir` | each domain hub has package dir `hubs/{hub}/` (flat; no Matt-bucket nesting) |
+| `hub-dir` | each domain hub has package dir `hubs/{hub}/` (flat; no bucket nesting) |
 | `hub-html` | each package has `hub.html` |
 | `hub-workflow-json` | each package has `workflow.json` + entry in `hubs/manifest.json` |
 | `butler-hub-link` | non-butler packages parent-link 0-butler; 0-butler lists every domain hub |
 | `hub-chart-link` | each `hub.html` links `flows-chart.html`; chart matrix links each package |
 | `hub-member` | every live skill is listed under some hub workflow (ADR 0006); see 1-skill-linter |
 | `skill-surface` | name-dir, frontmatter, ref-exists — delegated to 1-skill-linter / scripts |
-| `matt-lean` | main SKILL.md thin + progressive disclosure + chain blurb — 1-skill-linter |
+| `lean` | main SKILL.md thin + progressive disclosure + chain blurb — 1-skill-linter |
+| `route-top-level` | **critical** — no top-level route keys; use `metadata.catalog` only ([skill-route-surface.md](./skill-route-surface.md)) |
+| `description-triggers` | warn — live skills have Use when / Triggers (butler) |
+| `route-hub` | warn — `metadata.catalog.hub` is a known hub |
+| `gate-route` | **critical on new place/ingest** — catalog + description contract present |
 | `forks` | pipeline branches document F# ask-user questions |
 | `atomic-boundary` | high-collision / newly placed skills have Boundary table + one-job description ([atomic-skills.md](./atomic-skills.md)) |
 | `hard-redirect` | cousin jobs redirect with ask-user fork; no silent dual-skill execution |
@@ -66,7 +70,7 @@ Severity:
 
 **Lint op:** load **`/1-skill-linter`** (catalog or skill mode) then merge any remaining catalog-only codes here.
 
-Optional automation: `scripts/lint-skills` mirrors name-dir, ref-exists, hub-member, sprawl counts, and catalog checks for non-LLM CI.
+Optional automation: `scripts/lint-skills` mirrors name-dir, ref-exists, hub-member, route-top-level, description-triggers, sprawl counts, and catalog checks for non-LLM CI (prints `catalog.yaml` version). After membership/frontmatter changes: `scripts/generate-route-index`.
 
 ## Organize op
 

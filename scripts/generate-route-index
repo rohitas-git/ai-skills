@@ -1,0 +1,287 @@
+#!/usr/bin/env python3
+"""Generate skills/0-butler/references/route-index.md from live skills + hubs.
+
+Priority per skill:
+  1. metadata.catalog (house route surface)
+  2. description signals (Use when / Not for / Hub:)
+  3. hub membership from hubs/*/workflow.json + truncated description
+
+Do not hand-edit the output file.
+"""
+from __future__ import annotations
+
+import json
+import re
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+SKILLS = ROOT / "skills"
+HUBS = ROOT / "hubs"
+OUT = SKILLS / "0-butler" / "references" / "route-index.md"
+
+DEPTH_NAME = re.compile(r"^[0-9]+-[a-z0-9]+(-[a-z0-9]+)*$")
+USE_WHEN = re.compile(r"(?i)use when[:\s]+(.+?)(?:\.|not for:|hub:|triggers:|$)", re.S)
+NOT_FOR = re.compile(r"(?i)not for[:\s]+(.+?)(?:\.|use when:|hub:|triggers:|$)", re.S)
+HUB_IN_DESC = re.compile(r"(?i)hub:\s*/?([0-9]+-[a-z0-9]+(?:-[a-z0-9]+)*)")
+
+
+def fm_block(text: str) -> str:
+    if not text.startswith("---"):
+        return ""
+    parts = text.split("---", 2)
+    return parts[1] if len(parts) >= 3 else ""
+
+
+def top_level_keys(fm: str) -> dict[str, str]:
+    out: dict[str, str] = {}
+    for line in fm.splitlines():
+        if not line or line[0] in " \t#":
+            continue
+        if ":" not in line:
+            continue
+        k, v = line.split(":", 1)
+        out[k.strip()] = v.strip().strip('"').strip("'")
+    return out
+
+
+def description_text(fm: str) -> str:
+    """Return full description value including folded lines."""
+    lines = fm.splitlines()
+    for i, line in enumerate(lines):
+        if line.startswith("description:"):
+            rest = line[len("description:") :].strip()
+            if rest in (">", "|", ""):
+                buf = []
+                for j in range(i + 1, len(lines)):
+                    l = lines[j]
+                    if l and not l[0].isspace() and ":" in l:
+                        break
+                    buf.append(l.strip())
+                return " ".join(x for x in buf if x)
+            return rest.strip('"').strip("'")
+    return ""
+
+
+def parse_catalog(fm: str) -> dict | None:
+    """Minimal indent parser for metadata.catalog mapping."""
+    lines = fm.splitlines()
+    # find metadata:
+    mi = None
+    for i, line in enumerate(lines):
+        if line.strip() == "metadata:" or line.startswith("metadata:"):
+            mi = i
+            break
+    if mi is None:
+        return None
+    # find catalog: under metadata (indent > 0)
+    ci = None
+    meta_indent = len(lines[mi]) - len(lines[mi].lstrip(" "))
+    for i in range(mi + 1, len(lines)):
+        line = lines[i]
+        if not line.strip():
+            continue
+        ind = len(line) - len(line.lstrip(" "))
+        if ind <= meta_indent and not line[0].isspace() and ":" in line:
+            break  # left metadata
+        if line.lstrip().startswith("catalog:"):
+            ci = i
+            catalog_indent = ind
+            break
+    if ci is None:
+        return None
+
+    catalog: dict = {}
+    i = ci + 1
+    current_list_key = None
+    while i < len(lines):
+        line = lines[i]
+        if not line.strip() or line.lstrip().startswith("#"):
+            i += 1
+            continue
+        ind = len(line) - len(line.lstrip(" "))
+        if ind <= catalog_indent and not line[0].isspace():
+            break
+        if ind <= catalog_indent and line.lstrip().endswith(":") and not line.lstrip().startswith("-"):
+            # sibling of catalog under metadata
+            if ind <= catalog_indent:
+                break
+        stripped = line.strip()
+        if ind == catalog_indent + 2 or (ind > catalog_indent and stripped and not stripped.startswith("-")):
+            # key: value or key:
+            if ":" in stripped and not stripped.startswith("-"):
+                k, v = stripped.split(":", 1)
+                k, v = k.strip(), v.strip()
+                if v in ("", ">", "|"):
+                    current_list_key = k
+                    catalog[k] = []
+                elif v.startswith("[") and v.endswith("]"):
+                    inner = v[1:-1].strip()
+                    catalog[k] = [
+                        x.strip().strip('"').strip("'")
+                        for x in inner.split(",")
+                        if x.strip()
+                    ]
+                    current_list_key = None
+                else:
+                    # bool / string
+                    if v.lower() in ("true", "false"):
+                        catalog[k] = v.lower() == "true"
+                    else:
+                        catalog[k] = v.strip('"').strip("'")
+                    current_list_key = None
+        elif stripped.startswith("-") and current_list_key:
+            item = stripped[1:].strip().strip('"').strip("'")
+            catalog.setdefault(current_list_key, [])
+            if isinstance(catalog[current_list_key], list):
+                catalog[current_list_key].append(item)
+        i += 1
+    return catalog or None
+
+
+def skill_membership() -> dict[str, list[tuple[str, str]]]:
+    """skill -> [(hub, link_type), ...]"""
+    m: dict[str, list[tuple[str, str]]] = {}
+    if not HUBS.is_dir():
+        return m
+    for wf in sorted(HUBS.glob("*/workflow.json")):
+        try:
+            data = json.loads(wf.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            continue
+        hub = data.get("hub")
+        if not isinstance(hub, str):
+            continue
+        m.setdefault(hub, []).append((hub, "hub-identity"))
+        for child in data.get("children") or []:
+            lt = str(child.get("link_type") or "")
+            for s in child.get("skills") or []:
+                if isinstance(s, str) and DEPTH_NAME.match(s):
+                    m.setdefault(s, []).append((hub, lt))
+    return m
+
+
+def primary_hub(members: list[tuple[str, str]], catalog_hub: str | None) -> str:
+    if catalog_hub:
+        return catalog_hub
+    if not members:
+        return ""
+    # prefer non-butler routing if multiple
+    non_routing = [h for h, lt in members if lt not in ("routing", "delegate") or h != "0-butler"]
+    if non_routing:
+        # deepest-looking: highest depth prefix among hubs that own as non-routing
+        return sorted(non_routing, key=lambda x: (-int(x.split("-", 1)[0]) if x[0].isdigit() else 0, x))[0]
+    return members[0][0]
+
+
+def cell(s: str, n: int = 48) -> str:
+    s = re.sub(r"\s+", " ", s).strip()
+    if len(s) > n:
+        return s[: n - 1] + "…"
+    return s
+
+
+def listish(val) -> str:
+    if val is None:
+        return ""
+    if isinstance(val, list):
+        return ", ".join(str(x) for x in val)
+    return str(val)
+
+
+def row_for(skill_dir: Path, membership: dict) -> dict:
+    name = skill_dir.name
+    text = (skill_dir / "SKILL.md").read_text(encoding="utf-8", errors="replace")
+    fm = fm_block(text)
+    desc = description_text(fm)
+    cat = parse_catalog(fm)
+    members = membership.get(name) or []
+
+    hub = ""
+    role = ""
+    when = ""
+    not_for = ""
+    nxt = ""
+    source = "workflow+desc"
+
+    if cat:
+        source = "catalog"
+        hub = str(cat.get("hub") or "")
+        role = str(cat.get("role") or "")
+        when = listish(cat.get("when") or cat.get("triggers"))
+        not_for = listish(cat.get("not_when"))
+        nxt = listish(cat.get("next"))
+    else:
+        # description parse
+        m = USE_WHEN.search(desc)
+        if m:
+            when = cell(m.group(1), 60)
+            source = "description"
+        m = NOT_FOR.search(desc)
+        if m:
+            not_for = cell(m.group(1), 48)
+        m = HUB_IN_DESC.search(desc)
+        if m:
+            hub = m.group(1)
+        if not when and desc:
+            when = cell(desc, 60)
+
+    if not hub:
+        hub = primary_hub(members, None)
+    if not role and members:
+        # first non-hub-identity link type
+        for h, lt in members:
+            if h == hub and lt != "hub-identity":
+                role = lt
+                break
+        if not role and name == hub:
+            role = "hub"
+
+    return {
+        "skill": name,
+        "hub": hub or "—",
+        "role": role or "—",
+        "when": cell(when or "—", 56),
+        "not_for": cell(not_for or "—", 40),
+        "next": cell(nxt or "—", 36),
+        "source": source,
+    }
+
+
+def main() -> int:
+    membership = skill_membership()
+    rows = []
+    if SKILLS.is_dir():
+        for d in sorted(SKILLS.iterdir()):
+            if d.is_dir() and (d / "SKILL.md").is_file() and not d.is_symlink():
+                if DEPTH_NAME.match(d.name) or True:
+                    rows.append(row_for(d, membership))
+
+    # sort by hub then skill
+    rows.sort(key=lambda r: (r["hub"], r["skill"]))
+
+    lines = [
+        "# Route index (generated — do not hand-edit)",
+        "",
+        "Generated by `scripts/generate-route-index`.",
+        "Sources (priority): `metadata.catalog` → description parse → hub membership + description.",
+        "Butler: load this with `flows.md` for orient/query; open full `SKILL.md` only after choosing.",
+        "",
+        f"**Skills:** {len(rows)}",
+        "",
+        "| Skill | Hub | Role | When | Not for | Next | Src |",
+        "|-------|-----|------|------|---------|------|-----|",
+    ]
+    for r in rows:
+        lines.append(
+            f"| `{r['skill']}` | `{r['hub']}` | {r['role']} | {r['when']} | {r['not_for']} | {r['next']} | {r['source']} |"
+        )
+    lines.append("")
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    OUT.write_text("\n".join(lines), encoding="utf-8")
+    print(f"Wrote {OUT.relative_to(ROOT)} ({len(rows)} skills)", file=sys.stderr)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

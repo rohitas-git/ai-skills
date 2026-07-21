@@ -1,14 +1,32 @@
 ---
 name: 1-coding-standards
 description: >
-  Always-on lean coding standards for naming, modularity, error handling, and
-  comments while generating or reviewing code. Not Clean Code/Architecture Q&A
-  (/1-clean-craftsmanship). For file layout use 1-stepdown-rule; API docs → 1-code-comments;
-  one-line blocks → 1-inline-comments; numbered flow trees → execution-flow-comments.
-  Soft under Ship / Architecture.
+  Always-on lean coding standards for naming, modularity, error handling, and comments
+  while generating or reviewing code. Not Clean Code/Architecture Q&A
+  (/1-clean-craftsmanship). For file layout use 1-stepdown-rule; API docs →
+  1-code-comments; one-line blocks → 1-inline-comments; numbered flow trees →
+  execution-flow-comments. Soft under Ship / Architecture. Use when: Always-on lean
+  coding standards for naming, modularity, error handling, and comments while generatin.
+  Hub: /0-improve-codebase-architecture.
+metadata:
+  catalog:
+    hub: 0-improve-codebase-architecture
+    role: soft
+    when:
+      - "Always-on lean coding standards for naming, modularity, error handling, and comments while generatin"
+    triggers:
+      - "1-coding-standards"
+      - "coding standards"
+    requires_setup: false
 ---
 
 # Coding Standards
+
+## Process
+
+1. Follow the steps and hard rules in this skill.
+2. Load linked `references/` only when the branch needs them.
+
 
 **Atomic job:** enforce lean standards **while writing or reviewing code**.
 

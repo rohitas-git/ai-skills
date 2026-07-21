@@ -1,11 +1,28 @@
 ---
 name: 1-code-review
 description: >
-  Multi-axis 0-review of changes since a fixed point: Spec (ticket/PRD fidelity),
-  Standards (repo docs + smell baseline), and Maintainability (structure, spaghetti,
-  code-judo). Runs every applicable axis after a short scan; soft-skips axes without
-  inputs. Use as implement's closer, for branch/PR 0-review, or "review since X".
+  Multi-axis review of changes (Spec, Standards, Maintainability, …). Use when reviewing
+  a diff/PR/slice after implementation. Not for: over-engineering-only review (2-ponytail-review),
+  mid-build verify (2-verify-work), security-only deep audit (1-security-auditor / 2-security-and-hardening).
+  Hub: /1-code-review (also ship closer under 0-implement). Triggers: code review, review my changes.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 1-code-review
+    role: sub-hub
+    when:
+      - "multi-axis review of changes"
+      - "ship closer after implement/tdd"
+    not_when:
+      - "delete-only over-engineering → 2-ponytail-review"
+      - "quick mid-build check → 2-verify-work"
+    prev: [1-tdd, 0-implement]
+    cousins: [2-ponytail-review, 2-verify-work, 2-software-architect]
+    triggers:
+      - "code review"
+      - "review my changes"
+      - "multi-axis review"
+    requires_setup: false
 ---
 
 # Code Review (multi-axis)
@@ -20,6 +37,7 @@ disable-model-invocation: true
 | Over-engineering only | `/2-ponytail-review` |
 | Architecture persona review | `/2-software-architect` |
 | Hardening while building | `/2-security-and-hardening` |
+| Process incoming review comments | `/1-receive-review` |
 
 
 Review the diff between `HEAD` and a **fixed point** on up to three axes:
@@ -90,7 +108,7 @@ Spawn parallel general-purpose sub-agents (one per applicable axis). Each loads 
 
 Do **not** merge axes into one priority list — a Standards pass must not hide a Spec fail.
 
-Within each axis, optional severity labels and sizing notes: [references/severity-and-sizing.md](./references/severity-and-sizing.md). Full vendor five-axis body: [references/vendor-code-review-full.md](./references/vendor-code-review-full.md).
+Within each axis, optional severity labels and sizing notes: [references/severity-and-sizing.md](./references/severity-and-sizing.md). Full vendor five-axis body: [references/vendor-code-review-full.md](./references/vendor-code-review-full.md). Subagent request-review harvest: [references/superpowers-request-review.md](./references/superpowers-request-review.md) · reviewer template: [references/superpowers/code-reviewer.md](./references/superpowers/code-reviewer.md).
 
 ## Don't use when
 

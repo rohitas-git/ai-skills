@@ -1,17 +1,33 @@
 ---
 name: 1-code-comments
 description: >
-  Write clear, professional API and surface documentation using the convention
-  for the language in context (JSDoc for JS/TS, docstrings for Python, GoDoc,
-  rustdoc, etc.). Prefer intention-revealing names. Comment why, not what. Never
-  write execution-flow or step-by-step walkthrough comments unless the user
-  invokes execution-flow-comments. Use when writing or reviewing public/exported
-  docs and contracts. For one-line comments above internal code blocks, use
-  inline-comments. For numbered Execution Flow trees, use execution-flow-comments.
+  Write clear, professional API and surface documentation using the convention for the
+  language in context (JSDoc for JS/TS, docstrings for Python, GoDoc, rustdoc, etc.).
+  Prefer intention-revealing names. Comment why, not what. Never write execution-flow or
+  step-by-step walkthrough comments unless the user invokes execution-flow-comments. Use
+  when writing or reviewing public/exported docs and contracts. For one-line comments
+  above internal code blocks, use inline-comments. For numbered Execution Flow trees,
+  use execution-flow-comments. Hub: /0-implement.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-implement
+    role: soft
+    when:
+      - "writing or reviewing public/exported docs and contracts"
+    triggers:
+      - "1-code-comments"
+      - "code comments"
+    requires_setup: false
 ---
 
 # Code Comments
+
+## Process
+
+1. Follow the steps and hard rules in this skill.
+2. Load linked `references/` only when the branch needs them.
+
 
 Apply **Clean Code** discipline with **language-native professional conventions** for **API / surface docs**. Comments support readers; they must not narrate the code.
 

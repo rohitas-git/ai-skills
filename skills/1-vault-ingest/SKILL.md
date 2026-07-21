@@ -1,15 +1,37 @@
 ---
 name: 1-vault-ingest
 description: >
-  Ingest knowledge into Rohitas's Notes: process chat text, Inbox files, or URLs;
-  create or update Concepts; report inconsistencies; log; offer vault-explain.
-  Uses 1-resource-summarizer for long sources and 0-rohitas-vault-wiki for schema.
-  Use when the user says ingest, process inbox, update vault with, put this in
-  the wiki, compile this source, or /1-vault-ingest.
+  Ingest knowledge into Rohitas's Notes (chat/Inbox/URLs → Concepts). Use for ingest,
+  process inbox, compile source into wiki. Not for: fast capture only (1-vault-inbox) or query notes
+  (1-wiki-query). Hub: /0-rohitas-vault-wiki. Triggers: ingest, process inbox, put this in the wiki.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-rohitas-vault-wiki
+    role: pipeline
+    when:
+      - "compile sources into Concepts"
+      - "process inbox into vault"
+    not_when:
+      - "quick capture only → 1-vault-inbox"
+      - "ask notes a question → 1-wiki-query"
+    next: [1-vault-explain]
+    prev: [1-vault-inbox]
+    triggers:
+      - "ingest"
+      - "process inbox"
+      - "put this in the wiki"
+      - "1-vault-ingest"
+    requires_setup: false
 ---
 
 # Vault Ingest
+
+## Process
+
+1. Follow the steps and hard rules in this skill.
+2. Load linked `references/` only when the branch needs them.
+
 ## Boundary
 
 | Need | Skill |

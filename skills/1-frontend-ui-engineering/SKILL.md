@@ -1,8 +1,27 @@
 ---
 name: 1-frontend-ui-engineering
 description: >
-  Accessible, responsive, production-quality UI (not generic AI aesthetics). Use when building or hardening user-facing pages, forms, empty/error states, or keyboard/focus behavior.
+  Accessible, responsive, production-quality UI (not generic AI aesthetics). Use when
+  building/hardening user-facing pages, forms, empty/error states, keyboard/focus. Not for: design tokens
+  only (1-design-system) or brand voice (1-brand). Hub: /0-ui-ux (also soft under 0-implement).
+  Triggers: frontend UI, accessible UI, production UI components.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-ui-ux
+    role: soft
+    when:
+      - "production accessible UI implementation"
+      - "forms/states/keyboard"
+    not_when:
+      - "tokens only → 1-design-system"
+      - "brand messaging → 1-brand"
+    cousins: [1-ui-styling, 1-ui-ux-pro-max]
+    triggers:
+      - "frontend UI"
+      - "accessible UI"
+      - "production UI"
+    requires_setup: false
 ---
 
 # Frontend UI Engineering

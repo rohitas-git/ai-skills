@@ -3,11 +3,23 @@ name: 1-skill-atomize
 description: >
   Make catalog skills atomic: one job each, Boundary tables, hard redirects, and
   ask-user forks for collision paths. Scans for content overlap (excluding intentional
-  hub/wrapper/pipeline links), then dry-runs and applies reorg under skill-manager.
-  Use for skill overlap, atomize skills, skills-reorg, boundary redirects, high-overlap
-  pass, or /1-skill-atomize. Parent hub: skill-manager. Not report-only lint (/1-skill-linter)
-  and not body craft (/0-skill-creator).
+  hub/wrapper/pipeline links), then dry-runs and applies reorg under skill-manager. Use
+  for skill overlap, atomize skills, skills-reorg, boundary redirects, high-overlap
+  pass, or /1-skill-atomize. Parent hub: skill-manager. Not report-only lint
+  (/1-skill-linter) and not body craft (/0-skill-creator) Use when: Make catalog skills
+  atomic: one job each, Boundary tables, hard redirects, and ask-user forks for co. Hub:
+  /0-skill-manager.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-skill-manager
+    role: pipeline
+    when:
+      - "Make catalog skills atomic: one job each, Boundary tables, hard redirects, and ask-user forks for co"
+    triggers:
+      - "1-skill-atomize"
+      - "skill atomize"
+    requires_setup: false
 ---
 
 # Skill Atomize

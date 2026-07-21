@@ -26,6 +26,13 @@
       ]
     },
     {
+      "link_type": "on-ramp",
+      "skills": [
+        "1-brainstorm"
+      ],
+      "note": "Superpowers harvest: hard design gate before implement (F-B1 vs grill)"
+    },
+    {
       "link_type": "pull-in",
       "skills": [
         "1-domain-modeling"
@@ -53,6 +60,16 @@
     "merge out \u2192 Ship"
   ],
   "forks": [
+    {
+      "id": "F-B1",
+      "question": "Hard brainstorm design-gate or grill interview?",
+      "recommended": "grill if product requirements; brainstorm if greenfield feature design",
+      "branches": [
+        "1-brainstorm",
+        "1-grill-with-docs / 1-grill-me",
+        "Agent judgment"
+      ]
+    },
     {
       "id": "F2",
       "question": "Codebase present?",

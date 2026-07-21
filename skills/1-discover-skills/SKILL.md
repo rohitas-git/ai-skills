@@ -1,10 +1,32 @@
 ---
 name: 1-discover-skills
-description: Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is there a skill that can...", or express interest in extending capabilities. This skill should be used when the user is looking for functionality that might exist as an installable skill.
+description: >
+  Helps users discover and install agent skills when they ask questions like "how do I
+  do X", "find a skill for X", "is there a skill that can...", or express interest in
+  extending capabilities. This skill should be used when the user is looking for
+  functionality that might exist as an installable skill. Use when: Helps users discover
+  and install agent skills when they ask questions like "how do I do X", "find a. Hub:
+  /0-skill-manager.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-skill-manager
+    role: soft
+    when:
+      - "Helps users discover and install agent skills when they ask questions like \"how do I do X\", \"find a"
+    triggers:
+      - "1-discover-skills"
+      - "discover skills"
+    requires_setup: false
 ---
 
 # Find Skills
+
+## Process
+
+1. Follow the steps and hard rules in this skill.
+2. Load linked `references/` only when the branch needs them.
+
 ## Boundary
 
 | Need | Skill |

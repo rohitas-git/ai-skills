@@ -1,6 +1,6 @@
 # 0-skill-creator — full guide
 
-> Progressive disclosure body moved from SKILL.md for Matt-lean main file.
+> Progressive disclosure body moved from SKILL.md for lean main file.
 
 # Skill Creator
 

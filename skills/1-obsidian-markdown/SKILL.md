@@ -1,7 +1,21 @@
 ---
 name: 1-obsidian-markdown
-description: Create and edit Obsidian Flavored Markdown with wikilinks, embeds, callouts, properties, and other Obsidian-specific syntax. Use when working with .md files in Obsidian, or when the user mentions wikilinks, callouts, frontmatter, tags, embeds, or Obsidian notes.
+description: >
+  Create and edit Obsidian Flavored Markdown with wikilinks, embeds, callouts,
+  properties, and other Obsidian-specific syntax. Use when working with .md files in
+  Obsidian, or when the user mentions wikilinks, callouts, frontmatter, tags, embeds, or
+  Obsidian notes. Hub: /0-rohitas-vault-wiki.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-rohitas-vault-wiki
+    role: leaf
+    when:
+      - "working with"
+    triggers:
+      - "1-obsidian-markdown"
+      - "obsidian markdown"
+    requires_setup: false
 ---
 
 # Obsidian Flavored Markdown Skill

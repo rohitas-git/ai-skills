@@ -51,7 +51,7 @@ Examples of intentional (do not “fix” by merging):
 2. Add **Boundary** table (self + cousins).
 3. Add **Hard redirect** + **Forks** matching flows F# IDs.
 4. Strip re-implemented cousin procedures (one-line pointer only).
-5. Keep Matt-lean SKILL.md; depth in `references/`.
+5. Keep lean SKILL.md; depth in `references/`.
 6. Update flows.md children + fork tables.
 7. Update hub `workflow.json` if domain hub package exists.
 8. README one-liners if description changed materially.

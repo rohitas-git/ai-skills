@@ -1,8 +1,33 @@
 ---
 name: 0-wayfinder
-description: Plan a huge chunk of work — more than one agent session can hold — as a shared map of decision tickets on your issue tracker, and resolve them one at a time until the way to the destination is clear.
+description: >
+  Plan work too large for one session as decision tickets on the issue tracker until the
+  path is clear. Use when multi-session fog / huge effort needs a map. Not for: single-feature implement
+  (0-implement), already-clear grill→spec (0-grilling/1-to-spec). Hub: /0-wayfinder.
+  Triggers: wayfinder, multi-session plan, fog map, decision tickets.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-wayfinder
+    role: hub
+    when:
+      - "work larger than one session"
+      - "fog map of decision tickets"
+    not_when:
+      - "clear single-slice build → 0-implement"
+      - "short grill → 0-grilling"
+    next: [1-to-spec, 0-implement]
+    triggers:
+      - "wayfinder"
+      - "multi-session"
+      - "fog map"
+      - "decision tickets"
+    requires_setup: false
 ---
+## Process
+
+1. Follow this skill's procedure.
+
 
 A loose idea has arrived — too big for one agent session, and wrapped in fog: the way from here to the **destination** isn't visible yet. Wayfinding is about finding that way, not charging at the destination. This skill charts the way as a **shared map** on the repo's issue tracker, then works its **decision tickets** — questions whose resolution is a decision, not slices of a build to execute — one at a time until the route is clear.
 

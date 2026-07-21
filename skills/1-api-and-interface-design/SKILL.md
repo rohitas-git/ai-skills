@@ -1,8 +1,20 @@
 ---
 name: 1-api-and-interface-design
 description: >
-  Stable APIs and module boundaries (REST/GraphQL/types). Use when designing public interfaces, versioning contracts, or validating at trust boundaries.
+  Stable APIs and module boundaries (REST/GraphQL/types). Use when designing public
+  interfaces, versioning contracts, or validating at trust boundaries. Hub:
+  /0-improve-codebase-architecture.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-improve-codebase-architecture
+    role: soft
+    when:
+      - "designing public interfaces, versioning contracts, or validating at trust boundaries"
+    triggers:
+      - "1-api-and-interface-design"
+      - "api and interface design"
+    requires_setup: false
 ---
 
 # API and Interface Design

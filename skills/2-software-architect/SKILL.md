@@ -1,10 +1,36 @@
 ---
 name: 2-software-architect
-description: Act as a Grandmaster software architect and system designer. Analyze codebases/projects for current architectural strategy, evaluate against core design pillars, suggest alternatives with pros/cons, and assess impact on key metrics. Trigger on requests like system design 0-review, architecture evaluation, refactoring strategy, trade-off analysis.
+description: >
+  Grandmaster architecture persona: evaluate strategy, alternatives, trade-offs. Use when
+  system design review, architecture evaluation, refactoring strategy. Not for: multi-axis PR review
+  (1-code-review) or codebase deepening scan (0-improve-codebase-architecture). Hub: /1-code-review.
+  Triggers: system design review, architecture evaluation, trade-off analysis.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 1-code-review
+    role: soft
+    when:
+      - "architecture strategy/trade-off review"
+      - "system design evaluation"
+    not_when:
+      - "PR axes review → 1-code-review"
+      - "deepening HTML scan → 0-improve-codebase-architecture"
+    cousins: [0-improve-codebase-architecture, 1-code-review]
+    triggers:
+      - "system design review"
+      - "architecture evaluation"
+      - "trade-off analysis"
+    requires_setup: false
 ---
 
 # Software Architect Skill
+
+## Process
+
+1. Follow the steps and hard rules in this skill.
+2. Load linked `references/` only when the branch needs them.
+
 ## Boundary
 
 | Need | Skill |

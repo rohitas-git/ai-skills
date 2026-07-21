@@ -1,12 +1,27 @@
 ---
 name: 1-teach
 description: >
-  Multi-session teaching workspace in the current directory (MISSION.md, lessons,
-  learning-records). Use for ongoing courses, not one-shot explain or tutoring.
-  Satellite under /0-learn. Not for single-concept ELI5 (/1-learning-explainer) or vault
-  Concept explain (/1-vault-explain).
+  Multi-session teaching workspace (MISSION.md, lessons). Use for ongoing courses, not
+  one-shot explain. Not for: single-concept ELI5 (1-learning-explainer) or vault Concept explain (1-vault-explain).
+  Hub: /0-learn. Triggers: teach course, multi-session learning, MISSION.md.
 disable-model-invocation: true
 argument-hint: "What would you like to learn about?"
+metadata:
+  catalog:
+    hub: 0-learn
+    role: satellite
+    when:
+      - "multi-session course workspace"
+      - "ongoing teaching"
+    not_when:
+      - "one-shot explain → 1-learning-explainer"
+      - "vault concept → 1-vault-explain"
+    cousins: [1-learning-explainer, 1-story-teacher]
+    triggers:
+      - "teach course"
+      - "multi-session"
+      - "MISSION.md"
+    requires_setup: false
 ---
 
 # Teach (workspace course)

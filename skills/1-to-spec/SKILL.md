@@ -1,7 +1,28 @@
 ---
 name: 1-to-spec
-description: Turn the current conversation into a spec and publish it to the project issue tracker — no interview, just synthesis of what you've already discussed.
+description: >
+  Turn the current conversation into a spec and publish it to the project issue tracker —
+  no interview, just synthesis. Use when the thread is already decided enough to write a PRD/spec.
+  Not for: interviewing to discover intent (0-grilling), cutting tickets (1-to-tickets). Hub: /0-implement.
+  Triggers: to-spec, write a spec, publish PRD. Requires /0-setup-rohitas-skills.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-implement
+    role: pipeline
+    when:
+      - "synthesize decided conversation into a spec"
+      - "publish PRD to tracker"
+    not_when:
+      - "still need interview → 0-grilling"
+      - "already have spec → 1-to-tickets"
+    next: [1-to-tickets]
+    prev: [0-grilling]
+    triggers:
+      - "to-spec"
+      - "write a spec"
+      - "publish PRD"
+    requires_setup: true
 ---
 
 This skill takes the current conversation context and codebase understanding and produces a spec (you may know this document as a PRD). Do NOT interview the user — just synthesize what you already know.

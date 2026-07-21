@@ -1,10 +1,30 @@
 ---
 name: 1-strategic-compact
-description: Suggests manual context compaction at logical intervals to preserve context through task phases rather than arbitrary auto-compaction.
+description: >
+  Suggests manual context compaction at logical intervals to preserve context through
+  task phases rather than arbitrary auto-compaction. Use when: Suggests manual context
+  compaction at logical intervals to preserve context through task phases rath. Hub:
+  /0-butler.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-butler
+    role: soft
+    when:
+      - "Suggests manual context compaction at logical intervals to preserve context through task phases rath"
+    triggers:
+      - "1-strategic-compact"
+      - "strategic compact"
+    requires_setup: false
 ---
 
 # Strategic Compact Skill
+
+## Process
+
+1. Follow the steps and hard rules in this skill.
+2. Load linked `references/` only when the branch needs them.
+
 
 Suggests manual `/compact` at strategic points in your workflow rather than relying on arbitrary auto-compaction.
 

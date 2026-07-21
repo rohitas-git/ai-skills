@@ -1,16 +1,32 @@
 ---
 name: 1-stepdown-rule
 description: >
-  Enforce top-down file layout using the newspaper metaphor and stepdown rule
-  (callers above callees, high abstraction first, low-level helpers last).
-  Language-aware for JS/TS, Python, Go, Rust, Java/Kotlin, C/C++, C#, Swift,
-  Shell, and SQL. Use when writing, reorganizing, or reviewing source file
-  structure, function order, module layout, or when the user mentions stepdown,
-  newspaper layout, call hierarchy order, or /1-stepdown-rule.
+  Enforce top-down file layout using the newspaper metaphor and stepdown rule (callers
+  above callees, high abstraction first, low-level helpers last). Language-aware for
+  JS/TS, Python, Go, Rust, Java/Kotlin, C/C++, C#, Swift, Shell, and SQL. Use when
+  writing, reorganizing, or reviewing source file structure, function order, module
+  layout, or when the user mentions stepdown, newspaper layout, call hierarchy order, or
+  /1-stepdown-rule. Hub: /0-implement.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-implement
+    role: soft
+    when:
+      - "writing, reorganizing, or reviewing source file structure, function order, module layout, or when th"
+    triggers:
+      - "1-stepdown-rule"
+      - "stepdown rule"
+    requires_setup: false
 ---
 
 # Stepdown Rule (Newspaper Metaphor)
+
+## Process
+
+1. Follow the steps and hard rules in this skill.
+2. Load linked `references/` only when the branch needs them.
+
 
 Source files must read like a **top-down newspaper story**: headline and lead first, details later. Abstraction descends as you scroll.
 

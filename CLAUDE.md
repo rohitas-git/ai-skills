@@ -13,7 +13,7 @@ Hard rules only. Navigation → [README.md](./README.md). Layout detail → [gui
 | `guidelines/` | Layout, reorg history, human guides | no |
 | `wikis/` | Catalog wiki (`index.md`, `log.md`) | no |
 
-No other top-level directories. Root files: this file, `README.md`, `AGENTS.md`, `skills-lock.json`.
+No other top-level directories. Root files: this file, `README.md`, `AGENTS.md`, `skills-lock.json`, **`catalog.yaml`** (version SSOT).
 
 ## Skill rules
 
@@ -26,13 +26,29 @@ No other top-level directories. Root files: this file, `README.md`, `AGENTS.md`,
    - Dual membership: depth uses **deepest** hub parent; optional `"primary": true` is for ownership/docs only
    - No bare unprefixed live skills. Detail: `skills/0-skill-manager/references/depth-prefix-names.md`. Lint: `depth-prefix`, `depth-graph` critical.
 3. Dual membership is **logical only** (hubs + flows) — no second copy/symlink.
-4. Route: **`/0-butler`**. Mutate: **`/0-skill-manager`**. Lint: **`/1-skill-linter`** (Gate: PASS on place/ingest).
-5. place: `inbox/<name>` → `skills/<name>` + hub slot + `wikis/index.md` + `wikis/log.md` (name already depth-prefixed).
-6. deprecate: `skills/<name>` → `archive/<name>`.
+4. Route: **`/0-butler`**. Mutate: **`/0-skill-manager`**. Create body: **`/0-skill-creator`**. Lint: **`/1-skill-linter`** (Gate: PASS on place/ingest/update).
+5. place: `inbox/<name>` → `skills/<name>` + hub slot + route surface + `wikis/index.md` + `wikis/log.md` + `scripts/generate-route-index` (name already depth-prefixed).
+6. deprecate: `skills/<name>` → `archive/<name>` + regen route-index.
 7. new-hub: write `hubs/0-{hub}/` (depth **0** hub skill + package).
 8. Main `SKILL.md` stays lean; depth in `references/`.
 9. **`disable-model-invocation: true` by default.** Only omit it for true always-on skills (today: `1-coding-standards`, `0-ponytail`). Prefer user/butler invoke over auto-steal.
 10. **Forks** always offer **Agent judgment** — agent picks the best branch and proceeds without further questions on that fork.
+11. **Route surface (ADR 0009):** description when-to-use signal + `metadata.catalog` only (no top-level route keys). Spec: `skills/0-skill-manager/references/skill-route-surface.md`. Butler skim: `skills/0-butler/references/route-index.md`.
+12. **Catalog version:** bump `catalog.yaml` + prepend `docs/FEATURE-LOG.md` when accepting ADRs or changing house rules (skill-manager **release-note**).
+
+## Agent skills
+
+### Issue tracker
+
+Local markdown: issues live as `.scratch/<feature>/` directories. See `docs/agents/issue-tracker.md`.
+
+### Domain docs
+
+Single-context: one `CONTEXT.md` at the repo root, ADRs in `docs/adr/`. See `docs/agents/domain.md`.
+
+### Vault root
+
+Obsidian vault at `/Users/rohitasbansal/Development/Obsidian/Rohitas-Notes`. See `docs/agents/vault.md`.
 
 ## Forbidden
 

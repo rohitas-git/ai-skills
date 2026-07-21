@@ -1,8 +1,20 @@
 ---
 name: 1-browser-testing-with-devtools
 description: >
-  Runtime browser verification via Chrome DevTools MCP (DOM, console, network, performance, screenshots). Use when debugging UI, verifying visual output, or TDD alone cannot see browser state.
+  Runtime browser verification via Chrome DevTools MCP (DOM, console, network,
+  performance, screenshots). Use when debugging UI, verifying visual output, or TDD
+  alone cannot see browser state. Hub: /0-diagnosing-bugs.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-diagnosing-bugs
+    role: soft
+    when:
+      - "debugging UI, verifying visual output, or TDD alone cannot see browser state"
+    triggers:
+      - "1-browser-testing-with-devtools"
+      - "browser testing with devtools"
+    requires_setup: false
 ---
 
 # Browser Testing with DevTools

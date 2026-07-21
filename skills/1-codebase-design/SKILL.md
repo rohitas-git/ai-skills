@@ -1,10 +1,30 @@
 ---
 name: 1-codebase-design
-description: Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find deepening opportunities, decide where a seam goes, make code more testable or AI-navigable, or when another skill needs the deep-module vocabulary.
+description: >
+  Shared vocabulary for designing deep modules. Use when the user wants to design or
+  improve a module's interface, find deepening opportunities, decide where a seam goes,
+  make code more testable or AI-navigable, or when another skill needs the deep-module
+  vocabulary. Hub: /0-improve-codebase-architecture.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-improve-codebase-architecture
+    role: vocab
+    when:
+      - "the user wants to design or improve a module's interface, find deepening opportunities, decide where"
+    triggers:
+      - "1-codebase-design"
+      - "codebase design"
+    requires_setup: false
 ---
 
 # Codebase Design
+
+## Process
+
+1. Follow the steps and hard rules in this skill.
+2. Load linked `references/` only when the branch needs them.
+
 
 Design **deep modules**: a lot of behaviour behind a small interface, placed at a clean seam, testable through that interface. Use this language and these principles wherever code is being designed or restructured. The aim is leverage for callers, locality for maintainers, and testability for everyone.
 

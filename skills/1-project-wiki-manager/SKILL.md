@@ -1,14 +1,32 @@
 ---
 name: 1-project-wiki-manager
 description: >
-  Karpathy-style in-repo project wiki: docs/raw/ → docs/wiki/ concept pages,
-  grounded Q&A, audit, compound knowledge. English-only wiki content. Not
-  code↔docs trigger governance (/1-living-documentation-governor) or personal
-  Obsidian Notes (/0-rohitas-vault-wiki). Soft under Architecture domain.
+  Karpathy-style in-repo project wiki: docs/raw/ → docs/wiki/ concept pages, grounded
+  Q&A, audit, compound knowledge. English-only wiki content. Not code↔docs trigger
+  governance (/1-living-documentation-governor) or personal Obsidian Notes
+  (/0-rohitas-vault-wiki). Soft under Architecture domain. Use when: Karpathy-style
+  in-repo project wiki: docs/raw/ → docs/wiki/ concept pages, grounded Q&A, audit, comp.
+  Hub: /0-improve-codebase-architecture.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-improve-codebase-architecture
+    role: soft
+    when:
+      - "Karpathy-style in-repo project wiki: docs/raw/ → docs/wiki/ concept pages, grounded Q&A, audit, comp"
+    triggers:
+      - "1-project-wiki-manager"
+      - "project wiki manager"
+    requires_setup: false
 ---
 
 # Project Wiki Manager
+
+## Process
+
+1. Follow the steps and hard rules in this skill.
+2. Load linked `references/` only when the branch needs them.
+
 
 **Atomic job:** sole editor of a queryable **project** Markdown wiki at `docs/wiki/`, synthesized from `docs/raw/`.
 

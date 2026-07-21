@@ -19,3 +19,14 @@ Do not re-nest by domain here. Domain grouping is logical (hubs + wiki).
 - [observability-and-instrumentation](./1-observability-and-instrumentation/) — vendor harvest (lean); see skill description
 - [performance-optimization](./1-performance-optimization/) — vendor harvest (lean); see skill description
 - [shipping-and-launch](./1-shipping-and-launch/) — vendor harvest (lean); see skill description
+
+## Superpowers harvest (promoted 2026-07-20)
+
+- [1-brainstorm](./1-brainstorm/) — design gate before code (Design)
+- [1-write-plan](./1-write-plan/) — implementation plan from design
+- [1-execute-plan](./1-execute-plan/) — run plan in a separate session
+- [1-subagent-implement](./1-subagent-implement/) — same-session subagent plan exec
+- [1-parallel-agents](./1-parallel-agents/) — independent multi-domain agents
+- [1-git-worktrees](./1-git-worktrees/) — isolated workspaces
+- [1-finish-branch](./1-finish-branch/) — merge/PR/cleanup after green
+- [1-receive-review](./1-receive-review/) — process incoming review feedback

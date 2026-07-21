@@ -1,8 +1,27 @@
 ---
 name: 1-pptx
-description: "Use this skill any time a .pptx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations; reading, parsing, or extracting text from any .pptx file (even if the extracted content will be used elsewhere, like in an email or summary); editing, modifying, or updating existing presentations; combining or splitting slide files; working with templates, layouts, speaker notes, or comments. Trigger whenever the user mentions \"deck,\" \"slides,\" \"presentation,\" or references a .pptx filename, regardless of what they plan to do with the content afterward. If a .pptx file needs to be opened, created, or touched, use this skill."
-license: Proprietary. LICENSE.txt has complete terms
+description: >
+  Create/read/edit PowerPoint (.pptx) decks. Use when slides/deck/presentation or .pptx
+  is involved. Not for: Word (1-docx), HTML design slides under UI hub (1-slides), spreadsheets (1-xlsx).
+  Hub: /0-office. Triggers: pptx, slides, deck, presentation.
 disable-model-invocation: true
+license: Proprietary. LICENSE.txt has complete terms
+metadata:
+  catalog:
+    hub: 0-office
+    role: leaf
+    when:
+      - ".pptx / slide deck work"
+    not_when:
+      - "word → 1-docx"
+      - "design HTML slides → 1-slides"
+      - "sheet → 1-xlsx"
+    triggers:
+      - "pptx"
+      - "slides"
+      - "deck"
+      - "presentation"
+    requires_setup: false
 ---
 
 # PPTX Skill

@@ -1,8 +1,20 @@
 ---
 name: 1-observability-and-instrumentation
 description: >
-  Logging, metrics, tracing, and alerting so production behavior is diagnosable. Use when adding instrumentation, defining SLOs/alerts, or making on-call questions answerable from telemetry.
+  Logging, metrics, tracing, and alerting so production behavior is diagnosable. Use
+  when adding instrumentation, defining SLOs/alerts, or making on-call questions
+  answerable from telemetry. Hub: /0-implement.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-implement
+    role: soft
+    when:
+      - "adding instrumentation, defining SLOs/alerts, or making on-call questions answerable from telemetry"
+    triggers:
+      - "1-observability-and-instrumentation"
+      - "observability and instrumentation"
+    requires_setup: false
 ---
 
 # Observability and Instrumentation

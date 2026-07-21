@@ -1,11 +1,25 @@
 ---
 name: 0-review
 description: >
-  Domain hub for verification modes — multi-axis change 0-review, security audit,
-  architecture 0-review, and large-repo 0-review strategy. Use when the user says
-  "0-review", is unsure which 0-review skill to use, or needs the Review domain map.
-  Not the Ship closer itself (that is /1-code-review). Parent: butler.
+  Review domain hub — multi-axis and cousin review skills. Use when choosing how to review
+  work (full axes vs ponytail vs verify). Not for: implementing (0-implement), writing specs (1-to-spec).
+  Hub: /0-review. Triggers: review, which review skill.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-review
+    role: hub
+    when:
+      - "pick a review path"
+      - "post-build review domain"
+    not_when:
+      - "build/implement → 0-implement"
+      - "design grill → 0-grilling"
+    next: [1-code-review]
+    triggers:
+      - "review"
+      - "which review skill"
+    requires_setup: false
 ---
 
 # Review (domain hub)

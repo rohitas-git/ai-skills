@@ -1,10 +1,31 @@
 ---
 name: 1-response-effort-calibrator
-description: Guides the AI on response effort, depth, and style (brief, concise, balanced, detailed, exhaustive) based on prompt cues. Use for requests specifying length, detail level, quick answer, in-depth analysis, or similar effort/verbosity controls.
+description: >
+  Guides the AI on response effort, depth, and style (brief, concise, balanced,
+  detailed, exhaustive) based on prompt cues. Use for requests specifying length, detail
+  level, quick answer, in-depth analysis, or similar effort/verbosity controls. Use when:
+  Guides the AI on response effort, depth, and style (brief, concise, balanced,
+  detailed, exhaustive). Hub: /0-butler.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-butler
+    role: soft
+    when:
+      - "Guides the AI on response effort, depth, and style (brief, concise, balanced, detailed, exhaustive)"
+    triggers:
+      - "1-response-effort-calibrator"
+      - "response effort calibrator"
+    requires_setup: false
 ---
 
 # Response Effort Calibrator
+
+## Process
+
+1. Follow the steps and hard rules in this skill.
+2. Load linked `references/` only when the branch needs them.
+
 
 ## Overview
 

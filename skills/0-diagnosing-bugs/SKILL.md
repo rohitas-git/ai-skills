@@ -1,14 +1,42 @@
 ---
 name: 0-diagnosing-bugs
-description: Diagnosis loop for hard bugs and performance regressions. Use when the user says "diagnose"/"debug this", or reports something broken/throwing/failing/slow.
+description: >
+  Diagnosis loop for hard bugs and performance regressions. Use when the user says
+  "diagnose"/"debug this", or reports something broken/throwing/failing/slow. Not for: greenfield feature
+  build (0-implement), architecture deepening scan (0-improve-codebase-architecture). Hub: /0-diagnosing-bugs.
+  Triggers: diagnose, debug this, failing, slow, regression.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-diagnosing-bugs
+    role: hub
+    when:
+      - "hard bug or performance regression"
+      - "diagnose/debug this"
+    not_when:
+      - "implement known tickets → 0-implement"
+      - "architecture scan → 0-improve-codebase-architecture"
+    next: [1-tdd, 0-implement]
+    triggers:
+      - "diagnose"
+      - "debug this"
+      - "failing"
+      - "slow"
+      - "regression"
+    requires_setup: false
 ---
 
 # Diagnosing Bugs
 
+## Process
+
+1. Follow the steps and hard rules in this skill.
+2. Load linked `references/` only when the branch needs them.
+
+
 A discipline for hard bugs. Skip phases only when explicitly justified.
 
-Vendor extras: [references/vendor-debugging-extras.md](./references/vendor-debugging-extras.md). Full vendor debugging body: [references/vendor-debugging-full.md](./references/vendor-debugging-full.md). Soft: `/1-performance-optimization`, `/1-browser-testing-with-devtools` when placed.
+Vendor extras: [references/vendor-debugging-extras.md](./references/vendor-debugging-extras.md). Full vendor debugging body: [references/vendor-debugging-full.md](./references/vendor-debugging-full.md). Superpowers systematic-debugging harvest: [references/superpowers-debugging-full.md](./references/superpowers-debugging-full.md) · [condition-based-waiting](./references/superpowers/condition-based-waiting.md) · [defense-in-depth](./references/superpowers/defense-in-depth.md) · [root-cause-tracing](./references/superpowers/root-cause-tracing.md). Soft: `/1-performance-optimization`, `/1-browser-testing-with-devtools` when placed. Parallel multi-failure: `/1-parallel-agents`.
 
 When exploring the codebase, read `CONTEXT.md` (if it exists) to get a clear mental model of the relevant modules, and check ADRs in the area you're touching.
 

@@ -1,14 +1,29 @@
 ---
 name: 1-pi-agent-rust
-description: >-
-  Speeds up pi_agent_rust development and verification workflows. Use when editing providers,
-  tools, sessions, extensions, installer/uninstaller logic, or triaging regressions in this repo.
+description: >
+  >- Use when: >-. Hub: /0-butler.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-butler
+    role: soft
+    when:
+      - ">-"
+    triggers:
+      - "1-pi-agent-rust"
+      - "pi agent rust"
+    requires_setup: false
 ---
 
 <!-- pi_agent_rust installer managed skill -->
 
 # Pi Agent Rust
+
+## Process
+
+1. Follow the steps and hard rules in this skill.
+2. Load linked `references/` only when the branch needs them.
+
 
 ## Use This Skill When
 
@@ -174,3 +189,8 @@ mv "$staged" "$destination"
 - Installer/skill changes pass `tests/installer_regression.sh` and `scripts/skill-smoke.sh`.
 - Behavior is explicit on failure paths; no silent fallback surprises.
 - Skill docs and inline fallback remain aligned and current.
+
+
+## Related
+
+**Next:** `/0-butler`. Parent hub: `/0-butler`.

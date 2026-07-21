@@ -1,9 +1,25 @@
 ---
 name: 1-handoff
-description: Compact the current conversation into a handoff document for another agent to pick up.
-argument-hint: "What will the next session be used for?"
+description: >
+  Compact the current conversation into a handoff document for another agent to pick up. Use when: Compact the current conversation into a handoff document for another agent
+  to pick up.. Hub: /0-grilling.
 disable-model-invocation: true
+argument-hint: "What will the next session be used for?"
+metadata:
+  catalog:
+    hub: 0-grilling
+    role: detour
+    when:
+      - "Compact the current conversation into a handoff document for another agent to pick up."
+    triggers:
+      - "1-handoff"
+      - "handoff"
+    requires_setup: false
 ---
+## Process
+
+1. Follow this skill's procedure.
+
 ## Boundary
 
 | Need | Skill |

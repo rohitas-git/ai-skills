@@ -2,12 +2,27 @@
 name: 1-ponytail-debt
 description: >
   Harvest every `0-ponytail:` comment in the codebase into a debt ledger, so the
-  deliberate shortcuts and deferrals 0-ponytail leaves behind get tracked instead
-  of rotting into "later means never". Use when the user says "ponytail debt",
+  deliberate shortcuts and deferrals 0-ponytail leaves behind get tracked instead of
+  rotting into "later means never". Use when the user says "ponytail debt",
   "/1-ponytail-debt", "what did 0-ponytail defer", "list the shortcuts", "ponytail
-  ledger", or "what did we mark to do later". One-shot report, changes nothing.
+  ledger", or "what did we mark to do later". One-shot report, changes nothing. Hub:
+  /0-ponytail.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-ponytail
+    role: satellite
+    when:
+      - "the user says \"ponytail debt\", \"/1-ponytail-debt\", \"what did 0-ponytail defer\", \"list the shortcuts\""
+    triggers:
+      - "1-ponytail-debt"
+      - "ponytail debt"
+    requires_setup: false
 ---
+## Process
+
+1. Follow this skill's procedure.
+
 
 Every deliberate 0-ponytail shortcut is marked with a `0-ponytail:` comment naming
 its ceiling and upgrade path. This collects them into one ledger so a deferral
@@ -43,3 +58,8 @@ End with `<N> markers, <M> with no trigger.` Nothing found: `No 0-ponytail: debt
 Reads and reports only, changes nothing. To persist it, ask and it writes the
 ledger to a file (e.g. `PONYTAIL-DEBT.md`). One-shot. "stop ponytail-debt" or
 "normal mode" to revert.
+
+
+## Related
+
+**Next:** `/0-ponytail`. Parent hub: `/0-ponytail`.

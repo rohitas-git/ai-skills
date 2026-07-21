@@ -1,15 +1,32 @@
 ---
 name: 2-ponytail-review
 description: >
-  Code 0-review focused exclusively on over-engineering. Finds what to delete:
-  reinvented standard library, unneeded dependencies, speculative abstractions,
-  dead flexibility. One line per finding: location, what to cut, what replaces
-  it. Use when the user says "review for over-engineering", "what can we
-  delete", "is this over-engineered", "simplify review", or invokes
-  /2-ponytail-review. Complements correctness-focused 0-review, this one only
-  hunts complexity.
+  Review focused only on over-engineering — what to delete. Use when asked for simplify
+  review, over-engineering review, or /2-ponytail-review. Not for: full multi-axis review (1-code-review)
+  or ponytail while coding (0-ponytail). Hub: /1-code-review. Triggers: over-engineering, what can we delete, simplify review.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 1-code-review
+    role: cousin
+    when:
+      - "over-engineering-only review"
+      - "find what to delete"
+    not_when:
+      - "full Spec/Standards review → 1-code-review"
+      - "write lazy code → 0-ponytail"
+    cousins: [1-code-review, 0-ponytail]
+    triggers:
+      - "over-engineering"
+      - "what can we delete"
+      - "simplify review"
+      - "2-ponytail-review"
+    requires_setup: false
 ---
+## Process
+
+1. Follow this skill's procedure.
+
 
 Review diffs for unnecessary complexity. One line per finding: location, what
 to cut, what replaces it. The diff's best outcome is getting shorter.

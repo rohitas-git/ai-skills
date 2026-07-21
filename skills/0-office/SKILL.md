@@ -1,9 +1,29 @@
 ---
 name: 0-office
 description: >
-  Domain hub for office/media tools — Word, slides, sheets, diagrams,
-  images, canvas, web extract, pets. Route via F-misc artifact type.
+  Domain hub for office/media tools — Word, slides, sheets, diagrams, images, canvas,
+  web extract. Use when the artifact is a doc/deck/sheet/diagram/image (F-misc). Not for: UI product craft
+  (0-ui-ux), vault notes (0-rohitas-vault-wiki). Hub: /0-office. Triggers: word, slides, spreadsheet, diagram, image.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-office
+    role: hub
+    when:
+      - "office/media artifact type"
+      - "docx/pptx/xlsx/diagram/image"
+    not_when:
+      - "product UI design system → 0-ui-ux"
+      - "personal vault → 0-rohitas-vault-wiki"
+    next: [1-docx, 1-pptx, 1-xlsx, 1-diagram-maker, 1-imagine]
+    triggers:
+      - "word"
+      - "slides"
+      - "spreadsheet"
+      - "diagram"
+      - "image"
+      - "F-misc"
+    requires_setup: false
 ---
 
 # Misc (hub)

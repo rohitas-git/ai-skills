@@ -38,6 +38,13 @@
         "1-browser-testing-with-devtools"
       ],
       "note": "Vendor harvest: perf + browser runtime"
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "1-parallel-agents"
+      ],
+      "note": "Dual Ship: independent multi-failure parallel agents"
     }
   ],
   "pipeline": [

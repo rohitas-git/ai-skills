@@ -1,10 +1,33 @@
 ---
 name: 0-triage
-description: Move issues and external PRs through a state machine of triage roles — categorise, verify, grill if needed, and write agent-ready briefs.
+description: >
+  Move incoming issues/PRs through triage roles (needs-triage → ready-for-agent/human/…).
+  Use when sorting raw human tracker intake. Not for: tickets from 1-to-tickets (never re-triage),
+  implementing ready work (0-implement). Hub: /0-triage. Triggers: triage, needs-triage, ready-for-agent.
+  Requires /0-setup-rohitas-skills labels when configured.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-triage
+    role: hub
+    when:
+      - "incoming human issues/PRs need sorting"
+      - "apply triage state machine"
+    not_when:
+      - "1-to-tickets output (already agent-ready)"
+      - "build path → 0-implement"
+    next: [0-implement]
+    triggers: [triage, needs-triage, ready-for-agent]
+    requires_setup: true
 ---
 
 # Triage
+
+## Process
+
+1. Follow the steps and hard rules in this skill.
+2. Load linked `references/` only when the branch needs them.
+
 
 Move issues on the project issue tracker through a small state machine of triage roles.
 

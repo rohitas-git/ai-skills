@@ -1,11 +1,26 @@
 ---
 name: 1-security-auditor
 description: >
-  Multi-phase security and quality auditor for codebases and projects. Use for
-  security audit, vulnerability 0-review, OWASP 0-review, full or scoped project
-  audit, or high-confidence findings with concrete impact. Sub-hub under /0-review.
-  Not multi-axis PR 0-review (/1-code-review) or build-time patterns (/2-security-and-hardening).
+  Multi-phase security and quality auditor for codebases. Use for security audit, OWASP
+  review, scoped project audit. Not for: multi-axis PR review (1-code-review) or build-time hardening
+  patterns (2-security-and-hardening). Hub: /1-security-auditor. Triggers: security audit, OWASP, vulnerability review.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 1-security-auditor
+    role: sub-hub
+    when:
+      - "security/OWASP audit"
+      - "vulnerability review of project"
+    not_when:
+      - "PR multi-axis review → 1-code-review"
+      - "apply hardening while building → 2-security-and-hardening"
+    cousins: [2-security-and-hardening, 1-code-review]
+    triggers:
+      - "security audit"
+      - "OWASP"
+      - "vulnerability review"
+    requires_setup: false
 ---
 
 # Security Auditor

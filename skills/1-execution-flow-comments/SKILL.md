@@ -1,15 +1,31 @@
 ---
 name: 1-execution-flow-comments
 description: >
-  Write structured Execution Flow comments with numbered steps and ASCII branch
-  trees (Input, Output, Variable, Branch, Logic, Call, Side effect) above
-  multi-step functions. Use when the user asks for execution flow, step-by-step
-  flow comments, ASCII └─ trees, or /1-execution-flow-comments. Do not use for
-  API docs (1-code-comments) or single-line block notes (1-inline-comments).
+  Write structured Execution Flow comments with numbered steps and ASCII branch trees
+  (Input, Output, Variable, Branch, Logic, Call, Side effect) above multi-step
+  functions. Use when the user asks for execution flow, step-by-step flow comments,
+  ASCII └─ trees, or /1-execution-flow-comments. Do not use for API docs
+  (1-code-comments) or single-line block notes (1-inline-comments). Hub: /0-implement.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-implement
+    role: soft
+    when:
+      - "the user asks for execution flow, step-by-step flow comments, ASCII └─ trees, or /1-execution-flow-c"
+    triggers:
+      - "1-execution-flow-comments"
+      - "execution flow comments"
+    requires_setup: false
 ---
 
 # Execution Flow Comments
+
+## Process
+
+1. Follow the steps and hard rules in this skill.
+2. Load linked `references/` only when the branch needs them.
+
 
 Document **how a multi-step function runs** with a fixed block above the function: numbered steps plus `└─` detail lines. This is intentional implementation narrative — not Clean Code API docs.
 

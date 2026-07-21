@@ -1,13 +1,22 @@
 ---
 name: 1-grok-help
 description: >
-  Grok documentation and configuration help. Use when users ask about
-  setup, configuration, MCP servers, authentication, skills, slash commands,
-  keyboard shortcuts, or any Grok feature. Also use proactively when you
-  detect a user is having trouble with setup or onboarding.
+  Grok documentation and configuration help. Use when users ask about setup,
+  configuration, MCP servers, authentication, skills, slash commands, keyboard
+  shortcuts, or any Grok feature. Also use proactively when you detect a user is having
+  trouble with setup or onboarding. Hub: /0-butler.
+disable-model-invocation: true
 metadata:
   short-description: "Grok docs — config, MCP, auth, skills, commands"
-disable-model-invocation: true
+  catalog:
+    hub: 0-butler
+    role: soft
+    when:
+      - "users ask about setup, configuration, MCP servers, authentication, skills, slash commands, keyboard"
+    triggers:
+      - "1-grok-help"
+      - "grok help"
+    requires_setup: false
 ---
 
 # Grok Help
@@ -58,3 +67,8 @@ Answer the user's question about Grok setup, configuration, or features.
 
 4. To **create a skill** for the user, create `/Users/rohitasbansal/.grok/skills/<name>/SKILL.md`
    (read `/Users/rohitasbansal/.grok/docs/user-guide/08-skills.md` for the SKILL.md format).
+
+
+## Related
+
+**Next:** `/0-butler`. Parent hub: `/0-butler`.

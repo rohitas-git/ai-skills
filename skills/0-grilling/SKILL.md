@@ -1,8 +1,32 @@
 ---
 name: 0-grilling
-description: Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'grill' trigger phrases.
+description: >
+  Grill the user relentlessly about a plan, decision, or idea. Use when stress-testing
+  thinking or any grill trigger. Not for: synthesizing an already-decided thread into a spec (1-to-spec),
+  multi-session fog maps (0-wayfinder). Hub: /0-grilling. Triggers: grill me, stress-test, interview my plan.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-grilling
+    role: hub
+    when:
+      - "stress-test a plan or idea"
+      - "grill / interview intent"
+    not_when:
+      - "write spec from settled thread → 1-to-spec"
+      - "fog map multi-session → 0-wayfinder"
+    next: [1-to-spec, 0-implement]
+    cousins: [1-grill-me, 1-grill-with-docs, 1-thinking-steel-manning]
+    triggers:
+      - "grill me"
+      - "stress-test"
+      - "interview my plan"
+    requires_setup: false
 ---
+## Process
+
+1. Follow this skill's procedure.
+
 ## Boundary
 
 | Need | Skill |

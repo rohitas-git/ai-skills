@@ -66,13 +66,14 @@ flows.md remains SSOT for pipelines/forks; HTML/JSON are projections. **new-hub*
 | | |
 |--|--|
 | **★ Hub** | `/0-setup-rohitas-skills` |
-| **Children** | **hard:** `1-to-spec`, `1-to-tickets`, `0-triage` · **soft:** `1-tdd`, `0-diagnosing-bugs`, `0-improve-codebase-architecture`, vocabulary skills · **SSOT:** issue-tracker, triage-labels, domain, vault |
+| **Children** | **hard:** `1-to-spec`, `1-to-tickets` · **soft:** `1-tdd`, `0-diagnosing-bugs`, `0-improve-codebase-architecture`, vocabulary skills · **on-ramp (opt-in):** `0-triage` · **SSOT:** issue-tracker, domain, vault · **SSOT (opt-in):** triage-labels |
 
-**Pipeline:** run once per consumer repo.
+**Pipeline:** run once per consumer repo. Core path = issue tracker → domain → optional vault. **Do not** configure triage unless F2 = Yes.
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
 | **F1** | Setup already done (`docs/agents/` present)? | Skip if present | run setup · skip → Design/Ship · **Agent judgment** |
+| **F2** | Configure `/0-triage` labels? (intake for *incoming* issues/PRs — not grill→tickets→ship) | **No** | No · Yes → labels · **Agent judgment** |
 
 ---
 
@@ -81,15 +82,16 @@ flows.md remains SSOT for pipelines/forks; HTML/JSON are projections. **new-hub*
 | | |
 |--|--|
 | **★ Hub** | `/0-grilling` |
-| **Children** | **wrapper:** `1-grill-me`, `1-grill-with-docs` · **pull-in:** `1-domain-modeling` · **soft:** `1-thinking-steel-manning` · **detour:** `1-handoff` ⇄ `1-prototype` |
+| **Children** | **wrapper:** `1-grill-me`, `1-grill-with-docs` · **on-ramp:** `1-brainstorm` · **pull-in:** `1-domain-modeling` · **soft:** `1-thinking-steel-manning` · **detour:** `1-handoff` ⇄ `1-prototype` |
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
+| **F-B1** | Hard brainstorm design-gate or grill interview? | grill if product requirements; brainstorm if greenfield feature design before code | `1-brainstorm` · `1-grill-with-docs` / `1-grill-me` · **Agent judgment** |
 | **F2** | Codebase present? | Yes → 1-grill-with-docs | `1-grill-with-docs` · `1-grill-me` · **Agent judgment** |
 | **F3** | Need a runnable 1-prototype answer? | No | stay in grill · handoff⇄prototype · **Agent judgment** |
 | **F4** | Multi-session build? | Yes if >1 0-implement slice | yes → Ship multi · no → Ship single · **Agent judgment** |
 
-**Merge out:** → Domain 3 Ship.
+**Merge out:** → Domain 3 Ship (after design: optional `/1-write-plan`).
 
 ---
 
@@ -98,18 +100,25 @@ flows.md remains SSOT for pipelines/forks; HTML/JSON are projections. **new-hub*
 | | |
 |--|--|
 | **★ Hub** | `/0-implement` |
-| **Children** | **pipeline:** `1-to-spec` → `1-to-tickets` → `0-implement` → `1-tdd` → `1-code-review` → commit · **soft (style):** `1-coding-standards`, `1-code-comments`, `1-inline-comments`, `1-execution-flow-comments`, `1-stepdown-rule` · **cousin:** `2-verify-work` · **soft (git/PR):** `1-git-commit-helper`, `1-pr-summarizer`, `1-resolving-merge-conflicts` · **soft:** `1-research` · **soft (vendor harvest):** `1-shipping-and-launch`, `1-observability-and-instrumentation`, `1-ci-cd-and-automation`, `1-frontend-ui-engineering` |
+| **Children** | **pipeline:** `1-to-spec` → `1-to-tickets` → `0-implement` → `1-tdd` → `1-code-review` → commit · **soft (plan path):** `1-write-plan`, `1-git-worktrees`, `1-subagent-implement`, `1-execute-plan`, `1-finish-branch` · **satellite:** `1-parallel-agents` · **soft (style):** `1-coding-standards`, `1-code-comments`, `1-inline-comments`, `1-execution-flow-comments`, `1-stepdown-rule` · **cousin:** `2-verify-work` · **soft (git/PR):** `1-git-commit-helper`, `1-pr-summarizer`, `1-resolving-merge-conflicts` · **soft:** `1-research` · **soft (vendor harvest):** `1-shipping-and-launch`, `1-observability-and-instrumentation`, `1-ci-cd-and-automation`, `1-frontend-ui-engineering` |
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
 | **F4** | (entry) multi-session? | as Design | 1-to-spec path · direct 0-implement · **Agent judgment** |
-| **F5** | This slice done? | run closer | tdd→code-review→commit · more tickets · **Agent judgment** |
+| **F-SP** | Execute plan same session or new session? | same if subagents available | `1-subagent-implement` · `1-execute-plan` · **Agent judgment** |
+| **F5** | This slice done? | run closer | tdd→code-review→commit (optional `/1-finish-branch`) · more tickets · **Agent judgment** |
 | **F6** | (inside 1-code-review sub-hub) axes applicable? | every applicable | Spec / Standards / Maintainability on or soft-skip · **Agent judgment** |
 
 **Multi-session pipeline:**
 
 ```text
 1-to-spec → 1-to-tickets → implement* → 1-tdd → 1-code-review (multi-axis) → commit
+```
+
+**Optional plan path (after design / `1-write-plan`):**
+
+```text
+1-write-plan → 1-git-worktrees? → F-SP → 1-subagent-implement | 1-execute-plan → 1-tdd / closer → 1-finish-branch
 ```
 
 **Single-session:** `implement*` → 1-tdd → 1-code-review → commit.
@@ -123,8 +132,8 @@ flows.md remains SSOT for pipelines/forks; HTML/JSON are projections. **new-hub*
 | | |
 |--|--|
 | **★ Hub** | `/0-review` |
-| **Children** | **sub-hub:** `1-code-review` · **sub-hub:** `1-security-auditor` · **soft:** `1-doubt-driven-development` · **on-ramp:** `1-codebase-review-strategy` · **soft (shared):** `2-security-and-hardening` · **soft (dual):** `2-software-architect` (primary Domain 8) |
-| **Pipeline** | orient → **F-R1** pick mode → sub-hub / skill → optional remediation via `/2-security-and-hardening` |
+| **Children** | **sub-hub:** `1-code-review` · **sub-hub:** `1-security-auditor` · **soft:** `1-doubt-driven-development`, `1-receive-review` · **on-ramp:** `1-codebase-review-strategy` · **soft (shared):** `2-security-and-hardening` · **soft (dual):** `2-software-architect` (primary Domain 8) |
+| **Pipeline** | orient → **F-R1** pick mode → sub-hub / skill → optional remediation via `/2-security-and-hardening` · incoming feedback → `/1-receive-review` |
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
@@ -165,7 +174,7 @@ flows.md remains SSOT for pipelines/forks; HTML/JSON are projections. **new-hub*
 | | |
 |--|--|
 | **★ Hub** | `/0-diagnosing-bugs` |
-| **Children** | `1-tdd`; optional on-ramp → `0-improve-codebase-architecture` · **soft (vendor harvest):** `1-performance-optimization`, `1-browser-testing-with-devtools` |
+| **Children** | `1-tdd`; optional on-ramp → `0-improve-codebase-architecture` · **soft (vendor harvest):** `1-performance-optimization`, `1-browser-testing-with-devtools` · **soft (dual Ship):** `1-parallel-agents` (independent multi-failure) |
 
 ---
 

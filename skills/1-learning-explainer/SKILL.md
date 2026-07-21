@@ -1,13 +1,28 @@
 ---
 name: 1-learning-explainer
 description: >
-  Structured multi-level explanations (child through frontier) with knowledge
-  probe, mental models, diagrams, progressive deep-dive, and optional CLT.
-  Use for "explain X", ELI5, audience-level teaching, or 1-vault-explain pedagogy.
-  Default explain mode under /0-learn. Not code walkthroughs (/1-code-explainer),
-  multi-session courses (/1-teach), Socratic problem practice (0-learn tutor-mode),
-  or raw summarization alone (/1-resource-summarizer).
+  Structured multi-level explanations with probe, mental models, progressive deep-dive.
+  Use for "explain X", ELI5, audience-level teaching. Not for: code walkthrough (1-code-explainer),
+  multi-session course (1-teach), raw summarize (1-resource-summarizer). Hub: /0-learn.
+  Triggers: explain, ELI5, teach me this concept.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-learn
+    role: pipeline
+    when:
+      - "explain concept multi-level"
+      - "ELI5 / audience teaching"
+    not_when:
+      - "explain code → 1-code-explainer"
+      - "multi-session course → 1-teach"
+      - "summarize source → 1-resource-summarizer"
+    cousins: [1-code-explainer, 1-teach, 1-vault-explain]
+    triggers:
+      - "explain"
+      - "ELI5"
+      - "teach me this concept"
+    requires_setup: false
 ---
 
 # Learning Explainer

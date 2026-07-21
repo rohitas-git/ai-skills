@@ -18,9 +18,9 @@
 ## info
 - [code] path — message
 
-## Lean / Matt structure
+## Lean structure
 - SKILL.md lines: N (target ≤120; warn >180 without disclosure)
-- [lean|matt-shape|disclosure|chain-next] findings…
+- [lean|lean-shape|disclosure|chain-next] findings…
 - (none)
 
 ## Hub membership + chaining
@@ -35,7 +35,7 @@
 
 ## Next
 - If FAIL: do not apply place/ingest. Fix lean/chain first.
-- If fat SKILL.md: `/0-skill-creator` thin to Matt shape (1-writing-great-skills).
+- If fat SKILL.md: `/0-skill-creator` thin to lean shape (1-writing-great-skills).
 - If orphans: `/0-skill-manager` place (dry-run) with parent hub + link type.
 - If sprawl after thin attempt: sprawl-and-subdomain.md → skill-manager.
 ```

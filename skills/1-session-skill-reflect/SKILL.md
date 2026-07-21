@@ -1,10 +1,31 @@
 ---
 name: 1-session-skill-reflect
-description: Self-improving system for skills. Analyze session for corrections/approvals, extract learnings, propose/update skill files, and push changes to GitHub (git@github.com:rohitas-git/ai-skills.git). Trigger with /1-session-skill-reflect or "reflect on skill X".
+description: >
+  Self-improving system for skills. Analyze session for corrections/approvals, extract
+  learnings, propose/update skill files, and push changes to GitHub
+  (git@github.com:rohitas-git/ai-skills.git). Trigger with /1-session-skill-reflect or
+  "reflect on skill X" Use when: Self-improving system for skills. Hub:
+  /0-skill-manager.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-skill-manager
+    role: soft
+    when:
+      - "Self-improving system for skills"
+    triggers:
+      - "1-session-skill-reflect"
+      - "session skill reflect"
+    requires_setup: false
 ---
 
 # Reflect — Self-Improving Skills System
+
+## Process
+
+1. Follow the steps and hard rules in this skill.
+2. Load linked `references/` only when the branch needs them.
+
 ## Boundary
 
 | Need | Skill |

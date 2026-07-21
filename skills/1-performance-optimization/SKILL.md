@@ -1,8 +1,19 @@
 ---
 name: 1-performance-optimization
 description: >
-  Measure-first performance work across FE/BE/DB. Use when Core Web Vitals, load times, N+1 queries, or profiling show regressions or budgets.
+  Measure-first performance work across FE/BE/DB. Use when Core Web Vitals, load times,
+  N+1 queries, or profiling show regressions or budgets. Hub: /0-diagnosing-bugs.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-diagnosing-bugs
+    role: soft
+    when:
+      - "Core Web Vitals, load times, N+1 queries, or profiling show regressions or budgets"
+    triggers:
+      - "1-performance-optimization"
+      - "performance optimization"
+    requires_setup: false
 ---
 
 # Performance Optimization

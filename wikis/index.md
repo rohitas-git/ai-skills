@@ -2,7 +2,7 @@
 
 **Summary**: Live skills by domain hub. Physical path is always `skills/<name>/`.
 
-**Last updated**: 2026-07-19
+**Last updated**: 2026-07-20 (route surface + wiki backfill)
 
 **Sources**: `skills/<name>`; hubs in `hubs/`; flows SSOT `skills/0-butler/references/flows.md`.
 
@@ -42,7 +42,10 @@
 | Page | Description | Sources |
 |------|-------------|---------|
 | [[0-diagnosing-bugs]] | Diagnosis loop for hard bugs and performance regressions. Use when the user says "diagnose"/"debug t… | `skills/0-diagnosing-bugs` |
+| [[1-parallel-agents]] | One focused agent per independent problem domain (dual Ship; multi-failure). | `skills/1-parallel-agents` |
 | [[1-tdd]] | Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions … | `skills/1-tdd` |
+| [[1-browser-testing-with-devtools]] | Runtime browser verification via Chrome DevTools MCP (DOM, console, network, performance,… | `skills/1-browser-testing-with-devtools` |
+| [[1-performance-optimization]] | Measure-first performance work across FE/BE/DB. Use when Core Web Vitals, load times, N+1… | `skills/1-performance-optimization` |
 
 ## Hub: 0-grilling
 
@@ -52,6 +55,7 @@
 | [[1-grill-me]] | A relentless interview to sharpen a plan or design. | `skills/1-grill-me` |
 | [[1-grill-with-docs]] | A relentless interview to sharpen a plan or design, which also creates docs (ADR's and glossary) as … | `skills/1-grill-with-docs` |
 | [[0-grilling]] | Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test … | `skills/0-grilling` |
+| [[1-brainstorm]] | Hard-gate design before implementation: approaches, design doc, approval. Superpowers harvest. | `skills/1-brainstorm` |
 | [[1-prototype]] | Build a throwaway 1-prototype to answer a design question. Use when the user wants to sanity-check whe… | `skills/1-prototype` |
 | [[1-thinking-steel-manning]] | Use before rejecting a proposal or when you're inclined to just agree with the user. Build the stron… | `skills/1-thinking-steel-manning` |
 
@@ -61,13 +65,22 @@
 |------|-------------|---------|
 | [[1-code-comments]] | Write clear, professional API and surface documentation using the convention for the language in con… | `skills/1-code-comments` |
 | [[1-execution-flow-comments]] | Write structured Execution Flow comments with numbered steps and ASCII branch trees (Input, Output, … | `skills/1-execution-flow-comments` |
+| [[1-execute-plan]] | Execute a written implementation plan in a separate session with review checkpoints. | `skills/1-execute-plan` |
+| [[1-finish-branch]] | After tests pass: merge, open PR, or cleanup the branch. | `skills/1-finish-branch` |
 | [[1-git-commit-helper]] | Helps generate high-quality git commit messages by analyzing staged changes, untracked files, or bot… | `skills/1-git-commit-helper` |
+| [[1-git-worktrees]] | Isolated workspace via platform tools or git worktree. | `skills/1-git-worktrees` |
 | [[0-implement]] | "Implement a piece of work based on a spec or set of tickets." | `skills/0-implement` |
 | [[1-inline-comments]] | Add concise one-line comments immediately above non-obvious code blocks or slightly complex snippets… | `skills/1-inline-comments` |
+| [[1-parallel-agents]] | One focused agent per independent problem domain (parallel investigations). | `skills/1-parallel-agents` |
 | [[1-pr-summarizer]] | Summarize changes, write PR descriptions, or draft comments for pull requests. Trigger this skill wh… | `skills/1-pr-summarizer` |
 | [[1-research]] | Investigate a question against high-trust primary sources and capture the findings as a Markdown fil… | `skills/1-research` |
 | [[1-resolving-merge-conflicts]] | "Use when you need to resolve an in-progress git merge/rebase conflict." | `skills/1-resolving-merge-conflicts` |
 | [[1-stepdown-rule]] | Enforce top-down file layout using the newspaper metaphor and stepdown rule (callers above callees, … | `skills/1-stepdown-rule` |
+| [[1-subagent-implement]] | Same-session plan execution: fresh implementer subagent per task + reviews. | `skills/1-subagent-implement` |
+| [[1-write-plan]] | Bite-sized implementation plan from an approved design/spec before coding. | `skills/1-write-plan` |
+| [[1-ci-cd-and-automation]] | Build/test/deploy pipelines and quality gates. Use when setting up or changing CI, releas… | `skills/1-ci-cd-and-automation` |
+| [[1-observability-and-instrumentation]] | Logging, metrics, tracing, and alerting so production behavior is diagnosable. Use when a… | `skills/1-observability-and-instrumentation` |
+| [[1-shipping-and-launch]] | Pre-launch checklist, staged rollout, monitoring, and rollback planning. Use when prepari… | `skills/1-shipping-and-launch` |
 
 ## Hub: 0-improve-codebase-architecture
 
@@ -79,6 +92,8 @@
 | [[0-improve-codebase-architecture]] | Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill throug… | `skills/0-improve-codebase-architecture` |
 | [[1-living-documentation-governor]] | Code-synced living documentation: trigger maps, placement into guides/ADR/ glossary/archive, drift c… | `skills/1-living-documentation-governor` |
 | [[1-project-wiki-manager]] | Karpathy-style in-repo project wiki: docs/raw/ → docs/wiki/ concept pages, grounded Q&A, audit, comp… | `skills/1-project-wiki-manager` |
+| [[1-api-and-interface-design]] | Stable APIs and module boundaries (REST/GraphQL/types). Use when designing public interfa… | `skills/1-api-and-interface-design` |
+| [[1-deprecation-and-migration]] | Sunset APIs/features and migrate callers safely. Use when removing systems, expand/contra… | `skills/1-deprecation-and-migration` |
 
 ## Hub: 0-learn
 
@@ -106,6 +121,20 @@
 | [[1-pptx]] | "Use this skill any time a .pptx file is involved in any way — as input, output, or both. This inclu… | `skills/1-pptx` |
 | [[1-xlsx]] | "Use this skill any time a spreadsheet file is the primary input or output. This means any task wher… | `skills/1-xlsx` |
 
+## Hub: 0-ui-ux
+
+| Page | Description | Sources |
+|------|-------------|---------|
+| [[0-ui-ux]] | Domain hub for UI/UX design intelligence, brand, tokens, styling, creative, banners, HTML slides | `skills/0-ui-ux` |
+| [[1-ui-ux-pro-max]] | UI/UX design intelligence searchable local database (styles, palettes, typography, UX guidelines) | `skills/1-ui-ux-pro-max` |
+| [[1-brand]] | Brand voice, visual identity, messaging frameworks | `skills/1-brand` |
+| [[1-design-system]] | Token architecture and component specifications | `skills/1-design-system` |
+| [[1-ui-styling]] | shadcn/ui + Tailwind UI styling | `skills/1-ui-styling` |
+| [[1-design]] | Logo, CIP, icons, banners, social creative router | `skills/1-design` |
+| [[1-banner-design]] | Social/ads/web/print banners | `skills/1-banner-design` |
+| [[1-slides]] | Strategic HTML presentations (not Office PPTX) | `skills/1-slides` |
+| [[1-frontend-ui-engineering]] | Production a11y UI engineering (Ship primary; soft dual here) | `skills/1-frontend-ui-engineering` |
+
 ## Hub: 0-ponytail
 
 | Page | Description | Sources |
@@ -121,7 +150,9 @@
 | Page | Description | Sources |
 |------|-------------|---------|
 | [[1-codebase-review-strategy]] | Use when reviewing any codebase of unknown or varying size. Determines repo tier from measurable met… | `skills/1-codebase-review-strategy` |
+| [[1-receive-review]] | Process incoming code review feedback with technical rigor (verify, evaluate, implement one-by-one). | `skills/1-receive-review` |
 | [[0-review]] | Domain hub for verification modes — multi-axis change 0-review, security audit, architecture 0-review, a… | `skills/0-review` |
+| [[1-doubt-driven-development]] | Fresh-context adversarial review of non-trivial decisions (CLAIM→EXTRACT→DOUBT→RECONCILE)… | `skills/1-doubt-driven-development` |
 
 ## Hub: 0-rohitas-vault-wiki
 

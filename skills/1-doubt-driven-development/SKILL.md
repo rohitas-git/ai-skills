@@ -1,8 +1,25 @@
 ---
 name: 1-doubt-driven-development
 description: >
-  Fresh-context adversarial 0-review of non-trivial decisions before they stand (CLAIM→EXTRACT→DOUBT→RECONCILE). Use when correctness stakes are high, unfamiliar code, or confident output is cheaper to verify now than debug later.
+  Fresh-context adversarial review of non-trivial decisions (CLAIM→EXTRACT→DOUBT→RECONCILE).
+  Use when correctness stakes are high or confident output is cheaper to verify now. Not for: routine
+  multi-axis PR review (1-code-review). Hub: /0-review. Triggers: doubt-driven, adversarial review, stress-test decision.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-review
+    role: soft
+    when:
+      - "high-stakes decision needs adversarial doubt"
+      - "verify confident output now"
+    not_when:
+      - "routine PR multi-axis → 1-code-review"
+    cousins: [1-code-review, 1-thinking-steel-manning]
+    triggers:
+      - "doubt-driven"
+      - "adversarial review"
+      - "stress-test decision"
+    requires_setup: false
 ---
 
 # Doubt-Driven Development

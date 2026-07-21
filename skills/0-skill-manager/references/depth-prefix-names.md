@@ -101,13 +101,13 @@ A skill may appear under **more than one** hub. One directory, one name.
 
 ## Invariants (critical)
 
-1. **Prefix required** — live `skills/` / `inbox/` match `^[0-9]+-[a-z0-9]+(-[a-z0-9]+)*$` (multi-digit depths OK: `10-…`).
+1. **Prefix required** — live `skills/` match `^[0-9]+-[a-z0-9]+(-[a-z0-9]+)*$` (multi-digit depths OK: `10-…`).
 2. **`name` == dir** — including the depth digit(s).
 3. **Slash == name** — e.g. `/2-verify-work`, `/4-{slug}` when depth is 4.
 4. **Hub packages** — `hubs/{depth}-{slug}/` matches hub skill; workflow `hub` / `children[].skills` use full names.
 5. **Prefix = hub-tree depth** — lint `depth-graph` recomputes `max(parent_depth+1)` through max tree depth (hub identity special-cased). No artificial max at 2 or 3.
-6. **No bare live peers**.
-7. **Vendor / archive** — upstream unprefixed until place/ingest.
+6. **No bare live peers** under `skills/`.
+7. **inbox / vendor / archive** — may be unprefixed until place/ingest (prefix assigned then).
 
 ## Assign on place / new-hub / ingest
 

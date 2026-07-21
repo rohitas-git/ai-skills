@@ -19,9 +19,10 @@ Attach an **existing** skill directory to a **domain hub** documented in flows.m
 
 1. Identify skill path + proposed hub + link type + pipeline slot (if any).
 2. **Assign depth-prefix name** ([depth-prefix-names.md](./depth-prefix-names.md)): `depth = max(parent_hub_depth + 1)` over hub parents (domain/sub-hub identity → package depth). Domain hub parent → often **`1-{slug}`**; under a depth-1 sub-hub → **`2-{slug}`**; under depth 2 → **`3-{slug}`**; under 3/4/5 → **`4-` / `5-` / `6-`** (no artificial cap). Rename dir + frontmatter **before** place if still bare.
-3. Integration test (checks 1–9, including **skill-lint** `depth-prefix` / `name-dir`).
-4. Dry-run plan: flows.md diff, hub `workflow.json` children, README lines, lock.
-5. Confirm → apply → run **`/1-skill-linter`** mode **skill** (must Gate: PASS).
+3. **Route surface (`gate-route`):** description contract + `metadata.catalog` with `hub` (this parent), `role` (link type), `when` or `triggers`; no top-level route keys — [skill-route-surface.md](./skill-route-surface.md).
+4. Integration test (checks 1–11, including **skill-lint** `depth-prefix` / `name-dir` / `gate-route`).
+5. Dry-run plan: flows.md diff, hub `workflow.json` children, README lines, lock, route-index regen.
+6. Confirm → apply → `scripts/generate-route-index` → run **`/1-skill-linter`** mode **skill** (must Gate: PASS).
 
 If no suitable hub exists → offer **new-hub** instead of inventing a peer top-level skill.
 If 1-skill-linter reports **subdomain-candidate** → offer split or sub-domain hub (see 1-skill-linter `sprawl-and-subdomain.md`) before or after place.
@@ -32,7 +33,7 @@ Create a **workflow domain** (ADR 0005):
 
 1. **Name the domain** and **hub skill** as **`0-{kebab-slug}`** (depth **0** hard rule; slash name == dir name == hub package name).
 2. Scaffold hub SKILL.md via 0-skill-creator if missing (thin router preferred); frontmatter `name: 0-{slug}`.
-3. Choose Matt **bucket** for the **live skill** (engineering / productivity / misc / personal). Hub *artifacts* do **not** nest under that bucket.
+3. Place the **live skill** under `skills/`. Hub *artifacts* live flat under `hubs/` (not nested by domain bucket).
 4. Add flows.md section: Top · Children table · Pipeline · Forks (F# ask-user questions) using depth-prefixed ids.
 5. Seed children (may be empty); children use **1-** (or deeper) names.
 6. **Hub package** — create flat dir `hubs/0-{slug}/` with:

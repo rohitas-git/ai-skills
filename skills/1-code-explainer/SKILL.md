@@ -1,12 +1,26 @@
 ---
 name: 1-code-explainer
 description: >
-  Explain source code (lines, blocks, functions, files, modules) at audience
-  levels (Noob, Learner, Junior, Senior) and depths (Brief, Standard, Deep).
-  Trigger on "explain this code", "what does this function do", "break down this
-  file". Not general concept teaching (/1-learning-explainer), Socratic tutoring
-  (/0-learn tutor-mode), or vault Concepts (/1-vault-explain). Soft under /0-learn.
+  Explain source code at audience levels and depths. Use for "explain this code/function/file".
+  Not for: general concepts (1-learning-explainer) or vault Concepts (1-vault-explain). Hub: /0-learn.
+  Triggers: explain this code, what does this function do, break down this file.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-learn
+    role: soft
+    when:
+      - "explain code blocks/files"
+      - "code walkthrough by audience level"
+    not_when:
+      - "general concept → 1-learning-explainer"
+      - "vault concept → 1-vault-explain"
+    cousins: [1-learning-explainer]
+    triggers:
+      - "explain this code"
+      - "what does this function"
+      - "break down this file"
+    requires_setup: false
 ---
 
 # Code Explainer

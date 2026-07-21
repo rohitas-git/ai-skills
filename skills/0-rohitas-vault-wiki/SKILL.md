@@ -1,12 +1,29 @@
 ---
 name: 0-rohitas-vault-wiki
 description: >
-  Steward Rohitas's Notes Obsidian vault — Atlas hubs, Concepts atoms, Inbox capture,
-  Guides/Projects/Archives, Dashboard-aligned frontmatter, Title Case notes, ROOT +
-  Knowledge Engineering. Schema source for 1-vault-inbox, 1-vault-ingest, 1-vault-lint,
-  1-vault-explain, and wiki-query. Orchestrates 1-resource-summarizer for long/raw sources.
-  Use for Rohitas's Notes, vault structure, Atlas MOCs, Concepts, or /0-rohitas-vault-wiki.
+  Steward Rohitas's Notes Obsidian vault — schema, Atlas, Concepts, Inbox, frontmatter.
+  Use for vault structure, Concepts, Atlas MOCs, or /0-rohitas-vault-wiki. Not for: general learn/explain
+  without vault (0-learn), project repo wiki (1-project-wiki-manager). Hub: /0-rohitas-vault-wiki.
+  Triggers: Rohitas's Notes, vault structure, Concepts, Atlas, vault wiki.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-rohitas-vault-wiki
+    role: hub
+    when:
+      - "personal vault schema/structure"
+      - "Atlas/Concepts/Inbox routing"
+    not_when:
+      - "generic explain → 0-learn"
+      - "repo project wiki → 1-project-wiki-manager"
+    next: [1-vault-inbox, 1-vault-ingest, 1-wiki-query]
+    triggers:
+      - "vault"
+      - "Rohitas's Notes"
+      - "Concepts"
+      - "Atlas"
+      - "0-rohitas-vault-wiki"
+    requires_setup: false
 ---
 
 # Rohitas Vault Wiki

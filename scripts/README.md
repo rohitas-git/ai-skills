@@ -2,6 +2,8 @@
 
 Scripts that flatten the **AI-Skills catalog** into host agent skill directories.
 
+**Catalog version:** see root [`catalog.yaml`](../catalog.yaml) · **Feature log:** [`docs/FEATURE-LOG.md`](../docs/FEATURE-LOG.md)
+
 ## Quickstart (new clone)
 
 ```bash
@@ -96,3 +98,13 @@ Typically wired from a git `post-merge` hook after pull.
 3. Or put a real skill folder in a host dir; next sync moves it into `inbox/`.
 
 **Do not** promote vendor packs by listing them in `nestedSkillRoots` unless intentional.
+
+## Catalog health (this monorepo)
+
+```bash
+./scripts/lint-skills
+./scripts/generate-route-index
+```
+
+- **lint-skills** — structure, depth-prefix, hub membership, route surface; prints `catalog.yaml` version.
+- **generate-route-index** — butler skim table from `metadata.catalog`.

@@ -18,3 +18,21 @@ disable-model-invocation: true
 
 Generic PKM steward superseded by Rohitas vault schema for this catalog.
 
+
+
+## Progressive disclosure
+
+| Topic | File |
+|-------|------|
+| dataview-plugin | [references/dataview-plugin.md](./references/dataview-plugin.md) |
+| hard-rules-and-constraints | [references/hard-rules-and-constraints.md](./references/hard-rules-and-constraints.md) |
+| ingest-and-capture-workflow | [references/ingest-and-capture-workflow.md](./references/ingest-and-capture-workflow.md) |
+| obsidian-markdown-syntax | [references/obsidian-markdown-syntax.md](./references/obsidian-markdown-syntax.md) |
+| original-obsidian-skills-summary | [references/original-obsidian-skills-summary.md](./references/original-obsidian-skills-summary.md) |
+| SKILL | [references/original-obsidian-skills/obsidian-markdown/SKILL.md](./references/original-obsidian-skills/obsidian-markdown/SKILL.md) |
+| CALLOUTS | [references/original-obsidian-skills/obsidian-markdown/references/CALLOUTS.md](./references/original-obsidian-skills/obsidian-markdown/references/CALLOUTS.md) |
+| EMBEDS | [references/original-obsidian-skills/obsidian-markdown/references/EMBEDS.md](./references/original-obsidian-skills/obsidian-markdown/references/EMBEDS.md) |
+| PROPERTIES | [references/original-obsidian-skills/obsidian-markdown/references/PROPERTIES.md](./references/original-obsidian-skills/obsidian-markdown/references/PROPERTIES.md) |
+| properties-and-frontmatter | [references/properties-and-frontmatter.md](./references/properties-and-frontmatter.md) |
+| querying-and-synthesis | [references/querying-and-synthesis.md](./references/querying-and-synthesis.md) |
+| vault-structure-and-best-practices | [references/vault-structure-and-best-practices.md](./references/vault-structure-and-best-practices.md) |

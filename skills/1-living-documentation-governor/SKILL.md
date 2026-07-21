@@ -2,10 +2,22 @@
 name: 1-living-documentation-governor
 description: >
   Code-synced living documentation: trigger maps, placement into guides/ADR/
-  glossary/archive, drift checks, grounded Q&A from docs+code. Not a Karpathy
-  concept wiki from docs/raw (/1-project-wiki-manager) or personal Obsidian vault
-  (/0-rohitas-vault-wiki). Soft under Architecture domain.
+  glossary/archive, drift checks, grounded Q&A from docs+code. Not a Karpathy concept
+  wiki from docs/raw (/1-project-wiki-manager) or personal Obsidian vault
+  (/0-rohitas-vault-wiki). Soft under Architecture domain. Use when: Code-synced living
+  documentation: trigger maps, placement into guides/ADR/ glossary/archive, drift c.
+  Hub: /0-improve-codebase-architecture.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-improve-codebase-architecture
+    role: soft
+    when:
+      - "Code-synced living documentation: trigger maps, placement into guides/ADR/ glossary/archive, drift c"
+    triggers:
+      - "1-living-documentation-governor"
+      - "living documentation governor"
+    requires_setup: false
 ---
 
 # Living Documentation Governor
@@ -42,3 +54,10 @@ disable-model-invocation: true
 ## Related
 
 See Boundary table and hub membership in `skills/0-butler/references/flows.md`.
+
+
+### Additional references
+
+| Load when | File |
+|-----------|------|
+| generalized doc triggers | [references/generalized-doc-triggers.json](./references/generalized-doc-triggers.json) |

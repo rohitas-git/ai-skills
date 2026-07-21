@@ -1,14 +1,28 @@
 ---
 name: 1-ponytail-audit
 description: >
-  Whole-repo audit for over-engineering. Like 2-ponytail-review, but scans the
-  entire codebase instead of a diff: a ranked list of what to delete, simplify,
-  or replace with stdlib/native equivalents. Use when the user says "audit this
-  codebase", "audit for over-engineering", "what can I delete from this repo",
-  "find bloat", "1-ponytail-audit", or "/1-ponytail-audit". One-shot report, does
-  not apply fixes.
+  Whole-repo audit for over-engineering. Like 2-ponytail-review, but scans the entire
+  codebase instead of a diff: a ranked list of what to delete, simplify, or replace with
+  stdlib/native equivalents. Use when the user says "audit this codebase", "audit for
+  over-engineering", "what can I delete from this repo", "find bloat",
+  "1-ponytail-audit", or "/1-ponytail-audit". One-shot report, does not apply fixes. Hub:
+  /0-ponytail.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-ponytail
+    role: satellite
+    when:
+      - "the user says \"audit this codebase\", \"audit for over-engineering\", \"what can I delete from this repo"
+    triggers:
+      - "1-ponytail-audit"
+      - "ponytail audit"
+    requires_setup: false
 ---
+## Process
+
+1. Follow this skill's procedure.
+
 
 2-ponytail-review, repo-wide. Scan the whole tree instead of a diff. Rank
 findings biggest cut first.

@@ -1,7 +1,28 @@
 ---
 name: 1-to-tickets
-description: Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, published to the configured tracker — edges as text in one file per ticket locally, or native blocking links on a real tracker.
+description: >
+  Cut an approved spec into agent-ready tickets on the issue tracker. Use when a spec exists
+  and needs work items. Not for: writing the spec (1-to-spec), re-triaging ticket output (never 0-triage).
+  Hub: /0-implement. Triggers: to-tickets, cut tickets, break down spec. Requires /0-setup-rohitas-skills.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-implement
+    role: pipeline
+    when:
+      - "spec approved → create tickets"
+      - "break down work for agents"
+    not_when:
+      - "no spec yet → 1-to-spec"
+      - "raw human issues → 0-triage"
+      - "start coding → 0-implement"
+    next: [0-implement]
+    prev: [1-to-spec]
+    triggers:
+      - "to-tickets"
+      - "cut tickets"
+      - "break down spec"
+    requires_setup: true
 ---
 
 # To Tickets

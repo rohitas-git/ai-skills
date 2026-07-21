@@ -1,8 +1,19 @@
 ---
 name: 1-ci-cd-and-automation
 description: >
-  Build/test/deploy pipelines and quality gates. Use when setting up or changing CI, release automation, or agent feedback from failed pipelines.
+  Build/test/deploy pipelines and quality gates. Use when setting up or changing CI,
+  release automation, or agent feedback from failed pipelines. Hub: /0-implement.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-implement
+    role: soft
+    when:
+      - "setting up or changing CI, release automation, or agent feedback from failed pipelines"
+    triggers:
+      - "1-ci-cd-and-automation"
+      - "ci cd and automation"
+    requires_setup: false
 ---
 
 # CI/CD and Automation

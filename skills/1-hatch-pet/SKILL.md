@@ -1,7 +1,24 @@
 ---
 name: 1-hatch-pet
-description: Create, repair, validate, visually QA, and package Codex-compatible v2 animated pets from character art, generated images, company or prospect brand cues, or visual references. Use for any new Codex pet, custom mascot, non-pixel pet style, brand-inspired pet, existing-pet repair, or 8x11 spritesheet workflow requiring all 9 standard animation rows, 16 look directions, deterministic assembly, QA artifacts, and spriteVersionNumber 2 packaging.
+description: >
+  Create, repair, validate, visually QA, and package Codex-compatible v2 animated pets
+  from character art, generated images, company or prospect brand cues, or visual
+  references. Use for any new Codex pet, custom mascot, non-pixel pet style,
+  brand-inspired pet, existing-pet repair, or 8x11 spritesheet workflow requiring all 9
+  standard animation rows, 16 look directions, deterministic assembly, QA artifacts, and
+  spriteVersionNumber 2 packaging. Use when: Create, repair, validate, visually QA, and
+  package Codex-compatible v2 animated pets from character. Hub: /0-office.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-office
+    role: leaf
+    when:
+      - "Create, repair, validate, visually QA, and package Codex-compatible v2 animated pets from character"
+    triggers:
+      - "1-hatch-pet"
+      - "hatch pet"
+    requires_setup: false
 ---
 
 # Hatch Pet

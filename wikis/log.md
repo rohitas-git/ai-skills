@@ -13,3 +13,11 @@
 ## 2026-07-19 | depth-2-tree | Full tree depth max(parent+1): rename 4 skills to 2-*; rule+lint; host resync | 2-verify-work, 2-security-and-hardening, 2-ponytail-review, 2-software-architect
 ## 2026-07-19 | depth-3-to-6-rule | Explicit hub-tree depths 3–6 (and 7+) first-class: same max(parent+1); nesting ladder; no artificial cap | depth-prefix-names.md, CLAUDE, layout, flows, hard-rules, hub-workflow, skill-linter, README
 ## 2026-07-19 | depth-2-refs-cleanup | Stale 1-* / bare names → 2-* after depth-2 renames (hubs HTML/JSON, flows, ponytail-audit, full-guide title) | hubs/0-review,0-ponytail,0-implement,1-code-review,1-security-auditor,0-improve-codebase-architecture; flows; 1-ponytail-audit; 2-verify-work full-guide
+## 2026-07-20 | ingest-ui-ux | New Domain 15 hub 0-ui-ux + selective promote of ui-ux-pro-max-skill pack (7 skills) | skills/0-ui-ux + 1-ui-ux-pro-max,1-design,1-brand,1-design-system,1-ui-styling,1-banner-design,1-slides; hubs/0-ui-ux; flows F-UI1 + F7; dual 1-frontend-ui-engineering; vendor README
+## 2026-07-20 | ingest-superpowers | Park obra/superpowers v6.1.1; refuse using-superpowers; merge 5; promote 8 renamed | archive/vendor/superpowers; merges→1-tdd,0-diagnosing-bugs,1-code-review,2-verify-work,1-writing-great-skills; live 1-brainstorm,1-write-plan,1-execute-plan,1-subagent-implement,1-parallel-agents,1-git-worktrees,1-finish-branch,1-receive-review; flows F-B1 F-SP; hubs grilling/implement/review/diagnose
+
+- 2026-07-20: ADR 0009 route surface; wiki-index backfill; ref-orphan progressive disclosure; inbox README.
+
+- 2026-07-20: catalog.yaml v1.0.0 + FEATURE-LOG; skill-manager/creator/linter route-surface ops; README TOC.
+
+- 2026-07-21: catalog.yaml **1.0.1** release-note — skill-manager/creator/linter ops + FEATURE-LOG process.

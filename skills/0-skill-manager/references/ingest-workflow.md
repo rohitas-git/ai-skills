@@ -25,11 +25,12 @@ All must **pass** before apply. Report as a table.
 | 2 | **Collision / merge** | no name collision; if job overlaps a winner, **prefer merge** plan over second skill |
 | 3 | **Prev/next** | explicit previous/next chain slots if it sits on a flow (or "standalone" documented) |
 | 4 | **Hard vs soft setup** | hard deps only for to-spec/1-to-tickets/0-triage → `/0-setup-rohitas-skills`; soft skills no forced setup spam |
-| 5 | **Matt-short or disclosure** | SKILL.md thin enough or progressive-disclosure plan for sprawl |
+| 5 | **thin or disclosure** | SKILL.md thin enough or progressive-disclosure plan for sprawl |
 | 6 | **Forbidden** | never `using-agent-skills`; never second meta-router; never whole vendor pack |
 | 7 | **Hub slot** | parent domain hub + link type (wrapper/hard/soft/pipeline/on-ramp/leaf/axis/satellite/sub-hub) |
 | 8 | **Forks** | if skill sits on a branch, F# ask-user question exists or is proposed |
-| 9 | **skill-lint** | `/1-skill-linter` mode skill would Gate: PASS (SKILL.md + refs + hub membership plan) |
+| 9 | **Route surface (`gate-route`)** | description contract (Use when / Not for / Hub) + `metadata.catalog` with `hub`, `role`, and `when` or `triggers`; **no** top-level route keys — [skill-route-surface.md](./skill-route-surface.md) |
+| 10 | **skill-lint** | `/1-skill-linter` mode skill would Gate: PASS (SKILL.md + refs + hub membership + route surface) |
 
 Fail any row → do not promote; propose merge, rewrite, or defer.
 
@@ -37,12 +38,14 @@ Fail any row → do not promote; propose merge, rewrite, or defer.
 
 1. Place under correct bucket (`git mv` / move).
 2. **Depth-prefix name (hard):** set dir + frontmatter `name` to `{depth}-{kebab-slug}` per [depth-prefix-names.md](./depth-prefix-names.md) (★ hub → `0-`; hub child → `1-`; under sub-hub → `2-`; deeper nesting → `3-` / `4-` / `5-` / `6-` / … via `max(parent+1)`). Ensure `name` == directory name. Never leave a bare unprefixed live skill.
-3. Add one-line entry to bucket README.
-4. If promoted bucket: add line to root README; if not: ensure root does **not** list it.
-5. Update `flows.md` **and** parent `hubs/{hub}/workflow.json` children so the skill is a hub member.
-6. Update `skills-lock.json` if the skill is locked/sourced.
-7. Run **`/1-skill-linter`** mode **skill** on the new path — require **Gate: PASS**.
-8. Never create wiki/concept atoms.
+3. **Route surface:** write/verify description contract + `metadata.catalog` (hub matches place parent; never top-level `hub`/`when`/…).
+4. Add one-line entry to bucket README.
+5. If promoted bucket: add line to root README; if not: ensure root does **not** list it.
+6. Update `flows.md` **and** parent `hubs/{hub}/workflow.json` children so the skill is a hub member.
+7. Update `skills-lock.json` if the skill is locked/sourced.
+8. Run **`scripts/generate-route-index`** so butler skim includes the new skill.
+9. Run **`/1-skill-linter`** mode **skill** on the new path — require **Gate: PASS** (includes `gate-route` for new skills).
+10. Never create wiki/concept atoms.
 
 ## 1-create-skill 1-handoff
 

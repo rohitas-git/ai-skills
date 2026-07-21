@@ -1,11 +1,26 @@
 ---
 name: 1-vault-inbox
 description: >
-  Fast-capture notes into Rohitas's Notes Inbox while using agentic AI — no full
-  ingest, no Concepts. Use when the user says add to inbox, capture this, quick
-  vault note, inbox dump, save for later, or /1-vault-inbox. Loads 0-rohitas-vault-wiki
-  for path and naming only. Process later with vault-ingest.
+  Fast-capture into vault Inbox — no full ingest. Use for add to inbox, capture this,
+  save for later. Not for: compile into Concepts (1-vault-ingest). Hub: /0-rohitas-vault-wiki.
+  Triggers: add to inbox, capture this, quick vault note.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-rohitas-vault-wiki
+    role: pipeline
+    when:
+      - "fast capture to Inbox"
+      - "no Concept compile yet"
+    not_when:
+      - "full ingest to Concepts → 1-vault-ingest"
+    next: [1-vault-ingest]
+    triggers:
+      - "add to inbox"
+      - "capture this"
+      - "quick vault note"
+      - "1-vault-inbox"
+    requires_setup: false
 ---
 
 # Vault Inbox

@@ -1,7 +1,23 @@
 ---
 name: 1-pr-summarizer
-description: Summarize changes, write PR descriptions, or draft comments for pull requests. Trigger this skill whenever the user asks to "write a PR description", "summarize changes for a PR", "draft a comment to post on my PR", "summarize terminal logs / test failures for a PR comment", or wants to format git diff and commit information for pull requests.
+description: >
+  Summarize changes, write PR descriptions, or draft comments for pull requests. Trigger
+  this skill whenever the user asks to "write a PR description", "summarize changes for
+  a PR", "draft a comment to post on my PR", "summarize terminal logs / test failures
+  for a PR comment", or wants to format git diff and commit information for pull
+  requests. Use when: Summarize changes, write PR descriptions, or draft comments for
+  pull requests. Hub: /0-implement.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-implement
+    role: soft
+    when:
+      - "Summarize changes, write PR descriptions, or draft comments for pull requests"
+    triggers:
+      - "1-pr-summarizer"
+      - "pr summarizer"
+    requires_setup: false
 ---
 
 # PR Summarizer
@@ -93,3 +109,8 @@ Use this format when summarizing terminal output / test runs to post as a commen
 - **Format File Paths as Links**: Always format file paths as clickable local links using the `file://` scheme (e.g. `[filename](file:///path/to/file)`).
 - **Group logically**: If many files are changed, group them by component or feature area.
 - **Highlight regulatory/clinical impact**: In repositories with specific safety/clinical guidelines (e.g., KiloCare's regulatory constraints), highlight if any changes affect these paths.
+
+
+## Related
+
+**Next:** `/0-implement`. Parent hub: `/0-implement`.

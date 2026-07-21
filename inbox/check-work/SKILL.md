@@ -285,3 +285,10 @@ Then end with exactly:
 VERDICT: PASS
 or
 VERDICT: FAIL
+
+## Progressive disclosure
+
+Depth / place notes: [references/README.md](./references/README.md)
+
+
+Main file is long host scaffold; treat sections as load-on-demand. Prefer thin promoted twin under `skills/` when placing.

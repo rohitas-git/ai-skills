@@ -1,7 +1,21 @@
 ---
 name: 1-thinking-steel-manning
-description: Use before rejecting a proposal or when you're inclined to just agree with the user. Build the strongest version of the opposing case first, then engage that — not a weak version.
+description: >
+  Use before rejecting a proposal or when you're inclined to just agree with the user.
+  Build the strongest version of the opposing case first, then engage that — not a weak
+  version. Use when: Use before rejecting a proposal or when you're inclined to just
+  agree with the user. Hub: /0-grilling.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-grilling
+    role: soft
+    when:
+      - "Use before rejecting a proposal or when you're inclined to just agree with the user"
+    triggers:
+      - "1-thinking-steel-manning"
+      - "thinking steel manning"
+    requires_setup: false
 ---
 
 # Steel-Manning

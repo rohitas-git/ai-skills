@@ -1,13 +1,36 @@
 ---
 name: 1-diagram-maker
-description: Create SVG/HTML or Excalidraw diagrams for concepts, architecture, flows, and whiteboards.
+description: >
+  Create SVG/HTML or Excalidraw diagrams for concepts, architecture, flows, whiteboards.
+  Use when the user wants a diagram artifact. Not for: slide decks (1-pptx) or full UI mockups (0-ui-ux).
+  Hub: /0-office. Triggers: diagram, flowchart, architecture diagram, whiteboard.
+disable-model-invocation: true
 metadata:
   openclaw:
     emoji: 🧭
   mcpmarket-version: 1.0.0
-disable-model-invocation: true
+  catalog:
+    hub: 0-office
+    role: leaf
+    when:
+      - "diagram/flowchart/architecture drawing"
+    not_when:
+      - "pptx deck → 1-pptx"
+      - "product UI → 0-ui-ux"
+    triggers:
+      - "diagram"
+      - "flowchart"
+      - "architecture diagram"
+      - "excalidraw"
+    requires_setup: false
 ---
 # Diagram Maker
+
+## Process
+
+1. Follow the steps and hard rules in this skill.
+2. Load linked `references/` only when the branch needs them.
+
 
 Create diagrams as artifacts, not prose. Choose one output mode:
 

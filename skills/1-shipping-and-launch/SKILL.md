@@ -1,8 +1,20 @@
 ---
 name: 1-shipping-and-launch
 description: >
-  Pre-launch checklist, staged rollout, monitoring, and rollback planning. Use when preparing production deploy, canary/flag rollout, or go/no-go for a release.
+  Pre-launch checklist, staged rollout, monitoring, and rollback planning. Use when
+  preparing production deploy, canary/flag rollout, or go/no-go for a release. Hub:
+  /0-implement.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-implement
+    role: soft
+    when:
+      - "preparing production deploy, canary/flag rollout, or go/no-go for a release"
+    triggers:
+      - "1-shipping-and-launch"
+      - "shipping and launch"
+    requires_setup: false
 ---
 
 # Shipping and Launch

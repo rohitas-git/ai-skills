@@ -1,10 +1,30 @@
 ---
 name: 1-git-commit-helper
-description: Helps generate high-quality git commit messages by analyzing staged changes, untracked files, or both. Supports brief and detailed modes. Use when user asks for commit message, git commit description, based on changes, diff summary, or similar git workflow assistance.
+description: >
+  Helps generate high-quality git commit messages by analyzing staged changes, untracked
+  files, or both. Supports brief and detailed modes. Use when user asks for commit
+  message, git commit description, based on changes, diff summary, or similar git
+  workflow assistance. Hub: /0-implement.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-implement
+    role: soft
+    when:
+      - "user asks for commit message, git commit description, based on changes, diff summary, or similar git"
+    triggers:
+      - "1-git-commit-helper"
+      - "git commit helper"
+    requires_setup: false
 ---
 
 # Git Commit Helper
+
+## Process
+
+1. Follow the steps and hard rules in this skill.
+2. Load linked `references/` only when the branch needs them.
+
 
 ## Overview
 

@@ -1,11 +1,26 @@
 ---
 name: 1-vault-explain
 description: >
-  Explain a Rohitas's Notes Concept for learning — grounds in the vault note then
-  redirects to 1-learning-explainer for pedagogy (levels, probe, mental models).
-  Use when the user says explain this concept, 1-teach what was just added, explain
-  [[Note]] from the vault, or /1-vault-explain. Pairs with 1-vault-ingest post-ingest.
+  Explain a vault Concept for learning (grounds in note → learning-explainer pedagogy).
+  Use for explain this concept / vault note. Not for: generic non-vault explain (1-learning-explainer)
+  or ingest (1-vault-ingest). Hub: /0-rohitas-vault-wiki. Triggers: explain concept, explain from vault.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-rohitas-vault-wiki
+    role: pipeline
+    when:
+      - "explain a vault Concept note"
+      - "post-ingest teaching"
+    not_when:
+      - "no vault note → 1-learning-explainer"
+      - "ingest first → 1-vault-ingest"
+    cousins: [1-learning-explainer]
+    triggers:
+      - "explain concept"
+      - "explain from vault"
+      - "1-vault-explain"
+    requires_setup: false
 ---
 
 # Vault Explain

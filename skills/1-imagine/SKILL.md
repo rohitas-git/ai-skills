@@ -1,19 +1,35 @@
 ---
 name: 1-imagine
 description: >
-  How to use the image_gen and image_edit tool calls in Grok Build: when to
-  build a visual with code instead of generating it, prompt-craft,
-  reference-first handling of real people, factual grounding, and
-  asset-consistency. Load this whenever generating or editing an image is on the
-  table, i.e. when an image_gen or image_edit call is being considered or about
-  to be made. Tool-usage-driven, not triggered by a user merely mentioning
-  images.
+  Image gen/edit tool workflow (when to use code vs Imagine, prompt craft, consistency).
+  Use when image_gen/image_edit is about to run. Not for: mere mention of images without generating,
+  or office docs (0-office files). Hub: /0-office. Triggers: image_gen, image_edit, generate image.
+disable-model-invocation: true
 metadata:
   short-description: "Prompting and workflow guidance for Imagine image tools"
-disable-model-invocation: true
+  catalog:
+    hub: 0-office
+    role: leaf
+    when:
+      - "about to call image_gen/image_edit"
+      - "generate/edit image asset"
+    not_when:
+      - "docx/pptx file → office leaves"
+      - "UI design system → 0-ui-ux"
+    triggers:
+      - "image_gen"
+      - "image_edit"
+      - "generate image"
+    requires_setup: false
 ---
 
 # Imagine
+
+## Process
+
+1. Follow the steps and hard rules in this skill.
+2. Load linked `references/` only when the branch needs them.
+
 
 Guidance for the two image tool calls in Grok Build:
 

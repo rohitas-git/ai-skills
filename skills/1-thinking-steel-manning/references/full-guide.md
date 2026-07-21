@@ -1,6 +1,6 @@
 # 1-thinking-steel-manning — full guide
 
-> Progressive disclosure body moved from SKILL.md for Matt-lean main file.
+> Progressive disclosure body moved from SKILL.md for lean main file.
 
 # Steel-Manning
 

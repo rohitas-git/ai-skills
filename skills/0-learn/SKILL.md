@@ -1,12 +1,29 @@
 ---
 name: 0-learn
 description: >
-  Domain hub for intellectual understanding — how/why something works, not shipping
-  code or vault compile. Use for learn, 1-teach me, explain, ELI5, walk me through,
-  quiz me, study this, rusty on, confusion signals, or terse concept names. Routes
-  to the right Learn mode (explain, tutor, code walkthrough, multi-session course,
-  story, summarize). Not for tasks, feature work, or Claude opinion/verdict prompts.
+  Domain hub for intellectual understanding — how/why something works, not shipping code
+  or vault compile. Use for learn, teach me, explain, ELI5, walk me through, quiz me, study this.
+  Not for: feature work (0-implement), vault structure/schema (0-rohitas-vault-wiki). Hub: /0-learn.
+  Triggers: learn, explain, ELI5, quiz me, teach me, study this.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-learn
+    role: hub
+    when:
+      - "learn/explain/teach routing"
+      - "intellectual understanding not shipping"
+    not_when:
+      - "ship code → 0-implement"
+      - "vault schema/ingest → 0-rohitas-vault-wiki"
+    next: [1-learning-explainer, 1-code-explainer, 1-teach]
+    triggers:
+      - "learn"
+      - "explain"
+      - "ELI5"
+      - "quiz me"
+      - "teach me"
+    requires_setup: false
 ---
 
 # Learn (domain hub)

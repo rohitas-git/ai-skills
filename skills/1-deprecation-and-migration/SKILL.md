@@ -1,8 +1,20 @@
 ---
 name: 1-deprecation-and-migration
 description: >
-  Sunset APIs/features and migrate callers safely. Use when removing systems, expand/contract schema changes, or dual-running during cutover.
+  Sunset APIs/features and migrate callers safely. Use when removing systems,
+  expand/contract schema changes, or dual-running during cutover. Hub:
+  /0-improve-codebase-architecture.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-improve-codebase-architecture
+    role: soft
+    when:
+      - "removing systems, expand/contract schema changes, or dual-running during cutover"
+    triggers:
+      - "1-deprecation-and-migration"
+      - "deprecation and migration"
+    requires_setup: false
 ---
 
 # Deprecation and Migration

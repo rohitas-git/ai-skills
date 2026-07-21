@@ -1,6 +1,6 @@
 # Sprawl and sub-domain hubs
 
-Aligned with **Matt lean** ([matt-lean-structure.md](./matt-lean-structure.md)): thin `SKILL.md` first; sub-domain hubs only for whole trees.
+Aligned with **lean** ([lean-structure.md](./lean-structure.md)): thin `SKILL.md` first; sub-domain hubs only for whole trees.
 
 ## Prefer (in order)
 
@@ -38,15 +38,15 @@ When split alone is not enough (large tree under one domain):
 3. **workflow.json** fields:
    - `parent`: 0-butler (house apex)
    - `parent_domain_hub`: owning domain (e.g. `0-skill-manager`, `0-learn`)
-   - `children`: extracted skills + link types (Matt chain)
+   - `children`: extracted skills + link types (skill chain)
 4. Parent domain: `link_type: "sub-hub"` → `{sub}`.
-5. **Thin** each skill’s SKILL.md to Matt lean; re-run skill-linter.
+5. **Thin** each skill’s SKILL.md to lean; re-run skill-linter.
 6. Update flows-chart if user-facing.
 
 ## Report snippet
 
 ```markdown
-## Lean / Matt structure
+## Lean structure
 - [lean] path — 220 lines, no disclosure map → move templates to references/
 - [chain-next] path — pipeline skill missing next step (expect /1-tdd or /1-code-review)
 

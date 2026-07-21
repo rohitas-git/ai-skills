@@ -1,6 +1,52 @@
 # AI-Skills Catalog
 
+**Catalog version:** see [`catalog.yaml`](./catalog.yaml) · **Feature log:** [`docs/FEATURE-LOG.md`](./docs/FEATURE-LOG.md) · **ADRs:** [`docs/adr/`](./docs/adr/)
+
 A comprehensive, depth-organized catalog of Claude agent skills for software engineering, code review, system design, documentation, and project management. Skills are hierarchically organized (0-hubs, 1-skills, 2-specialized), discoverable, and symlink-installable into any Claude agent environment.
+
+## Table of contents
+
+- [Overview](#overview)
+- [Getting Started](#getting-started)
+- [Catalog Structure & Naming](#catalog-structure-naming)
+  - [Depth-Based Organization](#depth-based-organization)
+  - [Why This Naming Convention?](#why-this-naming-convention)
+  - [Example Flow](#example-flow)
+- [Scripts](#scripts)
+  - [`setup.sh` — Interactive Installation](#setupsh-interactive-installation)
+  - [`sync-skills-symlinks.sh` — Flatten & Link](#sync-skills-symlinkssh-flatten-link)
+  - [`lint-skills` — Catalog Health Check](#lint-skills-catalog-health-check)
+  - [`generate-route-index` — Butler skim](#generate-route-index-butler-skim)
+- [Useful Workflows for Engineers & PMs](#useful-workflows-for-engineers-pms)
+  - [For Software Engineers](#for-software-engineers)
+  - [For Technical Project Managers](#for-technical-project-managers)
+- [All Skills (with Brief Descriptions)](#all-skills-with-brief-descriptions)
+- [Quick Reference](#quick-reference)
+  - [Common Commands](#common-commands)
+  - [Most-Used Skills](#most-used-skills)
+- [Example Workflows](#example-workflows)
+  - [Feature Development (Happy Path)](#feature-development-happy-path)
+  - [Bug Diagnosis & Fix](#bug-diagnosis-fix)
+  - [Code Audit & Refactoring](#code-audit-refactoring)
+  - [Project Triage & Routing](#project-triage-routing)
+- [Configuration Reference](#configuration-reference)
+  - [Default Config: `symlink-targets.local.json`](#default-config-symlink-targetslocaljson)
+- [Contributing](#contributing)
+  - [Creating a New Skill](#creating-a-new-skill)
+  - [Editing Existing Skills](#editing-existing-skills)
+  - [Testing Locally](#testing-locally)
+- [Troubleshooting](#troubleshooting)
+  - [Symlinks Not Appearing](#symlinks-not-appearing)
+  - ["Config file not found"](#config-file-not-found)
+  - [Skills Not Discoverable in Agent](#skills-not-discoverable-in-agent)
+  - ["Skill name mismatch" from lint](#skill-name-mismatch-from-lint)
+- [Related Resources](#related-resources)
+  - [Documentation](#documentation)
+  - [Skill Development](#skill-development)
+  - [Navigation & Discovery](#navigation-discovery)
+  - [Learning & Knowledge](#learning-knowledge)
+- [Agent Compatibility](#agent-compatibility)
+
 
 ## Overview
 
@@ -119,7 +165,13 @@ Reads config, discovers skills, and symlinks them into target agent directories.
 ```bash
 ./scripts/lint-skills
 ```
-Validates catalog structure: SKILL.md presence, naming conventions, hub membership, chaining metadata (prev/next), and common sprawl patterns. Reports-only; use `0-skill-manager` to fix issues.
+Validates catalog structure: SKILL.md presence, depth-prefix, hub membership, **route surface** (`metadata.catalog`, no top-level route keys), lean/sprawl. Prints **`catalog.yaml` version**. Gate PASS = 0 critical. Reports-only; use `/0-skill-manager` to fix.
+
+### `generate-route-index` — Butler skim
+```bash
+./scripts/generate-route-index
+```
+Rebuilds `skills/0-butler/references/route-index.md` from live skill `metadata.catalog` (fallback: description + hub membership). Run after place/ingest/organize.
 
 ## Useful Workflows for Engineers & PMs
 

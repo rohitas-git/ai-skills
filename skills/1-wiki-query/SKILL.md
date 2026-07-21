@@ -1,14 +1,26 @@
 ---
 name: 1-wiki-query
 description: >
-  Answer questions against a personal LLM wiki / Obsidian vault using Karpathy-style
-  query workflow (index first, read compiled pages, synthesize with citations, file
-  valuable answers back). Use whenever the user asks a question about their notes,
-  wiki, vault knowledge, second brain, MOCs, Concepts, "what do my notes say",
-  "query the wiki", "answer from the vault", comparison from notes, or /1-wiki-query —
-  even if they do not say "query". Prefer this skill over raw RAG-style guessing
-  when a vault or wiki is available. Pairs with 0-rohitas-vault-wiki for vault layout.
+  Answer questions against personal vault/wiki with Karpathy-style query workflow and
+  citations. Use for what do my notes say, query the wiki, answer from vault. Not for: invent without
+  notes or generic web research. Hub: /0-rohitas-vault-wiki. Triggers: query wiki, notes say, answer from vault.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-rohitas-vault-wiki
+    role: pipeline
+    when:
+      - "question against vault notes"
+      - "query wiki / second brain"
+    not_when:
+      - "no vault / invent → research skills"
+      - "structure vault → 0-rohitas-vault-wiki"
+    triggers:
+      - "query wiki"
+      - "what do my notes say"
+      - "answer from vault"
+      - "1-wiki-query"
+    requires_setup: false
 ---
 
 # Wiki Query
@@ -30,3 +42,12 @@ Purpose router for **`/1-wiki-query`**. Full procedure: [references/full-guide.m
 ## Related
 
 See Boundary table and hub membership in `skills/0-butler/references/flows.md`.
+
+
+### Additional references
+
+| Load when | File |
+|-----------|------|
+| karpathy query principles | [references/karpathy-query-principles.md](./references/karpathy-query-principles.md) |
+| query page format | [references/query-page-format.md](./references/query-page-format.md) |
+| vault map | [references/vault-map.md](./references/vault-map.md) |

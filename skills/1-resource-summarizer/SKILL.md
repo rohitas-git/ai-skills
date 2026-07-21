@@ -1,14 +1,36 @@
 ---
 name: 1-resource-summarizer
 description: >
-  Distills long resources (PDF, video/transcript, article, image) into learning-focused
-  notes using 80/20, Feynman, Cornell, and progressive summarization. Use for summarize,
-  extract insights, study notes from a source. Soft under /0-learn; also 1-vault-ingest distill.
-  Not multi-level teach-from-scratch (/1-learning-explainer) or multi-session course (/1-teach).
+  Distill long resources into learning-focused notes (80/20, Feynman, progressive summary).
+  Use for summarize/extract insights from PDF/video/article. Not for: multi-level teach-from-scratch
+  (1-learning-explainer) or multi-session course (1-teach). Hub: /0-learn.
+  Triggers: summarize, extract insights, study notes from source.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-learn
+    role: soft
+    when:
+      - "summarize long resource"
+      - "study notes from source"
+    not_when:
+      - "teach from scratch → 1-learning-explainer"
+      - "course workspace → 1-teach"
+    cousins: [1-vault-ingest, 1-learning-explainer]
+    triggers:
+      - "summarize"
+      - "extract insights"
+      - "study notes"
+    requires_setup: false
 ---
 
 # Resource Summarizer Skill
+
+## Process
+
+1. Follow the steps and hard rules in this skill.
+2. Load linked `references/` only when the branch needs them.
+
 ## Boundary
 
 | Need | Skill |

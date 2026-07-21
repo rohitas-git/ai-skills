@@ -1,11 +1,26 @@
 ---
 name: 1-vault-lint
 description: >
-  Health-check Rohitas's Notes vault: broken wikilinks, orphans, misplaced hubs,
-  frontmatter, contradictions, duplicates, Registry drift. Report-only by default.
-  Use when the user says lint vault, health check notes, find contradictions,
-  orphan notes, wiki audit, or /1-vault-lint. Loads 0-rohitas-vault-wiki for schema.
+  Health-check vault: broken links, orphans, frontmatter, duplicates. Report-only default.
+  Use for lint vault, wiki audit, find contradictions. Not for: ingest or capture. Hub: /0-rohitas-vault-wiki.
+  Triggers: lint vault, orphan notes, wiki audit.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-rohitas-vault-wiki
+    role: leaf
+    when:
+      - "vault health check"
+      - "broken links / orphans / drift"
+    not_when:
+      - "ingest content → 1-vault-ingest"
+      - "capture → 1-vault-inbox"
+    triggers:
+      - "lint vault"
+      - "orphan notes"
+      - "wiki audit"
+      - "1-vault-lint"
+    requires_setup: false
 ---
 
 # Vault Lint

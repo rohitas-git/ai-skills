@@ -1,6 +1,8 @@
-# Matt Pocock lean SKILL.md + chaining
+# Lean SKILL.md + chaining
 
-1-skill-linter treats **Matt-style** skills as the house default for structure. Canonical theory: `/1-writing-great-skills`. Canonical thin examples: `/0-implement`, `/1-tdd`, `/1-to-spec`, `/1-grill-with-docs`.
+1-skill-linter treats **lean** skills as the house default for structure. Canonical theory: `/1-writing-great-skills`. Canonical thin examples: `/0-implement`, `/1-tdd`, `/1-to-spec`, `/1-grill-with-docs`.
+
+**Butler routing surface** (description contract + `metadata.catalog` only — no top-level route keys): [skill-route-surface.md](../../0-skill-manager/references/skill-route-surface.md).
 
 ## Goal
 
@@ -8,7 +10,7 @@ Keep the **main `SKILL.md` lean**. Put depth behind **context pointers**. Wire t
 
 ## Lean structure (required shape)
 
-A healthy Matt-style `SKILL.md` is a **thin router + steps**, not a book:
+A healthy lean `SKILL.md` is a **thin router + steps**, not a book:
 
 ```text
 ---
@@ -47,7 +49,7 @@ description: …   # triggers for model-invoked; short human summary if user-inv
 
 | Lines in SKILL.md | Code | Meaning |
 |-------------------|------|---------|
-| ≤ **120** | — | Lean target (Matt-thin) |
+| ≤ **120** | — | Lean target (lean) |
 | **121–180** | `lean-soft` (info) | OK if disclosure map present |
 | **181–250** | `lean` (warn) | Not lean — move reference out |
 | **> 250** | `sprawl` (warn) | Fail progressive-disclosure bar |
@@ -61,13 +63,13 @@ description: …   # triggers for model-invoked; short human summary if user-inv
 |------|-----|----------------|
 | `lean` | warn | SKILL.md ≤ 180 lines, or ≤ 250 with clear load map to refs |
 | `lean-soft` | info | 121–180 without map — nudge thinner |
-| `matt-shape` | warn | Has ordered Process/Dispatch/Steps **or** is intentionally all-reference with short body (like 1-writing-great-skills core is long but discloses glossary — prefer disclose) |
+| `lean-shape` | warn | Has ordered Process/Dispatch/Steps **or** is intentionally all-reference with short body (like 1-writing-great-skills core is long but discloses glossary — prefer disclose) |
 | `disclosure` | warn | If SKILL.md > 120 and has `references/` or sibling `.md`, SKILL.md must **link** them with when-to-load wording |
 | `completion` | info | Steps imply done/not-done (completion criteria), not open-ended essay |
 | `no-book` | warn | SKILL.md is not primarily long prose chapters without steps or pointers |
-| `description-triggers` | warn | Model-invoked skills: description states when to use (Matt trigger style) |
+| `description-triggers` | warn | Model-invoked skills: description states when to use (trigger style) |
 
-## Chaining checks (Matt flow)
+## Chaining checks (chain flow)
 
 Skills live on a **chain**, not in isolation. Align with 0-butler `flows.md` and hub `workflow.json`.
 

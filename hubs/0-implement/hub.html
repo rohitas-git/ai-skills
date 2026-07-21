@@ -97,14 +97,17 @@
   <h2>Children</h2>
   <ul>
     <li><strong>pipeline:</strong> 1-to-spec, 1-to-tickets, 0-implement, 1-tdd, 1-code-review</li>
-<li><strong>cousin:</strong> 2-verify-work <span class='meta'>(mid-build only)</span></li>
+    <li><strong>soft (plan path):</strong> 1-write-plan, 1-git-worktrees, 1-subagent-implement, 1-execute-plan, 1-finish-branch <span class='meta'>(superpowers harvest)</span></li>
+    <li><strong>satellite:</strong> 1-parallel-agents</li>
+    <li><strong>cousin:</strong> 2-verify-work <span class='meta'>(mid-build only)</span></li>
   </ul>
 </section>
 
 <section>
   <h2>Pipeline</h2>
   <pre>multi: 1-to-spec → 1-to-tickets → implement* → 1-tdd → 1-code-review → commit
-single: implement* → 1-tdd → 1-code-review → commit</pre>
+single: implement* → 1-tdd → 1-code-review → commit
+optional plan: 1-write-plan → 1-git-worktrees? → F-SP → subagent-implement|execute-plan → closer → 1-finish-branch</pre>
 </section>
 
 
@@ -113,9 +116,10 @@ single: implement* → 1-tdd → 1-code-review → commit</pre>
   <table>
     <thead><tr><th>ID</th><th>Question</th><th>Recommended</th><th>Branches</th></tr></thead>
     <tbody>
-      <tr><td><code>F4</code></td><td>(entry) multi-session?</td><td>as Design</td><td>to-spec path · direct implement</td></tr>
-<tr><td><code>F5</code></td><td>This slice done?</td><td>run closer</td><td>tdd→code-review→commit · more tickets</td></tr>
-<tr><td><code>F6</code></td><td>(inside 1-code-review) axes applicable?</td><td>every applicable</td><td>Spec · Standards · Maintainability · soft-skip</td></tr>
+      <tr><td><code>F4</code></td><td>(entry) multi-session?</td><td>as Design</td><td>to-spec path · direct implement · Agent judgment</td></tr>
+      <tr><td><code>F-SP</code></td><td>Execute plan same session or new session?</td><td>same if subagents available</td><td>1-subagent-implement · 1-execute-plan · Agent judgment</td></tr>
+<tr><td><code>F5</code></td><td>This slice done?</td><td>run closer</td><td>tdd→code-review→commit · more tickets · Agent judgment</td></tr>
+<tr><td><code>F6</code></td><td>(inside 1-code-review) axes applicable?</td><td>every applicable</td><td>Spec · Standards · Maintainability · soft-skip · Agent judgment</td></tr>
     </tbody>
   </table>
 </section>
@@ -144,6 +148,7 @@ single: implement* → 1-tdd → 1-code-review → commit</pre>
 <a href="../0-ponytail/hub.html" class="">ponytail</a>
 <a href="../0-learn/hub.html" class="">learn</a>
 <a href="../0-office/hub.html" class="">office</a>
+<a href="../0-ui-ux/hub.html" class="">ui-ux</a>
   </div>
 </section>
 </main>

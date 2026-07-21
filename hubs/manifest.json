@@ -181,6 +181,16 @@
       "workflow_json": "./0-office/workflow.json",
       "parent": "0-butler",
       "skill_path": "misc/office"
+    },
+    {
+      "domain_id": 15,
+      "domain": "UI/UX",
+      "hub": "0-ui-ux",
+      "dir": "./0-ui-ux/",
+      "html": "./0-ui-ux/hub.html",
+      "workflow_json": "./0-ui-ux/workflow.json",
+      "parent": "0-butler",
+      "skill_path": "skills/0-ui-ux"
     }
   ]
 }

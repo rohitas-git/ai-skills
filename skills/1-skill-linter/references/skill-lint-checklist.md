@@ -2,25 +2,29 @@
 
 Severity: **critical** · **warn** · **info**
 
-**Matt lean + chaining** is the default quality bar. See [matt-lean-structure.md](./matt-lean-structure.md) and `/1-writing-great-skills`.
+**lean + chaining** is the default quality bar. See [lean-structure.md](./lean-structure.md) and `/1-writing-great-skills`.
 
 ## A. SKILL.md surface
 
 | Code | Sev | Check |
 |------|-----|--------|
-| `depth-prefix` | **critical** | live dir + frontmatter `name` match `^\d+-[a-z0-9]+(-[a-z0-9]+)*$` (depth-prefix hard rule; see 0-skill-manager `depth-prefix-names.md`) |
+| `depth-prefix` | **critical** | promoted live (`skills/`) dir + frontmatter `name` match `^\d+-[a-z0-9]+(-[a-z0-9]+)*$`; **inbox/ exempt until place** (see 0-skill-manager `depth-prefix-names.md`) |
 | `name-dir` | critical | frontmatter `name` == directory name (includes prefix) |
 | `depth-hub` | critical | ★ domain hub skills use depth **0**; sub-hub package depth = parent+1 (often **1**; nested → **2+**; hub identity over dual edges) |
 | `depth-graph` | **critical** | name prefix equals hub-tree depth: hub identity or `max(parent_depth+1)` for **any** depth 0…max (incl. **3–6+**) |
 | `depth-dual` | info | skill has ≥2 hub parents — depth uses deepest parent |
 | `frontmatter` | critical | `name` and `description` present |
 | `description-quality` | warn | description ≥ ~40 chars; signals when-to-use / triggers |
-| `description-triggers` | warn | model-invoked (no `disable-model-invocation`): description has trigger phrasing (“Use when…”) |
+| `description-triggers` | warn | **all live** skills: description has Use when / Use for / Triggers / Trigger on (butler route surface; not only model-invoked) |
+| `route-top-level` | **critical** | no top-level `hub`/`when`/`not_when`/`next`/`prev`/`cousins`/`triggers`/`role` — use `metadata.catalog` only ([skill-route-surface.md](../../0-skill-manager/references/skill-route-surface.md)) |
+| `route-hub` | warn | if `metadata.catalog.hub` set, it must be a known hub package / membership |
+| `route-cousin` | warn | dual-member or high-collision cluster lacks `not_when` / `## Boundary` |
+| `route-index-stale` | info | missing or older than skills/workflows — run `scripts/generate-route-index` |
 | `body-structure` | warn | non-empty body; has Process/Dispatch/Steps **or** short intentional all-reference |
-| `matt-shape` | warn | follows Matt lean shape (thin router + steps + pointers), not a book (matt-lean-structure.md) |
+| `lean-shape` | warn | follows lean shape (thin router + steps + pointers), not a book (lean-structure.md) |
 | `disable-model` | info | large (>180 lines) or steward skills: prefer `disable-model-invocation: true` |
 
-## B. Lean main SKILL.md (Matt progressive disclosure)
+## B. Lean main SKILL.md (progressive disclosure)
 
 | Code | Sev | Check |
 |------|-----|--------|
@@ -72,6 +76,7 @@ Prefer **thin + chain** over new domain hubs. Sub-domain only for whole trees.
 | `gate-hub-slot` | critical | new skill has no planned parent hub + link type |
 | `gate-depth-prefix` | critical | **new** skill lacks `{depth}-{slug}` name/dir or hub package name mismatch |
 | `gate-lean` | critical | **new** skill SKILL.md > 180 lines and no disclosure map — must thin before place |
+| `gate-route` | critical | **new** skill: description contract + hub membership + `metadata.catalog` (`hub`, `role`, `when` or `triggers`) — see skill-route-surface.md |
 
 ## Catalog-level (delegate / include)
 

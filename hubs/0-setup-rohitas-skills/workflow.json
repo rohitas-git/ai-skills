@@ -8,7 +8,7 @@
   "path": "skills/0-setup-rohitas-skills",
   "package_dir": "hubs/0-setup-rohitas-skills/",
   "role": "One-time precondition + SSOT for a consumer repo.",
-  "notes": "Gate before Design/Ship pipelines. Writes docs/agents/ SSOT including optional vault root.",
+  "notes": "Gate before Design/Ship. Core SSOT: issue-tracker, domain, optional vault. Triage labels only when F2=Yes (opt-in); soft-mention /0-triage at Done if skipped.",
   "parent": {
     "hub": "0-butler",
     "slash": "/0-butler",
@@ -22,9 +22,15 @@
       "link_type": "hard",
       "skills": [
         "1-to-spec",
-        "1-to-tickets",
-        "0-triage"
+        "1-to-tickets"
       ]
+    },
+    {
+      "link_type": "on-ramp",
+      "skills": [
+        "0-triage"
+      ],
+      "notes": "Opt-in via F2; not part of default setup path"
     },
     {
       "link_type": "soft",
@@ -38,14 +44,22 @@
       "link_type": "ssot",
       "docs": [
         "issue-tracker",
-        "triage-labels",
         "domain",
         "vault"
       ]
+    },
+    {
+      "link_type": "ssot",
+      "docs": [
+        "triage-labels"
+      ],
+      "notes": "Write only when F2=Yes"
     }
   ],
   "pipeline": [
-    "run once per consumer repo"
+    "run once per consumer repo",
+    "core: issue tracker \u2192 domain \u2192 optional vault",
+    "F2 triage opt-in (default No); soft-mention if skipped"
   ],
   "forks": [
     {
@@ -55,6 +69,16 @@
       "branches": [
         "run setup",
         "skip \u2192 Design/Ship",
+        "Agent judgment"
+      ]
+    },
+    {
+      "id": "F2",
+      "question": "Configure /0-triage labels? (incoming issues/PRs intake \u2014 not grill\u2192tickets\u2192ship)",
+      "recommended": "No",
+      "branches": [
+        "No (skip triage)",
+        "Yes \u2192 label vocabulary",
         "Agent judgment"
       ]
     }

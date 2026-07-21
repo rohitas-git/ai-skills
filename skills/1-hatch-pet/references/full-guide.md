@@ -1,6 +1,6 @@
 # 1-hatch-pet — full guide
 
-> Progressive disclosure body moved from SKILL.md for Matt-lean main file.
+> Progressive disclosure body moved from SKILL.md for lean main file.
 
 # Hatch Pet
 

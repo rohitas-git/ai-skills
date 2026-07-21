@@ -12,9 +12,22 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-CATALOG = ROOT / "skills"
+# Catalog root is the repo (skills/, hubs/, archive/, inbox/, wikis/ live here).
+CATALOG = ROOT
 HUBS_DIR = CATALOG / "hubs"
 FLOWS = CATALOG / "skills" / "0-butler" / "references" / "flows.md"
+CATALOG_YAML = CATALOG / "catalog.yaml"
+
+
+def catalog_version() -> str:
+    """Read version from catalog.yaml without requiring PyYAML."""
+    if not CATALOG_YAML.is_file():
+        return "unknown"
+    for line in CATALOG_YAML.read_text(encoding="utf-8", errors="replace").splitlines():
+        line = line.strip()
+        if line.startswith("version:"):
+            return line.split(":", 1)[1].strip().strip('"').strip("'")
+    return "unknown"
 # Domain packages with live skills
 LIVE_BUCKETS = ["skills"]  # flat live skill parent
 BUCKETS = ["skills", "inbox", "archive"]
@@ -23,6 +36,27 @@ HARD_DEP_SKILLS = {"1-to-spec", "1-to-tickets", "0-triage"}
 FORBIDDEN_LIVE = {"using-agent-skills", "setup-matt-pocock-skills"}
 # Live skills: {depth}-{kebab-slug} (CLAUDE.md / depth-prefix-names.md hard rule)
 DEPTH_PREFIX = re.compile(r"^[0-9]+-[a-z0-9]+(-[a-z0-9]+)*$")
+# Route surface (D2): these must NOT appear as top-level frontmatter keys
+ROUTE_TOP_LEVEL_FORBIDDEN = {
+    "hub",
+    "when",
+    "not_when",
+    "next",
+    "prev",
+    "cousins",
+    "triggers",
+    "role",
+    "requires_setup",
+}
+# Allow line breaks inside the phrase (folded YAML descriptions).
+# Prefer matching "Triggers:" without requiring a trailing word-boundary after ":".
+DESC_TRIGGER = re.compile(
+    r"(?is)(?:\buse\s+when\b|\buse\s+for\b|\buse\s+on\b|\btriggers?\s*:|\btrigger\s+on\b)"
+)
+CATALOG_HUB = re.compile(
+    r"(?m)^[ \t]+hub:\s*[\"']?([0-9]+-[a-z0-9]+(?:-[a-z0-9]+)*)[\"']?\s*$"
+)
+ROUTE_INDEX = CATALOG / "skills" / "0-butler" / "references" / "route-index.md"
 # workflow.json may list ops verbs that are not skills
 NON_SKILL_TOKENS = {
     "create",
@@ -346,8 +380,9 @@ def main() -> int:
             name = meta.get("name", "")
             if name and name != d.name:
                 findings.append(("critical", "name-dir", f"{rel}: name={name!r} != dir"))
-            # Depth-prefix hard rule (live + inbox only)
-            if bucket in ("skills", "inbox"):
+            # Depth-prefix hard rule: promoted live skills only.
+            # inbox/ is exempt until place (rename + prefix happens at promote).
+            if bucket in PROMOTED:
                 if not DEPTH_PREFIX.match(d.name):
                     findings.append(
                         (
@@ -387,6 +422,46 @@ def main() -> int:
                     ("critical", "hard-dep", f"{d.name} missing /0-setup-rohitas-skills pointer")
                 )
 
+            # Route surface: no top-level route keys (D2); description-triggers / catalog hub (live)
+            if bucket in PROMOTED:
+                for key in ROUTE_TOP_LEVEL_FORBIDDEN:
+                    if key in meta:
+                        findings.append(
+                            (
+                                "critical",
+                                "route-top-level",
+                                f"{rel}: top-level {key!r} forbidden — use metadata.catalog only "
+                                f"(see 0-skill-manager/references/skill-route-surface.md)",
+                            )
+                        )
+                # description when-to-use signal (all live, not only model-invoked)
+                desc_blob = fm
+                if not DESC_TRIGGER.search(desc_blob) and not DESC_TRIGGER.search(text[:800]):
+                    # only flag when description exists and is short/weak on triggers
+                    if "description:" in fm:
+                        findings.append(
+                            (
+                                "warn",
+                                "description-triggers",
+                                f"{rel}: description lacks Use when / Triggers signal (butler route surface)",
+                            )
+                        )
+                mhub = CATALOG_HUB.search(fm)
+                if mhub:
+                    chub = mhub.group(1)
+                    if chub not in hub_members and d.name not in hub_members:
+                        pass  # membership checked separately
+                    # hub field must match a known hub package or member set includes skill under hub
+                    hub_dirs = {p.name for p in HUBS_DIR.glob("*") if p.is_dir()} if HUBS_DIR.is_dir() else set()
+                    if chub not in hub_dirs and chub not in hub_members:
+                        findings.append(
+                            (
+                                "warn",
+                                "route-hub",
+                                f"{rel}: metadata.catalog.hub={chub!r} not a known hub package",
+                            )
+                        )
+
             if d.name in FORBIDDEN_LIVE and bucket in PROMOTED:
                 findings.append(
                     ("critical", "forbidden", f"forbidden live skill in promoted bucket: {d.name}")
@@ -421,7 +496,7 @@ def main() -> int:
                         )
                     )
 
-            # Matt lean + sprawl (main SKILL.md must stay thin)
+            # Lean + sprawl (main SKILL.md must stay thin)
             has_refs_map = "references/" in text and (
                 "progressive" in text.lower()
                 or "load" in text.lower()
@@ -438,7 +513,7 @@ def main() -> int:
                     (
                         "warn",
                         "subdomain-candidate",
-                        f"{rel}: SKILL.md has {lines} lines — thin (Matt lean) then split or sub-domain hub",
+                        f"{rel}: SKILL.md has {lines} lines — thin (lean) then split or sub-domain hub",
                     )
                 )
             elif lines > SPRAWL_WARN_LINES and not has_refs_map:
@@ -454,7 +529,7 @@ def main() -> int:
                     (
                         "warn",
                         "lean",
-                        f"{rel}: SKILL.md has {lines} lines (Matt target ≤{LEAN_SOFT_LINES}; disclose refs if >{LEAN_WARN_LINES})",
+                        f"{rel}: SKILL.md has {lines} lines (lean target ≤{LEAN_SOFT_LINES}; disclose refs if >{LEAN_WARN_LINES})",
                     )
                 )
             elif lines > LEAN_SOFT_LINES:
@@ -466,7 +541,7 @@ def main() -> int:
                     )
                 )
 
-            # Matt shape: process/dispatch/steps, tiny router, or intentional all-reference
+            # Lean shape: process/dispatch/steps, tiny router, or intentional all-reference
             if lines > 100 and not PROCESS_HEADING.search(text):
                 intentional_ref = bool(
                     re.search(
@@ -478,8 +553,8 @@ def main() -> int:
                     findings.append(
                         (
                             "warn",
-                            "matt-shape",
-                            f"{rel}: no Process/Dispatch/Steps heading — Matt lean skills use ordered steps, tiny routers, or disclosed all-reference",
+                            "lean-shape",
+                            f"{rel}: no Process/Dispatch/Steps heading — lean skills use ordered steps, tiny routers, or disclosed all-reference",
                         )
                     )
 
@@ -539,12 +614,54 @@ def main() -> int:
             if d.name not in dep_text:
                 findings.append(("warn", "tombstone", f"archive/{d.name} not in deprecated README"))
 
+    if not CATALOG_YAML.is_file():
+        findings.append(
+            (
+                "warn",
+                "catalog-meta",
+                "missing catalog.yaml — version SSOT for conventions (docs/FEATURE-LOG.md)",
+            )
+        )
+
+    # route-index presence / staleness (info until generator is habit)
+    if not ROUTE_INDEX.is_file():
+        findings.append(
+            (
+                "info",
+                "route-index-stale",
+                "missing skills/0-butler/references/route-index.md — run scripts/generate-route-index",
+            )
+        )
+    else:
+        idx_mtime = ROUTE_INDEX.stat().st_mtime
+        newest = idx_mtime
+        for d in skills_in_bucket("skills"):
+            try:
+                newest = max(newest, (d / "SKILL.md").stat().st_mtime)
+            except OSError:
+                pass
+        if HUBS_DIR.is_dir():
+            for wf in HUBS_DIR.glob("*/workflow.json"):
+                try:
+                    newest = max(newest, wf.stat().st_mtime)
+                except OSError:
+                    pass
+        if newest > idx_mtime + 1:
+            findings.append(
+                (
+                    "info",
+                    "route-index-stale",
+                    "route-index.md older than some SKILL.md / workflow.json — re-run scripts/generate-route-index",
+                )
+            )
+
     by: dict[str, list[str]] = {"critical": [], "warn": [], "info": []}
     for sev, code, msg in findings:
         by.setdefault(sev, []).append(f"- [{code}] {msg}")
 
     print("# Catalog lint")
     print(f"**Catalog root:** {CATALOG}")
+    print(f"**Catalog version:** {catalog_version()} (`catalog.yaml`)")
     print(
         f"**Summary:** {len(by['critical'])} critical, {len(by['warn'])} warn, {len(by['info'])} info"
     )

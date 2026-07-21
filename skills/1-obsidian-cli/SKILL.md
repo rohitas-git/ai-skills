@@ -1,10 +1,32 @@
 ---
 name: 1-obsidian-cli
-description: Interact with Obsidian vaults using the Obsidian CLI to read, create, search, and manage notes, tasks, properties, and more. Also supports plugin and theme development with commands to reload plugins, run JavaScript, capture errors, take screenshots, and inspect the DOM. Use when the user asks to interact with their Obsidian vault, manage notes, search vault content, perform vault operations from the command line, or develop and debug Obsidian plugins and themes.
+description: >
+  Interact with Obsidian vaults using the Obsidian CLI to read, create, search, and
+  manage notes, tasks, properties, and more. Also supports plugin and theme development
+  with commands to reload plugins, run JavaScript, capture errors, take screenshots, and
+  inspect the DOM. Use when the user asks to interact with their Obsidian vault, manage
+  notes, search vault content, perform vault operations from the command line, or
+  develop and debug Obsidian plugins and themes. Hub: /0-rohitas-vault-wiki.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-rohitas-vault-wiki
+    role: leaf
+    when:
+      - "the user asks to interact with their Obsidian vault, manage notes, search vault content, perform vau"
+    triggers:
+      - "1-obsidian-cli"
+      - "obsidian cli"
+    requires_setup: false
 ---
 
 # Obsidian CLI
+
+## Process
+
+1. Follow the steps and hard rules in this skill.
+2. Load linked `references/` only when the branch needs them.
+
 
 Use the `obsidian` CLI to interact with a running Obsidian instance. Requires Obsidian to be open.
 
@@ -105,3 +127,8 @@ obsidian dev:mobile on
 ```
 
 Run `obsidian help` to see additional developer commands including CDP and debugger controls.
+
+
+## Related
+
+**Next:** `/0-rohitas-vault-wiki`. Parent hub: `/0-rohitas-vault-wiki`.

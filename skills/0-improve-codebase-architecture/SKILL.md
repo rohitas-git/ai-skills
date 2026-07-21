@@ -1,7 +1,27 @@
 ---
 name: 0-improve-codebase-architecture
-description: Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill through whichever one you pick.
+description: >
+  Scan a codebase for deepening opportunities, present a visual HTML report, then grill
+  through the pick. Use when improving architecture, finding deepenings, or architecture candidate reports.
+  Not for: hard bug diagnosis (0-diagnosing-bugs), multi-axis PR review (1-code-review). Hub: /0-improve-codebase-architecture.
+  Triggers: improve architecture, deepening, architecture report.
 disable-model-invocation: true
+metadata:
+  catalog:
+    hub: 0-improve-codebase-architecture
+    role: hub
+    when:
+      - "architecture deepening scan"
+      - "HTML architecture candidates"
+    not_when:
+      - "debug hard bug → 0-diagnosing-bugs"
+      - "PR multi-axis review → 1-code-review"
+    next: [0-grilling, 1-codebase-design]
+    triggers:
+      - "improve architecture"
+      - "deepening"
+      - "architecture report"
+    requires_setup: false
 ---
 
 # Improve Codebase Architecture
