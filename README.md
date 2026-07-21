@@ -300,6 +300,7 @@ User: "We're ready to ship payment"
 | **0-skill-manager** | Catalog facilities: CRUD skills, organize hubs, place under workflows. |
 | **0-triage** | Move issues/PRs through state machine — categorize, verify, grill, brief. |
 | **0-wayfinder** | Plan huge work as shared map of decision tickets on issue tracker. |
+| **1-anti-sycophancy** | Independent claim assessment; suppress praise/agreement bias; evidence-first. |
 | **1-api-and-interface-design** | Design stable APIs and module boundaries (REST, GraphQL, types). |
 | **1-browser-testing-with-devtools** | Runtime browser verification via Chrome DevTools MCP (DOM, console, network). |
 | **1-ci-cd-and-automation** | Build/test/deploy pipelines and quality gates. |
@@ -312,6 +313,7 @@ User: "We're ready to ship payment"
 | **1-coding-standards** | Always-on lean coding standards for naming, modularity, error handling. |
 | **1-context-monitor** | Monitor context usage, warn at ~50%, suggest token optimizations. |
 | **1-create-skill** | Thin entry for authoring skills (routes to skill-creator + skill-manager). |
+| **1-critique** | Explicit rigorous critique / devil's advocate of ideas and reasoning. |
 | **1-defuddle** | Extract clean markdown from web pages, removing clutter and navigation. |
 | **1-deprecation-and-migration** | Sunset APIs/features and migrate callers safely. |
 | **1-diagram-maker** | Create SVG/HTML or Excalidraw diagrams for concepts, flows, architecture. |
@@ -330,6 +332,7 @@ User: "We're ready to ship payment"
 | **1-imagine** | How to use image_gen and image_edit in Claude Code (prompt-craft, reference). |
 | **1-inline-comments** | Add concise one-line comments above non-obvious code blocks. |
 | **1-json-canvas** | Create and edit JSON Canvas files (.canvas) with nodes and connections. |
+| **1-karpathy-guidelines** | LLM coding process hygiene: think before coding, simplicity, surgical diffs, goals. |
 | **1-learning-explainer** | Structured multi-level explanations with mental models and progressive deep-dive. |
 | **1-living-documentation-governor** | Code-synced living documentation — drift checks, grounded Q&A. |
 | **1-observability-and-instrumentation** | Logging, metrics, tracing, and alerting for diagnosable production behavior. |

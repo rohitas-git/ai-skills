@@ -55,7 +55,9 @@
 | [[1-grill-me]] | A relentless interview to sharpen a plan or design. | `skills/1-grill-me` |
 | [[1-grill-with-docs]] | A relentless interview to sharpen a plan or design, which also creates docs (ADR's and glossary) as … | `skills/1-grill-with-docs` |
 | [[0-grilling]] | Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test … | `skills/0-grilling` |
+| [[1-anti-sycophancy]] | Eliminate sycophantic agreement: independent claim assessment, evidence-first conclusions, praise/empathy suppression. | `skills/1-anti-sycophancy` |
 | [[1-brainstorm]] | Hard-gate design before implementation: approaches, design doc, approval. Superpowers harvest. | `skills/1-brainstorm` |
+| [[1-critique]] | Rigorous intellectual scrutiny on explicit request: challenge assumptions, demand evidence, logical gaps, framing. | `skills/1-critique` |
 | [[1-prototype]] | Build a throwaway 1-prototype to answer a design question. Use when the user wants to sanity-check whe… | `skills/1-prototype` |
 | [[1-thinking-steel-manning]] | Use before rejecting a proposal or when you're inclined to just agree with the user. Build the stron… | `skills/1-thinking-steel-manning` |
 
@@ -71,6 +73,7 @@
 | [[1-git-worktrees]] | Isolated workspace via platform tools or git worktree. | `skills/1-git-worktrees` |
 | [[0-implement]] | "Implement a piece of work based on a spec or set of tickets." | `skills/0-implement` |
 | [[1-inline-comments]] | Add concise one-line comments immediately above non-obvious code blocks or slightly complex snippets… | `skills/1-inline-comments` |
+| [[1-karpathy-guidelines]] | Behavioral guidelines that cut common LLM coding mistakes: surface assumptions, simplicity first, surgical diffs, goal-driven verification. | `skills/1-karpathy-guidelines` |
 | [[1-parallel-agents]] | One focused agent per independent problem domain (parallel investigations). | `skills/1-parallel-agents` |
 | [[1-pr-summarizer]] | Summarize changes, write PR descriptions, or draft comments for pull requests. Trigger this skill wh… | `skills/1-pr-summarizer` |
 | [[1-research]] | Investigate a question against high-trust primary sources and capture the findings as a Markdown fil… | `skills/1-research` |

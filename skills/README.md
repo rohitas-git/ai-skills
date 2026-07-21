@@ -20,6 +20,12 @@ Do not re-nest by domain here. Domain grouping is logical (hubs + wiki).
 - [performance-optimization](./1-performance-optimization/) — vendor harvest (lean); see skill description
 - [shipping-and-launch](./1-shipping-and-launch/) — vendor harvest (lean); see skill description
 
+## Process hygiene
+
+- [1-karpathy-guidelines](./1-karpathy-guidelines/) — LLM coding process: think, simple, surgical, goal-driven (Ship soft)
+- [1-anti-sycophancy](./1-anti-sycophancy/) — independent claim assessment; praise-kill; evidence-first (Design soft)
+- [1-critique](./1-critique/) — explicit rigorous critique / devil's advocate of ideas (Design soft)
+
 ## Superpowers harvest (promoted 2026-07-20)
 
 - [1-brainstorm](./1-brainstorm/) — design gate before code (Design)

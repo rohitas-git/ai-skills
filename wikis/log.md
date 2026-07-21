@@ -21,3 +21,6 @@
 - 2026-07-20: catalog.yaml v1.0.0 + FEATURE-LOG; skill-manager/creator/linter route-surface ops; README TOC.
 
 - 2026-07-21: catalog.yaml **1.0.1** release-note — skill-manager/creator/linter ops + FEATURE-LOG process.
+## 2026-07-21 | ingest-karpathy-guidelines | Place 1-karpathy-guidelines soft under Ship (0-implement); process hygiene cousins ponytail/coding-standards/verify-work | skills/1-karpathy-guidelines; hubs/0-implement; flows Domain 3; route-index
+## 2026-07-21 | ingest-anti-sycophancy | Place 1-anti-sycophancy soft under Design (0-grilling); praise-kill + evidence-first posture; cousins steel-manning/doubt/response-effort | skills/1-anti-sycophancy; hubs/0-grilling; flows Domain 2; route-index
+## 2026-07-21 | ingest-critique | Place 1-critique soft under Design (0-grilling); explicit critique mode; lean + full-guide; cousins grill/steel/anti-sycophancy/doubt | skills/1-critique; hubs/0-grilling; flows Domain 2; route-index

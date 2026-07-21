@@ -37,6 +37,8 @@ metadata:
 | Raw / vague idea — expand options first | [references/divergent-lenses.md](./references/divergent-lenses.md) · full [vendor-idea-refine-full.md](./references/vendor-idea-refine-full.md) · [idea-frameworks.md](./references/idea-frameworks.md) · [idea-refinement-criteria.md](./references/idea-refinement-criteria.md) · [idea-examples.md](./references/idea-examples.md) |
 | Underspecified intent (who/why/success) | [references/interview-intent.md](./references/interview-intent.md) (vendor interview-me harvest) then this skill |
 | Steel-man before reject/agree | `/1-thinking-steel-manning` |
+| No agreement bias / praise-kill posture | `/1-anti-sycophancy` |
+| Explicit critique / devil's advocate of an idea | `/1-critique` |
 | Multi-session fog map | `/0-wayfinder` |
 | Spec from already-decided thread | `/1-to-spec` |
 | Which skill? | `/0-butler` |

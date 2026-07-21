@@ -57,6 +57,14 @@
       "primary": true
     },
     {
+      "link_type": "soft",
+      "skills": [
+        "1-karpathy-guidelines"
+      ],
+      "note": "LLM coding process hygiene: think, simple, surgical, goal-driven; cousins ponytail/coding-standards/verify-work",
+      "primary": true
+    },
+    {
       "link_type": "cousin",
       "skills": [
         "2-verify-work"

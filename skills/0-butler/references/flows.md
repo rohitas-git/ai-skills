@@ -82,7 +82,7 @@ flows.md remains SSOT for pipelines/forks; HTML/JSON are projections. **new-hub*
 | | |
 |--|--|
 | **★ Hub** | `/0-grilling` |
-| **Children** | **wrapper:** `1-grill-me`, `1-grill-with-docs` · **on-ramp:** `1-brainstorm` · **pull-in:** `1-domain-modeling` · **soft:** `1-thinking-steel-manning` · **detour:** `1-handoff` ⇄ `1-prototype` |
+| **Children** | **wrapper:** `1-grill-me`, `1-grill-with-docs` · **on-ramp:** `1-brainstorm` · **pull-in:** `1-domain-modeling` · **soft:** `1-thinking-steel-manning`, `1-anti-sycophancy`, `1-critique` · **detour:** `1-handoff` ⇄ `1-prototype` |
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
@@ -100,7 +100,7 @@ flows.md remains SSOT for pipelines/forks; HTML/JSON are projections. **new-hub*
 | | |
 |--|--|
 | **★ Hub** | `/0-implement` |
-| **Children** | **pipeline:** `1-to-spec` → `1-to-tickets` → `0-implement` → `1-tdd` → `1-code-review` → commit · **soft (plan path):** `1-write-plan`, `1-git-worktrees`, `1-subagent-implement`, `1-execute-plan`, `1-finish-branch` · **satellite:** `1-parallel-agents` · **soft (style):** `1-coding-standards`, `1-code-comments`, `1-inline-comments`, `1-execution-flow-comments`, `1-stepdown-rule` · **cousin:** `2-verify-work` · **soft (git/PR):** `1-git-commit-helper`, `1-pr-summarizer`, `1-resolving-merge-conflicts` · **soft:** `1-research` · **soft (vendor harvest):** `1-shipping-and-launch`, `1-observability-and-instrumentation`, `1-ci-cd-and-automation`, `1-frontend-ui-engineering` |
+| **Children** | **pipeline:** `1-to-spec` → `1-to-tickets` → `0-implement` → `1-tdd` → `1-code-review` → commit · **soft (plan path):** `1-write-plan`, `1-git-worktrees`, `1-subagent-implement`, `1-execute-plan`, `1-finish-branch` · **satellite:** `1-parallel-agents` · **soft (style):** `1-coding-standards`, `1-code-comments`, `1-inline-comments`, `1-execution-flow-comments`, `1-stepdown-rule` · **soft (process):** `1-karpathy-guidelines` · **cousin:** `2-verify-work` · **soft (git/PR):** `1-git-commit-helper`, `1-pr-summarizer`, `1-resolving-merge-conflicts` · **soft:** `1-research` · **soft (vendor harvest):** `1-shipping-and-launch`, `1-observability-and-instrumentation`, `1-ci-cd-and-automation`, `1-frontend-ui-engineering` |
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|

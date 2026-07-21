@@ -49,9 +49,11 @@
     {
       "link_type": "soft",
       "skills": [
-        "1-thinking-steel-manning"
+        "1-thinking-steel-manning",
+        "1-anti-sycophancy",
+        "1-critique"
       ],
-      "note": "Steel-man before reject/agree"
+      "note": "Steel-man; anti-sycophancy posture; explicit critique/devil's advocate mode"
     }
   ],
   "pipeline": [
