@@ -1,51 +1,56 @@
 ---
 name: 1-create-skill
 description: >
-  Thin entry for authoring skills. Loads 0-skill-creator (body craft/eval), then
-  0-skill-manager for catalog place/ingest. Use when scaffolding a skill or
-  /1-create-skill. Hub: /0-skill-creator.
+  Thin entry to author a skill: craft/eval via 0-skill-creator, then place via 0-skill-manager.
+  Use when: scaffolding a new skill, /1-create-skill, or "create a skill for X".
+  Not for: which skill to use (0-butler), lint-only (1-skill-linter), ecosystem install (1-discover-skills).
+  Hub: /0-skill-creator.
 disable-model-invocation: true
 metadata:
   catalog:
     hub: 0-skill-creator
     role: wrapper
     when:
-      - "scaffolding a skill or /1-create-skill"
+      - "scaffold or create a new skill"
+      - "/1-create-skill"
+    not_when:
+      - "which skill → 0-butler"
+      - "install public skill → 1-discover-skills"
+      - "lint only → 1-skill-linter"
+    next: [0-skill-creator, 0-skill-manager]
+    cousins: [1-writing-great-skills, 1-discover-skills]
     triggers:
-      - "1-create-skill"
       - "create skill"
+      - "1-create-skill"
+      - "scaffold skill"
     requires_setup: false
 ---
 
-# Create Skill
-
-## Process
-
-1. Follow the steps and hard rules in this skill.
-2. Load linked `references/` only when the branch needs them.
+# Create skill (wrapper)
 
 ## Boundary
 
 | Need | Skill |
 |------|--------|
-| Scaffold / entry to author a skill | **create-skill** (this thin wrapper) |
-| Craft body, evals, description quality | `/0-skill-creator` |
-| Place / ingest into catalog | `/0-skill-manager` |
-| Writing principles only | `/1-writing-great-skills` |
+| Entry / scaffold path | **this** |
+| Body craft + evals | `/0-skill-creator` |
+| Craft vocabulary only | `/1-writing-great-skills` |
+| Place / ingest | `/0-skill-manager` |
 | Discover installable skills | `/1-discover-skills` |
-| Which skill to use | `/0-butler` |
+| Which local skill | `/0-butler` |
 
+## Process
 
-Thin wrapper.
+1. Load **`/0-skill-creator`** (full loop: intent → draft → eval → revise).  
+   **Done when:** body is lean and job is clear.
+2. Plan live identity: dir + `name` = `{depth}-{kebab-slug}` ([depth-prefix-names](../0-skill-manager/references/depth-prefix-names.md)).  
+   **Done when:** depth matches planned hub parent.
+3. Write **route surface** before place: description contract + `metadata.catalog` — [skill-route-surface](../0-skill-manager/references/skill-route-surface.md).  
+   **Done when:** no top-level route keys; `hub` / `role` / `when`|`triggers` set.
+4. When ready for this catalog → **`/0-skill-manager` place or ingest** (integration test + lint Gate PASS + route-index).  
+   **Done when:** Gate PASS.
+5. Theory-only questions → `/1-writing-great-skills`. Routing → `/0-butler`. House convention bumps → manager **release-note** only.
 
-1. Load **`/0-skill-creator`** for create/edit/eval of the skill body.
-2. **Name with depth prefix (hard):** plan `{depth}-{kebab-slug}` for dir + frontmatter `name` (★ hub → `0-`; hub child → `1-`; deeper → `2+`). See `0-skill-manager/references/depth-prefix-names.md`.
-3. **Route surface before place:** description contract + `metadata.catalog` (`hub`, `role`, `when`|`triggers`); never top-level route keys — [skill-route-surface.md](../0-skill-manager/references/skill-route-surface.md) (ADR 0009).
-4. When ready for this catalog, load **`/0-skill-manager`** place or ingest (hub slot + **gate-route** + lint Gate: PASS; regenerates route-index).
-5. Craft theory → `/1-writing-great-skills`. Routing → `/0-butler`. Catalog version / feature log → root `catalog.yaml` + `docs/FEATURE-LOG.md` (manager **release-note** only when house rules change).
+## Related
 
-## Don't use when
-
-- Which skill should I use? → `/0-butler`
-- Lint/rehouse only → `/0-skill-manager`
-- Install from public ecosystem → `/1-discover-skills`
+Parent: `/0-skill-creator` · F10 place fork in flows.

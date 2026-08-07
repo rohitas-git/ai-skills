@@ -51,7 +51,7 @@ You renovate the skills catalog. You are **not** the concierge — **`/0-butler`
 | **organize** | move / rename / deprecate with indexes | [lint-checklist.md](./references/lint-checklist.md) organize section + route-index |
 | **atomize** | content overlap → one-job skills + Boundary + ask-user forks | load **`/1-skill-atomize`** + [atomic-skills.md](./references/atomic-skills.md) |
 | **lint** | health-check skills + hubs + membership + route surface | **`/1-skill-linter`** + [lint-checklist.md](./references/lint-checklist.md) + `scripts/lint-skills` |
-| **release-note** | accepted ADR or convention change | bump `catalog.yaml` version + prepend [FEATURE-LOG.md](../../../docs/FEATURE-LOG.md) |
+| **release-note** | accepted ADR or convention change | bump `catalog.yaml` version + prepend [FEATURE-LOG.md](../../docs/FEATURE-LOG.md) |
 
 If the user only wants routing (“which skill?”), **stop** and load **`/0-butler`**.
 

@@ -110,4 +110,4 @@ Butler orient/query: load `flows.md` domain map + this index; open full SKILL.md
 5. Boundary table if cousin collision.
 6. Regenerate route index; skill-lint Gate PASS.
 
-See also: [lean-structure.md](../../1-skill-linter/references/lean-structure.md), [depth-prefix-names.md](./depth-prefix-names.md), `/1-writing-great-skills`.
+See also: [lean-structure.md](../../1-skill-linter/references/lean-structure.md), [depth-prefix-names.md](./depth-prefix-names.md), `/1-writing-great-skills`. Upstream Agent Skills format (plus house deltas): [agentskills-io-specification.md](../../0-skill-creator/references/agentskills-io-specification.md).

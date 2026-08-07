@@ -1,101 +1,78 @@
 ---
 name: 1-session-skill-reflect
 description: >
-  Self-improving system for skills. Analyze session for corrections/approvals, extract
-  learnings, propose/update skill files, and push changes to GitHub
-  (git@github.com:rohitas-git/ai-skills.git). Trigger with /1-session-skill-reflect or
-  "reflect on skill X" Use when: Self-improving system for skills. Hub:
-  /0-skill-manager.
+  Extract session corrections and approvals into proposed skill updates ("correct once, never again").
+  Use when: /1-session-skill-reflect, end-of-session skill improve, "reflect on skill X".
+  Not for: handoff compact without skill edits (1-handoff), place/rehouse (0-skill-manager), atomize overlap (1-skill-atomize).
+  Hub: /0-skill-manager.
 disable-model-invocation: true
 metadata:
   catalog:
     hub: 0-skill-manager
     role: soft
     when:
-      - "Self-improving system for skills"
+      - "session learnings → skill body updates"
+      - "/1-session-skill-reflect"
+    not_when:
+      - "session handoff only → 1-handoff"
+      - "catalog structure → 0-skill-manager"
+    cousins: [1-handoff, 0-skill-manager, 1-skill-atomize]
     triggers:
-      - "1-session-skill-reflect"
       - "session skill reflect"
+      - "1-session-skill-reflect"
+      - "reflect on skill"
     requires_setup: false
 ---
 
-# Reflect — Self-Improving Skills System
+# Session skill reflect
 
-## Process
-
-1. Follow the steps and hard rules in this skill.
-2. Load linked `references/` only when the branch needs them.
+**Leading word: correct once** — high-confidence user corrections become permanent skill text.
 
 ## Boundary
 
 | Need | Skill |
 |------|--------|
-| Extract session learnings → propose skill updates | **session-skill-reflect** (this) |
-| Apply catalog place/rehouse/lint | `/0-skill-manager` |
-| Atomize overlap | `/1-skill-atomize` |
-| Compact for next agent (no skill edits) | `/1-handoff` |
+| Session → skill body diffs | **this** |
+| Catalog place / lint / organize | `/0-skill-manager` |
+| Overlap / Boundary reorg | `/1-skill-atomize` |
+| Compact for next agent (no skill edit) | `/1-handoff` |
 
+Do not load deprecated `task-observer` / `continuous-learning-v2`.
 
-## Overview
+## Process
 
-Reflect enables **continual learning** from user feedback. It scans conversations for corrections (signals), approvals (confirmations), and success patterns, then proposes targeted improvements to skill files. Changes are reviewed, applied, version-controlled, and pushed to GitHub.
+1. **Scan session** for signals:  
+   - HIGH — explicit correction (“do X not Y”, always/never workflow)  
+   - MEDIUM — strong approval of a pattern  
+   - LOW — soft suggestion  
+   **Done when:** signals listed with confidence.
+2. **Map to skills** — which live skill + which section (gotcha, step, description). Prefer **gotchas** / defaults that prevent recurrence.  
+   **Done when:** each HIGH has a target section or “no skill yet → create”.
+3. **Propose** — show diff + rationale; preserve frontmatter. Offer backup path.  
+   **Done when:** user can approve/modify/skip.
+4. **Apply only after approval** — edit body; timestamped backup (e.g. `.backups/`); commit. Push only if user wants remote (`git@github.com:rohitas-git/ai-skills.git` or current origin).  
+   **Done when:** file matches approved diff.
+5. **Catalog structure?** — if learnings imply hub/flows/tombstone → hand off `/0-skill-manager` (and craft lean via `/0-skill-creator` + `/1-writing-great-skills` if body rewrites are large).
 
-**Core Philosophy**: "Correct once, never again."
+## Commands
 
-## Instructions
+| Invoke | Scope |
+|--------|--------|
+| `/1-session-skill-reflect <skill>` | One skill |
+| `/1-session-skill-reflect` | Session-wide |
+| status / git check | Last reflections + dirty tree (if user asks) |
 
-### Manual Flow (`/1-session-skill-reflect <skill-name>`)
+## Report shape
 
-1. **Analyze Session**  
-   Review the full conversation history for:
-   - **HIGH confidence** — Explicit corrections ("No, do X instead of Y", "Never...", "Always...")
-   - **MEDIUM confidence** — Approvals ("Perfect", "Yes, this works well")
-   - **LOW confidence** — Suggestions and positive patterns
+Summary (HIGH/MED/LOW counts) · learnings · proposed diffs · impact on future runs.
 
-2. **Extract Learnings**  
-   - Categorize signals by skill.
-   - Identify recurring issues or successful patterns.
-   - Map to specific sections in `SKILL.md` (e.g. add to Critical Corrections, Best Practices, Instructions).
+## Hard rules
 
-3. **Propose Updates**  
-   - Show **diff** of suggested changes to the target skill's `SKILL.md`.
-   - Include backup suggestion and rationale.
+1. Never apply multi-file skill edits without approval.  
+2. Explicit workflow overrides beat old skill defaults — update the conflicting line.  
+3. Prefer prune + leading words over essay growth (`/1-writing-great-skills`).  
+4. Reflect edits **bodies**; manager owns indexes/flows.
 
-4. **Apply & Push** (after user approval)
-   - Update the skill file safely (preserve YAML frontmatter).
-   - Create timestamped backup.
-   - Commit to local Git.
-   - Push to `git@github.com:rohitas-git/ai-skills.git`.
+## Related
 
-### Supported Commands
-- `/1-session-skill-reflect <skill>` — Analyze and propose updates for specific skill (e.g. `/1-session-skill-reflect 1-code-review`)
-- `/1-session-skill-reflect` — Analyze recent session across skills
-- `/session-skill-reflect-status` — Show Git status and last reflections
-
-## Output Structure
-
-**Reflection Report**
-- **Summary**: Number of signals detected (HIGH/MEDIUM/LOW)
-- **Learnings Extracted**
-- **Proposed Changes** (with diff)
-- **Impact** — How this improves future interactions
-
-**Review Flow**: User approves (`A`), modifies, or skips.
-
-## Best Practices
-
-- Be specific in corrections during sessions.
-- Review diffs carefully before approving.
-- Use this skill at the end of productive sessions.
-- Check Git history for audit trail.
-- Treat explicit user workflow overrides as the highest-priority signal, especially when they contradict an existing skill default.
-- When a correction changes default code-commenting behavior, update the conflicting skill text so future runs follow the new default without needing repeated reminders.
-
-**Local Git Repo**: Skills directory is Git-aware. Push happens automatically after approval.
-
-**Safety**: Backups in `.backups/` folder, YAML validation, rollback via Git.
-## Catalog hygiene 1-handoff
-
-If session learnings imply catalog structure, routing, or deprecation changes, optionally hand off to **`/0-skill-manager` lint** and/or **`/0-butler` organize**. Reflect edits skill bodies; 0-butler owns indexes, flows, and tombstones.
-
-Do not load deprecated `task-observer` or `continuous-learning-v2`.
+Parent: `/0-skill-manager`.
