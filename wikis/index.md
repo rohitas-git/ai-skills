@@ -221,3 +221,35 @@
 | [[1-pi-agent-rust]] | >- | `skills/1-pi-agent-rust` |
 
 _Live skills: **80**._
+
+## Domain 16 — Thinking
+
+| [[0-thinking]] | Domain hub: structured mental models (diagnose/decide/create/risk) | `skills/0-thinking` |
+| [[1-thinking-bounded-rationality]] | Use when search or investigation could run forever. Set an explicit good-enough … | `skills/1-thinking-bounded-rationality` |
+| [[1-thinking-circle-of-competence]] | Use when a specific claim may lack grounding. Check evidence boundary, size wron… | `skills/1-thinking-circle-of-competence` |
+| [[1-thinking-cynefin]] | When the right response mode is unclear, classify the cause-effect domain first;… | `skills/1-thinking-cynefin` |
+| [[1-thinking-effectuation]] | Under genuine uncertainty with no reliable forecast, inventory means, cap downsi… | `skills/1-thinking-effectuation` |
+| [[1-thinking-first-principles]] | When a constraint is treated as fixed, separate physics from convention, keep on… | `skills/1-thinking-first-principles` |
+| [[1-thinking-five-whys-plus]] | When a fault is localized and the proximate cause is known but the systemic root… | `skills/1-thinking-five-whys-plus` |
+| [[1-thinking-jobs-to-be-done]] | Deciding what to build or why adoption fails. Recover the progress users hire a … | `skills/1-thinking-jobs-to-be-done` |
+| [[1-thinking-kepner-tregoe]] | Use when a selective defect needs IS/IS-NOT difference analysis or a consequenti… | `skills/1-thinking-kepner-tregoe` |
+| [[1-thinking-lindy-effect]] | Use when longevity of a non-perishable option matters. Treat survival duration a… | `skills/1-thinking-lindy-effect` |
+| [[1-thinking-map-territory]] | When a claim, doc, test, metric, or assumption conflicts with observed behavior,… | `skills/1-thinking-map-territory` |
+| [[1-thinking-margin-of-safety]] | When provisioning, setting a limit, or committing an estimate under uncertainty,… | `skills/1-thinking-margin-of-safety` |
+| [[1-thinking-model-combination]] | When one mental model leaves a material blind spot on a multi-domain or high-sta… | `skills/1-thinking-model-combination` |
+| [[1-thinking-ooda]] | Use under time pressure when the situation is still changing and you must act be… | `skills/1-thinking-ooda` |
+| [[1-thinking-opportunity-cost]] | Before committing scarce time, people, or money, name the best forgone use of th… | `skills/1-thinking-opportunity-cost` |
+| [[1-thinking-pre-mortem]] | Before committing to a plan or launch, assume it already failed and reason backw… | `skills/1-thinking-pre-mortem` |
+| [[1-thinking-probabilistic]] | Use when forecasting, estimating, or sizing risk — anchor on base rates, give ra… | `skills/1-thinking-probabilistic` |
+| [[1-thinking-red-team]] | For authorized security review of code, auth, or APIs you control, model the att… | `skills/1-thinking-red-team` |
+| [[1-thinking-reversibility]] | Before heavy deliberation, classify the decision as cheap or costly to undo; dec… | `skills/1-thinking-reversibility` |
+| [[1-thinking-scientific-method]] | When a symptom has several plausible causes, rank falsifiable hypotheses and run… | `skills/1-thinking-scientific-method` |
+| [[1-thinking-second-order]] | When a change has effects past the immediate fix—incentives, scale, feedback—tra… | `skills/1-thinking-second-order` |
+| [[1-thinking-socratic]] | When a request is vague, assumption-laden, or "obvious," ask the few load-bearin… | `skills/1-thinking-socratic` |
+| [[1-thinking-steel-manning]] | Use before rejecting a proposal or when you're inclined to just agree with the u… | `skills/1-thinking-steel-manning` |
+| [[1-thinking-systems]] | When behavior is emergent across components—fixes elsewhere break, loops/delays … | `skills/1-thinking-systems` |
+| [[1-thinking-theory-of-constraints]] | When throughput or latency is pipeline-limited, identify the single binding cons… | `skills/1-thinking-theory-of-constraints` |
+| [[1-thinking-thought-experiment]] | When a real test is too rare, large, or irreversible, run a controlled counterfa… | `skills/1-thinking-thought-experiment` |
+| [[1-thinking-triz]] | When two design requirements seem mutually exclusive, name the contradiction, se… | `skills/1-thinking-triz` |
+| [[1-thinking-via-negativa]] | Use when the reflex is to add a feature, layer, or process. Prefer removing harm… | `skills/1-thinking-via-negativa` |
+

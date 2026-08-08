@@ -191,6 +191,16 @@
       "workflow_json": "./0-ui-ux/workflow.json",
       "parent": "0-butler",
       "skill_path": "skills/0-ui-ux"
+    },
+    {
+      "domain_id": 16,
+      "domain": "Thinking",
+      "hub": "0-thinking",
+      "dir": "./0-thinking/",
+      "html": "./0-thinking/hub.html",
+      "workflow_json": "./0-thinking/workflow.json",
+      "parent": "0-butler",
+      "skill_path": "skills/0-thinking"
     }
   ]
 }

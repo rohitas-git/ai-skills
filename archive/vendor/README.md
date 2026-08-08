@@ -84,3 +84,10 @@ Do **not** peer-promote near-duplicates of grill / to-spec / to-tickets / tdd / 
 | receiving-code-review | **Promote** | `1-receive-review` |
 
 See also pack `VENDOR-SOURCE.md`.
+
+## cc-thinking-skills (parked 2026-08-08)
+
+- Upstream: https://github.com/tjboudreaux/cc-thinking-skills @ `7b8fece`
+- License: MIT
+- Snapshot: `archive/vendor/cc-thinking-skills/`
+- Live: Domain 16 `/0-thinking` — 26 leaves as `1-thinking-*`; router folded into hub; `thinking-steel-manning` merged into existing `1-thinking-steel-manning` (primary Design, dual soft Thinking)

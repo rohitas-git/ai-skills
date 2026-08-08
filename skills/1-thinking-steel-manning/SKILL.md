@@ -4,7 +4,7 @@ description: >
   Use before rejecting a proposal or when you're inclined to just agree with the user.
   Build the strongest version of the opposing case first, then engage that — not a weak
   version. Use when: Use before rejecting a proposal or when you're inclined to just
-  agree with the user. Hub: /0-grilling.
+  agree with the user. Hub: /0-grilling (primary); dual soft under /0-thinking.
 disable-model-invocation: true
 metadata:
   catalog:
@@ -15,6 +15,10 @@ metadata:
     triggers:
       - "1-thinking-steel-manning"
       - "thinking steel manning"
+    cousins:
+      - 0-thinking
+      - 1-anti-sycophancy
+      - 1-critique
     requires_setup: false
 ---
 
@@ -33,7 +37,10 @@ Purpose router for **`/1-thinking-steel-manning`**. Full procedure: [references/
 | Load when | File |
 |-----------|------|
 | Full workflow / detail | [references/full-guide.md](./references/full-guide.md) |
+| Compact vendor procedure | [references/upstream-procedure.md](./references/upstream-procedure.md) |
 
 ## Related
 
 See Boundary table and hub membership in `skills/0-butler/references/flows.md`.
+
+Dual soft under `/0-thinking` (catalog completeness; primary Design).

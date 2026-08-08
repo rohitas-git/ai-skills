@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "kind": "domain_hub_workflow",
+  "domain_id": 16,
+  "domain": "Thinking",
+  "hub": "0-thinking",
+  "slash": "/0-thinking",
+  "path": "skills/0-thinking",
+  "package_dir": "hubs/0-thinking/",
+  "role": "Domain router for structured mental models \u2014 diagnose, decide, create, risk, compose frames.",
+  "notes": "Ingested from tjboudreaux/cc-thinking-skills. Model-router folded into hub. steel-manning dual soft (primary 0-grilling). Not house meta-router.",
+  "parent": {
+    "hub": "0-butler",
+    "slash": "/0-butler",
+    "relationship": "routed_by",
+    "html": "../0-butler/hub.html",
+    "workflow_json": "../0-butler/workflow.json",
+    "skill_path": "skills/0-butler"
+  },
+  "children": [
+    {
+      "link_type": "soft",
+      "skills": [
+        "1-thinking-scientific-method",
+        "1-thinking-five-whys-plus",
+        "1-thinking-kepner-tregoe",
+        "1-thinking-systems",
+        "1-thinking-map-territory",
+        "1-thinking-cynefin",
+        "1-thinking-socratic"
+      ],
+      "note": "Diagnose frames",
+      "primary": true
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "1-thinking-reversibility",
+        "1-thinking-opportunity-cost",
+        "1-thinking-probabilistic",
+        "1-thinking-second-order",
+        "1-thinking-steel-manning",
+        "1-thinking-bounded-rationality",
+        "1-thinking-circle-of-competence",
+        "1-thinking-lindy-effect"
+      ],
+      "note": "Decide frames; steel-manning dual (primary 0-grilling)"
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "1-thinking-first-principles",
+        "1-thinking-triz",
+        "1-thinking-via-negativa",
+        "1-thinking-thought-experiment",
+        "1-thinking-jobs-to-be-done",
+        "1-thinking-effectuation"
+      ],
+      "note": "Create / improve frames"
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "1-thinking-pre-mortem",
+        "1-thinking-red-team",
+        "1-thinking-margin-of-safety",
+        "1-thinking-theory-of-constraints",
+        "1-thinking-ooda"
+      ],
+      "note": "Risk and execution frames"
+    },
+    {
+      "link_type": "satellite",
+      "skills": [
+        "1-thinking-model-combination"
+      ],
+      "note": "Multi-frame composition after primary"
+    }
+  ],
+  "pipeline": [
+    "orient / F-T1",
+    "optional F-T2 if category unclear",
+    "load one leaf (or NONE)",
+    "optional model-combination if blind spot"
+  ],
+  "forks": [
+    {
+      "id": "F-T1",
+      "question": "Is the right thinking frame already clear?",
+      "recommended": "Yes invoke leaf if named; else hub route",
+      "branches": [
+        "invoke leaf",
+        "hub route F-T2",
+        "NONE reason direct",
+        "Agent judgment"
+      ]
+    },
+    {
+      "id": "F-T2",
+      "question": "What kind of thinking help?",
+      "recommended": "Match problem type (diagnose/decide/create/risk)",
+      "branches": [
+        "diagnose",
+        "decide",
+        "create",
+        "risk",
+        "compose",
+        "Agent judgment"
+      ]
+    }
+  ],
+  "domain_hubs_routed": null,
+  "artifacts": {
+    "html": "./hub.html",
+    "workflow_json": "./workflow.json",
+    "flows_chart": "../flows-chart.html",
+    "flows_ssot": "../../../skills/0-butler/references/flows.md",
+    "hubs_index": "../index.html",
+    "manifest": "../manifest.json"
+  },
+  "rules": [
+    "butler_links_every_domain_hub",
+    "each_domain_hub_has_package_dir",
+    "each_domain_hub_has_hub_html",
+    "each_domain_hub_has_workflow_json",
+    "each_domain_hub_links_flows_chart",
+    "one_hub_per_domain",
+    "forks_ask_user",
+    "atomic_boundary"
+  ]
+}

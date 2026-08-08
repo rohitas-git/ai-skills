@@ -41,7 +41,7 @@ Concrete branches still appear first; **Agent judgment** is always listed last a
 | | |
 |--|--|
 | **★ Hub** | `/0-butler` |
-| **Children** | All domain hubs below (routing targets): 0-setup-rohitas-skills, 0-grilling, 0-implement, 0-review, 0-triage, 0-diagnosing-bugs, 0-wayfinder, 0-improve-codebase-architecture, 0-rohitas-vault-wiki, 0-skill-manager, 0-skill-creator, 0-ponytail, 0-learn, misc |
+| **Children** | All domain hubs below (routing targets): 0-setup-rohitas-skills, 0-grilling, 0-implement, 0-review, 0-triage, 0-diagnosing-bugs, 0-wayfinder, 0-improve-codebase-architecture, 0-rohitas-vault-wiki, 0-skill-manager, 0-skill-creator, 0-ponytail, 0-learn, 0-office, 0-ui-ux, 0-thinking, misc |
 | **Session meta (soft)** | `1-grok-help`, `1-context-monitor`, `1-strategic-compact`, `1-response-effort-calibrator`, `1-handoff` (dual design) |
 | **Mutations** | **Not here** → `/0-skill-manager` |
 
@@ -314,11 +314,31 @@ Optional; not Ship closer.
 
 ---
 
+
+## Domain 16 — Thinking
+
+| | |
+|--|--|
+| **★ Hub** | `/0-thinking` |
+| **Children** | **soft (diagnose):** `1-thinking-scientific-method`, `1-thinking-five-whys-plus`, `1-thinking-kepner-tregoe`, `1-thinking-systems`, `1-thinking-map-territory`, `1-thinking-cynefin`, `1-thinking-socratic` · **soft (decide):** `1-thinking-reversibility`, `1-thinking-opportunity-cost`, `1-thinking-probabilistic`, `1-thinking-second-order`, `1-thinking-steel-manning` (dual · primary Design), `1-thinking-bounded-rationality`, `1-thinking-circle-of-competence`, `1-thinking-lindy-effect` · **soft (create):** `1-thinking-first-principles`, `1-thinking-triz`, `1-thinking-via-negativa`, `1-thinking-thought-experiment`, `1-thinking-jobs-to-be-done`, `1-thinking-effectuation` · **soft (risk):** `1-thinking-pre-mortem`, `1-thinking-red-team`, `1-thinking-margin-of-safety`, `1-thinking-theory-of-constraints`, `1-thinking-ooda` · **satellite:** `1-thinking-model-combination` |
+| **Pipeline** | orient → **F-T1** → optional **F-T2** → one leaf (or NONE) → optional model-combination |
+| **Source** | `archive/vendor/cc-thinking-skills/` (tjboudreaux/cc-thinking-skills MIT) · model-router folded into hub |
+
+| Fork | Question | Recommended | Branches |
+|------|----------|-------------|----------|
+| **F-T1** | Right thinking frame already clear? | Yes if user named a model | invoke leaf · hub route F-T2 · NONE · **Agent judgment** |
+| **F-T2** | What kind of thinking help? | Match problem type | diagnose · decide · create · risk · compose · **Agent judgment** |
+
+**Not for:** house routing (`/0-butler`), plan interview (`/0-grilling`), live bug pipeline (`/0-diagnosing-bugs`), security product audit (`/1-security-auditor`), simplify mode (`/0-ponytail`).
+
+**Cousins:** diagnose frames soft-cross Diagnose hub; red-team soft-cross Review security; via-negativa soft-cross Ponytail; socratic soft-cross Grill; steel-manning primary remains Design.
+
+
 ## Global entry fork
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F7** | What kind of work? | feature → Design | Design · Triage · Diagnose · Fog · Architecture · Vault · Misc · Catalog facilities · Learn · Simplify · **Agent judgment** |
+| **F7** | What kind of work? | feature → Design | Design · Triage · Diagnose · Fog · Architecture · Vault · UI/UX · Misc · Catalog facilities · Learn · Simplify · Thinking · **Agent judgment** |
 
 Butler asks **F7** when intent is unclear.
 

@@ -28,7 +28,8 @@
         "0-ponytail",
         "0-learn",
         "0-office",
-        "0-ui-ux"
+        "0-ui-ux",
+        "0-thinking"
       ]
     },
     {
@@ -79,6 +80,7 @@
         "Catalog facilities",
         "Learn",
         "Simplify",
+        "Thinking",
         "Agent judgment"
       ]
     }
@@ -98,7 +100,8 @@
     "0-ponytail",
     "0-learn",
     "0-office",
-    "0-ui-ux"
+    "0-ui-ux",
+    "0-thinking"
   ],
   "artifacts": {
     "html": "./hub.html",

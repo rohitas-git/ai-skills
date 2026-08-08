@@ -1,5 +1,6 @@
 # Wiki Operation Log
 
+## 2026-08-08 | ingest-cc-thinking-skills | New Domain 16 hub 0-thinking + full pack place (26 leaves; steel-manning merge dual; model-router folded into hub) | skills/0-thinking + 1-thinking-*; hubs/0-thinking; flows F-T1/F-T2 + F7; archive/vendor/cc-thinking-skills
 ## 2026-07-19 | catalog-reorg | Domain packages + hubs/ + Skills/ symlinks + wiki.md index | Updated wiki.md, hubs/, Skills/
 ## 2026-07-19 | six-folder-reorg | Flattened domain packages → skills/; vendor→archive/vendor; guides→guidelines; wiki→wikis/; atomic CLAUDE/README/AGENTS | Updated wikis/index.md, guidelines/layout.md, scripts
 ## 2026-07-19 | hub-review-apply | Synced hubs; renames for purpose; Boundary tables; leaned sprawl SKILL.md → references/full-guide.md; steward paths | wikis/index.md, hubs/*, skills/*

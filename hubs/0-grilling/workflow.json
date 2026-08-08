@@ -53,7 +53,8 @@
         "1-anti-sycophancy",
         "1-critique"
       ],
-      "note": "Steel-man; anti-sycophancy posture; explicit critique/devil's advocate mode"
+      "note": "Steel-man; anti-sycophancy posture; explicit critique/devil's advocate mode \u00b7 dual soft under 0-thinking",
+      "primary": true
     }
   ],
   "pipeline": [
