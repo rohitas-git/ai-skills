@@ -1,31 +1,36 @@
-# MISSION.md Format
+# `MISSION.md` schema
 
-`MISSION.md` lives at the workspace root. It captures the _reason_ the user is learning this topic. Every teaching decision — what to teach next, which resources to surface, which exercises to design — should trace back to this document.
-
-## Template
+`MISSION.md` is the decision boundary for one learning workspace. It records why the
+workspace exists and what evidence would count as success; it is not a syllabus or a
+learner profile.
 
 ```md
-# Mission: {Topic}
+# Mission: {topic}
 
-## Why
-{1-3 sentences. The concrete real-world goal the user is chasing. What changes in their life or work when they have this skill? Avoid abstract framings like "to understand X" — push for the underlying outcome.}
+## Outcome
+{Concrete change the learner wants to produce or decision they want to make.}
 
-## Success looks like
-- {A specific, observable thing the user will be able to do}
-- {Another specific thing}
-- {…}
+## Success evidence
+- {Observable performance, artifact, or decision that would demonstrate progress}
 
 ## Constraints
-- {Time, budget, prior commitments, learning preferences, anything that bounds the approach}
+- {Relevant time, access, prerequisite, format, or safety constraint}
 
-## Out of scope
-- {Adjacent topics the user explicitly does not want to chase right now — protects the zone of proximal development}
+## Excluded for now
+- {Adjacent outcome intentionally outside this workspace}
+
+## Basis
+{What the learner explicitly supplied, demonstrated, or confirmed; label assumptions.}
 ```
 
-## Rules
+Rules:
 
-- **One mission per workspace.** If the user wants to learn two unrelated things, that is two workspaces.
-- **Concrete over abstract.** "Run a half marathon by October" beats "get fitter." "Ship a Rust CLI to my team" beats "learn Rust."
-- **Push back on vagueness.** If the user cannot articulate why, interview them before writing anything. A bad mission is worse than no mission.
-- **Revise when reality shifts.** Missions change. When the user's goal moves, update this file — don't leave a stale mission steering future sessions.
-- **Keep it short.** If `MISSION.md` runs past a screen, it has stopped being a compass and started being a plan.
+- Keep one coherent mission per workspace; use another workspace for an unrelated goal.
+- Do not infer motivation, ability, demographics, disability, or preferences.
+- Ask only for a missing fact that would materially change the mission.
+- Replace an established mission only after explicit confirmation. Preserve its previous
+  state through the repository or another user-authorized history mechanism.
+- Make success observable without inventing a fixed duration, score, lesson count, or
+  document length.
+- If the goal remains too uncertain to guide the next teaching decision, leave the file
+  unchanged and return the unresolved question.

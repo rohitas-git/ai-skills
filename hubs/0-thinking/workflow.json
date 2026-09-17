@@ -7,8 +7,8 @@
   "slash": "/0-thinking",
   "path": "skills/0-thinking",
   "package_dir": "hubs/0-thinking/",
-  "role": "Domain router for structured mental models \u2014 diagnose, decide, create, risk, compose frames.",
-  "notes": "Ingested from tjboudreaux/cc-thinking-skills. Model-router folded into hub. steel-manning dual soft (primary 0-grilling). Not house meta-router.",
+  "role": "Pure one-leaf router for bounded reasoning artifacts; it performs no leaf analysis or follow-on action.",
+  "notes": "Core from tjboudreaux/cc-thinking-skills; lateral and ethical leaves selectively harvested from ysskrishna/ai-agent-skills. Steel-manning is dual soft with primary parent 0-grilling. Not a house router, diagnostic executor, or implementation path.",
   "parent": {
     "hub": "0-butler",
     "slash": "/0-butler",
@@ -50,6 +50,7 @@
       "link_type": "soft",
       "skills": [
         "1-thinking-first-principles",
+        "1-thinking-lateral",
         "1-thinking-triz",
         "1-thinking-via-negativa",
         "1-thinking-thought-experiment",
@@ -67,21 +68,34 @@
         "1-thinking-theory-of-constraints",
         "1-thinking-ooda"
       ],
-      "note": "Risk and execution frames"
+      "note": "Risk and response-framing leaves; analysis only"
+    },
+    {
+      "link_type": "leaf",
+      "skills": [
+        "1-perspective-analysis",
+        "1-thinking-ethical",
+        "1-strategic-analysis",
+        "1-competitive-analysis"
+      ],
+      "note": "Affected-group perspectives, strategy/futures, and named-competitor analysis"
     },
     {
       "link_type": "satellite",
       "skills": [
-        "1-thinking-model-combination"
+        "1-thinking-model-combination",
+        "1-plan-arbiter"
       ],
-      "note": "Multi-frame composition after primary"
+      "note": "Multi-frame composition and competing-plan arbitration"
     }
   ],
   "pipeline": [
-    "orient / F-T1",
-    "optional F-T2 if category unclear",
-    "load one leaf (or NONE)",
-    "optional model-combination if blind spot"
+    "pin actual caller, immutable request/candidate, evidence cutoff, authority, and optional worktree identity",
+    "direct named or unambiguous leaf → load one leaf; no fork",
+    "material route ambiguity only → F-T1 then optional F-T2",
+    "load one leaf or return NONE",
+    "return artifact to actual caller; no automatic composition, diagnosis, implementation, or action",
+    "model-combination only after a named primary-frame blind spot; plan-arbiter only for fixed competing plans"
   ],
   "forks": [
     {
@@ -98,13 +112,15 @@
     {
       "id": "F-T2",
       "question": "What kind of thinking help?",
-      "recommended": "Match problem type (diagnose/decide/create/risk)",
+      "recommended": "Match problem type (diagnose/decide/create/risk-response)",
       "branches": [
         "diagnose",
         "decide",
         "create",
-        "risk",
+        "risk and response framing",
+        "perspectives and strategy",
         "compose",
+        "compare competing plans",
         "Agent judgment"
       ]
     }
@@ -114,7 +130,7 @@
     "html": "./hub.html",
     "workflow_json": "./workflow.json",
     "flows_chart": "../flows-chart.html",
-    "flows_ssot": "../../../skills/0-butler/references/flows.md",
+    "flows_ssot": "../../skills/0-butler/references/flows.md",
     "hubs_index": "../index.html",
     "manifest": "../manifest.json"
   },
@@ -126,6 +142,9 @@
     "each_domain_hub_links_flows_chart",
     "one_hub_per_domain",
     "forks_ask_user",
-    "atomic_boundary"
+    "atomic_boundary",
+    "exact_candidate_and_worktree_handoff",
+    "sensitive_untrusted_input",
+    "no_automatic_follow_on"
   ]
 }

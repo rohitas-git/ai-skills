@@ -1,0 +1,6 @@
+interface:
+  display_name: "Skill Supply Chain Audit"
+  short_description: "Audit agent skills for supply-chain risk"
+  default_prompt: "Use $2-skill-supply-chain-audit to review this fixed agent package read-only. Preserve caller scope, identify evidence and coverage gaps, and return a recommendation without installing or modifying the package."
+policy:
+  allow_implicit_invocation: false

@@ -7,8 +7,8 @@
   "slash": "/0-ponytail",
   "path": "skills/0-ponytail",
   "package_dir": "hubs/0-ponytail/",
-  "role": "Laziest solution that works \u2014 optional simplify mode.",
-  "notes": "Orthogonal to Ship. Use for YAGNI / delete / stdlib-first pressure.",
+  "role": "Explicit coding-only simplicity overlay and router for bounded simplification views.",
+  "notes": "Orthogonal to Ship. Preserve accepted requirements, repository policy, safety, evidence, and authority.",
   "parent": {
     "hub": "0-butler",
     "slash": "/0-butler",
@@ -27,11 +27,14 @@
         "1-ponytail-gain",
         "1-ponytail-help"
       ],
-      "primary": true
+      "primary": true,
+      "note": "Route a named read-only review, repository audit, marker ledger, pinned benchmark card, or help request directly; none runs automatically after implementation"
     }
   ],
   "pipeline": [
-    "optional; not the Ship closer"
+    "explicit coding request may use the overlay without a child",
+    "named review, audit, debt, gain, or help request routes directly to one child",
+    "child returns to the actual caller; no automatic fix, test, Git, publication, or mode change"
   ],
   "forks": [],
   "domain_hubs_routed": null,

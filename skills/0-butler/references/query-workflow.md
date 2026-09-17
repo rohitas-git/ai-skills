@@ -6,8 +6,8 @@ Answer: **which domain hub / skill / flow?**
 
 1. **flows.md** — hub map, pipelines, forks (domain SSOT)
 2. **route-index.md** — generated leaf skim (`when` / `not_when` / hub / next); prefer over opening every `SKILL.md`
-3. Bucket READMEs + on-disk skills (existence check)
-4. User utterance + light repo signals (docs/agents present? CONTEXT.md?)
+3. Selected on-disk `SKILL.md` (authoritative validation after shortlist)
+4. User utterance; pinned read-only repository evidence only if route-relevant
 
 Skill route surface (authors): `0-skill-manager/references/skill-route-surface.md` — description contract + `metadata.catalog` only (no top-level route YAML).
 
@@ -15,19 +15,27 @@ Skill route surface (authors): `0-skill-manager/references/skill-route-surface.m
 
 ## Algorithm
 
-1. **Classify domain** (or ask **F7**: what kind of work?) with recommended default — use flows.md domain list.
-2. Name the **★ domain hub**.
-3. **Filter route-index** rows for that hub (and utterance vs When / Not for / triggers). Prefer skills whose When matches; exclude clear Not-for collisions.
-4. If a **fork** applies, **ask one F# question** (recommend first); wait. Options must include **Agent judgment**.
-5. Resolve child skill on the chosen branch. Open that skill’s `SKILL.md` only after selection (not while browsing).
-6. Optional “why not” for one cousin (from route-index Not for or Boundary in skill body).
-7. If hard-dep path and no `docs/agents/`, recommend `/0-setup-rohitas-skills` first (**F1**).
+1. Strip a valid `??` prefix; never consume `???`.
+2. Filter route-index rows against When, Not-for, and triggers. If one direct skill
+   clearly matches, shortlist it before doing domain-level branching.
+3. If several domains remain materially plausible, ask **F7** once with the best
+   evidence-backed recommendation and **Agent judgment**. Otherwise do not ask.
+4. Validate the shortlisted skill directory and frontmatter on disk, then read its
+   complete `SKILL.md`. The live file wins over stale generated prose.
+5. Name the owning **★ domain hub** for orientation and the smallest applicable
+   child as **Use**. Do not invoke the hub first when the child is already clear.
+6. Add one “why not” cousin only when it clarifies a real collision.
+7. Return the route and first action; do not execute the selected workflow.
 
-If route-index is missing or stale, fall back to flows children + skill descriptions; still do not invent.
+If route-index is missing or stale, use flows to shortlist and validate every
+recommendation against the live skill file. Missing setup documents are not an
+automatic Setup detour; route setup only when the request is configuration work.
 
 ## Mutation intent
 
-If the user wants to add/move/deprecate/lint/create a hub → **stop query** and open **`/0-skill-manager`** with a one-line brief.
+If the user wants catalog CRUD, placement, lint, installation, sync, or a new hub,
+return `/0-skill-manager`. Skill-body authoring returns `/0-skill-creator`. Stop
+after the route; the delegated skill owns all writes and verification.
 
 ## Output template
 
@@ -53,3 +61,5 @@ If the user wants to add/move/deprecate/lint/create a hub → **stop query** and
 | make a spreadsheet | Misc hub `0-office` → 1-xlsx (F-misc if ambiguous) |
 | red-green / tdd this | `1-tdd` under `0-implement` (not 1-code-review) |
 | which skill for incoming issues | `0-triage` (opt-in intake; not to-tickets) |
+| direct request matching one skill | report its hub + skill; no F7 and no parent invocation |
+| no reusable skill is needed | say no skill is necessary; answer through the normal task path |

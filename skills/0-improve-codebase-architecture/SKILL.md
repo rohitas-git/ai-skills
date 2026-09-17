@@ -1,101 +1,81 @@
 ---
 name: 0-improve-codebase-architecture
 description: >
-  Scan a codebase for deepening opportunities, present a visual HTML report, then grill
-  through the pick. Use when improving architecture, finding deepenings, or architecture candidate reports.
-  Not for: hard bug diagnosis (0-diagnosing-bugs), multi-axis PR review (1-code-review). Hub: /0-improve-codebase-architecture.
-  Triggers: improve architecture, deepening, architecture report.
+  Route architecture requests or run a bounded, read-only deepening scan. Use when: designing
+  an API/module/system, finding architecture improvements, or requesting an architecture candidate
+  report. Not for: hard bug diagnosis (0-diagnosing-bugs), fixed-diff review (1-code-review), or
+  implementation without a design question (0-implement). Hub: /0-improve-codebase-architecture.
 disable-model-invocation: true
 metadata:
   catalog:
     hub: 0-improve-codebase-architecture
     role: hub
     when:
-      - "architecture deepening scan"
-      - "HTML architecture candidates"
+      - "route API, module, system, failure, retirement, or architecture-improvement work"
+      - "run a bounded architecture deepening scan or candidate report"
     not_when:
       - "debug hard bug → 0-diagnosing-bugs"
-      - "PR multi-axis review → 1-code-review"
-    next: [0-grilling, 1-codebase-design]
-    triggers:
-      - "improve architecture"
-      - "deepening"
-      - "architecture report"
+      - "fixed PR/diff review → 1-code-review"
+      - "implement a settled design → 0-implement"
+    next: [0-grilling, 1-api-and-interface-design, 1-clean-craftsmanship, 1-codebase-design, 1-coding-standards, 1-deprecation-and-migration, 1-error-handling, 1-go-best-practices, 1-graphify, 1-living-documentation-governor, 1-project-wiki-manager, 2-software-architect]
+    cousins: [0-diagnosing-bugs, 0-implement, 0-review]
+    triggers: [improve architecture, architecture scan, architecture report, API architecture, module design, system design, gRPC contract design]
     requires_setup: false
 ---
 
 # Improve Codebase Architecture
-## Boundary
 
-| Need | Skill |
-|------|--------|
-| Deepening scan + HTML candidates + grill pick | **improve-codebase-architecture** (this) |
-| Grandmaster architecture survey/persona | `/2-software-architect` |
-| Vocabulary for deep modules | `/1-codebase-design` |
-| Coding standards while editing | `/1-coding-standards` (F-C1) |
-| Clean principles discussion | `/1-clean-craftsmanship` (F-C1) |
+**Hub job:** dispatch a specific architecture request; only broad improvement requests run the
+scan below. Selected children return their contract, decision, or findings to the caller.
 
+## Boundary and dispatch
 
-Surface architectural friction and propose **deepening opportunities** — refactors that turn shallow modules into deep ones. The aim is testability and AI-navigability.
+| Need | Route |
+|---|---|
+| Discover bounded deepening candidates | **this hub's scan** |
+| Public API/GraphQL/gRPC contract | `/1-api-and-interface-design` |
+| One internal module interface or seam | `/1-codebase-design` |
+| Whole-system alternatives or trade-offs | `/2-software-architect` |
+| Failure behavior or recovery design | `/1-error-handling` (F-EH1 if diagnosis is plausible) |
+| Consumer cutover or old-path retirement | `/1-deprecation-and-migration` |
+| Principles discussion versus enforceable coding rules | `/1-clean-craftsmanship` versus `/1-coding-standards` (F-C1) |
+| Go-specific design/code practice | `/1-go-best-practices` |
+| Explicit local code graph | `/1-graphify` |
+| Project concept wiki versus code-synced docs | `/1-project-wiki-manager` versus `/1-living-documentation-governor` (F-D1) |
 
-This command is _informed_ by the project's domain model and built on a shared design vocabulary:
+Use F-ARCH1 only when API/module/system scope is genuinely unclear. Clear requests route directly.
+Do not combine children automatically. A child may recommend another specialist, but the caller's
+mode, scope, candidate, workspace, and authority remain unchanged.
 
-- Run the `/1-codebase-design` skill for the architecture vocabulary (**module**, **interface**, **depth**, **seam**, **adapter**, **leverage**, **locality**) and its principles (the deletion test, "the interface is the test surface", "one adapter = hypothetical seam, two = real"). Use these terms exactly in every suggestion — don't drift into "component," "service," "API," or "boundary."
-- The domain language in `CONTEXT.md` gives names to good seams; ADRs in `docs/adr/` record decisions this command should not re-litigate.
+## Bounded scan
 
-## Process
+1. **Pin evidence and scope.** Record caller, repository and current worktree/branch, requested paths
+   or subsystem, comparison/base when relevant, existing dirty-state ownership, and whether output
+   is Markdown or explicitly requested static HTML. A scan is read-only and creates no worktree.
+2. **Read local constraints.** Inspect applicable repository instructions, domain vocabulary, ADRs,
+   ownership, tests, and architecture docs if present. Bound broad scans to the changed/hot area or
+   a stated sample; report excluded areas rather than implying whole-repository coverage.
+3. **Explore locally by default.** Trace callers, dependencies, effects, tests, and recent change
+   evidence with read-only tools. Use `/1-codebase-design` heuristics without forcing its vocabulary
+   over established terms. Delegate read-only exploration only when the user explicitly requests
+   sub-agents and scopes are independent.
+4. **Rank evidence-backed candidates.** For each, state files, observed friction, proposed module or
+   system change, expected leverage/locality, compatibility/migration cost, verification plan,
+   confidence, and contradictory evidence. Do not infer a refactor solely from file size, adapter
+   count, method count, or the deletion test.
+5. **Present the report.** Markdown is the default. If static HTML was requested, follow
+   [HTML-REPORT.md](./HTML-REPORT.md), write only to an approved output path or unique OS-temp file,
+   and return the path. Do not open an app or load remote scripts/assets without separate authority.
+6. **Return or deepen.** Stop at the report unless the user selects a candidate or already requested
+   a design. F9 routes a selected candidate to `/1-grill-with-docs` or Agent judgment. Durable domain
+   or ADR edits go through `/1-domain-modeling` only when separately authorized; never create or
+   modify project docs as a scan side effect.
+7. **Implement only when requested.** Send an agreed design and evidence to `/0-implement`. It owns
+   workspace isolation, edits, verification, review, and any authorized commit. This hub never
+   switches branches, stashes work, installs tools, starts services, publishes, deploys, or merges.
 
-### 1. Explore
+## Output contract
 
-**Scope before you scan — YAGNI.** Deepening a module pays off by making future changes to it easier, so put extra weight on the parts of the codebase that have recently changed. Decide *where* to look before you look:
-
-- If the user named a direction — a module, a subsystem, a pain point — take it, and skip the inference below.
-- Otherwise, walk back a good stretch of the commit history (`git log --oneline`) to find the codebase's hot spots — the files and areas that keep coming up — and let those paths pull your attention first. If the changes are scattered with no clear hot spot, widen the net.
-
-Read the project's domain glossary (`CONTEXT.md`) and any ADRs in the area you're touching first.
-
-Then use the Agent tool with `subagent_type=Explore` to walk the codebase. Don't follow rigid heuristics — explore organically and note where you experience friction:
-
-- Where does understanding one concept require bouncing between many small modules?
-- Where are modules **shallow** — interface nearly as complex as the implementation?
-- Where have pure functions been extracted just for testability, but the real bugs hide in how they're called (no **locality**)?
-- Where do tightly-coupled modules leak across their seams?
-- Which parts of the codebase are untested, or hard to test through their current interface?
-
-Apply the **deletion test** to anything you suspect is shallow: would deleting it concentrate complexity, or just move it? A "yes, concentrates" is the signal you want.
-
-### 2. Present candidates as an HTML report
-
-Write a self-contained HTML file to the OS temp directory so nothing lands in the repo. Resolve the temp dir from `$TMPDIR`, falling back to `/tmp` (or `%TEMP%` on Windows), and write to `<tmpdir>/architecture-review-<timestamp>.html` so each run gets a fresh file. Open it for the user — `xdg-open <path>` on Linux, `open <path>` on macOS, `start <path>` on Windows — and tell them the absolute path.
-
-The report uses **Tailwind via CDN** for layout and styling, and **Mermaid via CDN** for diagrams where a graph/flow/sequence reliably communicates the structure. Mix Mermaid with hand-crafted CSS/SVG visuals — use Mermaid when relationships are graph-shaped (call graphs, dependencies, sequences), and hand-built divs/SVG when you want something more editorial (mass diagrams, cross-sections, collapse animations). Each candidate gets a **before/after visualisation**. Be visual.
-
-For each candidate, render a card with:
-
-- **Files** — which files/modules are involved
-- **Problem** — why the current architecture is causing friction
-- **Solution** — plain English description of what would change
-- **Benefits** — explained in terms of locality and leverage, and how tests would improve
-- **Before / After diagram** — side-by-side, custom-drawn, illustrating the shallowness and the deepening
-- **Recommendation strength** — one of `Strong`, `Worth exploring`, `Speculative`, rendered as a badge
-
-End the report with a **Top recommendation** section: which candidate you'd tackle first and why.
-
-**Use CONTEXT.md vocabulary for the domain, and the `/1-codebase-design` vocabulary for the architecture.** If `CONTEXT.md` defines "Order," talk about "the Order intake module" — not "the FooBarHandler," and not "the Order service."
-
-**ADR conflicts**: if a candidate contradicts an existing ADR, only surface it when the friction is real enough to warrant revisiting the ADR. Mark it clearly in the card (e.g. a warning callout: _"contradicts ADR-0007 — but worth reopening because…"_). Don't list every theoretical refactor an ADR forbids.
-
-See [HTML-REPORT.md](HTML-REPORT.md) for the full HTML scaffold, diagram patterns, and styling guidance.
-
-Do NOT propose interfaces yet. After the file is written, ask the user: "Which of these would you like to explore?"
-
-### 3. Grilling loop
-
-Once the user picks a candidate, run the `/0-grilling` skill to walk the decision tree with them — constraints, dependencies, the shape of the deepened module, what sits behind the seam, what tests survive.
-
-Side effects happen inline as decisions crystallize — run the `/1-domain-modeling` skill to keep the domain model current as you go:
-
-- **Naming a deepened module after a concept not in `CONTEXT.md`?** Add the term to `CONTEXT.md`. Create the file lazily if it doesn't exist.
-- **Sharpening a fuzzy term during the conversation?** Update `CONTEXT.md` right there.
-- **User rejects the candidate with a load-bearing reason?** Offer an ADR, framed as: _"Want me to record this as an ADR so future architecture reviews don't re-suggest it?"_ Only offer when the reason would actually be needed by a future explorer to avoid re-suggesting the same thing — skip ephemeral reasons ("not worth it right now") and self-evident ones.
-- **Want to explore alternative interfaces for the deepened module?** Run the `/1-codebase-design` skill and use its design-it-twice parallel sub-agent pattern.
+Return scope/worktree identity, evidence sources, ranked candidates or routed child result,
+assumptions, excluded areas, conflicts with existing decisions, and the next user-owned decision.
+Label scans partial whenever evidence does not cover the whole requested repository.

@@ -1,4 +1,6 @@
 interface:
   display_name: "Hatch Pet"
-  short_description: "Hatch style-flexible Codex pets"
-  default_prompt: "Use $hatch-pet to create a Codex-compatible v2 pet with all standard animations and 16 look directions."
+  short_description: "Route one Codex v2 pet operation"
+  default_prompt: "Use $1-hatch-pet to route this request to one build, repair, validation, or local-install operation."
+policy:
+  allow_implicit_invocation: false

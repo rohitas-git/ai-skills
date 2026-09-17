@@ -10,7 +10,7 @@ Route surface SSOT: [skill-route-surface.md](./skill-route-surface.md) · [ADR 0
    - Description contract: Use when / Not for / Hub (or Use for / Triggers)
    - `metadata.catalog` with at least `hub`, `role`, `when` **or** `triggers`
    - **Never** top-level `hub` / `when` / `not_when` / `next` / `prev` / `cousins` / `triggers` / `role`
-4. When the folder is ready, run **place** or **ingest** (integration test → confirm → indexes/flows/hub workflow).
+4. When explicitly requested, run **place** or **ingest** as a separate pinned catalog change-set (integration test → indexes/flows/hub workflow).
 5. Do not leave orphans without a parent hub.
 6. Run **`scripts/generate-route-index`** then **`/1-skill-linter`** mode **skill** — Gate: PASS (includes `depth-prefix`, `gate-route`, `route-top-level`).
 
@@ -60,4 +60,4 @@ Prefer **deprecate** over hard delete:
 7. Regenerate **route-index** (tombstones drop out of live index)
 8. 1-skill-linter + `scripts/lint-skills`
 
-Hard delete only if user insists and skill never shipped — still confirm.
+Hard delete only when the user explicitly selects the exact target and the removal/recovery evidence is clear.

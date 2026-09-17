@@ -1,6 +1,8 @@
 # SVG HTML Template
 
-Copy this to a `.html` file and replace `<!-- SVG -->`.
+Compatibility scaffold only. It grants no source read, destination write/overwrite, asset fetch, browser,
+publication, or sharing authority. Adapt typography, palette, and layout to the pinned audience and constraints;
+do not treat the sample values as mandatory. Copy it only for the selected HTML/SVG mode and replace `<!-- SVG -->`.
 
 ```html
 <!doctype html>

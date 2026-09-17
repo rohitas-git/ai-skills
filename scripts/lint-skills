@@ -6,6 +6,7 @@ See ADR 0005 (hub packages) and ADR 0006 (skill-linter + hub membership).
 """
 from __future__ import annotations
 
+import argparse
 import json
 import re
 import sys
@@ -57,6 +58,8 @@ CATALOG_HUB = re.compile(
     r"(?m)^[ \t]+hub:\s*[\"']?([0-9]+-[a-z0-9]+(?:-[a-z0-9]+)*)[\"']?\s*$"
 )
 ROUTE_INDEX = CATALOG / "skills" / "0-butler" / "references" / "route-index.md"
+ROUTE_INDEX_JSON = CATALOG / "skills" / "0-butler" / "references" / "route-index.json"
+DESCRIPTION_HUB = re.compile(r"(?i)\bhub:\s*/?([0-9]+-[a-z0-9]+(?:-[a-z0-9]+)*)\b")
 # workflow.json may list ops verbs that are not skills
 NON_SKILL_TOKENS = {
     "create",
@@ -83,6 +86,9 @@ MD_LINK = re.compile(r"\]\(([^)]+)\)")
 PROCESS_HEADING = re.compile(
     r"(?im)^#{1,3}\s+(process|dispatch|steps|workflow|session start|build path)\b"
 )
+SKILL_REFERENCE = re.compile(r"(?<![A-Za-z0-9-])([0-9]+-[a-z0-9]+(?:-[a-z0-9]+)*)(?![A-Za-z0-9-])")
+SLASH_SKILL_REFERENCE = re.compile(r"(?<![A-Za-z0-9-])/([0-9]+-[a-z0-9]+(?:-[a-z0-9]+)*)")
+BACKTICK_SKILL_REFERENCE = re.compile(r"`([0-9]+-[a-z0-9]+(?:-[a-z0-9]+)*)`")
 
 
 def skills_in_bucket(bucket: str) -> list[Path]:
@@ -110,6 +116,147 @@ def frontmatter(text: str) -> dict[str, str]:
             k, v = line.split(":", 1)
             meta[k.strip()] = v.strip().strip('"').strip("'")
     return meta
+
+
+def frontmatter_text(text: str) -> str:
+    if not text.startswith("---"):
+        return ""
+    parts = text.split("---", 2)
+    return parts[1] if len(parts) == 3 else ""
+
+
+def catalog_role(text: str) -> str | None:
+    """Read metadata.catalog.role from the intentionally constrained house schema."""
+    match = re.search(
+        r"(?m)^  catalog:\s*$[\s\S]*?^    role:\s*[\"']?([a-z0-9-]+)[\"']?\s*$",
+        frontmatter_text(text),
+    )
+    return match.group(1) if match else None
+
+
+def parse_claude_invocation_policy(text: str) -> tuple[bool, str | None]:
+    """Return effective Claude implicit invocation and any malformed-value error."""
+    matches = re.findall(
+        r"(?m)^disable-model-invocation:\s*([^#\n]+?)\s*(?:#.*)?$",
+        frontmatter_text(text),
+    )
+    if len(matches) > 1:
+        return True, "duplicate disable-model-invocation keys"
+    if not matches:
+        return True, None
+    value = matches[0].strip().casefold()
+    if value == "true":
+        return False, None
+    if value == "false":
+        return True, None
+    return True, f"disable-model-invocation must be true or false, got {matches[0].strip()!r}"
+
+
+def parse_codex_invocation_policy(text: str) -> tuple[bool | None, str | None]:
+    """Read policy.allow_implicit_invocation without depending on a YAML package."""
+    lines = text.splitlines()
+    policy_indexes = [
+        index for index, line in enumerate(lines)
+        if re.fullmatch(r"policy:\s*(?:#.*)?", line)
+    ]
+    if len(policy_indexes) > 1:
+        return None, "duplicate top-level policy sections"
+    all_keys = [
+        index for index, line in enumerate(lines)
+        if re.match(r"^\s*allow_implicit_invocation\s*:", line)
+    ]
+    if not policy_indexes:
+        if all_keys:
+            return None, "allow_implicit_invocation must be nested under top-level policy"
+        return None, None
+
+    start = policy_indexes[0] + 1
+    end = len(lines)
+    for index in range(start, len(lines)):
+        line = lines[index]
+        if line and not line[0].isspace() and not line.lstrip().startswith("#"):
+            end = index
+            break
+    matches = []
+    for line in lines[start:end]:
+        match = re.fullmatch(
+            r"\s+allow_implicit_invocation:\s*([^#\s]+)\s*(?:#.*)?",
+            line,
+        )
+        if match:
+            matches.append(match.group(1))
+    if len(matches) > 1:
+        return None, "duplicate policy.allow_implicit_invocation keys"
+    if not matches:
+        return None, None
+    value = matches[0].casefold()
+    if value == "true":
+        return True, None
+    if value == "false":
+        return False, None
+    return None, f"policy.allow_implicit_invocation must be true or false, got {matches[0]!r}"
+
+
+def analyze_invocation_policies(
+    skill_dirs: list[Path], *, context_budget_limit: int = 25
+) -> tuple[dict[str, dict], list[tuple[str, str, str]]]:
+    """Classify Claude and Codex independently and enforce catalog conventions."""
+    runtime = {
+        "claude": {"implicitly_invocable": [], "manual_only": [], "policy_violations": []},
+        "codex": {"implicitly_invocable": [], "manual_only": [], "policy_violations": []},
+    }
+    findings: list[tuple[str, str, str]] = []
+    for skill_dir in sorted(skill_dirs, key=lambda path: path.name):
+        name = skill_dir.name
+        skill_text = (skill_dir / "SKILL.md").read_text(encoding="utf-8", errors="replace")
+
+        claude_implicit, claude_error = parse_claude_invocation_policy(skill_text)
+        runtime["claude"]["implicitly_invocable" if claude_implicit else "manual_only"].append(name)
+        claude_expected = name == "1-coding-standards"
+        if claude_error:
+            message = f"skills/{name}/SKILL.md: malformed Claude invocation policy: {claude_error}"
+            runtime["claude"]["policy_violations"].append(message)
+            findings.append(("critical", "claude-invocation-policy", message))
+        if claude_implicit != claude_expected:
+            expected = "implicit" if claude_expected else "manual-only"
+            message = f"skills/{name}/SKILL.md: Claude must be {expected}"
+            runtime["claude"]["policy_violations"].append(message)
+            findings.append(("critical", "claude-invocation-policy", message))
+
+        manifest = skill_dir / "agents" / "openai.yaml"
+        manifest_text = manifest.read_text(encoding="utf-8", errors="replace") if manifest.is_file() else ""
+        codex_setting, codex_error = parse_codex_invocation_policy(manifest_text)
+        # Codex defaults to implicit when no valid explicit false setting is present.
+        codex_implicit = codex_setting is not False
+        runtime["codex"]["implicitly_invocable" if codex_implicit else "manual_only"].append(name)
+        codex_expected = catalog_role(skill_text) == "hub" or name == "1-coding-standards"
+        if codex_error:
+            message = f"skills/{name}/agents/openai.yaml: malformed Codex invocation policy: {codex_error}"
+            runtime["codex"]["policy_violations"].append(message)
+            findings.append(("critical", "codex-manifest-policy", message))
+        if codex_expected and not codex_implicit:
+            message = f"skills/{name}/agents/openai.yaml: Codex hub/coding-standard skill must be implicit"
+            runtime["codex"]["policy_violations"].append(message)
+            findings.append(("critical", "codex-invocation-policy", message))
+        elif not codex_expected and codex_setting is not False:
+            detail = "must explicitly set policy.allow_implicit_invocation: false"
+            message = f"skills/{name}/agents/openai.yaml: Codex manual-only skill {detail}"
+            runtime["codex"]["policy_violations"].append(message)
+            findings.append(("critical", "codex-invocation-policy", message))
+
+    for runtime_name, report in runtime.items():
+        implicit_count = len(report["implicitly_invocable"])
+        report["implicit_count"] = implicit_count
+        report["manual_only_count"] = len(report["manual_only"])
+        warning = None
+        if implicit_count > context_budget_limit:
+            warning = (
+                f"{runtime_name} implicitly invocable count {implicit_count} exceeds "
+                f"the context-budget target of {context_budget_limit}"
+            )
+            findings.append(("warn", f"{runtime_name}-invocation-budget", warning))
+        report["context_budget_warning"] = warning
+    return runtime, findings
 
 
 def collect_hub_members() -> set[str]:
@@ -170,7 +317,151 @@ def check_relative_links(skill_dir: Path, text: str, findings: list, rel: str) -
             findings.append(("critical", "ref-exists", f"{rel}: broken link → {target}"))
 
 
-def main() -> int:
+def check_handoff_targets(
+    text: str, live_names: set[str], findings: list, rel: str, pattern: re.Pattern[str]
+) -> None:
+    """Require skill identifiers in a routing surface to name a live skill."""
+    for target in sorted(set(pattern.findall(text))):
+        if target not in live_names:
+            findings.append(("critical", "handoff-target", f"{rel}: unknown skill handoff → {target}"))
+
+
+def reachable_package_files(skill_dir: Path) -> set[Path]:
+    """Follow local documentation links, preserving paths and stopping at package edges.
+
+    Markdown links and explicit backticked file pointers are navigation evidence;
+    merely mentioning a basename is not. Read Markdown only; never execute assets,
+    fetch URLs or walk a linked sibling/vendor package. Cycles are visited once.
+    """
+    root = skill_dir.resolve()
+    pending = [root / "SKILL.md"]
+    reached: set[Path] = set()
+    while pending:
+        source = pending.pop()
+        if source in reached or not source.is_file():
+            continue
+        reached.add(source)
+        if source.suffix.lower() != ".md":
+            continue
+        try:
+            content = source.read_text(encoding="utf-8", errors="replace")
+        except OSError:
+            continue
+        targets = MD_LINK.findall(content)
+        targets += re.findall(r"`([^`\n]+\.(?:md|json|txt|yaml|yml|py|js|sh))`", content)
+        for target in targets:
+            target = target.strip()
+            if not target or target.startswith(("/", "http:", "https:", "mailto:", "file:")):
+                continue
+            # Angle-bracket paths may contain spaces; optional titles are not paths.
+            if target.startswith("<") and ">" in target:
+                target = target[1:target.index(">")]
+            elif ' "' in target:
+                target = target.split(' "', 1)[0]
+            target = target.split("#", 1)[0].split("?", 1)[0]
+            try:
+                candidate = (source.parent / target).resolve()
+                candidate.relative_to(root)
+            except (ValueError, OSError, RuntimeError):
+                continue
+            if candidate.is_file() and candidate not in reached:
+                pending.append(candidate)
+    return reached
+
+
+def catalog_route_block(text: str) -> str:
+    """Return metadata.catalog only, avoiding arbitrary examples in the skill body."""
+    if not text.startswith("---"):
+        return ""
+    parts = text.split("---", 2)
+    if len(parts) < 3:
+        return ""
+    match = re.search(r"(?m)^  catalog:\s*$([\s\S]*?)(?=^  [a-z_][a-z_]*:|\Z)", parts[1])
+    return match.group(0) if match else ""
+
+
+def check_declared_parent(name: str, hub: str, parents: list, findings: list, rel: str) -> None:
+    """Membership elsewhere does not establish membership under the declared parent."""
+    if name != hub and hub not in {parent[0] for parent in parents}:
+        findings.append(("warn", "route-hub", f"{rel}: declared parent {hub!r} has no child membership for this skill; reconcile workflow/flows ownership"))
+
+
+def report_document(
+    findings: list[tuple[str, str, str]],
+    *,
+    invocation_policies: dict[str, dict],
+    hub_members: set[str],
+    orphans: list[str],
+) -> dict:
+    counts = {
+        severity: sum(1 for finding in findings if finding[0] == severity)
+        for severity in ("critical", "warn", "info")
+    }
+    return {
+        "schema_version": 2,
+        "catalog_root": str(CATALOG),
+        "catalog_version": catalog_version(),
+        "summary": counts,
+        "invocation_policies": invocation_policies,
+        "hub_members_indexed": len(hub_members),
+        "hub_member_orphans": orphans,
+        "gate": "FAIL" if counts["critical"] else "PASS",
+        "findings": [
+            {"severity": severity, "code": code, "message": message}
+            for severity, code, message in findings
+        ],
+    }
+
+
+def print_markdown_report(report: dict) -> None:
+    summary = report["summary"]
+    print("# Catalog lint")
+    print(f"**Catalog root:** {report['catalog_root']}")
+    print(f"**Catalog version:** {report['catalog_version']} (`catalog.yaml`)")
+    print(
+        f"**Summary:** {summary['critical']} critical, {summary['warn']} warn, {summary['info']} info"
+    )
+    print(f"**Hub members indexed:** {report['hub_members_indexed']}")
+    print(f"**Hub-member orphans:** {len(report['hub_member_orphans'])}")
+    if report["hub_member_orphans"]:
+        orphans = report["hub_member_orphans"]
+        print(f"**Orphan sample:** {', '.join(orphans[:20])}{'…' if len(orphans) > 20 else ''}")
+    print(f"**Gate:** {report['gate']}")
+    for runtime_name in ("claude", "codex"):
+        policy = report["invocation_policies"][runtime_name]
+        print(f"\n## {runtime_name.title()} invocation policy")
+        implicit = policy["implicitly_invocable"]
+        manual = policy["manual_only"]
+        print(f"**Implicitly invocable ({len(implicit)}):** {', '.join(implicit) or '(none)'}")
+        print(f"**Manual-only ({len(manual)}):** {', '.join(manual) or '(none)'}")
+        violations = policy["policy_violations"]
+        print(f"**Policy violations ({len(violations)}):**")
+        if violations:
+            for violation in violations:
+                print(f"- {violation}")
+        else:
+            print("- (none)")
+        warning = policy["context_budget_warning"]
+        print(f"**Context-budget warning:** {warning or '(none)'}")
+    for severity in ("critical", "warn", "info"):
+        print(f"\n## {severity}")
+        matches = [
+            finding for finding in report["findings"] if finding["severity"] == severity
+        ]
+        if matches:
+            for finding in matches:
+                print(f"- [{finding['code']}] {finding['message']}")
+        else:
+            print("- (none)")
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--format", choices=("markdown", "json"), default="markdown",
+        help="report format (default: markdown)",
+    )
+    args = parser.parse_args(argv)
     findings: list[tuple[str, str, str]] = []
 
     nested = []
@@ -326,6 +617,23 @@ def main() -> int:
         return expected, deepest_of, parents
 
     live_names = {d.name for d in skills_in_bucket("skills")}
+    if FLOWS.is_file():
+        check_handoff_targets(
+            FLOWS.read_text(encoding="utf-8", errors="replace"),
+            live_names,
+            findings,
+            "skills/0-butler/references/flows.md",
+            BACKTICK_SKILL_REFERENCE,
+        )
+    if HUBS_DIR.is_dir():
+        for workflow in HUBS_DIR.glob("*/workflow.json"):
+            check_handoff_targets(
+                workflow.read_text(encoding="utf-8", errors="replace"),
+                live_names,
+                findings,
+                str(workflow.relative_to(CATALOG)),
+                SKILL_REFERENCE,
+            )
     exp_depth, deepest_of, all_parents = expected_tree_depth(live_names)
     for name in sorted(live_names):
         m = re.match(r"^(\d+)-", name)
@@ -360,7 +668,6 @@ def main() -> int:
             )
 
     hub_members = collect_hub_members()
-    model_invoked: list[str] = []
     # Atomic root README: skill listing SSOT is wikis/index.md (not root README)
     wiki_index = (
         (CATALOG / "wikis" / "index.md").read_text(encoding="utf-8")
@@ -413,10 +720,6 @@ def main() -> int:
                 if f"[{d.name}]" not in readme_text and d.name not in readme_text:
                     findings.append(("warn", "bucket-readme", f"{rel} not listed in bucket README"))
 
-            if bucket in PROMOTED:
-                if "disable-model-invocation: true" not in fm:
-                    model_invoked.append(rel)
-
             if d.name in HARD_DEP_SKILLS and "0-setup-rohitas-skills" not in text and "setup-rohitas-skills" not in text:
                 findings.append(
                     ("critical", "hard-dep", f"{d.name} missing /0-setup-rohitas-skills pointer")
@@ -449,8 +752,16 @@ def main() -> int:
                 mhub = CATALOG_HUB.search(fm)
                 if mhub:
                     chub = mhub.group(1)
-                    if chub not in hub_members and d.name not in hub_members:
-                        pass  # membership checked separately
+                    description_hub = DESCRIPTION_HUB.search(fm)
+                    if description_hub and description_hub.group(1) != chub:
+                        findings.append(
+                            (
+                                "warn",
+                                "route-description-hub",
+                                f"{rel}: description Hub {description_hub.group(1)!r} disagrees with metadata.catalog.hub {chub!r}",
+                            )
+                        )
+                    check_declared_parent(d.name, chub, all_parents.get(d.name, []), findings, rel)
                     # hub field must match a known hub package or member set includes skill under hub
                     hub_dirs = {p.name for p in HUBS_DIR.glob("*") if p.is_dir()} if HUBS_DIR.is_dir() else set()
                     if chub not in hub_dirs and chub not in hub_members:
@@ -472,20 +783,21 @@ def main() -> int:
 
             # Relative links from SKILL.md
             check_relative_links(d, text, findings, rel)
+            if bucket in PROMOTED:
+                check_handoff_targets(text, live_names, findings, rel, SLASH_SKILL_REFERENCE)
+                check_handoff_targets(
+                    catalog_route_block(text), live_names, findings, rel, SKILL_REFERENCE
+                )
 
             # references orphans
             ref_dir = d / "references"
             if ref_dir.is_dir():
-                linked = set()
-                for m in MD_LINK.finditer(text):
-                    tgt = m.group(1).split("#", 1)[0]
-                    if "references/" in tgt or tgt.startswith("./references"):
-                        linked.add(Path(tgt).name)
+                linked = reachable_package_files(d)
                 ref_files = [p for p in ref_dir.rglob("*") if p.is_file() and p.suffix in {".md", ".json", ".txt"}]
                 for rf in ref_files:
-                    if rf.name not in linked and f"references/{rf.name}" not in text and rf.name not in text:
+                    if rf.resolve() not in linked:
                         findings.append(
-                            ("warn", "ref-orphan", f"{rel}: references/{rf.relative_to(ref_dir)} not linked from SKILL.md")
+                            ("warn", "ref-orphan", f"{rel}: references/{rf.relative_to(ref_dir)} not reachable from SKILL.md through local documentation links")
                         )
                 if len(ref_files) > REF_COUNT_SUBDOMAIN and lines > SPRAWL_WARN_LINES:
                     findings.append(
@@ -589,14 +901,10 @@ def main() -> int:
                         )
                     )
 
-    if len(model_invoked) > 25:
-        findings.append(
-            (
-                "warn",
-                "model-budget",
-                f"model-invoked promoted count {len(model_invoked)} > 25: {model_invoked[:12]}…",
-            )
-        )
+    invocation_policies, invocation_findings = analyze_invocation_policies(
+        skills_in_bucket("skills")
+    )
+    findings.extend(invocation_findings)
 
     lock_path = CATALOG / "skills-lock.json"
     if lock_path.exists():
@@ -623,7 +931,7 @@ def main() -> int:
             )
         )
 
-    # route-index presence / staleness (info until generator is habit)
+    # Route projection presence, parseability, coverage, and timestamp freshness.
     if not ROUTE_INDEX.is_file():
         findings.append(
             (
@@ -632,8 +940,49 @@ def main() -> int:
                 "missing skills/0-butler/references/route-index.md — run scripts/generate-route-index",
             )
         )
+    if not ROUTE_INDEX_JSON.is_file():
+        findings.append(
+            (
+                "info",
+                "route-index-stale",
+                "missing skills/0-butler/references/route-index.json — run scripts/generate-route-index",
+            )
+        )
     else:
-        idx_mtime = ROUTE_INDEX.stat().st_mtime
+        try:
+            route_manifest = json.loads(ROUTE_INDEX_JSON.read_text(encoding="utf-8"))
+            if not isinstance(route_manifest, dict):
+                raise ValueError("top level must be an object")
+            manifest_skills = route_manifest.get("skills")
+            if not isinstance(manifest_skills, list):
+                raise ValueError("skills must be a list")
+            manifest_names = {
+                item.get("skill")
+                for item in manifest_skills
+                if isinstance(item, dict)
+            }
+            if route_manifest.get("schema_version") != 1:
+                findings.append(("warn", "route-index-json", "route-index.json has unsupported schema_version"))
+            if route_manifest.get("skill_count") != len(manifest_skills):
+                findings.append(("warn", "route-index-json", "route-index.json skill_count does not match skills"))
+            if manifest_names != live_names:
+                missing = sorted(live_names - manifest_names)
+                extra = sorted(manifest_names - live_names)
+                findings.append(
+                    (
+                        "warn",
+                        "route-index-json",
+                        f"route-index.json live-skill mismatch; missing={missing[:8]}, extra={extra[:8]}",
+                    )
+                )
+        except (json.JSONDecodeError, OSError, AttributeError, TypeError, ValueError) as exc:
+            findings.append(("warn", "route-index-json", f"cannot parse route-index.json: {exc}"))
+
+    projection_times = [
+        path.stat().st_mtime for path in (ROUTE_INDEX, ROUTE_INDEX_JSON) if path.is_file()
+    ]
+    if projection_times:
+        idx_mtime = min(projection_times)
         newest = idx_mtime
         for d in skills_in_bucket("skills"):
             try:
@@ -655,30 +1004,18 @@ def main() -> int:
                 )
             )
 
-    by: dict[str, list[str]] = {"critical": [], "warn": [], "info": []}
-    for sev, code, msg in findings:
-        by.setdefault(sev, []).append(f"- [{code}] {msg}")
-
-    print("# Catalog lint")
-    print(f"**Catalog root:** {CATALOG}")
-    print(f"**Catalog version:** {catalog_version()} (`catalog.yaml`)")
-    print(
-        f"**Summary:** {len(by['critical'])} critical, {len(by['warn'])} warn, {len(by['info'])} info"
+    report = report_document(
+        findings,
+        invocation_policies=invocation_policies,
+        hub_members=hub_members,
+        orphans=orphans,
     )
-    print(f"**Model-invoked promoted:** {len(model_invoked)}")
-    print(f"**Hub members indexed:** {len(hub_members)}")
-    print(f"**Hub-member orphans:** {len(orphans)}")
-    if orphans:
-        print(f"**Orphan sample:** {', '.join(orphans[:20])}{'…' if len(orphans) > 20 else ''}")
-    print("**Gate:** FAIL" if by["critical"] else "**Gate:** PASS")
-    for sev in ("critical", "warn", "info"):
-        print(f"\n## {sev}")
-        if by[sev]:
-            print("\n".join(by[sev]))
-        else:
-            print("- (none)")
+    if args.format == "json":
+        print(json.dumps(report, indent=2, ensure_ascii=False, sort_keys=True))
+    else:
+        print_markdown_report(report)
 
-    return 1 if by["critical"] else 0
+    return 1 if report["summary"]["critical"] else 0
 
 
 if __name__ == "__main__":

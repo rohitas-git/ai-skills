@@ -9,7 +9,7 @@ Load this during Phase 1 (Recon) and Phase 2 (Hunting) for any project that has 
 - Check for private/internal registries and how authentication to them is handled.
 
 ## Vulnerability & Freshness
-- Look for known vulnerable versions (even without running an external scanner — note patterns of very old packages, packages with recent critical CVEs that are unpinned, etc.).
+- Establish known vulnerabilities from current primary advisories and exact resolved package identity/version, with source and retrieval date. Old versions or suspicious patterns are leads, not proof of an applicable CVE. If advisory access is unavailable, report that coverage gap.
 - Unmaintained or abandoned packages (last release years ago, single maintainer, etc.).
 - Overly broad version ranges (`*` or `latest`) that allow unexpected major upgrades.
 - Missing or ignored security advisories in CI.
@@ -53,3 +53,9 @@ Load this during Phase 1 (Recon) and Phase 2 (Hunting) for any project that has 
 - Signed commits, signed releases, or SLSA-style provenance.
 
 Map supply-chain findings primarily to OWASP A03 (Software Supply Chain Failures) or A08 (Software and Data Integrity Failures).
+
+Use `/2-dependency-security` for the bounded application dependency pass and return
+its findings to this audit. Do not install/update packages, run lifecycle scripts,
+upload private manifests to external scanners or change CI policies during review.
+Trace reachability and preserve pre-existing-versus-introduced distinctions; a
+count-only comparison can hide a newly introduced issue behind a resolved one.

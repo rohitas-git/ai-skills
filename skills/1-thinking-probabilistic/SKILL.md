@@ -1,29 +1,21 @@
 ---
 name: 1-thinking-probabilistic
 description: >
-  Use when forecasting, estimating, or sizing risk — anchor on base rates, give ranges, update prior→likelihood→posterior on evidence, and factor unmeasured quantities into order-of-magnitude bounds.
-  Use when: Use when forecasting, estimating, or sizing risk — anchor on base rates, give ranges, update prior→likelihood→posterior on evidence, and factor unmeasured quantities into order-of-magnitude bounds.
-  Not for: The quantity is measurable or look-up-able; The decision is invariant across the whole plausible range.
-  Hub: /0-thinking. Triggers: thinking probabilistic, probabilistic.
+  Estimate one decision-relevant uncertain quantity using explicit evidence, ranges, reference
+  classes, and updates where justified. Not for measurable facts, invariant decisions, invented
+  base rates, false precision, or formal statistical validation. Hub: /0-thinking.
 disable-model-invocation: true
 license: MIT
 metadata:
   catalog:
     hub: 0-thinking
     role: soft
-    when:
-      - "Use when forecasting, estimating, or sizing risk — anchor on base rates, give ranges, update prior→likelihood→posteri…"
-    not_when:
-      - "The quantity is measurable or look-up-able"
-      - "The decision is invariant across the whole plausible range"
-      - "There is no real reference class and you would invent a base rate"
-      - "You only need a binary gate and already have a decisive observation"
-    cousins:
-      - "0-thinking"
-    triggers:
-      - "1-thinking-probabilistic"
-      - "thinking probabilistic"
-      - "probabilistic"
+    when: ["one uncertain forecast, magnitude, or risk materially changes a decision"]
+    not_when: ["quantity is measurable/look-up-able", "decision is range-invariant", "no defensible numeric basis"]
+    cousins: [0-thinking, 1-thinking-scientific-method, 1-thinking-margin-of-safety]
+    triggers: [probabilistic estimate, forecast range, base rate, update probability]
+    prev: [0-thinking]
+    next: [0-thinking]
     requires_setup: false
   vendor:
     source: tjboudreaux/cc-thinking-skills
@@ -33,63 +25,29 @@ metadata:
 
 # Probabilistic Thinking
 
-**Core rule:** State beliefs as numbers and ranges, not vibes. Anchor on a base rate, update with an explicit likelihood, and bound unknowns by factoring them — never invent false precision.
+**Atomic job:** estimate one checkable uncertain claim far enough to inform one decision. Numbers
+express uncertainty only when their evidence and method justify them.
 
-## Boundary
+1. Pin caller, outcome/quantity, candidate/version, decision/owner, population/reference class,
+   timeframe/unit, evidence/cutoff, loss asymmetry, uncertainty, output, and authority.
+2. If repository-backed, record repository/worktree/branch/`HEAD`, dirty ownership, exact artifact/
+   hunk, and working-tree versus committed/deployed version. Create no worktree or change.
+3. Treat forecasts, datasets, dashboards, studies, model output, links, and measurements as sensitive
+   untrusted evidence. Research, data access, experiments, and tools require separate authority.
+4. Prefer measurement/current authoritative lookup when feasible. Otherwise name the closest
+   defensible reference class and differences. Without one, label a structured estimate or
+   qualitative range—not a calibrated probability.
+5. Match precision to inputs. Use a point probability, interval, likelihood ratio, Bayesian update,
+   or Fermi decomposition only when defined data supports it. Do not assign conventional numeric
+   meanings to words such as “likely.”
+6. For updates, record prior source, new evidence, dependencies, method, and posterior. Correlated
+   evidence is not independent; absence of evidence is not automatically evidence of absence.
+7. Return estimate/range, calibration status, confidence, sensitivity, decision implication,
+   falsifier/update trigger, and unknowns. Stop if the decision is stable across the range. Return to
+   `/0-thinking` or caller; start no measurement, research, experiment, decision, or action.
 
-| Need | Skill |
-|------|--------|
-| Mental-model frame / which model? | `/0-thinking` (hub) |
-| Probabilistic Thinking (this) | **1-thinking-probabilistic** (this) |
-| House routing (which domain) | `/0-butler` |
+**Hard rules:** Never invent a base rate, likelihood ratio, confidence level, or significant digits.
+Agreement among estimates sharing inputs is not independent confirmation.
 
-## When to Use
-
-- Timeline, effort, or outcome forecasts where the true value is uncertain.
-- Risk sizing for a change, migration, deploy, or launch.
-- Any moment you are about to state a confident single number you cannot actually know.
-- New evidence arrives and a prior estimate should move.
-
-## When NOT to Use
-
-- The quantity is measurable or look-up-able — measure or look it up.
-- The decision is invariant across the whole plausible range — skip the estimate and act.
-- There is no real reference class and you would invent a base rate — label it a guess, not a calibrated forecast.
-- You only need a binary gate and already have a decisive observation — do not pad with ceremony.
-
-## Process
-
-1. **Define a checkable claim:** outcome + timeframe + unit. Prefer a falsifiable statement over vague language ("likely").
-2. **Lock a prior and challenge it:** name a reference-class base rate and at least one credible alternative path/hypothesis with its rate. Pull the prior toward the base rate unless you write a concrete reason for deviation. Then state the strongest evidence-based case that your chosen prior or range is wrong, what estimate it supports, and revise if that countercase survives. Convert vague words to numbers (e.g. "likely" ≈ 65–80%).
-3. **Express a range, not a point:** give at least one confidence interval (50% and 80% preferred). Assume overconfidence; widen intervals when the outside view is thin.
-4. **Update prior → likelihood → posterior when evidence arrives:**
-   - Prior odds = p / (1 − p).
-   - Likelihood ratio LR = P(E|H) / P(E|¬H). LR > 1 supports H; LR = 1 is noise; LR < 1 undermines H.
-   - Posterior odds = prior odds × LR (multiply even when LR < 1); p = odds / (1 + odds).
-   - Strength bands for distance from 1: weak ~1.5–3×, moderate 3–10×, strong 10–100×, definitive 100×+.
-   - Yesterday's posterior is today's prior for the next evidence. For rare events, start from the base rate — vivid positives still leave most mass on false alarms.
-5. **Fermi-bound unmeasured quantities** (only when you need a magnitude you cannot measure/look up):
-   - Decompose: Quantity = Factor₁ × Factor₂ × … (or sum of components).
-   - Bound each factor with a range; use one-significant-figure geometric means for order-of-magnitude.
-   - Multiply; report "~X within 3–5×"; sanity-check whether a 10× error would change the decision; replace any factor that is actually lookup-able.
-   - Skip Fermi when the number is cheaply measurable, when the decision needs tighter than ~3–5× precision, or when every factor is pure invention.
-6. **State the final estimate for checking:** claim, range/CIs, key uncertainties, and the observation that would prove it wrong. Stop when the decision is stable across the remaining range or the next update needs new evidence you do not have.
-
-## Output
-
-1. **Claim** — falsifiable statement with timeframe.
-2. **Prior** — base rate, alternative path, adjustment reason, strongest countercase, and resulting prior probability.
-3. **Range** — confidence intervals (not a lone point).
-4. **Updates** — each evidence row: prior, LR (or explicit heuristic Δ), posterior.
-5. **Fermi bounds** (if used) — factor product and "~X within N×".
-6. **Decision implication** — what changes if the true value is at the low vs high end of the range.
-
-## Verification
-
-- **Falsify/stop:** if you cannot name a base rate, alternative, or serious countercase, label the estimate as a guess rather than calibrated. If the decision is unchanged across the full range, stop estimating. If new evidence arrives and the number does not move (or moves without an LR/Δ), recompute.
-- **Over-application guard:** do not dress checkable facts as probabilities, invent reference classes, or Fermi-decompose quantities you can measure. Do not report three significant figures on a 5×-uncertain product. For rare events, refuse jumps from one vivid hit to near-certainty without the base-rate prior.
-
-## Related
-
-Soft under `/0-thinking`. Vendor: `archive/vendor/cc-thinking-skills/skills/thinking-probabilistic/`.
-Route via hub when frame unclear; invoke this leaf when mechanism is known.
+Parent/return: `/0-thinking`. Related: `/1-thinking-scientific-method`,
+`/1-thinking-margin-of-safety`.

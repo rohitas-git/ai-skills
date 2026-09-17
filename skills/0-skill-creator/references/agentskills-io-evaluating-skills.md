@@ -2,10 +2,10 @@
 
 > **Source:** [agentskills.io/skill-creation/evaluating-skills](https://agentskills.io/skill-creation/evaluating-skills) · fetched 2026-08-05  
 > **Load when:** designing cases, writing assertions, grading, or deciding what to change after a run.  
-> **House ops (SSOT):** [full-guide.md](./full-guide.md) — workspace dirs, subagents, grader, `eval-viewer`, aggregate scripts.  
+> **House ops (SSOT):** [full-guide.md](./full-guide.md) — candidate identity, proportional evidence, and authority boundaries.  
 > **Cousins:** [optimizing-descriptions](./agentskills-io-optimizing-descriptions.md) (trigger, not output) · [using-scripts](./agentskills-io-using-scripts.md) (bundle repeated helpers).
 
-**Eval pressure** = baseline comparison + checkable assertions + human review. One happy-path demo is not a **completion criterion** for “skill works.”
+**Eval pressure** = checkable cases plus honest comparison where useful. Baselines, fresh contexts, viewers, and human review are optional instruments, not automatic gates.
 
 ## Steps — one iteration
 
@@ -13,13 +13,13 @@ Each step ends when its criterion holds. Full automation choreography lives in f
 
 ### 1. Cases (hand-author)
 
-Store `evals/evals.json`: `prompt` · `expected_output` · optional `files`. Start with **2–3** cases.
+When a persistent harness is justified, store `evals/evals.json`: `prompt` · `expected_output` · optional `files`. Start with the smallest representative set.
 
 **Completion criterion:** prompts are realistic (paths, columns, casual speech); ≥1 edge; varied formality. Assertions empty until after first run.
 
 ### 2. Run with **baseline**
 
-Each case: **with_skill** and **without_skill** (or **old_skill** snapshot when improving). Clean context per run.
+Compare **with_skill** to **without_skill** or an **old_skill** snapshot only when that baseline answers a real question. Otherwise run the selected candidate directly and label the missing comparison.
 
 Workspace pattern (sibling to skill):
 
@@ -30,7 +30,7 @@ skill-workspace/iteration-N/benchmark.json
 
 Capture **timing** at completion (`total_tokens`, `duration_ms`) — often only in the notification.
 
-**Completion criterion:** every case has paired outputs (and timing if available).
+**Completion criterion:** every selected case records its input, immutable skill revision, output, runtime, and available timing; paired outputs exist only for selected comparisons.
 
 ### 3. Assertions (after seeing outputs)
 
@@ -48,7 +48,7 @@ PASS/FAIL + **concrete evidence** (quote path, field, screenshot detail). Script
 
 While grading, **prune the assertions**: always-pass both configs (no-op), always-fail (broken), unverifiable → fix before next iteration.
 
-Optional **blind comparison** of two versions: full-guide / comparator agent.
+Optional blind comparison requires an available, authorized fresh-context mechanism; it is not implied by this reference.
 
 ### 5. Aggregate + pattern-read
 
@@ -80,7 +80,7 @@ Rules of revision (house craft):
 - **Why over MUST** — purpose steers better than caps  
 - **Bundle** repeated helpers → `scripts/`  
 
-**Loop completion:** new `iteration-N+1` until feedback empty, user satisfied, or deltas flat.
+**Loop completion:** stop at the selected evidence bar—affected cases pass, uncertainty is reported, or additional runs no longer justify their cost.
 
 ## Related
 

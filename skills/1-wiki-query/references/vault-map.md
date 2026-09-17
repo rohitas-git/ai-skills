@@ -1,32 +1,23 @@
-# Rohitas vault map (for retrieval)
+# Vault-map compatibility note
 
-**Vault root:** resolve from SSOT only — consumer repo `docs/agents/vault.md` (written by `/0-setup-rohitas-skills`), or the `## Agent skills` vault pointer. Do **not** hard-code a home path in this skill. If unset, ask once and offer to write the SSOT.
+Resolve the root only from the configured SSOT accepted by `/0-rohitas-vault-wiki`. Do not
+hard-code a home path, environment variable, repository-relative guess, or remembered location.
 
-```
-README.md              # Knowledge Registry (start here)
-My Dashboard.md        # status: active notes
-Atlas/                 # * MOC.md hubs only
-Concepts/              # atomic notes only
-Queries/               # filed query answers (type: query)
-Guides/                # methodology, templates, ops
-Archives/              # literature sources + Query Log + Ingest Log
-Inbox/                 # capture only
-Projects/              # active work
-```
+The active vault may expose registries, MOCs, indexes, Concepts, Queries, Archives, Inbox,
+Projects, Guides, or different equivalents. Discover only the minimum names/metadata needed for
+the question. Existing active layout and schema are authoritative; missing example folders are
+not defects and this read-only skill creates none.
 
-## Retrieval order for a typical question
+For a Git-backed vault, pin repository/worktree/branch/`HEAD`, dirty ownership, and candidate.
+For a non-Git vault, record the retrieval inventory time and useful file versions. In either
+case, worktrees do not isolate Obsidian sync, plugins, accounts, or remote services.
 
-1. `README.md` → pick Area → open Atlas MOC  
-2. Read linked Concepts from the MOC  
-3. `rg` Concepts by keyword / `topic:` if MOC incomplete  
-4. Archives only if Concepts thin  
-5. File non-trivial synthesis under `Queries/`  
-6. Log in `Archives/Query Log.md`
+Companion ownership:
 
-## Companion skills
-
-| Skill | Use for |
-|-------|---------|
-| `1-wiki-query` | Answer + file queries |
-| `0-rohitas-vault-wiki` | Ingest, structure, templates, MOCs |
-| `1-resource-summarizer` | Distill long raw text before filing Concepts |
+| Outcome | Owner |
+|---|---|
+| Answer one question from existing notes | `/1-wiki-query` |
+| Persist a verified answer packet | `/1-vault-ingest` |
+| Explain one exact Concept | `/1-vault-explain` |
+| Audit structure/health | `/1-vault-lint` |
+| Research outside the vault | `/1-research` |

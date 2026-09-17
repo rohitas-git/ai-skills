@@ -7,8 +7,8 @@
   "slash": "/0-implement",
   "path": "skills/0-implement",
   "package_dir": "hubs/0-implement/",
-  "role": "Build driver for the product path.",
-  "notes": "Ship closer is multi-axis 1-code-review, not ponytail.",
+  "role": "Drive one bounded implementation through workspace selection, scoped specialists, evidence, review reconciliation, and authorized closure.",
+  "notes": "Clear requests enter directly. Every child inherits the task, exact worktree/candidate, dirty ownership, and authority, then returns to Ship. Delegation and finish actions are conditional, never automatic.",
   "parent": {
     "hub": "0-butler",
     "slash": "/0-butler",
@@ -25,20 +25,20 @@
         "1-to-tickets",
         "0-implement",
         "1-tdd",
-        "1-code-review"
+        "1-code-review",
+        "1-atomic-git-commits"
       ],
+      "note": "Conditional sequence, not a mandatory chain: 1-tdd runs only for one settled deterministic behavior with an independent oracle and returns the same candidate/worktree/authority; review and commits have their own gates.",
       "primary": true
     },
     {
       "link_type": "soft",
       "skills": [
         "1-write-plan",
-        "1-git-worktrees",
         "1-subagent-implement",
-        "1-execute-plan",
-        "1-finish-branch"
+        "1-execute-plan"
       ],
-      "note": "Superpowers harvest: plan path (write \u2192 worktree \u2192 F-SP execute \u2192 finish)",
+      "note": "Superpowers harvest: plan execution path; Git isolation/finish remain cross-links",
       "primary": true
     },
     {
@@ -51,17 +51,40 @@
     {
       "link_type": "soft",
       "skills": [
-        "1-coding-standards"
+        "1-coding-standards",
+        "1-go-best-practices",
+        "1-living-documentation-governor",
+        "1-constraint-driven-development",
+        "1-error-handling"
       ],
-      "note": "Always-on lean style; F-C1 vs 1-clean-craftsmanship (Architecture)",
+      "note": "Lean repository style, bounded Go-specific practice, code-synced canonical docs, an optional measurable quality contract, and bounded failure behavior that return to this build; F-C1 vs 1-clean-craftsmanship (Architecture)",
       "primary": true
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "1-api-and-interface-design",
+        "1-codebase-design",
+        "1-deprecation-and-migration"
+      ],
+      "note": "Public-contract, internal-module, and old-path lifecycle specialists; inherit Ship scope/workspace/authority and return the agreed design or phase evidence"
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "1-pending-migration-hygiene",
+        "1-supabase-schema-migration",
+        "1-supabase",
+        "1-supabase-postgres-best-practices"
+      ],
+      "note": "Four distinct Supabase operations: one product integration, one measured Postgres concern, one new locally verified schema concept, or rewrite of versions backed by complete observed provenance or exact human attestation; all inherit exact worktree/local-stack/authority and return without remote application"
     },
     {
       "link_type": "soft",
       "skills": [
         "1-karpathy-guidelines"
       ],
-      "note": "LLM coding process hygiene: think, simple, surgical, goal-driven; cousins ponytail/coding-standards/verify-work",
+      "note": "Explicit opt-in implementation checklist: surface load-bearing assumptions, choose the smallest adequate design, keep scope surgical, define falsifying evidence, then return the unchanged Ship candidate/workspace/authority",
       "primary": true
     },
     {
@@ -80,17 +103,18 @@
         "1-execution-flow-comments",
         "1-stepdown-rule"
       ],
-      "note": "Style / comment layout softs"
+      "note": "Four explicit one-candidate operations: public API contract docs, one internal why comment, one requested execution-flow block, or behavior-independent declaration order; each inherits exact worktree/revision/authority and returns without behavior changes or automatic review"
     },
     {
       "link_type": "soft",
       "skills": [
-        "1-git-commit-helper",
+        "1-git-worktrees",
+        "1-finish-branch",
         "1-pr-summarizer",
         "1-resolving-merge-conflicts",
         "1-research"
       ],
-      "note": "Git/PR and 1-research softs"
+      "note": "Conditional workspace isolation, conflict handling, requested integration options, PR summary, and one bounded read-only research answer; persistence is explicit and each preserves and returns Ship provenance"
     },
     {
       "link_type": "soft",
@@ -98,32 +122,37 @@
         "1-shipping-and-launch",
         "1-observability-and-instrumentation",
         "1-ci-cd-and-automation",
-        "1-frontend-ui-engineering"
+        "1-frontend-ui-engineering",
+        "1-ui-styling",
+        "1-performance-optimization"
       ],
-      "note": "Vendor harvest: launch, o11y, CI, UI craft; 1-frontend-ui-engineering also soft dual under 0-ui-ux",
+      "note": "Conditional delivery, UI, and performance specialists preserve the exact Ship candidate/worktree/authority: CI/CD owns one workflow/check contract, observability one telemetry contract, shipping one immutable release candidate, frontend engineering one bounded interaction surface, UI Styling one presentation-only visual delta with protected behavior, and performance one measured experiment. Each returns without unapproved remote execution, hosted changes, redesign, publication, or shared load.",
       "primary": true
     }
   ],
   "pipeline": [
-    "multi: 1-to-spec \u2192 1-to-tickets \u2192 implement* \u2192 1-tdd \u2192 1-code-review \u2192 commit",
-    "single: implement* \u2192 1-tdd \u2192 1-code-review \u2192 commit",
-    "optional plan: 1-write-plan \u2192 1-git-worktrees? \u2192 F-SP \u2192 subagent-implement|execute-plan \u2192 closer \u2192 1-finish-branch"
+    "pin request/spec/ticket, acceptance criteria, exclusions, authority, repository, branch/HEAD, dirty ownership, and local-service ownership",
+    "use 1-git-worktrees only when protected-branch, overlapping-state, concurrent-work, or branch-specific local-state isolation is needed; resume Ship with returned provenance",
+    "select one reviewable slice, the fitting evidence loop, and only necessary specialists; every child inherits and returns the same candidate/workspace/authority",
+    "implement surgically; delegation through F-SP is available only when explicitly requested or authorized and ownership boundaries are independent",
+    "verify supported claims on the actual candidate → 1-code-review → resolve verified in-scope findings one by one → reverify and re-review until clear or blocked",
+    "1-atomic-git-commits only when commit authority exists; 1-finish-branch only for requested integration/PR options; no implicit remote or production effects"
   ],
   "forks": [
     {
       "id": "F4",
-      "question": "(entry) multi-session?",
-      "recommended": "as Design",
+      "question": "Is the request already buildable, or does it need specification/ticket decomposition?",
+      "recommended": "Direct implementation for a clear bounded request",
       "branches": [
-        "to-spec path",
-        "direct implement",
+        "1-to-spec → 1-to-tickets for materially unresolved or multi-session work",
+        "direct 0-implement for a clear bounded request",
         "Agent judgment"
       ]
     },
     {
       "id": "F-SP",
-      "question": "Execute plan same session or new session?",
-      "recommended": "same if subagents available",
+      "question": "Execute directly or use explicitly authorized delegation?",
+      "recommended": "Direct execution unless delegation was requested and has safe ownership boundaries",
       "branches": [
         "1-subagent-implement",
         "1-execute-plan",
@@ -131,12 +160,24 @@
       ]
     },
     {
-      "id": "F5",
-      "question": "This slice done?",
-      "recommended": "run closer",
+      "id": "F-TDD1",
+      "question": "Does this slice have a settled seam, deterministic behavior, independent oracle, and edit authority for a red-green loop?",
+      "recommended": "Use TDD only when all fit conditions are established",
       "branches": [
-        "tdd\u2192code-review\u2192commit",
-        "more tickets",
+        "1-tdd for one fitting red-green slice",
+        "characterization or 0-diagnosing-bugs when the current behavior/root cause is unknown",
+        "1-write-plan or 1-prototype when the contract or interface is unsettled",
+        "1-agent-evaluation for probabilistic model or RAG behavior",
+        "Agent judgment"
+      ]
+    },
+    {
+      "id": "F5",
+      "question": "Does the actual candidate have enough evidence to enter review reconciliation?",
+      "recommended": "Review only after applicable claims have current evidence or labeled gaps",
+      "branches": [
+        "1-code-review → fix verified in-scope findings → reverify/re-review → 1-atomic-git-commits when authorized",
+        "continue the current slice or next requested ticket",
         "Agent judgment"
       ]
     },
@@ -158,7 +199,7 @@
     "html": "./hub.html",
     "workflow_json": "./workflow.json",
     "flows_chart": "../flows-chart.html",
-    "flows_ssot": "../../../skills/0-butler/references/flows.md",
+    "flows_ssot": "../../skills/0-butler/references/flows.md",
     "hubs_index": "../index.html",
     "manifest": "../manifest.json"
   },

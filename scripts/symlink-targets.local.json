@@ -4,9 +4,7 @@
   "neverDiscover": ["archive", "hubs", "guidelines", "wikis", "vendor", ".scratch", ".system", ".claude"],
   "nestedSkillRoots": [],
   "ingestDestination": "inbox",
-  "include": [
-    "0-butler"
-  ],  "targets": [
+  "targets": [
     "~/.agents/skills",
     "~/.claude/skills",
     "~/.codex/skills",

@@ -1,116 +1,71 @@
 ---
 name: 1-pr-summarizer
 description: >
-  Summarize changes, write PR descriptions, or draft comments for pull requests. Trigger
-  this skill whenever the user asks to "write a PR description", "summarize changes for
-  a PR", "draft a comment to post on my PR", "summarize terminal logs / test failures
-  for a PR comment", or wants to format git diff and commit information for pull
-  requests. Use when: Summarize changes, write PR descriptions, or draft comments for
-  pull requests. Hub: /0-implement.
+  Draft a reviewer-ready pull-request description from verified intent, change, and validation evidence.
+  Use when: write a PR description, summarize a PR for reviewers, or prepare a branch change summary.
+  Not for: drafting a single PR comment (1-pr-comment-drafter), collecting review threads (1-github-pr-comment-intake),
+  posting to GitHub (1-github-cli), or creating commits (1-atomic-git-commits). Hub: /0-git.
 disable-model-invocation: true
 metadata:
   catalog:
-    hub: 0-implement
+    hub: 0-git
     role: soft
     when:
-      - "Summarize changes, write PR descriptions, or draft comments for pull requests"
-    triggers:
-      - "1-pr-summarizer"
-      - "pr summarizer"
+      - "draft a reviewer-ready pull-request description from existing evidence"
+      - "summarize a branch or PR for reviewers"
+    not_when:
+      - "draft one PR response/comment → 1-pr-comment-drafter"
+      - "collect review threads → 1-github-pr-comment-intake"
+      - "post or edit a remote PR → 1-github-cli"
+      - "create commits → 1-atomic-git-commits"
+    next: [1-github-cli]
+    cousins: [1-pr-comment-drafter, 1-github-cli, 1-github-pr-comment-intake, 1-atomic-git-commits]
+    triggers: [pr summarizer, write PR description, summarize changes for PR, reviewer-ready PR summary, prepare PR description]
     requires_setup: false
 ---
 
 # PR Summarizer
 
-This skill helps compile code changes, commit history, and testing/CI results into clear, structured, and informative Pull Request (PR) descriptions or comments.
+Turn verified intent, decisions, diff evidence, and validation results into one concise,
+reviewer-ready PR description. Draft only; never create, edit, or post a PR.
 
-## When to Use
-Use this skill when:
-- Drafting a new Pull Request description.
-- Writing a comment summarizing recent test failures or local CI run outcomes on a PR.
-- Generating a summary of changes between two branches.
-- Converting git diffs and commit messages into structured markdown format for pull requests.
+## Boundary
 
-## Workflow
+| Need | Skill |
+|---|---|
+| Draft the main PR description | **this skill** |
+| Draft one response or status comment | `/1-pr-comment-drafter` |
+| Collect existing PR discussion | `/1-github-pr-comment-intake` |
+| Post PR prose remotely | `/1-github-cli` |
+| Group and commit changes | `/1-atomic-git-commits` |
 
-### 1. Gather Context
-Collect the necessary info to form the summary:
-- **Git Diff**: Retrieve the changes using `git diff` or compare branches.
-- **Commit Messages**: Retrieve the commit history using `git log`.
-- **Test/CI Run Logs**: Parse the terminal output of tests (e.g., test failures, database integrations, type checking).
+## Process
 
-### 2. Choose the Template
-Depending on the user's request, use one of the templates below.
+1. **Gather evidence.** Pin repository, PR or local branch, declared base and head SHAs, stated problem, linked issue/spec, PR template, final diff, decisions, and actual validation output. Distinguish local-only changes from the published PR. Ask one focused question if the why is unavailable; never infer it from filenames alone. Drafting needs no worktree creation or checkout mutation.
+2. **Assess reviewability.** Group the change by behavior, not file order. Flag mixed-purpose or unusually broad changes as reviewer notes only when the evidence supports a possible independent split.
+3. **Draft the repository template.** Preserve required headings. Otherwise scale the compact shape below to the change: a small fix may need just a short explanation and validation. Rewrite around the final behavior after scope changes; omit abandoned work and conversation history unless needed to explain a current trade-off.
+4. **Audit claims.** Include only tests actually run, observed risks, known limitations, migrations, rollout requirements, and explicitly unknown items. Associate CI/test evidence with its tested revision; a green result from an earlier PR head does not validate later changes. Do not manufacture metrics, status, issue links, or claims that all CI passed.
+5. **Return Markdown and handoff.** Provide the title, body, and intended head/base to the caller. `/1-github-cli` publishes only when requested; `next` is conditional, not an automatic post.
 
----
-
-## PR Description Template
-
-Use this format for drafting a main PR description:
+## Default shape
 
 ```markdown
-# [Short Descriptive Title]
-
 ## Summary
-<!-- A brief 2-3 sentence overview of what this PR does and why it's needed. -->
+<what changed and why, in 1–3 sentences>
 
-## Proposed Changes
-<!-- Bulleted list of components/files changed, grouped logically, with brief explanations of the changes. -->
-- **Component / File**:
-  - Details of changes...
+## Changes
+- <behavior-focused change group>
+- <behavior-focused change group>
 
-## Testing & CI
-<!-- Detail how the changes were verified, including test outcomes, commands run, and failures resolved/identified. -->
-- [ ] Unit tests passed
-- [ ] Integration tests passed
-- [ ] Local CI summary:
-  - `✓` [Feature area]
-  - `✗` [Feature area (if failing, explain why)]
+## Validation
+- `<command>` — <observed result>
 
-## Impact & Risk
-<!-- Describe any potential risk, side effects, migration requirements, or regulatory impact. -->
-<!-- Evaluate the change against system design metrics where applicable: -->
-- **Latency**: Did this introduce/reduce CPU, memory, or network overhead?
-- **Throughput**: How does this impact concurrency, queue handling, or pipeline speed?
-- **Availability**: Does it affect service uptime or deployment velocity?
-- **Resilience**: How does this handle failures, timeouts, or state corruption?
-- **Scalability**: Does this scale with data volume, concurrent requests, or suite size?
-- **Fault-Tolerance**: Does this resolve test flakiness or prevent cascading errors?
-- **Consistency**: How does this affect state consistency (e.g. database, cache, or process memory)?
+## Risk / reviewer notes
+- <migration, rollout, limitation, or focused review guidance>
 ```
-
----
-
-## PR Comment Template (CI/Test Failure Summary)
-
-Use this format when summarizing terminal output / test runs to post as a comment:
-
-```markdown
-### ❌ Local CI Run Summary: [Component/Test Area] Failures
-
-- **Branch**: `[branch-name]`
-- **Command Executed**: `[command]`
-- **Status**: Failed (Exit Code: [exit-code])
-
-#### 📊 Pipeline Status
-- **Passed**: `[list of passed checks]`
-- **Failed**: `[list of failed checks]`
-
-#### 🔍 Failure Details
-<!-- Highlight the exact test files, line numbers, error messages, and stack traces. -->
-1. **`[file-path:line-number]`**
-   - **Test Name**: `[test description]`
-   - **Error**: `[error message, e.g., TimeoutError, AssertionError]`
-   - **Context**: `[brief description of what went wrong]`
-```
-
-## Guidelines for Writing PR Summaries
-- **Keep it Objective**: Be precise and direct. Focus on *what* changed and *why*, avoiding fluff.
-- **Format File Paths as Links**: Always format file paths as clickable local links using the `file://` scheme (e.g. `[filename](file:///path/to/file)`).
-- **Group logically**: If many files are changed, group them by component or feature area.
-- **Highlight regulatory/clinical impact**: In repositories with specific safety/clinical guidelines (e.g., KiloCare's regulatory constraints), highlight if any changes affect these paths.
-
 
 ## Related
 
-**Next:** `/0-implement`. Parent hub: `/0-implement`.
+For individual comment prose use `/1-pr-comment-drafter`; for remote publication use
+`/1-github-cli` after explicit authorization. Adapted from the
+[community PR-enhancement source](./references/vendor-source.md).

@@ -1,0 +1,6 @@
+interface:
+  display_name: "PDF"
+  short_description: "Perform one bounded and verified PDF operation"
+  default_prompt: "Use $1-pdf for one exact PDF operation, preserving sources and reporting verification and effects."
+policy:
+  allow_implicit_invocation: false

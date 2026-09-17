@@ -1,29 +1,22 @@
 ---
 name: 1-thinking-thought-experiment
 description: >
-  When a real test is too rare, large, or irreversible, run a controlled counterfactual: isolate one variable, fix conditions, trace the mechanistic chain, and bound what the result implies.
-  Use when: When a real test is too rare, large, or irreversible, run a controlled counterfactual: isolate one variable, fix conditions, trace the mechanistic chain, and bound what the result implies.
-  Not for: A cheap real test exists (load test, flag, query, spike) → run the test; do not substit…; Adversarial security attack-path work → use red-team structure, not free-form scenarios.
-  Hub: /0-thinking. Triggers: thinking thought experiment, thought-experiment.
+  Run one controlled counterfactual to expose mechanisms when a real test is unavailable,
+  disproportionate, unsafe, or irreversible. Not for replacing cheap empirical checks, adversarial
+  security testing, scenario sprawl, treating imagination as evidence, or implementation.
+  Hub: /0-thinking.
 disable-model-invocation: true
 license: MIT
 metadata:
   catalog:
     hub: 0-thinking
     role: soft
-    when:
-      - "When a real test is too rare, large, or irreversible, run a controlled counterfactual: isolate one variable, fix cond…"
-    not_when:
-      - "A cheap real test exists (load test, flag, query, spike) → run the test; do not substit…"
-      - "Adversarial security attack-path work → use red-team structure, not free-form scenarios"
-      - "You already know the mechanism and only need a decision under known facts → decide; do …"
-      - "Vague \"what if everything\" brainstorming without a single isolated variable → tighten o…"
-    cousins:
-      - "0-thinking"
-    triggers:
-      - "1-thinking-thought-experiment"
-      - "thinking thought experiment"
-      - "thought experiment"
+    when: ["one bounded counterfactual can expose a decision-relevant mechanism that cannot yet be tested"]
+    not_when: ["cheap safe real check exists", "adversarial security work → 1-thinking-red-team", "vague scenario brainstorming"]
+    cousins: [0-thinking, 1-thinking-scientific-method, 1-thinking-red-team]
+    triggers: [thought experiment, controlled counterfactual, what if scenario]
+    prev: [0-thinking]
+    next: [0-thinking]
     requires_setup: false
   vendor:
     source: tjboudreaux/cc-thinking-skills
@@ -33,61 +26,25 @@ metadata:
 
 # Thought Experiment
 
-When empiricism is out of reach, run a disciplined counterfactual: one isolated change, fixed conditions, step-by-step mechanism, and a hard bound on implications.
+**Atomic job:** trace one explicit counterfactual far enough to expose a decision-relevant mechanism.
+Its result is a hypothesis and test design, not observed evidence or permission to act.
 
-## Boundary
+1. Pin caller, question/decision and candidate version, control world, changed variable(s), owner,
+   scope/non-goals, evidence/cutoff, uncertainty, safety, output, and authority.
+2. If repository-backed, record repository/worktree/branch/`HEAD`, dirty ownership, exact artifact/
+   hunk, and working-tree versus committed/deployed state. Create no worktree or change.
+3. Treat diagrams, configs, policies, assumptions, links, and model output as sensitive untrusted
+   evidence. Research, simulations, tests, tools, and external access need separate authority.
+4. Prefer one isolated change. Allow a small declared interaction set only when the interaction is
+   the question; do not pretend other conditions are fixed when they cannot be held constant.
+5. Trace each causal step from supplied or explicitly assumed mechanisms. Label observations,
+   sourced claims, assumptions, generated consequences, invariants, and unknowns. Drop steps with no
+   credible mechanism instead of filling the story.
+6. Identify the first material break point, affected parties, implication boundary, alternate path,
+   and the cheapest safe discriminating observation. Never convert counterfactual consistency into
+   probability, production behavior, safety proof, or causal validation.
+7. Return the chain, confidence, invalidating assumptions, bounded implications, and proposed check
+   to `/0-thinking` or caller. Start no experiment, simulation, research, implementation, or action.
 
-| Need | Skill |
-|------|--------|
-| Mental-model frame / which model? | `/0-thinking` (hub) |
-| Thought Experiment (this) | **1-thinking-thought-experiment** (this) |
-| House routing (which domain) | `/0-butler` |
-
-## When to Use
-
-- You need behavior under failure, scale, or policy you cannot cheaply trigger or measure (region outage, 100x load, one-way architecture).
-- A decision is expensive or irreversible and a mental trace can surface break points before commit.
-- Edge cases are too costly to stage, but a mechanistic chain can still expose missing controls.
-
-## When NOT to Use
-
-- A cheap real test exists (load test, flag, query, spike) → run the test; do not substitute imagination.
-- Adversarial security attack-path work → use red-team structure, not free-form scenarios.
-- You already know the mechanism and only need a decision under known facts → decide; do not dramatize.
-- Vague "what if everything" brainstorming without a single isolated variable → tighten or stop.
-
-## Process
-
-1. **State the question and isolation.** Name exactly one primary variable or counterfactual change. Freeze all other conditions as the control world. Reject multi-variable "and also" scenarios.
-2. **Fix initial conditions.** Specify system state, load, configuration, actors, and what is *not* changed. Write values concrete enough that another agent could replay the setup.
-3. **Trace the mechanism step by step.** From t0, record what fails, queues, retries, or adapts next—and why—using known components and policies only. No hand-wavy "then everything collapses"; each step needs a causal link.
-4. **Extract invariants and break points.** Note what still holds (invariants) and the first step where the system violates a requirement (capacity, correctness, safety, UX). Mark assumptions that, if false, void the chain.
-5. **Bound implications.** Map insights only to actions or checks justified by the chain (limits, guards, monitoring, redesign). Label speculative leaps beyond the isolation as out of bound.
-6. **Name a discriminating real check, then stop.** For the weakest link, state the cheapest observation or experiment that would confirm or kill it. Stop after one controlled chain with bounded implications; if a link is cheaply testable now, exit to that test instead of further imagination.
-
-## Output
-
-Emit a thought-experiment record:
-
-- `question`: what behavior or decision is under test
-- `isolated_variable`: single change vs control world
-- `initial_conditions`: frozen state and non-changes
-- `consequence_chain`: ordered mechanistic steps
-- `invariants`: what still holds
-- `break_points`: first requirement failures and critical assumptions
-- `implication_bound`: actions/checks justified by the chain only
-- `discriminating_check`: cheapest real observation to confirm or kill the weak link
-
-## Verification
-
-- **Isolation check:** more than one free variable without a stated control → invalid; reset.
-- **Mechanism check:** any step without a causal link to a known component/policy → rewrite or drop.
-- **Implication bound:** recommendations not entailed by the chain are out of scope.
-- **Empiricism override:** if a real test became available mid-analysis, stop the thought experiment and test.
-- **Over-application guard:** do not use this skill for ordinary debugging you can reproduce, or as a substitute for red-team threat modeling.
-- **Stop:** one isolated counterfactual → full chain → bounded implications + discriminating check; no scenario sprawl.
-
-## Related
-
-Soft under `/0-thinking`. Vendor: `archive/vendor/cc-thinking-skills/skills/thinking-thought-experiment/`.
-Route via hub when frame unclear; invoke this leaf when mechanism is known.
+Parent/return: `/0-thinking`. Related: `/1-thinking-scientific-method`,
+`/1-thinking-red-team`.

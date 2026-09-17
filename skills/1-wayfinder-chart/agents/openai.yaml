@@ -1,0 +1,5 @@
+interface:
+  display_name: "Wayfinder Chart"
+  short_description: "Create one multi-session decision map"
+policy:
+  allow_implicit_invocation: false

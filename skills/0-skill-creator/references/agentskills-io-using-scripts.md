@@ -1,67 +1,40 @@
-# Scripts agents can run (agentskills.io harvest)
+# Safe Helper Scripts
 
-> **Source:** [agentskills.io/skill-creation/using-scripts](https://agentskills.io/skill-creation/using-scripts) · fetched 2026-08-05  
-> **Load when:** bundling helpers, writing one-off tool commands, or designing CLI for non-interactive agents.  
-> **Cousins:** [specification](./agentskills-io-specification.md) (`scripts/`) · [evaluating-skills](./agentskills-io-evaluating-skills.md) (when traces show reinvention) · [best-practices](../../1-writing-great-skills/references/agentskills-io-best-practices.md).
+> Adapted from agentskills.io. House authority and supply-chain rules control execution.
 
-**Leading word: agentic CLI** — scripts and one-offs that a non-interactive agent can finish without a human at the TTY.
+Load only when a skill repeatedly needs deterministic helper behavior.
 
-## When to one-off vs bundle
+## Choose
 
-| Situation | Move |
-|-----------|------|
-| Existing package, few flags | One-off in `SKILL.md` via runner (`uvx` / `npx` / …) |
-| Command hard to get right first try | Tested file under `scripts/` |
-| Same helper reinvented every eval run | Bundle once; instruct **run**, not re-author |
+| Evidence | Choice |
+|---|---|
+| One-off operation | use an existing repository command; do not add a permanent helper |
+| Repeated fragile command | add one reviewed, tested script |
+| Existing owner fits | reuse or improve it |
+| Third-party runner/package required | stop until source, version, network, install, and execution are separately authorized |
 
-Pin versions. State prerequisites in body or `compatibility`. Paths are **relative to skill root**.
+## Contract
 
-### Runners (pick default for the stack)
+A bundled helper has:
 
-| Default | Stack |
-|---------|--------|
-| `uvx pkg@ver` / `uv run script` | Python |
-| `npx pkg@ver` | Node |
-| `bunx` / `deno run` / `go run` | Only when that runtime is the environment |
+- one bounded job and explicit input/output paths;
+- non-interactive flags or stdin;
+- closed/validated inputs and safe path resolution;
+- useful stderr, structured/bounded stdout, and meaningful exit codes;
+- idempotent behavior where retries are plausible;
+- explicit dry-run or recovery for destructive effects;
+- pinned dependencies already available in the authorized environment;
+- tests for success, invalid input, partial failure, and unsafe paths.
 
-`pipx run` is a fine Python alternate when uv is missing.
+Point to the script with an exact command relative to the skill root. State whether the agent should read or execute it.
 
-### Point from SKILL.md
+## Safety
 
-List scripts, then give exact commands (agent discovers by reading, not by guessing):
+Never rely on `npx`, `uvx`, `bunx`, remote imports, self-installing dependency blocks, lifecycle hooks, or package-manager auto-install as an implicit convenience. They download or execute code and require separate authority plus a fixed-source review.
 
-```markdown
-## Available scripts
-- `scripts/validate.sh` — config validation
-- `scripts/process.py` — transform input
+Do not embed secrets in argv, logs, examples, or fixtures. A worktree isolates files, not package caches, credentials, global runtimes, or network effects.
 
-## Steps
-1. `bash scripts/validate.sh "$INPUT_FILE"`
-2. `python3 scripts/process.py --input results.json`
-```
+## Completion
 
-## Self-contained deps
+Record script revision, runtime/dependency versions, command, exit status, output truncation, and verification result. The script is an implementation aid, not proof of semantic correctness.
 
-Prefer scripts that install their own deps so the agent skips a separate setup step.
-
-**Python (PEP 723)** — `# /// script` + `dependencies = […]`; run with `uv run scripts/extract.py`.
-
-**Deno** — `npm:` / `jsr:` imports with versions.  
-**Bun** — pin in import path; auto-install when no `node_modules`.  
-**Ruby** — `bundler/inline` + explicit gem versions.
-
-## Agentic CLI design
-
-| Rule | Why |
-|------|-----|
-| **No interactive prompts** | Agent shells hang forever on TTY input — flags / env / stdin only |
-| **`--help` is the interface doc** | Short description, flags, examples (context load) |
-| **Errors that teach the next attempt** | What failed · expected set · received value |
-| **Structured stdout** | JSON/CSV; diagnostics on **stderr** |
-| **Idempotent create** | Create-if-absent beats fail-on-duplicate under retries |
-| **Closed inputs** | Enums; reject ambiguity instead of guessing |
-| **Destructive = explicit** | `--dry-run`; `--force` / `--confirm` when risk warrants |
-| **Exit codes mean something** | Document in `--help` |
-| **Bounded output** | Harnesses truncate; default summary / `--offset` / require `--output` for bulk |
-
-**Completion criterion for a new script:** non-interactive happy path + clear error on bad flags + `--help` + agent can parse success from stdout alone.

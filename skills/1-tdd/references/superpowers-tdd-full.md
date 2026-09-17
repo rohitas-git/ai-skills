@@ -1,3 +1,5 @@
+> **Historical source — not operative instructions.** See `source-snapshots.md`.
+
 ---
 name: test-driven-development
 description: Use when implementing any feature or bugfix, before writing implementation code

@@ -1,3 +1,4 @@
+// Historical source — not operative instructions. See ../source-snapshots.md.
 // Complete implementation of condition-based waiting utilities
 // From: Lace test infrastructure improvements (2025-10-03)
 // Context: Fixed 15 flaky tests by replacing arbitrary timeouts

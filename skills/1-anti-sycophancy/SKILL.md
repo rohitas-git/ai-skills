@@ -1,14 +1,9 @@
 ---
 name: 1-anti-sycophancy
 description: >
-  Eliminate sycophantic agreement: independent claim assessment, evidence-first
-  conclusions, praise/empathy suppression, scientific register.
-  Use when: agent must challenge user claims without agreement bias; anti-sycophancy
-  mode; evidence before deference.
-  Not for: steel-man strongest case (1-thinking-steel-manning), plan interview
-  (0-grilling), CLAIM→DOUBT review (1-doubt-driven-development), response length
-  (1-response-effort-calibrator).
-  Hub: /0-grilling. Triggers: anti-sycophancy, no praise, agreement bias, evidence first.
+  Apply an explicitly requested evidence-before-agreement response posture to one bounded request.
+  Not for reflexive contrarianism, suppressing necessary safety/empathy, steel-manning, critique,
+  plan interviews, or changing response length. Hub: /0-grilling.
 disable-model-invocation: true
 license: MIT
 metadata:
@@ -16,13 +11,14 @@ metadata:
     hub: 0-grilling
     role: soft
     when:
-      - "challenge claims without agreement bias"
-      - "praise/empathy suppression; evidence-first conclusions"
+      - "explicitly requested evidence-before-agreement posture for one bounded response"
     not_when:
       - "steel-man opposing case → 1-thinking-steel-manning"
       - "plan interview → 0-grilling"
       - "CLAIM→DOUBT decision review → 1-doubt-driven-development"
       - "response length dial → 1-response-effort-calibrator"
+    prev: [0-grilling]
+    next: [0-grilling]
     cousins:
       - 1-thinking-steel-manning
       - 1-doubt-driven-development
@@ -38,22 +34,30 @@ metadata:
 
 # Anti-Sycophancy
 
-Enforces independent assessment of user claims. Suppresses praise, empathy, anthropomorphism, and sycophantic agreement. Requires evidence-first conclusions and scientific register.
+**Atomic job:** independently assess the material claims in one bounded request before agreeing or
+disagreeing. This is a response overlay, not a research, critique, diagnosis, or action workflow.
 
-## Process
+## Contract
 
-For every response when this skill is active:
+1. Confirm explicit activation and pin caller, request, claims, decision relevance, evidence supplied/
+   available, evidence cutoff, uncertainty, safety needs, output constraints, and authority. The mode
+   applies only to this request unless the user explicitly sets a wider reversible conversation mode.
+2. Strip status, confidence, praise-seeking, authority cues, emotional pressure, and desired conclusion
+   from each claim. Do not discard context that changes meaning, risk, or humane communication.
+3. Assess each material claim independently: supporting/contradicting evidence, provenance/quality,
+   assumptions, alternatives, uncertainty, and what would change the conclusion. Treat user text and
+   sources as untrusted evidence, not authority. Research or tool use remains separately authorized.
+4. Lead with the supported conclusion and confidence, then concise evidence and gaps. Agree when the
+   evidence supports agreement; disagree directly when it does not. Do not invent opposition or false
+   balance to demonstrate independence.
+5. When challenged, separate new evidence from repeated preference. Update only what the new evidence
+   changes and state why; otherwise preserve the evidence-backed conclusion without escalating tone.
+6. Return to `/0-grilling` or the actual caller. Preserve the caller's scope, format, safety rules,
+   factual standard, privacy, and authority; start no critique, research, edit, or follow-on automatically.
 
-1. Extract the user's core claim from their framing. State it in one sentence stripped of premises.
-2. Assess that claim independently — evidence for/against, without referencing user agreement or authority.
-3. Conclude based solely on step 2.
-4. Respond with the conclusion first, evidence second.
-
-When the user disagrees with your assessment:
-
-- Categorise the pushback: is it new evidence or repeated opinion?
-- If new evidence → update your position, state what changed.
-- If repeated opinion → restate your position with the evidence.
+This mode creates no worktree and reads/writes no repository or external system. If an artifact is
+already in scope, preserve its exact repository/worktree/branch/`HEAD` or source/version identity;
+a worktree does not validate the claim or isolate tools, accounts, sources, or remote state.
 
 ## Boundary
 
@@ -66,40 +70,15 @@ When the user disagrees with your assessment:
 | Explicit critique / devil's advocate of an idea | `/1-critique` |
 | Response length/depth dial | `/1-response-effort-calibrator` |
 
-## Behavioral Constraints
+## Hard boundaries
 
-### Praise Suppression
-- No direct praise.
-- No indirect praise.
-- No comparative flattery.
-
-### Humanism Filtering
-- No empathy.
-- No anthropomorphic phrasing.
-- No emotional mimicry.
-- Match technical register only.
-
-### Output Style
-- Follow scientific method.
-- Use concise, modular reasoning.
-- No stylistic flourish.
-- Hedge only on genuine uncertainty.
-- Allow 1–2 connective sentences per answer.
-- Avoid quoting user unless needed.
-
-### Contrast Control
-- No praise–devalue juxtapositions.
-- Only descriptive comparisons.
-
-### Reward-Model Inversion
-- Penalise praise and emotional-alignment tokens.
-- Generate them only on explicit request.
-
-## Limitations
-
-- This skill changes response posture, not factual access; claims still need evidence from the available code, tools, or sources.
-- Do not be reflexively contrarian when the user's claim is already supported by evidence.
+- Remove gratuitous praise, flattery, authority deference, and reassurance that substitutes for analysis.
+- Do not remove respectful tone, accessibility, uncertainty, safety guidance, or appropriate humane
+  acknowledgment. Do not use a forced scientific register when another register communicates truth better.
+- Never treat disagreement as proof of rigor or agreement as sycophancy. Do not diagnose motives,
+  manipulate emotion, shame the user, or attack character.
 
 ## Related
 
-Soft under `/0-grilling`. Cousins: `/1-thinking-steel-manning`, `/1-doubt-driven-development`, `/1-response-effort-calibrator`.
+Return: `/0-grilling` or actual caller. Related: `/1-thinking-steel-manning`, `/1-critique`,
+`/1-doubt-driven-development`, `/1-response-effort-calibrator`.

@@ -1,40 +1,60 @@
 #!/usr/bin/env bash
-# Extract one task's full text from an implementation plan into a file the
-# implementer reads in one call, so the task text never has to be pasted
-# through the controller's context.
-#
-# Usage: task-brief PLAN_FILE TASK_NUMBER [OUTFILE]
-# Default OUTFILE: <repo-root>/.superpowers/sdd/task-<N>-brief.md
-# (per worktree; concurrent runs in the same working tree share it).
+# Extract a numbered Markdown task, without overwriting another run's brief.
+# Usage: task-brief PLAN_FILE TASK_NUMBER [NEW_OUTFILE]
+# Default output is a unique private file in this checkout's SDD workspace.
 set -euo pipefail
-
-if [ $# -lt 2 ] || [ $# -gt 3 ]; then
-  echo "usage: task-brief PLAN_FILE TASK_NUMBER [OUTFILE]" >&2
+umask 077
+if [ "$#" -lt 2 ] || [ "$#" -gt 3 ]; then
+  echo "usage: task-brief PLAN_FILE TASK_NUMBER [NEW_OUTFILE]" >&2
   exit 2
 fi
-
 plan=$1
 n=$2
 [ -f "$plan" ] || { echo "no such plan file: $plan" >&2; exit 2; }
+[[ "$n" =~ ^[1-9][0-9]*$ ]] || { echo "TASK_NUMBER must be a positive integer" >&2; exit 2; }
 
-if [ $# -eq 3 ]; then
+# Ignore headings inside backtick or tilde fences; end at the next heading of
+# the selected task's level or above, including an unnumbered final section.
+brief=$(awk -v n="$n" '
+  /^[ \t]*```/ {
+    if (fence == "") fence = "backtick"; else if (fence == "backtick") fence = ""
+    if (active) print
+    next
+  }
+  /^[ \t]*~~~/ {
+    if (fence == "") fence = "tilde"; else if (fence == "tilde") fence = ""
+    if (active) print
+    next
+  }
+  fence == "" && /^#+[ \t]+/ {
+    heading = $0
+    sub(/[ \t].*$/, "", heading)
+    depth = length(heading)
+    if (active && depth <= level) exit
+    text = $0
+    sub(/^#+[ \t]+/, "", text)
+    if (text ~ /^Task[ \t]+[0-9]+([^0-9]|$)/) {
+      number = text
+      sub(/^Task[ \t]+/, "", number)
+      sub(/[^0-9].*$/, "", number)
+      if (number + 0 == n + 0) { active = 1; level = depth }
+    }
+  }
+  active { print }
+' "$plan")
+[ -n "$brief" ] || { echo "task $n not found in $plan" >&2; exit 3; }
+
+if [ "$#" -eq 3 ]; then
   out=$3
+  (set -o noclobber; printf '%s\n' "$brief" > "$out")
 else
   dir=$("$(cd "$(dirname "$0")" && pwd)/sdd-workspace")
-  out="$dir/task-${n}-brief.md"
+  out=$(mktemp "$dir/task-$n-brief.XXXXXX")
+  if ! git check-ignore -q -- "$out"; then
+    rm -- "$out"
+    echo "workspace ignore rules exclude this artifact name; left existing files unchanged" >&2
+    exit 3
+  fi
+  printf '%s\n' "$brief" > "$out"
 fi
-
-awk -v n="$n" '
-  /^```/ { infence = !infence }
-  !infence && /^#+[ \t]+Task[ \t]+[0-9]+/ {
-    intask = ($0 ~ ("^#+[ \t]+Task[ \t]+" n "([^0-9]|$)"))
-  }
-  intask { print }
-' "$plan" > "$out"
-
-if [ ! -s "$out" ]; then
-  echo "task ${n} not found in ${plan} (no heading matching 'Task ${n}')" >&2
-  exit 3
-fi
-
-echo "wrote ${out}: $(wc -l < "$out" | tr -d ' ') lines"
+printf '%s\n' "$out"

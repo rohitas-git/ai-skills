@@ -10,7 +10,7 @@ Use this during Phase 2 Hunting whenever the project has concurrent execution (t
 - Incorrect use of locks, mutexes, semaphores, atomics, channels, or concurrent collections.
 - Missing happens-before relationships.
 - Deadlocks, livelocks, and priority inversion.
-- Data races (especially in languages with undefined behavior on races: C/C++, Go without `-race`, etc.).
+- Data races interpreted under the language's actual memory model; Go's `-race` flag detects races rather than changing the program's synchronization guarantees.
 
 ## Checklist by Category
 
@@ -66,3 +66,7 @@ Use this during Phase 2 Hunting whenever the project has concurrent execution (t
 - Distinguish benign races (if any) from harmful ones.
 
 When reporting, include the specific interleaving that leads to the bad outcome and the shared state involved.
+
+The [Go race-detector documentation](https://go.dev/doc/articles/race_detector)
+describes runtime detection and its executed-path coverage limits; a clean race
+check does not prove paths it never exercised are safe.

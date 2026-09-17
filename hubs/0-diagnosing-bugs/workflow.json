@@ -7,8 +7,8 @@
   "slash": "/0-diagnosing-bugs",
   "path": "skills/0-diagnosing-bugs",
   "package_dir": "hubs/0-diagnosing-bugs/",
-  "role": "Hard bugs and performance regressions.",
-  "notes": "On-ramp into product path after root cause is clear enough to build a fix.",
+  "role": "Route and conduct one bounded technical root-cause diagnosis.",
+  "notes": "Pin candidate, worktree, environment, evidence and probe authority; use one discriminating loop; return an evidence-backed causal disposition. Diagnosis does not imply implementation authority.",
   "parent": {
     "hub": "0-butler",
     "slash": "/0-butler",
@@ -22,7 +22,8 @@
       "link_type": "pipeline",
       "skills": [
         "1-tdd"
-      ]
+      ],
+      "note": "Conditional regression seam only: TDD receives a settled deterministic behavior, independent oracle, matching candidate/worktree and explicit test/implementation authority, then returns here."
     },
     {
       "link_type": "on-ramp",
@@ -35,9 +36,10 @@
       "link_type": "soft",
       "skills": [
         "1-performance-optimization",
-        "1-browser-testing-with-devtools"
+        "1-browser-testing-with-devtools",
+        "1-playwright-browser-testing"
       ],
-      "note": "Vendor harvest: perf + browser runtime"
+      "note": "Performance receives one repeatable measurement loop and returns one experiment disposition. DevTools receives exact candidate/server/profile/fixture/interaction authority, gathers one read-only browser evidence packet, and returns without source edits. Playwright receives one exact candidate/worktree/server/fixture/interaction contract, authors, repairs, or runs one durable browser check, and returns its bounded verdict without silently fixing product source."
     },
     {
       "link_type": "soft",
@@ -48,20 +50,36 @@
     }
   ],
   "pipeline": [
-    "reproduce",
-    "minimise",
-    "hypothesise",
-    "instrument",
-    "fix",
-    "regression-test"
+    "pin candidate/worktree/environment/evidence/authority",
+    "choose smallest discriminating loop",
+    "reproduce or observe honestly",
+    "localize and minimize",
+    "test falsifiable hypotheses one variable at a time",
+    "return supported/inconclusive/blocked/not-reproduced diagnosis",
+    "handoff authorized implementation and verification"
   ],
-  "forks": [],
+  "forks": [
+    {
+      "id": "F-DIAG1",
+      "question": "Which evidence loop best distinguishes this failure?",
+      "recommended": "Use the smallest repository-native focused test, command, request, or observation that reaches the reported symptom",
+      "branches": [
+        "core diagnosis loop",
+        "1-performance-optimization",
+        "1-browser-testing-with-devtools",
+        "1-playwright-browser-testing",
+        "1-parallel-agents when explicitly authorized for independent failures",
+        "0-implement when the cause and fix are already known and authorized",
+        "Agent judgment"
+      ]
+    }
+  ],
   "domain_hubs_routed": null,
   "artifacts": {
     "html": "./hub.html",
     "workflow_json": "./workflow.json",
     "flows_chart": "../flows-chart.html",
-    "flows_ssot": "../../../skills/0-butler/references/flows.md",
+    "flows_ssot": "../../skills/0-butler/references/flows.md",
     "hubs_index": "../index.html",
     "manifest": "../manifest.json"
   },

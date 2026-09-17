@@ -1,4 +1,4 @@
-Invoke `slides` skill to create persuasive HTML slides using design tokens, Chart.js, and the slide knowledge database.
+# Create mode
 
-## Task
-<task>$ARGUMENTS</task>
+`/1-slides` has one operation: create or revise one pinned HTML presentation. The caller supplies or authorizes the
+brief, evidence, output, and effects. Follow `../SKILL.md`; this file does not invoke another skill or tool.

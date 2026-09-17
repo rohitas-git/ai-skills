@@ -1,55 +1,21 @@
-# Ingest & Capture — Rohitas's Notes
+# Vault operation ownership map
 
-Ops skills: **`1-vault-inbox`** (capture), **`1-vault-ingest`** (compile). This doc is the schema-side pipeline.
+This is a compatibility map, not an executable pipeline.
 
-## Pipeline
+| Operation | Owner | Result |
+|---|---|---|
+| Configure root pointer | `/1-setup-vault-root` | one verified SSOT and pointer |
+| Capture | `/1-vault-inbox` | one non-overwriting inbox item |
+| Ingest | `/1-vault-ingest` | one authorized permanent-note change set |
+| Summarize source | `/1-resource-summarizer` | read-only source evidence returned to ingest |
+| Query/synthesize | `/1-wiki-query` | grounded answer or explicitly requested filed answer |
+| Explain Concept | `/1-vault-explain` | one note-bound Learn result |
+| Lint | `/1-vault-lint` | report; repairs only when explicitly authorized |
 
-### 1. Capture
-Drop into `Inbox/` via **`1-vault-inbox`** or manual drop. Low friction — no takeaway debate.
+Each operation receives an exact root/target, candidate version and dirty ownership when
+applicable, authority, privacy boundary, and caller. Each returns evidence before another
+operation is selected. Capturing does not imply ingest; ingest does not imply summarization,
+explanation, lint, archive, deletion, or publication. A URL does not authorize fetching.
 
-### 2. Classify (wiki / 1-vault-ingest)
-- ephemeral → discard/bookmark  
-- hub/MOC → `Atlas/{Topic} MOC.md` only (never Concepts)  
-- single concept → Concepts (`type: concept` only)  
-- multi-topic → split atoms + update Atlas MOC  
-
-### 3. Distill (**resource-summarizer** when needed)
-Load **resource-summarizer** for long/raw multi-heading sources:
-
-1. Scan structure  
-2. 80/20 core extract  
-3. Feynman plain-language explanations  
-4. Key takeaways (5–10)  
-5. Gaps / related concept names  
-
-Map into vault shape (summary + bullets + Related). **No** full Cornell template in permanent notes.
-
-### 4. Index-first retrieve
-Before create: `README.md` → relevant Atlas MOC → search `Concepts/` (title, tags, `topic`, keywords).
-
-### 5. Plan & confirm (1-vault-ingest)
-Present key takeaways + Ingest plan (create / update / conflicts / archive). Wait for confirm on multi-page or conflict work.
-
-### 6. Write / update
-- New atoms or **merge** richer content into existing Concepts  
-- Required frontmatter; bump `updated` on edits  
-- `[[wikilinks]]`; Atlas MOC TOC updates  
-- Registry row if new area  
-
-### 7. Contradictions
-Report inconsistencies in a table; do **not** silent-resolve. Options: keep old / prefer new / both with context.
-
-### 8. Archive
-Inbox originals → `Archives/Name (Source).md` with `type: literature`, `status: archived` when content was rewritten/split. Treat Source notes as immutable afterward (errata append only).
-
-### 9. Log
-Append `Archives/Ingest Log.md` (prefer dated entry + `<!-- END OF LOG -->` sentinel).
-
-### 10. Close
-Inbox empty for processed items; offer **`1-vault-explain`** on new/updated Concepts; optional **`1-vault-lint`**.
-
-## Collision rule
-Existing Concepts title wins; merge richer content via summarizer; archive Inbox copy.
-
-## URL / online
-Fetch clean page content, then same pipeline. Record URL + fetch date on Source archive note.
+The active vault schema decides note types, folders, metadata, naming, links, and logs. Any
+conflict between an old catalog example and the current vault is reported—not auto-migrated.

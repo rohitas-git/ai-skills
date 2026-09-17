@@ -1,0 +1,6 @@
+interface:
+  display_name: "Agent Evaluation"
+  short_description: "Design and run reliable agent evaluations"
+  default_prompt: "Use $1-agent-evaluation to design a reproducible evaluation for one explicit decision about this exact agent candidate."
+policy:
+  allow_implicit_invocation: false

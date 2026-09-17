@@ -1,61 +1,20 @@
-# Vault Profile — Rohitas's Notes
+# Vault profile contract
 
-## Identity
+The Vault family uses one repository/user-approved SSOT containing the personal vault root.
+Do not embed a host path, username, global install path, plugin inventory, or in-vault skill
+symlink in this catalog reference.
 
-| Field | Value |
-|-------|--------|
-| Vault name | Rohitas's Notes |
-| Path | ``docs/agents/vault.md` → vault_root` |
-| Model | Single PKM |
-| Schema skill | `0-rohitas-vault-wiki` |
-| Content skill | `1-resource-summarizer` (long/raw sources) |
-| Teach skill | `1-vault-explain` → `1-learning-explainer` |
-| Query skill | `1-wiki-query` |
-| Ops skills | `1-vault-inbox`, `1-vault-ingest`, `1-vault-lint` |
-| Skill source | `~/Development/AI-Skills/skills/0-rohitas-vault-wiki` |
-| Grok install | `~/.grok/skills/0-rohitas-vault-wiki` |
-| In-vault symlink | `Guides/skills/0-rohitas-vault-wiki` |
+| Concern | Owner |
+|---|---|
+| Configure/move root pointer | `/1-setup-vault-root` |
+| Route one Vault operation and shared schema | `/0-rohitas-vault-wiki` |
+| Capture / ingest / lint / query / explain | matching `1-vault-*` or `/1-wiki-query` leaf |
+| Source compression evidence | `/1-resource-summarizer`, only when separately needed |
+| Concept pedagogy | `/1-vault-explain` → `/1-learning-explainer` |
+| Markdown / CLI / Bases mechanics | matching Obsidian leaf |
 
-## Dual-skill contract (distill)
-
-1. **wiki skill** decides *where* and *how* notes live (folders, YAML, links, archives).
-2. **resource-summarizer** decides *what the permanent prose says* for long/raw inputs (80/20, Feynman, takeaways).
-3. Wiki skill always wins on path, naming, and schema.
-4. Do not dump full Cornell/summarizer templates into Concepts — map into normal note shape.
-
-## Summarizer gate
-
-| Lines / shape | Action |
-|---------------|--------|
-| \> ~40 lines or multi-heading dump | Full **resource-summarizer** → then file |
-| ~15–40 lines | Light Feynman rewrite + bullets |
-| \< ~15 lines, one idea | Place + frontmatter only |
-| `* MOC` hub (links + short gloss) | Atlas hub; no body rewrite |
-
-## Philosophy
-
-1. Ephemeral vs persistent  
-2. Atomic notes + link-first  
-3. 3-sentence / own-words (via summarizer)  
-4. ROOT before mass rabbit holes  
-5. Knowledge Registry in `README.md`  
-6. Atlas = maps only as `* MOC.md`; Concepts = atoms only (no hubs)  
-7. Weekly GC → Archives  
-
-## Naming
-
-- Title Case + spaces  
-- Archives: unique `… (Source).md`  
-
-## Frontmatter minimal
-
-```yaml
----
-type: concept   # concept | hub | guide | project | literature | query
-status: incubating  # active | incubating | stable | archived
-tags: [system-design]
-created: 2026-07-19
-updated: 2026-07-19
-topic: System Design
----
-```
+The active vault decides layout, naming, properties, language, templates, plugin usage, and
+history. Catalog defaults are compatibility hints only. A leaf must report the SSOT used,
+canonical root, exact targets, observed versions, authority, and whether Git/worktree state
+applies. Source length alone is not a gate for summarization. External sync clients, accounts,
+plugins, and services remain shared across worktrees.

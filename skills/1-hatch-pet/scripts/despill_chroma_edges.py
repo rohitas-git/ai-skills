@@ -15,6 +15,12 @@ CELL_HEIGHT = 208
 ALGORITHM = "edge-local-chroma-spill-suppression"
 
 
+def flattened_data(image: Image.Image):
+    """Use Pillow's current flat-pixel API while retaining older-runtime compatibility."""
+    getter = getattr(image, "get_flattened_data", None)
+    return getter() if getter is not None else image.getdata()
+
+
 def parse_hex_color(value: str) -> tuple[int, int, int]:
     if not re.fullmatch(r"#[0-9a-fA-F]{6}", value):
         raise SystemExit(f"invalid chroma key color: {value}; expected #RRGGBB")
@@ -34,11 +40,11 @@ def linear_to_srgb(value: float) -> float:
 
 
 def edge_band(alpha: Image.Image, radius: int) -> list[bool]:
-    visible = [value > 0 for value in alpha.getdata()]
+    visible = [value > 0 for value in flattened_data(alpha)]
     transparent = Image.new("L", alpha.size)
     transparent.putdata([0 if value else 255 for value in visible])
     expanded = transparent.filter(ImageFilter.MaxFilter(radius * 2 + 1))
-    return [is_visible and nearby > 0 for is_visible, nearby in zip(visible, expanded.getdata())]
+    return [is_visible and nearby > 0 for is_visible, nearby in zip(visible, flattened_data(expanded))]
 
 
 def atlas_edge_band(alpha: Image.Image, radius: int) -> list[bool]:
@@ -203,7 +209,7 @@ def decontaminate_image(
 
     rgba = image.convert("RGBA")
     width, _ = rgba.size
-    source = list(rgba.getdata())
+    source = list(flattened_data(rgba))
     boundary = atlas_edge_band(rgba.getchannel("A"), edge_radius)
     key_linear = tuple(srgb_to_linear(channel / 255) for channel in chroma_key)
     output_pixels, suppressed = suppress_boundary_spill(

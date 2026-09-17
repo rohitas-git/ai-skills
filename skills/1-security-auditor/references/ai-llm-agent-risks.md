@@ -64,4 +64,8 @@ Load this reference when the project contains LLM calls, prompt construction, ag
 - Prefer findings with a concrete attack scenario (e.g., “User sends X → model calls tool Y with Z → impact”).
 - Note residual risk even when mitigations (such as output filters) are present.
 
-Map findings to categories such as “prompt-injection”, “tool-abuse”, “excessive-agency”, “data-leakage”, or “insecure-output-handling”.
+Use the schema's primary category (usually `security`) and subcategories such as
+“prompt-injection”, “tool-abuse”, “excessive-agency”, “data-leakage” or
+“insecure-output-handling”. Call `/2-prompt-injection-defense` for a bounded trust-
+boundary review and `/2-skill-supply-chain-audit` for package provenance; children
+return evidence on the same candidate, not implicit implementation or installation.

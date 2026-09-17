@@ -10,21 +10,95 @@ Do not re-nest by domain here. Domain grouping is logical (hubs + wiki).
 
 ## Vendor harvest (promoted)
 
+- [agent-evaluation](./1-agent-evaluation/) — evaluation sets, graders, baselines, and release gates
 - [api-and-interface-design](./1-api-and-interface-design/) — vendor harvest (lean); see skill description
+- [error-handling](./1-error-handling/) — atomic failure contracts, TS/JS patterns, safe recovery, and verification
 - [browser-testing-with-devtools](./1-browser-testing-with-devtools/) — vendor harvest (lean); see skill description
 - [ci-cd-and-automation](./1-ci-cd-and-automation/) — vendor harvest (lean); see skill description
+- [constraint-driven-development](./1-constraint-driven-development/) — measurable project quality contracts
 - [deprecation-and-migration](./1-deprecation-and-migration/) — vendor harvest (lean); see skill description
-- [doubt-driven-development](./1-doubt-driven-development/) — vendor harvest (lean); see skill description
+- [doubt-driven-development](./1-doubt-driven-development/) — one read-only adversarial claim/decision pass
 - [frontend-ui-engineering](./1-frontend-ui-engineering/) — vendor harvest (lean); see skill description
+- [human-in-the-loop](./1-human-in-the-loop/) — approval gates and human oversight
+- [mcp-server-building](./1-mcp-server-building/) — MCP server contracts and implementation
 - [observability-and-instrumentation](./1-observability-and-instrumentation/) — vendor harvest (lean); see skill description
 - [performance-optimization](./1-performance-optimization/) — vendor harvest (lean); see skill description
+- [pdf](./1-pdf/) — safe PDF inspection, editing, creation, and verification
+- [prompt-injection-defense](./2-prompt-injection-defense/) — agent trust-boundary defenses
+- [skill-supply-chain-audit](./2-skill-supply-chain-audit/) — third-party skill/package provenance audits
 - [shipping-and-launch](./1-shipping-and-launch/) — vendor harvest (lean); see skill description
+- [tool-schema-design](./1-tool-schema-design/) — model-facing tool schemas
 
 ## Process hygiene
 
 - [1-karpathy-guidelines](./1-karpathy-guidelines/) — LLM coding process: think, simple, surgical, goal-driven (Ship soft)
 - [1-anti-sycophancy](./1-anti-sycophancy/) — independent claim assessment; praise-kill; evidence-first (Design soft)
 - [1-critique](./1-critique/) — explicit rigorous critique / devil's advocate of ideas (Design soft)
+- [1-action-first-output](./1-action-first-output/) — explicit, reversible session mode for action-first output and visible progress (Butler soft)
+
+## Architecture tooling
+
+- [1-graphify](./1-graphify/) — explicitly requested local codebase-graph build/query; no installation, hooks, or remote backend by default
+
+## Source-backed reference skills
+
+- [1-source-backed-skill](./1-source-backed-skill/) — private, progressive-disclosure reference skills from authorized source material
+
+## Dependency security
+
+- [2-dependency-security](./2-dependency-security/) — dependency vulnerability ratchets, staleness reports, and new-package reviews (Security)
+
+## Domain 17 — Git (`/0-git`)
+
+- [0-git](./0-git/) — Git workflow router
+- [1-git-worktrees](./1-git-worktrees/) — isolated workspaces and concurrent local-service setup
+- [1-atomic-git-commits](./1-atomic-git-commits/) — small, independently understandable and revertible commit groups
+- [1-git-text-normalization](./1-git-text-normalization/) — diagnose or apply one authorized exact-path text correction
+- [1-resolving-merge-conflicts](./1-resolving-merge-conflicts/) — merge/rebase conflict recovery
+- [1-stacked-pr-review-and-repair](./1-stacked-pr-review-and-repair/) — converge an entire PR stack base-to-tip
+- [1-stacked-pr-repair](./1-stacked-pr-repair/) — repair known findings and blockers across a PR stack without review
+- [1-finish-branch](./1-finish-branch/) — merge, PR, retain, or cleanup choices
+- [1-pr-summarizer](./1-pr-summarizer/) — soft Ship-primary PR prose
+- [1-pr-repair](./1-pr-repair/) — repair known findings and blockers on one PR without review
+- [1-pr-review-and-repair](./1-pr-review-and-repair/) — converge one PR through review, repair, rebase, and CI
+
+## Domain 18 — Agent Engineering (`/0-agent-engineering`)
+
+- [0-agent-engineering](./0-agent-engineering/) — agent-system router
+- [1-agent-evaluation](./1-agent-evaluation/) — evaluations and release gates
+- [1-tool-schema-design](./1-tool-schema-design/) — model-facing tool contracts
+- [1-human-in-the-loop](./1-human-in-the-loop/) — approval and escalation design
+- [1-mcp-server-building](./1-mcp-server-building/) — MCP server design and validation
+- [2-prompt-injection-defense](./2-prompt-injection-defense/) — prompt-injection boundaries (security primary)
+- [2-skill-supply-chain-audit](./2-skill-supply-chain-audit/) — package provenance and behavior (security primary)
+
+## Domain 19 — DevOps (`/0-devops`)
+
+- [0-devops](./0-devops/) — infrastructure and production-operations router
+- [1-infrastructure-as-code](./1-infrastructure-as-code/) — Terraform, OpenTofu, CloudFormation, and Bicep
+- [1-cloud-platform-operations](./1-cloud-platform-operations/) — AWS, Azure, GCP, and Cloudflare operations
+- [1-container-platform-operations](./1-container-platform-operations/) — containers, registries, Kubernetes, Helm, and GitOps
+- [1-database-and-storage-operations](./1-database-and-storage-operations/) — data services, durable storage, backups, and restores
+- [1-network-and-edge-operations](./1-network-and-edge-operations/) — DNS, traffic, edge, firewall, VPN, and TLS
+- [1-server-and-fleet-operations](./1-server-and-fleet-operations/) — hosts, services, SSH, and managed devices
+- [1-platform-engineering](./1-platform-engineering/) — internal platforms, golden paths, and reproducible environments
+- [1-ai-platform-operations](./1-ai-platform-operations/) — model serving, RAG, GPU, caching, and LLMOps
+- [1-identity-and-secrets-management](./1-identity-and-secrets-management/) — IAM, SSO, access, KMS, Vault, and encrypted secrets
+- [1-incident-response](./1-incident-response/) — active production incident coordination
+- [1-resilience-and-disaster-recovery](./1-resilience-and-disaster-recovery/) — backups, failover, continuity, RTO, and RPO
+- [1-compliance-engineering](./1-compliance-engineering/) — compliance controls, evidence, and verification
+- Shared: [1-ci-cd-and-automation](./1-ci-cd-and-automation/), [1-observability-and-instrumentation](./1-observability-and-instrumentation/), [1-shipping-and-launch](./1-shipping-and-launch/)
+
+## Domain 20 — Marketing (`/0-marketing`)
+
+- [0-marketing](./0-marketing/) — marketing-domain router
+- Foundation: [1-marketing-product-marketing](./1-marketing-product-marketing/), [1-marketing-marketing-plan](./1-marketing-marketing-plan/), [1-marketing-marketing-ideas](./1-marketing-marketing-ideas/), [1-marketing-marketing-council](./1-marketing-marketing-council/), [1-marketing-marketing-psychology](./1-marketing-marketing-psychology/), [1-marketing-offers](./1-marketing-offers/), [1-marketing-pricing](./1-marketing-pricing/)
+- Research: [1-marketing-customer-research](./1-marketing-customer-research/), [1-marketing-competitor-profiling](./1-marketing-competitor-profiling/), [1-marketing-competitors](./1-marketing-competitors/)
+- Conversion and lifecycle: [1-marketing-cro](./1-marketing-cro/), [1-marketing-signup](./1-marketing-signup/), [1-marketing-onboarding](./1-marketing-onboarding/), [1-marketing-popups](./1-marketing-popups/), [1-marketing-paywalls](./1-marketing-paywalls/), [1-marketing-churn-prevention](./1-marketing-churn-prevention/), [1-marketing-ab-testing](./1-marketing-ab-testing/)
+- Content and messaging: [1-marketing-content-strategy](./1-marketing-content-strategy/), [1-marketing-copywriting](./1-marketing-copywriting/), [1-marketing-copy-editing](./1-marketing-copy-editing/), [1-marketing-emails](./1-marketing-emails/), [1-marketing-cold-email](./1-marketing-cold-email/), [1-marketing-sms](./1-marketing-sms/), [1-marketing-social](./1-marketing-social/), [1-marketing-video](./1-marketing-video/), [1-marketing-image](./1-marketing-image/), [1-marketing-lead-magnets](./1-marketing-lead-magnets/)
+- Search: [1-marketing-seo-audit](./1-marketing-seo-audit/), [1-marketing-ai-seo](./1-marketing-ai-seo/), [1-marketing-programmatic-seo](./1-marketing-programmatic-seo/), [1-marketing-site-architecture](./1-marketing-site-architecture/), [1-marketing-schema](./1-marketing-schema/), [1-marketing-aso](./1-marketing-aso/), [1-marketing-directory-submissions](./1-marketing-directory-submissions/)
+- Paid and measurement: [1-marketing-ads](./1-marketing-ads/), [1-marketing-ad-creative](./1-marketing-ad-creative/), [1-marketing-analytics](./1-marketing-analytics/), [1-marketing-attribution](./1-marketing-attribution/)
+- Growth, partnerships, and sales: [1-marketing-co-marketing](./1-marketing-co-marketing/), [1-marketing-community-marketing](./1-marketing-community-marketing/), [1-marketing-events](./1-marketing-events/), [1-marketing-free-tools](./1-marketing-free-tools/), [1-marketing-influencer-marketing](./1-marketing-influencer-marketing/), [1-marketing-launch](./1-marketing-launch/), [1-marketing-marketing-loops](./1-marketing-marketing-loops/), [1-marketing-prospecting](./1-marketing-prospecting/), [1-marketing-public-relations](./1-marketing-public-relations/), [1-marketing-referrals](./1-marketing-referrals/), [1-marketing-revops](./1-marketing-revops/), [1-marketing-sales-enablement](./1-marketing-sales-enablement/)
 
 ## Superpowers harvest (promoted 2026-07-20)
 
@@ -39,7 +113,7 @@ Do not re-nest by domain here. Domain grouping is logical (hubs + wiki).
 
 ## Domain 16 — Thinking (`/0-thinking`)
 
-Structured mental models from `tjboudreaux/cc-thinking-skills` (MIT). Hub routes; leaves are soft frames.
+Structured mental models. The core is from `tjboudreaux/cc-thinking-skills` (MIT); selective leaves retain their own source attribution. Hub routes; leaves are soft frames.
 
 | Skill | Role |
 |-------|------|
@@ -60,6 +134,7 @@ Structured mental models from `tjboudreaux/cc-thinking-skills` (MIT). Hub routes
 | **1-thinking-circle-of-competence** | Evidence boundary |
 | **1-thinking-lindy-effect** | Durability with domain-change check |
 | **1-thinking-first-principles** | Physics vs convention |
+| **1-thinking-lateral** | Escape stuck framings with safe provocations |
 | **1-thinking-triz** | Design contradictions |
 | **1-thinking-via-negativa** | Remove before add |
 | **1-thinking-thought-experiment** | Controlled counterfactuals |
@@ -71,4 +146,17 @@ Structured mental models from `tjboudreaux/cc-thinking-skills` (MIT). Hub routes
 | **1-thinking-theory-of-constraints** | Binding throughput constraint |
 | **1-thinking-ooda** | Time-pressured act loop |
 | **1-thinking-model-combination** | Sequence distinct models |
+| **1-perspective-analysis** | Separate stakeholder or persona viewpoints |
+| **1-thinking-ethical** | Values, harms, power, and safeguards |
+| **1-strategic-analysis** | Strategic position, market forces, and plausible futures |
+| **1-competitive-analysis** | Evidence-marked named-competitor comparison |
 
+## Fernandobandeira agents harvest (promoted 2026-09-09)
+
+- [1-honest-advisor](./1-honest-advisor/) — interpersonal conflict and personal-decision accuracy check (Design)
+- [1-go-best-practices](./1-go-best-practices/) — Go-specific implementation and review practice (Architecture)
+- [1-perspective-analysis](./1-perspective-analysis/) — stakeholder/persona analysis (Thinking)
+- [1-strategic-analysis](./1-strategic-analysis/) — strategic choices and scenarios (Thinking)
+- [1-competitive-analysis](./1-competitive-analysis/) — competitor matrix and positioning (Thinking)
+- [1-user-research](./1-user-research/) — research planning and synthesis (UI/UX)
+- [1-customer-experience-audit](./1-customer-experience-audit/) — one evidence-marked external-customer audit (UI/UX)

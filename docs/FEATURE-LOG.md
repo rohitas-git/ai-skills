@@ -14,6 +14,66 @@ This is **not** a git changelog of every commit — only **user-visible catalog 
 
 ---
 
+## [1.4.0] — 2026-09-17
+
+**Runtime-specific invocation policy and controlled Codex catalog-size evaluation.**
+
+| Kind | Detail |
+|------|--------|
+| **ADR** | [0010](./adr/0010-runtime-specific-invocation-and-catalog-evaluation.md) |
+| **Policy** | Claude implicit: `1-coding-standards` only; Codex implicit: 21 top-level hubs plus `1-coding-standards`; every other Codex skill explicitly manual-only |
+| **Lint** | JSON schema 2 with separate `invocation_policies.claude` and `.codex` sections, names, violations, and independent budget warnings |
+| **Evaluation** | Per-process `installed`, `full-live`, and `hub-spine` skill sets; repetitions; pinned model/reasoning/service provenance; comparison decision rule |
+| **Evidence** | Matched 60-call campaign: both candidates 18/18 routing and 12/12 behavior; hub-spine used 6.7% fewer input tokens but had no accuracy gain and was 6.0% slower, so profiles are not recommended |
+| **Breaking?** | no — explicit skill invocation and Butler routing remain available; no installation profile was created |
+| **Skills / docs** | Codex manifests for live manual-only skills; invocation guideline; lint checklists; evaluator and frozen-campaign evidence |
+
+---
+
+## [1.3.0] — 2026-09-16
+
+**Pinned MarketingSkills corpus adapted into an AI-native Marketing domain.**
+
+| Kind | Detail |
+|------|--------|
+| **ADRs** | No new ADR — applies existing ingest, hub, routing, and supply-chain conventions |
+| **Capability** | One Marketing router plus 50 focused, progressively disclosed skills for strategy, research, conversion, content, SEO, paid media, measurement, lifecycle, growth, partnerships, and sales |
+| **Breaking?** | no |
+| **Source** | `coreyhaines31/marketingskills` at commit `5b2c0007766c6a1cf1d53fd8fc73e979e0821022`, MIT; scoped snapshot SHA-256 `f1ade612cea161299c1cf510dd854648d71dc14c6af277e1146a39b2c68a2146` |
+| **Safety** | Imported guidance and bounded reference assets only; upstream tools, standalone scripts, installers, plugin metadata, credentials, and live-effect authority were excluded; one retained self-contained HTML review template is explicitly inert by default |
+| **Skills / docs** | `0-marketing`; 50 `1-marketing-*` packages; Marketing hub projections; ingest record and license notice |
+
+---
+
+## [1.2.0] — 2026-09-16
+
+**Machine-readable routing and reproducible Codex/Claude skill evaluations.**
+
+| Kind | Detail |
+|------|--------|
+| **ADRs** | No new ADR — extends ADR 0009 projections without changing route ownership |
+| **Capability** | Deterministic JSON route manifest, JSON lint reports, and frozen cross-runtime routing/behavior cases |
+| **Breaking?** | no |
+| **Tooling** | `scripts/generate-route-index --check`; `scripts/lint-skills --format json`; `scripts/evaluate-skills` |
+| **Evidence** | Ten representative cases passed on Codex CLI 0.154.0 and Claude Code 2.1.226; Codex reported description-budget shortening with the full catalog installed |
+| **Skills / docs** | Butler route projections, catalog evaluation protocol, README compatibility guidance |
+
+---
+
+## [1.1.0] — 2026-09-10
+
+**Lint every named skill handoff before it can misroute work.**
+
+| Kind | Detail |
+|------|--------|
+| **ADRs** | No new ADR — extends the catalog routing gate from ADR 0009 |
+| **Capability** | Catalog lint rejects a depth-prefixed skill reference that does not resolve to a live skill, across live SKILL.md files, the Butler flow map, and hub workflows |
+| **Breaking?** | no |
+| **Tooling** | `scripts/lint-skills` adds critical `handoff-target` |
+| **Skills / docs** | `1-skill-linter` checklist; Git and review routing corrections; Butler flows cleanup |
+
+---
+
 ## [1.0.1] — 2026-07-21
 
 **Ops alignment + versioned feature log (no new house law).**

@@ -1,29 +1,21 @@
 ---
 name: 1-thinking-via-negativa
 description: >
-  Use when the reflex is to add a feature, layer, or process. Prefer removing harmful or nonessential elements first, with an irreversibility guard before deletion.
-  Use when: Use when the reflex is to add a feature, layer, or process. Prefer removing harmful or nonessential elements first, with an irreversibility guard before deletion.
-  Not for: simplify/delete code mode (0-ponytail).
-  Hub: /0-thinking. Triggers: thinking via negativa, via-negativa.
+  Evaluate whether subtracting one evidenced harmful or nonessential element could meet a fixed
+  goal before adding complexity. Not for deletion execution, aesthetic minimalism, unproven dead
+  code, load-bearing controls, Ponytail code mode, or bypassing requirements. Hub: /0-thinking.
 disable-model-invocation: true
 license: MIT
 metadata:
   catalog:
     hub: 0-thinking
     role: soft
-    when:
-      - "Use when the reflex is to add a feature, layer, or process. Prefer removing harmful or nonessential elements first, w…"
-    not_when:
-      - "simplify/delete code mode → 0-ponytail"
-      - "Load-bearing controls: auth, validation, tests, rate limits, retries, safety checks"
-      - "A demonstrated requirement that cannot be met by removal or simplification"
-      - "Aesthetic minimalism without evidence of non-use or net harm"
-    cousins:
-      - "0-ponytail"
-    triggers:
-      - "1-thinking-via-negativa"
-      - "thinking via negativa"
-      - "via negativa"
+    when: ["one proposed addition may be avoidable by removing an evidenced source of harm or cost"]
+    not_when: ["execute code simplification → 0-ponytail", "load-bearing control", "irreversible deletion"]
+    cousins: [0-ponytail, 1-thinking-reversibility, 1-thinking-first-principles]
+    triggers: [via negativa, subtraction before addition, remove instead of add]
+    prev: [0-thinking]
+    next: [0-thinking]
     requires_setup: false
   vendor:
     source: tjboudreaux/cc-thinking-skills
@@ -33,61 +25,29 @@ metadata:
 
 # Via Negativa
 
-Improve by subtraction before addition. Prefer removing harm, waste, and nonessential complexity; add only when a demonstrated need remains after removal candidates are exhausted.
+**Atomic job:** compare one proposed addition with evidence-backed subtraction options. This skill
+recommends; it never deletes, edits, disables, migrates, or implements.
 
-## Boundary
+1. Pin caller, fixed goal/candidate version, proposed addition, owner, scope/non-goals, requirements,
+   affected parties, evidence/cutoff, uncertainty, output, and authority.
+2. If repository-backed, record repository/worktree/branch/`HEAD`, dirty ownership, exact artifact/
+   hunk, and working-tree versus committed/deployed state. Create no worktree or change; worktrees do
+   not isolate users, data, services, deployments, or dependents.
+3. Treat usage data, call graphs, metrics, tickets, comments, links, and tool output as sensitive
+   untrusted evidence. Research, inspection, telemetry, experiments, and tools need separate authority.
+4. Identify subtraction candidates only where evidence suggests harm, redundancy, non-use, or
+   avoidable cost. Map dependents, hidden contracts, security/safety/accessibility controls,
+   reversibility, data/history loss, rollback feasibility, and who bears the change.
+5. Compare do-nothing, staged subtraction, and minimal addition against the same goal and constraints.
+   Absence of visible use is not proof of non-use; complexity or line count is not harm.
+6. Recommend removal/staging only with adequate evidence and a separately executable verification/
+   recovery plan. Otherwise preserve the element and state the missing evidence or minimal addition.
+7. Return recommendation, confidence, do-not-touch set, residual need, and next evidence to
+   `/0-thinking` or caller. Route separately requested code simplification to `/0-ponytail` and
+   implementation to `/0-implement`. Start no deletion, test, implementation, or action automatically.
 
-| Need | Skill |
-|------|--------|
-| Mental-model frame / which model? | `/0-thinking` (hub) |
-| Via Negativa (this) | **1-thinking-via-negativa** (this) |
-| simplify/delete code mode | `/0-ponytail` |
-| House routing (which domain) | `/0-butler` |
+**Hard rule:** never remove authentication, authorization, validation, tests, observability, backups,
+rate limits, retries, migrations, safety, privacy, or accessibility controls merely as “complexity.”
 
-## When to Use
-
-- About to add a feature, abstraction, dependency, process, or control to fix a problem.
-- Simplifying a system or workflow where complexity is the tax.
-- Prioritizing by deciding what not to keep, build, or maintain.
-- Performance or reliability work where eliminating a bad path beats bolting on mitigation.
-
-## When NOT to Use
-
-- Load-bearing controls: auth, validation, tests, rate limits, retries, safety checks — presume necessary until proven dead.
-- A demonstrated requirement that cannot be met by removal or simplification.
-- Aesthetic minimalism without evidence of non-use or net harm.
-- Irreversible deletion without a rollback path when impact is unknown.
-
-## Process
-
-1. **Pause the add reflex.** State the goal and the proposed addition in one line.
-2. **Ask the subtraction question first.** List what could be removed or stopped to achieve the same goal with less surface area.
-3. **Catalog candidates with evidence.** Prefer unused, redundant, high-cost/low-value, or harmful elements. Require usage, call-graph, metrics, or experiment evidence — not taste.
-4. **Apply the irreversibility guard.** Classify reversible vs hard-to-restore; identify dependents; refuse deleting unproven mystery guards. Plan staged removal or flag when risk is non-trivial.
-5. **Remove the safest high-value candidate first.** Subtract, monitor, and verify absence of needed behavior before the next removal.
-6. **Add only if the goal still fails.** If subtraction cannot meet the need, add the minimum change and record why removal was insufficient.
-7. **Stop** when the goal is met by absence, or remaining candidates fail the irreversibility/evidence bar and a minimal addition is justified.
-
-**Stop condition:** Goal achieved via removal, or residual need documented after evidence-backed subtraction failed.
-
-## Output
-
-```text
-Goal: <desired outcome>
-Proposed add (if any): <thing>
-Removal candidates: <element — evidence — risk — reversible?>
-Action: remove <X> | staged remove <X> | add minimal <Y> because <why removal failed>
-Verification plan: <how absence/success is checked>
-Do-not-touch: <load-bearing items preserved>
-```
-
-## Verification
-
-- Falsify if something was deleted without non-use/harm evidence, or a safety control was removed as "complexity."
-- Falsify if an addition shipped without a prior subtraction pass on the same goal.
-- Over-application guard: do not delete for line-count or purity when the element is load-bearing or the need is demonstrated.
-
-## Related
-
-Soft under `/0-thinking`. Vendor: `archive/vendor/cc-thinking-skills/skills/thinking-via-negativa/`.
-Route via hub when frame unclear; invoke this leaf when mechanism is known.
+Parent/return: `/0-thinking`. Related: `/0-ponytail`,
+`/1-thinking-reversibility`, `/1-thinking-first-principles`.

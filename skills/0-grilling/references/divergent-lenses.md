@@ -1,59 +1,18 @@
-# Divergent lenses before grill (harvested)
+# Retired divergent-lenses provenance
 
-Source: archive vendor `idea-refine` — high-value only.  
-**Winner for stress-test interview:** `/0-grilling`. Do not peer-promote `idea-refine`.
+This imported idea-refinement branch is not operative for `/0-grilling`. Design-alternative generation
+belongs to `/1-brainstorm`; named analytical lenses belong to their `/0-thinking` leaves.
 
-Use when the idea is still **raw** (vague direction, many options) — expand once, then grill to converge. Skip if the user already has a sharp plan ready for decision tree walk.
+Retained source concepts were limited to: distinguish divergence from decision interviewing, avoid
+manufactured option quotas, label generated ideas as hypotheses, compare on common owner-supplied
+criteria, and preserve explicit non-goals.
 
-## Phase shape (optional pre-grill)
+Related non-operative source notes:
 
-1. **Restate** as a crisp “How Might We …” problem statement.
-2. **Ask 3–5 sharpening questions** (who, success, constraints, prior art, why now) — still one at a time if already in grill mode.
-3. **Generate 5–8 variations** (quality over 20 shallow ideas) with lenses:
+- [idea frameworks](./idea-frameworks.md)
+- [refinement criteria](./idea-refinement-criteria.md)
+- [illustrative examples](./idea-examples.md)
+- [vendor idea-refine snapshot](./vendor-idea-refine-full.md)
+- [vendor interview snapshot](./vendor-interview-full.md)
 
-| Lens | Prompt |
-|------|--------|
-| Inversion | What if we did the opposite? |
-| Constraint removal | Budget/time/tech unlimited? |
-| Audience shift | Different primary user? |
-| Combination | Merge with adjacent idea/product? |
-| Simplification | 10× simpler version? |
-| 10× scale | Massive scale shape? |
-| Expert | What would domain experts find obvious? |
-
-In a codebase: ground variations in real architecture (`Glob`/`Grep`/`Read`); cite patterns.
-
-Optional frameworks (pick one, don't run all): SCAMPER, first principles, JTBD, deliberate constraints, pre-mortem — see archive vendor `idea-refine/frameworks.md` if needed.
-
-## Converge (before long grill)
-
-Cluster resonating ideas into **2–3 distinct directions**. Stress-test each on:
-
-1. **User value** — painkiller vs vitamin; name real users and current workaround  
-2. **Feasibility** — hardest part, MVP time-to-value  
-3. **Differentiation** — different, not just “better”
-
-**Surface hidden assumptions** with how to validate. Be honest, not a yes-machine.
-
-## Sharpen artifact (optional)
-
-If useful before `/1-to-spec` or continued grill, a short one-pager:
-
-- Problem statement (HMW)
-- Recommended direction + why
-- Key assumptions to validate (with tests)
-- MVP scope
-- **Not Doing (and why)** — often the highest-value section
-- Open questions
-
-Save only if the user wants a file (`docs/ideas/…` or their path). Default stays conversational → grill → `/1-to-spec`.
-
-## Boundary
-
-| Need | Skill |
-|------|--------|
-| Expand vague idea | this ref under `/0-grilling` |
-| Decision-tree interview | `/0-grilling` body |
-| ADRs / glossary while deciding | `/1-grill-with-docs` |
-| Multi-session fog | `/0-wayfinder` |
-| Spec from decided thread | `/1-to-spec` |
+These files provide provenance only. They add no live steps, tools, writes, or authority.

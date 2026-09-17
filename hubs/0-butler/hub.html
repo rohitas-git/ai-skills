@@ -56,14 +56,14 @@
 <body>
 <header>
   <h1>★ 0-butler <span style="color:var(--muted);font-weight:500">· Domain 0 · House</span></h1>
-  <p>Hub of hubs — route / orient only; never mutate the catalog.</p>
+  <p>Read-only route selector for ambiguous, cross-domain, or explicit catalog questions.</p>
 </header>
 <nav class="top">
   <span class="butler-cta here">★ 0-butler (you are here)</span>
-  <a class="chart-cta" href="../../flows-chart.html">Full flows chart</a>
-  <a href="../../flows-chart.html#domain-hub-matrix">Domain matrix</a>
+  <a class="chart-cta" href="../flows-chart.html">Full flows chart</a>
+  <a href="../flows-chart.html#domain-hub-matrix">Domain matrix</a>
   <a href="./workflow.json">workflow.json</a>
-  <a href="../../../productivity/0-butler/references/flows.md">flows.md SSOT</a>
+  <a href="../../skills/0-butler/references/flows.md">flows.md SSOT</a>
   <a href="../index.html">hubs index</a>
   <span class="here">package: <code>hubs/0-butler/</code></span>
 </nav>
@@ -78,7 +78,7 @@
   <h2 style="margin-top:1rem">Domain hubs (0-butler → each)</h2>
   <div class="nav-hubs">
     <a href="../0-setup-rohitas-skills/hub.html">setup-rohitas-skills</a><a href="../0-grilling/hub.html">grilling</a><a href="../0-implement/hub.html">implement</a><a href="../0-review/hub.html">review</a><a href="../0-triage/hub.html">triage</a><a href="../0-diagnosing-bugs/hub.html">diagnosing-bugs</a><a href="../0-wayfinder/hub.html">wayfinder</a><a href="../0-improve-codebase-architecture/hub.html">improve-codebase-architecture</a><a href="../0-rohitas-vault-wiki/hub.html">rohitas-vault-wiki</a><a href="../0-skill-manager/hub.html">skill-manager</a><a href="../0-skill-creator/hub.html">skill-creator</a><a href="../0-ponytail/hub.html">ponytail</a><a href="../0-learn/hub.html">learn</a><a href="../0-office/hub.html">office</a><a href="../0-ui-ux/hub.html">ui-ux</a>
-<a href="../0-thinking/hub.html" class="">thinking</a>
+<a href="../0-thinking/hub.html" class="">thinking</a><a href="../0-git/hub.html" class="">git</a><a href="../0-agent-engineering/hub.html" class="">agent-engineering</a><a href="../0-devops/hub.html" class="">devops</a><a href="../0-marketing/hub.html" class="">marketing</a>
   </div>
 </section>
 <section>
@@ -86,25 +86,29 @@
   <p class="meta">
     <span class="badge butler">★ hub</span>
     slash: <code>/0-butler</code> ·
-    skill path: <code>productivity/0-butler/</code> ·
+    skill path: <code>skills/0-butler/</code> ·
     package: <code>hubs/0-butler/</code>
   </p>
-  <p>Butler is the house concierge. Prefer domain hub first, then child skill. At every fork, ask the user once with a recommended option.</p>
+  <p>Use the smallest direct skill when clear and report its owning hub. Ask F7 only when a material domain choice remains.</p>
 </section>
 
 <section>
   <h2>Children</h2>
   <ul>
-    <li><strong>routing:</strong> 0-setup-rohitas-skills, 0-grilling, 0-implement, 0-review, 0-triage, 0-diagnosing-bugs, 0-wayfinder, 0-improve-codebase-architecture, 0-rohitas-vault-wiki, 0-skill-manager, 0-skill-creator, 0-ponytail, 0-learn, 0-office, 0-ui-ux</li>
+    <li><strong>routing:</strong> 0-setup-rohitas-skills, 0-grilling, 0-implement, 0-review, 0-triage, 0-diagnosing-bugs, 0-wayfinder, 0-improve-codebase-architecture, 0-rohitas-vault-wiki, 0-skill-manager, 0-skill-creator, 0-ponytail, 0-learn, 0-office, 0-ui-ux, 0-thinking, 0-git, 0-agent-engineering, 0-devops, 0-marketing</li>
 <li><strong>delegate:</strong> 0-skill-manager <span class='meta'>(All catalog mutations)</span></li>
+<li><strong>soft:</strong> <a href="../../skills/1-grok-help/SKILL.md">1-grok-help</a>, <a href="../../skills/1-context-monitor/SKILL.md">1-context-monitor</a>, <a href="../../skills/1-strategic-compact/SKILL.md">1-strategic-compact</a>, <a href="../../skills/1-response-effort-calibrator/SKILL.md">1-response-effort-calibrator</a>, <a href="../../skills/1-action-first-output/SKILL.md">1-action-first-output</a>, <a href="../../skills/1-caveman/SKILL.md">1-caveman</a>, <a href="../../skills/1-handoff/SKILL.md">1-handoff</a>, <a href="../../skills/1-bro/SKILL.md">1-bro</a>, <a href="../../skills/1-plow-ahead/SKILL.md">1-plow-ahead</a>, <a href="../../skills/1-quick-recap/SKILL.md">1-quick-recap</a> <span class='meta'>(Session meta)</span></li>
+<li><strong>satellite:</strong> <a href="../../skills/1-rewind/SKILL.md">1-rewind</a>, <a href="../../skills/1-webmcp/SKILL.md">1-webmcp</a> <span class='meta'>(explicit local memory / web-app tool workflows)</span></li>
+<li><strong>personal residual:</strong> <a href="../../skills/1-pi-agent-rust/SKILL.md">1-pi-agent-rust</a></li>
   </ul>
 </section>
 
 <section>
   <h2>Pipeline</h2>
-  <pre>orient
-query
-domain hub or skill-manager</pre>
+  <pre>explicit routing request → flows + route index
+direct match, or F7 for material ambiguity
+validate live SKILL.md → owning hub + smallest skill + first action
+stop without executing; catalog mutations → skill-manager</pre>
 </section>
 
 
@@ -113,7 +117,7 @@ domain hub or skill-manager</pre>
   <table>
     <thead><tr><th>ID</th><th>Question</th><th>Recommended</th><th>Branches</th></tr></thead>
     <tbody>
-      <tr><td><code>F7</code></td><td>What kind of work?</td><td>Feature → Design</td><td>Design · Triage · Diagnose · Fog · Architecture · Vault · UI/UX · Misc · Catalog facilities · Learn · Simplify</td></tr>
+      <tr><td><code>F7</code></td><td>What kind of work?</td><td>Narrowest domain supported by the request</td><td>Design · Ship · Review · Triage · Diagnose · Fog · Architecture · Vault · UI/UX · Git · Agent engineering · DevOps · Marketing · Office/artifact · Catalog facilities · Learn · Simplify · Thinking · Agent judgment</td></tr>
     </tbody>
   </table>
 </section>
@@ -121,7 +125,7 @@ domain hub or skill-manager</pre>
 <section>
   <h2>See also</h2>
   <p>
-    <a class="chart-cta" href="../../flows-chart.html">Open flows-chart.html</a>
+    <a class="chart-cta" href="../flows-chart.html">Open flows-chart.html</a>
     <a class="chart-cta" href="./workflow.json" style="margin-left:0.4rem">workflow.json</a>
   </p>
   <p class="meta">House map + fork index: chart. Machine-readable workflow: JSON. Routing apex: butler. Package layout: ADR 0005.</p>
@@ -143,13 +147,18 @@ domain hub or skill-manager</pre>
 <a href="../0-learn/hub.html" class="">learn</a>
 <a href="../0-office/hub.html" class="">office</a>
 <a href="../0-ui-ux/hub.html" class="">ui-ux</a>
+<a href="../0-thinking/hub.html" class="">thinking</a>
+<a href="../0-git/hub.html" class="">git</a>
+<a href="../0-agent-engineering/hub.html" class="">agent-engineering</a>
+<a href="../0-devops/hub.html" class="">devops</a>
+<a href="../0-marketing/hub.html" class="">marketing</a>
   </div>
 </section>
 </main>
 <footer>
   Domain hub package <code>hubs/0-butler/</code> for <code>/0-butler</code> · routes all domain hubs ·
-  SSOT: <code>skills/productivity/0-butler/references/flows.md</code> ·
-  chart: <a href="../../flows-chart.html">flows-chart.html</a> ·
+  SSOT: <code>skills/0-butler/references/flows.md</code> ·
+  chart: <a href="../flows-chart.html">flows-chart.html</a> ·
   workflow: <a href="./workflow.json">workflow.json</a>
 </footer>
 </body>

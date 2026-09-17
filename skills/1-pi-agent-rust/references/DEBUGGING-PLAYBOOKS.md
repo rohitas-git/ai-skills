@@ -2,6 +2,9 @@
 
 Use this file when the symptom is known but the root cause is unclear.
 Each playbook is symptom-first and ends with a concrete fix verification checklist.
+All paths, test names, tools, and commands are snapshot candidates: verify them against
+the current checkout and its rules before use. Installer/uninstaller, network, release,
+host-state, and shared-resource effects require separate authority.
 
 ## Error Signature Map
 
@@ -141,8 +144,8 @@ rg -n "remove_installed_skills|is_expected_skill_directory|is_managed_skill_file
 ### Minimal Repro Template
 
 ```bash
-# Run a single installer regression case by editing tests/installer_regression.sh
-# to isolate the failing test, then:
+# Use a repository-supported focused case selector when one exists. Do not edit the
+# shared regression harness merely to select a test.
 bash tests/installer_regression.sh
 
 # Skill integrity + inline sync guard:

@@ -1,5 +1,9 @@
 # Embeds Reference
 
+Compatibility examples only. An embed reference does not authorize reading, fetching, creating,
+or modifying its target. Confirm the target exists only when required and within read authority.
+Never expose unrelated attachment or search-result content during syntax work.
+
 ## Embed Notes
 
 ```markdown

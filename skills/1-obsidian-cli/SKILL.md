@@ -1,134 +1,56 @@
 ---
 name: 1-obsidian-cli
 description: >
-  Interact with Obsidian vaults using the Obsidian CLI to read, create, search, and
-  manage notes, tasks, properties, and more. Also supports plugin and theme development
-  with commands to reload plugins, run JavaScript, capture errors, take screenshots, and
-  inspect the DOM. Use when the user asks to interact with their Obsidian vault, manage
-  notes, search vault content, perform vault operations from the command line, or
-  develop and debug Obsidian plugins and themes. Hub: /0-rohitas-vault-wiki.
+  Execute one explicit supported Obsidian CLI operation against one exact configured vault and
+  return observed output/readback. Not for knowledge ingest, Markdown authoring, broad automation,
+  plugin/theme development, or guessed active-file actions. Hub: /0-rohitas-vault-wiki.
 disable-model-invocation: true
 metadata:
   catalog:
     hub: 0-rohitas-vault-wiki
     role: leaf
-    when:
-      - "the user asks to interact with their Obsidian vault, manage notes, search vault content, perform vau"
-    triggers:
-      - "1-obsidian-cli"
-      - "obsidian cli"
-    requires_setup: false
+    when: ["run one named Obsidian CLI read, write, or app-state operation"]
+    not_when: ["edit Markdown syntax → 1-obsidian-markdown", "compile knowledge → 1-vault-ingest", "plugin/theme implementation or debugging → 0-implement"]
+    triggers: ["run this Obsidian CLI command", "search my vault with Obsidian CLI", "read this note via Obsidian CLI", "1-obsidian-cli"]
+    prev: [0-rohitas-vault-wiki]
+    next: [0-rohitas-vault-wiki]
+    requires_setup: true
 ---
 
 # Obsidian CLI
 
-## Process
+**Atomic job:** perform one named CLI operation against one exact vault/target with the least
+authority needed, then return command identity, output, side effects, and readback.
 
-1. Follow the steps and hard rules in this skill.
-2. Load linked `references/` only when the branch needs them.
+## Contract
 
+1. Pin caller, configured root/SSOT, exact vault name/ID and target path, installed Obsidian/CLI
+   version, named command, parameters, expected result, sensitive-output limits, and read/write/
+   destructive/app-state/network/clipboard authority. Never default to the focused vault/file.
+2. If Git-backed, record repository/worktree/branch/`HEAD`, dirty ownership, and working-tree
+   candidate. Create no worktree. Worktrees do not isolate the running app, sync, plugins,
+   clipboard, publish site, or remote services.
+3. Use local `obsidian help <command>` as the version-matched command contract. A missing CLI,
+   disabled registration, incompatible installer, or stopped app is a precondition failure—not
+   authority to install, update, launch, register, restart, or change shell configuration.
+4. Classify the command before execution. Reads may expose private content. Create/append/prepend/
+   property/task operations mutate files. Open/reload/workspace/theme/plugin/sync commands mutate
+   app or shared state. Delete/restore/overwrite/move/rename/publish/install/uninstall/restrict/
+   `eval` require explicit action-specific authority and a target/effect preview.
+5. Pass `vault=<name-or-id>` first and prefer exact `path=<vault-relative-path>` over ambiguous
+   file names. Construct arguments without shell interpolation. For multiline or metacharacter-rich
+   content, preserve actual intended characters through a verified argv-safe mechanism; do not
+   assume escaped `\n` text survives every quoting layer.
+6. Run only the accepted command. Do not add `--copy`, `open`, `silent`, `overwrite`, `permanent`,
+   `changed`, or another convenience flag unless explicitly part of the accepted effect.
+7. For a write, perform the narrowest supported readback and compare the intended target/result.
+   For a read, report scope/truncation and redact unrelated secrets. For app/remote effects, report
+   observed state; timeout or ambiguous output is `unknown`, not success and not a reason to retry.
 
-Use the `obsidian` CLI to interact with a running Obsidian instance. Requires Obsidian to be open.
+Return exact vault/target, version, command shape with sensitive values redacted, output/readback,
+side effects, and uncertainty to `/0-rohitas-vault-wiki` or the caller. Do not chain another CLI
+operation, edit files directly, ingest, lint, commit, sync, publish, push, or merge unless that exact
+effect was separately requested and authorized.
 
-## Command reference
-
-Run `obsidian help` to see all available commands. This is always up to date. Full docs: https://1-grok-help.obsidian.md/cli
-
-## Syntax
-
-**Parameters** take a value with `=`. Quote values with spaces:
-
-```bash
-obsidian create name="My Note" content="Hello world"
-```
-
-**Flags** are boolean switches with no value:
-
-```bash
-obsidian create name="My Note" silent overwrite
-```
-
-For multiline content use `\n` for newline and `\t` for tab.
-
-## File targeting
-
-Many commands accept `file` or `path` to target a file. Without either, the active file is used.
-
-- `file=<name>` — resolves like a wikilink (name only, no path or extension needed)
-- `path=<path>` — exact path from vault root, e.g. `folder/note.md`
-
-## Vault targeting
-
-Commands target the most recently focused vault by default. Use `vault=<name>` as the first parameter to target a specific vault:
-
-```bash
-obsidian vault="My Vault" search query="test"
-```
-
-## Common patterns
-
-```bash
-obsidian read file="My Note"
-obsidian create name="New Note" content="# Hello" template="Template" silent
-obsidian append file="My Note" content="New line"
-obsidian search query="search term" limit=10
-obsidian daily:read
-obsidian daily:append content="- [ ] New task"
-obsidian property:set name="status" value="done" file="My Note"
-obsidian tasks daily todo
-obsidian tags sort=count counts
-obsidian backlinks file="My Note"
-```
-
-Use `--copy` on any command to copy output to clipboard. Use `silent` to prevent files from opening. Use `total` on list commands to get a count.
-
-## Plugin development
-
-### Develop/test cycle
-
-After making code changes to a plugin or theme, follow this workflow:
-
-1. **Reload** the plugin to pick up changes:
-   ```bash
-   obsidian plugin:reload id=my-plugin
-   ```
-2. **Check for errors** — if errors appear, fix and repeat from step 1:
-   ```bash
-   obsidian dev:errors
-   ```
-3. **Verify visually** with a screenshot or DOM inspection:
-   ```bash
-   obsidian dev:screenshot path=screenshot.png
-   obsidian dev:dom selector=".workspace-leaf" text
-   ```
-4. **Check console output** for warnings or unexpected logs:
-   ```bash
-   obsidian dev:console level=error
-   ```
-
-### Additional developer commands
-
-Run JavaScript in the app context:
-
-```bash
-obsidian eval code="app.vault.getFiles().length"
-```
-
-Inspect CSS values:
-
-```bash
-obsidian dev:css selector=".workspace-leaf" prop=background-color
-```
-
-Toggle mobile emulation:
-
-```bash
-obsidian dev:mobile on
-```
-
-Run `obsidian help` to see additional developer commands including CDP and debugger controls.
-
-
-## Related
-
-**Next:** `/0-rohitas-vault-wiki`. Parent hub: `/0-rohitas-vault-wiki`.
+Current upstream command surface: `https://help.obsidian.md/cli` (verified 2026-09-12). The CLI
+requires a compatible Obsidian installer and interacts with a running app; local help is decisive.

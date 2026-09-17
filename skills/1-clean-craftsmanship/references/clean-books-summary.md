@@ -1,6 +1,11 @@
 # Resource Summary: Clean Code & Clean Architecture by Robert C. Martin (Uncle Bob)
 
-**Source**: Two seminal books on software craftsmanship from the Robert C. Martin Series.
+> **Historical source distillation — not operative instructions.** This file preserves the
+> previously ingested summary, including prescriptive and dated claims about sizes, arguments,
+> exceptions, TDD, abstractions, layers, and dependency direction. Apply the live skill and
+> [context-sensitive principles](./principles.md) instead; do not enforce this file as a checklist.
+
+**Source context**: Two books on software craftsmanship from the Robert C. Martin Series.
 - *Clean Code: A Handbook of Agile Software Craftsmanship* (2008/2009) — Focuses on writing readable, maintainable code at the module/class/function level.
 - *Clean Architecture: A Craftsman's Guide to Software Structure and Design* (2017/2018) — Focuses on system-level structure, boundaries, independence, and long-term maintainability.
 

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Domain hub · 0-git — Git</title>
+<style>
+  :root { --bg:#0b0f14; --panel:#151c27; --text:#e8eef7; --muted:#8b9bb4; --line:#2d3a4d; --butler:#f472b6; --hub:#3d8bfd; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:ui-sans-serif,system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.45; }
+  header, nav, main, footer { max-width:960px; margin:auto; }
+  header { padding:1.2rem 1.5rem; }
+  header h1 { margin:0 0 .35rem; font-size:1.35rem; }
+  header p, .meta, footer { color:var(--muted); }
+  nav { display:flex; flex-wrap:wrap; gap:.8rem; padding:.75rem 1.5rem; border-block:1px solid var(--line); }
+  main { padding:1.25rem 1.5rem 3rem; display:grid; gap:1rem; }
+  section { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:1rem 1.1rem; }
+  h2 { margin:0 0 .55rem; font-size:1.05rem; }
+  ul { margin:.25rem 0 0; padding-left:1.2rem; }
+  table { width:100%; border-collapse:collapse; font-size:.86rem; }
+  th, td { text-align:left; padding:.4rem .5rem; border-bottom:1px solid var(--line); }
+  th { color:var(--muted); }
+  pre { background:#0f1520; border:1px solid var(--line); border-radius:8px; padding:.75rem; overflow:auto; }
+  a { color:#7dd3fc; }
+  footer { padding:0 1.5rem 2rem; }
+</style>
+</head>
+<body>
+<header>
+  <h1>★ 0-git <span class="meta">· Domain 17 · Git</span></h1>
+  <p>Safe repository-state workflows: isolation, atomic commits, conflict recovery, and branch completion.</p>
+</header>
+<nav>
+  <a href="../0-butler/hub.html">★ 0-butler</a>
+  <a href="../flows-chart.html">Full flows chart</a>
+  <a href="./workflow.json">workflow.json</a>
+  <a href="../../skills/0-butler/references/flows.md">flows.md SSOT</a>
+  <a href="../index.html">hubs index</a>
+</nav>
+<main>
+<section>
+  <h2>Boundary</h2>
+  <p>Git owns repository-state transitions. Product construction stays <code>/0-implement</code>; code-quality judgment stays <code>/0-review</code>.</p>
+</section>
+<section>
+  <h2>Children</h2>
+  <ul>
+    <li><strong>pipeline helpers (caller-return, not an automatic sequence):</strong> 1-git-worktrees, 1-atomic-git-commits, 1-finish-branch</li>
+    <li><strong>leaves:</strong> 1-git-changelog · 1-git-text-normalization · 1-resolving-merge-conflicts · 1-github-cli · 1-github-pr-comment-intake <span class='meta'>(read-only PR discussion)</span> · 1-pr-comment-drafter <span class='meta'>(outbound prose, draft only)</span></li>
+    <li><strong>PR convergence:</strong> 1-pr-repair · 1-pr-review-and-repair · 1-stacked-pr-repair · 1-stacked-pr-review-and-repair</li>
+    <li><strong>soft:</strong> 1-pr-summarizer <span class='meta'>(main PR description)</span></li>
+  </ul>
+</section>
+<section>
+  <h2>Pipeline</h2>
+  <pre>1-git-worktrees? → return to requesting implementation/repair workflow
+implementation → 1-atomic-git-commits (authorized; small independently revertible groups) → return to caller
+branch-outcome request → 1-finish-branch → 1-pr-summarizer? (chosen PR option)
+active conflict → 1-resolving-merge-conflicts → resume interrupted operation
+binary diff/encoding/EOL → 1-git-text-normalization diagnose|authorized fix → return
+commit only when separately requested</pre>
+<pre>known PR findings/blockers → 1-pr-repair → 1-pr-summarizer?
+GitHub PR discussion → 1-github-pr-comment-intake → 1-receive-review|1-pr-repair
+outbound PR comment → 1-pr-comment-drafter → 1-github-cli (authorized post/edit)
+one PR → 1-pr-review-and-repair → 1-pr-summarizer?
+known stack findings/blockers → 1-stacked-pr-repair → 1-pr-summarizer?
+PR stack → 1-stacked-pr-review-and-repair → 1-pr-summarizer?</pre>
+</section>
+<section>
+  <h2>Forks</h2>
+  <table>
+    <thead><tr><th>ID</th><th>Question</th><th>Recommended</th><th>Branches</th></tr></thead>
+    <tbody>
+      <tr><td>F-G1</td><td>What Git operation is needed?</td><td>Narrowest operation matching repository state</td><td>worktree · atomic commits · changelog · text normalization · conflict resolution · GitHub CLI operation · PR comment intake · PR comment draft · PR description · single-PR repair-only · single-PR review+repair · stack repair-only · stacked review+repair · finish branch · Agent judgment</td></tr>
+      <tr><td>F-G2</td><td>How should mixed changes be grouped?</td><td>Independently revertible behavior</td><td>proposed groups · user grouping · leave ambiguous · Agent judgment</td></tr>
+      <tr><td>F-G3</td><td>What is the intended base-to-tip PR order?</td><td>Derive parent-child edges; stop if ambiguous</td><td>user order · provider/stack-tool order · Agent judgment</td></tr>
+      <tr><td>F-G4</td><td>Which PR should be reviewed and repaired?</td><td>Current branch's unique open PR</td><td>user-named PR · unique current-branch PR · Agent judgment</td></tr>
+      <tr><td>F-G5</td><td>What PR prose is needed?</td><td>Main PR description</td><td>PR description · individual comment · Agent judgment</td></tr>
+    </tbody>
+  </table>
+</section>
+</main>
+<footer>Domain hub package <code>hubs/0-git/</code> · parent: <a href="../0-butler/hub.html">0-butler</a></footer>
+</body>
+</html>

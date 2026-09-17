@@ -1,31 +1,29 @@
-# Project README skeleton (harvested)
+# README baseline
 
-Source: archive vendor `documentation-and-adrs` (README Structure only).  
-ADRs/glossary while designing → `/1-domain-modeling`. Living docs + drift → this skill’s full guide. Inline API docs → `/1-code-comments`. Do not peer-promote documentation-and-adrs.
-
-Minimal README every project should have:
+Use only when a repository has no established README convention and creating one is requested.
 
 ```markdown
-# Project Name
+# Project name
 
-One-paragraph description.
+Purpose and supported audience.
 
-## Quick Start
-1. Clone
-2. Install deps
-3. Env: copy `.env.example`
-4. Dev server command
+## Quick start
+
+Verified prerequisites and commands; do not invent environment values or secret setup.
 
 ## Commands
-| Command | Description |
-|---------|-------------|
-| … | … |
 
-## Architecture
-Brief structure + key decisions; link `docs/adr/` / CONTEXT.
+Only commands confirmed in repository tooling.
+
+## Architecture and operations
+
+Link canonical current guides and accepted decisions rather than copying them.
 
 ## Contributing
-Standards, PR process, how agents should load context.
+
+Link repository rules, tests, review, and documentation obligations.
 ```
 
-Prefer linking durable decisions (ADRs) over restating code. Changelog for consumers lives under `/1-shipping-and-launch` versioning ref.
+Not every project needs every section. Verify commands from the pinned candidate, distinguish local
+from deployed behavior, and do not expose secrets. Release notes/changelogs belong to their release
+workflow.

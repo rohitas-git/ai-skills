@@ -1,11 +1,10 @@
 ---
 name: 1-project-wiki-manager
 description: >
-  Karpathy-style in-repo project wiki: docs/raw/ → docs/wiki/ concept pages, grounded
-  Q&A, audit, compound knowledge. English-only wiki content. Not code↔docs trigger
-  governance (/1-living-documentation-governor) or personal Obsidian Notes
-  (/0-rohitas-vault-wiki). Soft under Architecture domain. Use when: Karpathy-style
-  in-repo project wiki: docs/raw/ → docs/wiki/ concept pages, grounded Q&A, audit, comp.
+  Build, query, or audit a grounded in-repository concept wiki from declared project sources.
+  Use for project wiki pages, source-backed Q&A, and wiki health checks. Not for: code-to-doc
+  synchronization governance (1-living-documentation-governor), personal Obsidian notes
+  (0-rohitas-vault-wiki), or design-time domain decisions (1-domain-modeling).
   Hub: /0-improve-codebase-architecture.
 disable-model-invocation: true
 metadata:
@@ -13,73 +12,69 @@ metadata:
     hub: 0-improve-codebase-architecture
     role: soft
     when:
-      - "Karpathy-style in-repo project wiki: docs/raw/ → docs/wiki/ concept pages, grounded Q&A, audit, comp"
-    triggers:
-      - "1-project-wiki-manager"
-      - "project wiki manager"
+      - "build, query, or audit a grounded in-repository concept wiki"
+    not_when:
+      - "code-synced documentation governance → 1-living-documentation-governor"
+      - "personal Obsidian vault → 0-rohitas-vault-wiki"
+      - "design-time glossary or ADR decision → 1-domain-modeling"
+    prev: [0-improve-codebase-architecture]
+    cousins: [1-living-documentation-governor, 0-rohitas-vault-wiki, 1-domain-modeling]
+    triggers: [project wiki, project wiki manager, ingest project sources, query project wiki, audit project wiki]
     requires_setup: false
 ---
 
 # Project Wiki Manager
 
-## Process
-
-1. Follow the steps and hard rules in this skill.
-2. Load linked `references/` only when the branch needs them.
-
-
-**Atomic job:** sole editor of a queryable **project** Markdown wiki at `docs/wiki/`, synthesized from `docs/raw/`.
+**Atomic job:** maintain or interrogate one repository's source-grounded concept wiki without
+changing its source material or silently expanding into living-doc governance.
 
 ## Boundary
 
-| Need | Skill |
-|------|--------|
-| In-repo concept wiki (`docs/raw` → `docs/wiki`) | **project-wiki-manager** (this) |
-| Code-synced living docs + trigger maps | `/1-living-documentation-governor` |
-| Personal Rohitas’s Notes vault | `/0-rohitas-vault-wiki` |
-| Domain glossary / ADRs while designing | `/1-domain-modeling` |
+| Need | Route |
+|---|---|
+| Concept wiki synthesis, query, or health audit | **this skill** |
+| Docs whose ownership/triggers track code changes | `/1-living-documentation-governor` |
+| Personal Notes/Obsidian knowledge | `/0-rohitas-vault-wiki` |
+| Domain model or ADR while designing | `/1-domain-modeling` |
+| Extract one long external resource | `/1-resource-summarizer` or its format specialist |
 
-## Hard redirect / forks
+F-D1/F-D2 apply only when the destination is genuinely unclear. Clear project-wiki requests route
+directly; do not ask the user to choose again or load a cousin implicitly.
 
-| Fork | Question | Recommended | Branches |
-|------|----------|-------------|----------|
-| **F-D1** | Concept wiki from sources, or living docs tied to code paths/triggers? | wiki if raw→concepts | this · `/1-living-documentation-governor` |
-| **F-D2** | Project repo wiki or personal Notes vault? | vault if Concepts/Atlas/my notes | this · `/0-rohitas-vault-wiki` |
+## Process
 
-Ask once (recommended first), wait — never silent-load the cousin.
+1. **Pin caller, mode, and workspace.** Resolve the project root, exact current worktree/branch/HEAD,
+   requested wiki/source roots, dirty-file ownership, and query/audit/write authority. This skill
+   creates no worktree and switches no branch. For authorized repository edits, reuse a matching
+   caller workspace; if isolation is actually required, call `/1-git-worktrees`, then return here.
+2. **Discover local authority.** Read applicable repository instructions and existing documentation
+   conventions. Prefer an established wiki layout. Propose `docs/raw/` plus `docs/wiki/` only when no
+   convention exists, and create it only when the user's request authorizes initialization.
+3. **Declare the source universe.** Default raw sources are immutable. User-named project docs,
+   source code, tests, schemas, or decisions may be read when needed, but must be identified and
+   cited; do not imply code access when it was not inspected. Never rewrite source material during
+   synthesis. Use [workspace and source rules](./references/folder-structure-and-initialization.md).
+4. **Choose one mode.** Query and audit are read-only. Ingest/update writes only the requested wiki
+   surface and its existing index/log when applicable. An explicit request to ingest or update is
+   sufficient authority; pause only for a material ambiguity such as competing roots, unclear source
+   authority, destructive restructuring, or a high-blast page split the user has not selected.
+5. **Ground and synthesize.** Separate observed source claims, agent synthesis, user-confirmed facts,
+   conflicts, and unknowns. Use precise locators and the repository's page conventions. Merge into an
+   existing concept when it is the same subject; do not create pages by quota. See
+   [ingest](./references/ingest-workflow.md), [grounding](./references/citation-and-grounding-rules.md),
+   and [page contract](./references/page-formats-and-templates.md).
+6. **Verify the bounded result.** For writes, inspect the diff and validate page names, internal
+   links, cited source paths/locators, index coverage, and log consistency using existing tools. Do
+   not install a wiki tool, run unrelated formatters, or modify generated/vendor/source files. For a
+   read-only audit, report findings without repairing them.
+7. **Return to the caller.** Report mode, project/worktree/HEAD, source and wiki roots, pages read or
+   changed, grounding/coverage gaps, conflicts, checks, and remaining decisions. Do not commit,
+   publish, deploy, merge, or mutate remote knowledge systems.
 
-**Core purpose:** compounding knowledge with full source auditability. Human supplies materials and confirms writes; agent never invents facts or modifies originals in `docs/raw/`.
+## Load only for the selected mode
 
-**When to activate:**
-- User adds or updates files in `docs/raw/`
-- User asks questions about **project** wiki knowledge
-- Wiki audits, consistency checks, gap analysis
-- Synthesize new wiki pages from existing wiki or strong Q&A
-
-**Key principles (always follow):**
-- Ground every factual statement in explicit sources; mark unsourced claims clearly.
-- All wiki pages, index, log entries, and internal reasoning: **English only**.
-- Never modify, delete, or invent content in `docs/raw/` or any original sources.
-- Human confirmation required before creating or significantly updating wiki pages during ingestion.
-- Use precise wiki-links `[[page-name]]` to interconnect concepts.
-- Prefer merging and highlighting differences over duplication.
-- Keep answers clear, complete, and structured; offer to persist high-value syntheses as new wiki pages.
-
-**Session start (mandatory):**
-1. Locate or confirm the project root (parent directory containing `docs/`).
-2. Verify or initialize `docs/raw/` and `docs/wiki/` structure if missing.
-3. Confirm with user before any wiki modifications.
-4. State the resolved paths clearly.
-
-Detailed instructions for each major workflow are maintained in the `references/` directory. Load the relevant file(s) when performing specific tasks:
-
-- `references/folder-structure-and-initialization.md` — layout, paths, and session setup
-- `references/ingest-workflow.md` — processing new or updated raw sources
-- `references/page-formats-and-templates.md` — standard page and index structure
-- `references/citation-and-grounding-rules.md` — quotes, citations, handling contradictions
-- `references/question-answering-workflow.md` — how to answer from wiki or raw, mandatory response format, wiki gaps
-- `references/logging-and-audit.md` — append-only log, lint/audit commands
-- `references/hard-rules-and-constraints.md` — immutability, naming, no-speculation, and forbidden actions
-- `references/edge-cases-and-nuances.md` — multiple sources, large ingests, visuals, uncertainty, knowledge compounding, scalability
-
-This modular design keeps the core skill lightweight while providing comprehensive, on-demand depth for reliable long-term wiki stewardship.
+- Initialization/layout: [folder structure](./references/folder-structure-and-initialization.md)
+- Ingest/update: [ingest workflow](./references/ingest-workflow.md), [page contract](./references/page-formats-and-templates.md), [grounding](./references/citation-and-grounding-rules.md)
+- Query: [question answering](./references/question-answering-workflow.md)
+- Audit/logging: [logging and audit](./references/logging-and-audit.md)
+- Hard boundaries or unusual sources: [hard rules](./references/hard-rules-and-constraints.md), [edge cases](./references/edge-cases-and-nuances.md)

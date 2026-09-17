@@ -1,33 +1,27 @@
 # Inbox note format
 
-## Location
+The active vault's existing Inbox convention is authoritative. If no local convention exists,
+one new capture may use this minimal shape:
 
-`{vault}/Inbox/<Title Case Name>.md`
-
-## Minimal frontmatter
-
-```yaml
+```md
 ---
-created: YYYY-MM-DD
-source: chat | url | agent | paste
-tags: []   # optional
+created: {actual timestamp/date in the approved vault format}
+source: {truthful supplied provenance}
 ---
+
+{supplied payload, with any disclosed redaction}
 ```
 
-No required `type`/`status` until ingest promotes the note.
+Rules:
 
-## Body
-
-- Prefer user text as-is
-- Keep URLs and quotes intact
-- Optional trailing `## Related` only when user named targets
-
-## Naming
-
-| Situation | Filename |
-|-----------|----------|
-| Clear title | `Title Case.md` |
-| URL article title known | That title Title Case |
-| Pure dump | `2026-07-19 1430 Capture.md` |
-
-Avoid characters unsafe in filenames (`/ \ :`). Collapse internal slashes.
+- Do not invent `type`, `status`, tags, source authorship, links, or processing decisions.
+- Preserve meaningful line breaks and literal text; do not turn escaped `\n` into unintended
+  content or convert real newlines into literal escape sequences.
+- A quoted title or URL is data and does not authorize fetching or copying unavailable text.
+- Derive a filename only when unambiguous; otherwise use a truthful collision-resistant
+  capture identifier or ask if the title affects identity.
+- Sanitize traversal and platform-invalid filename characters without silently changing the
+  note's meaning. Record any filename transformation.
+- Create exclusively after a case-insensitive collision recheck. Never overwrite or append.
+- Do not add a Related section unless the user supplied the exact relationship and the active
+  schema supports it; even then, do not open the linked note.

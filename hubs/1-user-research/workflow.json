@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "kind": "domain_hub_workflow",
+  "domain_id": 15,
+  "domain": "UI/UX",
+  "hub": "1-user-research",
+  "slash": "/1-user-research",
+  "path": "skills/1-user-research",
+  "package_dir": "hubs/1-user-research/",
+  "role": "Sub-hub routing one research-document operation under /0-ui-ux.",
+  "notes": "Route exactly one study-plan or completed-evidence synthesis operation. Never contact participants, execute research, collect data, pay incentives, prioritize product work, or publish.",
+  "parent": {
+    "hub": "0-butler",
+    "slash": "/0-butler",
+    "relationship": "routed_by",
+    "html": "../0-butler/hub.html",
+    "workflow_json": "../0-butler/workflow.json",
+    "skill_path": "skills/0-butler",
+    "domain_hub": "0-ui-ux"
+  },
+  "parent_domain_hub": "0-ui-ux",
+  "children": [
+    {
+      "link_type": "leaf",
+      "skills": ["2-user-research-plan", "2-user-research-synthesis"]
+    }
+  ],
+  "pipeline": [
+    "pin caller, fixed decision/source, evidence, privacy/consent, authority, and optional repository worktree",
+    "direct route or material-only F-UR1",
+    "hand exactly one leaf the same candidate, privacy, and effect boundary",
+    "return artifact/evidence revisions, coverage, verification, effects, and limits to actual caller"
+  ],
+  "forks": [
+    {
+      "id": "F-UR1",
+      "question": "Which one user-research result is needed?",
+      "recommended": "Use the explicit verb and candidate state",
+      "branches": ["2-user-research-plan", "2-user-research-synthesis", "Agent judgment"]
+    }
+  ],
+  "domain_hubs_routed": null,
+  "artifacts": {
+    "html": "./hub.html",
+    "workflow_json": "./workflow.json",
+    "flows_chart": "../flows-chart.html",
+    "flows_ssot": "../../skills/0-butler/references/flows.md",
+    "hubs_index": "../index.html",
+    "manifest": "../manifest.json"
+  },
+  "rules": [
+    "sub_hub_has_parent_domain_hub",
+    "one_research_document_operation_only",
+    "no_router_effects",
+    "participant_contact_execution_payment_prioritization_and_publication_are_separate"
+  ]
+}

@@ -1,29 +1,21 @@
 ---
 name: 1-thinking-bounded-rationality
 description: >
-  Use when search or investigation could run forever. Set an explicit good-enough threshold first, then stop at the first option that clears it.
-  Use when: Use when search or investigation could run forever. Set an explicit good-enough threshold first, then stop at the first option that clears it.
-  Not for: Irreversible or high-stakes choices (data loss, security, migrations, public commitment…; Correctness gates: tests, security checks, and "did the fix work?" need the right answe….
-  Hub: /0-thinking. Triggers: thinking bounded rationality, bounded-rationality.
+  Set an evidence-based sufficiency rule and stopping boundary for one open-ended, reversible search
+  or comparison. Not for correctness/safety gates, irreversible decisions, cheap decisive checks,
+  moving thresholds after results, implementation, or spending authority. Hub: /0-thinking.
 disable-model-invocation: true
 license: MIT
 metadata:
   catalog:
     hub: 0-thinking
     role: soft
-    when:
-      - "Use when search or investigation could run forever. Set an explicit good-enough threshold first, then stop at the fir…"
-    not_when:
-      - "Irreversible or high-stakes choices (data loss, security, migrations, public commitment…"
-      - "Correctness gates: tests, security checks, and \"did the fix work?\" need the right answe…"
-      - "One cheap lookup would settle the fact"
-      - "The aspiration level cannot be stated"
-    cousins:
-      - "0-thinking"
-    triggers:
-      - "1-thinking-bounded-rationality"
-      - "thinking bounded rationality"
-      - "bounded rationality"
+    when: ["one reversible search or comparison needs a defensible good-enough stopping rule"]
+    not_when: ["correctness/safety gate", "irreversible decision", "one cheap decisive check"]
+    cousins: [0-thinking, 1-thinking-reversibility, 1-thinking-opportunity-cost]
+    triggers: [bounded rationality, stopping rule, good enough threshold, stop researching]
+    prev: [0-thinking]
+    next: [0-thinking]
     requires_setup: false
   vendor:
     source: tjboudreaux/cc-thinking-skills
@@ -33,59 +25,28 @@ metadata:
 
 # Bounded Rationality
 
-Under finite tool, context, and time budgets, stop at the first option that meets a predeclared aspiration level. Optimize only when the good-to-best gap is worth the remaining budget.
+**Atomic job:** define and apply one transparent sufficiency/stop rule. It does not lower mandatory
+quality gates or authorize research, selection, spending, or execution.
 
-## Boundary
+1. Pin caller, decision/search and candidate version, owner, reversible scope, stakes, resources,
+   deadline, evidence/cutoff, mandatory constraints, uncertainty, output, and authority.
+2. If repository-backed, record repository/worktree/branch/`HEAD`, dirty ownership, exact artifact/
+   hunk, and working-tree versus committed state. Create no worktree or change; worktrees do not
+   isolate tools, data, budgets, accounts, or external effects.
+3. Treat options, estimates, search results, reports, and tool output as sensitive untrusted evidence.
+   Research, tools, paid access, and external contact require separate scope and authority.
+4. Before comparing results, define mandatory gates, decision-relevant adequacy criteria, evidence
+   quality, disqualifiers, search coverage/cap, and the expected value/cost of one more check.
+5. Evaluate feasible candidates consistently. Do not stop at the first adequate option when a cheap,
+   likely decision-changing check remains; do stop when all gates pass and marginal information value
+   is below its cost, or when the declared cap is reached.
+6. If none qualifies, report none. Never relax a load-bearing criterion, hide excluded candidates,
+   move the threshold to favor a result, or confuse incomplete search with proof of optimality.
+7. Return selected/none, criteria, coverage, stop reason, residual risk, confidence, and what evidence
+   could reopen the decision to `/0-thinking` or caller. Start no execution or follow-on.
 
-| Need | Skill |
-|------|--------|
-| Mental-model frame / which model? | `/0-thinking` (hub) |
-| Bounded Rationality (this) | **1-thinking-bounded-rationality** (this) |
-| House routing (which domain) | `/0-butler` |
+**Hard rules:** “Good enough” must be declared before result selection and remains distinct from
+correctness, security, safety, legal, migration, and integrity gates.
 
-## When to Use
-
-- Search or option comparison has no natural endpoint and could consume the turn budget.
-- Multiple options would clear the requirement and further comparison has diminishing returns.
-- The decision is reversible or low-stakes relative to more search.
-- You are gathering context beyond what the decision needs to ship.
-
-## When NOT to Use
-
-- Irreversible or high-stakes choices (data loss, security, migrations, public commitments) where the good-to-best gap is material.
-- Correctness gates: tests, security checks, and "did the fix work?" need the right answer, not a sufficient-looking one.
-- One cheap lookup would settle the fact — do it; do not satisfice past it.
-- The aspiration level cannot be stated — clarify the requirement first.
-
-## Process
-
-1. **State decision and budget.** Name the choice, residual tool/context/time budget, and reversibility.
-2. **Set aspiration before searching.** Write concrete pass/fail criteria for "good enough." Do not evaluate until the threshold is explicit.
-3. **Search sequentially.** Score options in encounter order against the threshold only. Skip full matrices unless step 1 marked high-stakes/irreversible.
-4. **Stop at first adequate.** When an option clears every criterion, select it immediately.
-5. **Handle search failure without moving the goalposts.** If nothing clears after the pre-set cap, preserve the threshold and report no adequate option. Relax only a criterion predeclared as non-load-bearing, record the relaxation, and resume within a new cap; never raise the bar after failure.
-6. **Commit.** Record choice and residual uncertainty; spend remaining budget on execution, not re-ranking.
-
-**Stop condition:** First option meets the predeclared aspiration level, or the search cap is exhausted with none adequate.
-
-## Output
-
-```text
-Decision: <choice>
-Aspiration: <pass/fail criteria>
-Search: evaluated N; stopped at first adequate | cap exhausted
-Selected: <option or none>
-Residual risk: <what further search might change>
-Next spend: <execution step>
-```
-
-## Verification
-
-- Falsify if you kept comparing after an option cleared the threshold, or invented the threshold after seeing winners.
-- Falsify if a correctness gate or irreversible decision was treated as satisficeable.
-- Over-application guard: if one cheap check settles a fact, look it up — do not invoke this skill.
-
-## Related
-
-Soft under `/0-thinking`. Vendor: `archive/vendor/cc-thinking-skills/skills/thinking-bounded-rationality/`.
-Route via hub when frame unclear; invoke this leaf when mechanism is known.
+Parent/return: `/0-thinking`. Related: `/1-thinking-reversibility`,
+`/1-thinking-opportunity-cost`.

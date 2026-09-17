@@ -1,68 +1,26 @@
-# Merge and contradiction handling
+# Delta and contradiction rules
 
-## Prefer merge over duplicate
+Compare claims, not just titles or keywords:
 
-When an existing Concept covers the same idea:
+| Disposition | Meaning | Allowed action |
+|---|---|---|
+| New | no fitting existing note after bounded retrieval | propose/create one non-colliding note |
+| Additive | compatible evidence adds useful detail | insert the smallest sourced delta |
+| Duplicate | meaning already present | no content change; record no-op |
+| Conflict | claims cannot both stand without qualification | pause for a user decision |
+| Out of scope | not needed for the requested outcome | leave unchanged |
 
-1. Read the full existing note  
-2. List **additive** facts (new, non-conflicting)  
-3. List **conflicts** (cannot both be true without context)  
-4. Propose merge of additive content only after plan confirm  
-5. Preserve the note’s voice; do not wholesale replace  
+For every update, identify exact target/section, preserved content, proposed wording,
+provenance/locator, metadata impact, and links affected. A whole-note replacement, rename,
+redirect/alias, split, merge of two notes, or deletion is a separate high-impact ledger item.
+Do not perform it as cleanup around a small additive change.
 
-Bump `updated` on every edit.
+Conflict choices may include preserving the existing claim, adopting the new claim with
+explicit provenance/supersession, or recording both under supported conditions. Never
+manufacture a false compromise, infer the user's preference, or call one source canonical
+without evidence. Keep unresolved conflict out of permanent prose or mark it explicitly only
+when the user selected that representation.
 
-## Additive merge pattern
-
-```markdown
-## {existing section}
-{keep existing}
-
-{new bullets clearly integrated, own-words}
-
-## Sources
-- [[Prior Source]]
-- [[New Source (Source)]]  ; or URL in frontmatter
-```
-
-Optional callout for evolution:
-
-```markdown
-> [!note] Updated YYYY-MM-DD
-> Added: {one-line delta from latest source}
-```
-
-## Contradiction table
-
-When claims disagree:
-
-```markdown
-## Inconsistencies
-| Claim (new) | Existing note | Existing claim | Options |
-|-------------|----------------|----------------|---------|
-| "X is always Y" | [[Concept]] | "X is usually Z" | keep old / prefer new / both with context |
-```
-
-### Resolution options
-
-| User choice | Write |
-|-------------|--------|
-| keep old | Do not apply conflicting claim; log that new source was considered |
-| prefer new | Replace/annotate old claim; note supersession + source |
-| both with context | Keep both under conditions (when/domain); never leave bare contradiction |
-
-Never pick silently.
-
-## Near-duplicates
-
-If two Concepts overlap heavily, prefer:
-
-1. Merge into the stronger title  
-2. Leave redirect-style note or aliases  
-3. Or link both with explicit scope boundaries  
-
-Do not create a third overlapping atom.
-
-## Multi-source concepts
-
-Concept page is the compiled truth. Note differing viewpoints with citations to Source archives. See hard rules: no invention.
+Re-scan the exact note before applying. Preserve unrelated edits, voice, valid frontmatter,
+and historical source references. A changed `updated` field or log entry is allowed only when
+the active schema and authorized change set require it.

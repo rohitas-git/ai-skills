@@ -1,49 +1,40 @@
-# Plan Document Reviewer Prompt Template
+# Plan document review brief
 
-Use this template when dispatching a plan document reviewer subagent.
+Use for an explicitly requested independent review, or as a self-review rubric.
+Reviewing this template does not itself require spawning an agent.
 
-**Purpose:** Verify the plan is complete, matches the spec, and has proper task decomposition.
+## Inputs
 
-**Dispatch after:** The complete plan is written.
+- Plan path/text and revision.
+- Authoritative specification/design and acceptance criteria.
+- Repository context used by the plan, relevant instructions and scope exclusions.
+- Granted implementation authority, if any.
+- Known unresolved decisions and environment limitations.
 
-```
-Subagent (general-purpose):
-  description: "Review plan document"
-  prompt: |
-    You are a plan document reviewer. Verify this plan is complete and ready for implementation.
+## Review
 
-    **Plan to review:** [PLAN_FILE_PATH]
-    **Spec for reference:** [SPEC_FILE_PATH]
+Remain read-only. Compare each required outcome with an actionable task and check:
 
-    ## What to Check
+- Scope: no missing requirement, excluded feature or unrequested restructuring.
+- Dependencies: feasible order; contracts agree across task boundaries.
+- Workspace: task-matching checkout and service isolation are explicit where needed.
+- Buildability: real paths/commands distinguished from proposed ones; future-state
+  assumptions become discovery gates, not claims about unobserved results.
+- Verification: behavior-level criteria, failure cases and cross-task checks;
+  checks correspond to the chosen deterministic/prototype/evaluation workflow.
+- Authority: no implicit commit, push, migration, deployment or cleanup permission.
 
-    | Category | What to Look For |
-    |----------|------------------|
-    | Completeness | TODOs, placeholders, incomplete tasks, missing steps |
-    | Spec Alignment | Plan covers spec requirements, no major scope creep |
-    | Task Decomposition | Tasks have clear boundaries, steps are actionable |
-    | Buildability | Could an engineer follow this plan without getting stuck? |
+Inspect relevant source when a concrete plan claim needs validation; do not review
+the whole repository. Do not demand complete code listings or TDD for every step.
+Report a missing source as missing evidence, not as a guessed approval.
 
-    ## Calibration
+## Output
 
-    **Only flag issues that would cause real problems during implementation.**
-    An implementer building the wrong thing or getting stuck is an issue.
-    Minor wording, stylistic preferences, and "nice to have" suggestions are not.
+- Status: ready for the stated scope | changes needed | blocked by missing evidence.
+- Findings: task/step or source location, missing/contradictory criterion, practical
+  consequence and focused correction.
+- Evidence checked and unresolved preconditions.
+- Advisory improvements clearly separated from blockers.
 
-    Approve unless there are serious gaps — missing requirements from the spec,
-    contradictory steps, placeholder content, or tasks so vague they can't be acted on.
-
-    ## Output Format
-
-    ## Plan Review
-
-    **Status:** Approved | Issues Found
-
-    **Issues (if any):**
-    - [Task X, Step Y]: [specific issue] - [why it matters for implementation]
-
-    **Recommendations (advisory, do not block approval):**
-    - [suggestions for improvement]
-```
-
-**Reviewer returns:** Status, Issues (if any), Recommendations
+“Ready” is a plan-quality verdict, not permission to implement and not a claim
+that the planned code works. Do not make unrelated edits or start execution.

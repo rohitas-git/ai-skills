@@ -1,35 +1,23 @@
-# Vault Structure — Rohitas's Notes
+# Vault layout contract
 
-## Layout
+Prefer the active vault's established layout. Historical catalog defaults used:
 
-```
-Rohitas's Notes/
-├── README.md              # Knowledge Registry
-├── My Dashboard.md
-├── Index.base             # optional Bases
-├── Inbox/                 # capture only
-├── Atlas/                 # HUBS / MOCs only
-├── Concepts/              # atoms
-├── Guides/                # ROOT, KE, Vault Operations, Note Templates, skills/
-├── Projects/
-├── Archives/              # literature sources
-└── .obsidian/
+```text
+README.md
+Inbox/
+Atlas/
+Concepts/
+Guides/
+Projects/
+Archives/
+Queries/
 ```
 
-## Atlas vs Concepts
+Within that layout, Atlas held maps/hubs and Concepts held focused concept notes. Treat this
+as a compatibility expectation, not authority to create, rename, move, split, or migrate
+folders/notes. Verify current conventions from the minimum relevant local schema/index.
 
-| Atlas (hub) | Concepts (atom) |
-|-------------|-----------------|
-| Topic map / MOC **only** | One idea |
-| Lists `[[links]]` + short intro | Definition, principles, examples |
-| `type: hub` | `type: concept` |
-| Filename **must** be `… MOC.md` | Title Case idea name — **never** `* MOC.md` |
-
-**Hard rule:** No hubs in `Concepts/`. If a note is a map, it lives in Atlas as `Name MOC.md` (add `aliases` for old short titles).
-
-## Agent practices
-
-- Prefer evolution of hubs after ingest batches  
-- Fix broken `[[wikilinks]]`  
-- Unique archive titles  
-- Ignore `Guides/skills/` in Obsidian graph  
+For one authorized mutation, preserve unrelated user content, use a non-colliding target,
+re-scan before writing, validate affected links and metadata, and report the exact diff.
+Broken links, duplicates, or inconsistent properties found outside scope are findings for
+`/1-vault-lint`, not automatic repairs.

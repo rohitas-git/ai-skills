@@ -1,9 +1,16 @@
+> **Historical source — not operative instructions.** Use `incremental-slices.md`; do not execute
+> this source's per-slice commit, full-suite, feature-flag, line-count, or migration rules directly.
+
+---
+name: incremental-implementation
+description: Delivers changes incrementally in thin, verifiable slices. Use when implementing any feature or change that touches more than one file, or when picking up the next task from a plan. Use when rolling a change out behind a feature flag, when you're about to write a large amount of code at once, or when a task feels too big to land in one step.
+---
 
 # Incremental Implementation
 
 ## Overview
 
-Build in thin vertical slices — 0-implement one piece, test it, verify it, then expand. Avoid implementing an entire feature in one pass. Each increment should leave the system in a working, testable state. This is the execution discipline that makes large features manageable.
+Build in thin vertical slices — implement one piece, test it, verify it, then expand. Avoid implementing an entire feature in one pass. Each increment should leave the system in a working, testable state. This is the execution discipline that makes large features manageable.
 
 ## When to Use
 
@@ -88,7 +95,7 @@ If Slice 1 fails, you discover it before investing in Slices 2 and 3.
 
 Before writing any code, ask: "What is the simplest thing that could work?"
 
-After writing code, 0-review it against these checks:
+After writing code, review it against these checks:
 - Can this be done in fewer lines?
 - Are these abstractions earning their complexity?
 - Would a staff engineer look at this and say "why didn't you just..."?
@@ -181,26 +188,26 @@ Each increment should be independently revertable:
 When directing an agent to implement incrementally:
 
 ```
-"Let's 0-implement Task 3 from the plan.
+"Let's implement Task 3 from the plan.
 
 Start with just the database schema change and the API endpoint.
 Don't touch the UI yet — we'll do that in the next increment.
 
-After implementing, run `npm test` and `npm run build` to verify
-nothing is broken."
+After implementing, run the repository's test and build commands to
+verify nothing is broken."
 ```
 
 Be explicit about what's in scope and what's NOT in scope for each increment.
 
 ## Increment Checklist
 
-After each increment, verify:
+After each increment, verify with the repository's own commands (see the test-driven-development skill's Discover the Stack First section):
 
 - [ ] The change does one thing and does it completely
-- [ ] All existing tests still pass (`npm test`)
-- [ ] The build succeeds (`npm run build`)
-- [ ] Type checking passes (`npx tsc --noEmit`)
-- [ ] Linting passes (`npm run lint`)
+- [ ] All existing tests still pass (the repository's test command: `npm test`, `./gradlew test`, `pytest`, ...)
+- [ ] The build succeeds (the repository's build command)
+- [ ] Type checking passes, where the stack has one (`npx tsc --noEmit`, `mypy`, ...)
+- [ ] Linting passes (the repository's lint command)
 - [ ] The new functionality works as expected
 - [ ] The change is committed with a descriptive message
 
@@ -242,4 +249,4 @@ After completing all increments for a task:
 
 ## See Also
 
-Per-increment verification is the local check. Before declaring a task done, apply the project-wide Definition of Done as the final gate, the standing bar every increment clears regardless of the task. See `references/definition-of-done.md`.
+Per-increment verification is the local check. Before declaring a task done, apply the project-wide Definition of Done as the final gate, the standing bar every increment clears regardless of the task. See `../../references/definition-of-done.md`.

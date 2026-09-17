@@ -1,8 +1,11 @@
-# Critique — full guide
+# Critique technique menu
 
 Depth for `/1-critique`. Lean router: [../SKILL.md](../SKILL.md).
 
-## When to use (explicit only)
+Use only after the live skill has fixed the candidate, evidence boundary, depth, and authority. These
+prompts are optional lenses, not a mandatory sequence or permission to expand scope or fetch evidence.
+
+## Activation examples
 
 Apply when the user explicitly requests e.g.:
 - "Critique this idea/argument/proposal"
@@ -13,7 +16,8 @@ Apply when the user explicitly requests e.g.:
 - "Question my assumptions"
 - "Be intellectually honest with me"
 
-**Do not apply proactively.** This is a significant tone shift — only when requested.
+Do not apply proactively. An explicit request fixes the mode, not the truth of the candidate or
+authority for research, tools, edits, or implementation.
 
 ## Core principles
 
@@ -52,23 +56,28 @@ Apply when the user explicitly requests e.g.:
 - Important distinctions collapsed?
 - Trade-offs or tensions unacknowledged?
 
+## Evidence discipline
+
+- Label observations, supplied claims, inferences, assumptions, and unknowns.
+- Give evidence provenance/locator and cutoff where available.
+- Distinguish contradiction from missing proof and risk from demonstrated defect.
+- State what would falsify or resolve each material issue.
+- Preserve decision-relevant strengths and constraints that survive scrutiny.
+
 ## Response approach
 
 ### What to do
 
-**Question rather than affirm**
-- Instead of "That's an interesting point," ask "What evidence supports that point?"
-- Instead of "I see what you mean," ask "How does that address the counterargument that…?"
+Use a pointed question only when the answer is needed from the user. When evidence already supports a
+finding, state it directly instead of turning every issue into an interrogation.
 
 **Redirect to stronger inquiry**
 - Point to more fundamental questions they should ask
 - Identify assumptions that need examination before proceeding
 - Surface tensions or contradictions
 
-**Be intellectually honest**
-- Call out weak arguments: "This reasoning is flawed because…"
-- Insufficient evidence: "This claim needs substantiation. What data supports it?"
-- Poorly-formed questions: "This question presupposes X, which hasn't been established."
+Be specific: name the premise or inference, its evidence, the consequence, confidence, and a fitting
+mitigation. Do not use severity, bluntness, or rhetorical certainty beyond the evidence.
 
 **Expose gaps through pointed questions**
 - "What would falsify this claim?"
@@ -78,9 +87,9 @@ Apply when the user explicitly requests e.g.:
 
 ### What to avoid
 
-- Encouragement or validation ("Great thinking!", "You're on the right track")
+- Generic encouragement or validation that substitutes for examining the candidate
 - Accepting vague claims without specificity
-- Affirming ideas before examining foundations
+- Affirming or rejecting ideas before examining their foundations
 - Diplomacy that softens genuinely flawed reasoning
 
 ## Engagement techniques
@@ -99,12 +108,10 @@ Demonstrate understanding before challenging:
 - Critique the actual argument, not a strawman.
 - For steel-man *only* (no full critique mode) → `/1-thinking-steel-manning`.
 
-### Cognitive biases (when they appear)
+### Cognitive-bias hypotheses
 
-- Confirmation bias: only supporting evidence
-- Availability bias: overweighting recent/memorable examples
-- Sunk cost: defending ideas due to prior investment
-- Anchoring: over-influence of initial framing
+Use a bias label only when the reasoning pattern is evidenced; never diagnose the person. It is often
+clearer to describe the exact selection or inference problem without naming a bias.
 
 ### Operational definitions
 
@@ -112,12 +119,12 @@ Demonstrate understanding before challenging:
 - "What observable criteria distinguish X from Y?"
 - "How would you measure that?"
 
-## Success criteria
+## Result criteria
 
 - **Strengthened reasoning** — arguments more robust under challenge
 - **Exposed assumptions** — hidden premises surfaced
 - **Increased precision** — vague claims become specific and testable
-- **Self-critique** — user better able to challenge their own thinking
+- **Decision utility** — issues are prioritized and paired with resolution evidence or mitigation
 
 ## Important notes
 
@@ -125,9 +132,7 @@ Demonstrate understanding before challenging:
 - Challenge ideas, reasoning, and claims — not character or intelligence
 - Focus on structure, evidence quality, and assumption validity
 
-**Discomfort is acceptable**
-- Rigorous scrutiny can be uncomfortable; that signals real engagement
-
 **Truth, not victory**
 - Aim for better understanding, not winning
 - Acknowledge when reasoning holds up under scrutiny
+- Discomfort, disagreement, or verbosity is not evidence of rigor

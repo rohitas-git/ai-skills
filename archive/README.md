@@ -12,6 +12,7 @@ Tombstones for retired skills and offline vendor packs. **Not host-discovered.**
 | [obsidian-notes-manager](./obsidian-notes-manager/) | **rohitas-vault-wiki** + vault-* |
 | [task-observer](./task-observer/) | **reflect**, **butler** |
 | [continuous-learning-v2](./continuous-learning-v2/) | **reflect** |
+| [1-git-commit-helper](./1-git-commit-helper/) | **1-atomic-git-commits** |
 
 ## Vendor packs
 

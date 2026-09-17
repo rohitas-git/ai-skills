@@ -2,6 +2,10 @@
 
 How the engineering skills should consume this repo's domain documentation when exploring the codebase.
 
+This is a starting template. It becomes active only after
+`/1-setup-domain-docs` adapts and writes it into the authorized consumer
+repository without replacing surrounding instructions.
+
 ## Before exploring, read these
 
 - **`CONTEXT.md`** at the repo root, or

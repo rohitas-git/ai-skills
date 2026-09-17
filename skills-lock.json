@@ -83,7 +83,7 @@
       "source": "mattpocock/skills",
       "sourceType": "github",
       "skillPath": "skills/skills/1-resolving-merge-conflicts/SKILL.md",
-      "computedHash": "28aad6f8b1b7025abc8892fa8890f68fe1533499b28a565f416b159131d22fad"
+      "computedHash": "59db36f675d2acca2328da01a73facadabc757a743f38d2c0c9bd6b70cfb7cde"
     },
     "1-tdd": {
       "source": "mattpocock/skills",
@@ -137,7 +137,7 @@
       "source": "tjboudreaux/cc-thinking-skills",
       "sourceType": "github",
       "skillPath": "skills/skills/0-thinking/SKILL.md",
-      "computedHash": "7db5c0ecf6a9e2291a4d160780f2f1e4b6529ff3f12cd5257395a0988bc8353f",
+      "computedHash": "f0788e7389f6282d26d0ff563da5e5b2c41b7ae8f144092ec54ee1ea7612d402",
       "commit": "7b8fece345dfaa11773be7152ccd194589cb5437"
     },
     "1-thinking-bounded-rationality": {
@@ -256,7 +256,7 @@
       "source": "tjboudreaux/cc-thinking-skills",
       "sourceType": "github",
       "skillPath": "skills/skills/1-thinking-red-team/SKILL.md",
-      "computedHash": "95055de49b7823e350433d27e2d9444ea3031ba190489deb95e78fb87c418fb4",
+      "computedHash": "a6100e86a65981551aafc9882fdde4299794d92a12d2b2acaa678002755d9495",
       "commit": "7b8fece345dfaa11773be7152ccd194589cb5437"
     },
     "1-thinking-reversibility": {
@@ -328,6 +328,286 @@
       "skillPath": "skills/skills/1-thinking-steel-manning/SKILL.md",
       "computedHash": "148e7da56e179b1dc3683af2db9ccadab9b1e49373baf6aa4a9a004f70ceaf66",
       "commit": "7b8fece345dfaa11773be7152ccd194589cb5437"
+    },
+    "1-bro": {
+      "source": "luchasarie/bro-skill",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-bro/SKILL.md",
+      "computedHash": "7f3515d2557643f27d42a419d4a5c97b55e133259d0eaf915a07f87e32b4b76d",
+      "commit": "01e51f8092973be58eff3b7271282bd8488a02ae"
+    },
+    "1-impeccable": {
+      "source": "pbakaus/impeccable",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-impeccable/SKILL.md",
+      "computedHash": "6cc2d5bf886b1e5fbabf1c0e38912adc62d9a40e8967373ef70c3b9f01ab93a3",
+      "commit": "fcc271c1cb5e1ef17022dd8b84074361b4d0acd7"
+    },
+    "1-action-first-output": {
+      "source": "ayghri/i-have-adhd",
+      "sourceType": "github",
+      "skillPath": "archive/vendor/i-have-adhd/skills/i-have-adhd/SKILL.md",
+      "computedHash": "3170b16ace00aecb0dd7feb54c0b5aa642e7502acda06ecd24fd89a11c7127e9",
+      "commit": "6f1f982d0a47c65899af3c5a7450b7098bc65325"
+    },
+    "1-graphify": {
+      "source": "Graphify-Labs/graphify",
+      "sourceType": "github",
+      "skillPath": "archive/vendor/graphify/graphify/skill-codex.md",
+      "computedHash": "3898b1042721cad27d6f87ca44f638415a7f763203aefd86b90f9358ffea3a43",
+      "commit": "23f2ffaa43fd12f25d9eabe91e6d184b5d89b474"
+    },
+    "1-plan-arbiter": {
+      "source": "BuilderIO/skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-plan-arbiter/SKILL.md",
+      "computedHash": "f95d4ea6dc3c38fdf11ed2b258067ce9edcd9c7139b51f5b8bd60e463dc3205c",
+      "commit": "8cd59582774e0badf23796a6fc86c26c7117988e"
+    },
+    "1-plow-ahead": {
+      "source": "BuilderIO/skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-plow-ahead/SKILL.md",
+      "computedHash": "c0098feada99914db73538f8fe48c2e5d3a7edcb5eec3636be41c12f867d4947",
+      "commit": "8cd59582774e0badf23796a6fc86c26c7117988e"
+    },
+    "1-quick-recap": {
+      "source": "BuilderIO/skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-quick-recap/SKILL.md",
+      "computedHash": "f1aebcb7514c3d46abdaa9ccd012839b8cfd3b0c0db5f967515fd1a57d9b5afa",
+      "commit": "8cd59582774e0badf23796a6fc86c26c7117988e"
+    },
+    "1-rewind": {
+      "source": "BuilderIO/skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-rewind/SKILL.md",
+      "computedHash": "44e6c6b8a9ac103cafc934038d552d39df4dd89f0992b65a3da1970f86ba83dd",
+      "commit": "8cd59582774e0badf23796a6fc86c26c7117988e"
+    },
+    "1-visual-edit": {
+      "source": "BuilderIO/skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-visual-edit/SKILL.md",
+      "computedHash": "17d13e46afec35d91faa4fe07cddcecf81f700f3c1b8d5394d111cd18ff2b824",
+      "commit": "8cd59582774e0badf23796a6fc86c26c7117988e"
+    },
+    "1-visual-plan": {
+      "source": "BuilderIO/skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-visual-plan/SKILL.md",
+      "computedHash": "b57a8998cece9cff3c125fd0887878d99fba83e4b704ae7b62237efc8da37b1c",
+      "commit": "8cd59582774e0badf23796a6fc86c26c7117988e"
+    },
+    "1-visual-recap": {
+      "source": "BuilderIO/skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-visual-recap/SKILL.md",
+      "computedHash": "f2938f3cf4c586d490162dad67e501693f1ae1b03779f6f60587e7ad7aec3d25",
+      "commit": "8cd59582774e0badf23796a6fc86c26c7117988e"
+    },
+    "1-webmcp": {
+      "source": "BuilderIO/skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-webmcp/SKILL.md",
+      "computedHash": "7e9fe03e484110c02b69d1d39e61cb4ea5d9efd97573cce0967d447bf4dee248",
+      "commit": "8cd59582774e0badf23796a6fc86c26c7117988e"
+    },
+    "1-constraint-driven-development": {
+      "source": "addyosmani/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-constraint-driven-development/SKILL.md",
+      "computedHash": "f92b69a8fb13518fca27d6e2759b0b824312ac57abaf0bd0907a0824e6006fd2",
+      "commit": "6ca0cd7db39b41b1c37e26d335c507ee92382c6d"
+    },
+    "1-agent-evaluation": {
+      "source": "seb1n/awesome-ai-agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-agent-evaluation/SKILL.md",
+      "computedHash": "20b491a5ee7659f0883a0e2ba731e2282a9e4e4fd21ff22e347e39aa43bc17bb",
+      "commit": "75865a5d037a4cdaa7f409a4ec14ab9b0292920b"
+    },
+    "1-tool-schema-design": {
+      "source": "seb1n/awesome-ai-agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-tool-schema-design/SKILL.md",
+      "computedHash": "be9d60074d03a023e7165505ef985ddcc30e2844c83c8956cb83ce06031cd2d1",
+      "commit": "75865a5d037a4cdaa7f409a4ec14ab9b0292920b"
+    },
+    "1-human-in-the-loop": {
+      "source": "seb1n/awesome-ai-agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-human-in-the-loop/SKILL.md",
+      "computedHash": "bdb2b8ee41a67909add2fbd277b22d552d9233eb76aa3751231cb7f59a5a9c5f",
+      "commit": "75865a5d037a4cdaa7f409a4ec14ab9b0292920b"
+    },
+    "1-mcp-server-building": {
+      "source": "seb1n/awesome-ai-agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-mcp-server-building/SKILL.md",
+      "computedHash": "057dfa285eb6164a3480302115061d2ede844d2bd148711eae416e76d1987a96",
+      "commit": "75865a5d037a4cdaa7f409a4ec14ab9b0292920b"
+    },
+    "2-prompt-injection-defense": {
+      "source": "seb1n/awesome-ai-agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/2-prompt-injection-defense/SKILL.md",
+      "computedHash": "d1ed33da1e891ac3348dc1700a2915148bf16fbe19ea5e73c92a52f91370c531",
+      "commit": "75865a5d037a4cdaa7f409a4ec14ab9b0292920b"
+    },
+    "2-skill-supply-chain-audit": {
+      "source": "seb1n/awesome-ai-agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/2-skill-supply-chain-audit/SKILL.md",
+      "computedHash": "2f50565056888c9dfa9602a398fe74fb139819f9b332f43fbfe93177ee2726fd",
+      "commit": "75865a5d037a4cdaa7f409a4ec14ab9b0292920b"
+    },
+    "1-pdf": {
+      "source": "seb1n/awesome-ai-agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-pdf/SKILL.md",
+      "computedHash": "9d520cc9b924be4c47f844d9b268cb67b64555e2e27b63ad9d7b74a7e1129a06",
+      "commit": "75865a5d037a4cdaa7f409a4ec14ab9b0292920b"
+    },
+    "0-devops": {
+      "source": "BagelHole/DevOps-Security-Agent-Skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/0-devops/SKILL.md",
+      "computedHash": "b220cf9d0b09a24ded1db56acb5d69cecc3eee83c54bdf6a49e66263fcbb1e61",
+      "commit": "0365f57a079b1332f95cf26e31dd2d5332a8399f"
+    },
+    "1-infrastructure-as-code": {
+      "source": "BagelHole/DevOps-Security-Agent-Skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-infrastructure-as-code/SKILL.md",
+      "computedHash": "9680eed6d00625e864b7eaa23d41acd635510ef4b913bb240c2d8a19396f77fb",
+      "commit": "0365f57a079b1332f95cf26e31dd2d5332a8399f"
+    },
+    "1-cloud-platform-operations": {
+      "source": "BagelHole/DevOps-Security-Agent-Skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-cloud-platform-operations/SKILL.md",
+      "computedHash": "1a5b904aa0d9e18904c7e416f1435b812df83b1756da20af45c41b028fac1713",
+      "commit": "0365f57a079b1332f95cf26e31dd2d5332a8399f"
+    },
+    "1-container-platform-operations": {
+      "source": "BagelHole/DevOps-Security-Agent-Skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-container-platform-operations/SKILL.md",
+      "computedHash": "4fd7335abbe1b331729a9a259254aa1a30bafcc65d6a90f1f8c7a09d2f0c037e",
+      "commit": "0365f57a079b1332f95cf26e31dd2d5332a8399f"
+    },
+    "1-database-and-storage-operations": {
+      "source": "BagelHole/DevOps-Security-Agent-Skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-database-and-storage-operations/SKILL.md",
+      "computedHash": "505379ceab188756d75c7dab1fb5ac881e646364309314c2711ff62a5442d05e",
+      "commit": "0365f57a079b1332f95cf26e31dd2d5332a8399f"
+    },
+    "1-network-and-edge-operations": {
+      "source": "BagelHole/DevOps-Security-Agent-Skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-network-and-edge-operations/SKILL.md",
+      "computedHash": "01e48151938e3848ac074bfcf57d7090ba59f92442b8590eef1b5ae450fc84c3",
+      "commit": "0365f57a079b1332f95cf26e31dd2d5332a8399f"
+    },
+    "1-server-and-fleet-operations": {
+      "source": "BagelHole/DevOps-Security-Agent-Skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-server-and-fleet-operations/SKILL.md",
+      "computedHash": "43facd5feee7518643ffb4f2b8e380577c72a3b4433bced310b29af37e3a33c6",
+      "commit": "0365f57a079b1332f95cf26e31dd2d5332a8399f"
+    },
+    "1-platform-engineering": {
+      "source": "BagelHole/DevOps-Security-Agent-Skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-platform-engineering/SKILL.md",
+      "computedHash": "b3330bdadcd6d56462bdb5be0bd82a0c94d782d187407c8d69a504ff328a8e1f",
+      "commit": "0365f57a079b1332f95cf26e31dd2d5332a8399f"
+    },
+    "1-ai-platform-operations": {
+      "source": "BagelHole/DevOps-Security-Agent-Skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-ai-platform-operations/SKILL.md",
+      "computedHash": "de52443dd621e4dc2dbb596fde40c12ba8d3840110c3f5af8ef16d5e7b50de90",
+      "commit": "0365f57a079b1332f95cf26e31dd2d5332a8399f"
+    },
+    "1-identity-and-secrets-management": {
+      "source": "BagelHole/DevOps-Security-Agent-Skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-identity-and-secrets-management/SKILL.md",
+      "computedHash": "be27a3285baf5df34229f5277faa1cf2ab7244db1a93cc2a672150203539429f",
+      "commit": "0365f57a079b1332f95cf26e31dd2d5332a8399f"
+    },
+    "1-incident-response": {
+      "source": "BagelHole/DevOps-Security-Agent-Skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-incident-response/SKILL.md",
+      "computedHash": "899d27f94a25f9f4732d602159fcb8af2377fd8fddf168cea6c08e1b7e16a73d",
+      "commit": "0365f57a079b1332f95cf26e31dd2d5332a8399f"
+    },
+    "1-resilience-and-disaster-recovery": {
+      "source": "BagelHole/DevOps-Security-Agent-Skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-resilience-and-disaster-recovery/SKILL.md",
+      "computedHash": "a26648da6c462a62d399334aaf7da7301a767a09a8091dd3a23b056db1a45a2e",
+      "commit": "0365f57a079b1332f95cf26e31dd2d5332a8399f"
+    },
+    "1-compliance-engineering": {
+      "source": "BagelHole/DevOps-Security-Agent-Skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-compliance-engineering/SKILL.md",
+      "computedHash": "17f668fbe231fe158ab6369494f02da4f9c0db4662f6954b64a7df77d99b4bc9",
+      "commit": "0365f57a079b1332f95cf26e31dd2d5332a8399f"
+    },
+    "1-go-best-practices": {
+      "source": "fernandobandeira/agents",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-go-best-practices/SKILL.md",
+      "computedHash": "17f29aa726f5d95d115a3fe246c54dcee55693beec1b737c105d6f220e8cba51",
+      "commit": "42be7749df8bf4043c1314b02199278cbcf44194"
+    },
+    "1-perspective-analysis": {
+      "source": "fernandobandeira/agents",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-perspective-analysis/SKILL.md",
+      "computedHash": "125c3ff903d987ae52d1cf607c31304879edd30e03e445af6abd989f79ae24d5",
+      "commit": "42be7749df8bf4043c1314b02199278cbcf44194"
+    },
+    "1-strategic-analysis": {
+      "source": "fernandobandeira/agents",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-strategic-analysis/SKILL.md",
+      "computedHash": "ad7a75690150b67fceb88f9af237b420a0971cd92c565cf9d140276aa72de7ec",
+      "commit": "42be7749df8bf4043c1314b02199278cbcf44194"
+    },
+    "1-competitive-analysis": {
+      "source": "fernandobandeira/agents",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-competitive-analysis/SKILL.md",
+      "computedHash": "2309e9263684fd516b095fe0b30f4c831443fa20221591996fd311c75ebf2e4c",
+      "commit": "42be7749df8bf4043c1314b02199278cbcf44194"
+    },
+    "1-user-research": {
+      "source": "fernandobandeira/agents",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-user-research/SKILL.md",
+      "computedHash": "a940397c8ea935f126b9f3cceb798dcf0ae381496562a4f481cedbc633489ff6",
+      "commit": "42be7749df8bf4043c1314b02199278cbcf44194"
+    },
+    "1-thinking-lateral": {
+      "source": "ysskrishna/ai-agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-thinking-lateral/SKILL.md",
+      "computedHash": "91556b7c2c60517ab49852809fb220db262c7d1a7cadcaaee819d3835b8de5c9",
+      "commit": "e213af5f6574ea982a64af85b5b1347a816c5bf8"
+    },
+    "1-thinking-ethical": {
+      "source": "ysskrishna/ai-agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-thinking-ethical/SKILL.md",
+      "computedHash": "693f8bcb69c292784a316117e74caab113b7b392f4fd4aba6756f34c6dd3b575",
+      "commit": "e213af5f6574ea982a64af85b5b1347a816c5bf8"
     }
   }
 }

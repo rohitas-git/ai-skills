@@ -10,9 +10,11 @@
       "type": "object",
       "required": ["project", "timestamp", "scope", "phases_completed"],
       "properties": {
-        "project": { "type": "string" },
+        "project": { "type": "string", "minLength": 1 },
         "timestamp": { "type": "string", "format": "date-time" },
-        "scope": { "type": "string", "description": "Full project or specific paths/modules" },
+        "scope": { "type": "string", "minLength": 1, "description": "Full project or specific paths/modules" },
+        "candidate": { "type": "string", "description": "Repository/artifact identity, comparison revisions and relevant dirty-state evidence" },
+        "coverage_limits": { "type": "array", "items": { "type": "string" } },
         "phases_completed": {
           "type": "array",
           "items": { "type": "string" }
@@ -33,15 +35,17 @@
           "location",
           "scenario",
           "impact",
+          "evidence",
           "confidence",
           "status"
         ],
         "properties": {
           "id": {
             "type": "string",
+            "minLength": 1,
             "description": "Stable unique identifier, e.g. SEC-001 or LOGIC-003"
           },
-          "title": { "type": "string" },
+          "title": { "type": "string", "minLength": 1 },
           "severity": {
             "type": "string",
             "enum": ["Critical", "High", "Medium", "Low"]
@@ -65,7 +69,8 @@
             "properties": {
               "paths": {
                 "type": "array",
-                "items": { "type": "string" },
+                "minItems": 1,
+                "items": { "type": "string", "minLength": 1 },
                 "description": "File paths, optionally with line ranges, e.g. src/auth.py:42-67"
               },
               "functions": {
@@ -80,14 +85,17 @@
           },
           "scenario": {
             "type": "string",
+            "minLength": 1,
             "description": "Concrete steps or conditions that trigger the issue"
           },
           "impact": {
             "type": "string",
+            "minLength": 1,
             "description": "What an attacker or user can achieve, or what fails"
           },
           "evidence": {
             "type": "string",
+            "minLength": 1,
             "description": "Key code references or reasoning supporting the finding"
           },
           "confidence": {
@@ -106,6 +114,11 @@
             "type": "boolean",
             "description": "True if this finding was not present in a prior findings.json"
           },
+          "change_relation": {
+            "type": "string",
+            "enum": ["introduced", "worsened", "pre-existing", "fixed-by-this-change", "not-applicable"],
+            "description": "Change causality, separate from whether a finding was previously reported"
+          },
           "related_findings": {
             "type": "array",
             "items": { "type": "string" },
@@ -117,19 +130,19 @@
     "summary": {
       "type": "object",
       "properties": {
-        "total_confirmed": { "type": "integer" },
+        "total_confirmed": { "type": "integer", "minimum": 0 },
         "by_severity": {
           "type": "object",
           "properties": {
-            "Critical": { "type": "integer" },
-            "High": { "type": "integer" },
-            "Medium": { "type": "integer" },
-            "Low": { "type": "integer" }
+            "Critical": { "type": "integer", "minimum": 0 },
+            "High": { "type": "integer", "minimum": 0 },
+            "Medium": { "type": "integer", "minimum": 0 },
+            "Low": { "type": "integer", "minimum": 0 }
           }
         },
         "by_category": {
           "type": "object",
-          "additionalProperties": { "type": "integer" }
+          "additionalProperties": { "type": "integer", "minimum": 0 }
         }
       }
     }

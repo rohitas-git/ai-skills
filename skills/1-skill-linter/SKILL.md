@@ -1,93 +1,59 @@
 ---
 name: 1-skill-linter
 description: >
-  Report skill/catalog health: lean SKILL.md, depth-prefix, hub membership, route surface, sprawl.
-  Reports only — does not place or rewrite. Use when: after create/place/ingest, /1-skill-linter, catalog health.
-  Not for: apply fixes (0-skill-manager), thin rewrite (0-skill-creator), atomize overlap (1-skill-atomize).
+  Report structural and routing health for one pinned skill, hub, diff, or catalog snapshot. Use after
+  catalog edits or when checking lean shape, names, links, membership, and handoffs. Not for applying
+  fixes (0-skill-manager), rewriting bodies (0-skill-creator), or resolving overlap (1-skill-atomize).
   Hub: /0-skill-manager.
 disable-model-invocation: true
 metadata:
   catalog:
     hub: 0-skill-manager
     role: pipeline
-    when:
-      - "lint skill or catalog health"
-      - "gate after place/ingest"
+    when: [report structural and routing health for a pinned catalog snapshot]
     not_when:
-      - "apply place/organize → 0-skill-manager"
-      - "thin rewrite → 0-skill-creator"
-      - "overlap reorg → 1-skill-atomize"
-    prev: [0-skill-manager]
+      - "apply fixes → 0-skill-manager"
+      - "rewrite body → 0-skill-creator"
+      - "resolve overlap → 1-skill-atomize"
+    prev: [0-skill-manager, 0-skill-creator, 1-skill-atomize]
+    next: [0-skill-manager]
     cousins: [1-skill-atomize, 0-skill-creator]
-    triggers:
-      - "skill lint"
-      - "1-skill-linter"
-      - "catalog health"
+    triggers: [skill lint, catalog health, validate skill wiring, lint route surface]
     requires_setup: false
 ---
 
-# Skill linter
+# Skill Linter
 
-**Report only.** Mutations → `/0-skill-manager` · lean craft → `/0-skill-creator` + `/1-writing-great-skills`.
-
-**Rules:** [ADR 0006](../../docs/adr/0006-skill-linter-and-hub-membership.md) · [ADR 0009](../../docs/adr/0009-catalog-route-surface-for-butler.md) · [lean-structure](./references/lean-structure.md) · [skill-route-surface](../0-skill-manager/references/skill-route-surface.md) · theory `/1-writing-great-skills`
-
-## Process
-
-1. Resolve catalog root + `catalog.yaml` version + flows/hubs SSOT.  
-2. Choose **mode** (default after place/ingest: **skill**).  
-3. Collect targets → run [skill-lint-checklist](./references/skill-lint-checklist.md) A–F.  
-4. Enforce lean shape + route surface + hub membership ([hub-membership](./references/hub-membership.md)).  
-5. Sprawl/sub-domain only after thin+chain options ([sprawl-and-subdomain](./references/sprawl-and-subdomain.md)).  
-6. Prefer `./scripts/lint-skills` for CI-parity.  
-7. Emit report ([report-format](./references/report-format.md)). **Critical > 0** ⇒ fail place/ingest gate.  
-8. Hand off fixes — do not mutate.
+**Report only.** A passing structural lint is not proof that a skill is safe, correct, useful, or semantically complete.
 
 ## Modes
 
-| Mode | Scope |
-|------|--------|
-| skill | One skill dir |
-| hub | Domain hub + children |
-| catalog | All `skills/` |
-| diff | Listed or git-changed paths |
+| Mode | Candidate |
+|---|---|
+| skill | one exact skill package |
+| hub | one hub package and named membership surface |
+| diff | exact changed paths at a pinned revision |
+| catalog | all live skills at one cutoff |
 
-## Pass bar (lean)
+## Process
 
-| Bar | |
-|-----|--|
-| Identity | `{depth}-{slug}` name == dir |
-| Route | description triggers + `metadata.catalog`; no top-level route keys |
-| Shape | Thin router + disclosure pointers; not a book |
-| Chain | Hub member; pipeline names next |
-| Size | ≤120 ideal; >180 needs map; >250 sprawl; new >180 without map → `gate-lean` critical |
+1. Pin mode, catalog root, repository/worktree, branch/`HEAD`, dirty ownership, target paths, and cutoff. State whether evidence covers the working tree, index, commit, or generated projection.
+2. Read the governing ADRs and [checklist](./references/skill-lint-checklist.md); collect targets without following external links or executing package code.
+3. Run the repository's existing linter when present. Record exact command/tool version or script revision, exit status, parsed findings, and output truncation; a script result is evidence, not the whole semantic verdict.
+4. Check identity, frontmatter, route surface, local links, hub membership, handoff existence, lean disclosure, completion shape, and generated-projection freshness. Use [membership](./references/hub-membership.md), [lean structure](./references/lean-structure.md), and [sprawl rules](./references/sprawl-and-subdomain.md).
+5. Emit [report format](./references/report-format.md) with enumerated targets, coverage gaps, critical/warn/info counts, and Gate PASS/FAIL. Critical findings fail a place/ingest gate.
+6. Return findings to `/0-skill-manager`; mutate nothing.
 
-Examples of lean routers: `/0-implement`, `/1-tdd`, `/1-to-spec`.
+## Boundary
 
-## Automation
-
-```bash
-./scripts/lint-skills           # Gate PASS = 0 critical
-./scripts/generate-route-index  # after membership/frontmatter change
-```
-
-## Handoffs
-
-| Finding | Who |
-|---------|-----|
-| Place / organize / new-hub | `/0-skill-manager` |
-| Missing Boundary / dual job | `/1-skill-atomize` |
-| Fat body / bad description | `/0-skill-creator` + `/1-writing-great-skills` |
-| Which skill | `/0-butler` |
-
-## Hard rules
-
-1. Report only — no multi-file catalog writes.  
-2. Depth-prefix + hub membership critical.  
-3. Lean + progressive disclosure.  
-4. No inventing skills/hubs.  
-5. New place/ingest fails on any critical (incl. `gate-route`, `gate-lean`, `route-top-level`).
+| Finding | Route |
+|---|---|
+| Catalog placement/wiring | `/0-skill-manager` |
+| Body/description craft | `/0-skill-creator` |
+| Overlap or one-job split | `/1-skill-atomize` |
+| External package safety | `/2-skill-supply-chain-audit` |
 
 ## Related
 
-Parent: `/0-skill-manager`.
+Parent and return: `/0-skill-manager`.
+

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Wayfinder Advance"
+  short_description: "Advance one map decision ticket"
+policy:
+  allow_implicit_invocation: false

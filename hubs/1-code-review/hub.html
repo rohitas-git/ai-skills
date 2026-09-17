@@ -53,10 +53,10 @@
 </header>
 <nav class="top">
   <a class="butler-cta" href="../0-butler/hub.html">★ 0-butler (hub of hubs)</a>
-  <a class="chart-cta" href="../../flows-chart.html">Full flows chart</a>
-  <a href="../../flows-chart.html#domain-hub-matrix">Domain matrix</a>
+  <a class="chart-cta" href="../flows-chart.html">Full flows chart</a>
+  <a href="../flows-chart.html#domain-hub-matrix">Domain matrix</a>
   <a href="./workflow.json">workflow.json</a>
-  <a href="../../../productivity/0-butler/references/flows.md">flows.md SSOT</a>
+  <a href="../../skills/0-butler/references/flows.md">flows.md SSOT</a>
   <a href="../index.html">hubs index</a>
   <span class="here">package: <code>hubs/1-code-review/</code></span>
 </nav>
@@ -71,7 +71,7 @@
     <br/>Parent domain hub: <a href="../0-review/hub.html"><code>/0-review</code></a> (sub-hub).
   </div>
   <p class="meta">
-    Parent skill: <code>productivity/butler</code> ·
+    Parent skill: <code>skills/0-butler</code> ·
     This package: <code>hubs/1-code-review/</code>
   </p>
 </section>
@@ -80,32 +80,33 @@
   <p class="meta">
     <span class="badge hub">sub-hub</span>
     slash: <code>/1-code-review</code> ·
-    skill path: <code>engineering/1-code-review/</code> ·
+    skill path: <code>skills/1-code-review/</code> ·
     package: <code>hubs/1-code-review/</code>
   </p>
-  <p>Default = scan and run applicable axes; ask F6 only to force/skip. Parent domain hub is /0-review.</p>
+  <p>Inspect the actual requested candidate, including task-owned dirty work. Run applicable axes locally or with permitted independent reviewers; return to the caller without repair or commit.</p>
 </section>
 <section>
   <h2>Children</h2>
   <ul>
     <li><strong>axis:</strong> Spec, Standards, Maintainability</li>
-<li><strong>cousin:</strong> 2-verify-work, 2-ponytail-review</li>
-<li><strong>soft:</strong> 2-software-architect, 2-security-and-hardening</li>
-<li><strong>tombstone:</strong> code-review-v2 <span class='meta'>(→ 1-code-review)</span></li>
+<li><strong>cousin:</strong> 2-verify-work, <a href="../../skills/2-ponytail-review/SKILL.md">2-ponytail-review</a> <span class='meta'>(read-only removable-complexity pass on the same pinned diff)</span>, 2-thermo-nuclear-code-quality-review</li>
+<li><strong>soft:</strong> <a href="../../skills/2-software-architect/SKILL.md">2-software-architect</a> <span class='meta'>(bounded read-only system review; returns to caller)</span>, 2-security-and-hardening</li>
+
   </ul>
 </section>
 <section>
   <h2>Pipeline</h2>
-  <pre>scan applicable axes
-report
-commit when green</pre>
+  <pre>pin caller, scope, comparison and actual candidate including relevant dirty work
+run Spec, Standards and Maintainability; report baseline and coverage limits
+validate findings and recheck candidate stability
+return read-only report; no automatic repair, publication or commit</pre>
 </section>
 <section>
   <h2>Forks (ask user)</h2>
   <table>
     <thead><tr><th>ID</th><th>Question</th><th>Recommended</th><th>Branches</th></tr></thead>
     <tbody>
-      <tr><td><code>F6</code></td><td>Review axes apply?</td><td>Every applicable</td><td>force/skip axes only on user override</td></tr>
+      <tr><td><code>F6</code></td><td>Review axes apply?</td><td>Every applicable</td><td>every applicable axis; honor explicit scope override · Agent judgment</td></tr>
     </tbody>
   </table>
 </section>
@@ -113,7 +114,7 @@ commit when green</pre>
   <h2>See also</h2>
   <p>
     <a class="butler-cta" href="../0-butler/hub.html">★ butler</a>
-    <a class="chart-cta" href="../../flows-chart.html">Open flows-chart.html</a>
+    <a class="chart-cta" href="../flows-chart.html">Open flows-chart.html</a>
     <a class="chart-cta" href="./workflow.json" style="margin-left:0.4rem">workflow.json</a>
   </p>
   <p class="meta">House map + fork index: chart. Machine-readable workflow: JSON. Routing apex: butler. Package layout: ADR 0005.</p>
@@ -142,8 +143,8 @@ commit when green</pre>
 <footer>
   Package <code>hubs/1-code-review/</code> for <code>/1-code-review</code> · parent: <a href="../0-butler/hub.html">butler</a>
    · domain: <a href="../0-review/hub.html">/0-review</a> ·
-  SSOT: <code>skills/productivity/0-butler/references/flows.md</code> ·
-  chart: <a href="../../flows-chart.html">flows-chart.html</a> ·
+  SSOT: <code>skills/0-butler/references/flows.md</code> ·
+  chart: <a href="../flows-chart.html">flows-chart.html</a> ·
   workflow: <a href="./workflow.json">workflow.json</a>
 </footer>
 </body>

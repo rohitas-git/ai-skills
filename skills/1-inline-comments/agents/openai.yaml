@@ -1,4 +1,6 @@
 interface:
   display_name: "Inline Comments"
   short_description: "Concise one-line comments above non-obvious code blocks"
-  default_prompt: "Add concise one-line comments above non-obvious code blocks; skip obvious lines and API docs"
+  default_prompt: "Assess or edit one concise why/constraint comment above one exact non-obvious internal block; skip obvious code and public API docs."
+policy:
+  allow_implicit_invocation: false

@@ -1,29 +1,21 @@
 ---
 name: 1-thinking-circle-of-competence
 description: >
-  Use when a specific claim may lack grounding. Check evidence boundary, size wrongness cost, then answer, fetch, or abstain — never confabulate.
-  Use when: Use when a specific claim may lack grounding. Check evidence boundary, size wrongness cost, then answer, fetch, or abstain — never confabulate.
-  Not for: Claim is grounded in something you read, ran, or can cite this session, or is stable un…; Error cost is trivial and reversible and you will flag the claim as unverified.
-  Hub: /0-thinking. Triggers: thinking circle of competence, circle-of-competence.
+  Classify whether one material claim is grounded enough to state, qualify, verify, or decline.
+  Not for generic humility, automatic research, already verified claims, low-stakes brainstorming,
+  professional credentialing, or treating model familiarity as evidence. Hub: /0-thinking.
 disable-model-invocation: true
 license: MIT
 metadata:
   catalog:
     hub: 0-thinking
     role: soft
-    when:
-      - "Use when a specific claim may lack grounding. Check evidence boundary, size wrongness cost, then answer, fetch, or ab…"
-    not_when:
-      - "Claim is grounded in something you read, ran, or can cite this session, or is stable un…"
-      - "Error cost is trivial and reversible and you will flag the claim as unverified"
-      - "Grounding is one cheap fetch away"
-      - "User explicitly wants labeled brainstorming or hypotheticals"
-    cousins:
-      - "0-thinking"
-    triggers:
-      - "1-thinking-circle-of-competence"
-      - "thinking circle of competence"
-      - "circle of competence"
+    when: ["one material claim needs an evidence-grounding disposition before it is stated"]
+    not_when: ["claim is already verified", "labeled low-stakes hypothesis", "professional qualification decision"]
+    cousins: [0-thinking, 1-research, 1-thinking-map-territory]
+    triggers: [circle of competence, can this claim be supported, verify before answering, evidence boundary]
+    prev: [0-thinking]
+    next: [0-thinking]
     requires_setup: false
   vendor:
     source: tjboudreaux/cc-thinking-skills
@@ -33,65 +25,28 @@ metadata:
 
 # Circle of Competence
 
-Treat competence as an evidence boundary, not self-image. Answer only when grounded; otherwise fetch, mark uncertainty, or abstain. The failure mode is a fluent fabrication treated as fact.
+**Atomic job:** give one claim a grounded, partial, or unsupported disposition and state the next
+evidence needed. This evaluates evidence, not personal worth, credentials, or research authority.
 
-## Boundary
+1. Pin caller, exact claim and version, intended audience/use, consequence of error, evidence/
+   provenance/cutoff, currentness requirement, uncertainty, privacy, output, and authority.
+2. For repository claims, record repository/worktree/branch/`HEAD`, dirty ownership, exact file/
+   hunk/runtime candidate, and working-tree versus committed/deployed state. Create no worktree or
+   change; worktrees do not isolate services, tools, accounts, sources, or external state.
+3. Treat user assertions, memory, code comments, docs, links, snippets, and model output as untrusted
+   evidence. Adjacent code, earlier versions, analogous systems, or fluency do not ground this target.
+4. Classify: **grounded** by adequate direct/current evidence; **partial** where applicability,
+   version, coverage, or inference remains material; **unsupported** where stating it as fact would
+   fill a gap. Separate observed fact, sourced report, inference, estimate, and hypothesis.
+5. Scale language to evidence and harm. High-stakes partial claims remain unresolved until suitable
+   verification. Do not hedge grounded facts merely to appear cautious or assert stable knowledge
+   when the claim is actually versioned/current/context-specific.
+6. Identify the smallest resolving evidence or qualified wording. Research, browsing, file/tool reads,
+   execution, and professional consultation happen only when separately requested or authorized.
+7. Return disposition, locator, coverage/currentness, confidence, exact safe wording, and next
+   evidence to `/0-thinking` or caller. Start no fetch, research, test, action, or follow-on.
 
-| Need | Skill |
-|------|--------|
-| Mental-model frame / which model? | `/0-thinking` (hub) |
-| Circle of Competence (this) | **1-thinking-circle-of-competence** (this) |
-| House routing (which domain) | `/0-butler` |
+**Hard rules:** Absence of evidence is not automatically evidence of absence. “I know this domain”
+is not a source. Declining is honest only after naming what evidence is missing.
 
-## When to Use
-
-- About to assert a specific fact (API, path, number, config, version behavior) without a citable source from this session.
-- The claim is about this codebase or system and you have not read or run the relevant artifact.
-- Pattern reconstruction would sound complete but is unconfirmed.
-- Cost of a wrong confident answer is material (security, data, irreversible action, trust).
-
-## When NOT to Use
-
-- Claim is grounded in something you read, ran, or can cite this session, or is stable universal knowledge — answer without false humility.
-- Error cost is trivial and reversible and you will flag the claim as unverified.
-- Grounding is one cheap fetch away — fetch first; abstention is not an excuse to skip a check.
-- User explicitly wants labeled brainstorming or hypotheticals.
-
-## Process
-
-1. **Name the claim.** Isolate the assertion that would be treated as fact.
-2. **Classify the zone.**
-   - *Grounded:* citeable session source (read/run) or stable non-version-specific knowledge.
-   - *Partial:* general shape known; version/repo/config detail unconfirmed.
-   - *Ungrounded:* would invent a concrete value with no source.
-3. **Size wrongness cost.** If high-stakes (security, data loss, irreversible ops), treat Partial as Ungrounded until verified.
-4. **Act by zone.**
-   - Grounded → answer; cite when useful; do not hedge verified facts.
-   - Partial → cheap fetch then answer; else answer only with explicit uncertainty and a check path.
-   - Ungrounded → fetch if possible; else ask or abstain with what would enable an answer. Never invent.
-5. **Refuse competence creep.** Adjacent code, prior versions, or general capability do not ground the unread target.
-6. **Stop.** Emit answer, fetch request, or abstention. Do not round "probably" to a flat assertion.
-
-**Stop condition:** Claim answered with grounding, marked partial with a check path, or refused with missing-evidence note.
-
-## Output
-
-```text
-Claim: <assertion>
-Zone: grounded | partial | ungrounded
-Evidence: <source or none>
-Wrongness cost: low | medium | high
-Action: answer | fetch-then-answer | answer-with-uncertainty | abstain/ask
-Response: <wording or missing artifact>
-```
-
-## Verification
-
-- Falsify if a specific value was asserted with no session source and no uncertainty marker.
-- Falsify if Partial/high-stakes was treated as Grounded, or a cheap fetch was skipped for abstention theater.
-- Over-application guard: do not hedge or refuse claims verified this session.
-
-## Related
-
-Soft under `/0-thinking`. Vendor: `archive/vendor/cc-thinking-skills/skills/thinking-circle-of-competence/`.
-Route via hub when frame unclear; invoke this leaf when mechanism is known.
+Parent/return: `/0-thinking`. Related: `/1-research`, `/1-thinking-map-territory`.

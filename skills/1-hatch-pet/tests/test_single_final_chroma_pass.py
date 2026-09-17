@@ -1,18 +1,17 @@
 import unittest
 from pathlib import Path
 
-SKILL = Path(__file__).resolve().parents[1] / "SKILL.md"
+PIPELINE = Path(__file__).resolve().parents[1] / "references" / "build-pipeline.md"
 
 
 class SingleFinalChromaPassTest(unittest.TestCase):
     def test_cleanup_runs_only_after_v2_assembly(self) -> None:
-        instructions = SKILL.read_text()
+        instructions = PIPELINE.read_text()
 
-        self.assertEqual(instructions.count("scripts/despill_chroma_edges.py"), 1)
-        self.assertNotIn("chroma-despill-standard.json", instructions)
+        self.assertEqual(instructions.count("despill pass"), 1)
         self.assertLess(
-            instructions.index("scripts/assemble_extended_atlas.py"),
-            instructions.index("scripts/despill_chroma_edges.py"),
+            instructions.index("register row 9"),
+            instructions.index("despill pass"),
         )
 
 

@@ -1,6 +1,11 @@
 # Security Checklist
 
-Quick reference for web application security. Use alongside the `2-security-and-hardening` skill.
+> Historical vendor snapshot — not operative instructions. Use the local
+> [security checklist](./security-checklist.md) and [source adaptation](./source-adaptation.md).
+> Its command examples, version matrix and blanket defaults must not execute or
+> override the scoped main workflow.
+
+Quick reference for web application security. Use alongside the `security-and-hardening` skill.
 
 ## Table of Contents
 
@@ -22,7 +27,7 @@ Quick reference for web application security. Use alongside the `2-security-and-
 
 Before reaching for controls, spend five minutes thinking like an attacker:
 
-- [ ] Trust boundaries mapped (requests, uploads, webhooks, third-party APIs, LLM output)
+- [ ] Trust boundaries mapped (requests, uploads, webhooks, third-party APIs, LLM output, and local values written by processes you don't control)
 - [ ] Assets named (credentials, PII, payment data, admin actions, money movement)
 - [ ] STRIDE run per boundary (Spoofing, Tampering, Repudiation, Info disclosure, DoS, Elevation)
 - [ ] Abuse cases written next to use cases ("how would I misuse this?")
@@ -63,6 +68,46 @@ Before reaching for controls, spend five minutes thinking like an attacker:
 - [ ] HTML output encoded (use framework auto-escaping)
 - [ ] URLs validated before redirect (prevent open redirect)
 - [ ] Server-side URL fetches allowlisted; private/reserved IPs blocked (prevent SSRF)
+- [ ] Destructive path operations (delete/move/overwrite): symlinks resolved, allowlisted root, minimum depth, ownership evidence read before the call
+
+### Destructive Path Operations
+
+Containment for a target named by data. Resolve first, then decide — and treat the
+result as a candidate, not as authorization:
+
+```typescript
+import { realpath, readFile } from 'node:fs/promises';
+import { resolve, relative, isAbsolute, join, sep } from 'node:path';
+
+const ALLOWED_ROOTS = ['/var/lib/myapp/sessions']; // an allowlist, not a pattern
+const MIN_DEPTH = 1;                               // so a root is never the target
+
+async function resolveDeletable(candidate: string, expectedOwner: string) {
+  const target = await realpath(resolve(candidate)); // symlinks resolved BEFORE the check
+  const inRoot = ALLOWED_ROOTS.some((root) => {
+    const rel = relative(root, target);
+    // `rel === '..'` / `'../'` only — a plain `startsWith('..')` would also
+    // reject a legitimate child named `..cache`.
+    if (rel === '' || rel === '..' || rel.startsWith(`..${sep}`) || isAbsolute(rel)) return false;
+    return rel.split(sep).length >= MIN_DEPTH;
+  });
+  if (!inRoot) throw new Error(`refusing: outside allowed roots (${target})`);
+
+  const owner = await readFile(join(target, '.owner'), 'utf8').catch(() => null);
+  if (owner?.trim() !== expectedOwner) throw new Error(`refusing: unproven owner (${target})`);
+  return target;
+}
+```
+
+What this does not do, and must be said where the snippet is copied from:
+
+- **The marker is self-attestation.** Anything that can write inside the root can write
+  `.owner`. `expectedOwner` has to come from authenticated state, and the marker needs
+  integrity protection (restrictive ownership, or a MAC) before it is authorization
+  rather than a consistency check against a misderived target.
+- **Returning a path leaves a check/use race.** Where an untrusted process can swap an
+  ancestor between the check and the call, operate on a descriptor with no-follow,
+  beneath-the-root semantics, or guarantee the hierarchy is immutable for the duration.
 
 ## Security Headers
 
@@ -127,7 +172,7 @@ Never discover dependency lifecycle scripts by first executing an ordinary insta
 |---|---|
 | npm without verified granular approvals | Bootstrap with `npm ci --ignore-scripts`, or persist `ignore-scripts=true` when project-wide blocking is intended. Keep scripts disabled or deliberately upgrade before allowing any reviewed dependency script. |
 | npm 11.18.x (verified on 11.18.0) | Unreviewed dependency scripts run with a warning by default. Enforce `strict-allow-scripts=true` before a normal install, then use the workspace-unaware `npm install-scripts ls` from the installation boundary; keep approvals version-pinned and denials name-wide. |
-| npm 12.x (verified on 12.0.1) | Unreviewed dependency scripts are skipped by default; `strict-allow-scripts=true` makes their presence fail the install before execution. Use the same `npm install-scripts` 0-review and approval flow. |
+| npm 12.x (verified on 12.0.1) | Unreviewed dependency scripts are skipped by default; `strict-allow-scripts=true` makes their presence fail the install before execution. Use the same `npm install-scripts` review and approval flow. |
 | pnpm 11+ | Use `pnpm approve-builds` and commit `allowBuilds` decisions; `strictDepBuilds` defaults to `true`, so unreviewed builds fail. |
 | pnpm 10.26–10.x | Configure `allowBuilds` explicitly, or use `pnpm approve-builds` with the legacy `onlyBuiltDependencies` / `ignoredBuiltDependencies` lists. Set `strictDepBuilds: true`; its v10 default is `false`. |
 | pnpm 10.1–10.25 | `pnpm approve-builds` records the legacy lists; enable `strictDepBuilds` where supported (10.3+). |
@@ -181,7 +226,7 @@ res.status(500).json({
 | 3 | Injection | Parameterized queries, input validation |
 | 4 | Insecure Design | Threat modeling, spec-driven development |
 | 5 | Security Misconfiguration | Security headers, minimal permissions, audit deps |
-| 6 | Vulnerable Components | `npm audit`, keep deps updated, minimal deps |
+| 6 | Vulnerable Components | The ecosystem's dependency audit (`npm audit`, `pip-audit`, ...), keep deps updated, minimal deps |
 | 7 | Auth Failures | Strong passwords, rate limiting, session management |
 | 8 | Data Integrity Failures | Verify updates/dependencies, signed artifacts |
 | 9 | Logging Failures | Log security events, don't log secrets |

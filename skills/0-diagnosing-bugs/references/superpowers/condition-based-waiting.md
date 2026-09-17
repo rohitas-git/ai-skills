@@ -1,3 +1,5 @@
+> **Historical source — not operative instructions.** See `../source-snapshots.md`.
+
 # Condition-Based Waiting
 
 ## Overview

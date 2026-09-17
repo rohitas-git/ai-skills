@@ -8,7 +8,7 @@ During Phase 3 (Validation) and Phase 6 (Independent Verification), actively use
 - “Uses `eval` / `exec` / `system`” when the argument is a hard-coded constant or fully controlled by the developer.
 - “SQL string concatenation” when the concatenated parts are all trusted constants or already parameterized.
 - “Potential XSS” on server-side rendered pages that correctly escape by default (e.g., most modern frameworks) and the finding shows no bypass.
-- “Missing CSRF token” on endpoints that are safe methods (GET) or already protected by other strong mechanisms (SameSite=Strict + additional checks) when the framework default is secure.
+- “Missing CSRF token” where the operation is genuinely read-only or demonstrated alternative protections cover the actual session/cross-origin threat. A GET label alone is not proof: check for state-changing GET handlers, browser credential behavior and bypass paths.
 - “Insecure random” used for non-security purposes (UI animations, temporary IDs that are not secrets, etc.).
 
 ### Theoretical Issues Without Practical Impact
@@ -20,7 +20,7 @@ During Phase 3 (Validation) and Phase 6 (Independent Verification), actively use
 ### Framework / Library Protections Already Present
 - Claims of injection when the code uses a well-known safe API (parameterized queries, prepared statements, ORM methods that escape, React’s default escaping, etc.) and no escape hatch is used.
 - Authorization bypass claims that ignore middleware or decorators clearly applied to the route.
-- “Hard-coded secret” that is actually a public client ID, non-sensitive configuration, or a test fixture.
+- “Hard-coded secret” that is demonstrably a public identifier, non-sensitive setting or synthetic fixture. A test-file location alone does not prove a credential is fake; do not try it against a live service to find out.
 
 ### Race Conditions That Are Benign or Extremely Unlikely
 - Data races on variables that are only written during single-threaded initialization.

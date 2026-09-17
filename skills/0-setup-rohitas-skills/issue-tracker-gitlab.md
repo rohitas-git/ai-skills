@@ -2,6 +2,11 @@
 
 Issues and PRDs for this repo live as GitLab issues. Use the [`glab`](https://gitlab.com/gitlab-org/cli) CLI for all operations.
 
+This is a repository template, not permission to perform GitLab writes. Before
+any operation, pin the intended project and authenticated account rather than
+blindly trusting the current clone's `origin`. Creating, editing, labelling,
+assigning, commenting, or closing requires authority for that exact action.
+
 ## Conventions
 
 - **Create an issue**: `glab issue create --title "..." --description "..."`. Use a heredoc for multi-line descriptions. Pass `--description -` to open an editor.
@@ -12,7 +17,9 @@ Issues and PRDs for this repo live as GitLab issues. Use the [`glab`](https://gi
 - **Close**: `glab issue close <number>`. `glab issue close` does not accept a closing comment, so post the explanation first with `glab issue note <number> --message "..."`, then close.
 - **Merge requests**: GitLab calls PRs "merge requests". Use `glab mr create`, `glab mr view`, `glab mr note`, etc. — the same shape as `gh pr ...` with `mr` in place of `pr` and `note`/`--message` in place of `comment`/`--body`.
 
-Infer the repo from `git remote -v` — `glab` does this automatically when run inside a clone.
+For multiline Markdown, use a real multiline source supported by the installed
+`glab` version after checking its help, then preview the rendered text and
+target. Do not send JSON-escaped `\n` sequences through shell quoting.
 
 ## Merge requests as a triage surface
 

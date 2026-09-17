@@ -24,7 +24,7 @@ Do not package a pet until every section passes.
 - Rows `0-8` contain the exact required frame counts and recognizable state semantics.
 - Loops do not pop, reverse cadence, face the wrong direction, or remain effectively static.
 - The first idle frame works as a reduced-motion still.
-- `waiting`, `running`, `0-review`, and `failed` remain visually distinct.
+- `waiting`, `running`, `review`, and `failed` remain visually distinct.
 
 ## Look Directions
 
@@ -39,4 +39,4 @@ Do not package a pet until every section passes.
 
 ## Repair Policy
 
-Repair the smallest packaging-eligible scope: one standard row or one complete coherent look row. Never mix an individually generated repair cell into a new pet's final look row. Re-run assembly, deterministic validation, direction QA, continuity measurement, and semantic 0-review after every relevant repair.
+Repair the smallest packaging-eligible scope: one standard row or one complete coherent look row. Never mix an individually generated repair cell into a new pet's final look row. Re-run assembly, deterministic validation, direction QA, continuity measurement, and semantic review after every relevant repair.

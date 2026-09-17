@@ -7,8 +7,8 @@
   "slash": "/0-review",
   "path": "skills/0-review",
   "package_dir": "hubs/0-review/",
-  "role": "Domain router for verification modes \u2014 change 0-review, security audit, architecture 0-review, strategy.",
-  "notes": "Ship closer still lands on sub-hub /1-code-review, not this hub. Open-ended 0-review asks use F-R1.",
+  "role": "Domain router for change, PR, security, architecture, verification, codebase-planning, and adversarial-claim review modes.",
+  "notes": "Ship calls /1-code-review directly. Honor an already-selected review mode; use F-R1 only for ambiguity. Pin the actual candidate, including task-owned dirty work when requested; all child reviews return read-only evidence to their caller.",
   "parent": {
     "hub": "0-butler",
     "slash": "/0-butler",
@@ -33,28 +33,52 @@
       ]
     },
     {
+      "link_type": "pipeline",
+      "skills": [
+        "1-complete-pr-review"
+      ],
+      "note": "One pinned PR, comprehensive risk-weighted coverage, code and differential security, one returned ledger; receive-review or repair only when separately requested"
+    },
+    {
+      "link_type": "leaf",
+      "skills": [
+        "1-agent-pr-review"
+      ],
+      "note": "Risk-focused preflight for AI-authored pull requests; normal multi-axis review remains 1-code-review"
+    },
+    {
       "link_type": "soft",
       "skills": [
         "2-security-and-hardening",
         "2-software-architect"
       ],
-      "note": "hardening shared with both sub-hubs; 2-software-architect dual-primary under Architecture",
+      "note": "hardening shared with both sub-hubs; 2-software-architect is a bounded read-only system review with Architecture domain entry and catalog depth under 1-code-review",
       "primary": true
     },
     {
       "link_type": "cousin",
       "skills": [
         "2-verify-work",
-        "2-ponytail-review"
+        "2-ponytail-review",
+        "2-thermo-nuclear-code-quality-review"
       ],
-      "note": "Mid-build verify and over-engineering 0-review cousins"
+      "note": "Mid-build verify, over-engineering, and thermo-nuclear maintainability cousins"
+    },
+    {
+      "link_type": "satellite",
+      "skills": [
+        "1-visual-recap"
+      ],
+      "note": "One private draft/create/update reviewer-orientation artifact for one exact substantial PR, branch, commit, or diff candidate; no correctness verdict, implicit publication, browser launch, feedback loop, or code/Git effect"
     },
     {
       "link_type": "soft",
       "skills": [
-        "1-doubt-driven-development"
+        "1-doubt-driven-development",
+        "1-error-handling",
+        "1-go-best-practices"
       ],
-      "note": "Vendor harvest: adversarial decision review"
+      "note": "Adversarial decision review plus narrow read-only failure-behavior and Go-language reviews; both specialists are Architecture-primary and return findings to this caller"
     },
     {
       "link_type": "soft",
@@ -65,10 +89,13 @@
     }
   ],
   "pipeline": [
-    "orient",
-    "F-R1 pick mode",
-    "sub-hub or skill",
-    "optional 2-security-and-hardening remediation"
+    "honor requested mode; F-R1 only if ambiguous",
+    "pin caller, scope, comparison and actual candidate",
+    "sub-hub or skill → read-only evidence → return to caller",
+    "comprehensive PR review → 1-complete-pr-review → same-candidate code and differential-security passes plus risk-triggered coverage → one returned ledger",
+    "unfamiliar/whole-repo request → 1-codebase-review-strategy returns one coverage plan → separately authorized specialist review on the same candidate",
+    "one consequential claim → 1-doubt-driven-development → keep|revise|reject|unknown → return",
+    "standalone review stops at report; remediation, publication and integration require corresponding authority"
   ],
   "forks": [
     {
@@ -77,9 +104,17 @@
       "recommended": "Multi-axis change 0-review if PR/ship/diff",
       "branches": [
         "1-code-review",
+        "1-complete-pr-review",
+        "1-agent-pr-review",
+        "1-error-handling",
+        "1-go-best-practices",
         "1-security-auditor",
         "2-software-architect",
-        "codebase-review-strategy first",
+        "1-codebase-review-strategy (unfamiliar/whole repo)",
+        "1-doubt-driven-development (one consequential claim)",
+        "2-thermo-nuclear-code-quality-review",
+        "2-verify-work",
+        "1-visual-recap",
         "Agent judgment"
       ]
     },
@@ -88,7 +123,7 @@
       "question": "(inside 1-code-review) axes applicable?",
       "recommended": "Every applicable",
       "branches": [
-        "Spec / Standards / Maintainability on or soft-skip",
+        "every applicable axis; missing spec/standards uses labeled baseline, not a false pass",
         "Agent judgment"
       ]
     },
@@ -109,7 +144,7 @@
     "html": "./hub.html",
     "workflow_json": "./workflow.json",
     "flows_chart": "../flows-chart.html",
-    "flows_ssot": "../../../skills/0-butler/references/flows.md",
+    "flows_ssot": "../../skills/0-butler/references/flows.md",
     "hubs_index": "../index.html",
     "manifest": "../manifest.json"
   },

@@ -1,15 +1,17 @@
 # Model invocation & Agent judgment
 
-## `disable-model-invocation`
+## Runtime-specific invocation
 
-**Default: `true`** on every live skill.
+Invocation and installation are separate controls:
 
-| Exception (model may auto-load) | Why |
-|---------------------------------|-----|
-| `1-coding-standards` | Always-on while writing/reviewing code |
-| `0-ponytail` | Always-on lazy ladder while coding |
+| Runtime | Control | Implicitly invocable | Manual-only |
+|---------|---------|----------------------|-------------|
+| Claude | `SKILL.md` → `disable-model-invocation` | only `1-coding-standards` | every other live skill sets `true` |
+| Codex | `agents/openai.yaml` → `policy.allow_implicit_invocation` | top-level `metadata.catalog.role: hub` skills plus `1-coding-standards` | every other live skill explicitly sets `false` |
 
-All other skills are user- or butler-invoked so they do not steal context.
+Manual-only does not mean unavailable: explicit `$skill-name` / `/skill-name` invocation still loads the skill. Codex installation filtering is independent and uses per-skill `skills.config[].enabled`; do not infer enablement from `allow_implicit_invocation`.
+
+`scripts/lint-skills` reports Claude and Codex independently, including names, violations, and context-budget warnings. See [ADR 0010](../docs/adr/0010-runtime-specific-invocation-and-catalog-evaluation.md).
 
 ## Fork option: **Agent judgment**
 

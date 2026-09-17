@@ -1,19 +1,22 @@
-# Chesterton's Fence + simplification patterns (merged from vendor)
+# Chesterton's Fence and simplification patterns
 
-Source: archive vendor `code-simplification`. Complements one-line delete findings.
+Operative evidence prompts for the read-only diff review. They do not authorize deletion or repair.
 
 ## Chesterton's Fence
 
-Before deleting "useless" code: state **why it might exist** (or find the git blame/ADR). If you cannot, investigate once — then delete only with evidence.
+Before proposing removal, establish why the code exists from the changed unit, callers, tests/contracts,
+repository patterns, and history/decision evidence as needed. If its purpose remains unknown, record an
+uncertain candidate or omit it; do not present removal as a finding.
 
 ## Pattern → simplify
 
 | Smell | Prefer |
 |-------|--------|
-| One-implementation interface | Inline until second impl |
-| Config nobody sets | Hardcode or delete |
-| Wrapper with no policy | Call through |
-| Hand-rolled util vs stdlib | stdlib / platform |
-| Premature generality | YAGNI; extract on second use |
+| One-implementation interface | Inline only if it carries no contract/test seam/policy |
+| Config nobody sets | Remove or hardcode only after checking deployed/runtime use |
+| Wrapper with no policy | Call through when no ownership, compatibility, or observability boundary is lost |
+| Hand-rolled utility | Prefer a fitting stdlib/platform feature with equivalent edge-case behavior |
+| Premature generality | Defer until a second demonstrated variation exists |
 
-Still output **one line per finding** in the main skill format. Net metric remains `net: -N lines possible`.
+These are hypotheses. The main skill requires candidate-specific evidence, behavior equivalence, risks,
+and verification; line reduction is an optional estimate, not the goal.

@@ -1,65 +1,37 @@
-# Writing good tests (extra patterns)
+# Additional test-design patterns
 
-Merged from vendor `test-driven-development`. Core doctrine still lives in `../tests.md`, `../mocking.md`, and the main skill (seams, anti-patterns, red→green).
+Use repository conventions first. These heuristics support a fitting red-green slice;
+they are not universal style rules.
 
-## State over interactions
+## Arrange, act, observe
 
-Assert outcomes, not internal call sequences.
+Make preconditions, the behavior-driving action, and observable outcome easy to locate.
+Several actions are valid when the public scenario inherently requires a sequence.
 
-```typescript
-// Good — state
-expect(tasks[0].createdAt.getTime()).toBeGreaterThan(tasks[1].createdAt.getTime());
+## Readable over mechanically DRY
 
-// Bad — interaction / SQL shape
-expect(db.query).toHaveBeenCalledWith(expect.stringContaining('ORDER BY'));
-```
+Local duplication can make a test self-contained; shared fixtures can reduce costly or
+error-prone setup. Prefer the form that makes behavior and state ownership clearest.
 
-## DAMP over DRY in tests
+## Names describe the contract
 
-Descriptive And Meaningful Phrases beat aggressive helper-sharing. A little duplication is fine if each test reads as a full specification.
+Name the operation, expected behavior, and important condition. Avoid numbering or vague
+“works” labels. Do not encode incidental implementation detail in the name.
 
-## Doubles preference
+## Determinism and state
 
-```text
-Real implementation  → highest confidence
-Fake (in-memory dep) → next
-Stub (canned data)   → then
-Mock (interactions)  → sparingly, at system boundaries only
-```
+Control time, randomness, identities, ordering, and task-owned resources where the
+behavior permits it. Wait for meaningful conditions, not guessed sleeps. Clean up only
+state the test created, and prove parallel/order independence when the suite relies on it.
 
-See also `../mocking.md`.
+## Snapshots and broad assertions
 
-## Arrange–Act–Assert
+Snapshots are useful for stable, deliberately reviewed structures; focused assertions
+usually diagnose behavior better. Treat changed snapshots as code changes requiring
+semantic review. Avoid assertions so broad that incompatible outcomes pass.
 
-One clear setup, one action, assertions on the result. Prefer **one concept per test** (several `it(...)` blocks, not one mega-test).
+## Coverage
 
-## Names as specs
-
-```typescript
-// Good
-it('sets status to completed and records timestamp', ...);
-it('throws NotFoundError for non-existent task', ...);
-
-// Bad
-it('works', ...);
-it('test 3', ...);
-```
-
-## Extra anti-patterns (table)
-
-| Anti-pattern | Fix |
-|--------------|-----|
-| Flaky (time/order) | Deterministic inputs; isolate state |
-| Testing the framework | Test only application code |
-| Snapshot abuse | Rare snapshots; 0-review every change |
-| No isolation | Each test owns setup/teardown |
-| Mocking everything | Prefer real/fake; mock only slow/nondeterministic boundaries |
-
-## Rationalizations to refuse
-
-| Excuse | Reality |
-|--------|---------|
-| "Tests after it works" | After-the-fact tests lock implementation |
-| "Too simple to test" | Simple code becomes complex; test is the spec |
-| "I tested manually" | Manual does not persist |
-| "Just a prototype" | Prototypes ship; debt compounds |
+Line or branch coverage can reveal unexercised code but does not prove correct or useful
+assertions. Use contract scenarios, mutation evidence, boundary tests, or review when
+risk warrants them. Do not invent a numeric coverage floor outside repository policy.

@@ -7,8 +7,8 @@
   "slash": "/0-rohitas-vault-wiki",
   "path": "skills/0-rohitas-vault-wiki",
   "package_dir": "hubs/0-rohitas-vault-wiki/",
-  "role": "Schema steward for Rohitas's Notes (PKM).",
-  "notes": "Vault root path from setup SSOT only (docs/agents/vault.md). Never hard-code home paths.",
+  "role": "Read-only router and shared safety/schema boundary for Rohitas's configured personal vault.",
+  "notes": "A leaf resolves the root from the approved SSOT; the hub never reads or mutates the vault.",
   "parent": {
     "hub": "0-butler",
     "slash": "/0-butler",
@@ -24,10 +24,18 @@
         "1-vault-inbox",
         "1-vault-ingest",
         "1-vault-lint",
+        "1-vault-repair",
         "1-wiki-query",
         "1-vault-explain"
       ],
       "primary": true
+    },
+    {
+      "link_type": "on-ramp",
+      "skills": [
+        "1-setup-vault-root"
+      ],
+      "note": "Configure or move the repository-approved vault pointer"
     },
     {
       "link_type": "soft",
@@ -49,7 +57,7 @@
       "skills": [
         "1-learning-explainer"
       ],
-      "note": "Pedagogy target of 1-vault-explain; primary home Learn domain"
+      "note": "One-operation pedagogy router called with a bounded Concept evidence packet; primary home Learn domain"
     },
     {
       "link_type": "tombstone",
@@ -60,15 +68,15 @@
     }
   ],
   "pipeline": [
-    "capture",
-    "compile",
-    "lint / query / explain"
+    "route one clear operation directly",
+    "use F11 or F-D2 only for material ownership ambiguity",
+    "run one leaf and return its evidence to the actual caller"
   ],
   "forks": [
     {
       "id": "F11",
       "question": "Capture / compile / query / lint / explain?",
-      "recommended": "match utterance",
+      "recommended": "route directly from the stated outcome; ask only when two operations materially differ",
       "branches": [
         "inbox",
         "ingest",
@@ -81,7 +89,7 @@
     {
       "id": "F-D2",
       "question": "Project repo wiki or personal Rohitas Notes vault?",
-      "recommended": "vault if Concepts/Atlas/my notes",
+      "recommended": "infer from the named destination; personal vault only for the configured Rohitas's Notes",
       "branches": [
         "0-rohitas-vault-wiki",
         "1-project-wiki-manager",
@@ -95,7 +103,7 @@
     "html": "./hub.html",
     "workflow_json": "./workflow.json",
     "flows_chart": "../flows-chart.html",
-    "flows_ssot": "../../../skills/0-butler/references/flows.md",
+    "flows_ssot": "../../skills/0-butler/references/flows.md",
     "hubs_index": "../index.html",
     "manifest": "../manifest.json"
   },

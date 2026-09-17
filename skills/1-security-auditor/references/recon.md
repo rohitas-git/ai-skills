@@ -1,6 +1,6 @@
 # Phase 1 — Reconnaissance
 
-Perform a thorough mapping of the project before any hunting. The goal is a shared, accurate mental model that guides later phases and reduces false positives.
+Map the agreed scope before hunting. The goal is a shared, accurate mental model that guides later phases and reduces false positives. Use the parent's pinned candidate and authority; full-project mapping is not implied by a module or PR review. Read source/configuration without printing secrets or probing deployments.
 
 ## Steps
 
@@ -42,12 +42,12 @@ Perform a thorough mapping of the project before any hunting. The goal is a shar
 
 ## Output
 
-Produce a concise but complete `architecture.md` containing:
+Produce concise architecture context (write `architecture.md` only when report files were requested) containing:
 - Project type and tech stack summary
 - High-level component diagram description (text or Mermaid if helpful)
 - Trust boundaries and privilege model
 - Key entry points and data flows
-- Sensitive data inventory
+- Sensitive data categories and locations, never secret values or raw records
 - Notable dependencies and supply-chain observations
 - List of ambiguities or incomplete specifications discovered
 - Suggested high-priority hunting areas based on the map

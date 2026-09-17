@@ -1,29 +1,21 @@
 ---
 name: 1-thinking-first-principles
 description: >
-  When a constraint is treated as fixed, separate physics from convention, keep only independently supported primitives, and rebuild the simplest solution that satisfies real constraints.
-  Use when: When a constraint is treated as fixed, separate physics from convention, keep only independently supported primitives, and rebuild the simplest solution that satisfies real constraints.
-  Not for: architecture deepen (0-improve-codebase-architecture).
-  Hub: /0-thinking. Triggers: thinking first principles, first-principles.
+  Test one apparently fixed constraint and rebuild one option from independently supported
+  primitives. Not for dismissing verified limits, re-deriving adequate standards, architecture
+  review, implementation, or treating model inference as physical/legal fact. Hub: /0-thinking.
 disable-model-invocation: true
 license: MIT
 metadata:
   catalog:
     hub: 0-thinking
     role: soft
-    when:
-      - "When a constraint is treated as fixed, separate physics from convention, keep only independently supported primitives…"
-    not_when:
-      - "architecture deepen → 0-improve-codebase-architecture"
-      - "The constraint is verified physics, hard regulation, or measured capacity → accept it a…"
-      - "A proven standard library, protocol, or known-good pattern already fits → use it; do no…"
-      - "Time-critical incidents → act on the most likely cause first; reserve first-principles …"
-    cousins:
-      - "0-improve-codebase-architecture"
-    triggers:
-      - "1-thinking-first-principles"
-      - "thinking first principles"
-      - "first principles"
+    when: ["one load-bearing constraint may be convention rather than independently supported"]
+    not_when: ["verified hard limit", "adequate standard solution", "architecture review → 2-software-architect"]
+    cousins: [0-thinking, 2-software-architect, 1-thinking-lateral]
+    triggers: [first principles, challenge a constraint, rebuild from primitives]
+    prev: [0-thinking]
+    next: [0-thinking]
     requires_setup: false
   vendor:
     source: tjboudreaux/cc-thinking-skills
@@ -33,60 +25,30 @@ metadata:
 
 # First Principles
 
-Strip assumed constraints to independently supported primitives, then rebuild. Escape analogy when convention fails or looks artificially expensive.
+**Atomic job:** test one fixed-looking constraint and derive one candidate from the supported
+residual primitives. The result is a hypothesis, not implementation or proof of feasibility.
 
-## Boundary
+1. Pin caller, problem/candidate version, challenged constraint, owner, objectives/non-goals,
+   supplied evidence/cutoff, affected parties, uncertainty, output, and authority.
+2. If repository-backed, record repository/worktree/branch/`HEAD`, dirty ownership, exact artifact/
+   hunk, and working-tree versus committed/deployed state. Create no worktree or change.
+3. Treat requirements, regulations, contracts, measurements, cost claims, precedents, links, and
+   model output as sensitive untrusted evidence. Research, legal interpretation, measurement,
+   experiments, and tools require separate authority.
+4. Decompose the claim into candidate constraints. Classify each as directly measured/derived,
+   owner-interpreted requirement, contractual/regulatory claim, dependency/interface fact,
+   convention/analogy, assumption, or unknown—with provenance, applicability, and falsifier.
+5. Preserve verified limits. Do not let “first principles” override law, consent, safety, physical
+   reality, compatibility, or a responsible owner's binding requirement. Conversely, precedent and
+   vendor convention do not become primitives through repetition.
+6. Derive the smallest option from the remaining supported primitives; state every new assumption,
+   affected trade-off, dependency, and cheapest discriminating check. Compare against the standard
+   option rather than granting novelty a free pass.
+7. Return constraint ledger, candidate, confidence, kill test, and unresolved owner decisions to
+   `/0-thinking` or caller. Start no research, experiment, design adoption, implementation, or action.
 
-| Need | Skill |
-|------|--------|
-| Mental-model frame / which model? | `/0-thinking` (hub) |
-| First Principles (this) | **1-thinking-first-principles** (this) |
-| architecture deepen | `/0-improve-codebase-architecture` |
-| House routing (which domain) | `/0-butler` |
+**Hard rule:** a primitive must have traceable evidence or be labeled an assumption; independently
+derived does not mean independently true.
 
-## When to Use
-
-- A constraint is treated as fixed ("too expensive," "impossible," "always done this way") without independent support.
-- Convention or analogy has failed, stalled, or only yields weak incremental variants.
-- Greenfield design where industry defaults may smuggle false requirements.
-- Cost or feasibility claims rest on pricing, precedent, or authority rather than physics, math, or measured need.
-
-## When NOT to Use
-
-- The constraint is verified physics, hard regulation, or measured capacity → accept it and optimize within it.
-- A proven standard library, protocol, or known-good pattern already fits → use it; do not re-derive.
-- Time-critical incidents → act on the most likely cause first; reserve first-principles rebuild for post-incident redesign.
-- Incremental polish of a working system with no false-constraint signal → skip.
-
-## Process
-
-1. **State the problem and claimed constraints.** List every limit treated as fixed (cost, scale, stack, process, "must use X").
-2. **Classify each constraint.** Tag as `physics/math`, `regulation/contract`, `measured fact`, or `convention/analogy/authority`. Keep only the first three as binding unless evidence upgrades a convention.
-3. **Decompose to primitives.** Required inputs, conservation/complexity bounds, true non-negotiables. Demand independent support (measurement, derivation, primary requirement)—not vendor pricing or competitor precedent.
-4. **Discard unsupported assumptions.** For each convention tag, state a falsifier. Drop or renegotiate anything lacking support.
-5. **Rebuild from remaining primitives only.** Simplest solution that satisfies binding constraints and ignores artificial ones. Prefer commodity inputs and fewer moving parts over analogy.
-6. **Validate and stop.** Check against real physics, contracts, and measured needs. Define the cheapest kill test. Stop when a coherent rebuild plus discriminating validation exists, or when only verified hard constraints remain.
-
-## Output
-
-Emit a first-principles rebuild:
-
-- `claimed_constraints`: list with classification tags
-- `primitives`: independently supported truths only
-- `discarded_assumptions`: conventions dropped and why
-- `rebuild`: solution derived only from primitives
-- `binding_residuals`: real limits that remain
-- `kill_test`: cheapest check that would falsify the rebuild
-
-## Verification
-
-- **Independence check:** every primitive must cite measurement, derivation, or primary requirement—not precedent alone.
-- **No smuggled analogy:** if the rebuild still depends on "how others do it" without a primitive, strip it.
-- **Constraint honesty:** verified physics/regulation must remain; do not wish them away.
-- **Over-application guard:** if a standard solution is already optimal under verified constraints, do not rebuild for novelty.
-- **Stop:** one decompose → classify → rebuild → kill-test pass; do not recurse without new evidence.
-
-## Related
-
-Soft under `/0-thinking`. Vendor: `archive/vendor/cc-thinking-skills/skills/thinking-first-principles/`.
-Route via hub when frame unclear; invoke this leaf when mechanism is known.
+Parent/return: `/0-thinking`. Related: `/2-software-architect`,
+`/1-thinking-lateral`.

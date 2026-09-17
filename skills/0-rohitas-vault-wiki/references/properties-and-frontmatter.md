@@ -1,85 +1,22 @@
-# Properties Schema — Rohitas's Notes
+# Vault property schema
 
-Keep the schema **minimal** so every note stays easy to write and the Dashboard stays reliable.
+Use the active vault's established frontmatter. The following is a catalog default only when
+creating one new permanent note and no newer vault-local schema supersedes it:
 
-## Required fields
+| Field | Default meaning |
+|---|---|
+| `type` | established note kind such as `concept`, `hub`, `guide`, `project`, `literature`, or `query` |
+| `status` | established lifecycle value |
+| `tags` | YAML list using existing vocabulary |
+| `created` | actual creation date in the vault's format |
+| `updated` | actual last meaningful change date in the vault's format |
+| `topic`, `source`, `aliases` | optional only when supported and useful |
 
-| Property | Values / format | Purpose |
-|----------|-----------------|---------|
-| `type` | `concept` \| `hub` \| `guide` \| `project` \| `literature` | Note kind |
-| `status` | `active` \| `incubating` \| `stable` \| `archived` | Lifecycle; Dashboard uses `active` |
-| `tags` | YAML list | Broad filters (e.g. `system-design`, `pkm`) |
-| `created` | `YYYY-MM-DD` | Birth date |
-| `updated` | `YYYY-MM-DD` | Last meaningful edit |
+Rules:
 
-## Optional fields
-
-| Property | Purpose |
-|----------|---------|
-| `topic` | Human label for Dashboard column (e.g. System Design, PKM) |
-| `source` | URL or citation for literature-derived notes |
-| `aliases` | Alternate link names |
-
-## Status meanings
-
-| status | Meaning | Dashboard? |
-|--------|---------|------------|
-| `active` | Currently studying or using | Yes |
-| `incubating` | Draft / thin / needs ROOT loops | No |
-| `stable` | Good enough evergreen | No |
-| `archived` | Cold / superseded / literature dump | No |
-
-## Examples
-
-### Concept
-
-```yaml
----
-type: concept
-status: incubating
-tags:
-  - system-design
-created: 2026-07-19
-updated: 2026-07-19
-topic: System Design
-source: "https://www.youtube.com/watch?v=F2FmTdLtb_4"
----
-```
-
-### Guide
-
-```yaml
----
-type: guide
-status: stable
-tags:
-  - pkm
-  - methodology
-created: 2026-06-21
-updated: 2026-07-19
-topic: PKM
----
-```
-
-### Literature (archived source)
-
-```yaml
----
-type: literature
-status: archived
-tags:
-  - system-design
-  - source
-created: 2026-06-21
-updated: 2026-07-19
-topic: System Design
-source: "https://www.youtube.com/watch?v=F2FmTdLtb_4"
----
-```
-
-## Agent rules
-
-- Always write required fields on **new** notes
-- When editing older notes missing frontmatter, add the minimal block
-- Bump `updated` on meaningful content changes
-- Do not invent new required property keys without user approval (breaks queries)
+- Preserve valid existing fields, ordering, quoting, comments, and user-defined properties.
+- Do not add missing metadata to unrelated old notes as incidental cleanup.
+- Do not invent dates, sources, tags, aliases, statuses, or new required keys.
+- A source URL is provenance, not permission to fetch it.
+- Validate YAML and the exact changed note; do not normalize the whole vault.
+- Changing the schema or lifecycle vocabulary is a separate, previewed migration decision.

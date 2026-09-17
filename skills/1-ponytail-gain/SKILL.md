@@ -1,76 +1,61 @@
 ---
 name: 1-ponytail-gain
 description: >
-  Show ponytail's measured impact as a compact scoreboard: less code, less cost, more
-  speed, from the benchmark medians. One-shot display, not a persistent mode, and not a
-  per-repo number. Trigger: /1-ponytail-gain, "ponytail gain", "what does 0-ponytail
-  save", "show 0-ponytail impact", "ponytail scoreboard" Use when: Show ponytail's
-  measured impact as a compact scoreboard: less code, less cost, more speed, from the.
-  Hub: /0-ponytail.
+  Display one pinned upstream Ponytail benchmark snapshot with methodology and limitations. Not for
+  measuring this repository, predicting savings, or activating Ponytail. Hub: /0-ponytail.
 disable-model-invocation: true
 metadata:
   catalog:
     hub: 0-ponytail
     role: satellite
-    when:
-      - "Show ponytail's measured impact as a compact scoreboard: less code, less cost, more speed, from the"
-    triggers:
-      - "1-ponytail-gain"
-      - "ponytail gain"
-      - "what does 0-ponytail save"
-      - "show 0-ponytail impact"
-      - "ponytail scoreboard"
+    when: ["show the pinned Ponytail benchmark result and its limitations"]
+    not_when:
+      - "measure or predict savings for this repository"
+      - "audit code → 1-ponytail-audit or 2-ponytail-review"
+    prev: [0-ponytail]
+    next: [0-ponytail]
+    cousins: [2-ponytail-review, 1-ponytail-audit]
+    triggers: [ponytail gain, Ponytail benchmark, what does Ponytail save, show Ponytail impact]
     requires_setup: false
 ---
 
 # Ponytail Gain
 
-## Process
+Display this one-shot, read-only snapshot. Do not change mode, inspect a repository, fetch new data,
+write files, or persist state.
 
-1. Follow the steps and hard rules in this skill.
-2. Load linked `references/` only when the branch needs them.
+## Pinned benchmark card
 
+Upstream agentic benchmark dated **2026-06-18**: Haiku 4.5, one pinned FastAPI + React repository,
+12 feature tasks, four runs per task/arm, same headless coding agent with and without the skill. Metrics
+were taken from the resulting diffs and agent runs.
 
-Display this scoreboard when invoked. One-shot: do NOT change mode, write flag
-files, or persist anything.
+```text
+Ponytail vs no-skill baseline — agentic feature tasks
 
-The figures are the published benchmark medians (5 everyday tasks: email
-validator, debounce, CSV sum, countdown timer, rate limiter; three models:
-Haiku, Sonnet, Opus). They are measured, not computed from the current repo.
-Source: `benchmarks/` and the README.
+added LOC   -54% mean   (about 0% on irreducible work; up to -94% on an over-build trap)
+tokens      -22%
+cost        -20%
+time        -27%
 
-## Scoreboard
-
-Render plain ASCII bars. The bar length shows the measured range; the label
-carries the exact figure:
-
-```
-  0-ponytail gain                     benchmark median · 5 tasks · 3 models
-
-  Lines of code   no-skill  ████████████████████  100%
-                  0-ponytail  ██▌·················    6–20%   ▼ 80–94%
-  Cost            no-skill  ████████████████████  100%
-                  0-ponytail  █████▌··············   23–53%  ▼ 47–77%
-  Speed           0-ponytail  ▸ 3–6× faster
-
-  This repo:  /1-ponytail-debt  (shortcuts you deferred)
-              /1-ponytail-audit (what's still cuttable)
+safety slice: 20/20 known adversarial checks passed
 ```
 
 ## Honesty boundary
 
-These are benchmark medians, not this repo. NEVER print a per-repo savings
-number ("you saved X lines/tokens here"): the unbuilt version was never
-written, so there is no real baseline to subtract from in a live repo. The
-only real per-repo figures come from `/1-ponytail-debt` (a counted ledger), and
-this card points there instead of inventing one.
+- This is one upstream experiment, one model, one repository, one date, `n=4`; it is not a universal
+  effect size, security proof, current-repository measurement, or prediction.
+- The 20/20 result is a small deterministic safety floor, not `100% secure`.
+- The older `80–94% less code`, `47–77% lower cost`, and `3–6× faster` card used a single-shot,
+  chatty-baseline design. Upstream now labels that LOC range partly inflated; do not present it as the
+  primary agentic result.
+- Never claim this repository saved a number without a controlled counterfactual. Marker counts from
+  `/1-ponytail-debt` and findings from `/1-ponytail-audit` answer different questions.
 
-## Boundaries
+Report the snapshot date, setup, figures, and limitations together. If current figures are requested,
+use a separately authorized source-verification task and label any newer source; do not silently replace
+this pinned card.
 
-One-shot display. Edits nothing, changes no mode.
-"stop ponytail" or "normal mode": revert.
+## Provenance
 
-
-## Related
-
-**Next:** `/0-ponytail`. Parent hub: `/0-ponytail`.
+See [pinned upstream sources](./references/vendor-source.md).

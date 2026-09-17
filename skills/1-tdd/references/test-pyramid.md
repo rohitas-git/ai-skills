@@ -1,35 +1,20 @@
-# Test pyramid and effort
+# Test portfolio and resource size
 
-Merged from vendor `test-driven-development` — not a second skill.
+Use this reference to choose the cheapest seam that still proves the behavior. A fixed
+pyramid percentage is not a universal target; architecture, risk, feedback speed, and
+failure cost determine the portfolio.
 
-Invest most effort in small, fast tests; few critical E2E paths.
+| Test shape | Good fit | Main limit |
+|---|---|---|
+| Pure/unit | deterministic business rules and transformations | may miss boundary wiring |
+| Component/integration | API, database, filesystem, queue, or module contracts | requires isolated state/services |
+| Browser/system | critical user journey or browser-only behavior | slower, broader failure surface |
+| Evaluation/statistical | probabilistic model/RAG output | not strict TDD; route to `/1-agent-evaluation` |
 
-```text
-          ╱╲
-         ╱  ╲         E2E (~5%) — critical user flows
-        ╱────╲
-       ╱      ╲       Integration (~15%) — boundaries (API, DB, FS)
-      ╱────────╲
-     ╱          ╲     Unit / pure (~80%) — pure logic at seams
-    ╱────────────╲
-```
+Classify resource ownership separately from test level. A “unit” test that touches a
+shared database is not isolated; an end-to-end local test may still be disposable. Record
+processes, ports, databases, accounts, queues, files, clocks, network, and cleanup owner.
 
-**Beyoncé rule:** if you liked the behavior, put a test on it. Infrastructure refactors are not your safety net — your tests are.
-
-## Resource sizes
-
-| Size | Constraints | Speed | Example |
-|------|-------------|-------|---------|
-| **Small** | Single process; no I/O/network/DB | ms | Pure transforms |
-| **Medium** | Localhost OK; test DB | seconds | API + test DB |
-| **Large** | External services / multi-machine | minutes | Full E2E, staging |
-
-## Decision guide
-
-```text
-Pure logic, no side effects?     → small / unit at a seam
-Crosses a boundary (API/DB/FS)?  → medium / integration
-Critical user flow end-to-end?   → large / E2E (few only)
-```
-
-Prefer **vertical slices** (one failing test → minimal green) over bulk “write the pyramid first.” Pyramid shapes *portfolio* of tests, not a batch plan.
+Prefer the lowest seam that retains the real causal behavior. Add a higher-level check
+when lower seams cannot prove integration or user-visible outcome. Do not build a broad
+portfolio during one red-green slice unless the caller explicitly includes that work.

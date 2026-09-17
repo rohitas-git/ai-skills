@@ -1,34 +1,14 @@
-# 1-resource-summarizer contract (1-vault-ingest)
+# Resource Summarizer return contract
 
-**Do not reimplement** summarizer techniques in this skill. **Load and follow** the **`1-resource-summarizer`** skill.
+Use `/1-resource-summarizer` as a separate read-only leaf only when faithful ingest needs
+source-level compression or explicit coverage mapping. Length alone is not a gate.
 
-## Gate
+Pass the exact source snapshot/version, acquired and missing content, ingest question,
+desired form/locators, privacy limits, caller `/1-vault-ingest`, and no vault-write authority.
 
-| Material | Action |
-|----------|--------|
-| \>~40 lines **or** multi-heading dump **or** long URL body | **Mandatory:** load `1-resource-summarizer` |
-| ~15–40 lines | Light Feynman rewrite + bullets (summarizer techniques OK without full skill dump) |
-| \<~15 lines, one idea | Place + frontmatter only — skip full summarizer |
-| Hub / MOC gloss only | No body rewrite |
+Require source identity, observed coverage, source-attributed claims/evidence/disagreement/
+limitations, separately labeled transformations/inference, locators, and extraction gaps.
 
-## Mapping summarizer → vault Concept
-
-From summarizer output, keep:
-
-| Summarizer product | Vault placement |
-|--------------------|-----------------|
-| Executive summary | Concept lead / overview |
-| Key takeaways | Bullets under main sections |
-| Feynman explanations | Own-words concept body |
-| Gaps & questions | `## Open questions` or incubating stubs |
-| Action items | Only if durable strategy — else skip |
-| Full Cornell cues / 0-review prompts | **Drop** from permanent notes |
-
-## Ownership
-
-- **resource-summarizer** — prose quality of the distill  
-- **rohitas-vault-wiki / vault-ingest** — path, Title Case name, frontmatter, MOC links, archive, log  
-
-## Invocation language (for the agent)
-
-> Load skill **resource-summarizer**. Distill this source with 80/20 + Feynman own-words + 5–10 takeaways + gaps. I will map the result into Rohitas Concepts (no Cornell template).
+On return, pin the same source snapshot before reconciliation. The summary is evidence—not
+canonical truth, a write plan, or permission to discard existing notes. If the material is
+already bounded and directly usable, proceed without this leaf and record that decision.

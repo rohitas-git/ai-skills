@@ -7,8 +7,8 @@
   "slash": "/0-ui-ux",
   "path": "skills/0-ui-ux",
   "package_dir": "hubs/0-ui-ux/",
-  "role": "Visual design & UI craft hub — design intelligence, brand, tokens, styling, creative, banners, HTML slides.",
-  "notes": "Hub → leaf tree. Primary pipeline leaf is 1-ui-ux-pro-max. Soft dual: 1-frontend-ui-engineering (Ship primary).",
+  "role": "Pure router for one UI/UX outcome and one smallest specialist.",
+  "notes": "Direct-route when one outcome is explicit; F-UI1 only for material ambiguity. The hub performs no design, implementation, browser, file, tool, or catalog work and never chains leaves.",
   "parent": {
     "hub": "0-butler",
     "slash": "/0-butler",
@@ -26,27 +26,46 @@
       "note": "Primary design-intelligence entry"
     },
     {
-      "link_type": "leaf",
+      "link_type": "subhub",
       "skills": [
         "1-brand",
+        "1-user-research"
+      ],
+      "note": "Brand routes guideline/review/context extraction; User Research routes study planning or completed-evidence synthesis. Both routers have no effects and never chain children."
+    },
+    {
+      "link_type": "leaf",
+      "skills": [
         "1-design-system",
         "1-ui-styling",
         "1-design",
         "1-banner-design",
-        "1-slides"
-      ]
+        "1-slides",
+        "1-customer-experience-audit"
+      ],
+      "note": "Each creative leaf returns one artifact: Design owns one logo/icon/social/identity asset, Banner one promotion, Slides one self-contained HTML deck, and Customer Experience Audit one read-only external-customer backlog. UI Styling is shared with Ship for one behavior-preserving visual delta."
     },
     {
       "link_type": "soft",
       "skills": [
         "1-frontend-ui-engineering"
       ],
-      "note": "Ship primary; dual for a11y production UI after design"
+      "note": "Ship primary; one bounded interaction surface after visual direction is known; preserves candidate/worktree/authority and returns without redesign or publication"
+    },
+    {
+      "link_type": "satellite",
+      "skills": [
+        "1-impeccable",
+        "1-visual-edit"
+      ],
+      "note": "Explicit Impeccable or Agent-Native Design operations. Visual Edit selects exactly one open, inspect, preview, or apply mode and never chains modes or installs its connector."
     }
   ],
   "pipeline": [
-    "hub → F-UI1 → leaf",
-    "optional: 1-ui-ux-pro-max → 1-design-system → 1-ui-styling → Ship"
+    "pin caller, immutable request/candidate, evidence, constraints, authority, and optional worktree/runtime identity",
+    "direct-route or material-only F-UI1",
+    "hand exactly one specialist the same candidate and effect boundary",
+    "return result, evidence coverage, verification, effects, assumptions, and limits to actual caller"
   ],
   "forks": [
     {
@@ -55,13 +74,17 @@
       "recommended": "design intelligence for app/web UI → /1-ui-ux-pro-max",
       "branches": [
         "design intelligence",
+        "customer-experience audit",
+        "user research",
         "brand",
         "tokens",
-        "shadcn/tailwind",
-        "creative (logo/CIP/icons)",
-        "banners",
-        "HTML slides",
+        "presentation-only styling",
+        "one logo/icon/social/identity asset",
+        "one banner/ad/hero image",
+        "one self-contained HTML presentation",
         "production a11y UI",
+        "Impeccable tool workflow",
+        "live-app visual editing",
         "Agent judgment"
       ]
     }
@@ -71,7 +94,7 @@
     "html": "./hub.html",
     "workflow_json": "./workflow.json",
     "flows_chart": "../flows-chart.html",
-    "flows_ssot": "../../../skills/0-butler/references/flows.md",
+    "flows_ssot": "../../skills/0-butler/references/flows.md",
     "hubs_index": "../index.html",
     "manifest": "../manifest.json"
   },
@@ -82,6 +105,8 @@
     "each_domain_hub_has_workflow_json",
     "each_domain_hub_links_flows_chart",
     "one_hub_per_domain",
-    "forks_ask_user"
+    "forks_ask_user",
+    "one_specialist_only",
+    "no_hub_effects"
   ]
 }

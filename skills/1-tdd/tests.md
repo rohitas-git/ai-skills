@@ -1,77 +1,44 @@
-# Good and Bad Tests
+# Behavior-test design
 
-## Good Tests
+Use after the main skill's fit gate and oracle are established.
 
-**Integration-style**: Test through real interfaces, not mocks of internal parts.
+## A useful red test
 
-```typescript
-// GOOD: Tests observable behavior
-test("user can checkout with valid cart", async () => {
-  const cart = createCart();
-  cart.add(product);
-  const result = await checkout(cart, paymentMethod);
-  expect(result.status).toBe("confirmed");
-});
-```
+A test should:
 
-Characteristics:
+- exercise the public seam that represents the requested behavior;
+- derive expected results from an external contract or independently confirmed example;
+- fail on the pinned before candidate for the predicted behavioral reason;
+- distinguish product behavior from harness, fixture, toolchain, or environment failure;
+- own its setup/state and remain deterministic under the repository's execution model;
+- survive behavior-preserving implementation changes.
 
-- Tests behavior users/callers care about
-- Uses public API only
-- Survives internal refactors
-- Describes WHAT, not HOW
-- One logical assertion per test
+One behavior may require several related assertions. Split only when separate failures
+need separate meaning; “one assertion per test” is not a universal rule.
 
-## Bad Tests
+## Avoid false confidence
 
-**Implementation-detail tests**: Coupled to internal structure.
+- Do not assert private methods, incidental call order, or internal SQL/DOM structure
+  unless that structure is the explicit public contract.
+- Do not recompute the expected result with the same algorithm as production.
+- Do not broaden text/DOM matchers, snapshots, tolerances, timeouts, or retries just to
+  obtain green.
+- Do not infer edge cases. Cover those required by the contract, observed failure, risk,
+  or established repository conventions.
+- Do not confuse a passing mock with an exercised integration boundary.
 
-```typescript
-// BAD: Tests implementation details
-test("checkout calls paymentService.process", async () => {
-  const mockPayment = jest.mock(paymentService);
-  await checkout(cart, payment);
-  expect(mockPayment.process).toHaveBeenCalledWith(cart.total);
-});
-```
+Prefer state or externally observable outcome assertions. Interaction assertions are
+appropriate when the interaction itself is contractual—for example, no message sent,
+one idempotency key used, or a dependency not called after authorization fails.
 
-Red flags:
+## Red disposition
 
-- Mocking internal collaborators
-- Testing private methods
-- Asserting on call counts/order
-- Test breaks when refactoring without behavior change
-- Test name describes HOW not WHAT
-- Verifying through external means instead of interface
+| Initial result | Meaning | Action |
+|---|---|---|
+| Expected behavioral failure | valid red evidence | proceed to the minimal implementation |
+| Pass | behavior may already exist or test may not discriminate | inspect the seam/oracle; do not manufacture failure |
+| Compile/setup/fixture failure | harness is red, not behavior | repair the harness within authority, then rerun |
+| Different behavioral failure | nearby defect or wrong scenario | classify and return to caller/Diagnose |
+| Flaky result | unstable evidence | isolate cause; retries are observations, not a pass |
 
-```typescript
-// BAD: Bypasses interface to verify
-test("createUser saves to database", async () => {
-  await createUser({ name: "Alice" });
-  const row = await db.query("SELECT * FROM users WHERE name = ?", ["Alice"]);
-  expect(row).toBeDefined();
-});
-
-// GOOD: Verifies through interface
-test("createUser makes user retrievable", async () => {
-  const user = await createUser({ name: "Alice" });
-  const retrieved = await getUser(user.id);
-  expect(retrieved.name).toBe("Alice");
-});
-```
-
-**Tautological tests**: Expected value restates the implementation, so the test passes by construction.
-
-```typescript
-// BAD: Expected value is recomputed the way the code computes it
-test("calculateTotal sums line items", () => {
-  const items = [{ price: 10 }, { price: 5 }];
-  const expected = items.reduce((sum, i) => sum + i.price, 0);
-  expect(calculateTotal(items)).toBe(expected);
-});
-
-// GOOD: Expected value is an independent, known literal
-test("calculateTotal sums line items", () => {
-  expect(calculateTotal([{ price: 10 }, { price: 5 }])).toBe(15);
-});
-```
+Record the exact command, candidate, test identity, output, and disposition.

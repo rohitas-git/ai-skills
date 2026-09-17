@@ -2,13 +2,13 @@
   "schema_version": 1,
   "kind": "domain_hub_workflow",
   "domain_id": 14,
-  "domain": "Misc / office",
+  "domain": "Office and media",
   "hub": "0-office",
   "slash": "/0-office",
   "path": "skills/0-office",
   "package_dir": "hubs/0-office/",
-  "role": "Office/media artifact leaves (hub \u2192 leaf tree).",
-  "notes": "Flat tree under /0-office. Pick leaf by artifact type at F-misc.",
+  "role": "Route one immutable artifact request to one smallest handler.",
+  "notes": "Direct-route by requested final artifact; F-misc only for material format ambiguity. The hub performs no file, app, browser, tool, conversion, publication, or catalog action. Pet work enters one narrow sub-hub.",
   "parent": {
     "hub": "0-butler",
     "slash": "/0-butler",
@@ -22,33 +22,46 @@
       "link_type": "leaf",
       "skills": [
         "1-docx",
+        "1-pdf",
         "1-pptx",
+        "1-xlsx",
+        "1-diagram-maker",
+        "1-imagine",
+        "1-json-canvas",
+        "1-defuddle",
+        "1-internal-comms"
+      ]
+    },
+    {
+      "link_type": "sub-hub",
+      "skills": [
+        "1-hatch-pet"
+      ]
+    }
+  ],
+  "pipeline": [
+    "pin caller, immutable request, source/destination identities, sensitivity, authority, and optional worktree",
+    "direct final-artifact route or material-only F-misc",
+    "hand exactly one leaf or the pet sub-hub the same candidate and effect boundaries",
+    "return artifact/result provenance, verification, effects, and limits to actual caller"
+  ],
+  "forks": [
+    {
+      "id": "F-misc",
+      "question": "Which one final artifact is required?",
+      "recommended": "Use the explicit requested output or strongest format evidence",
+      "branches": [
+        "1-docx",
+        "1-pdf",
+        "1-pptx",
+        "1-slides for strategic HTML presentation",
         "1-xlsx",
         "1-diagram-maker",
         "1-imagine",
         "1-hatch-pet",
         "1-json-canvas",
-        "1-defuddle"
-      ]
-    }
-  ],
-  "pipeline": [
-    "hub \u2192 leaf (not a long chain)"
-  ],
-  "forks": [
-    {
-      "id": "F-misc",
-      "question": "What artifact type?",
-      "recommended": "from extension/context",
-      "branches": [
-        "document",
-        "slides",
-        "sheet",
-        "diagram",
-        "image",
-        "canvas",
-        "web",
-        "pet",
+        "1-defuddle",
+        "1-internal-comms",
         "Agent judgment"
       ]
     }
@@ -58,7 +71,7 @@
     "html": "./hub.html",
     "workflow_json": "./workflow.json",
     "flows_chart": "../flows-chart.html",
-    "flows_ssot": "../../../skills/0-butler/references/flows.md",
+    "flows_ssot": "../../skills/0-butler/references/flows.md",
     "hubs_index": "../index.html",
     "manifest": "../manifest.json"
   },
@@ -69,6 +82,9 @@
     "each_domain_hub_has_workflow_json",
     "each_domain_hub_links_flows_chart",
     "one_hub_per_domain",
-    "forks_ask_user"
+    "forks_ask_user",
+    "exact_artifact_candidate_and_optional_worktree",
+    "one_leaf_only",
+    "no_hub_effects"
   ]
 }

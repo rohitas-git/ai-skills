@@ -1,105 +1,81 @@
 ---
 name: 0-learn
 description: >
-  Domain hub for intellectual understanding — how/why something works, not shipping code
-  or vault compile. Use for learn, teach me, explain, ELI5, walk me through, quiz me, study this.
-  Not for: feature work (0-implement), vault structure/schema (0-rohitas-vault-wiki). Hub: /0-learn.
-  Triggers: learn, explain, ELI5, quiz me, teach me, study this.
+  Route requests whose primary outcome is understanding, explanation, tutoring, or
+  learning—not code delivery, review, or vault operations. Use the smallest matching
+  Learn leaf; ask a fork only when the learning mode is materially ambiguous.
+  Hub: /0-learn.
 disable-model-invocation: true
 metadata:
   catalog:
     hub: 0-learn
     role: hub
-    when:
-      - "learn/explain/teach routing"
-      - "intellectual understanding not shipping"
+    when: ["route an understanding, explanation, tutoring, or learning request"]
     not_when:
       - "ship code → 0-implement"
-      - "vault schema/ingest → 0-rohitas-vault-wiki"
-    next: [1-learning-explainer, 1-code-explainer, 1-teach]
-    triggers:
-      - "learn"
-      - "explain"
-      - "ELI5"
-      - "quiz me"
-      - "teach me"
+      - "review a candidate → 0-review"
+      - "vault ingestion/query → 0-rohitas-vault-wiki"
+      - "re-explain one prior reply → 1-bro"
+    triggers: ["learn", "explain", "ELI5", "quiz me", "teach me", "study this"]
+    prev: [0-butler]
+    next: [0-butler, 1-learning-explainer, 1-learning-diagnostic, 1-level-explainer, 1-mental-model-builder, 1-progressive-deep-dive, 1-explain-with-example, 1-tutor, 1-code-explainer, 1-teach, 1-teaching-workspace, 1-lesson-authoring, 1-learning-progress-record, 1-learning-glossary, 1-story-teacher, 1-resource-summarizer, 1-vault-explain]
     requires_setup: false
 ---
 
-# Learn (domain hub)
+# Learn
 
-**★ Hub of Domain 13.** Intellectual understanding — not Ship, Review, or Vault compile.
+**Atomic job:** select exactly one learning operation and return its result to the
+caller. The hub does not teach, summarize, inspect code, create a course, or mutate a
+vault itself.
 
-You **route** then load one mode. Do not invent a parallel pedagogy outside the chosen skill/refs.
+## Direct dispatch
 
-## Boundary
+| Evidence in request | Route |
+|---|---|
+| Concept explanation, ELI5, audience level, model, or deeper layer | `/1-learning-explainer` |
+| Supplied passage, finding, error, or recommendation needs an example and explanatory dry run | `/1-explain-with-example` |
+| Solve/quiz/practice interactively | `/1-tutor` |
+| Source-code walkthrough | `/1-code-explainer` |
+| Multi-session learning workspace | `/1-teach` |
+| Fiction/narrative as the teaching form | `/1-story-teacher` |
+| Distill a long source | `/1-resource-summarizer` |
+| Explain an existing vault Concept | `/1-vault-explain` |
 
-| Need | Skill |
-|------|--------|
-| Route unclear learning intent | **learn** (this hub) |
-| Structured multi-level concept explain | `/1-learning-explainer` |
-| Socratic problem practice / quiz | tutor-mode ([tutor-mode.md](./references/tutor-mode.md)) |
-| Explain **code** in the editor | `/1-code-explainer` |
-| Multi-session workspace course | `/1-teach` |
-| Teach via fiction | `/1-story-teacher` |
-| Distill long source for notes | `/1-resource-summarizer` |
-| Explain vault `[[Note]]` | `/1-vault-explain` |
+Route directly when one row is clear—even for a generic “explain X.” Do not ask the
+user to choose skill names or pedagogy that the request already settles.
 
-## Modes
+## Forks
 
-| Mode | Load | Use when |
-|------|------|----------|
-| **Explain** (default for “what is / explain X”) | `/1-learning-explainer` | Multi-level structured explain, mental models, progressive deep-dive |
-| **Tutor** (session practice) | [tutor-mode.md](./references/tutor-mode.md) | Stuck on a problem, walk-through, quiz, hold-the-line, “won’t stick” |
-| **Code walkthrough** | `/1-code-explainer` | Explain lines/block/function/file/module of source code |
-| **Workspace course** | `/1-teach` | Multi-session learning in a directory (`MISSION.md`, lessons) |
-| **Story** | `/1-story-teacher` | Teach via narrative / “make this a novel” |
-| **Summarize source** | `/1-resource-summarizer` | Distill PDF/video/article/transcript for learning notes |
-| **Vault Concept** | `/1-vault-explain` | Explain `[[Note]]` from Rohitas’s Notes (Vault on-ramp → explainer) |
+Use **F-L1** only when two or more modes would materially change the deliverable:
 
-## Process
+> Should this be a direct explanation, interactive practice, or a reusable course?
 
-1. If utterance already names a mode (slash skill, “workspace course”, “as a story”, “summarize this”, “from my vault”, “explain this function”), go there.
-2. If a **long source** is the object and they also want understanding, ask **F-L2** or default: summarize first when raw blob is huge, else explain.
-3. Else ask **F-L1** (one question, recommended first) — **wait for the user**.
+Recommend from the stated outcome and include Agent judgment. Ask one question, wait,
+then load exactly one route.
 
-### Fork F-L1
+Use **F-L2** only when a large supplied source creates a real choice between preserving
+detail and first distilling it:
 
-**What kind of learning help?**
+> Should I explain the selected material directly, or distill it first?
 
-- **Structured explain** (`/1-learning-explainer`) — **recommended** for concepts, ELI5, levels, mental models
-- **Tutor session** (tutor-mode refs) — working a problem, quiz, practice under pressure
-- **Code walkthrough** (`/1-code-explainer`) — source code in the repo/editor
-- **Multi-session course** (`/1-teach`) — ongoing workspace lessons
-- **Story** (`/1-story-teacher`) — fiction that encodes the ideas
-- **Summarize a source** (`/1-resource-summarizer`) — notes from a long artifact
-- **Vault Concept** (`/1-vault-explain`) — only if the object is a vault note
+Do not summarize merely because a source is long. If the relevant selection is clear,
+route directly to `/1-explain-with-example`.
 
-### Fork F-L2
+The concept router owns **F-L3** among diagnostic, first-level explanation, mental
+model, and progressive deep dive. Do not duplicate that fork here.
 
-**Long source — summarize first, then explain/tutor, or go straight to understanding?**
+## Boundary and return
 
-- **Summarize first** (`/1-resource-summarizer`) — **recommended** if raw blob is huge
-- Skip to explain / tutor / story
+- Learn is read-only routing. It creates no worktree, reads no repository/source/vault,
+  writes no learning artifacts, invokes no tools, and performs no external action.
+- Pass the exact learning object, audience/goal, requested format/depth, supplied
+  sources, known evidence limits, and caller to the selected skill.
+- Do not silently chain multiple modes. A later mode runs only when requested or when
+  the current leaf explicitly returns a choice the user accepts.
+- Product changes return to `/0-implement`; candidate review to `/0-review`; vault
+  compile/query to `/0-rohitas-vault-wiki`; prior-reply simplification to `/1-bro`.
+- Return the selected leaf's output to the actual caller. Do not commit, push, publish,
+  or persist learning records unless a separately selected skill and user authority
+  allow it.
 
-4. Load **only** that mode. Optional later: offer another mode (e.g. after summarize → explain or story).
-
-## Hard redirect
-
-If the user is clearly on a cousin job while this hub is open: **ask F-L1/F-L2 once**, then load that skill. Never silent dual-mode.
-
-## Hard rules
-
-- Not a product path — ship via `/0-grilling` → `/0-implement`, not here.
-- Not vault compile/query — `/1-vault-ingest`, `/1-wiki-query`; teaching a compiled Concept is `/1-vault-explain`.
-- **Explain SSOT** is `/1-learning-explainer` (and 1-vault-explain always hands off there). Do not reimplement levels/CLT in the hub.
-- **Tutor SSOT** is [tutor-mode.md](./references/tutor-mode.md) — Socratic practice, integrity, pressure handling.
-- **Code SSOT** is `/1-code-explainer` — do not multi-level-explain source as learning-explainer.
-- At every fork, ask once with recommended option; never silent branch.
-
-## Related
-
-- **Parent:** `/0-butler`
-- **Children:** `/1-learning-explainer` · tutor-mode (refs) · `/1-code-explainer` · `/1-teach` · `/1-story-teacher` · `/1-resource-summarizer`
-- **Vault on-ramp:** `/1-vault-explain` → `/1-learning-explainer`
-- **Cousins:** `/1-resource-summarizer` also soft under Vault ingest distill
+Compatibility pointer: [former tutor-mode reference](./references/tutor-mode.md).

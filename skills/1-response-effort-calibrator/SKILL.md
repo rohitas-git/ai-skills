@@ -1,72 +1,90 @@
 ---
 name: 1-response-effort-calibrator
 description: >
-  Guides the AI on response effort, depth, and style (brief, concise, balanced,
-  detailed, exhaustive) based on prompt cues. Use for requests specifying length, detail
-  level, quick answer, in-depth analysis, or similar effort/verbosity controls. Use when:
-  Guides the AI on response effort, depth, and style (brief, concise, balanced,
-  detailed, exhaustive). Hub: /0-butler.
+  Set the requested depth and format of this response: brief, concise, balanced,
+  detailed, or exhaustive. Use when the user explicitly asks for response length or
+  depth—not to summarize content or change implementation scope. Hub: /0-butler.
 disable-model-invocation: true
 metadata:
   catalog:
     hub: 0-butler
     role: soft
     when:
-      - "Guides the AI on response effort, depth, and style (brief, concise, balanced, detailed, exhaustive)"
+      - "the user asks for more or less detail, a shorter answer, or a specific response depth"
+    not_when:
+      - "re-explain the previous answer → 1-bro"
+      - "summarize a source, PR, or document → use the matching summarizer"
+      - "the request changes task scope rather than response presentation"
     triggers:
       - "1-response-effort-calibrator"
       - "response effort calibrator"
+      - "be concise"
+      - "brief answer"
+      - "detailed answer"
+      - "exhaustive analysis"
+    prev: [0-butler]
+    next: [0-butler]
     requires_setup: false
 ---
 
 # Response Effort Calibrator
 
+**Atomic job:** choose the presentation depth for the current substantive request
+when the user explicitly asks. This is a one-request overlay unless the user clearly
+asks for an ongoing convention.
+
+## Boundary
+
+| Need | Skill |
+|------|--------|
+| Dial the current response length/depth | **this** |
+| Re-explain the last assistant reply in plain language | `/1-bro` |
+| Summarize or transform source material | Matching summarizer/authoring skill |
+
 ## Process
 
-1. Follow the steps and hard rules in this skill.
-2. Load linked `references/` only when the branch needs them.
+1. Identify the newest explicit depth cue that applies to the current request.
+2. Select the least verbose level that still preserves correctness and required
+   context. If cues are materially incompatible, ask only when the choice changes
+   the usefulness of the result; otherwise state the interpretation briefly.
+3. Return the selected mode to the caller and continue the substantive workflow.
+   A mode-only request changes presentation only and uses no tools.
 
+## Effort levels
 
-## Overview
+- **Ultra-brief / just the answer:** direct result and indispensable qualification.
+- **Brief / concise:** essentials with minimal support.
+- **Plain and brief:** everyday words; define only unavoidable jargon.
+- **Balanced:** enough context to understand and act without a deep treatment.
+- **Detailed / in-depth:** supporting evidence, examples, alternatives, and relevant
+  edge cases.
+- **Exhaustive / thorough:** broad treatment of the requested scope, with clear
+  assumptions and limits; it does not authorize unrelated investigation.
 
-This skill standardizes how the agent interprets user instructions about response effort, length, and depth. It prevents over- or under-responding by mapping common phrases to consistent behaviors.
+Do not impose fixed sentence, word, bullet, or search counts. Required schemas,
+citations, safety notices, commands, exact values, and handoff sections survive
+every level.
 
-## Common Effort Levels (use these mappings)
+## Invariants
 
-- **Ultra-brief / Quick / Short answer**: 1-3 sentences max. Key facts only. No examples unless asked.
-- **Brief / Concise**: 1 paragraph or bullet list. Essential info, minimal elaboration.
-- **Simple terms + brief / Plain English + short**: 1 short paragraph or 3-4 bullets. Use everyday words, define unavoidable jargon in-line, skip background, examples, caveats, and follow-up offers unless they materially affect correctness.
-- **Balanced / Standard**: Normal helpful response — context, explanation, pros/cons if relevant. ~200-400 words.
-- **Detailed / In-depth**: Comprehensive coverage with examples, reasoning steps, alternatives, potential edge cases. Structured (headings, lists).
-- **Exhaustive / Thorough / Full analysis**: Leave no stone unturned — deep 1-research (use tools), multiple angles, comparisons, long-term implications, references. Can be multi-section.
-
-## Instructions
-
-1. **Scan the user query** for effort cues:
-   - Keywords/phrases: "briefly", "quickly", "in short", "concise", "simple terms briefly", "plain English", "simple and short", "ELI5 but short", "detailed", "in-depth", "thoroughly", "comprehensive", "full breakdown", "explain like I'm 5", "expert level", "TL;DR", "step-by-step", etc.
-   - Context clues: "just the answer", "summarize", "deep dive", "everything you know", "short response", "non-technical version".
-
-2. **Default behavior**: Balanced unless cues present.
-
-3. **Adjust accordingly**:
-   - Match the requested level exactly.
-   - If the user asks for both simplicity and brevity, prioritize a compact plain-language answer over teaching structure.
-   - If conflicting cues, ask for clarification or default to balanced + note the choice.
-   - Structure output to match: Use bullets/headings for higher effort; keep dense for lower.
-   - For tool use: Scale 1-research depth (e.g., brief = 1-2 searches; detailed = multiple tools + synthesis).
-
-4. **Tone & Quality Controls** (always maintain):
-   - Stay helpful, truthful, and clear regardless of length.
-   - Prioritize accuracy and usefulness over filler.
-   - End with offer for more details if appropriate (especially in brief modes).
+- Response depth never changes task scope, acceptance criteria, evidence quality,
+  verification, safety, or authority.
+- A request for detail does not authorize tools, web research, hidden-reasoning
+  disclosure, code changes, or external actions. Those follow the substantive task.
+- A request for brevity does not permit omitting uncertainty, blockers, failed or
+  skipped checks, destructive-action warnings, or required final structure.
+- Do not create or switch a worktree, inspect a repository, edit files, publish,
+  commit, push, or merge merely to calibrate presentation.
+- Do not claim the mode persists beyond the scope the user requested.
+- Do not append an automatic offer for more detail.
 
 ## Examples
 
 **User**: "Briefly explain quantum computing."
-→ Response: Short definition + 1-2 key principles.
+→ Response: Short definition plus only the principles needed for correctness.
 
 **User**: "Explain these 0-review findings in simple terms briefly."
-→ Response: 3-4 plain-English bullets about the practical problems and why they matter.
+→ Response: Compact plain-English account of the practical problems and why they matter.
 
 **User**: "Give a detailed comparison of React vs Vue."
 → Response: Sections on pros/cons, performance, ecosystem, learning curve, code examples.
@@ -74,4 +92,4 @@ This skill standardizes how the agent interprets user instructions about respons
 **User**: "Quick answer — what's the weather like?"
 → Ultra-brief: Direct answer only.
 
-This skill ensures consistent, user-aligned response calibration across sessions. Combine with other skills as needed.
+Return to `/0-butler` only when the substantive destination is still ambiguous.

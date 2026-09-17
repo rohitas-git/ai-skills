@@ -8,7 +8,7 @@
   "path": "skills/1-security-auditor",
   "package_dir": "hubs/1-security-auditor/",
   "role": "Multi-phase security/quality audit + structured findings \u2014 sub-hub under /0-review.",
-  "notes": "F-R2 chooses full vs scoped vs differential. Soft-link 2-security-and-hardening for remediation.",
+  "notes": "Honor caller scope and read-only authority first; F-R2/F-R3 only resolve ambiguity. Same-candidate specialists return evidence. Report files and remediation require corresponding authorization.",
   "parent": {
     "hub": "0-butler",
     "slash": "/0-butler",
@@ -25,17 +25,27 @@
       "skills": [
         "2-security-and-hardening"
       ],
-      "note": "Remediate / prevent after findings; also soft under code-review"
+      "note": "Apply only authorized scoped fixes; preserve task/worktree identity and return to the build or repair caller. A read-only audit does not activate remediation. Also soft under code-review."
+    },
+    {
+      "link_type": "leaf",
+      "skills": [
+        "2-prompt-injection-defense",
+        "2-skill-supply-chain-audit",
+        "2-dependency-security"
+      ],
+      "note": "Scoped agent trust-boundary assessment, third-party package review, and application dependency checks. Reviews remain read-only and return same-candidate evidence; package dispositions are recommendations, not installation, edit or live-quarantine authority. Optional specialist handoffs preserve caller mode."
     }
   ],
   "pipeline": [
+    "pin caller, scope, candidate and allowed checks; choose specialist before broad recon",
     "recon",
     "hunt",
     "validate",
     "report",
-    "structured findings",
+    "structured findings only when requested; validate report structure without claiming factual proof",
     "independent verification",
-    "optional 2-security-and-hardening remediation"
+    "return verified ledger and coverage gaps to caller; no automatic repair, publication or cleanup"
   ],
   "forks": [
     {
@@ -48,6 +58,18 @@
         "differential/PR",
         "Agent judgment"
       ]
+    },
+    {
+      "id": "F-R3",
+      "question": "Which focused security surface is in scope?",
+      "recommended": "Use the narrow specialist when its evidence scope matches",
+      "branches": [
+        "2-prompt-injection-defense",
+        "2-skill-supply-chain-audit",
+        "2-dependency-security",
+        "general 1-security-auditor workflow",
+        "Agent judgment"
+      ]
     }
   ],
   "domain_hubs_routed": null,
@@ -55,7 +77,7 @@
     "html": "./hub.html",
     "workflow_json": "./workflow.json",
     "flows_chart": "../flows-chart.html",
-    "flows_ssot": "../../../skills/0-butler/references/flows.md",
+    "flows_ssot": "../../skills/0-butler/references/flows.md",
     "hubs_index": "../index.html",
     "manifest": "../manifest.json"
   },

@@ -1,132 +1,96 @@
 ---
 name: 1-code-review
 description: >
-  Multi-axis review of changes (Spec, Standards, Maintainability, …). Use when reviewing
-  a diff/PR/slice after implementation. Not for: over-engineering-only review (2-ponytail-review),
-  mid-build verify (2-verify-work), security-only deep audit (1-security-auditor / 2-security-and-hardening).
-  Hub: /1-code-review (also ship closer under 0-implement). Triggers: code review, review my changes.
+  Read-only multi-axis review of a diff, PR, or current implementation including uncommitted work.
+  Use when reviewing changes after implementation. Not for: verification-only checks (2-verify-work),
+  harsh maintainability-only review (2-thermo-nuclear-code-quality-review), or full security audit
+  (1-security-auditor). Hub: /1-code-review; Ship closer under /0-implement.
 disable-model-invocation: true
 metadata:
   catalog:
     hub: 1-code-review
     role: sub-hub
     when:
-      - "multi-axis review of changes"
-      - "ship closer after implement/tdd"
+      - "multi-axis review of changes, including uncommitted implementation"
+      - "ship closer after implementation and suitable verification"
     not_when:
       - "delete-only over-engineering → 2-ponytail-review"
-      - "quick mid-build check → 2-verify-work"
+      - "harsh maintainability-only → 2-thermo-nuclear-code-quality-review"
+      - "verification evidence only → 2-verify-work"
+      - "full security audit → 1-security-auditor"
+    next: [1-receive-review, 2-software-architect, 2-security-and-hardening]
     prev: [1-tdd, 0-implement]
-    cousins: [2-ponytail-review, 2-verify-work, 2-software-architect]
-    triggers:
-      - "code review"
-      - "review my changes"
-      - "multi-axis review"
+    cousins: [2-ponytail-review, 2-thermo-nuclear-code-quality-review, 2-verify-work, 2-software-architect, 1-complete-pr-review]
+    triggers: [code review, review my changes, multi-axis review, review this PR, review this diff, review uncommitted changes]
     requires_setup: false
 ---
 
-# Code Review (multi-axis)
+# Code Review
+
+Review the actual requested change through Spec, Standards and Maintainability.
+This is read-only; repair belongs to an authorized implementation/repair caller.
+
 ## Boundary
 
 | Need | Skill |
-|------|--------|
-| Multi-axis diff/PR 0-review (Spec/Standards/Maintainability) | **code-review** (this) |
-| Mid-build verify (not full multi-axis) | `/2-verify-work` |
-| Security/quality audit phases | `/1-security-auditor` |
-| Which 0-review mode? | `/0-review` (F-R1) |
-| Over-engineering only | `/2-ponytail-review` |
-| Architecture persona review | `/2-software-architect` |
-| Hardening while building | `/2-security-and-hardening` |
-| Process incoming review comments | `/1-receive-review` |
-
-
-Review the diff between `HEAD` and a **fixed point** on up to three axes:
-
-| Axis | Question | Detail |
-|------|----------|--------|
-| **Spec** | Does the change match the originating issue/PRD/spec? | [axis-spec.md](./references/axis-spec.md) |
-| **Standards** | Does it follow repo coding standards (+ smell baseline)? | [axis-standards.md](./references/axis-standards.md) |
-| **Maintainability** | Is structure cleaner — no spaghetti, file bloat, missed code-judo? | [axis-maintainability.md](./references/axis-maintainability.md) |
-
-**`1-pr-summarizer` is not an axis** — use it only for PR prose.
-
-Run **every applicable** axis (prefer **parallel sub-agents** so axes do not pollute each other). Soft-skip axes that lack inputs; never invent a pass.
+|------|-------|
+| Multi-axis change review | **this skill** |
+| Verify tests/outcomes without a full review | `/2-verify-work` |
+| Combined PR code and differential security report | `/1-complete-pr-review` |
+| Security audit | `/1-security-auditor` |
+| Harsh maintainability-only pass | `/2-thermo-nuclear-code-quality-review` |
+| Over-engineering-only pass | `/2-ponytail-review` |
+| Whole-codebase review strategy | `/1-codebase-review-strategy` |
+| Receive/assess incoming feedback | `/1-receive-review` |
+| Consequential system architecture review | `/2-software-architect` (read-only; returns here/caller) |
 
 ## Process
 
-### 1. Pin the fixed point
+1. Load [the candidate contract](../0-review/references/review-candidate.md).
+   Confirm caller, requested base/candidate, task scope and protected work. For a
+   local implementation include committed, staged, unstaged and task-owned
+   untracked changes; for a published PR use its exact published head. Do not
+   default to HEAD~1 or force three-dot semantics onto an explicit endpoint pair.
+   An empty committed diff is not grounds to stop before checking dirty work.
+2. Map applicable axes and inputs. Spec uses the authoritative request/spec and
+   current contracts; missing product requirements limit the verdict, not basic
+   correctness inspection. Standards uses actual repository rules or an explicitly
+   labeled heuristic baseline. Maintainability applies to changed structure.
+   Run every applicable axis by default; F6 is only for an explicit scope choice
+   or unresolved override (all applicable recommended, named subset, or Agent judgment).
+3. Run each applicable axis using its reference. Serial review is valid; when
+   independent subagent review is permitted, give each a stable candidate, scope,
+   authority and source packet through [the request guide](./references/superpowers-request-review.md).
+   No agent writes, installs tooling, moves HEAD or runs mutating checks implicitly.
+4. Validate each candidate finding against a concrete scenario, location, impact
+   and change causality. Seek counterevidence; separate coverage gaps and existing
+   issues from PR-caused defects. Deduplicate observations while retaining which
+   axes found them. Recommendations stay inside the change; broader redesign is
+   a clearly labeled follow-up, not a requirement to expand the PR.
+5. Return axis results, evidence and limits to the caller. Keep each axis's status
+   visible: findings, no findings within coverage, baseline-only, skipped or blocked.
+   One passing axis must not hide another's failure. A concise blocker summary may
+   reference findings without relabeling their severity.
+6. Stop after the report when invoked alone. A combined review resumes its remaining
+   lenses; a repair loop receives the queue at its paused step. No recursive review,
+   automatic hardening, comment publication, approval, commit or branch finishing.
 
-User may pass a commit SHA, branch, tag, `main`, `HEAD~N`, etc.
+## Output
 
-- **Implement closer default:** three-dot against the branch's merge-base with the default branch (or the ticket's base if known). If unclear, ask once.
-- Confirm `git rev-parse <fixed-point>` and non-empty `git diff <fixed-point>...HEAD`. Empty diff → stop.
+State scope/candidate, inputs, checks and axes run/skipped/blocked; then findings
+with location, scenario, impact and evidence. Separate optional improvements and
+unverified criteria. Report the actual mutation state and artifacts left behind;
+do not claim “ready to merge” from code inspection alone.
 
-Capture: diff command + `git log <fixed-point>..HEAD --oneline`.
+## Progressive disclosure
 
-### 2. Scan (decide applicable axes)
+| Load when | File |
+|-----------|------|
+| Behavior, requirements and correctness | [Spec](./references/axis-spec.md) |
+| Project rules and labeled heuristics | [Standards](./references/axis-standards.md) |
+| Structural change quality | [Maintainability](./references/axis-maintainability.md) |
+| Finding priority and change sizing | [severity-and-sizing.md](./references/severity-and-sizing.md) |
+| Delegating a bounded review | [request guide](./references/superpowers-request-review.md) and [reviewer brief](./references/superpowers/code-reviewer.md) |
+| Historical source only; not execution instructions | [vendor-code-review-full.md](./references/vendor-code-review-full.md) |
 
-| Axis | Applicable when |
-|------|-----------------|
-| Maintainability | Diff non-empty — **always** |
-| Spec | Spec source found (issue ref, user path, `docs/`/`specs/`/`.scratch/`, or ticket text in session) |
-| Standards | Standards docs or CONTEXT/coding-standards signals exist; if none, still run **smell baseline only** under Standards (or note baseline-only mode) |
-
-Record skipped axes with one-line reasons.
-
-Hard-dep for issue fetch: `/0-setup-rohitas-skills` if `docs/agents/issue-tracker.md` is missing and you need tracker access.
-
-### 3. Run applicable axes
-
-Spawn parallel general-purpose sub-agents (one per applicable axis). Each loads only its reference file + the shared diff/commits (+ spec or standards sources as needed).
-
-- Spec brief → see [axis-spec.md](./references/axis-spec.md)
-- Standards brief → see [axis-standards.md](./references/axis-standards.md)
-- Maintainability brief → full ambition bar in [axis-maintainability.md](./references/axis-maintainability.md)
-
-### 4. Aggregate (do not cross-rerank)
-
-```markdown
-# Code 0-review since <fixed-point>
-
-**Axes run:** …
-**Axes skipped:** … (reasons)
-
-## Spec
-…
-
-## Standards
-…
-
-## Maintainability
-…
-
-## Summary
-- Spec: N findings (worst: …) | skipped: …
-- Standards: …
-- Maintainability: …
-```
-
-Do **not** merge axes into one priority list — a Standards pass must not hide a Spec fail.
-
-Within each axis, optional severity labels and sizing notes: [references/severity-and-sizing.md](./references/severity-and-sizing.md). Full vendor five-axis body: [references/vendor-code-review-full.md](./references/vendor-code-review-full.md). Subagent request-review harvest: [references/superpowers-request-review.md](./references/superpowers-request-review.md) · reviewer template: [references/superpowers/code-reviewer.md](./references/superpowers/code-reviewer.md).
-
-## Don't use when
-
-- Unsure which 0-review mode → domain hub `/0-review` (F-R1)
-- Mid-implement self-verify until green → `/2-verify-work`
-- Over-engineering-only delete pass → `/2-ponytail-review`
-- Whole-repo 0-review planning by size tier → `/1-codebase-review-strategy`
-- Full security / OWASP audit → `/1-security-auditor`
-- Architecture 0-review of design/system → `/2-software-architect`
-- Prevention patterns while coding → `/2-security-and-hardening`
-- Architecture deepening survey → `/0-improve-codebase-architecture`
-- PR description / summary text only → `/1-pr-summarizer`
-- Deprecated → do not use `/code-review-v2` (tombstone → this skill)
-
-## Related
-
-- **Parent domain:** `/0-review` (this skill is a **sub-hub**; Ship closer still lands here)
-- **Axes:** Spec, Standards, Maintainability
-- **Cousins:** `/2-verify-work`, `/2-ponytail-review`
-- **Soft:** `/2-software-architect` (architecture 0-review), `/2-security-and-hardening`
-- **Sibling sub-hub:** `/1-security-auditor`
+Primary parent is `/0-review`; the `/0-implement` closer calls this sub-hub directly.

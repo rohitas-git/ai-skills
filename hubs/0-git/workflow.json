@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "kind": "domain_hub_workflow",
+  "domain_id": 17,
+  "domain": "Git",
+  "hub": "0-git",
+  "slash": "/0-git",
+  "path": "skills/0-git",
+  "package_dir": "hubs/0-git/",
+  "role": "Route safe repository-state workflows: isolation, atomic commits, conflicts, and branch completion.",
+  "notes": "Product implementation remains in 0-implement. Git owns repository-state transitions and never broadens authority.",
+  "parent": {
+    "hub": "0-butler",
+    "slash": "/0-butler",
+    "relationship": "routed_by",
+    "html": "../0-butler/hub.html",
+    "workflow_json": "../0-butler/workflow.json",
+    "skill_path": "skills/0-butler"
+  },
+  "children": [
+    {
+      "link_type": "pipeline",
+      "skills": [
+        "1-git-worktrees",
+        "1-atomic-git-commits",
+        "1-finish-branch"
+      ],
+      "primary": true,
+      "note": "Optional isolation before implementation; atomic commit groups after verification; explicit finish choice"
+    },
+    {
+      "link_type": "leaf",
+      "skills": [
+        "1-resolving-merge-conflicts",
+        "1-git-changelog",
+        "1-git-text-normalization",
+        "1-github-cli",
+        "1-github-pr-comment-intake",
+        "1-pr-comment-drafter"
+      ],
+      "primary": true,
+      "note": "Text normalization, conflict recovery, read-only GitHub PR discussion intake, and draft-only outbound PR prose"
+    },
+    {
+      "link_type": "pipeline",
+      "skills": [
+        "1-pr-repair",
+        "1-pr-review-and-repair",
+        "1-stacked-pr-repair",
+        "1-stacked-pr-review-and-repair"
+      ],
+      "primary": true,
+      "note": "Bounded repair-only or review-repair convergence for one PR or a dependent stack"
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "1-pr-summarizer"
+      ],
+      "note": "Ship-primary PR prose after branch completion"
+    }
+  ],
+  "pipeline": [
+    "1-git-worktrees? → return to requesting implementation/repair workflow",
+    "implementation → 1-atomic-git-commits (authorized; split oversized or mixed groups) → return to caller",
+    "branch-outcome request → 1-finish-branch → 1-pr-summarizer? (chosen PR option)",
+    "active conflict → 1-resolving-merge-conflicts → resume interrupted operation",
+    "binary diff or scoped text normalization → 1-git-text-normalization diagnose|authorized fix → return; commit only when separately requested",
+    "GitHub PR discussion → 1-github-pr-comment-intake → 1-receive-review|1-pr-repair",
+    "outbound PR comment → 1-pr-comment-drafter → 1-github-cli (authorized post/edit)",
+    "known PR findings or blockers → 1-pr-repair → 1-pr-summarizer?",
+    "one PR → 1-pr-review-and-repair → 1-pr-summarizer?",
+    "known stack findings or blockers → 1-stacked-pr-repair → 1-pr-summarizer?",
+    "PR stack → 1-stacked-pr-review-and-repair → 1-pr-summarizer?"
+  ],
+  "forks": [
+    {
+      "id": "F-G1",
+      "question": "What Git operation is needed?",
+      "recommended": "Infer the narrowest operation from repository state",
+      "branches": [
+        "1-git-worktrees",
+        "1-atomic-git-commits",
+        "1-git-changelog",
+        "1-git-text-normalization",
+        "1-resolving-merge-conflicts",
+        "1-github-cli",
+        "1-github-pr-comment-intake",
+        "1-pr-comment-drafter",
+        "1-pr-repair",
+        "1-pr-review-and-repair",
+        "1-stacked-pr-repair",
+        "1-stacked-pr-review-and-repair",
+        "1-finish-branch",
+        "1-pr-summarizer",
+        "Agent judgment"
+      ]
+    },
+    {
+      "id": "F-G2",
+      "question": "How should mixed changes be grouped?",
+      "recommended": "By independently revertible behavior",
+      "branches": [
+        "proposed atomic groups",
+        "user-specified grouping",
+        "leave ambiguous changes uncommitted",
+        "Agent judgment"
+      ]
+    },
+    {
+      "id": "F-G3",
+      "question": "What is the intended base-to-tip PR order?",
+      "recommended": "Derive parent-child edges and stop if ambiguity remains",
+      "branches": [
+        "user-supplied order",
+        "provider or stack-tool order",
+        "Agent judgment"
+      ]
+    },
+    {
+      "id": "F-G5",
+      "question": "What PR prose is needed?",
+      "recommended": "Main PR description",
+      "branches": [
+        "1-pr-summarizer",
+        "1-pr-comment-drafter",
+        "Agent judgment"
+      ]
+    },
+    {
+      "id": "F-G4",
+      "question": "Which PR should be reviewed and repaired?",
+      "recommended": "Use the current branch's single open PR when unique",
+      "branches": [
+        "user-named PR",
+        "unique current-branch PR",
+        "Agent judgment"
+      ]
+    }
+  ],
+  "domain_hubs_routed": null,
+  "artifacts": {
+    "html": "./hub.html",
+    "workflow_json": "./workflow.json",
+    "flows_chart": "../flows-chart.html",
+    "flows_ssot": "../../skills/0-butler/references/flows.md",
+    "hubs_index": "../index.html",
+    "manifest": "../manifest.json"
+  },
+  "rules": [
+    "butler_links_every_domain_hub",
+    "each_domain_hub_has_package_dir",
+    "each_domain_hub_has_hub_html",
+    "each_domain_hub_has_workflow_json",
+    "each_domain_hub_links_flows_chart",
+    "one_hub_per_domain",
+    "forks_ask_user",
+    "explicit_staging_only",
+    "never_push_without_permission"
+  ]
+}

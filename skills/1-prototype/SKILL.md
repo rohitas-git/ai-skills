@@ -1,55 +1,66 @@
 ---
 name: 1-prototype
 description: >
-  Build a throwaway 1-prototype to answer a design question. Use when the user wants to
-  sanity-check whether a state model or logic feels right, or explore what a UI should
-  look like. Hub: /0-grilling.
+  Build a bounded throwaway experiment to answer one design or feasibility question.
+  Use for a logic/state-model spike or local UI alternatives. Not for: production implementation
+  (0-implement) or a settled design ready to plan (1-write-plan). Hub: /0-grilling.
 disable-model-invocation: true
 metadata:
   catalog:
     hub: 0-grilling
     role: detour
     when:
-      - "the user wants to sanity-check whether a state model or logic feels right, or explore what a UI shou"
-    triggers:
-      - "1-prototype"
-      - "prototype"
+      - "answer one design or feasibility question with a runnable local experiment"
+    not_when:
+      - "production-ready implementation → 0-implement"
+      - "approved design ready for task planning → 1-write-plan"
+    next: [0-grilling, 1-write-plan]
+    cousins: [0-implement, 1-write-plan, 1-brainstorm, 1-git-worktrees]
+    triggers: [prototype, feasibility spike, test this idea quickly, 1-prototype]
     requires_setup: false
 ---
 
 # Prototype
 
-## Process
-
-1. Follow the steps and hard rules in this skill.
-2. Load linked `references/` only when the branch needs them.
+**One question, one bounded experiment, an evidence-backed answer.**
+Throwaway describes intended lifetime, not permission to skip safety or delete work.
 
 ## Boundary
 
 | Need | Skill |
-|------|--------|
-| Throwaway 1-prototype answering a design question | **prototype** (this) |
-| Pack session for another agent first | `/1-handoff` |
-| Stress-test plan without building | `/0-grilling` |
-| Production 0-implement | `/0-implement` |
+|------|-------|
+| Runnable logic or UI experiment | **prototype** (this) |
+| Stress-test an idea without code | `/0-grilling` |
+| Plan an already settled design | `/1-write-plan` |
+| Production implementation | `/0-implement` |
+| Task-matching workspace and local services | `/1-git-worktrees` |
 
+## Process
 
-A 1-prototype is **throwaway code that answers a question**. The question decides the shape.
+1. State the question, observable success/failure and explicit non-goals. For an
+   ambiguous logic-versus-UI choice, use **F-P1**: logic, UI, or **Agent judgment**;
+   infer only when the user's request already makes the branch clear.
+2. Confirm repository/workspace, allowed paths and dirty changes. Reuse a suitable
+   isolated task workspace or use `/1-git-worktrees` when needed. Keep the experiment
+   separate from production delivery; mark files/route as prototype and preserve
+   the original behavior. No worktree is needed for discussion-only advice.
+3. Build the smallest experiment using project tooling: [logic](./LOGIC.md) or
+   [UI](./UI.md). Prefer in-memory state and synthetic data. Real service/data
+   access needs explicit task scope; never borrow production credentials or reset
+   a shared local database.
+4. Run the experiment and exercise the cases that answer its question. Use focused
+   assertions, replay inputs or browser evidence when useful; do not prohibit tests.
+   Keep security, data-loss prevention and relevant accessibility intact.
+5. Return question, artifact path, exact run command, observed results, limitations
+   and retained service/workspace ownership to the caller. If the experiment cannot
+   run, report that limitation rather than a validated conclusion.
+6. Stop at learning unless production implementation is requested. An approved
+   decision may hand off to `/1-write-plan` or the original design workflow; no
+   automatic code promotion, commit, issue comment, branch publication or cleanup.
 
-## Pick a branch
+## Progressive disclosure
 
-Identify which question is being answered — from the user's prompt, the surrounding code, or by asking if the user is around:
-
-- **"Does this logic / state model feel right?"** → [LOGIC.md](LOGIC.md). Build a tiny interactive terminal app that pushes the state machine through cases that are hard to reason about on paper.
-- **"What should this look like?"** → [UI.md](UI.md). Generate several radically different UI variations on a single route, switchable via a URL search param and a floating bottom bar.
-
-The two branches produce very different artifacts — getting this wrong wastes the whole prototype. If the question is genuinely ambiguous and the user isn't reachable, default to whichever branch better matches the surrounding code (a backend module → logic; a page or component → UI) and state the assumption at the top of the prototype.
-
-## Rules that apply to both
-
-1. **Throwaway from day one, and clearly marked as such.** Locate the prototype code close to where it will actually be used (next to the module or page it's prototyping for) so context is obvious — but name it so a casual reader can see it's a prototype, not production. For throwaway UI routes, obey whatever routing convention the project already uses; don't invent a new top-level structure.
-2. **One command to run.** Whatever the project's existing task runner supports — `pnpm <name>`, `python <path>`, `bun <path>`, etc. The user must be able to start it without thinking.
-3. **No persistence by default.** State lives in memory. Persistence is the thing the prototype is _checking_, not something it should depend on. If the question explicitly involves a database, hit a scratch DB or a local file with a clear "PROTOTYPE — wipe me" name.
-4. **Skip the polish.** No tests, no error handling beyond what makes the prototype _runnable_, no abstractions. The point is to learn something fast.
-5. **Surface the state.** After every action (logic) or on every variant switch (UI), print or render the full relevant state so the user can see what changed.
-6. **Capture it when done.** Fold any validated decision into the real code, then capture the prototype itself as a **primary source**: commit it to a throwaway branch, out of main, and leave a context pointer to that branch on the implementation issue. Capture the answer too — the verdict and the question it settled — in the issue or a commit. The main branch keeps only the validated decision.
+| Load when | File |
+|-----------|------|
+| Logic, state transitions or data shape | [LOGIC.md](./LOGIC.md) |
+| Local visual alternatives | [UI.md](./UI.md) |

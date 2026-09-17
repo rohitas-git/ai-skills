@@ -1,53 +1,42 @@
-## Process: Threat Model First
+# Threat model and authority
 
-Controls bolted on without a threat model are guesses. Before hardening, spend five minutes thinking like an attacker:
+Follow the parent's task, scope, workspace and caller-return contract. Hardening
+does not grant new operational authority or reopen unrelated architecture choices.
 
-1. **Map the trust boundaries.** Where does untrusted data cross into your system? HTTP requests, form fields, file uploads, webhooks, third-party APIs, message queues, and **LLM output**. Every boundary is attack surface.
-2. **Name the assets.** What's worth stealing or breaking? Credentials, PII, payment data, admin actions, money movement.
-3. **Run STRIDE over each boundary** — a quick lens, not a ceremony:
+## Understand the changed boundary
 
-| Threat | Ask | Typical mitigation |
-|---|---|---|
-| **S**poofing | Can someone impersonate a user/service? | Authentication, signature verification |
-| **T**ampering | Can data be altered in transit or at rest? | Integrity checks, parameterized queries, HTTPS |
-| **R**epudiation | Can an action be denied later? | Audit logging of security events |
-| **I**nformation disclosure | Can data leak? | Encryption, field allowlists, generic errors |
-| **D**enial of service | Can it be overwhelmed? | Rate limiting, input size caps, timeouts |
-| **E**levation of privilege | Can a user gain rights they shouldn't? | Authorization checks, least privilege |
+Identify who wrote the input, its trust level, consequential sinks, assets and
+existing controls. Include local files, another process's output, job payloads,
+webhooks, third-party data and model output; “came from the OS” is not provenance.
 
-4. **Write abuse cases next to use cases.** For each feature, ask "how would I misuse this?" — then make that your first test.
+Use STRIDE where useful: spoofing, tampering, repudiation, disclosure, denial of
+service and privilege escalation. Map plausible abuse cases to the actual feature,
+then identify the smallest control and test that would reject each case. Include
+legitimate behavior the control must preserve. A fixed five-minute ritual is not
+evidence of adequate threat modeling.
 
-If you can't name the trust boundaries for a feature, you're not ready to secure it. This is OWASP **A04: Insecure Design** — most breaches begin in design, not code.
+## Three tiers
 
-## The Three-Tier Boundary System
+**Within authorized implementation:** validate input at trust boundaries, authorize
+protected effects, parameterize queries, encode output for its sink, minimize data,
+preserve safe failures and add meaningful tests. Reuse the project's mechanisms.
 
-### Always Do (No Exceptions)
+**Ask when not already authorized:** new auth/data-sharing flows, changed roles or
+access policy, a new vendor/dependency, new persistent infrastructure, consequential
+CORS/retention/rate-limit policy changes or broader PR scope. Do not ask again for
+a narrowly specified fix the user already approved.
 
-- **Validate all external input** at the system boundary (API routes, form handlers)
-- **Parameterize all database queries** — never concatenate user input into SQL
-- **Encode output** to prevent XSS (use framework auto-escaping, don't bypass it)
-- **Use HTTPS** for all external communication
-- **Hash passwords** with bcrypt/scrypt/argon2 (never store plaintext)
-- **Set security headers** (CSP, HSTS, X-Frame-Options, X-Content-Type-Options)
-- **Use httpOnly, secure, sameSite cookies** for sessions
-- **Run the detected package manager's native audit** against the committed lockfile before every release
+**Never infer permission:** live credential testing/rotation, production operations,
+history rewriting, remote migrations, executing untrusted install scripts, weakening
+gates or deleting user data. Respect stricter repository constraints.
 
-### Ask First (Requires Human Approval)
+## Match controls to context
 
-- Adding new authentication flows or changing auth logic
-- Storing new categories of sensitive data (PII, payment info)
-- Adding new external service integrations
-- Changing CORS configuration
-- Adding file upload handlers
-- Modifying rate limiting or throttling
-- Granting elevated permissions or roles
+Browser headers and cookie policy need browser/session context; a native client,
+public static asset, OAuth callback and private cookie-authenticated API have
+different requirements. Do not force a blanket cookie/CORS/header recipe onto each.
+Use modern password-hashing guidance when this code actually owns passwords; do
+not replace a managed identity provider or migrate existing hashes incidentally.
 
-### Never Do
-
-- **Never commit secrets** to version control (API keys, passwords, tokens)
-- **Never log sensitive data** (passwords, tokens, full credit card numbers)
-- **Never trust client-side validation** as a security boundary
-- **Never disable security headers** for convenience
-- **Never use `eval()` or `innerHTML`** with user-provided data
-- **Never store sessions in client-accessible storage** (localStorage for auth tokens)
-- **Never expose stack traces** or internal error details to users
+A security audit or review caller stays read-only. If implementation is required,
+return the scoped finding and proposed verification to that caller for authority.

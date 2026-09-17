@@ -21,8 +21,8 @@ Attach an **existing** skill directory to a **domain hub** documented in flows.m
 2. **Assign depth-prefix name** ([depth-prefix-names.md](./depth-prefix-names.md)): `depth = max(parent_hub_depth + 1)` over hub parents (domain/sub-hub identity → package depth). Domain hub parent → often **`1-{slug}`**; under a depth-1 sub-hub → **`2-{slug}`**; under depth 2 → **`3-{slug}`**; under 3/4/5 → **`4-` / `5-` / `6-`** (no artificial cap). Rename dir + frontmatter **before** place if still bare.
 3. **Route surface (`gate-route`):** description contract + `metadata.catalog` with `hub` (this parent), `role` (link type), `when` or `triggers`; no top-level route keys — [skill-route-surface.md](./skill-route-surface.md).
 4. Integration test (checks 1–11, including **skill-lint** `depth-prefix` / `name-dir` / `gate-route`).
-5. Dry-run plan: flows.md diff, hub `workflow.json` children, README lines, lock, route-index regen.
-6. Confirm → apply → `scripts/generate-route-index` → run **`/1-skill-linter`** mode **skill** (must Gate: PASS).
+5. Record the exact change-set: flows.md, hub `workflow.json`, README/wiki lines, lock, and route-index inputs that actually change.
+6. If the user requested application, re-read targets and apply; otherwise return the read-only plan. Then run `scripts/generate-route-index` only when its inputs changed and run **`/1-skill-linter`** mode **skill** (must Gate: PASS).
 
 If no suitable hub exists → offer **new-hub** instead of inventing a peer top-level skill.
 If 1-skill-linter reports **subdomain-candidate** → offer split or sub-domain hub (see 1-skill-linter `sprawl-and-subdomain.md`) before or after place.
@@ -42,7 +42,7 @@ Create a **workflow domain** (ADR 0005):
 7. **Butler link** — add hub to `hubs/0-butler/hub.html` domain list and `hubs/0-butler/workflow.json` `domain_hubs_routed`.
 8. **Manifest** — add entry in `hubs/manifest.json`.
 9. **flows-chart** — add matrix/nav link to `hubs/0-{slug}/hub.html`.
-10. Integration test → confirm → apply → **skill-linter** hub/package checks (`depth-prefix`, `depth-hub`, `hub-dir`, `hub-html`, `hub-workflow-json`, `butler-hub-link`, `hub-chart-link`).
+10. Integration test → revision-safe apply when authorized → **skill-linter** hub/package checks (`depth-prefix`, `depth-hub`, `hub-dir`, `hub-html`, `hub-workflow-json`, `butler-hub-link`, `hub-chart-link`).
 
 ### sub-hub (optional)
 
@@ -69,4 +69,4 @@ Every pipeline branch needs an **F#** entry:
 - Recommended default
 - Edges → next skills
 
-Agents must **ask the user** at each fork (recommend first); 0-skill-manager ensures the map records the fork.
+Ask only when the fork materially changes outcome, identity, authority, or discards behavior. Routine reversible branches are inferred from the explicit request and recorded without a redundant confirmation.

@@ -17,12 +17,15 @@ Severity: **critical** · **warn** · **info**
 | `description-quality` | warn | description ≥ ~40 chars; signals when-to-use / triggers |
 | `description-triggers` | warn | **all live** skills: description has Use when / Use for / Triggers / Trigger on (butler route surface; not only model-invoked) |
 | `route-top-level` | **critical** | no top-level `hub`/`when`/`not_when`/`next`/`prev`/`cousins`/`triggers`/`role` — use `metadata.catalog` only ([skill-route-surface.md](../../0-skill-manager/references/skill-route-surface.md)) |
-| `route-hub` | warn | if `metadata.catalog.hub` set, it must be a known hub package / membership |
+| `route-hub` | warn | `metadata.catalog.hub` must be a known hub and actually own this skill; membership under a different hub does not count |
 | `route-cousin` | warn | dual-member or high-collision cluster lacks `not_when` / `## Boundary` |
 | `route-index-stale` | info | missing or older than skills/workflows — run `scripts/generate-route-index` |
 | `body-structure` | warn | non-empty body; has Process/Dispatch/Steps **or** short intentional all-reference |
 | `lean-shape` | warn | follows lean shape (thin router + steps + pointers), not a book (lean-structure.md) |
-| `disable-model` | info | large (>180 lines) or steward skills: prefer `disable-model-invocation: true` |
+| `claude-invocation-policy` | critical | Claude implicit only for `1-coding-standards`; every other live skill sets `disable-model-invocation: true` |
+| `codex-invocation-policy` | critical | Codex implicit only for top-level `role: hub` skills plus `1-coding-standards`; every other live skill explicitly sets `agents/openai.yaml` policy false |
+| `codex-manifest-policy` | critical | `agents/openai.yaml` policy is well formed; preserve interface, dependency, and metadata fields |
+| `{runtime}-invocation-budget` | warn | Claude and Codex implicit counts receive independent context-budget checks |
 
 ## B. Lean main SKILL.md (progressive disclosure)
 
@@ -39,7 +42,8 @@ Severity: **critical** · **warn** · **info**
 | Code | Sev | Check |
 |------|-----|--------|
 | `ref-exists` | critical | relative markdown links from SKILL.md resolve on disk |
-| `ref-orphan` | warn | files under `references/` never linked from SKILL.md |
+| `handoff-target` | critical | every depth-prefixed skill handoff in a live skill, `flows.md`, or a hub workflow names a live skill |
+| `ref-orphan` | warn | files under `references/` not reachable from SKILL.md through package-local Markdown links or explicit backticked file pointers; follow chains/cycles by path, not basename, without executing assets or fetching remote links |
 | `ref-empty` | warn | linked file empty or trivial stub |
 | `scripts-exec` | info | `scripts/` present but never mentioned (or opposite) |
 

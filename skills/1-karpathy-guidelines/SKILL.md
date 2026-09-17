@@ -1,13 +1,11 @@
 ---
 name: 1-karpathy-guidelines
 description: >
-  Behavioral guidelines that cut common LLM coding mistakes: surface assumptions,
-  simplicity first, surgical diffs, goal-driven verification.
-  Use when: writing, reviewing, or refactoring code; avoiding overcomplication;
-  making minimal diffs; needing verifiable success criteria.
-  Not for: active YAGNI lazy mode (0-ponytail), style/naming standards
-  (1-coding-standards), claim-done evidence subagent (2-verify-work).
-  Hub: /0-implement. Triggers: karpathy, surgical changes, simplicity first.
+  Apply a small think-first, simplicity, surgical-scope, and evidence checklist inside one
+  implementation. Use when: the user explicitly asks for Karpathy coding guidelines, assumption
+  surfacing, a surgical diff, or goal-driven implementation. Not for: general implementation
+  orchestration (0-implement), YAGNI mode (0-ponytail), coding conventions (1-coding-standards),
+  review-only work (1-code-review), or completion verification (2-verify-work). Hub: /0-implement.
 disable-model-invocation: true
 license: MIT
 metadata:
@@ -15,99 +13,75 @@ metadata:
     hub: 0-implement
     role: soft
     when:
-      - "write/review/refactor with process hygiene"
-      - "avoid overcomplication; surgical diffs; verifiable goals"
+      - "explicit Karpathy-style implementation process request"
+      - "surface assumptions, keep the diff surgical, and define evidence before editing"
     not_when:
+      - "ordinary implementation orchestration → 0-implement"
       - "lazy YAGNI mode → 0-ponytail"
-      - "naming/modularity style → 1-coding-standards"
-      - "evidence-before-done gate → 2-verify-work"
-    cousins: [0-ponytail, 1-coding-standards, 2-verify-work]
+      - "coding conventions → 1-coding-standards"
+      - "review only → 1-code-review"
+      - "completion evidence only → 2-verify-work"
+    prev: [0-implement]
+    next: [0-implement]
+    cousins: [0-ponytail, 1-coding-standards, 1-code-review, 2-verify-work]
     triggers:
-      - "karpathy"
-      - "surgical changes"
-      - "simplicity first"
+      - "karpathy coding guidelines"
       - "think before coding"
+      - "surface assumptions before coding"
+      - "keep the diff surgical"
+      - "goal-driven implementation"
     requires_setup: false
 ---
 
 # Karpathy Guidelines
 
-Behavioral guidelines to reduce common LLM coding mistakes, derived from [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876) on LLM coding pitfalls.
-
-**Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
-
-## Process
-
-1. Apply the four rules below while writing, reviewing, or refactoring.
-2. If the job is pure YAGNI/lazy mode, style standards, or evidence-before-done, redirect via Boundary.
+**Atomic job:** constrain one already-scoped implementation with four process checks, then return
+the unchanged task/candidate/workspace/authority packet to `/0-implement`. This is an explicit
+process aid, not a second implementation or review workflow.
 
 ## Boundary
 
-| Need | Skill |
-|------|--------|
-| LLM coding process hygiene (this checklist) | **1-karpathy-guidelines** (this) |
-| Active YAGNI / lazy ladder mode | `/0-ponytail` |
-| Over-engineering-only review | `/2-ponytail-review` |
-| Naming / modularity / comments while coding | `/1-coding-standards` |
-| Evidence-before-done subagent gate | `/2-verify-work` |
-| High-stakes adversarial CLAIM→DOUBT | `/1-doubt-driven-development` |
+| Need | Route |
+|---|---|
+| Apply this four-check implementation discipline | **this skill** |
+| Drive the implementation, workspace, specialists, and closure | `/0-implement` |
+| Enforce repository coding conventions | `/1-coding-standards` |
+| Use an aggressive YAGNI/minimal-code mode | `/0-ponytail` |
+| Review a candidate or verify completion claims | `/1-code-review` or `/2-verify-work` |
 
-## 1. Think Before Coding
+## Process
 
-**Don't assume. Don't hide confusion. Surface tradeoffs.**
+1. **Inherit the candidate.** Record caller, requested outcome and exclusions, repository and exact
+   worktree/branch/HEAD, dirty-file and service ownership, allowed paths/effects, and acceptance
+   evidence. This skill creates no workspace and grants no new authority.
+2. **Think before editing.** Surface only assumptions that can change behavior, compatibility,
+   security, destructive/external effects, or an irreversible choice. Ask for a decision when one is
+   load-bearing; otherwise use repository evidence and state the smallest safe reversible assumption.
+3. **Prefer the smallest adequate design.** Search for an existing local pattern, platform feature,
+   or installed capability before adding code. Avoid speculative features and abstractions, but do
+   not simplify away required validation, authorization, accessibility, data integrity, failure
+   recovery, observability, or compatibility. Treat a scenario as impossible only when an enforced
+   invariant proves it.
+4. **Keep scope surgical.** Classify touched behavior as requested, required compatibility/cleanup,
+   or excluded. Every changed line and generated artifact must trace to the first two classes. Match
+   repository style; report unrelated debt separately and do not edit it.
+5. **Define falsifying evidence.** Before the change, name the smallest current check that could
+   disprove the intended behavior. Use tests, characterization, runtime inspection, type/static
+   checks, or another fitting loop; do not force test-first work for exploratory or probabilistic
+   behavior. Expand verification only when risk, repository policy, or the caller requires it.
+6. **Return to Ship.** Return assumptions/decisions, scope ledger, proposed or completed change,
+   evidence status, residual risks, and the exact candidate/workspace identity. `/0-implement` owns
+   edits, review reconciliation, commits, and any later branch outcome.
 
-Before implementing:
-- State your assumptions explicitly. If uncertain, ask.
-- If multiple interpretations exist, present them — don't pick silently.
-- If a simpler approach exists, say so. Push back when warranted.
-- If something is unclear, stop. Name what's confusing. Ask.
+## Hard boundaries
 
-## 2. Simplicity First
+- Do not edit during an advice-only or review-only invocation.
+- Do not switch branches, create/stash/remove worktrees, install tools, start shared services, commit,
+  push, publish, deploy, merge, or mutate remote/production state.
+- Do not use line-count targets or “a senior engineer would…” as evidence of unnecessary complexity.
+- Do not loop past a real decision, unavailable required evidence, or the caller's authorized scope.
 
-**Minimum code that solves the problem. Nothing speculative.**
+## Provenance
 
-- No features beyond what was asked.
-- No abstractions for single-use code.
-- No "flexibility" or "configurability" that wasn't requested.
-- No error handling for impossible scenarios.
-- If you write 200 lines and it could be 50, rewrite it.
-
-Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
-
-## 3. Surgical Changes
-
-**Touch only what you must. Clean up only your own mess.**
-
-When editing existing code:
-- Don't "improve" adjacent code, comments, or formatting.
-- Don't refactor things that aren't broken.
-- Match existing style, even if you'd do it differently.
-- If you notice unrelated dead code, mention it — don't delete it.
-
-When your changes create orphans:
-- Remove imports/variables/functions that YOUR changes made unused.
-- Don't remove pre-existing dead code unless asked.
-
-The test: Every changed line should trace directly to the user's request.
-
-## 4. Goal-Driven Execution
-
-**Define success criteria. Loop until verified.**
-
-Transform tasks into verifiable goals:
-- "Add validation" → "Write tests for invalid inputs, then make them pass"
-- "Fix the bug" → "Write a test that reproduces it, then make it pass"
-- "Refactor X" → "Ensure tests pass before and after"
-
-For multi-step tasks, state a brief plan:
-```
-1. [Step] → verify: [check]
-2. [Step] → verify: [check]
-3. [Step] → verify: [check]
-```
-
-Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
-
-## Related
-
-Soft under `/0-implement`. Cousins: `/0-ponytail`, `/1-coding-standards`, `/2-verify-work`.
+Adapted from [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876)
+about common LLM coding mistakes; repository rules and the caller's concrete contract remain primary.

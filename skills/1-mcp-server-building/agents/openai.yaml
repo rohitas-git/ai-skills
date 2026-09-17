@@ -1,0 +1,6 @@
+interface:
+  display_name: "MCP Server Building"
+  short_description: "Build secure, testable MCP servers"
+  default_prompt: "Use $1-mcp-server-building for one bounded design, review, or authorized implementation of this exact MCP server surface and pinned protocol revision."
+policy:
+  allow_implicit_invocation: false

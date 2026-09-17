@@ -1,90 +1,34 @@
-# Git Hooks Setup for Documentation Governance
+# Optional Git-hook integration
 
-Git hooks provide local enforcement so that documentation obligations are met before code is committed.
+Hooks are not the default adoption path. Prefer a tracked checker runnable directly and in CI; add a
+local hook only when the user/team explicitly requests it after evaluating developer friction.
 
-## Recommended Pre-Commit Hook
+## Worktree hazards
 
-Create or update `.git/hooks/pre-commit` (or use the tracked version in `scripts/git-hooks/pre-commit`):
+Linked Git worktrees may share the common Git directory, hook configuration, and `core.hooksPath`.
+Installing or replacing a hook from one worktree can affect other branches and users of the clone.
+Before proposing installation inspect:
 
-```bash
-#!/bin/sh
-set -eu
+- `git rev-parse --git-dir` and `--git-common-dir`;
+- existing `core.hooksPath` and hook contents;
+- repository hook manager/package convention;
+- whether the checker is safe in every linked worktree and dirty state.
 
-repo_root="$(git rev-parse --show-toplevel)"
-cd "$repo_root"
+Never overwrite `.git/hooks/pre-commit`, change `core.hooksPath`, or make a script executable as a
+side effect of a docs assessment/update. Hook installation is a separate explicit Git/setup action.
 
-echo "pre-commit: running documentation governance check"
-npm run docs:check || {
-  echo "Documentation check failed. Please update the required living docs or adjust the trigger map."
-  exit 1
-}
-```
+## Safer shape
 
-Make it executable: `chmod +x .git/hooks/pre-commit`
+- Keep the checker and tests tracked in the repository.
+- If a hook is adopted, make it a tiny wrapper that invokes the tracked checker from the current
+  worktree root; do not embed a second implementation.
+- Preserve existing hooks by using the repository's configured composition mechanism.
+- Fail with actionable obligations and no automatic edits.
+- Do not fetch/switch branches, install dependencies, mutate docs, or use a hidden skip.
 
-## Installation Script (Generic)
+## Verification and rollback
 
-A simple installer (`scripts/install-git-hooks.sh` or equivalent):
-
-```bash
-#!/bin/sh
-set -eu
-
-repo_root="$(git rev-parse --show-toplevel)"
-hooks_dir="$repo_root/.git/hooks"
-source_hook="$repo_root/scripts/git-hooks/pre-commit"
-target_hook="$hooks_dir/pre-commit"
-
-if [ ! -f "$source_hook" ]; then
-  echo "install-git-hooks: missing $source_hook — using inline hook instead" >&2
-  # Fallback: create a basic one that calls your docs check command
-  cat > "$target_hook" << 'EOF'
-#!/bin/sh
-set -eu
-cd "$(git rev-parse --show-toplevel)"
-echo "pre-commit: running documentation check"
-npm run docs:check || exit 1
-EOF
-else
-  mkdir -p "$hooks_dir"
-  cp "$source_hook" "$target_hook"
-fi
-
-chmod +x "$target_hook"
-echo "install-git-hooks: pre-commit hook installed (local to this clone)"
-```
-
-Run it once per clone: `bash scripts/install-git-hooks.sh`
-
-## CI Integration (Generic)
-
-Add to your CI pipeline (GitHub Actions example):
-
-```yaml
-- name: Documentation Governance Check
-  run: npm run docs:check
-  env:
-    DOCS_CHECK_BASE: origin/${{ github.base_ref || 'main' }}
-```
-
-Or use a Makefile target:
-
-```makefile
-docs-check:
-	npm run docs:check || (echo "Update living docs for changed code paths" && exit 1)
-```
-
-## Best Practices
-
-- Keep the hook **local** (in `.git/hooks`) — never commit the installed hook itself.
-- Use `[docs-skip]` in commit messages or `DOCS_CHECK_SKIP=1` only for intentional, well-reasoned exceptions.
-- Combine with other hooks (lint, tests) but run docs check early.
-- For monorepos: Scope the check to the relevant package or add path filters.
-- If no Node/npm: Implement the checker in your primary language (Python, Go, shell + git + grep/glob) or use a lightweight Make/Python script that performs the same glob + diff logic.
-
-## When to Introduce Hooks
-
-- Early in a project: Low friction, prevents drift from day one.
-- Existing projects: Start with the check in CI only, then add local hook after the team is comfortable with the trigger map.
-
-The governor skill can help you design the initial `doc-triggers.json` and the check command for your stack.
+Test normal repository and linked-worktree invocation, paths with spaces, absent dependencies,
+committed/staged/unstaged/untracked candidates, and existing-hook composition. Document how to remove
+only the added integration without deleting unrelated hooks. CI remains the authoritative team-wide
+enforcement surface when configured.

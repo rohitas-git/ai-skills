@@ -1,86 +1,140 @@
 #!/usr/bin/env node
-/**
- * Minimal schema-ish validator for findings.json produced by security-auditor.
- * Zero external dependencies. Checks required structure and enums.
- * Usage: node validate-findings.js [path/to/findings.json]
- */
-
+'use strict';
+// Dependency-free structural validator for the adjacent findings schema, not a
+// general JSON Schema engine. "format" is annotation-only (Draft 2020-12 default).
+// No report content, unknown property names or parser excerpts enter diagnostics.
 const fs = require('fs');
 const path = require('path');
+const schema = JSON.parse(fs.readFileSync(
+  path.join(__dirname, '../references/findings-schema.json'), 'utf8'));
+const owns = (object, key) => Object.prototype.hasOwnProperty.call(object, key);
+const isObject = value => value !== null && typeof value === 'object' && !Array.isArray(value);
+const supported = new Set(['$schema', '$id', 'title', 'description', 'type', 'required',
+  'properties', 'items', 'enum', 'format', 'additionalProperties', 'minLength',
+  'minItems', 'minimum']);
 
-const file = process.argv[2] || 'findings.json';
-
-if (!fs.existsSync(file)) {
-  console.error(`File not found: ${file}`);
-  process.exit(1);
-}
-
-let data;
-try {
-  data = JSON.parse(fs.readFileSync(file, 'utf8'));
-} catch (e) {
-  console.error('Invalid JSON:', e.message);
-  process.exit(1);
-}
-
-const errors = [];
-
-function req(obj, key, ctx) {
-  if (obj == null || !(key in obj)) {
-    errors.push(`${ctx}: missing required field "${key}"`);
-    return false;
+function checkSchema(rule) {
+  for (const key of Object.keys(rule)) {
+    if (!supported.has(key)) throw new Error('Unsupported schema keyword');
   }
-  return true;
+  if (!['object', 'array', 'string', 'boolean', 'integer'].includes(rule.type)) {
+    throw new Error('Unsupported schema type');
+  }
+  for (const child of Object.values(rule.properties || {})) checkSchema(child);
+  if (rule.items) checkSchema(rule.items);
+  if (isObject(rule.additionalProperties)) checkSchema(rule.additionalProperties);
 }
 
-// Top level
-if (!req(data, 'audit_metadata', 'root')) process.exit(report());
-if (!req(data, 'findings', 'root')) process.exit(report());
-
-const meta = data.audit_metadata;
-['project', 'timestamp', 'scope', 'phases_completed'].forEach(k => req(meta, k, 'audit_metadata'));
-
-if (!Array.isArray(data.findings)) {
-  errors.push('findings must be an array');
-} else {
-  const severities = new Set(['Critical', 'High', 'Medium', 'Low']);
-  const categories = new Set(['security', 'logic', 'ambiguity', 'bug']);
-  const confidences = new Set(['high', 'medium', 'low']);
-  const statuses = new Set(['confirmed', 'rejected', 'needs-more-info']);
-
-  data.findings.forEach((f, i) => {
-    const ctx = `findings[${i}]`;
-    ['id', 'title', 'severity', 'category', 'location', 'scenario', 'impact', 'confidence', 'status']
-      .forEach(k => req(f, k, ctx));
-
-    if (f.severity && !severities.has(f.severity)) {
-      errors.push(`${ctx}.severity must be one of ${[...severities].join(', ')}`);
+function validateDocument(data) {
+  checkSchema(schema);
+  const errors = [];
+  const fail = message => { if (errors.length < 30) errors.push(message); };
+  function visit(value, rule, context) {
+    const validType = rule.type === 'object' ? isObject(value)
+      : rule.type === 'array' ? Array.isArray(value)
+      : rule.type === 'integer' ? Number.isSafeInteger(value)
+      : typeof value === rule.type;
+    if (!validType) { fail(context + ': invalid type'); return; }
+    if (rule.enum && !rule.enum.includes(value)) fail(context + ': invalid enum');
+    if (rule.type === 'string' && Array.from(value).length < (rule.minLength || 0)) {
+      fail(context + ': string too short');
     }
-    if (f.category && !categories.has(f.category)) {
-      errors.push(`${ctx}.category must be one of ${[...categories].join(', ')}`);
+    if (rule.minimum !== undefined && value < rule.minimum) fail(context + ': below minimum');
+    if (rule.type === 'array') {
+      if (value.length < (rule.minItems || 0)) fail(context + ': too few items');
+      value.forEach((item, index) => visit(item, rule.items, context + '[' + index + ']'));
     }
-    if (f.confidence && !confidences.has(f.confidence)) {
-      errors.push(`${ctx}.confidence must be one of ${[...confidences].join(', ')}`);
+    if (rule.type === 'object') {
+      for (const key of rule.required || []) {
+        if (!owns(value, key)) fail(context + '.' + key + ': required');
+      }
+      for (const [key, child] of Object.entries(rule.properties || {})) {
+        if (owns(value, key)) visit(value[key], child, context + '.' + key);
+      }
+      for (const key of Object.keys(value)) {
+        if (owns(rule.properties || {}, key)) continue;
+        if (rule.additionalProperties === false) fail(context + ': unexpected property');
+        else if (isObject(rule.additionalProperties)) {
+          visit(value[key], rule.additionalProperties, context + '.<additional>');
+        }
+      }
     }
-    if (f.status && !statuses.has(f.status)) {
-      errors.push(`${ctx}.status must be one of ${[...statuses].join(', ')}`);
-    }
-    if (f.location && !req(f.location, 'paths', `${ctx}.location`)) {
-      // already recorded
-    } else if (f.location && !Array.isArray(f.location.paths)) {
-      errors.push(`${ctx}.location.paths must be an array`);
-    }
+  }
+  visit(data, schema, 'root');
+  if (errors.length) return errors;
+  const ids = new Set();
+  const confirmed = data.findings.filter(finding => finding.status === 'confirmed');
+  data.findings.forEach((finding, index) => {
+    if (ids.has(finding.id)) fail('findings[' + index + '].id: duplicate');
+    ids.add(finding.id);
   });
+  if (data.summary) {
+    if (owns(data.summary, 'total_confirmed') && data.summary.total_confirmed !== confirmed.length) {
+      fail('summary.total_confirmed: inconsistent');
+    }
+    for (const [field, property] of [['by_severity', 'severity'], ['by_category', 'category']]) {
+      const counts = data.summary[field];
+      if (!counts) continue;
+      for (const [key, value] of Object.entries(counts)) {
+        if (value !== confirmed.filter(finding => finding[property] === key).length) {
+          fail('summary.' + field + ': inconsistent count');
+        }
+      }
+    }
+  }
+  return errors;
 }
 
-function report() {
-  if (errors.length === 0) {
-    console.log(`OK — ${file} is structurally valid (${data.findings.length} findings)`);
+function main(args) {
+  if (args.length === 1 && args[0] === '--help') {
+    console.log('Usage: node validate-findings.js /explicit/path/to/findings.json');
+    console.log('Exit 0: structure valid; 1: invalid report; 2: usage/input/schema unavailable.');
     return 0;
   }
-  console.error(`Validation failed for ${file}:`);
-  errors.forEach(e => console.error('  - ' + e));
-  return 1;
+  if (args.length !== 1 || args[0].startsWith('--')) {
+    console.error('Expected one explicit report path; use --help.');
+    return 2;
+  }
+  let fd;
+  let bytes;
+  try {
+    if (!Number.isInteger(fs.constants.O_NOFOLLOW) || !Number.isInteger(fs.constants.O_NONBLOCK)) {
+      throw new Error('Safe input flags unavailable');
+    }
+    fd = fs.openSync(args[0], fs.constants.O_RDONLY | fs.constants.O_NOFOLLOW | fs.constants.O_NONBLOCK);
+    const stat = fs.fstatSync(fd);
+    const maxBytes = 5 * 1024 * 1024;
+    if (!stat.isFile() || stat.size > maxBytes) throw new Error('Unsupported input');
+    // Bounded read also handles a regular file growing after the size check.
+    const buffer = Buffer.alloc(maxBytes + 1);
+    let length = 0;
+    while (length < buffer.length) {
+      const count = fs.readSync(fd, buffer, length, buffer.length - length, null);
+      if (!count) break;
+      length += count;
+    }
+    if (length > maxBytes) throw new Error('Input too large');
+    bytes = buffer.subarray(0, length).toString('utf8');
+  } catch {
+    console.error('Input unavailable: require safe file flags and a readable regular file, not a symlink, at most 5 MiB.');
+    return 2;
+  } finally {
+    if (fd !== undefined) fs.closeSync(fd);
+  }
+  let data;
+  try { data = JSON.parse(bytes); }
+  catch { console.error('Invalid JSON (contents withheld).'); return 1; }
+  let errors;
+  try { errors = validateDocument(data); }
+  catch { console.error('Validator/schema mismatch; validation unavailable.'); return 2; }
+  if (errors.length) {
+    console.error('Invalid report (up to 30 structural/consistency errors):');
+    errors.forEach(error => console.error('  - ' + error));
+    return 1;
+  }
+  console.log('OK: report structure and checked counts are valid; factual claims and date-time format are not verified.');
+  return 0;
 }
 
-process.exit(report());
+module.exports = { validateDocument };
+if (require.main === module) process.exitCode = main(process.argv.slice(2));

@@ -7,8 +7,8 @@
   "slash": "/0-triage",
   "path": "skills/0-triage",
   "package_dir": "hubs/0-triage/",
-  "role": "Issue / external PR state machine; on-ramp into Ship.",
-  "notes": "Never re-triage 1-to-tickets output. F7 entry when work arrives as issues/PRs.",
+  "role": "Route one raw-intake triage operation without querying or mutating the tracker.",
+  "notes": "Never re-triage 1-to-tickets output. Assessment is read-only; Apply requires a fixed approved transition. ready-for-agent never authorizes implementation.",
   "parent": {
     "hub": "0-butler",
     "slash": "/0-butler",
@@ -18,28 +18,31 @@
     "skill_path": "skills/0-butler"
   },
   "children": [
-    {
-      "link_type": "on-ramp",
-      "skills": [
-        "0-implement"
-      ],
-      "note": "merge into Ship"
-    }
+    {"link_type": "leaf", "skills": ["1-triage-inbox"], "note": "One read-only attention snapshot"},
+    {"link_type": "pipeline", "skills": ["1-triage-assess"], "note": "One read-only candidate assessment and transition draft"},
+    {"link_type": "pipeline", "skills": ["1-triage-apply"], "note": "One explicitly approved, revision-checked transition"}
   ],
   "pipeline": [
-    "categorise",
-    "verify",
-    "grill if needed",
-    "agent-ready brief",
-    "0-implement"
+    "pin tracker/candidate or query, revision/cutoff, privacy, authority, and optional worktree identity",
+    "direct route or material-only F-TR1",
+    "read one inbox snapshot OR assess one candidate OR apply one approved transition",
+    "return evidence, proposed or actual effects, and unresolved gates to actual caller",
+    "separately requested ready work may enter 0-implement; tracker state grants no execution authority"
   ],
-  "forks": [],
+  "forks": [
+    {
+      "id": "F-TR1",
+      "question": "Which one triage operation is needed?",
+      "recommended": "Infer snapshot, assessment, or approved transition from the request and candidate state",
+      "branches": ["1-triage-inbox", "1-triage-assess", "1-triage-apply", "Agent judgment"]
+    }
+  ],
   "domain_hubs_routed": null,
   "artifacts": {
     "html": "./hub.html",
     "workflow_json": "./workflow.json",
     "flows_chart": "../flows-chart.html",
-    "flows_ssot": "../../../skills/0-butler/references/flows.md",
+    "flows_ssot": "../../skills/0-butler/references/flows.md",
     "hubs_index": "../index.html",
     "manifest": "../manifest.json"
   },
@@ -50,6 +53,10 @@
     "each_domain_hub_has_workflow_json",
     "each_domain_hub_links_flows_chart",
     "one_hub_per_domain",
-    "forks_ask_user"
+    "forks_ask_user",
+    "exact_candidate_revision_and_optional_worktree",
+    "assessment_read_only",
+    "approved_effect_ledger_before_mutation",
+    "ready_state_is_not_execution_authority"
   ]
 }

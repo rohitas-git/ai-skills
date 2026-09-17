@@ -56,14 +56,14 @@
 <body>
 <header>
   <h1>★ 0-improve-codebase-architecture <span style="color:var(--muted);font-weight:500">· Domain 8 · Architecture</span></h1>
-  <p>Deepening opportunities and architecture improvement.</p>
+  <p>Route architecture specialists or run a bounded, read-only deepening scan.</p>
 </header>
 <nav class="top">
   <a class="butler-cta" href="../0-butler/hub.html">★ 0-butler (hub of hubs)</a>
-  <a class="chart-cta" href="../../flows-chart.html">Full flows chart</a>
-  <a href="../../flows-chart.html#domain-hub-matrix">Domain matrix</a>
+  <a class="chart-cta" href="../flows-chart.html">Full flows chart</a>
+  <a href="../flows-chart.html#domain-hub-matrix">Domain matrix</a>
   <a href="./workflow.json">workflow.json</a>
-  <a href="../../../productivity/0-butler/references/flows.md">flows.md SSOT</a>
+  <a href="../../skills/0-butler/references/flows.md">flows.md SSOT</a>
   <a href="../index.html">hubs index</a>
   <span class="here">package: <code>hubs/0-improve-codebase-architecture/</code></span>
 </nav>
@@ -77,7 +77,7 @@
     Catalog mutations → <a href="../0-skill-manager/hub.html">/0-skill-manager</a>.
   </div>
   <p class="meta">
-    Parent skill: <code>productivity/butler</code> ·
+    Parent skill: <code>skills/0-butler</code> ·
     Parent workflow: <a href="../0-butler/workflow.json"><code>../0-butler/workflow.json</code></a> ·
     This package: <code>hubs/0-improve-codebase-architecture/</code>
   </p>
@@ -87,27 +87,36 @@
   <p class="meta">
     <span class="badge hub">★ hub</span>
     slash: <code>/0-improve-codebase-architecture</code> ·
-    skill path: <code>engineering/0-improve-codebase-architecture/</code> ·
+    skill path: <code>skills/0-improve-codebase-architecture/</code> ·
     package: <code>hubs/0-improve-codebase-architecture/</code>
   </p>
-  <p>Architecture ideas that become build work merge into Design, then Ship.</p>
+  <p>Clear requests dispatch directly. Scans create no worktree; selected implementation returns to Ship.</p>
 </section>
 
 <section>
   <h2>Children</h2>
   <ul>
-    <li><strong>vocab:</strong> codebase-design</li>
-<li><strong>persona:</strong> 2-software-architect</li>
+    <li><strong>soft:</strong> <a href="../../skills/1-error-handling/SKILL.md">1-error-handling</a> — failure behavior and safe recovery; returns to its caller</li>
+    <li><strong>soft:</strong> <a href="../../skills/1-api-and-interface-design/SKILL.md">1-api-and-interface-design</a> — consumer-visible contracts and compatibility; returns to its caller</li>
+    <li><strong>soft:</strong> <a href="../../skills/1-deprecation-and-migration/SKILL.md">1-deprecation-and-migration</a> — consumer migration and evidence-gated retirement</li>
+    <li><strong>vocab:</strong> <a href="../../skills/1-codebase-design/SKILL.md">1-codebase-design</a> — internal module shape, seam, and depth</li>
+<li><strong>persona:</strong> <a href="../../skills/2-software-architect/SKILL.md">2-software-architect</a> <span class='meta'>(bounded system decision packet; no implementation or forced alternatives)</span></li>
+<li><strong>soft (principles):</strong> <a href="../../skills/1-clean-craftsmanship/SKILL.md">1-clean-craftsmanship</a></li>
+<li><strong>soft (standards):</strong> <a href="../../skills/1-coding-standards/SKILL.md">1-coding-standards</a> · <a href="../../skills/1-go-best-practices/SKILL.md">1-go-best-practices</a></li>
+<li><strong>soft (docs):</strong> <a href="../../skills/1-project-wiki-manager/SKILL.md">1-project-wiki-manager</a> <span class='meta'>(declared sources; query/audit read-only, edits stay in the pinned worktree)</span> · <a href="../../skills/1-living-documentation-governor/SKILL.md">1-living-documentation-governor</a> <span class='meta'>(code↔canonical-doc contract; assessment read-only, scoped updates may return to Ship)</span></li>
+<li><strong>satellite:</strong> <a href="../../skills/1-graphify/SKILL.md">1-graphify</a> <span class='meta'>(explicit local extract/query; per-worktree output ownership, no installation or persistence)</span></li>
 <li><strong>tombstone:</strong> software-architecture <span class='meta'>(→ this hub / 1-codebase-design)</span></li>
   </ul>
 </section>
 
 <section>
   <h2>Pipeline</h2>
-  <pre>scan
-HTML report
-pick idea
-optional Design (1-grill-with-docs)</pre>
+<pre>pin caller + mode + repository/worktree + evidence boundary
+clear request → specialist → return to caller
+broad improvement → bounded local read-only scan
+→ Markdown or explicitly requested static HTML
+→ F9 selected candidate → 1-grill-with-docs | Agent judgment
+requested implementation → 0-implement owns workspace and edits</pre>
 </section>
 
 
@@ -116,7 +125,11 @@ optional Design (1-grill-with-docs)</pre>
   <table>
     <thead><tr><th>ID</th><th>Question</th><th>Recommended</th><th>Branches</th></tr></thead>
     <tbody>
-      <tr><td><code>F9</code></td><td>Take a deepening idea to Design?</td><td>if user picks one</td><td>stay · → grill-with-docs</td></tr>
+      <tr><td><code>F-EH1</code></td><td>Define failure behavior or diagnose an unexplained bug?</td><td>Failure behavior for handling/recovery requests</td><td>1-error-handling · 0-diagnosing-bugs · Agent judgment</td></tr>
+      <tr><td><code>F-ARCH1</code></td><td>Design an API contract, a module, or the whole system?</td><td>API contract for endpoint or schema requests</td><td>1-api-and-interface-design · 1-codebase-design · 2-software-architect · Agent judgment</td></tr>
+      <tr><td><code>F9</code></td><td>Take a deepening idea to Design?</td><td>Stay at the report unless the user selects a candidate</td><td>stay · 1-grill-with-docs · Agent judgment</td></tr>
+      <tr><td><code>F-C1</code></td><td>Enforce standards on code now, or discuss clean-code principles?</td><td>coding-standards while editing</td><td>1-coding-standards · 1-clean-craftsmanship · Agent judgment</td></tr>
+      <tr><td><code>F-D1</code></td><td>Concept wiki or code-synced living documentation?</td><td>wiki for concepts; living docs for drift/triggers</td><td>1-project-wiki-manager · 1-living-documentation-governor · Agent judgment</td></tr>
     </tbody>
   </table>
 </section>
@@ -124,7 +137,7 @@ optional Design (1-grill-with-docs)</pre>
 <section>
   <h2>See also</h2>
   <p>
-    <a class="butler-cta" href="../0-butler/hub.html">★ butler</a> <a class="chart-cta" href="../../flows-chart.html">Open flows-chart.html</a>
+    <a class="butler-cta" href="../0-butler/hub.html">★ butler</a> <a class="chart-cta" href="../flows-chart.html">Open flows-chart.html</a>
     <a class="chart-cta" href="./workflow.json" style="margin-left:0.4rem">workflow.json</a>
   </p>
   <p class="meta">House map + fork index: chart. Machine-readable workflow: JSON. Routing apex: butler. Package layout: ADR 0005.</p>
@@ -152,8 +165,8 @@ optional Design (1-grill-with-docs)</pre>
 </main>
 <footer>
   Domain hub package <code>hubs/0-improve-codebase-architecture/</code> for <code>/0-improve-codebase-architecture</code> · parent: <a href="../0-butler/hub.html">butler</a> ·
-  SSOT: <code>skills/productivity/0-butler/references/flows.md</code> ·
-  chart: <a href="../../flows-chart.html">flows-chart.html</a> ·
+  SSOT: <code>skills/0-butler/references/flows.md</code> ·
+  chart: <a href="../flows-chart.html">flows-chart.html</a> ·
   workflow: <a href="./workflow.json">workflow.json</a>
 </footer>
 </body>

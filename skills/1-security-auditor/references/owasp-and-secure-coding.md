@@ -2,6 +2,9 @@
 
 Use this as a structured checklist during the Hunting phase. Map findings to these categories where applicable, but never force a finding solely to match a category. Prefer concrete impact over category compliance.
 
+Category names checked against the [official 2025 list](https://top10.owasp.org/2025/).
+This is an awareness checklist, not a compliance certification or proof of coverage.
+
 ## OWASP Top 10:2025 (condensed)
 
 1. **A01 Broken Access Control**  
@@ -22,13 +25,13 @@ Use this as a structured checklist during the Hunting phase. Map findings to the
 6. **A06 Insecure Design**  
    Missing or weak threat modeling, business logic flaws, lack of security controls by design, insecure architecture patterns.
 
-7. **A07 Identification and Authentication Failures**  
+7. **A07 Authentication Failures**
    Broken authentication, weak session management, credential stuffing vectors, missing MFA where warranted, improper password storage or recovery.
 
-8. **A08 Software and Data Integrity Failures**  
+8. **A08 Software or Data Integrity Failures**
    Insecure CI/CD, unsigned or unverified updates, deserialization of untrusted data, integrity failures in critical data.
 
-9. **A09 Security Logging and Monitoring Failures**  
+9. **A09 Security Logging and Alerting Failures**
    Insufficient logging of security events, logs that contain secrets, inability to detect or respond to incidents, missing alerting.
 
 10. **A10 Mishandling of Exceptional Conditions**  

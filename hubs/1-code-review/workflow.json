@@ -8,7 +8,7 @@
   "path": "skills/1-code-review",
   "package_dir": "hubs/1-code-review/",
   "role": "Multi-axis closer for Ship \u2014 sub-hub under /0-review.",
-  "notes": "Default = scan and run applicable axes; ask F6 only to force/skip. Parent domain hub is /0-review.",
+  "notes": "Review the actual requested candidate, including task-owned uncommitted changes. Run applicable axes locally or with permitted independent reviewers. Return findings to caller; no automatic repair or commit. Parent domain hub is /0-review.",
   "parent": {
     "hub": "0-butler",
     "slash": "/0-butler",
@@ -32,7 +32,8 @@
       "link_type": "cousin",
       "skills": [
         "2-verify-work",
-        "2-ponytail-review"
+        "2-ponytail-review",
+        "2-thermo-nuclear-code-quality-review"
       ]
     },
     {
@@ -40,20 +41,15 @@
       "skills": [
         "2-software-architect",
         "2-security-and-hardening"
-      ]
-    },
-    {
-      "link_type": "tombstone",
-      "skills": [
-        "code-review-v2"
       ],
-      "note": "\u2192 code-review"
+      "note": "Architecture specialist is read-only within this caller's pinned candidate and returns findings; broader redesign remains optional follow-up"
     }
   ],
   "pipeline": [
-    "scan applicable axes",
-    "report",
-    "commit when green"
+    "pin caller, scope, comparison and actual candidate including relevant dirty work",
+    "Spec, Standards and Maintainability: every applicable axis; report baseline and coverage limits",
+    "validate causal findings and recheck candidate stability",
+    "return read-only report to caller; standalone stops without repair, publication or commit"
   ],
   "forks": [
     {
@@ -71,7 +67,7 @@
     "html": "./hub.html",
     "workflow_json": "./workflow.json",
     "flows_chart": "../flows-chart.html",
-    "flows_ssot": "../../../skills/0-butler/references/flows.md",
+    "flows_ssot": "../../skills/0-butler/references/flows.md",
     "hubs_index": "../index.html",
     "manifest": "../manifest.json"
   },

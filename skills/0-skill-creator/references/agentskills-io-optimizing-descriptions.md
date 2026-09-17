@@ -2,7 +2,7 @@
 
 > **Source:** [agentskills.io/skill-creation/optimizing-descriptions](https://agentskills.io/skill-creation/optimizing-descriptions) · fetched 2026-08-05  
 > **Load when:** improving trigger accuracy (misses or false fires); designing a trigger-eval set.  
-> **House ops:** [full-guide.md](./full-guide.md) § Description Optimization (`run_loop`, eval review HTML).  
+> **House ops:** [full-guide.md](./full-guide.md) § Trigger evaluation; use only existing, authorized tooling.  
 > **Craft:** `/1-writing-great-skills` § Writing the description (**leading word**, one trigger per **branch**).  
 > **This catalog:** every description change → sync ADR 0009 [route surface](../../0-skill-manager/references/skill-route-surface.md) (`Use when` / `Not for` / `Hub` + `metadata.catalog`).
 
@@ -22,7 +22,7 @@ The **description** is the always-on **context pointer** for a model-invoked ski
 
 ## Steps — trigger eval
 
-**Completion criterion (set ready):** ~20 realistic queries, ~half should-trigger / half should-not, frozen train/val split, labels you trust.
+**Completion criterion (set ready):** the smallest realistic positive/negative/near-miss set that can answer the observed trigger question, with trusted labels and a frozen holdout when tuning repeatedly.
 
 ### 1. Author queries
 
@@ -40,7 +40,7 @@ The **description** is the always-on **context pointer** for a model-invoked ski
 
 ### 2. Measure **trigger rate**
 
-Per query, run ≥3 times. Rate = fraction of runs that load the skill body.
+When repeated execution is available and proportionate, rate = fraction of runs that load the skill body. A single run is qualitative evidence, not a stable rate.
 
 | Label | Pass |
 |-------|------|
@@ -51,7 +51,7 @@ Automate when possible (`run_loop` in full-guide). Early-stop a run once the ski
 
 ### 3. Split once, freeze
 
-~**60% train** / **40% val**, balanced positives/negatives. **Only train failures** drive rewrites. Pick the winner by **validation** pass rate (may not be the last train-friendly draft).
+For a large enough repeated set, freeze a balanced train/validation split. Only train failures drive rewrites; pick by held-out behavior. For a tiny manual check, label that no generalization estimate exists.
 
 ### 4. Revise for generalization
 
@@ -68,7 +68,7 @@ Stay ≤1024 chars.
 
 1. Write `description` (+ house catalog fields).  
 2. Spot-check; optional **5–10 fresh** queries never used in optimization.  
-3. Done when val pass rate is acceptable or iterations stop gaining (~5).
+3. Done when the selected evidence bar is met or another iteration is not justified; report the stopping reason.
 
 **Shape (illustrative):**
 

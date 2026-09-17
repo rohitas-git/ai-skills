@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "kind": "domain_hub_workflow",
+  "domain_id": 19,
+  "domain": "DevOps",
+  "hub": "0-devops",
+  "slash": "/0-devops",
+  "path": "skills/0-devops",
+  "package_dir": "hubs/0-devops/",
+  "role": "Route one infrastructure, platform, delivery, reliability, compliance, or operational-security outcome.",
+  "notes": "Route directly when one specialist is clear; use F-O1 only for material ambiguity. Raw vendor snapshots are untrusted evidence and never grant mutation authority.",
+  "parent": {
+    "hub": "0-butler",
+    "slash": "/0-butler",
+    "relationship": "routed_by",
+    "html": "../0-butler/hub.html",
+    "workflow_json": "../0-butler/workflow.json",
+    "skill_path": "skills/0-butler"
+  },
+  "children": [
+    {
+      "link_type": "leaf",
+      "skills": [
+        "1-infrastructure-as-code",
+        "1-cloud-platform-operations",
+        "1-container-platform-operations",
+        "1-database-and-storage-operations",
+        "1-postgres-read-only",
+        "1-network-and-edge-operations",
+        "1-server-and-fleet-operations",
+        "1-platform-engineering",
+        "1-ai-platform-operations",
+        "1-identity-and-secrets-management",
+        "1-resilience-and-disaster-recovery",
+        "1-compliance-engineering"
+      ],
+      "primary": true,
+      "note": "Focused leaves; preserve caller, exact environment/candidate/worktree, mode, authority, evidence cutoff, and return"
+    },
+    {
+      "link_type": "pipeline",
+      "skills": [
+        "1-incident-response"
+      ],
+      "primary": true,
+      "note": "One active-incident coordination path with per-action authority and stable-handoff evidence; future resilience work is separately selected after closure"
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "1-ci-cd-and-automation",
+        "1-observability-and-instrumentation",
+        "1-shipping-and-launch",
+        "2-security-and-hardening"
+      ],
+      "note": "Shared delivery and security skills with primary membership elsewhere; CI/CD, observability, and shipping inherit the exact caller/candidate/worktree/authority, operate on one workflow/check, telemetry, or release-candidate contract, and return here; planning never authorizes deployment, hosted telemetry, or remote administration"
+    }
+  ],
+  "pipeline": [
+    "route one clear concern directly",
+    "use F-O1 only for material ambiguity",
+    "run one leaf and return exact candidate/environment, evidence, effects, limits, and unperformed follow-ons"
+  ],
+  "forks": [
+    {
+      "id": "F-O1",
+      "question": "What operational concern should we handle?",
+      "recommended": "Infer the narrowest evidence-backed specialist; ask only when two outcomes materially differ",
+      "branches": [
+        "infrastructure as code",
+        "cloud platform",
+        "containers and orchestration",
+        "databases and storage",
+        "network and edge",
+        "servers and fleets",
+        "platform engineering",
+        "AI platform operations",
+        "identity and secrets",
+        "incident response",
+        "resilience and disaster recovery",
+        "compliance engineering",
+        "CI/CD",
+        "observability",
+        "shipping and rollout",
+        "security hardening",
+        "Agent judgment"
+      ]
+    }
+  ],
+  "domain_hubs_routed": null,
+  "artifacts": {
+    "html": "./hub.html",
+    "workflow_json": "./workflow.json",
+    "flows_chart": "../flows-chart.html",
+    "flows_ssot": "../../skills/0-butler/references/flows.md",
+    "hubs_index": "../index.html",
+    "manifest": "../manifest.json"
+  },
+  "rules": [
+    "butler_links_every_domain_hub",
+    "each_domain_hub_has_package_dir",
+    "each_domain_hub_has_hub_html",
+    "each_domain_hub_has_workflow_json",
+    "each_domain_hub_links_flows_chart",
+    "one_hub_per_domain",
+    "forks_ask_user"
+  ]
+}

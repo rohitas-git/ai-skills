@@ -1,5 +1,5 @@
 interface:
   display_name: "Triage"
-  short_description: "Move issues through triage roles"
+  short_description: "Route one raw-intake triage operation"
 policy:
-  allow_implicit_invocation: false
+  allow_implicit_invocation: true

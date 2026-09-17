@@ -23,9 +23,9 @@
   .note { color: var(--muted); font-size: 0.88rem; margin: 0 0 0.8rem; }
   .svg-wrap { overflow-x: auto; }
   svg { display: block; }
-  text { fill: var(--text); font-family: ui-sans-serif, system-ui, sans-serif; font-size: 11.5px; pointer-events: none; }
-  .t { font-weight: 650; font-size: 12px; }
-  .s { fill: var(--muted); font-size: 10px; }
+  text { fill: var(--text); font-family: ui-sans-serif, system-ui, sans-serif; font-size: 14px; pointer-events: none; }
+  .t { font-weight: 650; font-size: 14px; }
+  .s { fill: var(--muted); font-size: 14px; }
   .lane { fill: #0f1520; stroke: var(--line); }
   .hub { fill: #1a3358; stroke: var(--hub); stroke-width: 2.2; }
   .butler { fill: #4a1830; stroke: var(--butler); stroke-width: 2.5; }
@@ -79,22 +79,24 @@
   <a href="./hubs/0-skill-creator/hub.html">skill-creator</a>
   <a href="./hubs/0-ponytail/hub.html">ponytail</a>
   <a href="./hubs/0-learn/hub.html">learn</a>
-  <a href="./hubs/0-office/hub.html">misc</a>
+  <a href="./hubs/0-office/hub.html">office</a>
   <a href="./hubs/0-ui-ux/hub.html">ui-ux</a>
+  <a href="./hubs/0-devops/hub.html">devops</a>
+  <a href="./hubs/0-marketing/hub.html">marketing</a>
 </div>
 <div class="legend">
   <span><i class="sw" style="background:#f472b6"></i> 0-butler (hub of hubs)</span>
   <span><i class="sw" style="background:#3d8bfd"></i> domain hub</span>
   <span><i class="sw" style="background:#c084fc"></i> skill-manager</span>
   <span><i class="sw" style="background:#fbbf24"></i> fork (ask user)</span>
-  <span><i class="sw" style="background:#2dd4bf"></i> misc hub / vault</span>
+  <span><i class="sw" style="background:#2dd4bf"></i> office / vault hub</span>
   <span><i class="sw" style="border:1px dashed #3d8bfd;background:#1e293b"></i> wrapper</span>
 </div>
 
 <main>
 <section>
   <h2>0. House map (multi-lane free layout)</h2>
-  <p class="note">Top: 0-butler apex. Middle: product path with ◆ forks. Sides: 0-skill-manager, vault, misc tree. At every ◆ ask the user once.</p>
+  <p class="note">Top: 0-butler apex. Middle: product path with ◆ forks. Sides: 0-skill-manager, vault, office tree. At every ◆ ask the user once.</p>
   <div class="svg-wrap">
     <svg viewBox="0 0 1320 980" width="1320" height="980" role="img" aria-label="Hub hierarchy and forks">
       <defs>
@@ -244,13 +246,13 @@
       <rect class="hub" x="360" y="700" width="90" height="36" rx="7"/>
       <text class="t" x="405" y="722" text-anchor="middle">★ learn</text>
 
-      <!-- Misc hub tree -->
+      <!-- Office and media hub tree -->
       <rect class="0-office" x="520" y="690" width="100" height="40" rx="7"/>
-      <text class="t" x="570" y="714" text-anchor="middle">★ misc</text>
+      <text class="t" x="570" y="714" text-anchor="middle">★ office</text>
       <polygon class="fork" points="570,750 610,768 570,786 530,768"/>
       <text class="s" x="570" y="772" text-anchor="middle" style="fill:#fde68a">F-misc</text>
       <path class="edge edge-fork" d="M570 730 V 750"/>
-      <text class="s" x="640" y="772">artifact type?</text>
+      <text class="s" x="640" y="772">one final artifact?</text>
 
       <rect class="child" x="680" y="700" width="70" height="24" rx="4"/>
       <text class="s" x="715" y="716" text-anchor="middle">docx</text>
@@ -258,10 +260,14 @@
       <text class="s" x="795" y="716" text-anchor="middle">pptx</text>
       <rect class="child" x="840" y="700" width="70" height="24" rx="4"/>
       <text class="s" x="875" y="716" text-anchor="middle">xlsx</text>
+      <rect class="child" x="920" y="700" width="70" height="24" rx="4"/>
+      <text class="s" x="955" y="716" text-anchor="middle">pdf</text>
       <rect class="child" x="680" y="736" width="100" height="24" rx="4"/>
       <text class="s" x="730" y="752" text-anchor="middle">diagram-maker</text>
       <rect class="child" x="790" y="736" width="70" height="24" rx="4"/>
       <text class="s" x="825" y="752" text-anchor="middle">imagine</text>
+      <rect class="child" x="870" y="736" width="110" height="24" rx="4"/>
+      <text class="s" x="925" y="752" text-anchor="middle">internal-comms</text>
       <rect class="child" x="680" y="772" width="80" height="24" rx="4"/>
       <text class="s" x="720" y="788" text-anchor="middle">hatch-pet</text>
       <rect class="child" x="770" y="772" width="90" height="24" rx="4"/>
@@ -271,7 +277,7 @@
       <path class="edge" d="M610 768 H 680"/>
 
       <path class="edge edge-dash" d="M575 122 H 570 V 690"/>
-      <text class="s" x="620" y="200">F7 → misc</text>
+      <text class="s" x="620" y="200">F7 → office</text>
 
       <text class="s" x="660" y="850" text-anchor="middle">At every ◆ : ask user one question · recommend first · wait · never silent branch</text>
       <text class="s" x="660" y="870" text-anchor="middle">† deprecated not host-installed · 0-skill-manager writes flows hub slots · 0-butler only reads</text>
@@ -290,17 +296,22 @@
       <tr><td>2</td><td>Design</td><td><a href="./hubs/0-grilling/hub.html"><code>grilling</code></a></td><td>Interview SSOT</td></tr>
       <tr><td>3</td><td>Ship</td><td><a href="./hubs/0-implement/hub.html"><code>implement</code></a></td><td>Build driver</td></tr>
       <tr><td>4</td><td>Review</td><td><a href="./hubs/0-review/hub.html"><code>review</code></a></td><td>Router + sub-hubs 1-code-review / security-auditor</td></tr>
-      <tr><td>5</td><td>Triage</td><td><a href="./hubs/0-triage/hub.html"><code>triage</code></a></td><td>On-ramp → Ship</td></tr>
+      <tr><td>5</td><td>Triage</td><td><a href="./hubs/0-triage/hub.html"><code>triage</code></a></td><td>Inbox snapshot · assess one candidate · apply one approved transition</td></tr>
       <tr><td>6</td><td>Diagnose</td><td><a href="./hubs/0-diagnosing-bugs/hub.html"><code>diagnosing-bugs</code></a></td><td>On-ramp → fix path</td></tr>
-      <tr><td>7</td><td>Fog map</td><td><a href="./hubs/0-wayfinder/hub.html"><code>wayfinder</code></a></td><td>Exit only → to-spec</td></tr>
+      <tr><td>7</td><td>Uncertainty map</td><td><a href="./hubs/0-wayfinder/hub.html"><code>wayfinder</code></a></td><td>Chart one map set · advance one ticket · settled snapshot → to-spec</td></tr>
       <tr><td>8</td><td>Architecture</td><td><a href="./hubs/0-improve-codebase-architecture/hub.html"><code>improve-codebase-architecture</code></a></td><td>Deepening → Design</td></tr>
       <tr><td>9</td><td>Vault</td><td><a href="./hubs/0-rohitas-vault-wiki/hub.html"><code>rohitas-vault-wiki</code></a></td><td>Schema steward</td></tr>
       <tr><td>10</td><td>Catalog facilities</td><td><a href="./hubs/0-skill-manager/hub.html"><code>skill-manager</code></a></td><td>CRUD · hubs · lint</td></tr>
       <tr><td>11</td><td>Author body</td><td><a href="./hubs/0-skill-creator/hub.html"><code>skill-creator</code></a></td><td>Craft / eval</td></tr>
       <tr><td>12</td><td>Simplify</td><td><a href="./hubs/0-ponytail/hub.html"><code>ponytail</code></a></td><td>Optional YAGNI mode</td></tr>
-      <tr><td>13</td><td>Learn</td><td><a href="./hubs/0-learn/hub.html"><code>learn</code></a></td><td>Router: explain · tutor · 1-teach · story · summarize</td></tr>
-      <tr><td>14</td><td>Misc</td><td><a href="./hubs/0-office/hub.html"><code>misc</code></a></td><td>Office/media leaves</td></tr>
-      <tr><td>15</td><td>UI/UX</td><td><a href="./hubs/0-ui-ux/hub.html"><code>ui-ux</code></a></td><td>Design intelligence · brand · tokens · styling · creative</td></tr>
+      <tr><td>13</td><td>Learn</td><td><a href="./hubs/0-learn/hub.html"><code>learn</code></a></td><td>Direct router: explain · 1-tutor · code · course · story · summarize</td></tr>
+      <tr><td>14</td><td>Office and media</td><td><a href="./hubs/0-office/hub.html"><code>office</code></a></td><td>One immutable artifact → one smallest leaf; 1-hatch-pet sub-hub</td></tr>
+      <tr><td>15</td><td>UI/UX</td><td><a href="./hubs/0-ui-ux/hub.html"><code>ui-ux</code></a></td><td>One UI/UX outcome; Brand and User Research sub-hubs route one atomic operation</td></tr>
+      <tr><td>16</td><td>Thinking</td><td><a href="./hubs/0-thinking/hub.html"><code>thinking</code></a></td><td>Structured mental models</td></tr>
+      <tr><td>17</td><td>Git</td><td><a href="./hubs/0-git/hub.html"><code>git</code></a></td><td>Worktrees · atomic commits · conflicts · PR-stack convergence · branch completion</td></tr>
+      <tr><td>18</td><td>Agent engineering</td><td><a href="./hubs/0-agent-engineering/hub.html"><code>agent-engineering</code></a></td><td>Tools · MCP · oversight · evals · agent security</td></tr>
+      <tr><td>19</td><td>DevOps</td><td><a href="./hubs/0-devops/hub.html"><code>devops</code></a></td><td>Infrastructure · platforms · reliability · incidents · compliance</td></tr>
+      <tr><td>20</td><td>Marketing</td><td><a href="./hubs/0-marketing/hub.html"><code>marketing</code></a></td><td>Strategy · research · conversion · content · search · paid · lifecycle · sales</td></tr>
     </tbody>
   </table>
 </section>
@@ -321,8 +332,16 @@
       <tr><td>F9</td><td>Arch idea → Design?</td><td>If user picks one</td></tr>
       <tr><td>F10</td><td>Place skill in catalog now?</td><td>Yes when ready → skill-manager</td></tr>
       <tr><td>F11</td><td>Vault op?</td><td>Match utterance</td></tr>
-      <tr><td>F-misc</td><td>Artifact type?</td><td>From extension/context</td></tr>
+      <tr><td>F-misc</td><td>Which one final artifact is required?</td><td>Explicit requested output or strongest format evidence</td></tr>
+      <tr><td>F-PET1</td><td>Which one pet result is needed?</td><td>Explicit verb or strongest candidate-state evidence</td></tr>
       <tr><td>F-UI1</td><td>What kind of UI/UX work?</td><td>design intelligence → 1-ui-ux-pro-max</td></tr>
+      <tr><td>F-O1</td><td>What operational concern should we handle?</td><td>narrowest provider or lifecycle specialist</td></tr>
+      <tr><td>F-M1</td><td>Which marketing outcome is primary?</td><td>narrowest evidence-backed specialist</td></tr>
+      <tr><td>F-G1</td><td>What Git operation is needed?</td><td>Narrowest operation matching repository state</td></tr>
+      <tr><td>F-G2</td><td>How should mixed changes be grouped?</td><td>Independently revertible behavior</td></tr>
+      <tr><td>F-G3</td><td>What is the intended base-to-tip PR order?</td><td>Derive parent-child edges; stop if ambiguous</td></tr>
+      <tr><td>F-G4</td><td>Which PR should be reviewed and repaired?</td><td>Current branch's unique open PR</td></tr>
+      <tr><td>F-AE1</td><td>What agent-system problem should we solve?</td><td>Narrowest evidence-backed specialist</td></tr>
     </tbody>
   </table>
 </section>

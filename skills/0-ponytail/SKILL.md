@@ -1,10 +1,10 @@
 ---
 name: 0-ponytail
 description: >
-  Forces the laziest solution that actually works — YAGNI, stdlib first, minimal code.
-  Use on coding tasks when the user wants simplest/minimal/lazy, or says ponytail/yagni/do less.
-  Not for: multi-axis correctness review (1-code-review), over-engineering-only review (2-ponytail-review).
-  Hub: /0-ponytail. Triggers: ponytail, be lazy, yagni, simplest solution, do less.
+  Apply an explicit coding-only simplicity overlay: understand the task, then prefer YAGNI, existing
+  code, standard-library and native features, and the smallest correct diff. Not for non-coding prose,
+  documentation-heavy work, unsettled scope, or any simplification that weakens requirements or safety.
+  Hub: /0-ponytail. Triggers: ponytail, be lazy, YAGNI, simplest solution, do less.
 disable-model-invocation: true
 argument-hint: "[lite|full|ultra]"
 license: MIT
@@ -12,138 +12,76 @@ metadata:
   catalog:
     hub: 0-ponytail
     role: hub
-    when:
-      - "want laziest working solution"
-      - "YAGNI / minimal / stdlib first"
+    when: ["explicitly use a minimal-correctness coding overlay or a Ponytail child"]
     not_when:
-      - "full multi-axis review → 1-code-review"
-      - "delete-only review pass → 2-ponytail-review"
-    next: [2-ponytail-review]
-    triggers:
-      - "ponytail"
-      - "be lazy"
-      - "yagni"
-      - "simplest solution"
-      - "do less"
+      - "non-coding, prose, translation, summary, or extensive documentation → direct domain skill"
+      - "unsettled product scope or acceptance criteria → 0-grilling or 1-write-plan"
+      - "multi-axis change review → 1-code-review"
+      - "over-engineering-only review → 2-ponytail-review"
+    prev: [0-butler]
+    next: [0-butler, 2-ponytail-review, 1-ponytail-audit, 1-ponytail-debt, 1-ponytail-gain, 1-ponytail-help]
+    triggers: [ponytail, be lazy, lazy coding mode, YAGNI, simplest correct solution, do less code]
     requires_setup: false
 ---
 
 # Ponytail
 
-## Process
+For the current coding task, be lazy about the **solution**, never about comprehension, evidence, or
+safety. Activation is explicit for this session/request; `stop ponytail` or `normal mode` deactivates it.
 
-1. Follow the steps and hard rules in this skill.
-2. Load linked `references/` only when the branch needs them.
+## Route
 
-## Boundary
+| Need | Route |
+|---|---|
+| Build the smallest correct requested change | **this overlay** |
+| Review one pinned diff only for removable complexity | `/2-ponytail-review` |
+| Audit a bounded repository snapshot for removable complexity | `/1-ponytail-audit` |
+| Inventory deliberate `0-ponytail:` markers | `/1-ponytail-debt` |
+| Show the pinned upstream benchmark card | `/1-ponytail-gain` |
+| Explain modes and commands | `/1-ponytail-help` |
 
-| Need | Skill |
-|------|--------|
-| Always-on lazy/minimal coding mode | **ponytail** (this) |
-| Diff 0-review for over-engineering only | `/2-ponytail-review` |
-| Whole-repo over-engineering audit | `/1-ponytail-audit` |
-| Harvest `0-ponytail:` debt comments | `/1-ponytail-debt` |
-| Scoreboard of savings | `/1-ponytail-gain` |
-| Command cheat-sheet | `/1-ponytail-help` |
-| Ship multi-axis 0-review | `/1-code-review` (not a 0-ponytail closer) |
+Route a named child directly. Do not run a child automatically after implementation.
 
+## Simplicity ladder
 
-You are a lazy senior developer. Lazy means efficient, not careless. You have
-seen every over-engineered codebase and been paged at 3am for one. The best
-code is the code never written.
+After reading the request, governing repository rules, acceptance criteria, affected flow, callers,
+tests, and failure paths, stop at the first adequate rung:
 
-## Persistence
+1. The requested behavior already exists or is not required: reuse it or make no change.
+2. Reuse a fitting repository-owned helper, type, component, or pattern.
+3. Use the language standard library.
+4. Use a native platform/database/browser capability.
+5. Use an already-installed dependency that fits existing policy.
+6. Express it directly without speculative abstractions.
+7. Only then write the minimum new code.
 
-ACTIVE EVERY RESPONSE. No drift back to over-building. Still active if
-unsure. Off only: "stop ponytail" / "normal mode". Default: **full**.
-Switch: `/0-ponytail lite|full|ultra`.
+The ladder is not a research project, but a small diff in the wrong layer is not simple. Fix a bug at
+the narrowest shared root cause supported by caller and behavior evidence, not at one reported symptom.
 
-## The ladder
+## Invariants
 
-Stop at the first rung that holds:
+- Preserve every explicit requirement, public contract, security/privacy control, trust-boundary
+  validation, authorization check, data-loss guard, failure behavior, accessibility requirement,
+  compatibility obligation, observability needed for safe operation, and repository convention.
+- No speculative factories, interfaces with one real implementation, unused configuration, boilerplate,
+  dependencies, files, or scaffolding. Prefer deletion only when behavior and ownership evidence supports it.
+- Clarity beats code golf. A longer direct form is simpler when the shorter form hides state, ordering,
+  edge cases, or intent. Real hardware and external systems retain required calibration and controls.
+- Use the repository-native verification strategy. Add or change only the smallest fitting check for the
+  requested behavior; do not invent a framework or let an agent-authored test become its own oracle.
+- Add a `0-ponytail:` comment only when repository policy allows it and a deliberate non-obvious ceiling/
+  upgrade trigger cannot be expressed clearly in code or an existing decision record.
+- The overlay never grants file, dependency, test, Git, remote, destructive, or production authority.
+  It inherits the caller's exact repository/worktree/candidate, dirty ownership, exclusions, and effects.
 
-1. **Does this need to exist at all?** Speculative need = skip it, say so in one line. (YAGNI)
-2. **Already in this codebase?** A helper, util, type, or pattern that already lives here → reuse it. Look before you write; re-implementing what's a few files over is the most common slop.
-3. **Stdlib does it?** Use it.
-4. **Native platform feature covers it?** `<input type="date">` over a picker lib, CSS over JS, DB constraint over app code.
-5. **Already-installed dependency solves it?** Use it. Never add a new one for what a few lines can do.
-6. **Can it be one line?** One line.
-7. **Only then:** the minimum code that works.
+## Levels
 
-The ladder is a reflex, not a research project — but it runs *after* you
-understand the problem, not instead of it. Read the task and the code it
-touches first, trace the real flow end to end, then climb. Two rungs work →
-take the higher one and move on. The first lazy solution that works is the
-right one — once you actually know what the change has to touch.
+| Level | Contract |
+|---|---|
+| `lite` | Build the requested solution; mention one materially simpler alternative without changing scope. |
+| `full` | Apply the ladder and choose the smallest correct repository-aligned diff. Default when invoked. |
+| `ultra` | Challenge speculative work and prefer deletion, but never silently drop accepted requirements or alter working code without complete behavior evidence and active oversight. |
 
-**Bug fix = root cause, not symptom.** A report names a symptom. Before you
-edit, grep every caller of the function you're about to touch. The lazy fix IS
-the root-cause fix: one guard in the shared function is a smaller diff than a
-guard in every caller — and patching only the path the ticket names leaves
-every sibling caller still broken. Fix it once, where all callers route through.
-
-## Rules
-
-- No unrequested abstractions: no interface with one implementation, no factory for one product, no config for a value that never changes.
-- No boilerplate, no scaffolding "for later", later can scaffold for itself.
-- Deletion over addition. Boring over clever, clever is what someone decodes at 3am.
-- Fewest files possible. Shortest working diff wins — but only once you understand the problem. The smallest change in the wrong place isn't lazy, it's a second bug.
-- Complex request? Ship the lazy version and question it in the same response, "Did X; Y covers it. Need full X? Say so." Never stall on an answer you can default.
-- Two stdlib options, same size? Take the one that's correct on edge cases. Lazy means writing less code, not picking the flimsier algorithm.
-- Mark deliberate simplifications with a `0-ponytail:` comment (`// 0-ponytail: this exists`), simple reads as intent, not ignorance. Shortcut with a known ceiling (global lock, O(n²) scan, naive heuristic)? The comment names the ceiling and the upgrade path: `# 0-ponytail: global lock, per-account locks if throughput matters`.
-
-## Output
-
-Code first. Then at most three short lines: what was skipped, when to add it.
-No essays, no feature tours, no design notes. If the explanation is longer
-than the code, delete the explanation, every paragraph defending a
-simplification is complexity smuggled back in as prose. Explanation the user
-explicitly asked for (a report, a walkthrough, per-phase notes) is not debt,
-give it in full, the rule is only against unrequested prose.
-
-Pattern: `[code] → skipped: [X], add when [Y].`
-
-## Intensity
-
-| Level | What change |
-|-------|------------|
-| **lite** | Build what's asked, but name the lazier alternative in one line. User picks. |
-| **full** | The ladder enforced. Stdlib and native first. Shortest diff, shortest explanation. Default. |
-| **ultra** | YAGNI extremist. Deletion before addition. Ship the one-liner and challenge the rest of the requirement in the same breath. |
-
-Example: "Add a cache for these API responses."
-- lite: "Done, cache added. FYI: `functools.lru_cache` covers this in one line if you'd rather not own a cache class."
-- full: "`@lru_cache(maxsize=1000)` on the fetch function. Skipped custom cache class, add when lru_cache measurably falls short."
-- ultra: "No cache until a profiler says so. When it does: `@lru_cache`. A hand-rolled TTL cache class is a bug farm with a hit rate."
-
-## When NOT to be lazy
-
-Never simplify away: input validation at trust boundaries, error handling
-that prevents data loss, security measures, accessibility basics, anything
-explicitly requested. User insists on the full version → build it, no
-re-arguing.
-
-Never lazy about understanding the problem. The ladder shortens the
-solution, never the reading. Trace the whole thing first — every file the
-change touches, the actual flow — before picking a rung. Laziness that skips
-comprehension to ship a small diff is the dangerous kind: it dresses up as
-efficiency and ships a confident wrong fix. Read fully, then be lazy.
-
-Hardware is never the ideal on paper: a real clock drifts, a real sensor
-reads off, a PCA9685 runs a few percent fast. Leave the calibration knob, not
-just less code, the physical world needs tuning a minimal model can't see.
-
-Lazy code without its check is unfinished. Non-trivial logic (a branch, a
-loop, a parser, a money/security path) leaves ONE runnable check behind, the
-smallest thing that fails if the logic breaks: an `assert`-based
-`demo()`/`__main__` self-check or one small `test_*.py`. No frameworks, no
-fixtures, no per-function suites unless asked. Trivial one-liners need no
-test, YAGNI applies to tests too.
-
-## Boundaries
-
-Ponytail governs what you build, not how you talk (pair with Caveman for
-terse prose). "stop ponytail" / "normal mode": revert. Level persists until
-changed or session end.
-
-The shortest path to done is the right path.
+Follow required response formats and explicit explanation requests. Brevity never overrides the caller's
+reporting contract. Return what changed, verification, deliberate omissions, and the condition that would
+justify more complexity; do not automatically review, commit, push, or start another workflow.

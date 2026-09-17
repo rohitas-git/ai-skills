@@ -1,0 +1,5 @@
+interface:
+  display_name: "Triage Inbox"
+  short_description: "Read one triage-attention snapshot"
+policy:
+  allow_implicit_invocation: false

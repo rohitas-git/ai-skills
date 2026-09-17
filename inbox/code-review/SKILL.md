@@ -199,4 +199,4 @@ If those conditions are not met, leave explicit, actionable feedback and push fo
 
 ## Progressive disclosure
 
-Long host review scaffold — load only the checklist sections needed. Catalog twin: `/1-code-review` when placed.
+Long host review scaffold — load only the checklist sections needed. Catalog twin: `/2-thermo-nuclear-code-quality-review` (placed; Maintainability axis SSOT under `/1-code-review`). This inbox copy is not promoted.

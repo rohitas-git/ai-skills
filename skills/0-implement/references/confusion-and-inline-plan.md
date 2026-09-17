@@ -1,40 +1,27 @@
-# Confusion surfacing + inline plan (harvested)
+# Confusion and lightweight execution notes
 
-Source: archive vendor `context-engineering` — implementation-facing pieces only.  
-Session packing / hierarchy → [`strategic-compact/references/context-hierarchy.md`](../../1-strategic-compact/references/context-hierarchy.md).
+Do not silently choose between contradictory authoritative inputs.
 
-## When context conflicts
+## Material conflict
 
-Spec and codebase disagree → **do not silently pick**. Surface:
-
-```text
-CONFUSION:
-Spec says X; code does Y (path).
-
-Options:
-A) Follow the spec …
-B) Follow existing patterns …
-C) Ask — likely intentional; don't override
-
-→ Which approach?
-```
-
-## When requirements are incomplete
-
-1. Check code for precedent.
-2. If none, **stop and ask** with 2–3 concrete options.
-3. Do not invent product requirements.
-
-## Inline plan (multi-step slice)
-
-Before executing a multi-step 0-implement slice, emit a short plan:
+State the smallest useful conflict packet:
 
 ```text
-PLAN:
-1. …
-2. …
-3. …
-→ Executing unless you redirect.
+Conflict: requested/spec behavior X; current contract/code/policy Y.
+Evidence: exact sources and candidate.
+Impact: what changes under each interpretation.
+Decision needed: the load-bearing user/product choice.
 ```
 
-Cheap redirect before sunk cost. Not a substitute for `/1-to-tickets` on multi-session work.
+Ask only when the choice changes product behavior, compatibility, external effects, destructive scope,
+or another material outcome. For small reversible implementation details, follow repository precedent
+or the safest narrow assumption, state it, and continue.
+
+## Planning while implementing
+
+Use a short execution note when sequencing, shared state, or verification dependencies would otherwise
+be unclear. Do not emit a ceremonial plan for a one-step change, rewrite an adequate existing plan, or
+pause after announcing a plan unless a real user decision is required.
+
+When evidence invalidates the plan, update the affected next step and preserve completed evidence;
+do not restart the whole workflow or hide the changed assumption.

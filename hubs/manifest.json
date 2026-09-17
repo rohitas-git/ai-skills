@@ -3,8 +3,8 @@
   "kind": "domain_hub_workflow_manifest",
   "hub_of_hubs": "0-butler",
   "layout": "hubs/{hub}/hub.html + hubs/{hub}/workflow.json",
-  "flows_ssot": "skills/skills/0-butler/references/flows.md",
-  "flows_chart": "../flows-chart.html",
+  "flows_ssot": "../skills/0-butler/references/flows.md",
+  "flows_chart": "./flows-chart.html",
   "rule": "docs/adr/0005-domain-hub-artifacts-and-butler-links.md",
   "requirements": [
     "Every domain hub is a child routing target of butler",
@@ -104,7 +104,7 @@
     },
     {
       "domain_id": 7,
-      "domain": "Fog map",
+      "domain": "Uncertainty map",
       "hub": "0-wayfinder",
       "dir": "./0-wayfinder/",
       "html": "./0-wayfinder/hub.html",
@@ -174,13 +174,22 @@
     },
     {
       "domain_id": 14,
-      "domain": "Misc / office",
+      "domain": "Office and media",
       "hub": "0-office",
       "dir": "./0-office/",
       "html": "./0-office/hub.html",
       "workflow_json": "./0-office/workflow.json",
       "parent": "0-butler",
-      "skill_path": "misc/office"
+      "skill_path": "skills/0-office",
+      "sub_hubs": [
+        {
+          "hub": "1-hatch-pet",
+          "dir": "./1-hatch-pet/",
+          "html": "./1-hatch-pet/hub.html",
+          "workflow_json": "./1-hatch-pet/workflow.json",
+          "skill_path": "skills/1-hatch-pet"
+        }
+      ]
     },
     {
       "domain_id": 15,
@@ -190,7 +199,23 @@
       "html": "./0-ui-ux/hub.html",
       "workflow_json": "./0-ui-ux/workflow.json",
       "parent": "0-butler",
-      "skill_path": "skills/0-ui-ux"
+      "skill_path": "skills/0-ui-ux",
+      "sub_hubs": [
+        {
+          "hub": "1-brand",
+          "dir": "./1-brand/",
+          "html": "./1-brand/hub.html",
+          "workflow_json": "./1-brand/workflow.json",
+          "skill_path": "skills/1-brand"
+        },
+        {
+          "hub": "1-user-research",
+          "dir": "./1-user-research/",
+          "html": "./1-user-research/hub.html",
+          "workflow_json": "./1-user-research/workflow.json",
+          "skill_path": "skills/1-user-research"
+        }
+      ]
     },
     {
       "domain_id": 16,
@@ -201,6 +226,46 @@
       "workflow_json": "./0-thinking/workflow.json",
       "parent": "0-butler",
       "skill_path": "skills/0-thinking"
+    },
+    {
+      "domain_id": 17,
+      "domain": "Git",
+      "hub": "0-git",
+      "dir": "./0-git/",
+      "html": "./0-git/hub.html",
+      "workflow_json": "./0-git/workflow.json",
+      "parent": "0-butler",
+      "skill_path": "skills/0-git"
+    },
+    {
+      "domain_id": 18,
+      "domain": "Agent engineering",
+      "hub": "0-agent-engineering",
+      "dir": "./0-agent-engineering/",
+      "html": "./0-agent-engineering/hub.html",
+      "workflow_json": "./0-agent-engineering/workflow.json",
+      "parent": "0-butler",
+      "skill_path": "skills/0-agent-engineering"
+    },
+    {
+      "domain_id": 19,
+      "domain": "DevOps",
+      "hub": "0-devops",
+      "dir": "./0-devops/",
+      "html": "./0-devops/hub.html",
+      "workflow_json": "./0-devops/workflow.json",
+      "parent": "0-butler",
+      "skill_path": "skills/0-devops"
+    },
+    {
+      "domain_id": 20,
+      "domain": "Marketing",
+      "hub": "0-marketing",
+      "dir": "./0-marketing/",
+      "html": "./0-marketing/hub.html",
+      "workflow_json": "./0-marketing/workflow.json",
+      "parent": "0-butler",
+      "skill_path": "skills/0-marketing"
     }
   ]
 }

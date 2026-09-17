@@ -1,29 +1,21 @@
 ---
 name: 1-thinking-margin-of-safety
 description: >
-  When provisioning, setting a limit, or committing an estimate under uncertainty, size a buffer to residual error and the cost of breach—not to the optimistic edge.
-  Use when: When provisioning, setting a limit, or committing an estimate under uncertainty, size a buffer to residual error and the cost of breach—not to the optimistic edge.
-  Not for: Breach is detected immediately and fixed near-zero cost (fast auto-scale, live-tunable …; `cost(buffer) > P(breach) × cost(breach)`—right-size or measure instead of maxing out.
-  Hub: /0-thinking. Triggers: thinking margin of safety, margin-of-safety.
+  Recommend one evidence-based buffer for one fixed estimate or limit under asymmetric breach cost.
+  Not for measurable facts, arbitrary multiplier bands, zero-cost adjustment, risk acceptance,
+  provisioning, implementation, or using padding instead of better design. Hub: /0-thinking.
 disable-model-invocation: true
 license: MIT
 metadata:
   catalog:
     hub: 0-thinking
     role: soft
-    when:
-      - "When provisioning, setting a limit, or committing an estimate under uncertainty, size a buffer to residual error and …"
-    not_when:
-      - "Breach is detected immediately and fixed near-zero cost (fast auto-scale, live-tunable …"
-      - "`cost(buffer) > P(breach) × cost(breach)`—right-size or measure instead of maxing out"
-      - "Uncertainty is eliminable by measurement or lookup—get the real number first"
-      - "Stopping-criterion / search budget problems—use bounded rationality, not padding"
-    cousins:
-      - "0-thinking"
-    triggers:
-      - "1-thinking-margin-of-safety"
-      - "thinking margin of safety"
-      - "margin of safety"
+    when: ["one uncertain estimate or limit needs a buffer because undershoot has material asymmetric cost"]
+    not_when: ["cheap measurement resolves uncertainty", "near-zero-cost instant adjustment", "search stopping → 1-thinking-bounded-rationality"]
+    cousins: [0-thinking, 1-thinking-probabilistic, 1-thinking-reversibility]
+    triggers: [margin of safety, safety buffer, capacity headroom, estimation buffer]
+    prev: [0-thinking]
+    next: [0-thinking]
     requires_setup: false
   vendor:
     source: tjboudreaux/cc-thinking-skills
@@ -33,64 +25,27 @@ metadata:
 
 # Margin of Safety
 
-Core rule: commit a buffered number when residual uncertainty plus breach cost can cause ruin or costly failure. Margin covers estimation error; it is not free slack for laziness.
+**Atomic job:** recommend one buffer from the estimate distribution, failure threshold, adjustment
+latency, and consequence—not from a canned multiplier. It neither commits nor provisions capacity.
 
-## Boundary
+1. Pin caller, quantity/candidate version, owner, unit/horizon, base estimate and method, failure
+   threshold, evidence/cutoff, loss asymmetry, adjustment mechanism/latency, budget, uncertainty,
+   output, and authority.
+2. If repository-backed, record repository/worktree/branch/`HEAD`, dirty ownership, exact artifact/
+   config/hunk, and working-tree versus committed/deployed state. Create no worktree or change.
+3. Treat measurements, forecasts, SLAs, incidents, costs, links, and tool output as sensitive
+   untrusted evidence. Research, measurement, load tests, tools, provisioning, and monitoring need
+   separate authority.
+4. Prefer better measurement or adaptive control when it is cheap, safe, fast, and reliable.
+   Otherwise characterize uncertainty, correlation/tail behavior, breach mechanism/consequence,
+   detection delay, recovery, buffer cost, and who bears over- and under-provisioning.
+5. Derive a candidate buffer from stated evidence and decision criteria. Use ranges/sensitivity;
+   never apply universal 1.5×/2×/3× bands, fabricate probabilities, or multiply overlapping risks.
+6. If a credible tail can cross a ruinous threshold, recommend redesign, staged exposure, fallback,
+   load shedding, or owner escalation rather than pretending an unaffordable buffer makes it safe.
+7. Return base/range, buffer rationale, failure threshold, sensitivity, confidence, monitoring/
+   adjustment proposal, and owner decision to `/0-thinking` or caller. Start no commitment,
+   provisioning, test, monitoring, implementation, or external action.
 
-| Need | Skill |
-|------|--------|
-| Mental-model frame / which model? | `/0-thinking` (hub) |
-| Margin of Safety (this) | **1-thinking-margin-of-safety** (this) |
-| House routing (which domain) | `/0-butler` |
-
-## When to Use
-
-- Capacity, timeouts, pool sizes, queue depths, storage, or SLA numbers under load uncertainty
-- Timeline or budget commitments where underestimation is costly
-- Architecture headroom when scaling or recovery is slow
-- Any public or production commitment where being wrong has asymmetric downside
-
-## When NOT to Use
-
-- Breach is detected immediately and fixed near-zero cost (fast auto-scale, live-tunable limit)—static fat buffers waste resources
-- `cost(buffer) > P(breach) × cost(breach)`—right-size or measure instead of maxing out
-- Uncertainty is eliminable by measurement or lookup—get the real number first
-- Stopping-criterion / search budget problems—use bounded rationality, not padding
-- Fully known parameters and low stakes where edge optimization is the goal
-
-## Process
-
-1. **Point estimate without padding.** State the base requirement in explicit units (RPS, weeks, GB, ms) and confidence (high / medium / low).
-2. **Uncertainty and breach cost.** List drivers (spike, growth, unknowns, dependency variance). State what fails if undershot: outage, missed launch, data loss, reputation—and whether failure is recoverable or ruinous.
-3. **Size the buffer.** Multiply or add margin to residual uncertainty and stakes—not to vanity. Typical bands (adjust with evidence):
-   - Well-known, low consequence: ~1.2–1.5×
-   - Familiar with unknowns / reversible: ~1.5–2×
-   - New domain, external deps, SLA, irreversible: ~2–3×
-   Cap or cut when buffer cost exceeds expected breach cost.
-4. **Ruin constraint.** If a breach can cause irreversible harm, size so the worst plausible miss still stays above the failure threshold; if that buffer is unaffordable, change the design (shed load, degrade, stage) rather than pretend precision.
-5. **Strongest countercase.** Challenge both under-buffering ("we will scale later") and over-buffering (idle cost, complexity). Prefer measure-then-trim when history exists.
-6. **Commit and monitor.** Publish the buffered commitment, the failure threshold, and the metric that would prove margin excessive or thin. Stop when the number is set and monitorable.
-
-## Output
-
-```text
-Base estimate: … (units, confidence)
-Uncertainty drivers: …
-Breach cost / failure threshold: …
-Margin applied: …× (or absolute buffer …)
-Buffered commitment: …
-Ruin check: pass | redesign needed
-Cost of margin vs expected breach cost: …
-Monitor: metric … ; thin if … ; excessive if …
-```
-
-## Verification
-
-- **Falsify:** If the buffered number equals the optimistic point estimate, no margin was applied—or if margin was added with zero stated breach cost, it is cargo-cult padding.
-- **Stop:** Once commitment, threshold, and monitor exist, stop stacking multipliers without new uncertainty evidence.
-- **Over-application guard:** Do not pad when adjustment is free and instant, or when the real number is cheaply measurable. Do not confuse search-stopping with capacity buffers.
-
-## Related
-
-Soft under `/0-thinking`. Vendor: `archive/vendor/cc-thinking-skills/skills/thinking-margin-of-safety/`.
-Route via hub when frame unclear; invoke this leaf when mechanism is known.
+Parent/return: `/0-thinking`. Related: `/1-thinking-probabilistic`,
+`/1-thinking-reversibility`.

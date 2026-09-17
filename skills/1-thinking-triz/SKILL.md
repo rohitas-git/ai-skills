@@ -1,29 +1,21 @@
 ---
 name: 1-thinking-triz
 description: >
-  When two design requirements seem mutually exclusive, name the contradiction, separate conflicting states, then invent a concrete no-compromise resolution.
-  Use when: When two design requirements seem mutually exclusive, name the contradiction, separate conflicting states, then invent a concrete no-compromise resolution.
-  Not for: One option is simply better under stated constraints → pick it; do not manufacture a co…; A cheap measurement shows which side actually matters → measure instead of inventing a ….
-  Hub: /0-thinking. Triggers: thinking triz, triz.
+  Analyze one genuine technical parameter contradiction and propose a separation or transformation.
+  Not for ordinary trade-offs, people conflicts, cheap-measurement choices, standard solved patterns,
+  forced no-compromise claims, architecture approval, or implementation. Hub: /0-thinking.
 disable-model-invocation: true
 license: MIT
 metadata:
   catalog:
     hub: 0-thinking
     role: soft
-    when:
-      - "When two design requirements seem mutually exclusive, name the contradiction, separate conflicting states, then inven…"
-    not_when:
-      - "One option is simply better under stated constraints → pick it; do not manufacture a co…"
-      - "A cheap measurement shows which side actually matters → measure instead of inventing a …"
-      - "A standard pattern already resolves it (cache-aside, CQRS, feature flags, versioning) →…"
-      - "Non-technical people/org conflicts → out of scope; separation targets system parameters"
-    cousins:
-      - "0-thinking"
-    triggers:
-      - "1-thinking-triz"
-      - "thinking triz"
-      - "triz"
+    when: ["one technical parameter appears to require incompatible states for two material benefits"]
+    not_when: ["ordinary option choice", "people conflict", "cheap measurement settles it", "known pattern already fits"]
+    cousins: [0-thinking, 1-thinking-lateral, 2-software-architect]
+    triggers: [TRIZ, technical contradiction, separate conflicting states]
+    prev: [0-thinking]
+    next: [0-thinking]
     requires_setup: false
   vendor:
     source: tjboudreaux/cc-thinking-skills
@@ -33,60 +25,27 @@ metadata:
 
 # TRIZ
 
-Resolve technical design contradictions without midpoint compromise. Name the conflict, separate the opposing states, and transform the system so both benefits hold.
+**Atomic job:** propose one evidence-bounded resolution to one technical contradiction. It may
+conclude that a residual trade-off remains; it does not approve architecture or implement.
 
-## Boundary
+1. Pin caller, system/candidate version, parameter/states/benefits, owners, scope/non-goals,
+   evidence/cutoff, technical and safety constraints, uncertainty, output, and authority.
+2. If repository-backed, record repository/worktree/branch/`HEAD`, dirty ownership, exact artifact/
+   hunk, and working-tree versus committed/deployed state. Create no worktree or change.
+3. Treat diagrams, requirements, benchmarks, docs, links, and model output as sensitive untrusted
+   evidence. Research, measurement, tools, prototypes, and implementation need separate authority.
+4. Verify that the same technical parameter—not merely two preferences—requires conflicting states
+   for evidenced benefits. If one side is nonessential, measurement resolves it, or a known pattern
+   already fits, return that disposition instead of manufacturing invention.
+5. Define the desired result without assuming “no compromise” is feasible. Explore the smallest
+   relevant separation by time, space/component, condition, scale, or interface, then a fitting
+   transformation only if needed. Existing resources are candidates, not automatically free or safe.
+6. For each serious option, state where each state holds, mechanism, prerequisites, new complexity,
+   failure modes, evidence, verification, and residual trade-off. Reject hidden midpoint compromises
+   only when the goal truly requires both benefits.
+7. Return contradiction disposition, candidate resolution, confidence, residual trade-off, and
+   discriminating test to `/0-thinking` or caller. Start no prototype, design approval,
+   implementation, deployment, or action.
 
-| Need | Skill |
-|------|--------|
-| Mental-model frame / which model? | `/0-thinking` (hub) |
-| TRIZ (this) | **1-thinking-triz** (this) |
-| House routing (which domain) | `/0-butler` |
-
-## When to Use
-
-- Architecture, API, or system parameters pull in opposite directions (stable vs evolving, fresh vs cached, strict vs frictionless).
-- You are about to accept a trade-off because "you can't have both."
-- Every candidate solution shares the same structural weakness—the conflict is in the requirements, not the options list.
-
-## When NOT to Use
-
-- One option is simply better under stated constraints → pick it; do not manufacture a contradiction.
-- A cheap measurement shows which side actually matters → measure instead of inventing a separation.
-- A standard pattern already resolves it (cache-aside, CQRS, feature flags, versioning) → apply the pattern directly.
-- Non-technical people/org conflicts → out of scope; separation targets system parameters.
-- Ordinary prioritization or resource allocation without opposing states of the same parameter.
-
-## Process
-
-1. **Name the contradiction in template form.** Write: "We need [PARAMETER] to be [STATE_1] for [BENEFIT_1] BUT [STATE_2] for [BENEFIT_2]." If this form fails, stop—use another method.
-2. **State the ideal final result (IFR).** Describe both benefits held with minimal new machinery and no permanent midpoint sacrifice.
-3. **Try separation before invention.** Test, in order: **time** (different moments), **space** (different components/layers), **condition** (context, load, risk), **scale** (interface vs implementation, aggregate vs element). Keep the first separation that delivers both benefits without hidden compromise.
-4. **If separation fails, apply an inventive transform.** Prefer resource-light moves: segmentation, preliminary action, inversion (push/pull), intermediary, copying/replication, dynamization (flags/config), another dimension (metadata/versioning/events). Scan only principles that map to the named parameter conflict.
-5. **Reuse existing resources first.** Before adding services or stores, check data, traffic, headers, schedulers, and side effects already present that can carry the separation.
-6. **Lock a concrete resolution and stop.** Specify the design change, where each state lives, and how both benefits are preserved. Stop when a no-compromise design is stated, or when honest analysis shows only a constrained trade-off remains—then document the residual trade-off explicitly rather than forcing TRIZ theater.
-
-## Output
-
-Emit a TRIZ resolution:
-
-- `contradiction`: parameter / state_1+benefit_1 / state_2+benefit_2
-- `ideal_final_result`: both benefits without permanent compromise
-- `separation_tried`: time | space | condition | scale → result each
-- `inventive_move`: principle or pattern used if separation alone was insufficient (or none)
-- `resources_reused`: existing capabilities leveraged
-- `resolution`: concrete design decision and where each state holds
-- `residual_tradeoff`: none, or the honest remaining compromise
-
-## Verification
-
-- **Template gate:** if the contradiction cannot be written in the required form, do not apply TRIZ.
-- **No-compromise check:** a pure midpoint on the trade-off curve without a separation or inventive move is a failed application.
-- **Separation-first:** principles without attempted time/space/condition/scale separation are incomplete.
-- **Over-application guard:** if measurement or a standard pattern settles the design, skip TRIZ.
-- **Stop:** one named contradiction → separation/inventive pass → concrete resolution; do not cycle principles as decoration.
-
-## Related
-
-Soft under `/0-thinking`. Vendor: `archive/vendor/cc-thinking-skills/skills/thinking-triz/`.
-Route via hub when frame unclear; invoke this leaf when mechanism is known.
+Parent/return: `/0-thinking`. Related: `/1-thinking-lateral`,
+`/2-software-architect`.

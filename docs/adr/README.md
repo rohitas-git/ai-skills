@@ -13,5 +13,6 @@ Catalog house law. Status is in each file.
 | [0007](./0007-domain-packages-inbox-archive-hubs.md) | Domain packages, inbox/archive, hubs |
 | [0008](./0008-six-folder-skills-root.md) | Six-folder skills-root |
 | [0009](./0009-catalog-route-surface-for-butler.md) | Catalog route surface for butler |
+| [0010](./0010-runtime-specific-invocation-and-catalog-evaluation.md) | Runtime-specific invocation and catalog evaluation |
 
 **Product history (versioned):** [FEATURE-LOG.md](../FEATURE-LOG.md) · **version file:** [`catalog.yaml`](../../catalog.yaml)

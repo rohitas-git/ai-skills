@@ -56,14 +56,14 @@
 <body>
 <header>
   <h1>★ 0-rohitas-vault-wiki <span style="color:var(--muted);font-weight:500">· Domain 9 · Vault</span></h1>
-  <p>Schema steward for Rohitas's Notes (PKM).</p>
+  <p>Read-only router and shared safety/schema boundary for Rohitas's configured personal vault.</p>
 </header>
 <nav class="top">
   <a class="butler-cta" href="../0-butler/hub.html">★ 0-butler (hub of hubs)</a>
-  <a class="chart-cta" href="../../flows-chart.html">Full flows chart</a>
-  <a href="../../flows-chart.html#domain-hub-matrix">Domain matrix</a>
+  <a class="chart-cta" href="../flows-chart.html">Full flows chart</a>
+  <a href="../flows-chart.html#domain-hub-matrix">Domain matrix</a>
   <a href="./workflow.json">workflow.json</a>
-  <a href="../../../productivity/0-butler/references/flows.md">flows.md SSOT</a>
+  <a href="../../skills/0-butler/references/flows.md">flows.md SSOT</a>
   <a href="../index.html">hubs index</a>
   <span class="here">package: <code>hubs/0-rohitas-vault-wiki/</code></span>
 </nav>
@@ -77,7 +77,7 @@
     Catalog mutations → <a href="../0-skill-manager/hub.html">/0-skill-manager</a>.
   </div>
   <p class="meta">
-    Parent skill: <code>productivity/butler</code> ·
+    Parent skill: <code>skills/0-butler</code> ·
     Parent workflow: <a href="../0-butler/workflow.json"><code>../0-butler/workflow.json</code></a> ·
     This package: <code>hubs/0-rohitas-vault-wiki/</code>
   </p>
@@ -87,26 +87,29 @@
   <p class="meta">
     <span class="badge vault">★ hub</span>
     slash: <code>/0-rohitas-vault-wiki</code> ·
-    skill path: <code>personal/0-rohitas-vault-wiki/</code> ·
+    skill path: <code>skills/0-rohitas-vault-wiki/</code> ·
     package: <code>hubs/0-rohitas-vault-wiki/</code>
   </p>
-  <p>Vault root path from setup SSOT only (docs/agents/vault.md). Never hard-code home paths.</p>
+  <p>A leaf resolves the vault root from the approved SSOT. The hub never reads or mutates the vault.</p>
 </section>
 
 <section>
   <h2>Children</h2>
   <ul>
-    <li><strong>pipeline:</strong> 1-vault-inbox, 1-vault-ingest, 1-vault-lint, 1-wiki-query, vault-explain</li>
-<li><strong>leaf:</strong> 1-obsidian-markdown, 1-obsidian-cli, obsidian-bases</li>
+    <li><strong>setup on-ramp:</strong> <a href="../../skills/1-setup-vault-root/SKILL.md">1-setup-vault-root</a></li>
+    <li><strong>operations:</strong> <a href="../../skills/1-vault-inbox/SKILL.md">1-vault-inbox</a>, <a href="../../skills/1-vault-ingest/SKILL.md">1-vault-ingest</a>, <a href="../../skills/1-vault-lint/SKILL.md">1-vault-lint</a>, <a href="../../skills/1-vault-repair/SKILL.md">1-vault-repair</a>, <a href="../../skills/1-wiki-query/SKILL.md">1-wiki-query</a>, <a href="../../skills/1-vault-explain/SKILL.md">1-vault-explain</a></li>
+<li><strong>soft:</strong> <a href="../../skills/1-resource-summarizer/SKILL.md">1-resource-summarizer</a> <span class='meta'>(Learn primary)</span></li>
+<li><strong>on-ramp:</strong> <a href="../../skills/1-learning-explainer/SKILL.md">1-learning-explainer</a> <span class='meta'>(Learn primary)</span></li>
+<li><strong>leaf:</strong> <a href="../../skills/1-obsidian-markdown/SKILL.md">1-obsidian-markdown</a>, <a href="../../skills/1-obsidian-cli/SKILL.md">1-obsidian-cli</a>, <a href="../../skills/1-obsidian-bases/SKILL.md">1-obsidian-bases</a></li>
 <li><strong>tombstone:</strong> obsidian-notes-manager <span class='meta'>(→ 0-rohitas-vault-wiki)</span></li>
   </ul>
 </section>
 
 <section>
   <h2>Pipeline</h2>
-  <pre>capture
-compile
-lint / query / explain</pre>
+  <pre>route one clear operation directly
+F11 or F-D2 only for material ambiguity
+run one leaf → return evidence to the actual caller</pre>
 </section>
 
 
@@ -115,7 +118,8 @@ lint / query / explain</pre>
   <table>
     <thead><tr><th>ID</th><th>Question</th><th>Recommended</th><th>Branches</th></tr></thead>
     <tbody>
-      <tr><td><code>F11</code></td><td>Capture / compile / query / lint / explain?</td><td>match utterance</td><td>inbox · ingest · query · lint · explain</td></tr>
+      <tr><td><code>F11</code></td><td>Capture / compile / query / lint / explain?</td><td>Route directly from the stated outcome; ask only when two operations materially differ</td><td>inbox · ingest · query · lint · explain · Agent judgment</td></tr>
+      <tr><td><code>F-D2</code></td><td>Project repository wiki or configured personal vault?</td><td>Infer from the named destination</td><td>0-rohitas-vault-wiki · 1-project-wiki-manager · living-documentation-governor via F-D1 · Agent judgment</td></tr>
     </tbody>
   </table>
 </section>
@@ -123,7 +127,7 @@ lint / query / explain</pre>
 <section>
   <h2>See also</h2>
   <p>
-    <a class="butler-cta" href="../0-butler/hub.html">★ butler</a> <a class="chart-cta" href="../../flows-chart.html">Open flows-chart.html</a>
+    <a class="butler-cta" href="../0-butler/hub.html">★ butler</a> <a class="chart-cta" href="../flows-chart.html">Open flows-chart.html</a>
     <a class="chart-cta" href="./workflow.json" style="margin-left:0.4rem">workflow.json</a>
   </p>
   <p class="meta">House map + fork index: chart. Machine-readable workflow: JSON. Routing apex: butler. Package layout: ADR 0005.</p>
@@ -146,13 +150,16 @@ lint / query / explain</pre>
 <a href="../0-office/hub.html" class="">office</a>
 <a href="../0-ui-ux/hub.html" class="">ui-ux</a>
 <a href="../0-thinking/hub.html" class="">thinking</a>
+<a href="../0-git/hub.html" class="">git</a>
+<a href="../0-agent-engineering/hub.html" class="">agent-engineering</a>
+<a href="../0-devops/hub.html" class="">devops</a>
   </div>
 </section>
 </main>
 <footer>
   Domain hub package <code>hubs/0-rohitas-vault-wiki/</code> for <code>/0-rohitas-vault-wiki</code> · parent: <a href="../0-butler/hub.html">butler</a> ·
-  SSOT: <code>skills/productivity/0-butler/references/flows.md</code> ·
-  chart: <a href="../../flows-chart.html">flows-chart.html</a> ·
+  SSOT: <code>skills/0-butler/references/flows.md</code> ·
+  chart: <a href="../flows-chart.html">flows-chart.html</a> ·
   workflow: <a href="./workflow.json">workflow.json</a>
 </footer>
 </body>

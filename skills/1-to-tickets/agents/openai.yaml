@@ -1,5 +1,5 @@
 interface:
   display_name: "To Tickets"
-  short_description: "Split a plan into tracer-bullet tickets"
+  short_description: "Derive one approved-spec ticket set"
 policy:
   allow_implicit_invocation: false

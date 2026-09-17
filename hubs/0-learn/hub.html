@@ -50,7 +50,7 @@
   <a class="butler-cta" href="../0-butler/hub.html">★ 0-butler (hub of hubs)</a>
   <a class="chart-cta" href="../../flows-chart.html">Full flows chart</a>
   <a href="./workflow.json">workflow.json</a>
-  <a href="../../../productivity/0-butler/references/flows.md">flows.md SSOT</a>
+  <a href="../../skills/0-butler/references/flows.md">flows.md SSOT</a>
   <a href="../index.html">hubs index</a>
   <span class="here">package: <code>hubs/0-learn/</code></span>
 </nav>
@@ -64,34 +64,36 @@
 </section>
 <section>
   <h2>Identity</h2>
-  <p class="meta"><span class="badge hub">★ hub</span> slash: <code>/0-learn</code> · skill: <code>productivity/0-learn/</code></p>
-  <p>Not a product build path. 1-vault-explain is Vault on-ramp that hard-loads learning-explainer. Tutor mode is disclosed under learn/references (not a separate skill).</p>
+  <p class="meta"><span class="badge hub">★ hub</span> slash: <code>/0-learn</code> · skill: <code>skills/0-learn/</code></p>
+  <p>Read-only learning router. Clear requests route directly; forks appear only for material deliverable ambiguity.</p>
 </section>
 <section>
   <h2>Children / modes</h2>
   <ul>
-    <li><strong>leaf:</strong> 1-learning-explainer <span class='meta'>(Structured multi-level explain SSOT; default F-L1 for concepts)</span></li>
-<li><strong>satellite:</strong> 1-teach <span class='meta'>(Multi-session workspace course)</span></li>
-<li><strong>leaf:</strong> story-teacher</li>
-<li><strong>soft:</strong> 1-resource-summarizer <span class='meta'>(Also used by 1-vault-ingest distill; dual soft under Vault domain notes)</span></li>
-<li><strong>on-ramp:</strong> 1-vault-explain <span class='meta'>(Primary home Vault; hard-loads 1-learning-explainer for pedagogy)</span></li>
-<li><strong>tutor mode (refs):</strong> <code>learn/references/tutor-mode.md</code> — Socratic session practice</li>
+    <li><strong>router:</strong> <a href="../../skills/1-learning-explainer/SKILL.md">1-learning-explainer</a> <span class='meta'>(selects focused concept-learning operation)</span></li>
+<li><strong>leaf:</strong> <a href="../../skills/1-learning-diagnostic/SKILL.md">1-learning-diagnostic</a> · <a href="../../skills/1-level-explainer/SKILL.md">1-level-explainer</a> · <a href="../../skills/1-mental-model-builder/SKILL.md">1-mental-model-builder</a> · <a href="../../skills/1-progressive-deep-dive/SKILL.md">1-progressive-deep-dive</a> <span class='meta'>(profile, first explanation, model, deepening)</span></li>
+<li><strong>leaf:</strong> <a href="../../skills/1-explain-with-example/SKILL.md">1-explain-with-example</a> <span class='meta'>(grounded example + non-executing dry run)</span> · <a href="../../skills/1-tutor/SKILL.md">1-tutor</a> · <a href="../../skills/1-code-explainer/SKILL.md">1-code-explainer</a></li>
+<li><strong>satellite:</strong> <a href="../../skills/1-teach/SKILL.md">1-teach</a> · <a href="../../skills/1-teaching-workspace/SKILL.md">1-teaching-workspace</a> · <a href="../../skills/1-lesson-authoring/SKILL.md">1-lesson-authoring</a> · <a href="../../skills/1-learning-progress-record/SKILL.md">1-learning-progress-record</a> · <a href="../../skills/1-learning-glossary/SKILL.md">1-learning-glossary</a> <span class='meta'>(multi-session course)</span></li>
+<li><strong>leaf:</strong> <a href="../../skills/1-story-teacher/SKILL.md">1-story-teacher</a></li>
+<li><strong>soft:</strong> <a href="../../skills/1-resource-summarizer/SKILL.md">1-resource-summarizer</a> <span class='meta'>(also used by Vault ingest)</span></li>
+<li><strong>on-ramp:</strong> <a href="../../skills/1-vault-explain/SKILL.md">1-vault-explain</a> <span class='meta'>(primary home Vault)</span></li>
   </ul>
 </section>
 <section>
   <h2>Pipeline</h2>
-  <pre>orient / F-L1
-optional F-L2 if long source
-load one mode
-optional cross-mode offer</pre>
+<pre>direct evidence route
+F-L1 only for material mode ambiguity
+F-L2 only for detail-versus-distillation choice
+load one leaf → return</pre>
 </section>
 <section>
   <h2>Forks (ask user)</h2>
   <table>
     <thead><tr><th>ID</th><th>Question</th><th>Recommended</th><th>Branches</th></tr></thead>
     <tbody>
-      <tr><td><code>F-L1</code></td><td>What kind of learning help?</td><td>Structured explain (/1-learning-explainer) for concepts/ELI5</td><td>learning-explainer · tutor-mode (learn/references) · 1-teach · 1-story-teacher · 1-resource-summarizer · 1-vault-explain if vault Concept</td></tr>
-<tr><td><code>F-L2</code></td><td>Long source present — summarize first?</td><td>Yes if raw blob is huge before explain/story</td><td>resource-summarizer first · skip straight to explain/tutor/story</td></tr>
+      <tr><td><code>F-L1</code></td><td>Direct explanation, interactive practice, or reusable course?</td><td>Infer from the stated outcome; ask only when two modes materially differ</td><td>learning-explainer · explain-with-example · 1-tutor · code-explainer · 1-teach · story · summarizer · vault-explain · Agent judgment</td></tr>
+      <tr><td><code>F-L2</code></td><td>Explain selected material directly or distill first?</td><td>Explain a clear selection directly; distill for a source-level summary</td><td>resource-summarizer first · direct selected-material explain · Agent judgment</td></tr>
+      <tr><td><code>F-L3</code></td><td>What focused concept-learning operation is needed?</td><td>First explanation at a chosen level</td><td>diagnostic · level explainer · mental-model builder · progressive deep dive</td></tr>
     </tbody>
   </table>
 </section>

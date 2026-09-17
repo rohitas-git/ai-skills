@@ -36,7 +36,7 @@
 ## Next
 - If FAIL: do not apply place/ingest. Fix lean/chain first.
 - If fat SKILL.md: `/0-skill-creator` thin to lean shape (1-writing-great-skills).
-- If orphans: `/0-skill-manager` place (dry-run) with parent hub + link type.
+- If orphans: return the exact parent-hub/link-type fix to `/0-skill-manager`; apply only when requested.
 - If sprawl after thin attempt: sprawl-and-subdomain.md → skill-manager.
 ```
 

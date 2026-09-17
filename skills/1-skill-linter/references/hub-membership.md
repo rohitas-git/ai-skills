@@ -41,6 +41,6 @@ for each hubs/*/workflow.json:
   collect children[].skills (strings)
   if hub field set, add hub name as member
 parse flows.md for `backticked-names` in Children rows (optional supplement)
-live skills = dirs with SKILL.md in engineering|productivity|misc|personal
+live skills = direct child directories under `skills/` that contain `SKILL.md`
 orphan = live - members - non-skill tokens
 ```

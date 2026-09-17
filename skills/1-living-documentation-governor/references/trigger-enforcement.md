@@ -1,94 +1,51 @@
-# Trigger Enforcement Reference
+# Trigger enforcement
 
-This document explains the exact mechanics of documentation trigger checking, generalized from production implementation.
+Triggers identify documentation obligations from a pinned change candidate. They do not establish
+that a documentation edit is truthful.
 
-## Glob Matching Logic
+## Candidate set
 
-A path pattern supports `**` (any directories) and `*` (any characters within a segment).
+- Use the caller's explicit base/head or published PR endpoints; do not hard-code `origin/main`.
+- For local implementation include caller-owned committed, staged, unstaged, and untracked paths.
+- Detect renames/copies and consider both old and new paths where ownership may change.
+- Never fetch, switch, reset, stash, or rewrite the worktree to calculate the set.
+- Report missing base objects or a moving candidate instead of silently selecting another range.
 
-Example implementation (JavaScript-style, adaptable to other languages):
+## Map validation
 
-```js
-function matchGlob(pattern, filePath) {
-  const normalizedPattern = pattern.replace(/\\/g, "/");
-  const normalizedFile = filePath.replace(/\\/g, "/");
-  const regexSource = normalizedPattern
-    .split("**")
-    .map((segment) =>
-      segment
-        .split("*")
-        .map((part) => part.replace(/[.+^${}()|[\]\\]/g, "\\$&"))
-        .join("[^/]*"),
-    )
-    .join(".*");
-  return new RegExp(`^${regexSource}$`).test(normalizedFile);
-}
-```
+Validate before matching:
 
-- `src/auth/**` matches `src/auth/middleware.js`, `src/auth/providers/*.js`, etc.
-- `src/middlewares/auth.js` matches only that exact file.
-- Renames are handled by including both source and destination paths.
+- supported schema version and object shape;
+- unique stable rule IDs;
+- nonempty safe repository-relative path patterns and doc targets;
+- no traversal, absolute paths, archive-only targets, duplicate/contradictory ownership, or missing
+  canonical targets;
+- patterns interpreted by an established, tested pathspec/glob library with documented semantics.
 
-## Change Detection
+Do not implement globs by ad-hoc regex substitution. Test separators, `*` versus `**`, leading dots,
+directories, negation if supported, Unicode, renames, and monorepo roots.
 
-- **Base comparison**: `git diff --name-status --find-renames baseRef...HEAD`
-- **Local development**: Also include working tree (`git diff HEAD`), staged (`git diff --cached`), and untracked files so a documentation fix can satisfy the check before commit.
-- **CI**: Usually commit-range only (respect `GITHUB_BASE_REF`).
-- Override base with `DOCS_CHECK_BASE` env var.
+## Disposition
 
-## Validation Rules (Fail Fast)
+For every matched obligation require one of:
 
-Before checking changes, the map itself is validated:
+1. **Addressed:** a relevant canonical-doc delta whose claim is checked against changed behavior.
+2. **Reviewed no-doc-impact:** a structured, reviewable attestation naming rule, rationale, owner, and
+   optional expiry/follow-up.
+3. **Unresolved:** fail or report the obligation, depending on the adopted enforcement phase.
 
-- Must be valid JSON object with `rules` array.
-- Every rule must have:
-  - Non-empty string `id` (unique across map)
-  - Non-empty `paths` array of safe relative paths (no `..`, no absolute)
-  - Non-empty `docs` array of safe relative paths
-- No `docs` entry may start with `docs/archive/`
-- Every doc path in `docs` must exist on disk
+Any edit to any mapped document is not enough. Empty/timestamp-only changes, unrelated wording, and
+archive edits do not satisfy an obligation.
 
-Failures are reported with clear messages and the process exits non-zero.
+## Adoption and required-check honesty
 
-## Failure Output Format
+Begin in report-only mode on representative changes, measure false positives/misses, then ratchet to
+required enforcement with repository approval. A required check must emit a result for every required
+PR path; do not make its context disappear behind path filtering. Validate the exact candidate CI
+checks, and do not claim semantic correctness from a green trigger gate.
 
-When triggered rules have no matching doc changes:
+## Exemptions
 
-```
-docs:check: code changed without acknowledging mapped docs.
-
-Rule: langgraph
-  Code:
-    - src/graph/aceGraph.js
-    - graph/nodes/planner.js
-  Update (or banner needs-update on) at least one of:
-    - docs/guides/langgraph.md
-    - docs/architecture.md
-
-Fix: edit the listed doc(s), or set DOCS_CHECK_SKIP=1 / commit with [docs-skip] intentionally.
-Guide: read docs/doc-governance.md (or equivalent) for trigger rules and placement guidance.
-```
-
-## Skip Mechanisms (Intentional Only)
-
-- Environment: `DOCS_CHECK_SKIP=1`
-- Commit message contains `[docs-skip]`
-
-These should be used rarely and only when the documentation impact has been deliberately judged irrelevant.
-
-## Self-Protection
-
-The "documentation-governance" rule watches:
-- `docs/doc-triggers.json`
-- The check script itself
-- Git hook scripts
-- The manager documentation files
-
-Any change to the governance machinery must update at least one of its mapped docs.
-
-## Recommendations for New Projects
-
-1. Start with a minimal trigger map covering the highest-risk areas (auth, core graph, data models, API routes).
-2. Add the check to CI and optionally a local pre-commit hook.
-3. Keep the number of rules modest — too many noisy docs reduce signal.
-4. Evolve the map as canonical ownership becomes clearer.
+Avoid untracked environment-variable or commit-message bypasses such as `DOCS_CHECK_SKIP=1` or
+`[docs-skip]`. Prefer a visible, reviewable attestation with rationale and ownership. Emergency
+override policy, if the repository has one, remains a human-controlled repository decision.

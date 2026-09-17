@@ -1,60 +1,33 @@
-# Ticket sizing, checkpoints, parallel (harvested)
+# Ticket-set decomposition guidance
 
-Source: archive vendor `planning-and-task-breakdown` — high-value only.  
-Catalog winner for breakdown is **`/1-to-tickets`** (tracker + blocking edges). Do not peer-promote planning-and-task-breakdown.
+## Boundary test
 
-## Task sizing
+A ticket is well bounded when it has one observable outcome, a coherent verification story, and can be
+reviewed and reverted without silently requiring unrelated scope. File count, elapsed time, token budget,
+title conjunctions, and architectural layer count are warning signals at most—never sizing laws.
 
-| Size | Files (rule of thumb) | Scope | Example |
-|------|----------------------|--------|---------|
-| **XS** | 1 | Single function or config | Add a validation rule |
-| **S** | 1–2 | One component or endpoint | New API endpoint |
-| **M** | 3–5 | One feature slice | User registration flow |
-| **L** | 5–8 | Multi-component feature | Search + filter + pagination |
-| **XL** | 8+ | **Too large — split** | — |
+Split when outcomes, owners, rollout/rollback decisions, acceptance evidence, or shared-resource authority
+are independently meaningful. Keep work together when separation would leave an unverifiable half-state or
+break compatibility.
 
-Prefer **S** and **M**. If a ticket is **L+**, split before publish.
+## Shape selection
 
-**Split further when:**
+- Prefer a thin end-to-end behavior slice when it can land safely and remain green.
+- For incompatible contract changes, use explicit expand → migrate callers/data → contract tickets.
+- Keep schema and data/backfill work separate when failure and rollback boundaries differ.
+- Put slow or operationally risky work behind its own authority and verification gate.
+- Represent a true shared contract once; dependent tickets reference it rather than restating it.
 
-- More than one focused agent session (~2+ hours)
-- Acceptance criteria need more than ~3 bullets
-- Touches two independent subsystems (e.g. auth **and** billing)
-- Title contains “and” (often two tickets)
+## Dependencies and concurrency
 
-## Checkpoints
+Dependencies must form a directed acyclic graph justified by real inputs or state transitions. The ready
+frontier contains tickets whose recorded blockers are satisfied; it is informational until an execution
+workflow selects work. Tickets are parallel-eligible only when they do not share files, generated outputs,
+databases, local service instances, tracker mutations, deployment targets, locks, or other mutable resources—
+or when explicit coordination makes that sharing safe. A Git worktree alone does not isolate those resources.
 
-After every **2–3 frontier tickets** (or each phase), require a working system:
+## Evidence checkpoint
 
-- Tests / typecheck green for the slices landed
-- Core path for those tickets demoable or verifiable
-- Human 0-review gate when risk is high
-
-Wire as an explicit ticket or a note on the parent map/spec if the tracker supports it — do not rely on memory alone.
-
-## Parallelization
-
-When multiple agents/sessions are available:
-
-| Kind | Examples |
-|------|----------|
-| **Safe parallel** | Independent feature slices; tests for already-landed code; docs |
-| **Must sequential** | Migrations, shared schema/state, true dependency chains |
-| **Coordinate first** | Shared API contract — define the contract ticket first, then parallelize implementers |
-
-Work the **frontier** (blockers done). Do not start blocked tickets “in parallel hoping it works.”
-
-## Acceptance criteria vs Definition of Done
-
-| | Acceptance criteria | Definition of Done |
-|--|---------------------|--------------------|
-| Scope | This ticket | Every increment (project-wide) |
-| Answers | “Did we build **this**?” | “Is it **finished to standard**?” |
-
-Per-ticket AC live on the ticket. Standing DoD: [`implement/references/definition-of-done.md`](../../0-implement/references/definition-of-done.md).
-
-## What not to reintroduce from vendor
-
-- `tasks/plan.md` / `tasks/todo.md` as the default artifact (catalog uses issue tracker via `/1-to-spec` → `/1-to-tickets`)
-- Long **files likely touched** lists on tickets (stale; `/1-to-tickets` forbids paths unless prototype-encoded decisions)
-- Horizontal layer tickets (schema-all → API-all → UI-all) — already rejected by vertical-slice rules
+Each ticket names the smallest evidence that demonstrates its own outcome. Cross-ticket checkpoints belong
+only where an integration, compatibility, migration, or release invariant cannot be proved inside one ticket.
+Do not create ceremonial checkpoints by fixed ticket counts.

@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "kind": "domain_hub_workflow",
+  "domain_id": 18,
+  "domain": "Agent engineering",
+  "hub": "0-agent-engineering",
+  "slash": "/0-agent-engineering",
+  "path": "skills/0-agent-engineering",
+  "package_dir": "hubs/0-agent-engineering/",
+  "role": "Route design, evaluation, operation, and security work for AI-agent systems.",
+  "notes": "Choose the narrowest concern at F-AE1; shared engineering and security skills remain single-copy dual links.",
+  "parent": {
+    "hub": "0-butler",
+    "slash": "/0-butler",
+    "relationship": "routed_by",
+    "html": "../0-butler/hub.html",
+    "workflow_json": "../0-butler/workflow.json",
+    "skill_path": "skills/0-butler"
+  },
+  "children": [
+    {
+      "link_type": "leaf",
+      "skills": [
+        "1-agent-evaluation",
+        "1-tool-schema-design",
+        "1-human-in-the-loop",
+        "1-mcp-server-building",
+        "1-agent-workflow-observer"
+      ],
+      "primary": true,
+      "note": "Core agent-system leaves. Workflow observation analyzes one fixed completed/paused snapshot and returns proposals only; tool-schema work preserves design/review/authorized-edit mode and returns to its MCP, oversight, security or hub caller; provider/live-effect tests require separate authority."
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "1-parallel-agents",
+        "1-observability-and-instrumentation"
+      ],
+      "note": "Shared implementation skills; agent observability inherits the exact caller/candidate/worktree/authority, separates operational metadata from sensitive content, and returns without hosted telemetry operations"
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "2-prompt-injection-defense",
+        "2-skill-supply-chain-audit"
+      ],
+      "note": "Primary membership remains under the Review security sub-hub. Pass caller mode, candidate, scope and permitted checks. Prompt-injection assessment returns evidence, not automatic tool redesign; package review returns a recommendation and coverage gaps, never installation, edits or live quarantine."
+    }
+  ],
+  "pipeline": [
+    "route one clear concern directly",
+    "use F-AE1 only for material ambiguity",
+    "run one leaf and return its candidate, evidence, effects, and limits to the caller"
+  ],
+  "forks": [
+    {
+      "id": "F-AE1",
+      "question": "Which one agent-system outcome is required?",
+      "recommended": "Infer the narrowest evidence-backed specialist; ask only when two outcomes materially differ",
+      "branches": [
+        "1-agent-evaluation",
+        "1-tool-schema-design",
+        "1-human-in-the-loop",
+        "1-mcp-server-building",
+        "1-agent-workflow-observer",
+        "1-parallel-agents",
+        "1-observability-and-instrumentation",
+        "2-prompt-injection-defense",
+        "2-skill-supply-chain-audit",
+        "Agent judgment"
+      ]
+    }
+  ],
+  "domain_hubs_routed": null,
+  "artifacts": {
+    "html": "./hub.html",
+    "workflow_json": "./workflow.json",
+    "flows_chart": "../flows-chart.html",
+    "flows_ssot": "../../skills/0-butler/references/flows.md",
+    "hubs_index": "../index.html",
+    "manifest": "../manifest.json"
+  },
+  "rules": [
+    "butler_links_every_domain_hub",
+    "each_domain_hub_has_package_dir",
+    "each_domain_hub_has_hub_html",
+    "each_domain_hub_has_workflow_json",
+    "each_domain_hub_links_flows_chart",
+    "one_hub_per_domain",
+    "forks_ask_user"
+  ]
+}

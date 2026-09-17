@@ -1,5 +1,9 @@
 # Callouts Reference
 
+Compatibility examples only. Confirm current syntax at `https://help.obsidian.md/callouts` and
+follow the target vault's conventions. Do not add a callout type, custom CSS, or nested/foldable
+behavior unless the requested note change needs it. Custom CSS is outside this syntax-only skill.
+
 ## Basic Callout
 
 ```markdown
@@ -48,7 +52,7 @@
 | `example` | - | Purple, list |
 | `quote` | `cite` | Gray, quote |
 
-## Custom Callouts (CSS)
+## Custom callout illustration (out of scope here)
 
 ```css
 .callout[data-callout="custom-type"] {

@@ -49,7 +49,7 @@ Load this reference during Phase 2 (Hunting) when the project uses one or more o
 - Unsafe blocks that violate memory safety or create data races.
 - Integer overflows in release builds (when checks are disabled).
 - Path traversal or TOCTOU in file system operations.
-- Command injection via `std::process::Command` with unsanitized arguments.
+- Argument/option injection into a dangerous program invoked through `std::process::Command`; shell injection only when a shell/interpreter is actually involved. Separate argv is not itself shell interpolation.
 - Deserialization of untrusted data with `serde` without validation.
 - Misuse of `unsafe` FFI boundaries.
 - Missing bounds checks that can lead to panics used for DoS.
@@ -59,7 +59,7 @@ Load this reference during Phase 2 (Hunting) when the project uses one or more o
 - Missing rate limiting on authentication or expensive endpoints.
 - Overly permissive CORS.
 - Missing or weak Content-Security-Policy, X-Frame-Options, etc.
-- GraphQL: introspection enabled in production, missing query depth/complexity limits, authorization bypasses.
+- GraphQL: excessive query depth/complexity, authorization bypasses, or sensitive schema information exposed contrary to the intended contract. Introspection enabled in production alone is not proof of a vulnerability.
 - gRPC / WebSocket authorization gaps.
 - File upload: unrestricted types, path control, malware scanning absence, oversized files.
 
@@ -69,3 +69,8 @@ Load this reference during Phase 2 (Hunting) when the project uses one or more o
 - For serverless: excessive permissions on functions, event injection, cold-start side channels.
 
 When a language-specific pattern is found, map it to the corresponding general class (Injection, Broken Access Control, etc.) and note the language context in the finding.
+
+For process launches, distinguish shell parsing from argument injection using the
+actual API: [Rust Command](https://doc.rust-lang.org/std/process/struct.Command.html)
+and [Node child_process](https://nodejs.org/api/child_process.html). Separate argv
+avoids shell interpolation but does not prevent unsafe options or interpreter use.

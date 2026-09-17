@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "kind": "domain_hub_workflow",
+  "domain_id": 14,
+  "domain": "Office and media",
+  "hub": "1-hatch-pet",
+  "slash": "/1-hatch-pet",
+  "path": "skills/1-hatch-pet",
+  "package_dir": "hubs/1-hatch-pet/",
+  "role": "Sub-hub routing one Codex v2 pet operation under /0-office.",
+  "notes": "Route exactly one build, repair, read-only validation, or local installation operation. Never chain effects or infer install/cleanup authority.",
+  "parent": {
+    "hub": "0-butler",
+    "slash": "/0-butler",
+    "relationship": "routed_by",
+    "html": "../0-butler/hub.html",
+    "workflow_json": "../0-butler/workflow.json",
+    "skill_path": "skills/0-butler",
+    "domain_hub": "0-office"
+  },
+  "parent_domain_hub": "0-office",
+  "children": [
+    {
+      "link_type": "leaf",
+      "skills": [
+        "2-hatch-pet-build",
+        "2-hatch-pet-repair",
+        "2-hatch-pet-validate",
+        "2-hatch-pet-install"
+      ]
+    }
+  ],
+  "pipeline": [
+    "pin caller, immutable pet request/candidate, v2 contract, evidence, paths, authority, and optional worktree",
+    "direct route or material-only F-PET1",
+    "hand exactly one leaf the same scope and effect boundary",
+    "return artifact/evidence, hashes, verification, effects, and limits to actual caller"
+  ],
+  "forks": [
+    {
+      "id": "F-PET1",
+      "question": "Which one pet result is needed?",
+      "recommended": "Use the explicit verb or strongest candidate-state evidence",
+      "branches": [
+        "2-hatch-pet-build",
+        "2-hatch-pet-repair",
+        "2-hatch-pet-validate",
+        "2-hatch-pet-install",
+        "Agent judgment"
+      ]
+    }
+  ],
+  "domain_hubs_routed": null,
+  "artifacts": {
+    "html": "./hub.html",
+    "workflow_json": "./workflow.json",
+    "flows_chart": "../flows-chart.html",
+    "flows_ssot": "../../skills/0-butler/references/flows.md",
+    "hubs_index": "../index.html",
+    "manifest": "../manifest.json"
+  },
+  "rules": [
+    "sub_hub_has_parent_domain_hub",
+    "one_pet_operation_only",
+    "no_router_effects",
+    "installation_is_separate_and_explicit"
+  ]
+}

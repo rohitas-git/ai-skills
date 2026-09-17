@@ -1,5 +1,9 @@
 # Properties (Frontmatter) Reference
 
+Compatibility examples only. The active vault schema and existing file types are authoritative.
+Preserve unknown keys and types; do not add defaults, tags, aliases, CSS classes, dates, or status
+unless requested. Parse YAML and change only the exact property hunk.
+
 Properties use YAML frontmatter at the start of a note:
 
 ```yaml

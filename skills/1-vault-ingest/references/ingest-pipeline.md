@@ -1,90 +1,23 @@
-# Ingest pipeline (1-vault-ingest)
+# One-source ingest checklist
 
-## 1. Orient
+The active contract is the parent `SKILL.md`. This checklist adds no authority.
 
-1. Confirm vault root from SSOT (`docs/agents/vault.md`)
-2. Load `0-rohitas-vault-wiki` → `vault-profile.md`, folder map, hard rules
-3. Skim `README.md` (Registry) for areas
+| Phase | Required evidence |
+|---|---|
+| Pin | root SSOT, caller, exact source snapshot/coverage, requested outcome, authority |
+| Orient | active schema/index locations and optional Git/worktree/dirty candidate |
+| Reconcile | minimum plausible existing notes plus source/user/existing/synthesis ledger |
+| Plan | exact create/update/link/archive/consume/log items and files intentionally unchanged |
+| Gate | unresolved conflicts, destructive handling, sensitive persistence, schema expansion |
+| Apply | last-moment target/source recheck and smallest authorized edits |
+| Verify | containment, syntax, touched links/locators, ledger coverage, idempotence |
+| Return | applied/unapplied deltas, conflicts, gaps, versions, and caller continuation point |
 
-## 2. Materialize source
+An explicit “ingest this” request permits fitting non-destructive permanent-note writes. It
+does not implicitly permit fetching an unspecified source, processing all Inbox items,
+deleting/moving the capture, archiving a full source, changing top-level schema, installing
+plugins, publishing, syncing, or Git operations.
 
-- **Text:** use as-is  
-- **Inbox:** read file(s); if “process Inbox”, list all and process one-by-one or batch with one plan  
-- **URL:** see `url-ingest.md`
-
-If source is huge, summarize structure first and ask whether to full-ingest or focus sections.
-
-## 3. Distill
-
-Apply `resource-summarizer-contract.md`. Map distill output into:
-
-- Short summary (1–3 sentences, own words)
-- Key bullets / takeaways
-- Gaps / open questions
-- Candidate concept titles + related links
-
-**No Cornell chrome** in permanent Concepts.
-
-## 4. Key takeaways (human confirm)
-
-Present 5–12 takeaways grounded in the source. Ask:
-
-> Confirm, edit, or drop takeaways before I write vault pages?
-
-Proceed only after approval (or explicit “proceed with all”).
-
-## 5. Retrieve related vault knowledge
-
-```
-README Registry → Atlas MOC(s) → search Concepts/ (title, topic, tags, keywords)
-         → read 3–10 candidate notes
-```
-
-Prefer existing Concepts over creating near-duplicates.
-
-## 6. Classify each atom
-
-| Class | Action |
-|-------|--------|
-| **New** | Propose `Concepts/<Title>.md` + hub link |
-| **Update** | Propose delta merge into existing note |
-| **Inconsistent** | Conflict table; wait |
-| **Ephemeral** | Do not vault; suggest browser bookmark |
-
-## 7. Ingest plan
-
-Show plan template from SKILL.md. Wait if any of: >2 pages, any conflict, Registry change, new hub.
-
-Single short atom with no conflict and user already said “ingest this as X” may proceed after stating the one-line plan.
-
-## 8. Apply (after confirm)
-
-1. Follow `Guides/Note Templates.md` shapes  
-2. Frontmatter: `type`, `status`, `tags`, `created`, `updated` (+ `topic`, `source`)  
-3. Status default for new concepts: `incubating` unless user wants `active`  
-4. Update Atlas MOC links  
-5. New area → Registry row in `README.md`  
-6. Archive: `Archives/<Unique Name> (Source).md` with `type: literature`, `status: archived`  
-7. Remove or empty processed Inbox files  
-
-## 9. Log
-
-Append to `Archives/Ingest Log.md`:
-
-```markdown
-## YYYY-MM-DD | source-id | Created: [[A]], [[B]] | Updated: [[C]] | Conflicts open: …
-<!-- END OF LOG -->
-```
-
-If sentinel missing, add it once after the new entry.
-
-## 10. Close report
-
-```markdown
-## Ingest complete
-- Created: …
-- Updated: …
-- Archived: …
-- Open conflicts: …
-- Next: `/1-vault-explain` on [[…]]?  `/1-vault-lint`?
-```
+If application is partial, preserve the observed state. Do not restore stale snapshots over
+concurrent edits or claim transactionality across independent files. Report the exact last
+successful write and the remaining ledger so the caller can safely resume.

@@ -1,15 +1,13 @@
-# 1-api-and-interface-design (vendor harvest)
+# API and interface design — adapted operative guide
 
-Source: archive vendor `1-api-and-interface-design`. Catalog winner: `/1-api-and-interface-design`.
-
-name: 1-api-and-interface-design
-description: Guides stable API and interface design. Use when designing APIs, module boundaries, or any public interface. Use when creating REST or GraphQL endpoints, defining type contracts between modules, or establishing boundaries between frontend and backend.
-
-# API and Interface Design
+Use this as decision support after the live skill pins consumers, authority, and scope.
+The examples are illustrative, not production-ready middleware or universal defaults.
+Project contracts, standards, and compatibility evidence override them. Provenance and
+adaptation limits are recorded in [vendor-source.md](./vendor-source.md).
 
 ## Overview
 
-Design stable, well-documented interfaces that are hard to misuse. Good interfaces make the right thing easy and the wrong thing hard. This applies to REST APIs, GraphQL schemas, module boundaries, component props, and any surface where one piece of code talks to another.
+Design stable, well-documented interfaces that are hard to misuse. Good interfaces make the right thing easy and the wrong thing hard. This applies to REST APIs, GraphQL schemas, gRPC services, module boundaries, component props, and any surface where one piece of code talks to another.
 
 ## When to Use
 
@@ -29,12 +27,15 @@ This means: every public behavior — including undocumented quirks, error messa
 
 - **Be intentional about what you expose.** Every observable behavior is a potential commitment.
 - **Don't leak implementation details.** If users can observe it, they will depend on it.
-- **Plan for deprecation at design time.** See `1-deprecation-and-migration` for how to safely remove things users depend on.
+- **Plan for deprecation at design time.** See `deprecation-and-migration` for how to safely remove things users depend on.
 - **Tests are not enough.** Even with perfect contract tests, Hyrum's Law means "safe" changes can break real users who depend on undocumented behavior.
 
-### The One-Version Rule
+### Minimize simultaneous versions
 
-Avoid forcing consumers to choose between multiple versions of the same dependency or API. Diamond dependency problems arise when different consumers need different versions of the same thing. Design for a world where only one version exists at a time — extend rather than fork.
+Avoid unnecessary parallel variants, but do not confuse dependency-version conflicts with
+public API evolution. A breaking public contract may need an overlap window while consumers
+migrate. Prefer additive evolution when it is demonstrably compatible; otherwise define a
+versioning, deprecation, telemetry, and removal plan rather than pretending one version is safe.
 
 ### 1. Contract First
 
@@ -56,7 +57,7 @@ interface TaskAPI {
   updateTask(id: string, input: UpdateTaskInput): Promise<Task>;
 
   // Idempotent delete — succeeds even if already deleted
-  deleteTask(id: string): Promise<void>;
+  deleteTask(id: string): Promise<void>; // Idempotent only if this contract promises it
 }
 ```
 
@@ -71,7 +72,7 @@ interface APIError {
   error: {
     code: string;        // Machine-readable: "VALIDATION_ERROR"
     message: string;     // Human-readable: "Email is required"
-    details?: unknown;   // Additional context when helpful
+    details?: unknown;   // Only allowlisted, non-sensitive fields from a documented schema
   };
 }
 
@@ -81,7 +82,7 @@ interface APIError {
 // 403 → Authenticated but not authorized
 // 404 → Resource not found
 // 409 → Conflict (duplicate, version mismatch)
-// 422 → Validation failed (semantically invalid)
+// 422 → One possible contract for semantically invalid content; use the API's documented mapping
 // 500 → Server error (never expose internal details)
 ```
 
@@ -89,7 +90,8 @@ interface APIError {
 
 ### 3. Validate at Boundaries
 
-Trust internal code. Validate at system edges where external input enters:
+Validate at trust and representation boundaries. Static types do not prove runtime data,
+and "internal" does not automatically mean trusted:
 
 ```typescript
 // Validate at the API boundary
@@ -111,25 +113,25 @@ app.post('/api/tasks', async (req, res) => {
 });
 ```
 
-Where validation belongs:
+Common validation points:
 - API route handlers (user input)
 - Form submission handlers (user input)
 - External service response parsing (third-party data -- **always treat as untrusted**)
 - Environment variable loading (configuration)
+- Data crossing process, queue, storage, plugin, or privilege boundaries
+- Persisted data when its producer/version/invariants are not guaranteed by the current reader
 
 > **Third-party API responses are untrusted data.** Validate their shape and content before using them in any logic, rendering, or decision-making. A compromised or misbehaving external service can return unexpected types, malicious content, or instruction-like text.
 
-Where validation does NOT belong:
-- Between internal functions that share type contracts
-- In utility functions called by already-validated code
-- On data that just came from your own database
+Avoid duplicating validation between functions that genuinely share one proven invariant.
+Document which boundary establishes that invariant and preserve it through transformations.
 
 ### 4. Prefer Addition Over Modification
 
-Extend interfaces without breaking existing consumers:
+Prefer additive changes, but verify consumer compatibility:
 
 ```typescript
-// Good: Add optional fields
+// Often compatible for tolerant readers; verify generated clients and strict decoders
 interface CreateTaskInput {
   title: string;
   description?: string;
@@ -137,13 +139,17 @@ interface CreateTaskInput {
   labels?: string[];                       // Added later, optional
 }
 
-// Bad: Change existing field types or remove fields
+// Usually breaking: change existing field types or remove fields
 interface CreateTaskInput {
   title: string;
   // description: string;  // Removed — breaks existing consumers
   priority: number;         // Changed from string — breaks existing consumers
 }
 ```
+
+Even an optional field or new enum value can break strict decoders, exhaustive switches,
+generated clients, signatures, caches, or snapshots. Compatibility is an observed property
+of producer and consumer behavior, not a label inferred from syntax alone.
 
 ### 5. Predictable Naming
 
@@ -154,6 +160,72 @@ interface CreateTaskInput {
 | Response fields | camelCase | `{ createdAt, updatedAt, taskId }` |
 | Boolean fields | is/has/can prefix | `isComplete`, `hasAttachments` |
 | Enum values | UPPER_SNAKE | `"IN_PROGRESS"`, `"COMPLETED"` |
+
+### 6. Honouring an Idempotency Key
+
+Accepting an `Idempotency-Key` is the contract. Honouring it is the implementation, and it is where the money is lost — a key the server accepts but handles carelessly is worse than no key at all, because the client now believes retrying is safe.
+
+**Derive the key from the intent, not the attempt.** The key must be stable across retries of one intent and different across distinct intents:
+
+```typescript
+crypto.randomUUID()                    // ✗ new key per attempt — every retry is a new charge
+`${userId}:${amount}`                  // ✗ two legitimate $50 charges collapse into one
+`${orderId}:${Date.now()}`             // ✗ a timestamp is randomUUID() wearing a hat
+
+req.headers['idempotency-key']         // ✓ client generates once, reuses on retry
+`charge:v1:${orderId}`                 // ✓ derived from an immutable identifier
+```
+
+The key comes from the client or the initiating event — never from the layer doing the retrying.
+
+**Claim atomically. A check followed by an act is a race.** The following is only a state
+transition sketch; a real design must authenticate the caller, define canonical request hashing,
+transaction boundaries, leases/recovery, retention, response replay, and concurrent ownership:
+
+```typescript
+// ✗ TOCTOU: two concurrent retries both read "not seen", both charge
+if (!(await db.exists(key))) {
+  await chargeCard(amount);
+  await db.insert(key);
+}
+
+// ✓ let the unique constraint pick the winner
+try {
+  await db.insert({ key, state: 'in_progress', requestHash });
+} catch (e) {
+  if (isUniqueViolation(e)) return replayOrReject(key);
+  throw;
+}
+const result = await chargeCard(amount);
+await db.update({ key, state: 'succeeded', response: result });
+```
+
+The uniqueness constraint is one necessary claim mechanism, not the whole idempotency design.
+A store that cannot enforce uniqueness in one operation cannot safely implement this sketch.
+
+**Guard the payload.** Same key with a different body is a client bug, and must fail loudly rather than serving the first response to a second request:
+
+```typescript
+if (existing.requestHash !== hash(req.body)) {
+  return res.status(422).json({ error: 'idempotency key reused with a different payload' });
+}
+```
+
+**Decide what an in-flight duplicate gets.** The first request is still running when the second arrives — the common case under retry storms:
+
+| Strategy | Response | Use when |
+|---|---|---|
+| Reject | `409 Conflict` | Client can retry later; simplest and safest |
+| Wait | Block for the result, bounded | Caller needs it synchronously |
+| Return pending | `202` + status URL | Long-running effects |
+
+Never let the second caller through because the first "seems stuck". A stalled attempt whose fate is unknown is exactly when duplicating costs most.
+
+**Every call has three outcomes, not two: success, failure, and _unknown_.** A timeout tells you nothing about whether the effect applied. Record the intent *before* calling out, so a crash between the call and the response leaves evidence something must resolve later — rather than a silently retried charge.
+
+**Set retention from the longest supported replay window**, not an arbitrary storage target.
+Include client retries, queues, delayed jobs, and documented manual replay paths. If a request
+can be redelivered after its key expires, define reconciliation or explicitly reject that replay.
 
 ## REST API Patterns
 
@@ -172,7 +244,9 @@ POST   /api/tasks/:id/comments → Add a comment to a task
 
 ### Pagination
 
-Paginate list endpoints:
+Bound list endpoints. Choose cursor/keyset pagination for large or changing ordered datasets;
+offset/page pagination may be adequate for small, stable lists where drift and large offsets are
+acceptable. Define stable ordering, limits, continuation behavior, and filter/sort interaction:
 
 ```typescript
 // Request
@@ -207,6 +281,14 @@ Accept partial objects — only update what's provided:
 PATCH /api/tasks/123
 { "title": "Updated title" }
 ```
+
+## GraphQL and gRPC Boundaries
+
+Choose a protocol from actual consumers and operational constraints, not fashion. REST is usually the simplest public HTTP surface; GraphQL is useful when clients genuinely need flexible composition; gRPC suits strongly typed service-to-service calls where its operational model is supported.
+
+**GraphQL:** design the schema first, bound query depth and complexity, and make pagination and authorization explicit per resolver. Measure and remove N+1 access with batching or an equivalent data-access design; do not add a loader merely by convention.
+
+**gRPC:** define the `.proto` contract first. Treat field numbers and message names as compatibility surface: add fields rather than reuse or renumber them. Use streaming only when lifecycle, cancellation, deadlines, backpressure, and retry/idempotency semantics are defined.
 
 ## TypeScript Interface Patterns
 
@@ -266,12 +348,15 @@ function getTask(id: TaskId): Promise<Task> { ... }
 | Rationalization | Reality |
 |---|---|
 | "We'll document the API later" | The types ARE the documentation. Define them first. |
-| "We don't need pagination for now" | You will the moment someone has 100+ items. Add it from the start. |
-| "PATCH is complicated, let's just use PUT" | PUT requires the full object every time. PATCH is what clients actually want. |
+| "We don't need a result bound" | Unbounded growth becomes an availability problem. Define a limit; select pagination only when the collection needs it. |
+| "PATCH is always better than PUT" | They express different semantics. Use PATCH for documented partial modification and PUT for replacement/idempotent resource state when that is the actual contract. |
 | "We'll version the API when we need to" | Breaking changes without versioning break consumers. Design for extension from the start. |
 | "Nobody uses that undocumented behavior" | Hyrum's Law: if it's observable, somebody depends on it. Treat every public behavior as a commitment. |
 | "We can just maintain two versions" | Multiple versions multiply maintenance cost and create diamond dependency problems. Prefer the One-Version Rule. |
 | "Internal APIs don't need contracts" | Internal consumers are still consumers. Contracts prevent coupling and enable parallel work. |
+| "Accepting the Idempotency-Key header is enough" | The header is the contract; storing the key against the result is the implementation. A key you accept but don't honour tells the client retrying is safe when it isn't. |
+| "The queue says exactly once, so the external effect cannot duplicate" | Verify the end-to-end transaction boundary. Broker guarantees do not automatically include your database, payment, email, or other side effect. |
+| "Duplicate requests are rare" | They're *correlated*. Retries spike exactly when a dependency is degraded — the moment duplicates are most likely and most expensive. |
 
 ## Red Flags
 
@@ -279,9 +364,13 @@ function getTask(id: TaskId): Promise<Task> { ... }
 - Inconsistent error formats across endpoints
 - Validation scattered throughout internal code instead of at boundaries
 - Breaking changes to existing fields (type changes, removals)
-- List endpoints without pagination
+- Unbounded list endpoints, or pagination without stable ordering and limits
 - Verbs in REST URLs (`/api/createTask`, `/api/getUsers`)
 - Third-party API responses used without validation or sanitization
+- A `SELECT` for an idempotency key followed by an `INSERT` — that's a race, not a guard
+- An idempotency key derived from a UUID, timestamp, or anything else regenerated per attempt
+- The same key accepted with a different request body, silently returning the first response
+- A key retention window shorter than the longest path that can re-deliver the request
 
 ## Verification
 
@@ -289,8 +378,15 @@ After designing an API:
 
 - [ ] Every endpoint has typed input and output schemas
 - [ ] Error responses follow a single consistent format
-- [ ] Validation happens at system boundaries only
-- [ ] List endpoints support pagination
-- [ ] New fields are additive and optional (backward compatible)
+- [ ] Runtime validation occurs at each actual trust/representation boundary without redundant checks inside one proven invariant
+- [ ] Collection size is bounded; pagination strategy and stable ordering are explicit where needed
+- [ ] Compatibility is checked against representative consumers; additive/optional changes are not assumed safe
 - [ ] Naming follows consistent conventions across all endpoints
 - [ ] API documentation or types are committed alongside the implementation
+- [ ] Authentication, object-level authorization, request/response limits, and sensitive-field exposure are explicit
+- [ ] Negative and compatibility tests exercise the documented contract rather than only happy paths
+- [ ] State-changing endpoints either honour an idempotency key or are documented as unsafe to retry
+- [ ] The key is claimed in one atomic operation, guarded by a unique constraint
+- [ ] A reused key with a different payload fails loudly rather than replaying the wrong response
+- [ ] The in-flight-duplicate response is a deliberate choice (409, wait, or 202) rather than whatever falls out
+- [ ] Key retention outlives the longest retry path, including dead-letter replay

@@ -1,26 +1,19 @@
-# Severity labels and change sizing (merged from vendor)
+# Severity and sizing
 
-Source: archive vendor `code-review-and-quality`. Does **not** replace multi-axis Spec/Standards/Maintainability — use labels **inside** each axis report.
-
-## Severity (within an axis)
+Apply labels inside each axis; preserve axis statuses when summarizing blockers.
 
 | Label | Meaning |
-|-------|---------|
-| **Critical** | Must fix before merge (wrong behavior, security, data loss, broken build) |
-| **Major** | Should fix in this PR or immediate follow-up |
-| **Nit** | Style/clarity; optional if timeboxed |
-| **Optional** | Idea for later; not blocking |
+|---|---|
+| Critical | Evidence-backed severe correctness, security, data-loss or availability impact |
+| Major / Important | Material defect or required contract/policy gap that needs resolution |
+| Nit | Optional local clarity/style suggestion |
+| Optional | Nonblocking alternative or future improvement |
 
-Still **do not cross-rerank axes** into one global list.
+Severity follows consequence and likelihood, not keyword matches, model confidence
+or file length. Missing evidence is a coverage limitation; explain whether it blocks
+the requested completion claim without inventing a code defect.
 
-## Structural remedies
-
-Prefer remedies that change structure (extract, delete, move seam) over "add a comment." If the fix is large, recommend a follow-up PR rather than bloating this one.
-
-## Change sizing
-
-Flag PRs that mix unrelated concerns or exceed ~300–400 meaningful LOC without a clear reason. Prefer vertical slices (see `/0-implement` incremental guidance).
-
-## Dependency upgrades
-
-Review lockfile + changelog risk separately from feature logic; note major bumps and security advisories.
+Recommend splitting incoherent changes along meaningful, verifiable boundaries.
+Line counts are review-effort signals unless the project sets a hard limit.
+Dependency/lockfile changes need compatibility and relevant risk evidence; do not
+require an unrelated upgrade or cleanup to complete a scoped review.

@@ -15,8 +15,8 @@ A healthy lean `SKILL.md` is a **thin router + steps**, not a book:
 ```text
 ---
 name: …
-description: …   # triggers for model-invoked; short human summary if user-invoked
-# disable-model-invocation: true  # when user-only
+description: …   # Butler/human route signal regardless of runtime invocation policy
+# disable-model-invocation: true  # Claude manual-only (all except 1-coding-standards)
 ---
 
 # Title

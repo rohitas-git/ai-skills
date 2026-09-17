@@ -7,8 +7,8 @@
   "slash": "/0-improve-codebase-architecture",
   "path": "skills/0-improve-codebase-architecture",
   "package_dir": "hubs/0-improve-codebase-architecture/",
-  "role": "Deepening opportunities and architecture improvement.",
-  "notes": "Architecture ideas that become build work merge into Design, then Ship.",
+  "role": "Route architecture specialists or run a bounded, read-only deepening scan.",
+  "notes": "Clear specialist requests dispatch directly. Scans create no worktree; selected implementation returns to Ship.",
   "parent": {
     "hub": "0-butler",
     "slash": "/0-butler",
@@ -19,17 +19,23 @@
   },
   "children": [
     {
+      "link_type": "soft",
+      "skills": ["1-error-handling"],
+      "note": "Atomic failure behavior and recovery; standalone or return to the calling design, implementation, or review workflow; F-EH1 distinguishes diagnosis"
+    },
+    {
       "link_type": "vocab",
       "skills": [
         "1-codebase-design"
-      ]
+      ],
+      "note": "One internal module's interface, seam, and depth; also a conditional Ship caller"
     },
     {
       "link_type": "persona",
       "skills": [
         "2-software-architect"
       ],
-      "note": "Primary home; dual soft under Review /1-code-review for architecture review",
+      "note": "Architecture domain entry for bounded consequential system decisions; analysis returns a decision packet, while catalog depth remains under the Review sub-hub",
       "primary": true
     },
     {
@@ -42,9 +48,10 @@
     {
       "link_type": "soft",
       "skills": [
-        "1-coding-standards"
+        "1-coding-standards",
+        "1-go-best-practices"
       ],
-      "note": "Always-on lean style; also soft under Ship; F-C1"
+      "note": "Always-on lean style and Go-specific practice; also soft under Ship; F-C1"
     },
     {
       "link_type": "soft",
@@ -52,7 +59,14 @@
         "1-project-wiki-manager",
         "1-living-documentation-governor"
       ],
-      "note": "Project knowledge atoms; F-D1 between them; F-D2 vs vault"
+      "note": "Repository concept wiki versus code-synced documentation governance; F-D1 distinguishes them. Both pin exact worktree and authority; living-doc updates may return to a Ship caller, while assessments remain read-only"
+    },
+    {
+      "link_type": "satellite",
+      "skills": [
+        "1-graphify"
+      ],
+      "note": "Explicit, already-installed local codebase-graph extract/query workflow; pins corpus, worktree, output ownership and freshness; never installs, hooks, strict mode, shared output, or backends itself"
     },
     {
       "link_type": "tombstone",
@@ -67,23 +81,41 @@
         "1-api-and-interface-design",
         "1-deprecation-and-migration"
       ],
-      "note": "Vendor harvest: contracts + deprecation"
+      "note": "Consumer-visible contracts and evidence-gated retirement lifecycles; both conditionally return to Ship"
     }
   ],
   "pipeline": [
-    "scan",
-    "HTML report",
-    "pick idea",
-    "optional Design (1-grill-with-docs)"
+    "pin caller, mode, repository/worktree identity, scope and evidence boundary",
+    "clear specialist request → selected child → return to caller",
+    "broad improvement request → bounded local read-only scan → Markdown or explicitly requested static HTML report",
+    "F9 selected candidate → 1-grill-with-docs or Agent judgment",
+    "requested implementation → 0-implement owns workspace, edits, verification and review"
   ],
   "forks": [
     {
+      "id": "F-EH1",
+      "question": "Define failure behavior or diagnose an unexplained bug?",
+      "recommended": "Failure behavior for error-handling or recovery requests",
+      "branches": ["1-error-handling", "0-diagnosing-bugs", "Agent judgment"]
+    },
+    {
+      "id": "F-ARCH1",
+      "question": "Design an API contract, a module, or the whole system?",
+      "recommended": "API contract for endpoint or schema requests",
+      "branches": [
+        "1-api-and-interface-design",
+        "1-codebase-design",
+        "2-software-architect",
+        "Agent judgment"
+      ]
+    },
+    {
       "id": "F9",
       "question": "Take a deepening idea to Design?",
-      "recommended": "if user picks one",
+      "recommended": "stay at the report unless the user selects a candidate",
       "branches": [
         "stay",
-        "\u2192 grill-with-docs",
+        "1-grill-with-docs",
         "Agent judgment"
       ]
     },

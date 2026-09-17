@@ -1,6 +1,6 @@
 # Phase 2 — Hunting / Attack and Review Classes
 
-Use the architecture map from Phase 1 to focus effort. Run specialized passes (or parallel sub-agents) for the classes below. Not every class applies to every project — select those relevant to the stack and architecture.
+Use the scoped architecture map from Phase 1 to focus effort. Run applicable passes locally, or with independent agents only when permitted. Candidate stability, read-only authority and caller returns follow the parent skill; do not execute illustrative attacks on real systems. Mark each applicable surface reviewed or blocked.
 
 For each candidate finding record:
 - Precise location (file + line or function)
@@ -37,7 +37,7 @@ Secrets in source, logs, or error messages; PII leakage; excessive data in API r
 Workflow bypasses, race conditions in multi-step processes, price/quantity manipulation, coupon abuse, infinite loops via user input, privilege confusion across roles.
 
 ### Client-Side (when applicable)
-XSS (reflected, stored, DOM), CSRF, clickjacking, 1-prototype pollution, open redirects, insecure postMessage, CSP bypasses.
+XSS (reflected, stored, DOM), CSRF, clickjacking, prototype pollution, open redirects, insecure postMessage, CSP bypasses.
 
 ### AI / LLM / Agent-Specific (when the project contains these)
 Prompt injection, indirect prompt injection, tool/function calling abuse, excessive agency, sensitive data in prompts or embeddings, jailbreak surfaces, insecure plugin or skill loading.

@@ -31,7 +31,7 @@ No other top-level directories. Root files: this file, `README.md`, `AGENTS.md`,
 6. deprecate: `skills/<name>` → `archive/<name>` + regen route-index.
 7. new-hub: write `hubs/0-{hub}/` (depth **0** hub skill + package).
 8. Main `SKILL.md` stays lean; depth in `references/`.
-9. **`disable-model-invocation: true` by default.** Only omit it for true always-on skills (today: `1-coding-standards`, `0-ponytail`). Prefer user/butler invoke over auto-steal.
+9. **Runtime invocation is separate.** Claude omits `disable-model-invocation: true` only for `1-coding-standards`. Codex allows implicit invocation only for top-level `role: hub` skills plus `1-coding-standards`; every other live skill explicitly sets `agents/openai.yaml` → `policy.allow_implicit_invocation: false`. Installation filtering is a separate `skills.config[].enabled` control (ADR 0010).
 10. **Forks** always offer **Agent judgment** — agent picks the best branch and proceeds without further questions on that fork.
 11. **Route surface (ADR 0009):** description when-to-use signal + `metadata.catalog` only (no top-level route keys). Spec: `skills/0-skill-manager/references/skill-route-surface.md`. Butler skim: `skills/0-butler/references/route-index.md`.
 12. **Catalog version:** bump `catalog.yaml` + prepend `docs/FEATURE-LOG.md` when accepting ADRs or changing house rules (skill-manager **release-note**).

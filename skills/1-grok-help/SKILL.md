@@ -1,74 +1,67 @@
 ---
 name: 1-grok-help
 description: >
-  Grok documentation and configuration help. Use when users ask about setup,
-  configuration, MCP servers, authentication, skills, slash commands, keyboard
-  shortcuts, or any Grok feature. Also use proactively when you detect a user is having
-  trouble with setup or onboarding. Hub: /0-butler.
+  Answer one question about the locally installed Grok CLI/TUI, its configuration,
+  authentication, MCP, commands, plugins, skills, or host behavior from local evidence.
+  Not for generic setup, catalog mutation, or silent host configuration changes.
+  Hub: /0-butler.
 disable-model-invocation: true
 metadata:
-  short-description: "Grok docs — config, MCP, auth, skills, commands"
+  short-description: "Local Grok docs and configuration help"
   catalog:
     hub: 0-butler
     role: soft
     when:
-      - "users ask about setup, configuration, MCP servers, authentication, skills, slash commands, keyboard"
-    triggers:
-      - "1-grok-help"
-      - "grok help"
+      - "the user asks specifically about the installed Grok CLI/TUI, config, MCP, auth, skills, or commands"
+    not_when:
+      - "generic project or Codex setup"
+      - "catalog create/install/sync/move work → 0-skill-manager"
+      - "an unrelated product also named Grok"
+    triggers: ["1-grok-help", "grok help", "grok config", "grok MCP", "grok CLI"]
+    prev: [0-butler]
+    next: [0-butler, 0-skill-manager]
     requires_setup: false
 ---
 
 # Grok Help
+
+**Atomic job:** answer one Grok host-product question from the smallest relevant
+local source. Do not treat generic “setup,” “auth,” or “skills” as Grok intent.
+
+## Evidence route
+
+1. Pin the named Grok product, question, and requested mode: explain current state,
+   explain documented behavior, diagnose, or explicitly change one setting.
+2. For current state, inspect only the relevant keys under
+   `/Users/rohitasbansal/.grok/config.toml`. Never expose secrets, tokens, complete
+   auth blocks, or unrelated server configuration.
+3. For documented behavior, discover the relevant file under
+   `/Users/rohitasbansal/.grok/docs/user-guide/`; do not assume a hard-coded guide
+   inventory is current. Fall back to `/Users/rohitasbansal/.grok/README.md` only
+   when no focused guide exists.
+4. Cite the local path/setting used, distinguish observed configuration from
+   documented or inferred behavior, and mark unavailable or stale evidence honestly.
+5. Return the answer to the caller. Catalog changes route to `/0-skill-manager`.
+
+## Authority and workspace
+
+- Help and diagnosis are read-only. A request to explain configuration does not
+  authorize editing it.
+- An explicit Grok-config edit authorizes only the named setting. Preserve unrelated
+  content, show the exact diff, verify parseability when a local non-mutating check
+  exists, and report any restart/login step without performing it unless separately
+  authorized.
+- Never install software/plugins, authenticate, add servers, rotate credentials,
+  restart processes, or send network requests implicitly.
+- Grok configuration is host-shared state: a Git worktree does not isolate it. Do
+  not create/switch a worktree, commit, push, or merge for Grok help.
+- If the local Grok files do not exist or cannot be read, say so; do not invent their
+  contents or silently substitute online docs.
+
 ## Boundary
 
-| Need | Skill |
-|------|--------|
-| Grok TUI/docs/config help | **grok-help** (this) |
-| Catalog which-skill routing | `/0-butler` |
-| Catalog mutations | `/0-skill-manager` |
-
-
-Answer the user's question about Grok setup, configuration, or features.
-
-## Steps
-
-1. If the question is about **current config** (what MCP servers, models, or settings are active),
-   read `/Users/rohitasbansal/.grok/config.toml`. MCP servers are under `[mcp_servers.*]` sections.
-
-2. If the question is about **how to do something** (setup, adding MCP servers, creating skills,
-   authentication, keyboard shortcuts, troubleshooting), first check the user-guide docs at
-   `/Users/rohitasbansal/.grok/docs/user-guide/`. The available guides are:
-   - `01-getting-started.md` -- Installation, first launch, basic interaction
-   - `02-authentication.md` -- Browser login, API keys, OIDC, external auth
-   - `03-keyboard-shortcuts.md` -- Complete key bindings reference
-   - `04-slash-commands.md` -- All / commands
-   - `05-configuration.md` -- config.toml, pager.toml, env vars
-   - `06-theming.md` -- Themes, appearance customization
-   - `07-mcp-servers.md` -- MCP server setup and management
-   - `08-skills.md` -- Creating and using skills
-   - `09-plugins.md` -- Plugin marketplace
-   - `10-hooks.md` -- Lifecycle hooks
-   - `11-custom-models.md` -- BYOK, Ollama, OpenAI endpoints
-   - `12-project-rules.md` -- AGENTS.md project rules
-   - `13-memory.md` -- Cross-session memory
-   - `14-headless-mode.md` -- CLI scripting and CI/CD
-   - `15-agent-mode.md` -- ACP/stdio IDE integration
-   - `16-subagents.md` -- Subagents and personas
-   - `17-sessions.md` -- Session management
-   - `18-sandbox.md` -- Sandbox mode
-   - `19-plan-mode.md` -- Plan mode
-   - `20-background-tasks.md` -- Background tasks and monitoring
-   - `21-terminal-support.md` -- tmux, SSH, truecolor, clipboard, /terminal-setup
-   Read the relevant guide(s) for the user's question. If none match, fall back to
-   `/Users/rohitasbansal/.grok/README.md` for the comprehensive reference.
-
-3. To **modify config** for the user, edit `/Users/rohitasbansal/.grok/config.toml` with search_replace.
-
-4. To **create a skill** for the user, create `/Users/rohitasbansal/.grok/skills/<name>/SKILL.md`
-   (read `/Users/rohitasbansal/.grok/docs/user-guide/08-skills.md` for the SKILL.md format).
-
-
-## Related
-
-**Next:** `/0-butler`. Parent hub: `/0-butler`.
+| Need | Route |
+|---|---|
+| Local Grok docs/config question | **this skill** |
+| Create, ingest, place, install, or sync catalog skills | `/0-skill-manager` |
+| Ambiguous product/domain | `/0-butler` |

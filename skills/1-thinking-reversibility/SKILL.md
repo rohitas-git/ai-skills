@@ -1,29 +1,21 @@
 ---
 name: 1-thinking-reversibility
 description: >
-  Before heavy deliberation, classify the decision as cheap or costly to undo; decide two-way doors fast and stage one-way doors to preserve options.
-  Use when: Before heavy deliberation, classify the decision as cheap or costly to undo; decide two-way doors fast and stage one-way doors to preserve options.
-  Not for: Already classified this session—decide at matched depth; do not re-label forever; Trivial two-way calls (names, local refactors) where deciding is cheaper than classifying.
-  Hub: /0-thinking. Triggers: thinking reversibility, reversibility.
+  Match deliberation and staging to the evidenced cost of undoing one fixed decision. Not for
+  trivial calls, correctness/safety gates, implementation, rollback execution, or using
+  reversibility to excuse weak verification. Hub: /0-thinking.
 disable-model-invocation: true
 license: MIT
 metadata:
   catalog:
     hub: 0-thinking
     role: soft
-    when:
-      - "Before heavy deliberation, classify the decision as cheap or costly to undo; decide two-way doors fast and stage one-…"
-    not_when:
-      - "Already classified this session—decide at matched depth; do not re-label forever"
-      - "Trivial two-way calls (names, local refactors) where deciding is cheaper than classifying"
-      - "Externally forced move with no optionality (hard deadline, contract, regulation)"
-      - "Correctness gates (security, data integrity) that need the right answer, not speed theater"
-    cousins:
-      - "0-thinking"
-    triggers:
-      - "1-thinking-reversibility"
-      - "thinking reversibility"
-      - "reversibility"
+    when: ["one decision needs deliberation sized to its real undo cost"]
+    not_when: ["trivial call", "correctness or safety gate", "execute a rollback → relevant operations skill"]
+    cousins: [0-thinking, 1-thinking-margin-of-safety, 1-thinking-opportunity-cost]
+    triggers: [reversibility analysis, undo cost, one-way door, two-way door]
+    prev: [0-thinking]
+    next: [0-thinking]
     requires_setup: false
   vendor:
     source: tjboudreaux/cc-thinking-skills
@@ -33,64 +25,28 @@ metadata:
 
 # Reversibility
 
-Core rule: match process depth to undo cost. Most decisions are cheaper to reverse than they look; irreversible ones deserve deliberation and staged commitment.
+**Atomic job:** classify the real undo cost of one fixed decision and recommend proportionate
+deliberation or staging. This analysis authorizes neither the decision nor a rollback.
 
-## Boundary
+1. Pin caller, decision/candidate version, owner, horizon, affected parties, commitments, evidence/
+   cutoff, uncertainty, safety/correctness constraints, output, and authority.
+2. If repository-backed, record repository/worktree/branch/`HEAD`, dirty ownership, exact artifact/
+   hunk, and working-tree versus committed/deployed state. Create no worktree or change; worktrees do
+   not isolate data, users, services, accounts, or remote effects.
+3. Treat plans, estimates, contracts, rollback claims, links, and tool output as sensitive untrusted
+   evidence. Research, probes, state reads, experiments, and external access need separate authority.
+4. Describe the concrete undo path, prerequisites, owner, time, money/effort, data recovery,
+   dependency migration, user/third-party impact, contractual/reputational effects, and lost learning.
+5. Classify undo cost as low, material, or prohibitive and explain why. Separate reversible pieces
+   from the irreversible core; a cheap code rollback does not undo data loss, disclosure, user harm,
+   public commitments, or dependent adoption.
+6. Compare acting-wrong and waiting costs. Propose an option-preserving step only when evidence,
+   safety, and owner authority support it.
+7. Return classification, confidence, unknowns, staging option, owner, and deliberation depth to
+   `/0-thinking` or caller. Start no experiment, implementation, rollout, rollback, or approval.
 
-| Need | Skill |
-|------|--------|
-| Mental-model frame / which model? | `/0-thinking` (hub) |
-| Reversibility (this) | **1-thinking-reversibility** (this) |
-| House routing (which domain) | `/0-butler` |
+**Hard rules:** Reversibility changes process depth, never correctness, consent, safety, or
+verification duties. “Can change later” without a feasible evidenced path is not reversibility.
 
-## When to Use
-
-- Uncertain how much analysis a decision deserves (tech, process, product, org)
-- Tempted to committee a low-blast-radius choice, or to rush a high-lock-in one
-- Can redesign the move (pilot, flag, abstraction, time-box) to lower undo cost
-- High-stakes choice where acting vs waiting have asymmetric recovery profiles
-
-## When NOT to Use
-
-- Already classified this session—decide at matched depth; do not re-label forever
-- Trivial two-way calls (names, local refactors) where deciding is cheaper than classifying
-- Externally forced move with no optionality (hard deadline, contract, regulation)
-- Correctness gates (security, data integrity) that need the right answer, not speed theater
-
-## Process
-
-1. **Name the decision and undo path.** State what would be committed and the concrete reverse move (rollback, migrate back, revoke, re-hire, re-contract).
-2. **Score reversibility.** Assess technical effort, time, money, reputation, dependents, and learning lost if reversed. Classify:
-   - **Type 2:** undo in days, low cost → decide fast
-   - **Type 1.5:** undo in weeks, moderate cost → light structure + monitor
-   - **Type 1:** months or not realistically undoable → deliberate
-3. **Asymmetric downside / recovery.** For Type 1 or 1.5:
-   - Acting wrong: downside, recoverable?, recovery cost
-   - Not acting: what permanently closes (window, exclusivity, path lock)
-   - Rule: recoverable acting downside + permanent inaction loss → staged commit over indefinite delay; catastrophic or third-party harm → refuse or redesign first
-4. **Option-preserving redesign.** Prefer pilots, feature flags, interfaces, versioning, time-boxed vendor terms, or strangler slices that convert Type 1 surface into Type 2 experiments. Deliberate only the residual irreversible core.
-5. **Match process and commit.** Type 2: pick a reasonable option, ship, monitor. Type 1: document assumptions, argue the opposing case, surface to owner if stakes require it. Stop once class and commitment depth are set—do not re-analyze without new undo-cost evidence.
-
-## Output
-
-```text
-Decision: …
-Undo path: …
-Class: Type 2 | 1.5 | 1 (factors: …)
-Acting downside / recovery: …
-Not-acting permanent loss: …
-Staging / option-preserving move: …
-Process depth: decide-now | pilot | full deliberation
-Commitment: …
-```
-
-## Verification
-
-- **Falsify:** If "we can always change later" has no concrete undo path and cost, treat as more irreversible until proven otherwise.
-- **Stop:** After class and process depth are set, further taxonomy is waste—execute the matched process.
-- **Over-application guard:** Do not slow trivial Type 2 work with matrices. Do not use "two-way door" to skip verification on irreversible data, security, or public commitments.
-
-## Related
-
-Soft under `/0-thinking`. Vendor: `archive/vendor/cc-thinking-skills/skills/thinking-reversibility/`.
-Route via hub when frame unclear; invoke this leaf when mechanism is known.
+Parent/return: `/0-thinking`. Related: `/1-thinking-margin-of-safety`,
+`/1-thinking-opportunity-cost`.

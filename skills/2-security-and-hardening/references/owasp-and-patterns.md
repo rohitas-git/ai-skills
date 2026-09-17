@@ -1,196 +1,94 @@
-## OWASP Top 10 Prevention Patterns
+# Focused prevention patterns
 
-These are prevention patterns, not a ranking. For the 2021 ordering, see the quick-reference table in `references/security-checklist.md`.
+Apply the parent's scope/authority contract. These are design constraints and small
+illustrations, not complete endpoints or an instruction to install example libraries.
+Use the project's actual APIs and verify against its pinned versions.
 
-### Injection (SQL, NoSQL, OS Command)
+## Input, authorization and state
 
-```typescript
-// BAD: SQL injection via string concatenation
-const query = `SELECT * FROM users WHERE id = '${userId}'`;
+Normalize when the contract requires it, then validate type, length, range and
+allowed fields. Validate the normalized value: trimming after a nonempty check
+can leave whitespace-only content. Bound request/decoded sizes before expensive
+parsing; choose safe error fields rather than echoing raw validation payloads.
 
-// GOOD: Parameterized query
-const user = await db.query('SELECT * FROM users WHERE id = $1', [userId]);
+For a protected mutation, obtain identity from verified authentication, apply the
+actual tenant/role/ownership policy at the effect, and permit only intended fields.
+A prior lookup followed by an unrestricted update can race or allow mass assignment.
+For example, an owner-scoped title update might use a parameterized predicate:
 
-// GOOD: ORM with parameterized input
-const user = await prisma.user.findUnique({ where: { id: userId } });
+```sql
+UPDATE tasks
+SET title = $1
+WHERE id = $2 AND owner_id = $3
+RETURNING id, title;
 ```
 
-### Broken Authentication
+Here $1 must already be validated, $3 must come from authenticated state, and the
+real application may additionally need tenant/state/version predicates and RLS.
+Handle zero rows using the agreed not-found/forbidden policy without leaking
+existence. Never pass the entire request body into an update merely because an
+earlier ownership check passed. Test unauthorized fields and concurrent state changes.
+See [authorization guidance](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html).
+
+## Output and sensitive fields
+
+Prefer parameterized database access and sink-appropriate encoding. ORM use alone
+does not secure raw query escape hatches. Render ordinary text as text; when rich
+HTML is genuinely required, use the existing maintained sanitizer with an appropriate
+policy and test the actual sink.
+
+Choose public fields explicitly; excluding a few currently known secret fields
+can expose a new private column later:
 
 ```typescript
-// Password hashing
-import { hash, compare } from 'bcrypt';
-
-const SALT_ROUNDS = 12;
-const hashedPassword = await hash(plaintext, SALT_ROUNDS);
-const isValid = await compare(plaintext, hashedPassword);
-
-// Session management
-app.use(session({
-  secret: process.env.SESSION_SECRET,  // From environment, not code
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    httpOnly: true,     // Not accessible via JavaScript
-    secure: true,       // HTTPS only
-    sameSite: 'lax',    // CSRF protection
-    maxAge: 24 * 60 * 60 * 1000,  // 24 hours
-  },
-}));
+// Illustration: select only fields this public contract permits.
+return { id: user.id, displayName: user.displayName };
 ```
 
-### Cross-Site Scripting (XSS)
+Do not put raw records, SQL, stack traces, validation inputs or tokens in client
+errors. Keep necessary internal diagnostics access-controlled and redacted.
 
-```typescript
-// BAD: Rendering user input as HTML
-element.innerHTML = userInput;
+## Sessions, browser policy and transport
 
-// GOOD: Use framework auto-escaping (React does this by default)
-return <div>{userInput}</div>;
+Use existing authentication/session facilities. Select cookie flags, expiry and
+CSRF protection for the actual flow; SameSite is defense-in-depth, not universal
+proof against CSRF. Test callbacks, embedded flows and legitimate cross-site cases.
+See [CSRF guidance](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html).
 
-// If you MUST render HTML, sanitize first
-import DOMPurify from 'dompurify';
-const clean = DOMPurify.sanitize(userInput);
-```
+CORS controls browser response access, not caller authorization. Explicitly public
+credential-free resources may allow any origin; sensitive credentialed endpoints
+need an appropriate origin policy. Do not reflect arbitrary origins or fall back
+to a localhost allowlist in production configuration. See [CORS semantics](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS).
 
-### Broken Access Control
+Configure CSP, framing, HSTS and Permissions-Policy for the app's deployment and
+features. Do not disable camera/microphone, framing or required integrations
+universally. HSTS subdomain/preload commitments and restrictive CSP need rollout
+and compatibility evidence, not copy-pasted global defaults.
+[Header guidance](https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html).
 
-```typescript
-// Always check authorization, not just authentication
-app.patch('/api/tasks/:id', authenticate, async (req, res) => {
-  const task = await taskService.findById(req.params.id);
+## Server-side URL fetching
 
-  // Check that the authenticated user owns this resource
-  if (task.ownerId !== req.user.id) {
-    return res.status(403).json({
-      error: { code: 'FORBIDDEN', message: 'Not authorized to modify this task' }
-    });
-  }
+Establish allowed schemes, destination domains/ports, credentials, redirect policy,
+timeouts and response-size limits. Evaluate every resolved address and every
+permitted redirect hop, including IPv4/IPv6 special ranges and cloud metadata.
 
-  // Proceed with update
-  const updated = await taskService.update(req.params.id, req.body);
-  return res.json(updated);
-});
-```
+The enforcement must constrain the actual connection. Resolving DNS to validate
+a URL and then passing the hostname to an ordinary fetch leaves a second-resolution
+race; it is not a complete SSRF defense. Use a verified existing egress enforcement
+mechanism or a reviewed client that binds destination validation to the connection
+while preserving TLS hostname verification. Do not install an unfamiliar “safe fetch”
+package without inspecting its guarantees and authorization.
 
-### Security Misconfiguration
+Test rejected destinations and redirects using inert local fixtures, not production
+metadata endpoints. See [SSRF guidance](https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html).
 
-```typescript
-// Security headers (use helmet for Express)
-import helmet from 'helmet';
-app.use(helmet());
+## Uploads
 
-// Content Security Policy
-app.use(helmet.contentSecurityPolicy({
-  directives: {
-    defaultSrc: ["'self'"],
-    scriptSrc: ["'self'"],
-    styleSrc: ["'self'", "'unsafe-inline'"],  // Tighten if possible
-    imgSrc: ["'self'", 'data:', 'https:'],
-    connectSrc: ["'self'"],
-  },
-}));
-
-// CORS — restrict to known origins
-app.use(cors({
-  origin: process.env.ALLOWED_ORIGINS?.split(',') || 'http://localhost:3000',
-  credentials: true,
-}));
-```
-
-### Sensitive Data Exposure
-
-```typescript
-// Never return sensitive fields in API responses
-function sanitizeUser(user: UserRecord): PublicUser {
-  const { passwordHash, resetToken, ...publicFields } = user;
-  return publicFields;
-}
-
-// Use environment variables for secrets
-const API_KEY = process.env.STRIPE_API_KEY;
-if (!API_KEY) throw new Error('STRIPE_API_KEY not configured');
-```
-
-### Server-Side Request Forgery (SSRF)
-
-Any time the server fetches a URL the user influenced — webhooks, "import from URL", image proxies, link previews — an attacker can aim it at internal services (cloud metadata, `localhost`, private IPs).
-
-```typescript
-// BAD: fetch whatever the user gives you
-await fetch(req.body.webhookUrl);
-
-// GOOD: allowlist scheme + host, reject if ANY resolved IP is private, forbid redirects
-import { lookup } from 'node:dns/promises';
-import ipaddr from 'ipaddr.js';
-
-const ALLOWED_HOSTS = new Set(['hooks.example.com']);
-
-async function assertSafeUrl(raw: string): Promise<URL> {
-  const url = new URL(raw);
-  if (url.protocol !== 'https:') throw new Error('https only');
-  if (!ALLOWED_HOSTS.has(url.hostname)) throw new Error('host not allowed');
-  // Resolve ALL records; a single private/reserved address fails the check.
-  const addrs = await lookup(url.hostname, { all: true });
-  if (addrs.some((a) => ipaddr.parse(a.address).range() !== 'unicast')) {
-    throw new Error('private/reserved IP');
-  }
-  return url;
-}
-
-await fetch(await assertSafeUrl(req.body.webhookUrl), { redirect: 'error' });
-```
-
-The `range() !== 'unicast'` check covers loopback, link-local `169.254.169.254` (cloud metadata, the #1 SSRF target), private, and unique-local ranges across IPv4 and IPv6.
-
-**Caveat — this still has a TOCTOU gap.** `fetch` resolves DNS again after the check, so an attacker using a short-TTL record can rebind to an internal IP between validation and connection. For high-risk surfaces, resolve once and connect to the pinned IP, or put a filtering agent in front (`request-filtering-agent` / `ssrf-req-filter`).
-
-## Input Validation Patterns
-
-### Schema Validation at Boundaries
-
-```typescript
-import { z } from 'zod';
-
-const CreateTaskSchema = z.object({
-  title: z.string().min(1).max(200).trim(),
-  description: z.string().max(2000).optional(),
-  priority: z.enum(['low', 'medium', 'high']).default('medium'),
-  dueDate: z.string().datetime().optional(),
-});
-
-// Validate at the route handler
-app.post('/api/tasks', async (req, res) => {
-  const result = CreateTaskSchema.safeParse(req.body);
-  if (!result.success) {
-    return res.status(422).json({
-      error: {
-        code: 'VALIDATION_ERROR',
-        message: 'Invalid input',
-        details: result.error.flatten(),
-      },
-    });
-  }
-  // result.data is now typed and validated
-  const task = await taskService.create(result.data);
-  return res.status(201).json(task);
-});
-```
-
-### File Upload Safety
-
-```typescript
-// Restrict file types and sizes
-const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
-const MAX_SIZE = 5 * 1024 * 1024; // 5MB
-
-function validateUpload(file: UploadedFile) {
-  if (!ALLOWED_TYPES.includes(file.mimetype)) {
-    throw new ValidationError('File type not allowed');
-  }
-  if (file.size > MAX_SIZE) {
-    throw new ValidationError('File too large (max 5MB)');
-  }
-  // Don't trust the file extension — check magic bytes if critical
-}
-```
+Client MIME type, extension and magic bytes alone do not prove a file safe. Enforce
+streaming size limits, intended file/content types, safe parsing/processing and
+resource limits. Use server-controlled names and storage outside executable/public
+paths unless serving behavior is deliberately constrained. Authorize upload/read/
+delete separately; prevent overwrites and traversal, and reject hostile archives
+or decompression growth. Scanning/processing tools need privacy and execution
+authority; do not send private files to a remote service implicitly.
+[Upload guidance](https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html).

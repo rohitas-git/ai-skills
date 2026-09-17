@@ -1,59 +1,41 @@
-# Definition of Done (harvested)
+# Proportional definition of done
 
-Source: archive vendor `references/definition-of-done.md`.  
-Winners: **`/0-implement`** (per slice), **`/1-to-tickets`** (AC), **`/1-code-review`** + **`/1-shipping-and-launch`** (closer / release).
+Acceptance criteria ask whether this requested outcome was built. A project definition of done (DoD)
+adds standing evidence and policy. Existing repository rules outrank this baseline.
 
-## AC vs DoD
+## Build a completion ledger
 
-| | Acceptance criteria | Definition of Done |
-|--|---------------------|--------------------|
-| Scope | One ticket / slice | Every change, same bar |
-| Answers | Built the right thing? | Ready / finished? |
-| Owner | Set when writing the ticket | Set once for the project |
+For each applicable claim, record PASS, FAIL, BLOCKED, SKIPPED with reason, or NOT APPLICABLE:
 
-A slice is done only when **its AC** and **the standing DoD** both pass.
+| Claim | Evidence and exact candidate | Status | Limit/owner |
+|---|---|---|---|
+| Acceptance criteria | test/runtime/inspection | … | … |
+| Changed behavior | focused falsifying check | … | … |
+| Regression/integration | project checks | … | … |
+| Compatibility/migration | contract and consumer evidence | … | … |
+| Security/privacy | relevant trust-boundary evidence | … | … |
+| Operations/rollback | relevant deploy/runtime evidence | … | … |
+| Documentation | canonical owner/trigger evidence | … | … |
+| Review | actual-candidate disposition | … | … |
 
-## Standing checklist (adapt once per project)
+## Rules
 
-### Correctness
+- Apply only relevant criteria, but never hide an applicable gap by omitting its row.
+- A green focused test proves only its scenario and candidate. An agent-authored test is not
+  independent proof of the behavior it assumed.
+- Runtime verification is required when the claim is runtime behavior and a safe representative
+  environment exists; otherwise mark the gap.
+- Broader suites, security checks, browser flows, database checks, and release gates depend on risk,
+  affected surface, repository policy, and user request—not a universal command list.
+- Human review/approval is required only where repository policy, risk, or external authority demands
+  it; never infer approval from silence or automated checks.
+- Deadlines do not change facts. A consciously accepted gap stays visible with owner/rationale.
+- “Done” never implies committed, pushed, deployed, published, or merged unless those separately
+  authorized outcomes are verified.
 
-- [ ] Ticket acceptance criteria met
-- [ ] Behavior verified at runtime (not only compile/typecheck)
-- [ ] New behavior covered by tests that fail without the change
-- [ ] Existing tests pass; no known regressions
-- [ ] Edge / error paths handled, not happy-path only
+## Scope
 
-### Quality
-
-- [ ] Intent clear from names/structure
-- [ ] No duplicated business logic introduced for convenience
-- [ ] No dead code, debug noise, or commented-out blocks
-- [ ] Scoped to the ticket — no drive-by renovation
-- [ ] Lint / format / typecheck project-standard
-
-### Integration
-
-- [ ] Works with the rest of the system, not only isolation
-- [ ] Migrations, config, flags accounted for
-- [ ] Public API / contract compatibility considered (`/1-api-and-interface-design`, `/1-deprecation-and-migration`)
-
-### Documentation
-
-- [ ] Public surfaces documented where the project expects it (`/1-code-comments`, living docs)
-- [ ] Hard-to-reverse decisions recorded (`/1-domain-modeling` ADRs) when the three ADR gates pass
-- [ ] Docs describe current state, not a change diary
-
-### Ship-readiness (feature / release floor)
-
-- [ ] Security for untrusted input / auth / data (`/2-security-and-hardening`)
-- [ ] Observability on new critical paths (`/1-observability-and-instrumentation`)
-- [ ] Rollback path if risky (`/1-shipping-and-launch`)
-- [ ] Human 0-review when the change needs it
-
-## How to apply
-
-- **Per ticket / 0-implement slice:** Correctness + Quality before check-off.
-- **Per feature:** Integration + Documentation before “feature complete.”
-- **Per release:** Full list + `/1-shipping-and-launch` deploy gates.
-
-Do not renegotiate the bar under deadline pressure. Tailor once, reuse.
+Check task-owned committed, staged, unstaged, and untracked work as applicable, plus protected files
+that must remain unchanged. Do not require a clean worktree when unrelated user changes are present;
+report ownership accurately. Do not rerun an unchanged expensive check for reassurance, but rerun it
+after relevant changes or when candidate identity cannot be proven.

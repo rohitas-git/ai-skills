@@ -1,0 +1,5 @@
+interface:
+  display_name: "Triage Assess"
+  short_description: "Assess one raw issue or external PR"
+policy:
+  allow_implicit_invocation: false

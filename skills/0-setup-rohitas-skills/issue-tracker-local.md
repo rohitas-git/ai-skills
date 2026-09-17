@@ -2,6 +2,10 @@
 
 Issues and specs (you may know a spec as a PRD) for this repo live as markdown files in `.scratch/`.
 
+This is a starting template, not authority to create or rewrite files. Apply it
+only in the pinned consumer worktree and within explicitly allowed `.scratch/`
+paths. Preserve existing files and unrelated dirty work.
+
 ## Conventions
 
 - One feature per directory: `.scratch/<feature-slug>/`

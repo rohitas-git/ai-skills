@@ -5,8 +5,9 @@ Use this when the user requests a review of changed files only, a pull request, 
 ## Scope Rules
 - Primary focus: the changed files and the new/modified code paths.
 - Always perform a lightweight recon of the surrounding context (callers, callees, shared utilities, configuration that the change touches).
-- Do **not** re-audit the entire unchanged codebase unless the change is extremely high-risk or the user explicitly expands scope.
-- If prior `findings.json` exists, load it and check whether the PR fixes, regresses, or interacts with known issues.
+- Apply [the shared candidate contract](../../0-review/references/review-candidate.md) before any phase. Preserve the caller, exact candidate, comparison semantics, scope and read-only authority, including dirty-state ownership for current-work reviews.
+- Do **not** re-audit the entire unchanged codebase unless the user explicitly expands scope. High risk changes inspection depth along relevant paths, not the authorization boundary.
+- Load prior findings only when explicitly supplied/selected and verified to concern this repository and audit scope. Revalidate them on this candidate; an unrelated findings.json is not an audit baseline.
 
 ## Adapted Workflow
 
@@ -35,6 +36,7 @@ Use this when the user requests a review of changed files only, a pull request, 
   - Pre-existing issues that the PR happens to touch or that become more severe because of the PR.
   - Issues the PR appears to **fix**.
 - Prefer findings that a human reviewer of this PR would care about right now.
+- Retain the six phases' reasoning, validation and independent factual checks without automatically emitting their full-audit artifacts. Return an in-memory ledger to a combined-review caller; serialize/schema-validate only when that output was requested. Use fresh reasoning locally when delegation is unavailable or not permitted.
 
 ## Special Considerations
 - **Security-sensitive PRs** (auth, crypto, payments, admin, data deletion): raise effort and consider a slightly broader context scan.
@@ -48,6 +50,9 @@ Use this when the user requests a review of changed files only, a pull request, 
 - Include the commit range or PR identifier in audit_metadata.
 - In findings, mark whether each issue is “introduced”, “pre-existing”, or “fixed-by-this-change”.
 - Keep the report concise — reviewers of PRs have limited attention.
+- Default to chat/caller output, not architecture.md, REPORT.md or findings.json files. If files are requested, use an agreed task-owned location and preserve existing artifacts.
+- Distinguish introduced/worsened findings from unchanged pre-existing issues, fixed issues, rejected leads and unverified coverage. A pre-existing weakness newly exposed by the PR needs causal evidence to count as a PR finding.
+- Recheck candidate identity before reporting. Return to the calling complete-review/repair workflow; do not initiate hardening, another full review, publication, approval, commit or cleanup.
 
 ## When to Recommend Expanding Scope
 - The change touches a central security control and the surrounding code looks risky.

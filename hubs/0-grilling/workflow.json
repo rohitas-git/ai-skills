@@ -7,8 +7,8 @@
   "slash": "/0-grilling",
   "path": "skills/0-grilling",
   "package_dir": "hubs/0-grilling/",
-  "role": "Interview / stress-test plans (Design SSOT).",
-  "notes": "Merge out always goes to Domain 3 Ship (/0-implement).",
+  "role": "One consent-respecting decision interview for one immutable plan, requirement, or idea.",
+  "notes": "Brainstorm owns alternatives; Domain Modeling owns one accepted artifact; prototype and visual-plan detours require separate acceptance and return evidence. Approval never implies implementation authority.",
   "parent": {
     "hub": "0-butler",
     "slash": "/0-butler",
@@ -39,6 +39,13 @@
       ]
     },
     {
+      "link_type": "satellite",
+      "skills": [
+        "1-visual-plan"
+      ],
+      "note": "One explicitly requested draft/create/update visual review artifact; private by default"
+    },
+    {
       "link_type": "detour",
       "skills": [
         "1-handoff",
@@ -47,20 +54,29 @@
       "primary": true
     },
     {
+      "link_type": "leaf",
+      "skills": [
+        "1-honest-advisor"
+      ],
+      "note": "Interpersonal conflict and personal-decision accuracy check; safety redirects rather than therapy"
+    },
+    {
       "link_type": "soft",
       "skills": [
         "1-thinking-steel-manning",
         "1-anti-sycophancy",
         "1-critique"
       ],
-      "note": "Steel-man; anti-sycophancy posture; explicit critique/devil's advocate mode \u00b7 dual soft under 0-thinking",
+      "note": "Steel-man an opposing case; apply an explicit evidence-before-agreement posture; or critique one fixed candidate. These response modes return to the caller and do not start research or action.",
       "primary": true
     }
   ],
   "pipeline": [
-    "grill wrappers",
-    "optional 1-prototype detour",
-    "merge out \u2192 Ship"
+    "pin actual caller, immutable candidate, evidence cutoff, authority, interaction availability, and optional worktree identity",
+    "direct request → smallest child; material interview-versus-alternatives ambiguity only → F-B1",
+    "interview asks one decision-changing neutral question at a time and records accepted, delegated, deferred, rejected, assumed, or open state",
+    "optional separately accepted prototype or visual-plan detour → return evidence to design caller",
+    "return one decision record to actual caller; specification, planning, handoff, or implementation only when separately requested"
   ],
   "forks": [
     {
@@ -75,8 +91,8 @@
     },
     {
       "id": "F2",
-      "question": "Codebase present?",
-      "recommended": "Yes \u2192 grill-with-docs",
+      "question": "Do repository facts materially govern the decision?",
+      "recommended": "Yes \u2192 grill-with-docs; otherwise grill-me",
       "branches": [
         "1-grill-with-docs",
         "1-grill-me",
@@ -85,21 +101,31 @@
     },
     {
       "id": "F3",
-      "question": "Need a runnable 1-prototype answer?",
-      "recommended": "No",
+      "question": "Need a runnable prototype answer?",
+      "recommended": "No unless a runnable experiment resolves a design question",
       "branches": [
         "stay in grill",
-        "handoff\u21c4prototype",
+        "1-prototype and return",
         "Agent judgment"
       ]
     },
     {
-      "id": "F4",
-      "question": "Multi-session build?",
-      "recommended": "Yes if >1 0-implement slice",
+      "id": "F-P1",
+      "question": "What question should the prototype answer?",
+      "recommended": "logic/state for behavior; UI alternatives for visual layout",
       "branches": [
-        "yes \u2192 Ship multi",
-        "no \u2192 Ship single",
+        "1-prototype logic/state",
+        "1-prototype local UI alternatives",
+        "Agent judgment"
+      ]
+    },
+    {
+      "id": "F-B2",
+      "question": "Was a visual review artifact requested?",
+      "recommended": "Keep the conversational/text result unless explicitly requested",
+      "branches": [
+        "1-visual-plan",
+        "keep conversational/text result",
         "Agent judgment"
       ]
     }
@@ -109,7 +135,7 @@
     "html": "./hub.html",
     "workflow_json": "./workflow.json",
     "flows_chart": "../flows-chart.html",
-    "flows_ssot": "../../../skills/0-butler/references/flows.md",
+    "flows_ssot": "../../skills/0-butler/references/flows.md",
     "hubs_index": "../index.html",
     "manifest": "../manifest.json"
   },
@@ -120,6 +146,10 @@
     "each_domain_hub_has_workflow_json",
     "each_domain_hub_links_flows_chart",
     "one_hub_per_domain",
-    "forks_ask_user"
+    "forks_ask_user",
+    "exact_candidate_and_worktree_handoff",
+    "sensitive_untrusted_input",
+    "consent_respecting_interview",
+    "no_automatic_follow_on"
   ]
 }

@@ -1,44 +1,48 @@
 #!/usr/bin/env bash
-# Generate a review package: commit list, stat summary, and the net
-# diff with extended context, written to a file the reviewer reads in one
-# call. Using the recorded per-task BASE (not HEAD~1) keeps multi-commit
-# tasks intact.
-#
-# Usage: review-package BASE HEAD [OUTFILE]
-# Default OUTFILE: <repo-root>/.superpowers/sdd/review-<base7>..<head7>.diff
-# (named per range, so a re-review after fixes gets a distinct fresh file).
+# Capture a clean committed range from the TARGET checkout, not the skill repo.
+# Usage: review-package BASE HEAD [NEW_OUTFILE]
+# Dirty work requires a task-scoped package including untracked file contents;
+# this helper refuses rather than silently omitting that work.
 set -euo pipefail
-
-if [ $# -lt 2 ] || [ $# -gt 3 ]; then
-  echo "usage: review-package BASE HEAD [OUTFILE]" >&2
+umask 077
+if [ "$#" -lt 2 ] || [ "$#" -gt 3 ]; then
+  echo "usage: review-package BASE HEAD [NEW_OUTFILE]" >&2
   exit 2
 fi
+base=$(git rev-parse --verify --end-of-options "$1^{commit}") ||
+  { echo "invalid BASE commit" >&2; exit 2; }
+head=$(git rev-parse --verify --end-of-options "$2^{commit}") ||
+  { echo "invalid HEAD commit" >&2; exit 2; }
+root=$(git rev-parse --show-toplevel)
+[ -z "$(git status --porcelain --untracked-files=all)" ] ||
+  { echo "dirty checkout: supply baseline/current diffs and task-owned untracked files; do not stage or discard them for this helper" >&2; exit 3; }
+git merge-base --is-ancestor "$base" "$head" ||
+  { echo "BASE must be an ancestor of HEAD; resolve the task boundary first" >&2; exit 3; }
 
-base=$1
-head=$2
-
-git rev-parse --verify --quiet "$base" >/dev/null || { echo "bad BASE: $base" >&2; exit 2; }
-git rev-parse --verify --quiet "$head" >/dev/null || { echo "bad HEAD: $head" >&2; exit 2; }
-
-if [ $# -eq 3 ]; then
+if [ "$#" -eq 3 ]; then
   out=$3
+  set -o noclobber
+  exec 3> "$out"
+  set +o noclobber
 else
   dir=$("$(cd "$(dirname "$0")" && pwd)/sdd-workspace")
-  out="$dir/review-$(git rev-parse --short "$base")..$(git rev-parse --short "$head").diff"
+  out=$(mktemp "$dir/review.XXXXXX")
+  if ! git check-ignore -q -- "$out"; then
+    rm -- "$out"
+    echo "workspace ignore rules exclude this artifact name; left existing files unchanged" >&2
+    exit 3
+  fi
+  exec 3> "$out"
 fi
-
 {
-  echo "# Review package: ${base}..${head}"
-  echo
-  echo "## Commits"
-  git log --oneline "${base}..${head}"
-  echo
-  echo "## Files changed"
-  git diff --stat "${base}..${head}"
-  echo
-  echo "## Diff"
-  git diff -U10 "${base}..${head}"
-} > "$out"
-
-commits=$(git rev-list --count "${base}..${head}")
-echo "wrote ${out}: ${commits} commit(s), $(wc -c < "$out" | tr -d ' ') bytes"
+  printf '# Committed review package\n\nRepository: %s\nBase: %s\nHead: %s\n' "$root" "$base" "$head"
+  printf '\nCoverage: committed range only; ignored local files are excluded.\n'
+  printf '\n## Commits\n'
+  git log --format='%h %s' "$base..$head"
+  printf '\n## Files changed\n'
+  git diff --no-ext-diff --no-textconv --stat "$base" "$head" --
+  printf '\n## Diff\n'
+  git diff --no-ext-diff --no-textconv -U10 "$base" "$head" --
+} >&3
+exec 3>&-
+printf '%s\n' "$out"

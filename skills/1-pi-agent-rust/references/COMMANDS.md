@@ -1,11 +1,15 @@
-# Command Recipes
+# Candidate command recipes
 
-## 1) Session Bootstrap
+Snapshot guidance only. Before using a command, verify the file, script, test target,
+tool, environment variable, and side effects against the current checkout and its
+rules. These examples grant no install, uninstall, network, release, shared-cache, or
+host-state authority.
+
+## 1) Optional resource isolation
 
 ```bash
-export CARGO_TARGET_DIR="/data/tmp/pi_agent_rust/${USER:-agent}"
-export TMPDIR="/data/tmp/pi_agent_rust/${USER:-agent}/tmp"
-mkdir -p "$TMPDIR"
+# Choose unique, writable paths for this exact worktree when isolation is needed.
+# Do not copy a shared absolute path from this snapshot.
 ```
 
 ## 2) Fast Recon
@@ -33,7 +37,7 @@ bash tests/installer_regression.sh
 ## 5) Rust Quality Gates
 
 ```bash
-# Preferred in multi-agent environments
+# Use only when `rch` is installed and repository instructions prefer it.
 rch exec -- cargo check --all-targets
 rch exec -- cargo clippy --all-targets -- -D warnings
 
@@ -63,20 +67,14 @@ cargo test e2e_rpc
 cargo test conformance
 ```
 
-## 7) Focused Installer Branch Debugging
+## 7) Installer interfaces (read-only discovery first)
 
 ```bash
 # Help/flag visibility
 bash install.sh --help
 
-# Explicit custom artifact path (replace values for real run)
-bash install.sh --yes --offline --version v0.0.0 \
-  --artifact-url "file:///tmp/pi-artifact" \
-  --checksum "<sha256>" \
-  --no-completions --no-agent-skills
-
-# Uninstall smoke
-bash uninstall.sh --yes --no-gum
+# Do not run installer/uninstaller commands from this snapshot. Inspect help and the
+# regression harness, then use only an already-authorized disposable test fixture.
 ```
 
 ## 8) Status and Safety Tracing

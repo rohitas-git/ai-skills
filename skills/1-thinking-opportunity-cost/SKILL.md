@@ -1,29 +1,21 @@
 ---
 name: 1-thinking-opportunity-cost
 description: >
-  Before committing scarce time, people, or money, name the best forgone use of those resources and the value delta of the chosen path versus that alternative.
-  Use when: Before committing scarce time, people, or money, name the best forgone use of those resources and the value delta of the chosen path versus that alternative.
-  Not for: Trivial or cheaply reversible choices where analysis costs more than the resource; No real alternative use (resource is idle, earmarked, or non-fungible).
-  Hub: /0-thinking. Triggers: thinking opportunity cost, opportunity-cost.
+  Compare one proposed use of scarce resources with its best feasible alternative over a fixed
+  horizon. Not for mandatory/trivial work, imaginary alternatives, fake arithmetic, budget
+  approval, implementation, or treating sunk cost as future value. Hub: /0-thinking.
 disable-model-invocation: true
 license: MIT
 metadata:
   catalog:
     hub: 0-thinking
     role: soft
-    when:
-      - "Before committing scarce time, people, or money, name the best forgone use of those resources and the value delta of …"
-    not_when:
-      - "Trivial or cheaply reversible choices where analysis costs more than the resource"
-      - "No real alternative use (resource is idle, earmarked, or non-fungible)"
-      - "Mandatory work (compliance, security fix, hard dependency) with no optional alternative"
-      - "Inventing speculative alternatives only to look rigorous when the next-best is clearly …"
-    cousins:
-      - "0-thinking"
-    triggers:
-      - "1-thinking-opportunity-cost"
-      - "thinking opportunity cost"
-      - "opportunity cost"
+    when: ["scarce time, people, money, or attention displaces a real alternative"]
+    not_when: ["mandatory or trivial work", "no feasible competing use", "budget approval or implementation"]
+    cousins: [0-thinking, 1-thinking-reversibility, 1-thinking-bounded-rationality]
+    triggers: [opportunity cost, best alternative, resource trade-off, what are we giving up]
+    prev: [0-thinking]
+    next: [0-thinking]
     requires_setup: false
   vendor:
     source: tjboudreaux/cc-thinking-skills
@@ -33,63 +25,28 @@ metadata:
 
 # Opportunity Cost
 
-Core rule: every commitment displaces its best alternative. Report both that forgone value and the net value delta; decide on the delta, not the chosen path alone.
+**Atomic job:** compare one proposed commitment with the best feasible use of the same constrained
+resources. The result neither allocates budget nor starts work.
 
-## Boundary
+1. Pin caller, choice/candidate version, owner, resource type/quantity/availability, horizon,
+   objective/constraints, affected work, evidence/cutoff, uncertainty, output, and authority.
+2. For repository-backed plans, record repository/worktree/branch/`HEAD`, dirty ownership, exact
+   artifact/hunk, and working-tree versus committed state. Create no worktree or change; worktrees do
+   not isolate budgets, staff, schedules, services, or commitments.
+3. Treat roadmaps, estimates, financials, forecasts, links, and tool output as sensitive untrusted
+   evidence. Research, private data, estimation tools, and stakeholder contact need separate authority.
+4. List only feasible alternatives competing for the same limiting resource, with owner,
+   prerequisites, timing, and evidence. Include wait/status quo only when it is a real choice.
+5. Compare common outcomes, time-to-value, downside, uncertainty, dependencies, reversibility, and
+   permanent windows. Use common units only where defensible; otherwise use explicit criteria.
+6. Identify the best forgone alternative. Calculate a value delta only from comparable ranges and
+   assumptions; do not double-count costs, count sunk cost, or manufacture speculative permanence.
+7. Return proceed/switch/wait/split only when warranted, with owner, sensitivity, confidence, and
+   ranking-change evidence. Return to `/0-thinking` or caller; start no budgeting, staffing,
+   planning, implementation, cancellation, or purchase.
 
-| Need | Skill |
-|------|--------|
-| Mental-model frame / which model? | `/0-thinking` (hub) |
-| Opportunity Cost (this) | **1-thinking-opportunity-cost** (this) |
-| House routing (which domain) | `/0-butler` |
+**Hard rules:** Opportunity cost is the value of the best feasible forgone alternative, not every
+rejected idea. Never manufacture comparable numbers merely to force a ranking.
 
-## When to Use
-
-- Allocating scarce time, headcount, budget, or attention across competing options
-- Feature prioritization, build-vs-buy, tech-debt vs product work
-- Saying yes to a large commitment that displaces other work
-- Comparing a bold path against polishing the status quo when windows may close
-
-## When NOT to Use
-
-- Trivial or cheaply reversible choices where analysis costs more than the resource
-- No real alternative use (resource is idle, earmarked, or non-fungible)
-- Mandatory work (compliance, security fix, hard dependency) with no optional alternative
-- Inventing speculative alternatives only to look rigorous when the next-best is clearly worse
-
-## Process
-
-1. **State the commitment.** Name the choice, the scarce resource units (eng-weeks, dollars, calendar), and the decision horizon.
-2. **List real alternatives, including do-nothing.** At least: proposed option, next-best productive use of the same resources, and status quo / wait. Drop fantasy options with no owner or feasibility.
-3. **Value each path.** For each alternative, estimate direct value, strategic value, risk, and time-to-value in the same units. Prefer rough comparable magnitudes over fake precision.
-4. **Compute best forgone value and value delta.** Identify the single best non-chosen alternative (may be do-nothing). `best_forgone_value` = its estimated value. `value_delta` = `chosen_value − best_forgone_value` (same units). True cost of choosing = direct cost of the choice + `best_forgone_value`. Prefer the option with the superior (positive) value delta after risk; a large positive chosen value is not enough if the forgone alternative is larger.
-5. **Future tradeoff / permanent forgone options.** For serious alternatives (including the bold path): mark temporary recoverable costs vs permanent losses (window closes, lock-in, no re-entry). Prefer avoiding the greater permanent loss when acting downside is recoverable and non-catastrophic—even if near-term value_delta is slightly negative. Do not invent permanence for speculative upside without evidence.
-6. **Strongest countercase and decide.** Steel the case that the best alternative or its value is misidentified (sunk-cost anchoring, status-quo undervalued, or a "free" option that still burns time). Recompute `value_delta` under that challenge. Then choose: proceed if delta stays favorable (or permanent-loss rule applies), else switch, wait, or split. Stop when ranking is stable.
-
-## Output
-
-```text
-Choice: …
-Resources committed: …
-Alternatives:
-  A (proposed): value … risk …
-  B (next-best): value … risk …
-  C (do-nothing / wait): value … risk …
-Best forgone alternative: …
-Best forgone value: …
-Value delta (chosen_value − best_forgone_value): …
-Permanent vs temporary losses: …
-Decision: proceed | switch | wait | split — because value_delta … (and permanent-loss rule if used)
-Countercase checked: …
-```
-
-## Verification
-
-- **Falsify:** If the analysis never names a concrete next-best use of the same resources, or reports only one number labeled both "opportunity cost" and "delta," it is incomplete—add B, then report `best_forgone_value` and `value_delta` separately.
-- **Stop:** When one best forgone alternative and a signed value delta determine the choice, stop enumerating weaker options.
-- **Over-application guard:** Do not run full accounting on mandatory or trivial work. Ignore sunk costs; revalue only from current state forward.
-
-## Related
-
-Soft under `/0-thinking`. Vendor: `archive/vendor/cc-thinking-skills/skills/thinking-opportunity-cost/`.
-Route via hub when frame unclear; invoke this leaf when mechanism is known.
+Parent/return: `/0-thinking`. Related: `/1-thinking-reversibility`,
+`/1-thinking-bounded-rationality`.

@@ -1,91 +1,61 @@
-# Observability Checklist
+# Observability review checklist
 
-Quick reference for instrumenting production code. Use alongside the `1-observability-and-instrumentation` skill.
+Apply only to the bounded behavior and candidate named by the main skill. “Not applicable” is a
+valid result; this checklist does not require every signal type.
 
-## Table of Contents
+## Scope and provenance
 
-- [On-Call Questions (Start Here)](#on-call-questions-start-here)
-- [Structured Logging](#structured-logging)
-- [Metrics](#metrics)
-- [Distributed Tracing](#distributed-tracing)
-- [Alerting](#alerting)
-- [Dashboards](#dashboards)
-- [Verify the Telemetry](#verify-the-telemetry)
-- [Pre-Launch Gate](#pre-launch-gate)
+- [ ] Caller, design/assessment/edit mode, behavior, operator question, and exclusions are named.
+- [ ] Repository/worktree/branch/HEAD and target environment/evidence time are exact where relevant.
+- [ ] Existing logger, metric, tracing, dashboard/runbook, and schema conventions were inspected.
+- [ ] Allowed local, hosted, and production effects are explicit; shared service ownership is known.
 
-## On-Call Questions (Start Here)
+## Question-to-signal contract
 
-Telemetry without a question is noise. Before instrumenting anything:
+- [ ] Every proposed signal answers a stated question or existing obligation.
+- [ ] Stable name, source boundary, fields/dimensions, propagation, owner, and verification are recorded.
+- [ ] Data classification, access, retention, sampling, volume, and cost consequences are considered.
+- [ ] Unknown SLOs or thresholds are identified as decisions rather than invented values.
 
-- [ ] 2–4 questions an on-call engineer will ask about this feature are written down
-- [ ] Every signal below maps to one of those questions
-- [ ] Each question is matched to the right signal type: metrics say **that** something is wrong, traces say **where**, logs say **why**
+## Events and logs, when applicable
 
-## Structured Logging
+- [ ] Output follows repository structure and stable event naming.
+- [ ] Levels fit existing policy and actionable meaning.
+- [ ] Correlation/run/trace identity is validated or generated and propagated only where needed.
+- [ ] Shared sinks distinguish bounded entry points at their origin.
+- [ ] Fields are allowlisted; secrets, authorization material, unnecessary personal/content data,
+      full bodies, and raw third-party payloads are absent or policy-approved and redacted.
 
-- [ ] Logs are structured (JSON) with stable event names — not free-form strings
-- [ ] Every log line carries a correlation/request ID, generated or accepted at the system boundary
-- [ ] Correlation ID is propagated on every outbound call and async boundary (HTTP headers, queue metadata)
-- [ ] Log levels are consistent: `error` = invariant broken, someone may act; `warn` = degraded but handled; `info` = significant business event; `debug` = off in production
-- [ ] No secrets, tokens, passwords, or unredacted PII in any log line (hard rule from `2-security-and-hardening`)
-- [ ] Fields are allowlisted — no whole request/response bodies, no auth headers
-- [ ] External service calls logged with metadata only: endpoint, status, latency, attempt count, sanitized identifiers
-- [ ] Actual log output spot-checked: structured fields, not `[object Object]`
+## Metrics, when applicable
 
-## Metrics
+- [ ] RED/USE or another selected model fits the target behavior/resource.
+- [ ] Latency uses an appropriate distribution rather than relying only on an average.
+- [ ] Dimensions come from small controlled sets; estimated combined series growth is acceptable.
+- [ ] IDs, emails, tenants, raw URLs, free-form errors, prompts, and payloads are not dimensions.
 
-- [ ] **RED** instrumented for every endpoint and every external dependency: Rate, Errors, Duration
-- [ ] **USE** instrumented for every resource (queues, pools, hosts): Utilization, Saturation, Errors
-- [ ] Latency is a histogram; p50/p95/p99 queryable — never an average
-- [ ] All labels come from small, fixed sets (route template, status class, provider name)
-- [ ] No unbounded label values: no user IDs, tenant IDs, emails, raw URLs, request IDs, or error message text
-- [ ] Status codes grouped by class (`5xx`, not `503`)
-- [ ] Queue depth and processing duration tracked for every worker/queue
+## Traces and agent telemetry, when applicable
 
-## Distributed Tracing
+- [ ] Existing context propagation is preserved across the changed HTTP/RPC/queue/job seam.
+- [ ] Manual spans have a specific operator purpose; auto-instrumentation exposure was assessed.
+- [ ] Sampling and retention match policy and backend capability.
+- [ ] Agent telemetry separates operational metadata from prompts, completions, retrieval content,
+      memory, tool payloads/results, and feedback; sensitive content is omitted by default.
+- [ ] Correctness claims route to evaluation/tests; trace presence alone is not treated as proof.
 
-- [ ] OpenTelemetry (or equivalent) initialized at service startup, before other imports
-- [ ] Auto-instrumentation enabled for HTTP, gRPC, and DB clients
-- [ ] Trace context propagated on every outbound call (W3C `traceparent`/`tracestate`) and extracted from every inbound request
-- [ ] Context survives async boundaries — queue messages carry trace metadata
-- [ ] Manual spans only around meaningful internal units of work, with the attributes on-call will filter by
-- [ ] No secrets or PII as span attributes
-- [ ] Head-based sampling at a low default rate; 100% of errors kept if tail sampling is available
+## Alerts and response artifacts, when applicable
 
-## Alerting
+- [ ] Alert maps to an actionable symptom, SLO/error budget, or measured baseline.
+- [ ] Threshold/window/deduplication/severity use repository evidence or remain explicitly proposed.
+- [ ] Owner, destination, dashboard, and response/runbook link are valid for the target environment.
+- [ ] Creating or editing hosted alerts, dashboards, routes, and runbooks is separately authorized.
 
-- [ ] Every alert is symptom-based (error rate, p99 latency, queue age) — causes (CPU, disk, restarts) go to dashboards, not pagers
-- [ ] Every alert is actionable; "ignore it, it self-heals" alerts are deleted
-- [ ] Every alert links to a runbook — minimum three lines: what it means, first query to run, escalation path
-- [ ] Thresholds and durations justified by an SLO or historical data, not guesses
-- [ ] Two severities only: **page** (user-facing, act now) and **ticket** (degradation, act this week)
-- [ ] Each new alert test-fired once: it reached the right channel and the runbook link works
-- [ ] No alerts that fire daily and get acknowledged without action
+## Verification and return
 
-## Dashboards
-
-- [ ] Service health dashboard exists: error rate, latency p99, traffic, saturation
-- [ ] Dependency health panel shows per-service error rates and latency
-- [ ] Dashboard answers the on-call questions from the top of this checklist — not "everything except the answer"
-- [ ] Default time range is sensible (1h–6h, not 30d)
-
-## Verify the Telemetry
-
-Instrumentation is code; it can be wrong:
-
-- [ ] Forced an error in staging → found it in the logs by correlation ID
-- [ ] Sent test traffic → metric series appear with expected labels and sane values
-- [ ] Followed one request end-to-end in the tracing UI → no broken spans
-- [ ] An induced failure was diagnosed from telemetry alone, without reading the source
-
-## Pre-Launch Gate
-
-Before a feature ships to production, all of the following are true:
-
-- [ ] Structured logs flowing to the log aggregator
-- [ ] RED metrics visible in dashboards for every new endpoint and dependency
-- [ ] At least one symptom-based alert configured, with runbook, test-fired
-- [ ] A request can be traced across every service it touches
-- [ ] On-call knows where the runbooks are
-
-For launch-day monitoring sequence and rollback triggers, see the `1-shipping-and-launch` skill.
+- [ ] Success and safe failure paths were exercised at the narrowest authorized level.
+- [ ] Actual emitted shape, redaction, dimensions, and changed-seam propagation were inspected.
+- [ ] Hosted ingestion, queryability, rendering, notification, and production claims use exact remote
+      evidence; local output is not substituted.
+- [ ] No tool install, shared-service start, fault injection, alert firing, deploy, or remote mutation
+      occurred without separate authority.
+- [ ] Return includes candidate/worktree, ledger, PASS/FAIL/BLOCKED/SKIPPED checks, risks, proposed
+      remote checks, and residual blind spots.

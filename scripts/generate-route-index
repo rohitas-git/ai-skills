@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate skills/0-butler/references/route-index.md from live skills + hubs.
+"""Generate Butler's human and machine-readable route indexes.
 
 Priority per skill:
   1. metadata.catalog (house route surface)
@@ -11,6 +11,7 @@ Do not hand-edit the output file.
 from __future__ import annotations
 
 import json
+import argparse
 import re
 import sys
 from pathlib import Path
@@ -19,6 +20,8 @@ ROOT = Path(__file__).resolve().parents[1]
 SKILLS = ROOT / "skills"
 HUBS = ROOT / "hubs"
 OUT = SKILLS / "0-butler" / "references" / "route-index.md"
+OUT_JSON = SKILLS / "0-butler" / "references" / "route-index.json"
+CATALOG_YAML = ROOT / "catalog.yaml"
 
 DEPTH_NAME = re.compile(r"^[0-9]+-[a-z0-9]+(-[a-z0-9]+)*$")
 USE_WHEN = re.compile(r"(?i)use when[:\s]+(.+?)(?:\.|not for:|hub:|triggers:|$)", re.S)
@@ -100,12 +103,8 @@ def parse_catalog(fm: str) -> dict | None:
             i += 1
             continue
         ind = len(line) - len(line.lstrip(" "))
-        if ind <= catalog_indent and not line[0].isspace():
-            break
-        if ind <= catalog_indent and line.lstrip().endswith(":") and not line.lstrip().startswith("-"):
-            # sibling of catalog under metadata
-            if ind <= catalog_indent:
-                break
+        if ind <= catalog_indent:
+            break  # left catalog, including scalar siblings under metadata
         stripped = line.strip()
         if ind == catalog_indent + 2 or (ind > catalog_indent and stripped and not stripped.startswith("-")):
             # key: value or key:
@@ -174,11 +173,19 @@ def primary_hub(members: list[tuple[str, str]], catalog_hub: str | None) -> str:
     return members[0][0]
 
 
-def cell(s: str, n: int = 48) -> str:
+def cell(s: str, n: int | None = 48) -> str:
     s = re.sub(r"\s+", " ", s).strip()
-    if len(s) > n:
-        return s[: n - 1] + "…"
-    return s
+    if n is not None and len(s) > n:
+        # Never cut a route identifier (or any word) into a fake token. Prefer
+        # the last readable boundary; keep one long atomic token intact.
+        prefix = s[: n - 1]
+        boundary = max(prefix.rfind(" "), prefix.rfind(","), prefix.rfind(";"))
+        if boundary > 0:
+            prefix = prefix[:boundary]
+        elif not re.search(r"\s|,|;", s):
+            prefix = s
+        s = prefix.rstrip(" ,;:/→-") + ("" if prefix == s else "…")
+    return s.replace("|", "&#124;")
 
 
 def listish(val) -> str:
@@ -187,6 +194,25 @@ def listish(val) -> str:
     if isinstance(val, list):
         return ", ".join(str(x) for x in val)
     return str(val)
+
+
+def list_values(val) -> list[str]:
+    """Normalize one catalog scalar/list into a stable string list."""
+    if val is None:
+        return []
+    if isinstance(val, list):
+        return [str(item) for item in val if str(item).strip()]
+    value = str(val).strip()
+    return [value] if value else []
+
+
+def catalog_version() -> str:
+    if not CATALOG_YAML.is_file():
+        return "unknown"
+    for line in CATALOG_YAML.read_text(encoding="utf-8", errors="replace").splitlines():
+        if line.strip().startswith("version:"):
+            return line.split(":", 1)[1].strip().strip('"').strip("'")
+    return "unknown"
 
 
 def row_for(skill_dir: Path, membership: dict) -> dict:
@@ -202,6 +228,7 @@ def row_for(skill_dir: Path, membership: dict) -> dict:
     when = ""
     not_for = ""
     nxt = ""
+    triggers = ""
     source = "workflow+desc"
 
     if cat:
@@ -211,6 +238,7 @@ def row_for(skill_dir: Path, membership: dict) -> dict:
         when = listish(cat.get("when") or cat.get("triggers"))
         not_for = listish(cat.get("not_when"))
         nxt = listish(cat.get("next"))
+        triggers = listish(cat.get("triggers"))
     else:
         # description parse
         m = USE_WHEN.search(desc)
@@ -243,22 +271,37 @@ def row_for(skill_dir: Path, membership: dict) -> dict:
         "role": role or "—",
         "when": cell(when or "—", 56),
         "not_for": cell(not_for or "—", 40),
-        "next": cell(nxt or "—", 36),
+        "next": cell(nxt or "—", None),
+        "triggers": cell(triggers or "—", None),
         "source": source,
+        "when_values": list_values(cat.get("when") or cat.get("triggers")) if cat else list_values(when),
+        "not_for_values": list_values(cat.get("not_when")) if cat else list_values(not_for),
+        "next_values": list_values(cat.get("next")) if cat else list_values(nxt),
+        "trigger_values": list_values(cat.get("triggers")) if cat else [],
+        "prev_values": list_values(cat.get("prev")) if cat else [],
+        "cousin_values": list_values(cat.get("cousins")) if cat else [],
+        "requires_setup": bool(cat.get("requires_setup", False)) if cat else False,
+        "memberships": [
+            {"hub": member_hub, "role": link_type}
+            for member_hub, link_type in sorted(members)
+        ],
     }
 
 
-def main() -> int:
+def collect_rows() -> list[dict]:
     membership = skill_membership()
     rows = []
     if SKILLS.is_dir():
         for d in sorted(SKILLS.iterdir()):
             if d.is_dir() and (d / "SKILL.md").is_file() and not d.is_symlink():
-                if DEPTH_NAME.match(d.name) or True:
-                    rows.append(row_for(d, membership))
+                rows.append(row_for(d, membership))
 
-    # sort by hub then skill
     rows.sort(key=lambda r: (r["hub"], r["skill"]))
+    return rows
+
+
+def markdown_document(rows: list[dict]) -> str:
+    """Render the compact Butler skim without changing its existing shape."""
 
     lines = [
         "# Route index (generated — do not hand-edit)",
@@ -269,17 +312,84 @@ def main() -> int:
         "",
         f"**Skills:** {len(rows)}",
         "",
-        "| Skill | Hub | Role | When | Not for | Next | Src |",
-        "|-------|-----|------|------|---------|------|-----|",
+        "| Skill | Hub | Role | When | Not for | Triggers | Next | Src |",
+        "|-------|-----|------|------|---------|----------|------|-----|",
     ]
     for r in rows:
         lines.append(
-            f"| `{r['skill']}` | `{r['hub']}` | {r['role']} | {r['when']} | {r['not_for']} | {r['next']} | {r['source']} |"
+            f"| `{r['skill']}` | `{r['hub']}` | {r['role']} | {r['when']} | {r['not_for']} | {r['triggers']} | {r['next']} | {r['source']} |"
         )
     lines.append("")
+    return "\n".join(lines)
+
+
+def json_document(rows: list[dict]) -> dict:
+    """Return the generated route manifest; catalog metadata remains the SSOT."""
+    return {
+        "schema_version": 1,
+        "catalog_version": catalog_version(),
+        "generated_from": [
+            "skills/*/SKILL.md:metadata.catalog",
+            "hubs/*/workflow.json",
+        ],
+        "skill_count": len(rows),
+        "skills": [
+            {
+                "skill": row["skill"],
+                "hub": "" if row["hub"] == "—" else row["hub"],
+                "role": "" if row["role"] == "—" else row["role"],
+                "when": row["when_values"],
+                "not_when": row["not_for_values"],
+                "triggers": row["trigger_values"],
+                "next": row["next_values"],
+                "prev": row["prev_values"],
+                "cousins": row["cousin_values"],
+                "requires_setup": row["requires_setup"],
+                "memberships": row["memberships"],
+                "source": row["source"],
+            }
+            for row in rows
+        ],
+    }
+
+
+def projection_mismatches(
+    markdown: str, machine: str, markdown_path: Path = OUT, json_path: Path = OUT_JSON
+) -> list[Path]:
+    mismatches = []
+    for path, expected in ((markdown_path, markdown), (json_path, machine)):
+        if not path.is_file() or path.read_text(encoding="utf-8") != expected:
+            mismatches.append(path)
+    return mismatches
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--check", action="store_true", help="fail if either generated projection is stale"
+    )
+    args = parser.parse_args(argv)
+
+    rows = collect_rows()
+    markdown = markdown_document(rows)
+    machine = json.dumps(json_document(rows), indent=2, ensure_ascii=False, sort_keys=True) + "\n"
+
+    if args.check:
+        mismatches = projection_mismatches(markdown, machine)
+        if mismatches:
+            for path in mismatches:
+                print(f"Stale: {path.relative_to(ROOT)}", file=sys.stderr)
+            return 1
+        print(f"Route projections current ({len(rows)} skills)", file=sys.stderr)
+        return 0
+
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text("\n".join(lines), encoding="utf-8")
-    print(f"Wrote {OUT.relative_to(ROOT)} ({len(rows)} skills)", file=sys.stderr)
+    OUT.write_text(markdown, encoding="utf-8")
+    OUT_JSON.write_text(machine, encoding="utf-8")
+    print(
+        f"Wrote {OUT.relative_to(ROOT)} and {OUT_JSON.relative_to(ROOT)} ({len(rows)} skills)",
+        file=sys.stderr,
+    )
     return 0
 
 

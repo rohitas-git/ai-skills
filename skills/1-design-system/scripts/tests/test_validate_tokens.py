@@ -1,48 +1,47 @@
-"""Regression tests for validate-tokens.cjs.
-
-The validator used to skip any line containing ``var(--`` outright, so a
-hardcoded value sharing a line with a token reference (extremely common in
-real CSS, and universal in minified CSS where everything is one line) went
-undetected. These tests drive the CLI via ``node`` and assert it flags such
-cases. They are pytest-based so the repository's existing pytest CI runs them.
-"""
+"""Stdlib regression tests for the regex-based token-usage scanner."""
 
 import shutil
 import subprocess
+import tempfile
+import unittest
 from pathlib import Path
-
-import pytest
 
 SCRIPT = Path(__file__).resolve().parent.parent / "validate-tokens.cjs"
 
 
-def _run(tmp_path: Path, css: str) -> subprocess.CompletedProcess:
-    node = shutil.which("node")
-    if not node:
-        pytest.skip("node not available")
-    (tmp_path / "sample.css").write_text(css)
-    return subprocess.run(
-        [node, str(SCRIPT), "--dir", str(tmp_path)],
-        capture_output=True,
-        text=True,
-    )
+class ValidateTokensTests(unittest.TestCase):
+    def _run(self, css: str) -> subprocess.CompletedProcess:
+        node = shutil.which("node")
+        if not node:
+            self.skipTest("node not available")
+        self._temporary = tempfile.TemporaryDirectory()
+        directory = Path(self._temporary.name)
+        (directory / "sample.css").write_text(css)
+        return subprocess.run(
+            [node, str(SCRIPT), "--dir", str(directory)],
+            capture_output=True,
+            text=True,
+        )
+
+    def tearDown(self):
+        temporary = getattr(self, "_temporary", None)
+        if temporary:
+            temporary.cleanup()
+
+    def test_flags_hardcoded_hex_sharing_line_with_token(self):
+        result = self._run(
+            ".btn { background: #FF6B6B; color: var(--color-primary); }\n"
+        )
+        self.assertIn("#FF6B6B", result.stdout)
+        self.assertEqual(result.returncode, 1)
+
+    def test_token_only_line_reports_no_violation(self):
+        result = self._run(
+            ".btn { background: var(--color-bg); color: var(--color-primary); }\n"
+        )
+        self.assertIn("No token violations", result.stdout)
+        self.assertEqual(result.returncode, 0)
 
 
-def test_flags_hardcoded_hex_sharing_line_with_token(tmp_path):
-    """A hardcoded hex on the same line as a var() token is still a violation."""
-    result = _run(
-        tmp_path,
-        ".btn { background: #FF6B6B; color: var(--color-primary); }\n",
-    )
-    assert "#FF6B6B" in result.stdout, result.stdout
-    assert result.returncode == 1
-
-
-def test_token_only_line_reports_no_violation(tmp_path):
-    """A line that references only tokens produces no false positives."""
-    result = _run(
-        tmp_path,
-        ".btn { background: var(--color-bg); color: var(--color-primary); }\n",
-    )
-    assert "No token violations" in result.stdout, result.stdout
-    assert result.returncode == 0
+if __name__ == "__main__":
+    unittest.main()

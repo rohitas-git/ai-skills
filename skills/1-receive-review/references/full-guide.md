@@ -21,7 +21,8 @@ WHEN receiving code review feedback:
 3. VERIFY: Check against codebase reality
 4. EVALUATE: Technically sound for THIS codebase?
 5. RESPOND: Technical acknowledgment or reasoned pushback
-6. IMPLEMENT: One item at a time, test each
+6. RETURN: Evidence-backed dispositions for assessment-only requests
+7. IMPLEMENT: Only within granted repair scope, one item at a time, verify each
 ```
 
 ## Forbidden Responses
@@ -40,11 +41,10 @@ WHEN receiving code review feedback:
 ## Handling Unclear Feedback
 
 ```
-IF any item is unclear:
-  STOP - do not implement anything yet
-  ASK for clarification on unclear items
-
-WHY: Items may be related. Partial understanding = wrong implementation.
+IF an item is unclear:
+  Pause that item and dependent changes; identify the unresolved decision.
+  Continue independent, understood items already authorized by the user.
+  Ask for clarification when evidence cannot resolve the ambiguity.
 ```
 
 **Example:**
@@ -52,14 +52,14 @@ WHY: Items may be related. Partial understanding = wrong implementation.
 your human partner: "Fix 1-6"
 You understand 1,2,3,6. Unclear on 4,5.
 
-❌ WRONG: Implement 1,2,3,6 now, ask about 4,5 later
-✅ RIGHT: "I understand items 1,2,3,6. Need clarification on 4 and 5 before proceeding."
+Check dependencies first. If 1,2,3,6 are independent, proceed with those authorized
+fixes; hold 4,5 and any dependent changes until their meaning is resolved.
 ```
 
 ## Source-Specific Handling
 
 ### From your human partner
-- **Trusted** - implement after understanding
+- Treat the user's request as authority only for its stated scope; an assessment question does not authorize implementation
 - **Still ask** if scope unclear
 - **No performative agreement**
 - **Skip to action** or technical acknowledgment
@@ -101,7 +101,7 @@ IF reviewer suggests "implementing properly":
 
 ```
 FOR multi-item feedback:
-  1. Clarify anything unclear FIRST
+  1. Resolve dependencies; hold unclear items and their dependents
   2. Then implement in this order:
      - Blocking issues (breaks, security)
      - Simple fixes (typos, imports)
@@ -132,20 +132,15 @@ Push back when:
 
 When feedback IS correct:
 ```
-✅ "Fixed. [Brief description of what changed]"
-✅ "Good catch - [specific issue]. Fixed in [location]."
-✅ [Just fix it and show in the code]
+✅ "Verified: [evidence]. Proposed fix: [change]." (assessment only)
+✅ "Fixed. [Change and verification evidence]." (authorized repair completed)
 
 ❌ "You're absolutely right!"
 ❌ "Great point!"
-❌ "Thanks for catching that!"
-❌ "Thanks for [anything]"
-❌ ANY gratitude expression
 ```
 
-**Why no thanks:** Actions speak. Just fix it. The code itself shows you heard the feedback.
-
-**If you catch yourself about to write "Thanks":** DELETE IT. State the fix instead.
+Keep acknowledgment factual and proportional; gratitude is optional. Never imply a
+fix is complete when only the feedback has been assessed.
 
 ## Gracefully Correcting Your Pushback
 
@@ -170,7 +165,7 @@ State the correction factually and move on.
 | Batch without testing | One at a time, test each |
 | Assuming reviewer is right | Check if breaks things |
 | Avoiding pushback | Technical correctness > comfort |
-| Partial implementation | Clarify all items first |
+| Implementing dependent unclear items | Hold those items; continue independent authorized work |
 | Can't verify, proceed anyway | State limitation, ask for direction |
 
 ## Real Examples
@@ -197,17 +192,19 @@ Reviewer: "Implement proper metrics tracking with database, date filters, CSV ex
 ```
 your human partner: "Fix items 1-6"
 You understand 1,2,3,6. Unclear on 4,5.
-✅ "Understand 1,2,3,6. Need clarification on 4 and 5 before implementing."
+✅ "Items 4 and 5 need clarification. I can proceed with the independent, authorized items."
 ```
 
 ## GitHub Thread Replies
 
-When replying to inline review comments on GitHub, reply in the comment thread (`gh api repos/{owner}/{repo}/pulls/{pr}/comments/{id}/replies`), not as a top-level PR comment.
+Return the exact thread/comment identifier to `/1-pr-comment-drafter`. Only publish
+through `/1-github-cli` when the user requested a reply. Preserve the intended thread;
+assessment is not permission to post, resolve threads, or create another repair loop.
 
 ## The Bottom Line
 
 **External feedback = suggestions to evaluate, not orders to follow.**
 
-Verify. Question. Then implement.
+Verify, return dispositions, and implement only within the authorized caller's scope.
 
 No performative agreement. Technical rigor always.

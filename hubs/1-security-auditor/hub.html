@@ -53,10 +53,10 @@
 </header>
 <nav class="top">
   <a class="butler-cta" href="../0-butler/hub.html">★ 0-butler (hub of hubs)</a>
-  <a class="chart-cta" href="../../flows-chart.html">Full flows chart</a>
-  <a href="../../flows-chart.html#domain-hub-matrix">Domain matrix</a>
+  <a class="chart-cta" href="../flows-chart.html">Full flows chart</a>
+  <a href="../flows-chart.html#domain-hub-matrix">Domain matrix</a>
   <a href="./workflow.json">workflow.json</a>
-  <a href="../../../productivity/0-butler/references/flows.md">flows.md SSOT</a>
+  <a href="../../skills/0-butler/references/flows.md">flows.md SSOT</a>
   <a href="../index.html">hubs index</a>
   <span class="here">package: <code>hubs/1-security-auditor/</code></span>
 </nav>
@@ -71,7 +71,7 @@
     <br/>Parent domain hub: <a href="../0-review/hub.html"><code>/0-review</code></a> (sub-hub).
   </div>
   <p class="meta">
-    Parent skill: <code>productivity/butler</code> ·
+    Parent skill: <code>skills/0-butler</code> ·
     This package: <code>hubs/1-security-auditor/</code>
   </p>
 </section>
@@ -80,33 +80,33 @@
   <p class="meta">
     <span class="badge hub">sub-hub</span>
     slash: <code>/1-security-auditor</code> ·
-    skill path: <code>engineering/1-security-auditor/</code> ·
+    skill path: <code>skills/1-security-auditor/</code> ·
     package: <code>hubs/1-security-auditor/</code>
   </p>
-  <p>F-R2 chooses full vs scoped vs differential. Soft-link 2-security-and-hardening for remediation.</p>
+  <p>Honor the caller's scope and read-only authority. F-R2/F-R3 resolve only ambiguous choices; specialists return same-candidate evidence. Files and remediation require corresponding authorization.</p>
 </section>
 <section>
   <h2>Children</h2>
   <ul>
-    <li><strong>soft:</strong> 2-security-and-hardening <span class='meta'>(Remediate / prevent after findings; also soft under 1-code-review)</span></li>
+    <li><strong>soft:</strong> 2-security-and-hardening <span class='meta'>(authorized scoped fixes only; preserve task/worktree identity and return to the build or repair caller)</span></li>
+    <li><strong>leaf:</strong> <a href="../../skills/2-prompt-injection-defense/SKILL.md">2-prompt-injection-defense</a>, <a href="../../skills/2-skill-supply-chain-audit/SKILL.md">2-skill-supply-chain-audit</a>, 2-dependency-security <span class='meta'>(scoped trust-boundary assessment, package review, dependency checks; return evidence and coverage gaps, never implicit installation or live quarantine)</span></li>
   </ul>
 </section>
 <section>
   <h2>Pipeline</h2>
-  <pre>recon
-hunt
-validate
-report
-structured findings
-independent verification
-optional 2-security-and-hardening remediation</pre>
+  <pre>pin caller, scope, candidate and permitted checks; select specialist before broad recon
+recon → hunt → validate → report
+structured files only when requested; structural validation is not factual proof
+independent factual verification
+return ledger and coverage gaps; no automatic repair, publication or cleanup</pre>
 </section>
 <section>
   <h2>Forks (ask user)</h2>
   <table>
     <thead><tr><th>ID</th><th>Question</th><th>Recommended</th><th>Branches</th></tr></thead>
     <tbody>
-      <tr><td><code>F-R2</code></td><td>Audit scope?</td><td>Full project unless path/PR named</td><td>full · scoped module · differential/PR</td></tr>
+      <tr><td><code>F-R2</code></td><td>Audit scope?</td><td>Full project unless path/PR named</td><td>full · scoped module · differential/PR · Agent judgment</td></tr>
+      <tr><td><code>F-R3</code></td><td>Which focused security surface is in scope?</td><td>Use the narrow specialist when scope matches</td><td>prompt-injection defense · skill supply-chain audit · dependency security · general audit · Agent judgment</td></tr>
     </tbody>
   </table>
 </section>
@@ -114,7 +114,7 @@ optional 2-security-and-hardening remediation</pre>
   <h2>See also</h2>
   <p>
     <a class="butler-cta" href="../0-butler/hub.html">★ butler</a>
-    <a class="chart-cta" href="../../flows-chart.html">Open flows-chart.html</a>
+    <a class="chart-cta" href="../flows-chart.html">Open flows-chart.html</a>
     <a class="chart-cta" href="./workflow.json" style="margin-left:0.4rem">workflow.json</a>
   </p>
   <p class="meta">House map + fork index: chart. Machine-readable workflow: JSON. Routing apex: butler. Package layout: ADR 0005.</p>
@@ -143,8 +143,8 @@ optional 2-security-and-hardening remediation</pre>
 <footer>
   Package <code>hubs/1-security-auditor/</code> for <code>/1-security-auditor</code> · parent: <a href="../0-butler/hub.html">butler</a>
    · domain: <a href="../0-review/hub.html">/0-review</a> ·
-  SSOT: <code>skills/productivity/0-butler/references/flows.md</code> ·
-  chart: <a href="../../flows-chart.html">flows-chart.html</a> ·
+  SSOT: <code>skills/0-butler/references/flows.md</code> ·
+  chart: <a href="../flows-chart.html">flows-chart.html</a> ·
   workflow: <a href="./workflow.json">workflow.json</a>
 </footer>
 </body>

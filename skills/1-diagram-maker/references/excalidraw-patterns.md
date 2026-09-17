@@ -1,5 +1,9 @@
 # Excalidraw Patterns
 
+Compatibility snippets only. They grant no source read, destination write/overwrite, app, collaboration,
+publication, or sharing authority. Recheck the intended Excalidraw consumer/version and adapt IDs, geometry,
+palette, bindings, and accessibility to the pinned artifact; these examples are not a complete schema.
+
 Envelope:
 
 ```json

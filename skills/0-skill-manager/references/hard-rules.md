@@ -1,7 +1,7 @@
 # Skill-manager hard rules
 
 1. **No atoms** — Do not create concept pages, wiki atoms, Obsidian Concepts, or project-wiki nodes. Skill stewardship ≠ knowledge wiki.
-2. **Confirm before multi-file write** — Any op that touches more than one file (indexes, lock, flows, moves) must present a plan and wait for human confirmation. Dry-run is the default.
+2. **Authority follows the request** — An explicit create/fix/update/ingest/organize request authorizes its bounded reversible catalog change-set. Ask only for material target/meaning ambiguity, merge/split identity choices, or destructive/external/global effects. Review/list/lint requests remain read-only.
 3. **Never promote `using-agent-skills`** — dual meta-router is forbidden.
 4. **Never invent skills in query** — recommend only skills that exist on disk under discoverable buckets (or explicit deprecated tombstones when explaining successors).
 5. **Prefer merge** — if a candidate collides with an existing skill's job, merge content into the winner rather than adding a peer.
@@ -18,7 +18,7 @@
 
 9. **Butler does not mutate** — multi-file catalog writes are 0-skill-manager only; 0-butler only routes.
 10. **One hub per domain** — never add a peer top skill that splits a domain without new-hub + deprecate old hub.
-11. **Forks ask the user** — pipeline branches must have F# questions; agents ask (recommend first), never silent branch.
+11. **Material forks are explicit** — pipeline branches that materially change user-visible outcome or authority need F# questions. Infer routine reversible branches from the request and evidence.
 12. **Butler links every domain hub** — every ★ domain hub is a routing child of `/0-butler`. Non-butler hub packages parent-link 0-butler; 0-butler lists every domain hub (ADR 0005).
 13. **Hub package dir required** — each flows.md domain hub has `hubs/{hub}/` where `{hub}` is the depth-prefixed hub skill name (flat — **no** bucket nesting under `hubs/`).
 14. **Hub HTML + workflow JSON** — each package contains `hub.html` and `workflow.json`; `workflow.json` sets `parent` → 0-butler (`null` only for butler); update `hubs/manifest.json`.
@@ -29,11 +29,11 @@
 19. **Chaining** — place skills on a hub chain with link type; pipeline skills name next (e.g. 0-implement → 1-tdd → 1-code-review). Do not ship essay-only orphans.
 20. **Sprawl → thin, chain, split, then sub-domain** — oversized skills: progressive disclosure first, then child skills or sub-domain hub (`parent_domain_hub` + 0-butler apex). Sub-hub package depth = **parent_depth + 1** (often **1-**; nested → **2- / 3- / …**).
 21. **Atomic skills** — one primary job per skill; **Boundary** table for cousins; hard redirect asks the user (never silent cousin load). See [atomic-skills.md](./atomic-skills.md). Apply via **`/1-skill-atomize`**.
-22. **Forks on collision** — when two live skills share triggers, document an F# ask-user fork in flows.md and both skill bodies (recommended option first).
+22. **Collisions have one owner** — shared triggers require a positive Boundary and deterministic route. Ask only when choosing merge/split would change identity or discard behavior.
 23. **Wiki index** — after place/ingest/organize/deprecate, update `wikis/index.md` and append `wikis/log.md` (1-project-wiki-manager index pattern).
 24. **Skills/ paths** — after place/rename, keep `skills/{depth}-{slug}/` as the only live path; update lock + flows + hubs in the same organize pass.
 25. **Route surface (ADR 0009)** — live skills use description contract + **`metadata.catalog` only** (no top-level route keys). New place/ingest: `gate-route` critical. Spec: [skill-route-surface.md](./skill-route-surface.md).
 26. **Route index** — after place/ingest/organize/rename/catalog frontmatter change, run `scripts/generate-route-index` so butler skim stays current.
 27. **Catalog version + feature log** — convention changes and accepted ADRs bump root `catalog.yaml` `version` and prepend [docs/FEATURE-LOG.md](../../../docs/FEATURE-LOG.md) (not every commit).
 
-**Agent judgment:** every user-facing fork must offer **Agent judgment** (agent chooses best branch and proceeds without more questions on that fork).
+28. **Separate effects** — catalog edits do not authorize installation, activation, sync, commit, push, publication, worktree creation, or external mutation.

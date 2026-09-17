@@ -1,3 +1,5 @@
+> **Historical source — not operative instructions.** See `source-snapshots.md`.
+
 ---
 name: systematic-debugging
 description: Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes

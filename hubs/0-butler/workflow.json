@@ -7,8 +7,8 @@
   "slash": "/0-butler",
   "path": "skills/0-butler",
   "package_dir": "hubs/0-butler/",
-  "role": "Hub of hubs \u2014 route / orient only; never mutate the catalog.",
-  "notes": "Butler is the house concierge. Prefer domain hub first, then child skill. At every fork, ask the user once with a recommended option.",
+  "role": "Read-only route selector for ambiguous, cross-domain, or explicit catalog questions.",
+  "notes": "Use the smallest direct skill when clear and report its owning hub. F7 applies only to material ambiguity; catalog mutations are delegated and not executed here.",
   "parent": null,
   "children": [
     {
@@ -29,7 +29,11 @@
         "0-learn",
         "0-office",
         "0-ui-ux",
-        "0-thinking"
+        "0-thinking",
+        "0-git",
+        "0-agent-engineering",
+        "0-devops",
+        "0-marketing"
       ]
     },
     {
@@ -46,9 +50,22 @@
         "1-context-monitor",
         "1-strategic-compact",
         "1-response-effort-calibrator",
-        "1-handoff"
+        "1-action-first-output",
+        "1-caveman",
+        "1-handoff",
+        "1-bro",
+        "1-plow-ahead",
+        "1-quick-recap"
       ],
-      "note": "Session meta / dual design handoff"
+      "note": "Session meta, explicit presentation modes, and durable handoff (also a Design detour)"
+    },
+    {
+      "link_type": "satellite",
+      "skills": [
+        "1-rewind",
+        "1-webmcp"
+      ],
+      "note": "Explicit local screen-memory and web-app tool workflows"
     },
     {
       "link_type": "soft",
@@ -59,28 +76,36 @@
     }
   ],
   "pipeline": [
-    "orient",
-    "query",
-    "domain hub or skill-manager"
+    "parse explicit shortcut or routing request",
+    "read flows and route index; inspect pinned repository evidence only if route-relevant",
+    "select a direct skill when clear or ask F7 once for material domain ambiguity",
+    "validate the selected live SKILL.md and report its owning hub",
+    "return route and first action without executing it; delegate catalog mutations"
   ],
   "forks": [
     {
       "id": "F7",
       "question": "What kind of work?",
-      "recommended": "Feature \u2192 Design",
+      "recommended": "Narrowest domain supported by the request",
       "branches": [
         "Design",
+        "Ship",
+        "Review",
         "Triage",
         "Diagnose",
         "Fog",
         "Architecture",
         "Vault",
         "UI/UX",
-        "Misc",
+        "Office/artifact",
         "Catalog facilities",
         "Learn",
         "Simplify",
         "Thinking",
+        "Git",
+        "Agent engineering",
+        "DevOps",
+        "Marketing",
         "Agent judgment"
       ]
     }
@@ -101,13 +126,17 @@
     "0-learn",
     "0-office",
     "0-ui-ux",
-    "0-thinking"
+    "0-thinking",
+    "0-git",
+    "0-agent-engineering",
+    "0-devops",
+    "0-marketing"
   ],
   "artifacts": {
     "html": "./hub.html",
     "workflow_json": "./workflow.json",
     "flows_chart": "../flows-chart.html",
-    "flows_ssot": "../../../skills/0-butler/references/flows.md",
+    "flows_ssot": "../../skills/0-butler/references/flows.md",
     "hubs_index": "../index.html",
     "manifest": "../manifest.json"
   },

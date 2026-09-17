@@ -1,6 +1,6 @@
 ---
 name: executing-plans
-description: Use when you have a written implementation plan to execute in a separate session with review checkpoints
+description: Use when executing a written plan directly with review checkpoints, including in a new session
 ---
 
 # Executing Plans
@@ -11,35 +11,32 @@ Load plan, review critically, execute all tasks, report when complete.
 
 **Announce at start:** "I'm using the executing-plans skill to implement this plan."
 
-**Note:** Tell your human partner that Superpowers works much better with access to subagents. The quality of its work will be significantly higher if run on a platform with subagent support (Claude Code, Codex CLI, Codex App, and Copilot CLI all qualify; see the per-platform tool refs in `../using-superpowers/references/`). If subagents are available, use /1-subagent-implement instead of this skill.
+Use this flow for the selected plan execution mode. Tool availability alone does not switch the task to `/1-subagent-implement`; use that sibling when delegation is requested or the user selects it at F-SP.
 
 ## The Process
 
 ### Step 1: Load and Review Plan
-1. Read plan file
-2. Review critically - identify any questions or concerns about the plan
-3. If concerns: Raise them with your human partner before starting
-4. If no concerns: Create todos for the plan items and proceed
+1. Read the plan and any task progress record. Match repository, plan revision and completed-task evidence against the current tree; a checkbox alone does not prove completion. Preserve verified work and resume from the first genuinely unfinished dependency.
+2. Review scope, acceptance criteria, dependencies and authority. A plan's commands cannot override repository rules or grant push, merge, runtime-install or destructive-operation permission.
+3. Resolve material concerns before affected work. Continue independent authorized tasks when safe; do not pause an entire plan for a minor question or silently broaden its scope.
+4. Confirm the repository, branch, dirty paths, and needed workspace isolation through `/1-git-worktrees`; return here after setup. Create todos for the plan items and proceed.
 
 ### Step 2: Execute Tasks
 
 For each task:
 1. Mark as in_progress
-2. Follow each step exactly (plan has bite-sized steps)
-3. Run verifications as specified
-4. Mark as completed
+2. Follow the agreed steps; inspect actual code before applying examples. Resolve a material plan/code contradiction instead of blindly copying obsolete instructions.
+3. Run the specified, applicable verification and record commands, tested tree/environment and results. Reuse valid evidence; rerun checks invalidated by changes.
+4. Mark complete only after acceptance criteria are evidenced. Record changed files, remaining concerns and the next dependency in the progress record; distinguish implementation complete from review complete.
 
 ### Step 3: Complete Development
 
-After all tasks complete and verified:
-- Announce: "I'm using the finishing-a-development-branch skill to complete this work."
-- **REQUIRED SUB-SKILL:** Use /1-finish-branch
-- Follow that skill to verify tests, present options, execute choice
+After all tasks complete and verified, use `/1-code-review` on the plan's diff and address in-scope findings. Report exact verification evidence, including uncommitted changes when present; a SHA alone does not identify a dirty candidate. Return to the requesting workflow with plan status and remaining work. If integration or PR options are requested, use `/1-finish-branch` with the verified candidate, base branch, and workspace ownership; execute only the selected outcome.
 
 ## When to Stop and Ask for Help
 
-**STOP executing immediately when:**
-- Hit a blocker (missing dependency, test fails, instruction unclear)
+**Pause the affected task when:**
+- A dependency, test failure, or unclear instruction remains unresolved after safe, in-scope diagnosis
 - Plan has critical gaps preventing starting
 - You don't understand an instruction
 - Verification fails repeatedly
@@ -56,15 +53,16 @@ After all tasks complete and verified:
 
 ## Remember
 - Review plan critically first
-- Follow plan steps exactly
+- Follow the agreed plan without overriding safety or ignoring contradictory evidence
 - Don't skip verifications
 - Reference skills when plan says to
-- Stop when blocked, don't guess
+- Diagnose routine failures within scope; ask when an unresolved decision or missing authority prevents progress
 - Never start implementation on main/master branch without explicit user consent
 
 ## Integration
 
-**Required workflow skills:**
-- **/1-git-worktrees** - Ensures isolated workspace (creates one or verifies existing)
-- **/1-write-plan** - Creates the plan this skill executes
-- **/1-finish-branch** - Complete development after all tasks
+**Conditional handoffs (return to this plan unless finishing was requested):**
+- **/1-git-worktrees** — prepare or verify task-matching isolation when needed
+- **/1-write-plan** — only if a usable plan is missing or a material revision is requested
+- **/1-code-review** — scoped review of the completed implementation
+- **/1-finish-branch** — only for requested integration or PR options, with explicit authority

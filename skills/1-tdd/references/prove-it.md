@@ -1,46 +1,23 @@
-# Prove-It pattern (bug fixes)
+# Bug reproduction within TDD
 
-Merged from vendor `test-driven-development` — not a second skill.
+Use this branch only after `/0-diagnosing-bugs` or a confirmed bug contract identifies a
+stable behavior, correct seam, independent oracle, and edit authority.
 
-When a bug is reported, **do not start by trying to fix it.** Prove the bug with a failing test first.
+1. Pin the before candidate and original reported scenario.
+2. Add the smallest regression test at the seam that preserves the causal pattern.
+3. Run the focused command and confirm the predicted behavioral failure.
+4. Apply the minimum authorized implementation and rerun the same command.
+5. Re-run the original scenario and proportionate adjacent checks.
+6. Return red/green evidence and coverage limits to the caller.
 
-```text
-Bug report
-    → write a test that demonstrates the bug
-    → test FAILS (confirms the bug exists)
-    → 0-implement the fix
-    → test PASSES (proves the fix)
-    → run the suite (no regressions)
-```
+If no faithful automated seam exists, do not add a shallow test for appearances. Preserve
+the runtime/log/trace evidence, report the seam gap, and let the caller decide whether a
+characterization test, architecture change, or post-fix regression is warranted.
 
-## Example shape
+A regression guard should remain only when it is stable, maintainable, and useful under
+the repository's policy. Do not promise “forever,” duplicate stronger coverage, or retain
+a brittle test solely to demonstrate process compliance.
 
-```typescript
-// Bug: "Completing a task doesn't update completedAt"
-
-// 1. Reproduction (must FAIL before the fix)
-it('sets completedAt when task is completed', async () => {
-  const task = await taskService.createTask({ title: 'Test' });
-  const completed = await taskService.completeTask(task.id);
-
-  expect(completed.status).toBe('completed');
-  expect(completed.completedAt).toBeInstanceOf(Date);
-});
-
-// 2. Minimal fix, then re-run until green
-```
-
-## Rules
-
-- Reproduction test stays in the suite forever (regression guard).
-- Expected values come from the bug report / independent truth — not re-deriving the buggy code path.
-- Still only at **pre-agreed seams** (see main skill).
-- Optional: spawn a subagent to write the reproduction test so the fix author does not “write the test knowing the fix.” Main agent verifies fail → fix → pass.
-
-## Subagent split (optional)
-
-```text
-Main: "Write a test that reproduces: [bug]. It must fail on current code."
-Subagent: writes reproduction only
-Main: confirms fail → implements fix → confirms pass → full suite
-```
+Delegating test authorship is optional and requires explicit delegation plus isolated
+ownership. It does not create an independent oracle if every agent receives the same
+unverified assumption.

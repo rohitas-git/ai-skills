@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# Human-in-the-loop reproduction loop.
-# Copy this file, edit the steps below, and run it.
+# Human-in-the-loop reproduction loop for an already authorized scenario.
+# Copy this file into the task's allowed workspace, edit the placeholders below,
+# inspect the final script, and run it only after the target/action is agreed.
 # The agent runs the script; the user follows prompts in their terminal.
 #
 # Usage:
@@ -10,7 +11,8 @@
 #   step "<instruction>"          → show instruction, wait for Enter
 #   capture VAR "<question>"      → show question, read response into VAR
 #
-# At the end, captured values are printed as KEY=VALUE for the agent to parse.
+# At the end, captured values are printed as KEY=VALUE. Do not paste credentials,
+# tokens, personal data, or unredacted production content into a capture.
 
 set -euo pipefail
 
@@ -28,14 +30,14 @@ capture() {
 
 # --- edit below ---------------------------------------------------------
 
-step "Open the app at http://localhost:3000 and sign in."
+step "Perform the pre-agreed reproduction step in the authorized environment."
 
-capture ERRORED "Click the 'Export' button. Did it throw an error? (y/n)"
+capture REPRODUCED "Did the exact reported symptom occur? (y/n/unknown)"
 
-capture ERROR_MSG "Paste the error message (or 'none'):"
+capture OBSERVATION "Describe the result briefly, with sensitive values redacted:"
 
 # --- edit above ---------------------------------------------------------
 
 printf '\n--- Captured ---\n'
-printf 'ERRORED=%s\n' "$ERRORED"
-printf 'ERROR_MSG=%s\n' "$ERROR_MSG"
+printf 'REPRODUCED=%s\n' "$REPRODUCED"
+printf 'OBSERVATION=%s\n' "$OBSERVATION"

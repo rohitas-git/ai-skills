@@ -1,157 +1,44 @@
-# Standard Response Templates
+# Optional response shapes
 
-## Overall Response Structure (Recommended)
-```markdown
-# Explanation of [Topic]
+Templates are optional scaffolds, not required output schemas.
 
-## Quick Overview (Optional for compact mode)
-[1-3 sentence high-level summary]
+## First explanation
 
-## [Level Name] Explanation
-[Main explanation using the level-specific template below]
-
-## Mental Models & Diagrams
-[1-2 models + Mermaid or description]
-
-## Confidence & Sources
-**Overall Confidence**: XX/100  
-[Brief justification + key sources if web search was used]
-
-## Next Steps
-"Would you like to go deeper on any part, try a different level, or add visuals?"
+```text
+Core idea
+Necessary terms/mechanism
+Relevant example or limitation (only if useful)
+Evidence boundary
 ```
 
----
+## Mental model
 
-## Per-Level Template
-
-### Child Level Template
-```markdown
-## 👶 Child Level
-
-[Hook / short story]
-
-[Simple core idea with strong analogy]
-
-[One vivid, concrete example]
-
-[Wonder moment or fun fact]
-
-Simple question: "Does that make sense?"
+```text
+Model name and purpose
+Element-to-concept mapping
+One prediction/use
+Where the model breaks
 ```
 
-### Beginner Level Template
-```markdown
-## 🟢 Beginner Level
+## One-layer deep dive
 
-[One-sentence overview]
-
-**Key Terms** (defined simply):
-- Term 1: ...
-- Term 2: ...
-
-[Core idea + one good analogy]
-
-[Concrete everyday example]
-
-Common mistake to avoid: ...
-
-Would you like me to explain any part more?
+```text
+Target from prior explanation
+One mechanism/formalism/edge case/limitation/evidence/connection layer
+How it changes or refines the prior understanding
+Evidence limit
 ```
 
-### Layperson Level Template
-```markdown
-## 🧑 Layperson Level
+## Diagnostic profile
 
-[Hook – why this matters]
-
-[Clear core explanation]
-
-[Relatable analogy]
-
-[Real-world example or impact]
-
-[Common question addressed]
-
-Bigger picture: ...
+```text
+Learning object and intended use
+Self-reported background
+Demonstrated evidence
+Unknowns
+Recommended starting operation
 ```
 
-### Specialist Level Template
-```markdown
-## 👷 Specialist / Practitioner Level
-
-[Practical overview]
-
-[Core mechanism in practice]
-
-**Typical Workflow**:
-1. ...
-2. ...
-
-**Key Tools / Methods**:
-- ...
-
-**Common Pitfalls**:
-- ...
-
-**Decision Factors**:
-- ...
-```
-
-### Academic Level Template
-```markdown
-## 🎓 Academic / Graduate Level
-
-[Precise definition + context]
-
-[Core principles / mechanisms]
-
-**Key Evidence & Methods**:
-- ...
-
-**Major Frameworks**:
-- ...
-
-**Limitations & Debates**:
-- ...
-
-**Open Questions**:
-- ...
-```
-
-### Frontier Level Template
-```markdown
-## 🔬 Frontier / Research Level
-
-**Current State of the Art**:
-[What is well understood]
-
-**Recent Breakthroughs** (last few years):
-- ...
-
-**Active Debates**:
-- ...
-
-**Key Open Problems**:
-- ...
-
-**Promising Directions**:
-- ...
-```
-
----
-
-## Compact Mode Template
-```markdown
-## Quick Explanation ([Level])
-
-[Short 4-6 sentence explanation]
-
-**Mental Model**: [One strong model]
-
-**Key Takeaway**: ...
-
-**Confidence**: XX/100
-```
-
-Use these templates as flexible guides. Adapt based on the specific topic and user request.
+Never add a numeric confidence score, citations, diagrams, quizzes, next-step offers,
+or multiple audience levels by template habit. Include them only when grounded and
+useful to the request.

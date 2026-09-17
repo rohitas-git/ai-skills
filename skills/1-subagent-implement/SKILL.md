@@ -3,20 +3,27 @@ name: 1-subagent-implement
 description: >
   Execute an implementation plan in the current session by dispatching a fresh
   implementer subagent per task, reviewing after each, then whole-branch review. Use
-  when the plan is ready and subagents are available. Triggers: subagent implement, SDD,
-  parallel task agents, /1-subagent-implement. Hub: /0-implement.
+  when delegated sequential plan execution is requested and subagents are available.
+  Not for: concurrent workstreams (1-parallel-agents) or writing plans (1-write-plan).
+  Triggers: subagent implement, SDD, /1-subagent-implement. Hub: /0-implement.
 disable-model-invocation: true
 metadata:
   catalog:
     hub: 0-implement
     role: soft
     when:
-      - "the plan is ready and subagents are available"
+      - "requested delegated execution of a ready plan with sequential implementer subagents and review checkpoints"
+    not_when:
+      - "no implementation plan exists → 1-write-plan"
+      - "tasks are independent and can run concurrently → 1-parallel-agents"
+    next: [1-code-review]
+    cousins: [1-write-plan, 1-execute-plan, 1-parallel-agents, 1-git-worktrees, 1-finish-branch]
     triggers:
       - "subagent implement"
       - "SDD"
-      - "parallel task agents"
+      - "sequential task agents"
       - "1-subagent-implement"
+      - "implement with subagents"
     requires_setup: false
 ---
 
@@ -29,7 +36,7 @@ Execute a plan by **one fresh implementer subagent per task**, task review after
 | Need | Skill |
 |------|--------|
 | Same-session plan via subagents | **subagent-implement** (this) |
-| Separate-session plan run | `/1-execute-plan` |
+| Direct plan execution, including a new session | `/1-execute-plan` |
 | Independent multi-domain investigations | `/1-parallel-agents` |
 | Worktree isolation | `/1-git-worktrees` |
 | Multi-axis closer | `/1-code-review` |
@@ -38,10 +45,20 @@ Execute a plan by **one fresh implementer subagent per task**, task review after
 ## Process
 
 1. Ensure workspace isolation (`/1-git-worktrees` if needed).
-2. Load plan; create progress tracking.
-3. For each task: dispatch implementer → task review (spec + quality) → fix loop if needed.
-4. After all tasks: whole-branch review (e.g. `/1-code-review` or reviewer template in refs).
-5. Complete with **`/1-finish-branch`**.
+2. Inspect the worktree first; preserve user-dirty files and keep shared contracts, migrations, generated files, lockfiles, and global configuration serial.
+3. Load plan; reconcile any progress record with current code and evidence, then establish task order and one explicit file-ownership brief per worker. One worker writes to one checkout at a time, including the controller.
+4. For each task: dispatch implementer → task review (spec + quality) → fix loop if needed.
+5. After all tasks: verify integration in dependency order, then review the complete requested diff through `/1-code-review`, including task-owned uncommitted changes. A worker report or committed-range package alone is not proof of the current candidate.
+6. Return evidence and workspace ownership to the caller. Use **`/1-finish-branch`** only for requested integration or PR options, not automatically after every plan.
+
+## Hard rules
+
+- Delegate bounded tasks with satisfied dependencies. Keep shared state and coupled work serial; tool availability alone does not authorize a switch to delegation.
+- A task brief names allowed files, protected files, acceptance criteria, and verification.
+- The controller integrates and performs final review; a worker report is not proof of completion.
+- Workers have no implicit commit, push, rebase, merge or cleanup authority. Read-only task reviews must not race an active writer.
+
+Source adaptation: [subagent-driven-development](./references/subagent-driven-development-source.md).
 
 ## Progressive disclosure
 

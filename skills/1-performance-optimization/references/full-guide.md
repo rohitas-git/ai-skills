@@ -1,352 +1,106 @@
-# 1-performance-optimization (vendor harvest)
+# Performance optimization operative guide
 
-Source: archive vendor `1-performance-optimization`. Catalog winner: `/1-performance-optimization`.
+Use after the main skill pins one performance claim, exact candidate, workload, environment,
+protocol, correctness guard, and authority. The complete upstream snapshot remains at
+`archive/vendor/agent-skills/skills/performance-optimization/SKILL.md`. Its fixed budgets,
+framework examples, executable tool commands, automatic keep/revert/commit rules, and generic
+optimization recipes are source material, not operative defaults.
 
-name: 1-performance-optimization
-description: Optimizes application performance across frontend, backend, queries, and databases. Use when performance requirements exist, when you suspect performance regressions, when Core Web Vitals or load times need improvement, when N+1 query patterns need fixing, or when profiling reveals bottlenecks.
+## Measurement contract
 
-# Performance Optimization
+Record enough provenance for another run to make a valid comparison:
 
-## Overview
-
-Measure before optimizing. Performance work without measurement is guessing — and guessing leads to premature optimization that adds complexity without improving what matters. Profile first, identify the actual bottleneck, fix it, measure again. Optimize only what measurements prove matters.
-
-## When to Use
-
-- Performance requirements exist in the spec (load time budgets, response time SLAs)
-- Users or monitoring report slow behavior
-- Core Web Vitals scores are below thresholds
-- You suspect a change introduced a regression
-- Building features that handle large datasets or high traffic
-
-**When NOT to use:** Don't optimize before you have evidence of a problem. Premature optimization adds complexity that costs more than the performance it gains.
-
-## Core Web Vitals Targets
-
-| Metric | Good | Needs Improvement | Poor |
-|--------|------|-------------------|------|
-| **LCP** (Largest Contentful Paint) | ≤ 2.5s | ≤ 4.0s | > 4.0s |
-| **INP** (Interaction to Next Paint) | ≤ 200ms | ≤ 500ms | > 500ms |
-| **CLS** (Cumulative Layout Shift) | ≤ 0.1 | ≤ 0.25 | > 0.25 |
-
-## The Optimization Workflow
-
-```
-1. MEASURE  → Establish baseline with real data
-2. IDENTIFY → Find the actual bottleneck (not assumed)
-3. FIX      → Address the specific bottleneck
-4. VERIFY   → Measure again, confirm improvement
-5. GUARD    → Add monitoring or tests to prevent regression
-```
-
-### Step 1: Measure
-
-Two complementary approaches — use both:
-
-- **Synthetic (Lighthouse, DevTools Performance tab):** Controlled conditions, reproducible. Best for CI regression detection and isolating specific issues.
-- **RUM (web-vitals library, CrUX):** Real user data in real conditions. Required to validate that a fix actually improved user experience.
-
-**Frontend:**
-```bash
-# Synthetic: Lighthouse in Chrome DevTools (or CI)
-# Chrome DevTools → Performance tab → Record
-# Chrome DevTools MCP → Performance trace
-
-# RUM: Web Vitals library in code
-import { onLCP, onINP, onCLS } from 'web-vitals';
-
-onLCP(console.log);
-onINP(console.log);
-onCLS(console.log);
-```
-
-**Backend:**
-```bash
-# Response time logging
-# Application Performance Monitoring (APM)
-# Database query logging with timing
-
-# Simple timing
-console.time('db-query');
-const result = await db.query(...);
-console.timeEnd('db-query');
-```
-
-### Where to Start Measuring
-
-Use the symptom to decide what to measure first:
-
-```
-What is slow?
-├── First page load
-│   ├── Large bundle? --> Measure bundle size, check code splitting
-│   ├── Slow server response? --> Measure TTFB in DevTools Network waterfall
-│   │   ├── DNS long? --> Add dns-prefetch / preconnect for known origins
-│   │   ├── TCP/TLS long? --> Enable HTTP/2, check edge deployment, keep-alive
-│   │   └── Waiting (server) long? --> Profile backend, check queries and caching
-│   └── Render-blocking resources? --> Check network waterfall for CSS/JS blocking
-├── Interaction feels sluggish
-│   ├── UI freezes on click? --> Profile main thread, look for long tasks (>50ms)
-│   ├── Form input lag? --> Check re-renders, controlled component overhead
-│   └── Animation jank? --> Check layout thrashing, forced reflows
-├── Page after navigation
-│   ├── Data loading? --> Measure API response times, check for waterfalls
-│   └── Client rendering? --> Profile component render time, check for N+1 fetches
-└── Backend / API
-    ├── Single endpoint slow? --> Profile database queries, check indexes
-    ├── All endpoints slow? --> Check connection pool, memory, CPU
-    └── Intermittent slowness? --> Check for lock contention, GC pauses, external deps
-```
-
-### Step 2: Identify the Bottleneck
-
-Common bottlenecks by category:
-
-**Frontend:**
-
-| Symptom | Likely Cause | Investigation |
-|---------|-------------|---------------|
-| Slow LCP | Large images, render-blocking resources, slow server | Check network waterfall, image sizes |
-| High CLS | Images without dimensions, late-loading content, font shifts | Check layout shift attribution |
-| Poor INP | Heavy JavaScript on main thread, large DOM updates | Check long tasks in Performance trace |
-| Slow initial load | Large bundle, many network requests | Check bundle size, code splitting |
-
-**Backend:**
-
-| Symptom | Likely Cause | Investigation |
-|---------|-------------|---------------|
-| Slow API responses | N+1 queries, missing indexes, unoptimized queries | Check database query log |
-| Memory growth | Leaked references, unbounded caches, large payloads | Heap snapshot analysis |
-| CPU spikes | Synchronous heavy computation, regex backtracking | CPU profiling |
-| High latency | Missing caching, redundant computation, network hops | Trace requests through the stack |
-
-### Step 3: Fix Common Anti-Patterns
-
-#### N+1 Queries (Backend)
-
-```typescript
-// BAD: N+1 — one query per task for the owner
-const tasks = await db.tasks.findMany();
-for (const task of tasks) {
-  task.owner = await db.users.findUnique({ where: { id: task.ownerId } });
-}
-
-// GOOD: Single query with join/include
-const tasks = await db.tasks.findMany({
-  include: { owner: true },
-});
-```
-
-#### Unbounded Data Fetching
-
-```typescript
-// BAD: Fetching all records
-const allTasks = await db.tasks.findMany();
-
-// GOOD: Paginated with limits
-const tasks = await db.tasks.findMany({
-  take: 20,
-  skip: (page - 1) * 20,
-  orderBy: { createdAt: 'desc' },
-});
-```
-
-#### Missing Image Optimization (Frontend)
-
-```html
-<!-- BAD: No dimensions, no format optimization -->
-<img src="/hero.jpg" />
-
-<!-- GOOD: Hero / LCP image — art direction + resolution switching, high priority -->
-<!--
-  Two techniques combined:
-  - Art direction (media): different crop/composition per breakpoint
-  - Resolution switching (srcset + sizes): right file size per screen density
--->
-<picture>
-  <!-- Mobile: portrait crop (8:10) -->
-  <source
-    media="(max-width: 767px)"
-    srcset="/hero-mobile-400.avif 400w, /hero-mobile-800.avif 800w"
-    sizes="100vw"
-    width="800"
-    height="1000"
-    type="image/avif"
-  />
-  <source
-    media="(max-width: 767px)"
-    srcset="/hero-mobile-400.webp 400w, /hero-mobile-800.webp 800w"
-    sizes="100vw"
-    width="800"
-    height="1000"
-    type="image/webp"
-  />
-  <!-- Desktop: landscape crop (2:1) -->
-  <source
-    srcset="/hero-800.avif 800w, /hero-1200.avif 1200w, /hero-1600.avif 1600w"
-    sizes="(max-width: 1200px) 100vw, 1200px"
-    width="1200"
-    height="600"
-    type="image/avif"
-  />
-  <source
-    srcset="/hero-800.webp 800w, /hero-1200.webp 1200w, /hero-1600.webp 1600w"
-    sizes="(max-width: 1200px) 100vw, 1200px"
-    width="1200"
-    height="600"
-    type="image/webp"
-  />
-  <img
-    src="/hero-desktop.jpg"
-    width="1200"
-    height="600"
-    fetchpriority="high"
-    alt="Hero image description"
-  />
-</picture>
-
-<!-- GOOD: Below-the-fold image — lazy loaded + async decoding -->
-<img
-  src="/content.webp"
-  width="800"
-  height="400"
-  loading="lazy"
-  decoding="async"
-  alt="Content image description"
-/>
-```
-
-#### Unnecessary Re-renders (React)
-
-```tsx
-// BAD: Creates new object on every render, causing children to re-render
-function TaskList() {
-  return <TaskFilters options={{ sortBy: 'date', order: 'desc' }} />;
-}
-
-// GOOD: Stable reference
-const DEFAULT_OPTIONS = { sortBy: 'date', order: 'desc' } as const;
-function TaskList() {
-  return <TaskFilters options={DEFAULT_OPTIONS} />;
-}
-
-// Use React.memo for expensive components
-const TaskItem = React.memo(function TaskItem({ task }: Props) {
-  return <div>{/* expensive render */}</div>;
-});
-
-// Use useMemo for expensive computations
-function TaskStats({ tasks }: Props) {
-  const stats = useMemo(() => calculateStats(tasks), [tasks]);
-  return <div>{stats.completed} / {stats.total}</div>;
-}
-```
-
-#### Large Bundle Size
-
-```typescript
-// Modern bundlers (Vite, webpack 5+) handle named imports with tree-shaking automatically,
-// provided the dependency ships ESM and is marked `sideEffects: false` in package.json.
-// Profile before changing import styles — the real gains come from splitting and lazy loading.
-
-// GOOD: Dynamic import for heavy, rarely-used features
-const ChartLibrary = lazy(() => import('./ChartLibrary'));
-
-// GOOD: Route-level code splitting wrapped in Suspense
-const SettingsPage = lazy(() => import('./pages/Settings'));
-
-function App() {
-  return (
-    <Suspense fallback={<Spinner />}>
-      <SettingsPage />
-    </Suspense>
-  );
-}
-```
-
-#### Missing Caching (Backend)
-
-```typescript
-// Cache frequently-read, rarely-changed data
-const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
-let cachedConfig: AppConfig | null = null;
-let cacheExpiry = 0;
-
-async function getAppConfig(): Promise<AppConfig> {
-  if (cachedConfig && Date.now() < cacheExpiry) {
-    return cachedConfig;
-  }
-  cachedConfig = await db.config.findFirst();
-  cacheExpiry = Date.now() + CACHE_TTL;
-  return cachedConfig;
-}
-
-// HTTP caching headers for static assets
-app.use('/static', express.static('public', {
-  maxAge: '1y',           // Cache for 1 year
-  immutable: true,        // Never revalidate (use content hashing in filenames)
-}));
-
-// Cache-Control for API responses
-res.set('Cache-Control', 'public, max-age=300'); // 5 minutes
-```
-
-## Performance Budget
-
-Set budgets and enforce them:
-
-```
-JavaScript bundle: < 200KB gzipped (initial load)
-CSS: < 50KB gzipped
-Images: < 200KB per image (above the fold)
-Fonts: < 100KB total
-API response time: < 200ms (p95)
-Time to Interactive: < 3.5s on 4G
-Lighthouse Performance score: ≥ 90
-```
-
-**Enforce in CI:**
-```bash
-# Bundle size check
-npx bundlesize --config bundlesize.config.json
-
-# Lighthouse CI
-npx lhci autorun
-```
-
-## See Also
-
-For detailed performance checklists, optimization commands, and anti-pattern reference, see `references/performance-checklist.md`.
-
-
-## Common Rationalizations
-
-| Rationalization | Reality |
+| Dimension | Examples—not defaults |
 |---|---|
-| "We'll optimize later" | Performance debt compounds. Fix obvious anti-patterns now, defer micro-optimizations. |
-| "It's fast on my machine" | Your machine isn't the user's. Profile on representative hardware and networks. |
-| "This optimization is obvious" | If you didn't measure, you don't know. Profile first. |
-| "Users won't notice 100ms" | Research shows 100ms delays impact conversion rates. Users notice more than you think. |
-| "The framework handles performance" | Frameworks prevent some issues but can't fix N+1 queries or oversized bundles. |
+| candidate | worktree/HEAD, artifact digest, query/schema version |
+| workload | route/action/query, fixture/data size/distribution, concurrency |
+| environment | machine/runtime/browser/device/network/database, competing load |
+| state | cold/warm caches, startup/steady state, connection pool, feature flags |
+| protocol | tool/version/config/command, samples, warmups, timeout, aggregation |
+| claim | metric/unit, target or baseline delta, guard metrics, practical threshold |
 
-## Red Flags
+Capture raw samples, not only a mean or screenshot. Use distributions/percentiles for tail-sensitive
+behavior, throughput and saturation together under concurrency, allocations/retained memory for
+memory claims, and task-specific field metrics for user experience. Choose statistical treatment
+proportionally; do not call a delta meaningful when it is inside normal run-to-run variation.
 
-- Optimization without profiling data to justify it
-- N+1 query patterns in data fetching
-- List endpoints without pagination
-- Images without dimensions, lazy loading, or responsive sizes
-- Bundle size growing without 0-review
-- No performance monitoring in production
-- `React.memo` and `useMemo` everywhere (overusing is as bad as underusing)
+Current external standards such as Core Web Vitals and project SLOs can supply targets, but verify
+their current definitions and applicability rather than embedding evergreen numeric truth here.
 
-## Verification
+## Localize before changing
 
-After any performance-related change:
+Treat common remedies as hypotheses:
 
-- [ ] Before and after measurements exist (specific numbers)
-- [ ] The specific bottleneck is identified and addressed
-- [ ] Core Web Vitals are within "Good" thresholds
-- [ ] Bundle size hasn't increased significantly
-- [ ] No N+1 queries in new data fetching code
-- [ ] Performance budget passes in CI (if configured)
-- [ ] Existing tests still pass (optimization didn't break behavior)
+- A frontend delay may come from server time, transfer, main-thread work, rendering, layout,
+  third-party code, or an interaction-specific dependency chain.
+- Backend latency may be queueing, connection acquisition, CPU, allocation/GC, lock contention,
+  database execution, serialization, or a downstream call.
+- A query may scan because an index is absent, unusable, low-selectivity, stale-statistics affected,
+  or correctly more expensive than a sequential plan.
+- Memory growth may be intended caching, delayed reclamation, fragmentation, retained references,
+  unbounded queues, or a leak.
+
+Use a profile, trace, query plan, counters, or controlled perturbation that distinguishes causes.
+Do not add an index, cache, memoization, preconnect, worker, pool capacity, virtualization, or CDN
+because it appears on a checklist.
+
+## Correctness and cost boundaries
+
+### Caches
+
+Specify key inputs, authorization/tenant partition, staleness allowance, invalidation/eviction,
+negative/error behavior, stampede protection, memory/storage ceiling, and failure fallback. A cache
+that omits viewer, permissions, locale, flags, or other response inputs can leak or serve wrong data.
+Do not cache a value whose permitted staleness violates the product contract.
+
+### Databases
+
+Use authorized local/disposable data and the database specialist. `EXPLAIN ANALYZE` executes the
+statement; do not run it against a remote or mutating query merely because it sounds diagnostic.
+Compare relevant plan/runtime evidence and write/storage/lock cost. Every schema or index change is
+a migration under repository policy; concurrent builds and production rollout need their owner.
+
+### Concurrency and resources
+
+Measure queue time, service time, saturation, errors, timeouts, and recovery together. Increasing
+pool/thread/worker/concurrency limits can move the queue, overload a dependency, amplify retries,
+or exhaust memory. Load tests need bounded rate/duration/data and an owned isolated target.
+
+### Frontend delivery and rendering
+
+Use the repository's framework/image/font/build/runtime capabilities. Verify actual transfer and
+execution cost, critical-path effect, layout stability, interaction latency, caching, and device/
+network support. Memoization and code splitting have overhead; preload/fetch priority can steal
+bandwidth; lazy loading can harm above-the-fold content. Measure the intended user task.
+
+## Experiment and decision ledger
+
+| Field | Record |
+|---|---|
+| hypothesis | causal statement and predicted movement |
+| change | one variable or disclosed coupled set |
+| before/after | raw samples, summaries, confidence/variation |
+| guards | correctness, security, accessibility, errors, resource cost |
+| confounders | environment drift, cache state, external load, data changes |
+| disposition | keep, revise, recommend removal, or inconclusive |
+
+Re-measure the same way, but distinguish protocol consistency from blindly reproducing a flawed
+benchmark. If evidence exposes a confounder, repair the protocol and re-baseline both candidates.
+For noisy systems, interleave candidates or use repeated randomized runs where practical.
+
+An experiment that misses its performance claim should not remain *solely* as an optimization.
+However, do not automatically revert user-owned work: report the disposition, preserve unrelated
+benefits and scope, and remove/revert only within explicit edit authority. Record failed experiments
+in the PR/task or canonical project location only when documentation changes are authorized.
+
+## Regression guard
+
+Choose the cheapest stable signal that catches a material recurrence. Options include a deterministic
+benchmark budget, query-plan/property assertion, bundle/artifact budget, representative integration
+benchmark, or field trend/alert. CI gates require stable environments and honest required-context
+semantics; route workflow changes through `/1-ci-cd-and-automation`. Durable production telemetry
+routes through `/1-observability-and-instrumentation`.
+
+Do not install benchmark tools, call public field-data services, create hosted dashboards, or run
+remote load merely to finish the experiment. Return BLOCKED/SKIPPED evidence and a precise proposed
+procedure when unavailable.

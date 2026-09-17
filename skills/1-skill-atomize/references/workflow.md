@@ -1,87 +1,45 @@
-# 1-skill-atomize — detection & apply detail
+# Atomize Workflow Detail
 
-Load from SKILL.md when scanning or applying a pass.
+Load only for the exact overlap cluster pinned by `/1-skill-atomize`.
 
-## What “overlap” means
+## Evidence model
 
-**Content overlap** = two skills that would both reasonably claim the same user utterance **and** re-implement similar procedures.
+Content overlap exists when two live skills plausibly claim the same request and substantially repeat procedure or output. Shared domain words alone are not overlap.
 
-**Not overlap** (exclude from “fix” clusters):
+Exclude:
 
-- Intentional hub relationships in flows.md: wrapper, hard, soft, pipeline, on-ramp, leaf, axis, satellite, sub-hub
-- Explicit cousins already documented with a clean Boundary (e.g. comment family)
-- Deprecated tombstones (mention successor only)
+- explicit hub, wrapper, pipeline, leaf, axis, satellite, or caller-return relationships;
+- cousins with distinct positive boundaries;
+- archived/vendor packages unless explicitly included;
+- generated route projections as behavioral truth.
 
-Examples of intentional (do not “fix” by merging):
+## Detection
 
-- `/0-grilling` ↔ `1-grill-me` / `1-grill-with-docs`
-- `/0-skill-manager` ↔ `1-skill-linter` / 1-create-skill path
-- Vault ops under `/0-rohitas-vault-wiki`
-- Ship pipeline `1-to-spec` → `1-to-tickets` → `0-implement`
+1. Record each candidate's exact path, revision, hub parents, role, description, triggers, output, effects, and authority.
+2. Compare trigger intersection, procedural duplication, and whether either skill silently owns the other's outcome.
+3. Classify:
+   - **same job** — one canonical owner is likely;
+   - **trigger collision** — jobs differ but route wording overlaps;
+   - **adjacent jobs** — explicit handoff is enough;
+   - **shared theme** — no change.
+4. Cite evidence for every classification and state coverage limits.
 
-## Detection recipe
+## Resolution
 
-1. Inventory live skills under `skills/`, `productivity/`, `misc/`, `personal/` (name + description + first ~400 body chars).
-2. Cluster by theme keywords (0-review, learn/explain, wiki/docs, architecture, security, context, etc.).
-3. For each pair in a cluster, score:
-   - Shared triggers in descriptions
-   - Shared procedure (not just shared domain word)
-   - Missing Boundary / hard redirect
-4. Drop pairs already linked as hub children of the same parent with distinct link roles.
-5. Rank High / Medium / Low.
+Use the smallest move that restores one-job ownership:
 
-### High (typical)
+1. positive Boundary and redirects;
+2. remove duplicated cousin procedure;
+3. merge true duplicates only when identity/behavior loss is explicitly accepted;
+4. split only when distinct invocation or sequence jobs remain after pruning.
 
-- Same job, different packaging (two full “explain” systems)
-- Two living-knowledge systems for the same repo class
-- Doctrine Q&A vs always-on enforcer with no F-fork
+For every applied cluster, update only directly affected descriptions, metadata, flows, hub workflow/HTML, and human indexes. Generated projections are regenerated from their sources. Re-read targets before writing and preserve unrelated dirty content.
 
-### Medium
+## Authority
 
-- Adjacent jobs, fuzzy trigger (verify vs 0-review closer)
-- Shared vocabulary, different artifact
+An explicit atomize/fix request selects **apply** for the named scope. A review/audit request selects **assess**. Ask only when scope is materially ambiguous, a merge/split would change public identity or discard behavior, or the operation would delete, overwrite, install, sync, publish, commit, push, or mutate external/global state.
 
-### Low
+## Completion
 
-- Complementary leaves with explicit Boundary already
+The cluster has one-job descriptions, valid caller/return handoffs, no stale route surface, focused route tests, and `/1-skill-linter` evidence. Report applied and deferred items. No automatic catalog-wide expansion.
 
-## Apply checklist (per skill in scope)
-
-1. Rewrite **description** → one job (+ “not X → /cousin”).
-2. Add **Boundary** table (self + cousins).
-3. Add **Hard redirect** + **Forks** matching flows F# IDs.
-4. Strip re-implemented cousin procedures (one-line pointer only).
-5. Keep lean SKILL.md; depth in `references/`.
-6. Update flows.md children + fork tables.
-7. Update hub `workflow.json` if domain hub package exists.
-8. README one-liners if description changed materially.
-9. skill-lint Gate: PASS.
-
-## Contract SSOT
-
-Always enforce [atomic-skills.md](../../0-skill-manager/references/atomic-skills.md). If the contract is missing, create/update it under 0-skill-manager references first (Phase 0).
-
-## Resolution modes (F-A2)
-
-| Mode | Actions |
-|------|---------|
-| **keep-both** (default) | Boundary + forks only; no tombstones |
-| **merge** | Winner keeps job; loser → `deprecated/` + successor; flows remove loser |
-| **split** | Extract thinner leaves; hub becomes router; new skills need place + skill-lint |
-
-## Phases (large pass)
-
-| Phase | Work |
-|-------|------|
-| 0 | Ensure atomic-skills contract + lint checklist codes |
-| 1…N | One cluster at a time (Learn, Docs, Clean-code, …) |
-| last | Integration: skill-lint catalog, hub-member, forks present |
-
-## Non-goals
-
-- Butler query routing redesign
-- Full 0-skill-creator eval loop for every body
-- Vendor pack rewrites
-- Promoting `using-agent-skills`
-
-**Agent judgment:** every user-facing fork must offer **Agent judgment** (agent chooses best branch and proceeds without more questions on that fork).

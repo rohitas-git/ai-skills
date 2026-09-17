@@ -2,13 +2,13 @@
   "schema_version": 1,
   "kind": "domain_hub_workflow",
   "domain_id": 7,
-  "domain": "Fog map",
+  "domain": "Uncertainty map",
   "hub": "0-wayfinder",
   "slash": "/0-wayfinder",
   "path": "skills/0-wayfinder",
   "package_dir": "hubs/0-wayfinder/",
-  "role": "Multi-session fog map when one agent session cannot hold the work.",
-  "notes": "Do not jump straight to implement from 0-wayfinder; exit is 1-to-spec only.",
+  "role": "Route one multi-session uncertainty-map operation without performing it.",
+  "notes": "Chart owns one new map set; Advance owns one existing decision-ticket cycle; a settled map may separately enter To Spec. No direct implementation route.",
   "parent": {
     "hub": "0-butler",
     "slash": "/0-butler",
@@ -19,28 +19,46 @@
   },
   "children": [
     {
+      "link_type": "leaf",
+      "skills": ["1-wayfinder-chart"],
+      "note": "One new draft, local, or tracker map-set artifact"
+    },
+    {
+      "link_type": "pipeline",
+      "skills": ["1-wayfinder-advance"],
+      "note": "One existing map and exactly one frontier decision-ticket cycle"
+    },
+    {
       "link_type": "on-ramp",
-      "skills": [
-        "1-to-spec"
-      ],
-      "note": "exit only \u2192 then Ship"
+      "skills": ["1-to-spec"],
+      "note": "Settled-map specification only on a separate request"
     }
   ],
   "pipeline": [
-    "map decision tickets",
-    "resolve fog",
-    "exit only via to-spec"
+    "pin actual caller, immutable map/source candidate, evidence, authority, and optional worktree identity",
+    "direct route or material-only F-W1/F-W2",
+    "1-wayfinder-chart for one new map set or 1-wayfinder-advance for one existing ticket cycle",
+    "return exact artifacts, effects, frontier/fog, and settlement status to actual caller",
+    "materially ambiguous settlement only → F8; separately requested settled-map output → 1-to-spec"
   ],
   "forks": [
     {
+      "id": "F-W1",
+      "question": "Which one uncertainty-map operation is needed?",
+      "recommended": "Infer chart, advance, or settled-spec output from the named candidate",
+      "branches": ["1-wayfinder-chart", "1-wayfinder-advance", "1-to-spec", "Agent judgment"]
+    },
+    {
+      "id": "F-W2",
+      "question": "Which frontier decision ticket should advance?",
+      "recommended": "Use the user-named ticket or the unique/declared-first eligible frontier ticket",
+      "branches": ["user-named ticket", "unique or declared-first eligible ticket", "Agent judgment"]
+    },
+    {
       "id": "F8",
-      "question": "Fog clear enough to build?",
-      "recommended": "only when buildable",
-      "branches": [
-        "stay wayfinder",
-        "\u2192 to-spec",
-        "Agent judgment"
-      ]
+      "question": "Is the map settled enough for specification?",
+      "recommended": "Stay in Wayfinder whenever material fog remains",
+      "branches": ["stay in 0-wayfinder", "1-to-spec on a separate request", "Agent judgment"]
     }
   ],
   "domain_hubs_routed": null,
@@ -48,7 +66,7 @@
     "html": "./hub.html",
     "workflow_json": "./workflow.json",
     "flows_chart": "../flows-chart.html",
-    "flows_ssot": "../../../skills/0-butler/references/flows.md",
+    "flows_ssot": "../../skills/0-butler/references/flows.md",
     "hubs_index": "../index.html",
     "manifest": "../manifest.json"
   },
@@ -59,6 +77,9 @@
     "each_domain_hub_has_workflow_json",
     "each_domain_hub_links_flows_chart",
     "one_hub_per_domain",
-    "forks_ask_user"
+    "forks_ask_user",
+    "exact_candidate_and_optional_worktree_handoff",
+    "no_automatic_tracker_or_specialist_effect",
+    "no_direct_implementation_route"
   ]
 }

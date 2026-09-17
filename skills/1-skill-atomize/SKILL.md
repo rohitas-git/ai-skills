@@ -1,80 +1,57 @@
 ---
 name: 1-skill-atomize
 description: >
-  Reorg live skills toward one job each: Boundary tables, hard redirects, ask-user forks for collisions.
-  Use when: skill overlap, atomize skills, skills-reorg, /1-skill-atomize, high-overlap pass.
-  Not for: report-only lint (1-skill-linter), body craft (0-skill-creator), path move without atomize (0-skill-manager organize).
-  Hub: /0-skill-manager.
+  Assess or repair one bounded cluster of overlapping live skills. Use when skills share triggers,
+  duplicate procedures, or need one-job boundaries. Not for structural lint only (1-skill-linter),
+  body craft only (0-skill-creator), or a path move without overlap (0-skill-manager). Hub: /0-skill-manager.
 disable-model-invocation: true
 metadata:
   catalog:
     hub: 0-skill-manager
     role: pipeline
-    when:
-      - "de-overlap skills / Boundary + forks"
-      - "atomize / skills-reorg"
+    when: [assess or repair one bounded overlapping-skill cluster]
     not_when:
-      - "lint report only → 1-skill-linter"
-      - "craft rewrite → 0-skill-creator"
-      - "rename/move only → 0-skill-manager organize"
+      - "structural lint only → 1-skill-linter"
+      - "body craft only → 0-skill-creator"
+      - "path move only → 0-skill-manager"
     prev: [0-skill-manager]
+    next: [1-skill-linter, 0-skill-manager]
     cousins: [1-skill-linter, 0-skill-creator]
-    triggers:
-      - "skill atomize"
-      - "1-skill-atomize"
-      - "skills reorg"
-      - "skill overlap"
+    triggers: [skill atomize, overlapping skills, duplicate skill triggers, skills reorg]
     requires_setup: false
 ---
 
-# Skill atomize
+# Skill Atomize
 
-**Atomic job:** one job per live skill; collisions **ask the user** (never silent cousin load).
+**Atomic job:** resolve one pinned overlap cluster without broadening its members' jobs.
 
-**Contract:** [atomic-skills.md](../0-skill-manager/references/atomic-skills.md) · **Detail:** [workflow.md](./references/workflow.md)
+**Contract:** [atomic skills](../0-skill-manager/references/atomic-skills.md) · **detail:** [workflow](./references/workflow.md)
 
-## Boundary
+## Modes
 
-| Need | Skill |
-|------|--------|
-| Atomize / de-overlap | **this** |
-| Health report only | `/1-skill-linter` |
-| Move / rename / tombstone | `/0-skill-manager` organize |
-| Place / ingest / new-hub | `/0-skill-manager` |
-| Thin craft rewrite | `/0-skill-creator` + `/1-writing-great-skills` |
-| Which skill for a task | `/0-butler` |
-
-## Forks (ask)
-
-| Fork | Question | Recommended | Branches |
-|------|----------|-------------|----------|
-| **F-A1** | Scope? | High-overlap only | high · high+medium · full · **Agent judgment** |
-| **F-A2** | Collision fix? | Keep both + Boundary + forks | keep-both · merge · split · **Agent judgment** |
-| **F-A3** | Write files? | Dry-run first | dry-run · apply · **Agent judgment** |
+| Mode | Result |
+|---|---|
+| assess | read-only overlap evidence and proposed resolution |
+| apply | one explicitly requested, reversible cluster change-set |
 
 ## Process
 
-1. **Orient** — catalog root; flows SSOT; dry-run default.  
-2. **Detect** — content-overlap clusters (description + blurb). Exclude intentional hub links (wrapper/pipeline/…). See workflow.md.  
-3. **Rank** — High (same job) · Medium (trigger confusion) · Low (shared theme).  
-4. **Plan** — one-job lines, Boundary, F# forks, flows + hub JSON, README blurbs. Present dry-run.  
-5. **Confirm** F-A3.  
-6. **Apply** — Boundary + hard redirect; strip cousin full procedures; update flows/hubs. No silent merge unless F-A2 = merge.  
-7. **Gate** — `/1-skill-linter` → **Gate: PASS**.  
-8. **Summary** — clusters, forks, deferred low items.
+1. Pin catalog root, repository/worktree, branch/`HEAD`, dirty ownership, evidence cutoff, exact cluster, and mode. A broad catalog request may select several named clusters, but each is scored and reconciled independently.
+2. Compare descriptions, triggers, procedures, outputs, authority, and hub roles. Exclude intentional wrapper/pipeline/leaf relationships and cousins with distinct boundaries.
+3. Classify same job, trigger collision, adjacent job, or shared theme. Ask only when a merge/split choice would materially change public identity or discard behavior; otherwise choose the smallest evidence-backed boundary repair.
+4. In **assess**, return the ledger and stop. In **apply**, re-read targets, then update only the chosen cluster and its directly affected route surfaces. Preserve unrelated dirty files and concurrent changes.
+5. Run focused route tests and `/1-skill-linter`. Report exact coverage, unresolved ambiguity, and every applied/unapplied item; return to `/0-skill-manager`.
 
-**Default if user said only “atomize”:** high-overlap · keep-both · dry-run → confirm → apply → lint.
+An explicit “atomize/fix these skills” request authorizes scoped reversible edits. Deletion/tombstoning, overwrite, new public identity, install, sync, commit, push, or publication remains separately gated.
 
-## Hard rules
+## Resolution order
 
-1. Multi-file writes need confirm; dry-run default.  
-2. Never invent skills.  
-3. Merge only true duplicates (F-A2).  
-4. No dual meta-router / no `using-agent-skills`.  
-5. No wiki atoms.  
-6. Forks always ask (recommended first) + **Agent judgment**.  
-7. Lint Gate PASS before “done”.
+1. clarify Boundary and positive redirects;
+2. remove duplicated cousin procedures;
+3. merge only true duplicates;
+4. split only when one body still owns independent invocation or sequence jobs.
 
 ## Related
 
-Parent: `/0-skill-manager` · optional pre-pass: `/1-skill-linter`.
+Parent/apply owner: `/0-skill-manager` · report-only lint: `/1-skill-linter` · body rewrite: `/0-skill-creator`.
+

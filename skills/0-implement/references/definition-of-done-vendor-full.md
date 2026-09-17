@@ -1,6 +1,9 @@
+> **Historical source — not operative instructions.** Use `definition-of-done.md`; do not apply this
+> source's universal full-suite, human-review, or unchanged-project-bar claims directly.
+
 # Definition of Done
 
-A standing, project-wide bar that every change must clear before it counts as done. Unlike acceptance criteria, which vary per task and answer "did we build the right thing?", the Definition of Done is the same every time and answers "is this finished to our standard?". Use it as the final gate in `planning-and-task-breakdown`, `incremental-implementation`, and `1-shipping-and-launch`.
+A standing, project-wide bar that every change must clear before it counts as done. Unlike acceptance criteria, which vary per task and answer "did we build the right thing?", the Definition of Done is the same every time and answers "is this finished to our standard?". Use it as the final gate in `planning-and-task-breakdown`, `incremental-implementation`, and `shipping-and-launch`.
 
 ## Definition of Done vs. Acceptance Criteria
 
@@ -32,7 +35,7 @@ Apply this to every change before declaring it done.
 - [ ] Changes are scoped to the task; no unrelated refactors snuck in
 - [ ] Linting and formatting pass
 
-The depth behind these items lives in `code-review-and-quality` (the five-axis 0-review) and `code-simplification` (reducing complexity without changing behavior).
+The depth behind these items lives in `code-review-and-quality` (the five-axis review) and `code-simplification` (reducing complexity without changing behavior).
 
 ### Integration
 - [ ] Change works with the rest of the system, not just in isolation
@@ -45,16 +48,16 @@ The depth behind these items lives in `code-review-and-quality` (the five-axis 0
 - [ ] Documentation describes the current state in timeless language, not the change history
 
 ### Ship-readiness
-- [ ] Security implications reviewed for any untrusted input, auth, or data handling (see `2-security-and-hardening`)
-- [ ] Observability in place for new critical paths (logs, metrics, traces) (see `1-observability-and-instrumentation`)
-- [ ] Rollback path exists for anything risky (see `1-shipping-and-launch`)
+- [ ] Security implications reviewed for any untrusted input, auth, or data handling (see `security-and-hardening`)
+- [ ] Observability in place for new critical paths (logs, metrics, traces) (see `observability-and-instrumentation`)
+- [ ] Rollback path exists for anything risky (see `shipping-and-launch`)
 - [ ] The human has reviewed and approved before merge or deploy
 
 ## How to Apply
 
 - **Per task**: confirm the Correctness and Quality sections before checking the task off.
 - **Per feature**: confirm Integration and Documentation before considering the feature complete.
-- **Per release**: the full checklist is the floor; `1-shipping-and-launch` adds the deploy-specific gates on top.
+- **Per release**: the full checklist is the floor; `shipping-and-launch` adds the deploy-specific gates on top.
 
 Tailor the list to the project once, then reuse it unchanged. A Definition of Done that is renegotiated every sprint is not a Definition of Done.
 
@@ -64,4 +67,4 @@ Tailor the list to the project once, then reuse it unchanged. A Definition of Do
 - "Tests pass" used as a synonym for done while docs, regressions, or runtime verification are skipped.
 - A different bar applied depending on deadline pressure.
 - Acceptance criteria treated as the whole bar, with no standing quality floor.
-- "Done" declared before human 0-review on changes that need it.
+- "Done" declared before human review on changes that need it.

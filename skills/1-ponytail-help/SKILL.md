@@ -1,79 +1,52 @@
 ---
 name: 1-ponytail-help
 description: >
-  Quick-reference card for all 0-ponytail modes, skills, and commands. One-shot display,
-  not a persistent mode. Trigger: /1-ponytail-help, "ponytail help", "what 0-ponytail
-  commands", "how do I use ponytail" Use when: Quick-reference card for all 0-ponytail
-  modes, skills, and commands. Hub: /0-ponytail.
+  Show a one-shot quick reference for this catalog's Ponytail overlay, levels, and child skills. Not for
+  activating the mode, reviewing code, or describing uninstalled hooks/configuration. Hub: /0-ponytail.
 disable-model-invocation: true
 metadata:
   catalog:
     hub: 0-ponytail
     role: satellite
-    when:
-      - "Quick-reference card for all 0-ponytail modes, skills, and commands"
-    triggers:
-      - "1-ponytail-help"
-      - "ponytail help"
-      - "what 0-ponytail commands"
-      - "how do I use ponytail"
+    when: ["explain how this catalog's Ponytail skills and levels work"]
+    not_when:
+      - "activate minimal coding overlay → 0-ponytail"
+      - "review code → 1-ponytail-audit or 2-ponytail-review"
+    prev: [0-ponytail]
+    next: [0-ponytail]
+    cousins: [0-ponytail, 1-ponytail-audit, 2-ponytail-review]
+    triggers: [ponytail help, Ponytail commands, how do I use Ponytail, explain Ponytail modes]
     requires_setup: false
 ---
 
 # Ponytail Help
 
-## Process
-
-1. Follow the steps and hard rules in this skill.
-2. Load linked `references/` only when the branch needs them.
-
-
-Display this reference card when invoked. One-shot, do NOT change mode,
-write flag files, or persist anything.
+Display this catalog-accurate card once. Do not activate a mode, inspect code, write configuration, or
+claim hook/session persistence.
 
 ## Levels
 
-| Level | Trigger | What change |
-|-------|---------|-------------|
-| **Lite** | `/0-ponytail lite` | Build what's asked, name the lazier alternative in one line. |
-| **Full** | `/0-ponytail` | The ladder enforced: YAGNI → stdlib → native → one line → minimum. Default. |
-| **Ultra** | `/0-ponytail ultra` | YAGNI extremist. Deletion before addition. Challenges requirements before building. |
+| Level | Invocation | Effect on one coding task/session |
+|---|---|---|
+| Lite | `/0-ponytail lite` | Build what was requested and mention one materially simpler alternative. |
+| Full | `/0-ponytail` or `/0-ponytail full` | Apply the simplicity ladder; default when explicitly invoked. |
+| Ultra | `/0-ponytail ultra` | Challenge speculative work and prefer deletion without dropping accepted requirements or safety. |
 
-Level sticks until changed or session end.
+Say `stop ponytail` or `normal mode` to deactivate the conversational overlay. Actual cross-turn behavior
+depends on the host; this catalog does not install or promise lifecycle hooks, environment-variable
+activation, flag files, or `~/.config` state.
 
 ## Skills
 
-| Skill | Trigger | What it does |
-|-------|---------|--------------| 
-| **ponytail** | `/0-ponytail` | Lazy mode itself. Simplest solution that works. |
-| **ponytail-review** | `/2-ponytail-review` | Over-engineering 0-review: `L42: yagni: factory, one product. Inline.` |
-| **ponytail-gain** | `/1-ponytail-gain` | Measured-impact scoreboard: less code, less cost, more speed. |
-| **ponytail-help** | `/1-ponytail-help` | This card. |
+| Need | Skill |
+|---|---|
+| Smallest correct implementation approach | `/0-ponytail` |
+| One pinned diff: removable complexity only | `/2-ponytail-review` |
+| Bounded repository snapshot audit | `/1-ponytail-audit` |
+| Read-only `0-ponytail:` marker ledger | `/1-ponytail-debt` |
+| Pinned upstream benchmark snapshot | `/1-ponytail-gain` |
+| This card | `/1-ponytail-help` |
 
-## Deactivate
-
-Say "stop ponytail" or "normal mode". Resume anytime with `/0-ponytail`.
-`/0-ponytail off` also works.
-
-## Configure Default Mode
-
-Default mode = `full`, auto-active every session. Change it:
-
-**Environment variable** (highest priority):
-```bash
-export PONYTAIL_DEFAULT_MODE=ultra
-```
-
-**Config file** (`~/.config/0-ponytail/config.json`, Windows: `%APPDATA%\ponytail\config.json`):
-```json
-{ "defaultMode": "lite" }
-```
-
-Set `"off"` to disable auto-activation on session start, activate manually
-with `/0-ponytail` when wanted.
-
-Resolution: env var > config file > `full`.
-
-## More
-
-Full docs + examples: https://github.com/DietrichGebert/0-ponytail
+Ponytail is for coding. Use the direct domain skill for prose, summaries, translation, extensive
+documentation, or unresolved product scope. It never overrides repository rules, acceptance criteria,
+required explanations, safety controls, or action authority.

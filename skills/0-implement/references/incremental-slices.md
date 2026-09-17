@@ -1,22 +1,27 @@
-# Incremental implementation (merged from vendor)
+# Incremental slices
 
-Source: archive vendor `incremental-implementation`.
+Slice a change when doing so creates an independently understandable, verifiable checkpoint without
+breaking required invariants.
 
-## Slice before you code
+## Choose by dependency and risk
 
-For multi-file work, cut **vertical slices** that each leave the system green:
+- **Vertical/tracer slice:** one thin end-to-end path when it can be safe and testable.
+- **Contract-first:** stabilize a consumer/provider seam when parallel or staged work depends on it.
+- **Risk-first experiment:** falsify a load-bearing unknown before building around it.
+- **Compatibility phase:** expand → migrate → contract when consumers or stored data cannot move at
+  once.
+- **Atomic local change:** keep a small cohesive change together when splitting would create a broken
+  or misleading intermediate state.
 
-1. **Risk-first** — hardest unknown or integration first when it unblocks the rest.
-2. **Contract-first** — types/API seams before deep implementation when many callers depend on them.
-3. **Tracer bullet** — one thin path through UI→API→storage beats horizontal "all models then all UI."
+No strategy is universally preferred. Do not split schema from the code required to keep the branch
+safe merely for line-count purity; database-specific migration rules still govern file boundaries and
+deployment order.
 
-## Per-slice checklist
+## Per-slice contract
 
-- [ ] Slice has a user-visible or testable outcome
-- [ ] Tests via `/1-tdd` at agreed seams
-- [ ] Typecheck / targeted tests green before next slice
-- [ ] No drive-by refactors outside slice (ponytail/review later)
+Record outcome, acceptance evidence, dependencies, allowed paths, worktree/service ownership, and
+rollback/next-state assumptions. Keep unrelated cleanup out. Verify the narrowest relevant claims
+before expanding; a slice may remain uncommitted unless commit authority and granularity justify it.
 
-## Scope discipline
-
-If the slice grows past one clear outcome, stop and re-slice. Prefer small PRs over mega-diffs (`/1-code-review` sizing).
+Stop and re-slice when ownership overlaps, the candidate cannot be reviewed independently, the
+intermediate state would expose unsafe behavior, or one slice has acquired a second unrelated outcome.

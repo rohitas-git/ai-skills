@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "kind": "domain_hub_workflow",
+  "domain_id": 15,
+  "domain": "UI/UX",
+  "hub": "1-brand",
+  "slash": "/1-brand",
+  "path": "skills/1-brand",
+  "package_dir": "hubs/1-brand/",
+  "role": "Sub-hub routing one brand operation under /0-ui-ux.",
+  "notes": "Route exactly one guideline authoring/update, read-only compliance review, or read-only context extraction operation. Never chain token, asset, approval, or publication effects.",
+  "parent": {
+    "hub": "0-butler",
+    "slash": "/0-butler",
+    "relationship": "routed_by",
+    "html": "../0-butler/hub.html",
+    "workflow_json": "../0-butler/workflow.json",
+    "skill_path": "skills/0-butler",
+    "domain_hub": "0-ui-ux"
+  },
+  "parent_domain_hub": "0-ui-ux",
+  "children": [
+    {
+      "link_type": "leaf",
+      "skills": ["2-brand-guidelines", "2-brand-review", "2-brand-context-extract"]
+    }
+  ],
+  "pipeline": [
+    "pin caller, immutable brand source/candidate, evidence, privacy, authority, and optional worktree",
+    "direct route or material-only F-BR1",
+    "hand exactly one leaf the same source, candidate, and effect boundary",
+    "return artifact or evidence, revisions, verification, effects, and limits to actual caller"
+  ],
+  "forks": [
+    {
+      "id": "F-BR1",
+      "question": "Which one brand result is needed?",
+      "recommended": "Use the explicit verb and candidate state",
+      "branches": ["2-brand-guidelines", "2-brand-review", "2-brand-context-extract", "Agent judgment"]
+    }
+  ],
+  "domain_hubs_routed": null,
+  "artifacts": {
+    "html": "./hub.html",
+    "workflow_json": "./workflow.json",
+    "flows_chart": "../flows-chart.html",
+    "flows_ssot": "../../skills/0-butler/references/flows.md",
+    "hubs_index": "../index.html",
+    "manifest": "../manifest.json"
+  },
+  "rules": [
+    "sub_hub_has_parent_domain_hub",
+    "one_brand_operation_only",
+    "no_router_effects",
+    "token_sync_approval_and_publication_are_separate"
+  ]
+}

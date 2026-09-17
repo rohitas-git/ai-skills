@@ -1,44 +1,57 @@
 ---
 name: 1-codebase-review-strategy
 description: >
-  Use when reviewing any codebase of unknown or varying size. Determines repo tier from
-  measurable metrics, selects optimal thinking effort and workflow, and supplies
-  structured prompt templates plus best practices for efficient yet thorough AI agent
-  reviews. Triggered by requests to review complete codebases, assess code quality, plan
-  refactoring, perform security audits, prepare onboarding materials or evaluate
-  maintainability. Hub: /0-review.
+  Produce a bounded, size-aware coverage strategy for reviewing an unfamiliar codebase or
+  whole repository. Use to select review scope, evidence, sampling, and specialist handoffs.
+  Not for: executing the review (1-code-review or a specialist), a fixed PR/diff review
+  (1-code-review), or changing code. Hub: /0-review.
 disable-model-invocation: true
 metadata:
   catalog:
     hub: 0-review
     role: on-ramp
     when:
-      - "reviewing any codebase of unknown or varying size"
-    triggers:
-      - "1-codebase-review-strategy"
-      - "codebase review strategy"
+      - "plan evidence and coverage for an unfamiliar or whole-codebase review"
+      - "choose review scope, depth, sampling, and specialist handoffs under constraints"
+    not_when:
+      - "execute a fixed PR, branch, or diff review → 1-code-review"
+      - "execute a security audit → 1-security-auditor"
+      - "review one architecture decision → 2-software-architect"
+      - "implement findings → 0-implement"
+    prev: [0-review]
+    next: [0-review, 1-code-review, 1-security-auditor, 2-software-architect, 0-improve-codebase-architecture]
+    cousins: [1-code-review, 1-security-auditor, 2-software-architect, 0-improve-codebase-architecture]
+    triggers: [1-codebase-review-strategy, codebase review strategy, plan whole repository review, codebase audit plan, review coverage plan, unfamiliar repository review]
     requires_setup: false
 ---
-
 # Codebase Review Strategy
 
-Purpose router for **`/1-codebase-review-strategy`**. Full procedure: [references/full-guide.md](./references/full-guide.md).
+**Atomic job:** return one read-only coverage and evidence plan for one immutable repository candidate. Do not run the
+specialist review or change the repository.
 
-## Process
+## Contract
 
-1. Read [references/full-guide.md](./references/full-guide.md) for full steps, templates, and detail.
-2. Execute the procedure from that guide.
-3. Stay within this skill's Boundary (above or in guide).
+1. Pin caller, review decision/use, repository root, exact worktree/branch/`HEAD`, comparison baseline if any, dirty
+   paths and owners, allowed/excluded paths, generated/vendor/build exclusions, time and tool budget, evidence cutoff,
+   required axes, and output format. Record whether working-tree changes are included. A worktree does not isolate
+   shared services, caches, databases, scanners, credentials, or remote state.
+2. Inspect only enough read-only repository evidence to design coverage: instructions, manifests, topology, language
+   mix, ownership/boundaries, tests, CI, risk surfaces, churn or dependency signals when locally available. Never
+   install a counter/scanner, execute repository code, start services, fetch remotes, or widen from a named subtree
+   without separate authority.
+3. Choose depth from risk, heterogeneity, critical paths, and decision need—not fixed LOC tiers or arbitrary sample
+   quotas. Define deterministic inclusions plus explicit risk-based sampling, blind spots, stop conditions, and the
+   evidence required to support each review claim.
+4. Map each review slice to exactly one owner: change quality `/1-code-review`; security `/1-security-auditor`;
+   architecture decision `/2-software-architect`; architecture-deepening survey `/0-improve-codebase-architecture`.
+   Handoffs are recommendations only and inherit the exact candidate and exclusions.
+5. Return candidate identity, measured facts, proposed slices/order, axis-to-evidence map, exclusions, sampling logic,
+   estimated effort as a range/assumption, specialist handoffs, unknowns, and coverage limits to `/0-review` or the
+   actual caller. Do not claim the codebase was reviewed.
 
-## Progressive disclosure
+## References
 
-| Load when | File |
-|-----------|------|
-| Full workflow / detail | [references/full-guide.md](./references/full-guide.md) |
-| Detail | [references/measurement-commands.md](./references/measurement-commands.md) |
-| Detail | [references/prompt-templates.md](./references/prompt-templates.md) |
-| Detail | [references/interactive-clarification.md](./references/interactive-clarification.md) |
-
-## Related
-
-See Boundary table and hub membership in `skills/0-butler/references/flows.md`.
+Load [measurement guidance](./references/measurement-commands.md) only for safe local inspection and
+[prompt templates](./references/prompt-templates.md) only as adaptable handoff schemas. Apply the
+[clarification boundary](./references/interactive-clarification.md); the longer upstream process is
+kept as [provenance notes](./references/full-guide.md); it does not override this contract.

@@ -22,7 +22,7 @@ For every candidate finding from Phase 2:
 
 ## Phase 4 — Reporting
 
-Produce two human-readable documents:
+Prepare the following report sections; write named documents only when requested in the agreed task-owned location. Preserve prior artifacts and return an in-memory report to a calling review by default.
 
 ### REPORT.md
 Structure:
@@ -40,24 +40,30 @@ For every Medium, High, or Critical finding:
 - Detailed scenario / reproduction
 - Impact analysis
 - Evidence (code references or reasoning)
-- Suggested remediation direction (high-level, not a full patch unless trivial)
+- Suggested remediation direction (not permission to apply a patch, even if trivial)
 - Any residual risks or related issues
 
 Keep Low-severity items brief or summarized in the main report unless the user requests full detail.
 
 ## Phase 5 — Structured Output
 
-Emit `findings.json` that strictly conforms to `references/findings-schema.json`.
+When structured output is requested, emit `findings.json` conforming to [findings-schema.json](./findings-schema.json). Otherwise maintain these fields in the returned findings. Store only redacted, necessary evidence, never secret payloads or raw private records.
 
 Rules:
 - Only include findings that survived Phase 3 validation.
-- Use consistent category values: "security", "logic", "ambiguity", "bug", or combinations if needed (prefer primary category).
+- Use exactly one primary category: "security", "logic", "ambiguity" or "bug". Put finer risk labels in subcategory, not unsupported category combinations.
 - Include confidence (high / medium / low).
 - Include status ("confirmed").
 - Provide enough location information for a developer to navigate directly to the issue.
-- If prior findings.json exists, include a note or field indicating which findings are new vs previously known.
+- Reuse only a user-selected prior audit matching this repository/scope; revalidate on the current candidate. Use is_new for prior-audit identity and change_relation for PR causality; those are different questions.
 
-After writing the file, validate it against the schema (use the script in scripts/ if available, or manual structural checks).
+After writing an authorized report, run the local `scripts/validate-findings.js` with its explicit path. It checks the schema's supported structural constraints and report consistency, not exploit validity or date-time format semantics. Report unavailable validation honestly; manual inspection must not be described as a successful validator run.
+
+The helper implements this bundled schema's structural vocabulary, not arbitrary
+JSON Schema. Unsupported keywords fail closed. `format` is annotation-only as
+allowed by [Draft 2020-12](https://json-schema.org/draft/2020-12/json-schema-validation);
+review timestamp provenance separately. Reports lacking newly required evidence
+must be revalidated/enriched from source, not silently accepted as current findings.
 
 ## Phase 6 — Independent Verification
 
@@ -73,7 +79,7 @@ For every finding in findings.json:
 Actions:
 - Keep the finding if it still holds.
 - Demote severity or confidence if partially weakened.
-- Reject (remove or mark rejected) if the claim does not hold under re-examination.
+- Remove unsubstantiated findings from the confirmed queue; keep rejected/needs-more-info leads separately and visibly labeled if the user requested that ledger. Do not count them as confirmed in any summary.
 - Update findings.json and the human reports accordingly.
 
 Only after this phase is complete should the final set of findings be presented to the user.
@@ -82,6 +88,11 @@ Only after this phase is complete should the final set of findings be presented 
 
 When delivering results to the user:
 - Lead with the executive summary and highest-severity verified findings.
-- Provide clear navigation to the detailed files.
+- Provide navigation only to files actually created; otherwise reference report sections.
 - Offer to generate remediation patches, deeper analysis of specific findings, or a follow-up focused audit if desired.
 - Be transparent about residual risk and any areas that received lighter coverage.
+
+Recheck candidate identity and return to the paused caller. No recursive review,
+automatic hardening, issue/comment publication, approval, commit or cleanup follows
+from a finding. Fresh reasoning may be local; workers are optional and require an
+explicit packet and permission, not an assumption of inherited chat or isolation.

@@ -1,22 +1,23 @@
 #!/usr/bin/env bash
-# Resolve and ensure the working-tree directory SDD uses for its short-lived
-# artifacts: task briefs, implementer reports, review packages, and the
-# progress ledger. Print the directory's absolute path.
-#
-# The workspace lives in the working tree (not under .git/) because Claude Code
-# treats .git/ as a protected path and denies agent writes there — which blocks
-# an implementer subagent from writing its report file. A self-ignoring
-# .gitignore keeps the workspace out of `git status` and out of accidental
-# commits without modifying any tracked file.
-#
-# Single source of truth for the workspace location, so task-brief and
-# review-package cannot drift to different directories.
-#
-# Usage: sdd-workspace
+# Resolve the target checkout's local SDD artifact directory. Never overwrite
+# an existing ignore file or use a tracked/symlinked artifact location.
 set -euo pipefail
+umask 077
+[ "$#" -eq 0 ] || { echo "usage: sdd-workspace" >&2; exit 2; }
 
 root=$(git rev-parse --show-toplevel)
 dir="$root/.superpowers/sdd"
+for entry in "$root/.superpowers" "$dir" "$dir/.gitignore"; do
+  [ ! -L "$entry" ] || { echo "refusing symlinked workspace: $entry" >&2; exit 3; }
+done
+[ -z "$(git -C "$root" ls-files -- .superpowers/sdd)" ] ||
+  { echo "SDD workspace contains tracked files; choose a local artifact location" >&2; exit 3; }
+
 mkdir -p "$dir"
-printf '*\n' > "$dir/.gitignore"
-cd "$dir" && pwd
+if [ ! -e "$dir/.gitignore" ]; then
+  (set -o noclobber; printf '*\n' > "$dir/.gitignore")
+fi
+git -C "$root" check-ignore -q -- .superpowers/sdd/artifact-probe ||
+  { echo "existing SDD ignore rules do not protect artifacts; left unchanged" >&2; exit 3; }
+cd "$dir"
+pwd -P

@@ -54,4 +54,4 @@ When split alone is not enough (large tree under one domain):
 - [subdomain-candidate] path — 512 lines → split or sub-hub; first try thin + chain
 ```
 
-Do not create a sub-hub without 0-skill-manager + human confirm.
+Create a sub-hub only through `/0-skill-manager` under an explicit create/reorganize request; review-only work returns a plan.

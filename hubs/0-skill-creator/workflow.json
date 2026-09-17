@@ -7,8 +7,8 @@
   "slash": "/0-skill-creator",
   "path": "skills/0-skill-creator",
   "package_dir": "hubs/0-skill-creator/",
-  "role": "Craft skill bodies and evals.",
-  "notes": "Body craft only; placement and indexes are skill-manager's job.",
+  "role": "Author or evaluate one pinned skill body.",
+  "notes": "Returns one body candidate or evaluation result. Placement, generated indexes, installation, sync, commit, push, and publication are separate operations.",
   "parent": {
     "hub": "0-butler",
     "slash": "/0-butler",
@@ -20,40 +20,30 @@
   "children": [
     {
       "link_type": "wrapper",
-      "skills": [
-        "1-create-skill"
-      ]
+      "skills": ["1-create-skill"]
     },
     {
       "link_type": "craft",
-      "skills": [
-        "1-writing-great-skills"
-      ]
+      "skills": ["1-writing-great-skills"]
+    },
+    {
+      "link_type": "leaf",
+      "skills": ["1-source-backed-skill"],
+      "note": "one private candidate from an authorized fixed corpus"
     },
     {
       "link_type": "next",
-      "skills": [
-        "0-skill-manager"
-      ],
-      "note": "place/ingest"
+      "skills": ["0-skill-manager"],
+      "note": "separate optional placement operation"
     }
   ],
   "pipeline": [
-    "author body",
-    "optional place/ingest via skill-manager"
+    "pin one body candidate and revision",
+    "draft/update/trigger-eval/output-eval",
+    "validate selected evidence",
+    "return to caller"
   ],
-  "forks": [
-    {
-      "id": "F10",
-      "question": "Ingest/place into catalog now?",
-      "recommended": "yes when ready",
-      "branches": [
-        "stay crafting",
-        "skill-manager place/ingest",
-        "Agent judgment"
-      ]
-    }
-  ],
+  "forks": [],
   "domain_hubs_routed": null,
   "artifacts": {
     "html": "./hub.html",
@@ -70,6 +60,7 @@
     "each_domain_hub_has_workflow_json",
     "each_domain_hub_links_flows_chart",
     "one_hub_per_domain",
-    "forks_ask_user"
+    "separate_catalog_placement"
   ]
 }
+

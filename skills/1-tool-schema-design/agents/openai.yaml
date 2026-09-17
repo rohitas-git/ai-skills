@@ -1,0 +1,6 @@
+interface:
+  display_name: "Tool Schema Design"
+  short_description: "Design and validate agent tool schemas"
+  default_prompt: "Use $1-tool-schema-design to design or review this bounded model-facing tool contract. Preserve the caller's mode and candidate; do not edit or exercise real effects unless requested."
+policy:
+  allow_implicit_invocation: false

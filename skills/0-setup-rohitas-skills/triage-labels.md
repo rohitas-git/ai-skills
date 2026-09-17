@@ -1,5 +1,9 @@
 # Triage Labels
 
+This is an optional starting template. It becomes active only after
+`/1-setup-triage-labels` writes an approved mapping into the consumer
+repository; it does not authorize creating or changing remote labels.
+
 The skills speak in terms of five canonical 0-triage roles. This file maps those roles to the actual label strings used in this repo's issue tracker.
 
 | Label in upstream skills | Label in our tracker | Meaning                                  |

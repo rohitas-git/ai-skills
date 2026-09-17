@@ -56,14 +56,14 @@
 <body>
 <header>
   <h1>★ 0-skill-manager <span style="color:var(--muted);font-weight:500">· Domain 10 · Catalog facilities</span></h1>
-  <p>Mutates the catalog: CRUD, place, new-hub, ingest, organize, lint.</p>
+  <p>Apply one bounded catalog change-set or route one read-only catalog operation.</p>
 </header>
 <nav class="top">
   <a class="butler-cta" href="../0-butler/hub.html">★ 0-butler (hub of hubs)</a>
   <a class="chart-cta" href="../../flows-chart.html">Full flows chart</a>
   <a href="../../flows-chart.html#domain-hub-matrix">Domain matrix</a>
   <a href="./workflow.json">workflow.json</a>
-  <a href="../../../productivity/0-butler/references/flows.md">flows.md SSOT</a>
+  <a href="../../../skills/0-butler/references/flows.md">flows.md SSOT</a>
   <a href="../index.html">hubs index</a>
   <span class="here">package: <code>hubs/0-skill-manager/</code></span>
 </nav>
@@ -77,7 +77,7 @@
     Catalog mutations → <a href="../0-skill-manager/hub.html">/0-skill-manager</a>.
   </div>
   <p class="meta">
-    Parent skill: <code>productivity/butler</code> ·
+    Parent skill: <code>skills/0-butler</code> ·
     Parent workflow: <a href="../0-butler/workflow.json"><code>../0-butler/workflow.json</code></a> ·
     This package: <code>hubs/0-skill-manager/</code>
   </p>
@@ -87,30 +87,32 @@
   <p class="meta">
     <span class="badge mgr">★ hub</span>
     slash: <code>/0-skill-manager</code> ·
-    skill path: <code>productivity/0-skill-manager/</code> ·
+    skill path: <code>skills/0-skill-manager/</code> ·
     package: <code>hubs/0-skill-manager/</code>
   </p>
-  <p>Butler delegates all multi-file catalog writes here. 0-skill-manager writes flows.md hub slots. Lint loads <code>skill-linter</code> (ADR 0006); place/ingest require skill-lint Gate: PASS.</p>
+  <p>Explicit catalog-change requests authorize their scoped reversible files. Installation, sync, commit, push, publication, and external/global effects remain separate.</p>
 </section>
 
 <section>
   <h2>Children</h2>
   <ul>
-    <li><strong>ops:</strong> create, read, update, delete, place, new-hub, ingest, organize, lint</li>
-    <li><strong>pipeline:</strong> 1-skill-linter <span class='meta'>(lint op loads 1-skill-linter; ADR 0006)</span></li>
-<li><strong>handoff:</strong> 0-skill-creator <span class='meta'>(body craft)</span></li>
+    <li><strong>ops:</strong> create, read, update, delete, place, new-hub, ingest, organize</li>
+    <li><strong>pipeline:</strong> <a href="../../skills/1-skill-linter/SKILL.md">1-skill-linter</a> <span class='meta'>(read-only report)</span></li>
+    <li><strong>pipeline:</strong> <a href="../../skills/1-skill-atomize/SKILL.md">1-skill-atomize</a> <span class='meta'>(one overlap cluster)</span></li>
+    <li><strong>soft:</strong> <a href="../../skills/1-session-skill-reflect/SKILL.md">1-session-skill-reflect</a> · <a href="../../skills/1-discover-skills/SKILL.md">1-discover-skills</a></li>
+    <li><strong>handoff:</strong> <a href="../../skills/0-skill-creator/SKILL.md">0-skill-creator</a> <span class='meta'>(one body candidate)</span></li>
   </ul>
 </section>
 
 <section>
   <h2>Pipeline</h2>
-  <pre>not a product feature pipeline — catalog maintenance only</pre>
+  <pre>pin candidate → assess/apply from request → revision-safe changes → regenerate affected projections → lint → return</pre>
 </section>
 
 
 <section>
-  <h2>Forks (ask user)</h2>
-  <p class="meta">No domain-local fork table. Entry may still come through global <code>F7</code> on 0-butler / the house map.</p>
+  <h2>Material forks</h2>
+  <p class="meta"><code>F-A1</code> scopes a broad overlap pass; <code>F-A2</code> resolves identity-changing merge/split choices. Routine reversible edits follow the explicit request without a duplicate confirmation.</p>
 </section>
 
 <section>

@@ -1,21 +1,10 @@
-# Karpathy lint principles (adapted)
+# Historical lint provenance
 
-From [LLM Wiki gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f): periodically ask the LLM to health-check the wiki.
+An earlier workflow adapted periodic LLM-wiki health checks associated with a Karpathy gist:
+contradictions, stale claims, orphans, missing cross-references, and knowledge gaps.
 
-## Look for
-
-- Contradictions between pages  
-- Stale claims superseded by newer sources  
-- Orphan pages with no inbound links  
-- Important concepts mentioned but lacking their own page  
-- Missing cross-references  
-- Data gaps that could be filled with a source or web 1-research  
-
-Also useful: suggest new questions to investigate and sources to seek.
-
-## This vault’s stance
-
-- **Report first** — agent suggests; human approves fixes  
-- Compiled truth lives in **Concepts**, not chat  
-- Lint complements **ingest** (arrival) and **query** (use)  
-- After lint, high-value follow-ups often are: `1-vault-ingest`, `1-wiki-query`, `1-vault-explain`
+This is historical design context, not an operative checklist or current-source assertion.
+It does not authorize scheduled/weekly scans, web research, broad private-note reads,
+automatic repairs, log writes, new questions/sources, ingest, or treating Concepts as
+“compiled truth.” The active lint contract, selected scope, current vault schema, and user
+authority control the run.

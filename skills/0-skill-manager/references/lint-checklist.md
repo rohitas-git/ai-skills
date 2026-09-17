@@ -25,7 +25,7 @@ Prefer 1-skill-linter [report-format.md](../../1-skill-linter/references/report-
 Severity:
 
 - **critical** — broken discovery, dual router, hard-dep wrong, promotion rule violated, missing successor on deprecate, **hub-member orphan**, broken skill refs
-- **warn** — trigger collisions, model-invoked budget overrun, README drift, sprawl, vault path hard-coding
+- **warn** — runtime-specific implicit-invocation budget overrun, trigger collisions, README drift, sprawl, vault path hard-coding
 - **info** — style nits, optional progressive-disclosure opportunities
 
 ## Checks
@@ -39,7 +39,10 @@ Severity:
 | `frontmatter` | SKILL.md has name + description |
 | `bucket-readme` | every skill listed in its bucket README with one-line blurb |
 | `root-promo` | root README lists only engineering + productivity + misc members |
-| `model-budget` | model-invoked promoted skills target &lt; ~25; flag user-invoke candidates left model-invoked |
+| `claude-invocation-policy` | **critical** — only `1-coding-standards` is Claude-implicit; all others set `disable-model-invocation: true` |
+| `codex-invocation-policy` | **critical** — top-level hubs plus `1-coding-standards` are Codex-implicit; all others explicitly set `allow_implicit_invocation: false` |
+| `codex-manifest-policy` | **critical** — malformed/duplicate Codex policy keys; preserve other manifest fields |
+| `{runtime}-invocation-budget` | independent Claude/Codex implicit-invocation context-budget warning |
 | `triggers` | cousin clusters have exclusive Use when / Don’t use when (grill, 0-review, 0-learn, architecture) |
 | `hard-dep` | `1-to-spec`, `1-to-tickets`, `0-triage` mention `/0-setup-rohitas-skills` |
 | `forbidden` | no discoverable `using-agent-skills`; no live `ask-matt` router; no `setup-matt-pocock-skills` name |
@@ -62,6 +65,8 @@ Severity:
 | `route-top-level` | **critical** — no top-level route keys; use `metadata.catalog` only ([skill-route-surface.md](./skill-route-surface.md)) |
 | `description-triggers` | warn — live skills have Use when / Triggers (butler) |
 | `route-hub` | warn — `metadata.catalog.hub` is a known hub |
+| `route-description-hub` | warn — description `Hub:` and `metadata.catalog.hub` disagree |
+| `route-index-json` | warn — machine route projection is malformed or does not cover the live skill set |
 | `gate-route` | **critical on new place/ingest** — catalog + description contract present |
 | `forks` | pipeline branches document F# ask-user questions |
 | `atomic-boundary` | high-collision / newly placed skills have Boundary table + one-job description ([atomic-skills.md](./atomic-skills.md)) |
@@ -70,23 +75,23 @@ Severity:
 
 **Lint op:** load **`/1-skill-linter`** (catalog or skill mode) then merge any remaining catalog-only codes here.
 
-Optional automation: `scripts/lint-skills` mirrors name-dir, ref-exists, hub-member, route-top-level, description-triggers, sprawl counts, and catalog checks for non-LLM CI (prints `catalog.yaml` version). After membership/frontmatter changes: `scripts/generate-route-index`.
+Optional automation: `scripts/lint-skills` mirrors name-dir, ref-exists, hub-member, route-top-level, description-triggers, sprawl counts, and catalog checks for non-LLM CI (prints `catalog.yaml` version; `--format json` emits a schema-versioned report). After membership/frontmatter changes: `scripts/generate-route-index`, then `scripts/generate-route-index --check`.
 
 ## Organize op
 
 **Mutations:** move, rename, deprecate (with tombstone).
 
-1. Dry-run plan: old path → new path, README lines, flows.md slots, lock entry, tombstone text.
-2. Confirm with human.
-3. Apply with git-aware moves when possible.
-4. Update indexes + flows + lock.
-5. Re-run lint.
+1. Pin the exact old/new paths, revisions, dirty ownership, README/wiki lines, flows slots, lock entry, and tombstone text.
+2. A review request returns this plan; an explicit organize/rename request authorizes the scoped reversible move.
+3. Re-read targets, then apply with git-aware moves when possible.
+4. Update only affected indexes, flows, and lock entries.
+5. Re-run lint and report applied/unapplied items.
 
 ## Atomize op
 
 **Mutations:** one-job descriptions, Boundary tables, hard redirects, F# forks in flows — content-overlap cleanup.
 
-Load **`/1-skill-atomize`** (do not reimplement here). Dry-run → confirm → apply → skill-lint. Default: keep both peers + forks, not silent merge.
+Load **`/1-skill-atomize`** (do not reimplement here). It selects assess/apply from the request, reconciles one pinned overlap cluster, then returns skill-lint evidence. Merge/split identity choices remain explicit.
 
 Deprecate checklist:
 

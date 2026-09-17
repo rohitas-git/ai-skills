@@ -1,33 +1,39 @@
-# Versioning + human changelog (harvested)
+# Versioning and changelog boundary
 
-Source: archive vendor `git-workflow-and-versioning` (Release & Versioning).  
-Use with **`/1-shipping-and-launch`**. Day-to-day commits → `/1-git-commit-helper`.
+Use only when the release has a repository- or ecosystem-defined version contract. An internal
+deployment, mutable web application, data rollout, or infrastructure change does not automatically
+need Semantic Versioning or a Git tag.
 
-## When versioning matters
+## Determine the contract
 
-Anything with **consumers** (other teams, packages, deployed clients) needs a version contract. “Latest on main” is not enough.
+Inspect package manifests, release tooling, tags, changelog policy, compatibility promises, and
+consumer update model. Record:
 
-## Semantic versioning
+- version owner and source of truth;
+- artifact(s) covered by the version;
+- compatibility surface and supported consumers;
+- whether tags, manifests, generated files, or release metadata must agree;
+- changelog audience and canonical location.
 
-`MAJOR.MINOR.PATCH`:
+If the project uses Semantic Versioning, classify against its documented public API:
 
-| Bump | Meaning |
-|------|---------|
-| **MAJOR** | Breaking — consumers must change |
-| **MINOR** | Backward-compatible feature |
-| **PATCH** | Backward-compatible fix |
+| Change | Usual bump before 1.0 caveats/project policy |
+|---|---|
+| incompatible public contract | major |
+| backward-compatible capability | minor |
+| backward-compatible correction | patch |
 
-If unsure whether a change is breaking, assume **major**. Behavior consumers relied on is a break even if the diff looks small (Hyrum). See `/1-api-and-interface-design`.
+Do not declare a major bump merely because compatibility is uncertain. Investigate consumers and
+route contract/deprecation questions to `/1-api-and-interface-design` or
+`/1-deprecation-and-migration`; unresolved compatibility blocks the version decision.
 
-## Tags as source of truth
+## Human changelog
 
-- Annotated tags: `git tag -a v1.4.0 -m "Release 1.4.0"`
-- Derive published version from the tag; avoid hand-editing version in many files out of sync
+Summarize user/operator impact rather than copying commit subjects. Include breaking changes,
+migration or rollout requirements, security implications at an appropriate disclosure level, known
+limitations, and recovery notes when relevant. Use the project's existing headings and format.
 
-## Changelog for humans
-
-Not raw `git log`. Curated, newest first, by impact:
-
-`Added` · `Changed` · `Fixed` · `Deprecated` · `Removed` · `Security`
-
-Write the entry **with the change**, not reconstructed at release day. Breaking changes need migration notes and deprecation windows (`/1-deprecation-and-migration`). Deploy/go-no-go remains this skill’s pre-launch checklist.
+Editing version/changelog files requires repository-edit authority. Creating tags, GitHub/GitLab
+releases, publishing packages, pushing, or notifying consumers are separate remote effects and are
+never implied by preparing release metadata. Report the exact candidate and which artifacts remain
+unpublished.

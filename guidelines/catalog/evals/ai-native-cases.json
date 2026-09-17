@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "route-house-orientation",
+      "kind": "route",
+      "invoked_skill": "0-butler",
+      "prompt": "{invoke} Show me the skill house. Report the owning domain and stop after routing; do not perform catalog work.",
+      "expected_skill": "0-butler",
+      "forbidden_skills": [],
+      "runtimes": ["codex", "claude"],
+      "risk": "normal",
+      "assertions": [{"type": "contains", "value": "Domain hub"}]
+    },
+    {
+      "id": "route-diagnosis",
+      "kind": "route",
+      "invoked_skill": "0-butler",
+      "prompt": "{invoke} Which skill should investigate an intermittent API timeout? Route only and do not fix it.",
+      "expected_skill": "0-diagnosing-bugs",
+      "forbidden_skills": ["0-implement"],
+      "runtimes": ["codex", "claude"],
+      "risk": "normal",
+      "assertions": [
+        {"type": "contains", "value": "0-diagnosing-bugs"},
+        {"type": "not_contains", "value": "implemented the fix"}
+      ]
+    },
+    {
+      "id": "route-catalog-manager",
+      "kind": "route",
+      "invoked_skill": "0-butler",
+      "prompt": "{invoke} Which skill should wire an existing skill into the catalog and regenerate its indexes? Route only.",
+      "expected_skill": "0-skill-manager",
+      "forbidden_skills": ["0-skill-creator"],
+      "runtimes": ["codex", "claude"],
+      "risk": "normal",
+      "assertions": [{"type": "contains", "value": "0-skill-manager"}]
+    },
+    {
+      "id": "route-skill-creator",
+      "kind": "route",
+      "invoked_skill": "0-butler",
+      "prompt": "{invoke} Which skill should improve the body and trigger description of one pinned skill package? Route only.",
+      "expected_skill": "0-skill-creator",
+      "forbidden_skills": ["0-skill-manager"],
+      "runtimes": ["codex", "claude"],
+      "risk": "normal",
+      "assertions": [{"type": "contains", "value": "0-skill-creator"}]
+    },
+    {
+      "id": "route-implementation",
+      "kind": "route",
+      "invoked_skill": "0-butler",
+      "prompt": "{invoke} Which skill should implement a clear, accepted change in an existing repository? Route only.",
+      "expected_skill": "0-implement",
+      "forbidden_skills": ["1-code-review"],
+      "runtimes": ["codex", "claude"],
+      "risk": "normal",
+      "assertions": [{"type": "contains", "value": "0-implement"}]
+    },
+    {
+      "id": "route-review-only",
+      "kind": "route",
+      "invoked_skill": "0-butler",
+      "prompt": "{invoke} Which skill should perform a read-only multi-axis review of a supplied diff? Route only.",
+      "expected_skill": "1-code-review",
+      "forbidden_skills": ["0-implement"],
+      "runtimes": ["codex", "claude"],
+      "risk": "normal",
+      "assertions": [{"type": "contains", "value": "1-code-review"}]
+    },
+    {
+      "id": "behavior-diagnosis-only",
+      "kind": "behavior",
+      "invoked_skill": "0-diagnosing-bugs",
+      "prompt": "{invoke} Diagnose why broken.py returns one item too many. Do not edit files; identify the exact root cause and evidence.",
+      "expected_skill": "0-diagnosing-bugs",
+      "forbidden_skills": ["0-implement"],
+      "runtimes": ["codex", "claude"],
+      "risk": "normal",
+      "fixture": {"broken.py": "def indexes(n):\n    return list(range(n + 1))\n"},
+      "assertions": [
+        {"type": "contains", "value": "n + 1"},
+        {"type": "file_equals", "path": "broken.py", "value": "def indexes(n):\n    return list(range(n + 1))\n"}
+      ]
+    },
+    {
+      "id": "behavior-minimal-implementation",
+      "kind": "behavior",
+      "invoked_skill": "0-implement",
+      "prompt": "{invoke} Implement add(a, b) in math_utils.py by replacing the placeholder. Keep the change minimal and verify it locally.",
+      "expected_skill": "0-implement",
+      "forbidden_skills": [],
+      "runtimes": ["codex", "claude"],
+      "risk": "normal",
+      "allow_fixture_writes": true,
+      "fixture": {"math_utils.py": "def add(a, b):\n    raise NotImplementedError\n"},
+      "assertions": [
+        {"type": "file_contains", "path": "math_utils.py", "value": "return a + b"},
+        {"type": "not_contains", "value": "unable to edit"}
+      ]
+    },
+    {
+      "id": "behavior-read-only-review",
+      "kind": "behavior",
+      "invoked_skill": "1-code-review",
+      "prompt": "{invoke} Review calc.py read-only. Report the concrete correctness defect with its location; do not repair it.",
+      "expected_skill": "1-code-review",
+      "forbidden_skills": ["0-implement"],
+      "runtimes": ["codex", "claude"],
+      "risk": "normal",
+      "fixture": {"calc.py": "def ratio(total, count):\n    return total / count\n"},
+      "assertions": [
+        {"type": "contains", "value": "zero"},
+        {"type": "file_equals", "path": "calc.py", "value": "def ratio(total, count):\n    return total / count\n"}
+      ]
+    },
+    {
+      "id": "behavior-verification-only",
+      "kind": "behavior",
+      "invoked_skill": "2-verify-work",
+      "prompt": "{invoke} Verify claim.txt against expected.txt and return PASS or FAIL with evidence. Do not repair either file.",
+      "expected_skill": "2-verify-work",
+      "forbidden_skills": ["0-implement"],
+      "runtimes": ["codex", "claude"],
+      "risk": "normal",
+      "fixture": {"claim.txt": "actual\n", "expected.txt": "expected\n"},
+      "assertions": [
+        {"type": "contains", "value": "FAIL"},
+        {"type": "file_equals", "path": "claim.txt", "value": "actual\n"}
+      ]
+    }
+  ]
+}

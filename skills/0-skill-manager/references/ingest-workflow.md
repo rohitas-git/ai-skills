@@ -1,6 +1,6 @@
 # Ingest workflow
 
-Add or promote a skill into the catalog without dual routers, collisions, or silent multi-file writes.
+Add or promote one fixed skill candidate without dual routers, collisions, or hidden effects.
 
 ## Sources
 
@@ -12,8 +12,8 @@ Add or promote a skill into the catalog without dual routers, collisions, or sil
 
 ## Modes
 
-- **Dry-run (default):** run integration test, propose plan, **do not write**.
-- **Apply:** only after explicit human confirmation of the plan.
+- **Assess:** run the integration test and return a plan without writing.
+- **Apply:** selected when the user explicitly asks to ingest/promote the fixed candidate; scoped reversible catalog edits need no second confirmation.
 
 ## Integration test (promote gate)
 
@@ -34,7 +34,16 @@ All must **pass** before apply. Report as a table.
 
 Fail any row → do not promote; propose merge, rewrite, or defer.
 
-## Apply steps (after confirm)
+## Apply steps
+
+For third-party package security/provenance review, hand the fixed source snapshot,
+expected capabilities, proposed runtime permissions and optional prior version to
+`/2-skill-supply-chain-audit`. It returns findings, coverage gaps and a recommendation
+to this ingest workflow; it does not install, execute, enable or promote the source.
+Resolve material gaps before treating source as trusted runnable content. Structural
+`/1-skill-linter` results do not replace this security evidence. Adopted code or changed
+permissions need review of the resulting candidate, not only the upstream snapshot.
+The user's explicit mutation scope governs what this manager may place. Installation, code execution, activation, sync, commit, push, and publication remain separate effects.
 
 1. Place under correct bucket (`git mv` / move).
 2. **Depth-prefix name (hard):** set dir + frontmatter `name` to `{depth}-{kebab-slug}` per [depth-prefix-names.md](./depth-prefix-names.md) (★ hub → `0-`; hub child → `1-`; under sub-hub → `2-`; deeper nesting → `3-` / `4-` / `5-` / `6-` / … via `max(parent+1)`). Ensure `name` == directory name. Never leave a bare unprefixed live skill.
@@ -51,11 +60,11 @@ Fail any row → do not promote; propose merge, rewrite, or defer.
 
 `1-create-skill` / `0-skill-creator` scaffold bodies only. Then **skill-manager** place/ingest for catalog citizenship, including **skill-lint**. Routing stays with **butler**.
 
-## Demo dry-run
+## Demo assessment
 
-Example: dry-run ingest of `vendor/agent-skills/skills/security-and-hardening` (or any candidate):
+Example: assess `vendor/agent-skills/skills/security-and-hardening` (or any candidate):
 
 1. Load SKILL.md
 2. Fill integration-test table (expect: may pass gap for security, fail if collision with future security skill, must not promote using-agent-skills)
 3. Propose bucket `engineering`, chain slot "optional ship/security on-ramp", standalone until flows updated
-4. Stop without writing unless user confirms
+4. Stop without writing when the request was review/assess; apply only for an explicit ingest/promote request
