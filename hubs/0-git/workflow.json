@@ -44,6 +44,14 @@
     {
       "link_type": "pipeline",
       "skills": [
+        "1-pr-splitter"
+      ],
+      "primary": true,
+      "note": "Split one source PR into coherent smaller PRs; preserve source intent and track review drift locally"
+    },
+    {
+      "link_type": "pipeline",
+      "skills": [
         "1-pr-repair",
         "1-pr-review-and-repair",
         "1-stacked-pr-repair",
@@ -71,7 +79,8 @@
     "known PR findings or blockers → 1-pr-repair → 1-pr-summarizer?",
     "one PR → 1-pr-review-and-repair → 1-pr-summarizer?",
     "known stack findings or blockers → 1-stacked-pr-repair → 1-pr-summarizer?",
-    "PR stack → 1-stacked-pr-review-and-repair → 1-pr-summarizer?"
+    "PR stack → 1-stacked-pr-review-and-repair → 1-pr-summarizer?",
+    "large source PR → 1-pr-splitter → 1-pr-summarizer?"
   ],
   "forks": [
     {
@@ -93,6 +102,7 @@
         "1-stacked-pr-review-and-repair",
         "1-finish-branch",
         "1-pr-summarizer",
+        "1-pr-splitter",
         "Agent judgment"
       ]
     },
@@ -134,6 +144,17 @@
       "branches": [
         "user-named PR",
         "unique current-branch PR",
+        "Agent judgment"
+      ]
+    },
+    {
+      "id": "F-G6",
+      "question": "How should these PRs depend on each other?",
+      "recommended": "Derive dependencies from coherent review units",
+      "branches": [
+        "stacked",
+        "parallel",
+        "foundation plus parallel follow-ups",
         "Agent judgment"
       ]
     }

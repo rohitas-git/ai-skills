@@ -47,6 +47,7 @@
   <ul>
     <li><strong>pipeline helpers (caller-return, not an automatic sequence):</strong> 1-git-worktrees, 1-atomic-git-commits, 1-finish-branch</li>
     <li><strong>leaves:</strong> 1-git-changelog · 1-git-text-normalization · 1-resolving-merge-conflicts · 1-github-cli · 1-github-pr-comment-intake <span class='meta'>(read-only PR discussion)</span> · 1-pr-comment-drafter <span class='meta'>(outbound prose, draft only)</span></li>
+    <li><strong>PR splitting:</strong> <a href="../../skills/1-pr-splitter/SKILL.md">1-pr-splitter</a> <span class="meta">(one source PR, smaller review units, local drift ledger)</span></li>
     <li><strong>PR convergence:</strong> 1-pr-repair · 1-pr-review-and-repair · 1-stacked-pr-repair · 1-stacked-pr-review-and-repair</li>
     <li><strong>soft:</strong> 1-pr-summarizer <span class='meta'>(main PR description)</span></li>
   </ul>
@@ -59,7 +60,8 @@ branch-outcome request → 1-finish-branch → 1-pr-summarizer? (chosen PR optio
 active conflict → 1-resolving-merge-conflicts → resume interrupted operation
 binary diff/encoding/EOL → 1-git-text-normalization diagnose|authorized fix → return
 commit only when separately requested</pre>
-<pre>known PR findings/blockers → 1-pr-repair → 1-pr-summarizer?
+<pre>large source PR → 1-pr-splitter → 1-pr-summarizer?
+known PR findings/blockers → 1-pr-repair → 1-pr-summarizer?
 GitHub PR discussion → 1-github-pr-comment-intake → 1-receive-review|1-pr-repair
 outbound PR comment → 1-pr-comment-drafter → 1-github-cli (authorized post/edit)
 one PR → 1-pr-review-and-repair → 1-pr-summarizer?
@@ -71,11 +73,12 @@ PR stack → 1-stacked-pr-review-and-repair → 1-pr-summarizer?</pre>
   <table>
     <thead><tr><th>ID</th><th>Question</th><th>Recommended</th><th>Branches</th></tr></thead>
     <tbody>
-      <tr><td>F-G1</td><td>What Git operation is needed?</td><td>Narrowest operation matching repository state</td><td>worktree · atomic commits · changelog · text normalization · conflict resolution · GitHub CLI operation · PR comment intake · PR comment draft · PR description · single-PR repair-only · single-PR review+repair · stack repair-only · stacked review+repair · finish branch · Agent judgment</td></tr>
+      <tr><td>F-G1</td><td>What Git operation is needed?</td><td>Narrowest operation matching repository state</td><td>worktree · atomic commits · changelog · text normalization · conflict resolution · GitHub CLI operation · PR comment intake · PR comment draft · PR description · PR splitting · single-PR repair-only · single-PR review+repair · stack repair-only · stacked review+repair · finish branch · Agent judgment</td></tr>
       <tr><td>F-G2</td><td>How should mixed changes be grouped?</td><td>Independently revertible behavior</td><td>proposed groups · user grouping · leave ambiguous · Agent judgment</td></tr>
       <tr><td>F-G3</td><td>What is the intended base-to-tip PR order?</td><td>Derive parent-child edges; stop if ambiguous</td><td>user order · provider/stack-tool order · Agent judgment</td></tr>
       <tr><td>F-G4</td><td>Which PR should be reviewed and repaired?</td><td>Current branch's unique open PR</td><td>user-named PR · unique current-branch PR · Agent judgment</td></tr>
       <tr><td>F-G5</td><td>What PR prose is needed?</td><td>Main PR description</td><td>PR description · individual comment · Agent judgment</td></tr>
+      <tr><td>F-G6</td><td>How should these PRs depend on each other?</td><td>Derive dependencies from coherent review units</td><td>stacked · parallel · foundation plus parallel follow-ups · Agent judgment</td></tr>
     </tbody>
   </table>
 </section>

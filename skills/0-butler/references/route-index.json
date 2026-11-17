@@ -5,7 +5,7 @@
     "hubs/*/workflow.json"
   ],
   "schema_version": 1,
-  "skill_count": 299,
+  "skill_count": 300,
   "skills": [
     {
       "cousins": [],
@@ -1915,6 +1915,7 @@
       "next": [
         "1-git-worktrees",
         "1-atomic-git-commits",
+        "1-pr-splitter",
         "1-git-changelog",
         "1-git-text-normalization",
         "1-resolving-merge-conflicts",
@@ -1939,6 +1940,8 @@
       "skill": "0-git",
       "source": "catalog",
       "triggers": [
+        "split large PR",
+        "plan stacked PRs",
         "git workflow",
         "git help",
         "commit changes",
@@ -1963,7 +1966,11 @@
         "repair PR stack"
       ],
       "when": [
-        "route Git work across isolation, commits, conflicts, and branch completion"
+        "route Git work across isolation",
+        "commits",
+        "PR splitting",
+        "conflicts",
+        "and branch completion"
       ]
     },
     {
@@ -2382,6 +2389,47 @@
       "when": [
         "review one PR, repair each in-scope finding, and repeat until clean and green",
         "rebase, fix, push, and verify one PR"
+      ]
+    },
+    {
+      "cousins": [
+        "1-atomic-git-commits",
+        "1-stacked-pr-repair",
+        "1-stacked-pr-review-and-repair"
+      ],
+      "hub": "0-git",
+      "memberships": [
+        {
+          "hub": "0-git",
+          "role": "pipeline"
+        }
+      ],
+      "next": [
+        "1-pr-summarizer"
+      ],
+      "not_when": [
+        "group commits without splitting PRs → 1-atomic-git-commits",
+        "repair an existing stack → 1-stacked-pr-repair",
+        "discover and repair stack findings → 1-stacked-pr-review-and-repair"
+      ],
+      "prev": [
+        "0-git"
+      ],
+      "requires_setup": false,
+      "role": "pipeline",
+      "skill": "1-pr-splitter",
+      "source": "catalog",
+      "triggers": [
+        "split PR",
+        "split large pull request",
+        "extract independent PRs",
+        "plan stacked PRs",
+        "separate refactor and behavior",
+        "track split PR drift"
+      ],
+      "when": [
+        "split one large PR into smaller independently reviewable PRs",
+        "plan stacked or parallel PRs and preserve source intent through review drift"
       ]
     },
     {

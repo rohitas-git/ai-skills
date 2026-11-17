@@ -164,6 +164,7 @@ Structured mental models. The core is from `tjboudreaux/cc-thinking-skills` (MIT
 ## Available skill additions
 
 - [1-design-review](./1-design-review/) — Elephant-Goldfish pre-code design/spec/plan review; [workflow, connections and concepts](./1-design-review/references/workflow-and-connections.md)
+- [1-pr-splitter](./1-pr-splitter/) — split a source PR into coherent smaller PRs and track review drift
 - [1-ai-suitability](./1-ai-suitability/) — Assess AI fit, non-AI alternatives and the level of automation.
 - [1-context-retrieval-design](./1-context-retrieval-design/) — Design relevant, permission-aware context, retrieval and memory.
 - Content and messaging: [1-marketing-content-strategy](./1-marketing-content-strategy/), [1-marketing-copywriting](./1-marketing-copywriting/), [1-marketing-copy-editing](./1-marketing-copy-editing/), [1-marketing-blog-editor](./1-marketing-blog-editor/), [1-marketing-emails](./1-marketing-emails/), [1-marketing-cold-email](./1-marketing-cold-email/), [1-marketing-sms](./1-marketing-sms/), [1-marketing-social](./1-marketing-social/), [1-marketing-video](./1-marketing-video/), [1-marketing-image](./1-marketing-image/), [1-marketing-lead-magnets](./1-marketing-lead-magnets/)

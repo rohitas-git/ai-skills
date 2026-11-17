@@ -425,16 +425,16 @@ compliance review (`/2-brand-review`), read-only context extraction (`/2-brand-c
 | | |
 |--|--|
 | **★ Hub** | `/0-git` |
-| **Children** | **pipeline helpers (caller-return, not an automatic sequence):** `1-git-worktrees`, `1-atomic-git-commits`, `1-finish-branch`; `1-pr-repair`; `1-pr-review-and-repair`; `1-stacked-pr-repair`; `1-stacked-pr-review-and-repair` · **leaves:** `1-git-changelog`, `1-git-text-normalization` (scoped encoding/EOL/attributes), `1-resolving-merge-conflicts`, `1-github-cli`, `1-github-pr-comment-intake` (read-only PR discussion), `1-pr-comment-drafter` (outbound prose, draft only) · **soft (Ship primary):** `1-pr-summarizer` (main PR description) |
+| **Children** | **pipeline helpers (caller-return, not an automatic sequence):** `1-git-worktrees`, `1-atomic-git-commits`, `1-finish-branch`; `1-pr-repair`; `1-pr-review-and-repair`; `1-stacked-pr-repair`; `1-stacked-pr-review-and-repair` · **leaves:** `1-git-changelog`, `1-git-text-normalization` (scoped encoding/EOL/attributes), `1-resolving-merge-conflicts`, `1-github-cli`, `1-github-pr-comment-intake` (read-only PR discussion), `1-pr-comment-drafter` (outbound prose, draft only) · **soft (Ship primary):** `1-pr-summarizer` (main PR description) · **additions:** `1-pr-splitter` |
 | **Pipeline** | optional isolation → return to requesting implementation/repair workflow; implementation → authorized atomic commits → return to caller; requested branch outcome → chosen merge/PR/keep option; active conflict → resolve → resume interrupted operation; binary diff or scoped text normalization → Git text normalization → requested atomic commit groups; GitHub PR discussion → comment intake → requested assessment/repair; outbound comment → draft → explicitly authorized GitHub post/edit; one PR or PR stack → scoped repair-only or review/repair convergence |
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F-G1** | What Git operation is needed? | infer the narrowest operation from repository state | worktree · atomic commits · changelog · text normalization · conflict resolution · GitHub CLI operation · PR comment intake · PR comment draft · PR description · single-PR repair-only · single-PR review+repair · stack repair-only · stacked review+repair · finish branch · **Agent judgment** |
-| **F-G2** | How should mixed changes be grouped? | by independently revertible behavior | proposed atomic groups · user-specified grouping · leave ambiguous changes uncommitted · **Agent judgment** |
-| **F-G3** | What is the intended base-to-tip PR order? | derive parent-child edges; stop if ambiguity remains | user-supplied order · provider/stack-tool order · **Agent judgment** |
-| **F-G4** | Which PR should be reviewed and repaired? | current branch's unique open PR | user-named PR · unique current-branch PR · **Agent judgment** |
-| **F-G5** | What PR prose is needed? | main PR description | PR description → `1-pr-summarizer` · individual comment → `1-pr-comment-drafter` · **Agent judgment** |
+| **F-G1** | What Git operation is needed? | infer the narrowest operation from repository state | /1-git-worktrees · /1-atomic-git-commits · /1-git-changelog · /1-git-text-normalization · /1-resolving-merge-conflicts · /1-github-cli · /1-github-pr-comment-intake · /1-pr-comment-drafter · /1-pr-repair · /1-pr-review-and-repair · /1-stacked-pr-repair · /1-stacked-pr-review-and-repair · /1-finish-branch · /1-pr-summarizer · /1-pr-splitter · Agent judgment |
+| **F-G2** | How should mixed changes be grouped? | by independently revertible behavior | proposed atomic groups · user-specified grouping · leave ambiguous changes uncommitted · Agent judgment |
+| **F-G3** | What is the intended base-to-tip PR order? | derive parent-child edges; stop if ambiguity remains | user-supplied order · provider or stack-tool order · Agent judgment |
+| **F-G4** | Which PR should be reviewed and repaired? | current branch's unique open PR | user-named PR · unique current-branch PR · Agent judgment |
+| **F-G5** | What PR prose is needed? | main PR description | /1-pr-summarizer · /1-pr-comment-drafter · Agent judgment |
 
 **Not for:** product implementation (`/0-implement`), code-quality review (`/0-review`), or release rollout (`/1-shipping-and-launch`).
 
