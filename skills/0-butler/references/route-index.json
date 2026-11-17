@@ -5,7 +5,7 @@
     "hubs/*/workflow.json"
   ],
   "schema_version": 1,
-  "skill_count": 292,
+  "skill_count": 293,
   "skills": [
     {
       "cousins": [],
@@ -2950,6 +2950,7 @@
         }
       ],
       "next": [
+        "1-i18n-sync",
         "1-to-spec",
         "1-to-tickets",
         "1-write-plan",
@@ -3330,6 +3331,43 @@
       "when": [
         "implementing or hardening one bounded user-facing component, page, form, or interaction",
         "repairing applicable UI states, semantics, focus, keyboard, responsive, or runtime behavior"
+      ]
+    },
+    {
+      "cousins": [
+        "1-frontend-ui-engineering",
+        "1-ui-styling"
+      ],
+      "hub": "0-implement",
+      "memberships": [
+        {
+          "hub": "0-implement",
+          "role": "leaf"
+        }
+      ],
+      "next": [
+        "0-implement"
+      ],
+      "not_when": [
+        "general prose translation",
+        "extract hardcoded UI strings",
+        "visual layout QA"
+      ],
+      "prev": [
+        "0-implement"
+      ],
+      "requires_setup": false,
+      "role": "leaf",
+      "skill": "1-i18n-sync",
+      "source": "catalog",
+      "triggers": [
+        "sync translations",
+        "synchronize locale files",
+        "missing translation keys",
+        "i18n sync"
+      ],
+      "when": [
+        "synchronize selected JSON locale keys against a pinned source locale"
       ]
     },
     {

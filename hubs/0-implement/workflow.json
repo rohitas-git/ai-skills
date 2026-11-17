@@ -138,7 +138,9 @@
     },
     {
       "link_type": "leaf",
-      "skills": [],
+      "skills": [
+        "1-i18n-sync"
+      ],
       "primary": true,
       "note": "One scoped operation; preserve caller, candidate, mode and authority, then return without automatic follow-ons."
     },

@@ -1,0 +1,6 @@
+interface:
+  display_name: "I18N Sync"
+  short_description: "Synchronize JSON translations with context and validation"
+  default_prompt: "Use $1-i18n-sync for this scoped request. Synchronize selected JSON locale keys with context and validation."
+policy:
+  allow_implicit_invocation: false
