@@ -1,0 +1,219 @@
+{
+  "source": "https://github.com/addyosmani/agent-skills",
+  "commit": "39b723ceebf81474d0557c1fecd01eddab585563",
+  "priorArchivedCommit": "6ca0cd7db39b41b1c37e26d335c507ee92382c6d",
+  "license": "MIT",
+  "scope": "Five selected source bodies, reviewed floor reference, nonexecuting helper text, and license; no source execution",
+  "files": [
+    {
+      "upstreamPath": "LICENSE",
+      "archivePath": "LICENSE",
+      "sha256": "6f202f8bd568cd730dbb2b0d1f8e243bc74c2fa1f64dbce9b2c7ea08bd5c9fd7"
+    },
+    {
+      "upstreamPath": "skills/spec-driven-development/SKILL.md",
+      "archivePath": "skills/spec-driven-development/SKILL.md",
+      "sha256": "58dd9f5f2e53830c0c0dd9651998bd6ee4e2a1cc520c9dcf855dfb2fbb3f5059"
+    },
+    {
+      "upstreamPath": "skills/constraint-driven-development/SKILL.md",
+      "archivePath": "skills/constraint-driven-development/SKILL.md",
+      "sha256": "4b8934e4026745ae663dbe80150230f2bbcdbb3dec49a6fbcaef23e07f34b22a"
+    },
+    {
+      "upstreamPath": "skills/ci-cd-and-automation/SKILL.md",
+      "archivePath": "skills/ci-cd-and-automation/SKILL.md",
+      "sha256": "5e0e55c059670a7838dc9d58dc20a3a645c0d43c974416490112af7de522df95"
+    },
+    {
+      "upstreamPath": "skills/browser-testing-with-devtools/SKILL.md",
+      "archivePath": "skills/browser-testing-with-devtools/SKILL.md",
+      "sha256": "e28dd45416e6df93f0db6fffeb3aa2477a0e48a22f8e05fd5bb1892484115bb6"
+    },
+    {
+      "upstreamPath": "skills/documentation-and-adrs/SKILL.md",
+      "archivePath": "skills/documentation-and-adrs/SKILL.md",
+      "sha256": "a55e540b4544237c2d76873965869e2e6add1e7eee935324f194411eee11e096"
+    },
+    {
+      "upstreamPath": "skills/constraint-driven-development/references/floor-guard.md",
+      "archivePath": "skills/constraint-driven-development/references/floor-guard.md",
+      "sha256": "b24459dd17569a1cc12686afb2253d8a47991325310e6e003cba4b384d7535d9"
+    },
+    {
+      "upstreamPath": "skills/constraint-driven-development/scripts/quality-gate.mjs",
+      "archivePath": "skills/constraint-driven-development/scripts/quality-gate.mjs.txt",
+      "sha256": "460decdd1365c8bedb2538e9e4b7b248693bd78ea662268b314df4f5907d5fc2"
+    }
+  ],
+  "inventory": [
+    {
+      "upstreamSkill": "api-and-interface-design",
+      "owner": "1-api-and-interface-design",
+      "disposition": "retain existing owner",
+      "sha256": "cc5e2166c484b2c297e8253f56e7525e5031f81d66101ca4e760ef378ea6bad0"
+    },
+    {
+      "upstreamSkill": "browser-testing-with-devtools",
+      "owner": "1-browser-testing-with-devtools",
+      "disposition": "merge",
+      "sha256": "e28dd45416e6df93f0db6fffeb3aa2477a0e48a22f8e05fd5bb1892484115bb6"
+    },
+    {
+      "upstreamSkill": "ci-cd-and-automation",
+      "owner": "1-ci-cd-and-automation",
+      "disposition": "merge",
+      "sha256": "5e0e55c059670a7838dc9d58dc20a3a645c0d43c974416490112af7de522df95"
+    },
+    {
+      "upstreamSkill": "code-review-and-quality",
+      "owner": "1-code-review",
+      "disposition": "retain existing owner",
+      "sha256": "5dc8f98d9d23e74676091a945b2649bb52456e34f293238ee2511281104a94c0"
+    },
+    {
+      "upstreamSkill": "code-simplification",
+      "owner": "2-ponytail-review",
+      "disposition": "retain existing owner",
+      "sha256": "e13b433345e6bf425c3625442ac1b3507b371c18d7ea3e3db822da7a7f742a29"
+    },
+    {
+      "upstreamSkill": "constraint-driven-development",
+      "owner": "1-constraint-driven-development",
+      "disposition": "merge",
+      "sha256": "4b8934e4026745ae663dbe80150230f2bbcdbb3dec49a6fbcaef23e07f34b22a"
+    },
+    {
+      "upstreamSkill": "context-engineering",
+      "owner": "1-strategic-compact",
+      "disposition": "retain existing owner",
+      "sha256": "5ee2929d3aded01587aa24fc9907693c8820f87f807ea0c52a263af718b62d0b"
+    },
+    {
+      "upstreamSkill": "debugging-and-error-recovery",
+      "owner": "0-diagnosing-bugs",
+      "disposition": "retain existing owner",
+      "sha256": "95e393819043b50b3ba6f4d89f0fea620d03e560eb52b592b3eb7a41836aaea1"
+    },
+    {
+      "upstreamSkill": "deprecation-and-migration",
+      "owner": "1-deprecation-and-migration",
+      "disposition": "retain existing owner",
+      "sha256": "1896d7db836fc067e2856739664db9ff5bb642526fdff2126d08ec0d588da4b7"
+    },
+    {
+      "upstreamSkill": "documentation-and-adrs",
+      "owner": "1-living-documentation-governor",
+      "disposition": "merge",
+      "sha256": "a55e540b4544237c2d76873965869e2e6add1e7eee935324f194411eee11e096"
+    },
+    {
+      "upstreamSkill": "doubt-driven-development",
+      "owner": "1-doubt-driven-development",
+      "disposition": "retain existing owner",
+      "sha256": "7a7d53d9d2b93ca7af8d882718753dc7887716f143e7937ecbc381f26416bda7"
+    },
+    {
+      "upstreamSkill": "frontend-ui-engineering",
+      "owner": "1-frontend-ui-engineering",
+      "disposition": "retain existing owner",
+      "sha256": "5c322ec445ed5a2094617c8c01b4b5b138aaf73fccf5c89ec95081fe4e50923a"
+    },
+    {
+      "upstreamSkill": "git-workflow-and-versioning",
+      "owner": "1-atomic-git-commits",
+      "disposition": "retain existing owner",
+      "sha256": "d77c955f57cfafde73efb7641ed9a478ffaa0f61c0f31bd9fe87317702f1b60d"
+    },
+    {
+      "upstreamSkill": "idea-refine",
+      "owner": "1-brainstorm",
+      "disposition": "retain existing owner",
+      "sha256": "c226c1cd369bef2671073f5fd1f4108731691f725ef28f8c8c01d247c214d0c3"
+    },
+    {
+      "upstreamSkill": "incremental-implementation",
+      "owner": "0-implement",
+      "disposition": "retain existing owner",
+      "sha256": "df66536610071727feae1ca95f3c391c248ad828041750ccd3699cce763aa00b"
+    },
+    {
+      "upstreamSkill": "interview-me",
+      "owner": "0-grilling",
+      "disposition": "retain existing owner",
+      "sha256": "ace4b675999bb504593d572e0f73f3d7e803ad6fddf318445598c82c11939db2"
+    },
+    {
+      "upstreamSkill": "observability-and-instrumentation",
+      "owner": "1-observability-and-instrumentation",
+      "disposition": "retain existing owner",
+      "sha256": "e7fcb0820306d46268de9594d676ad98e35040858926c412b7000faa52a61f87"
+    },
+    {
+      "upstreamSkill": "performance-optimization",
+      "owner": "1-performance-optimization",
+      "disposition": "retain existing owner",
+      "sha256": "82af71540457cf853893685211f64509cd1e781c0de09d0186f16960f2d6eeba"
+    },
+    {
+      "upstreamSkill": "planning-and-task-breakdown",
+      "owner": "1-to-tickets",
+      "disposition": "retain existing owner",
+      "sha256": "b38e35d4f6030a11423082679b1c4d0988c91a3569a3434ff0f8b9799657d630"
+    },
+    {
+      "upstreamSkill": "security-and-hardening",
+      "owner": "2-security-and-hardening",
+      "disposition": "retain existing owner",
+      "sha256": "f78655c64329b53ee216c9bc1b8c01f6cd40d2e9caad35944f4b0dbed8fd16b7"
+    },
+    {
+      "upstreamSkill": "shipping-and-launch",
+      "owner": "1-shipping-and-launch",
+      "disposition": "retain existing owner",
+      "sha256": "92fec446ec4e947a7b8aac88b851aa5743ff8cb39d5987fb53df08ba8a160d64"
+    },
+    {
+      "upstreamSkill": "source-driven-development",
+      "owner": "1-research",
+      "disposition": "retain existing owner",
+      "sha256": "df38a852658679a67c7a9e4840160570c95094a13a63307e834045ddbf8aa287"
+    },
+    {
+      "upstreamSkill": "spec-driven-development",
+      "owner": "1-to-spec",
+      "disposition": "merge",
+      "sha256": "58dd9f5f2e53830c0c0dd9651998bd6ee4e2a1cc520c9dcf855dfb2fbb3f5059"
+    },
+    {
+      "upstreamSkill": "test-driven-development",
+      "owner": "1-tdd",
+      "disposition": "retain existing owner",
+      "sha256": "24ff76db6227bd74075381f16a5830add333439968f23c3f73987fac2290fe2a"
+    },
+    {
+      "upstreamSkill": "using-agent-skills",
+      "owner": "0-butler",
+      "disposition": "exclude duplicate router",
+      "sha256": "30787ef2c77bf1a4729fffed0f6523ba6fcbe81bdc436b36371b78c21394d3c3"
+    }
+  ],
+  "adaptations": {
+    "spec-driven-development": [
+      "skills/1-to-spec/references/spec-format.md"
+    ],
+    "constraint-driven-development": [
+      "skills/1-constraint-driven-development/references/full-guide.md"
+    ],
+    "ci-cd-and-automation": [
+      "skills/1-ci-cd-and-automation/references/full-guide.md",
+      "skills/1-ci-cd-and-automation/references/report-gates.md"
+    ],
+    "browser-testing-with-devtools": [
+      "skills/1-browser-testing-with-devtools/references/full-guide.md"
+    ],
+    "documentation-and-adrs": [
+      "skills/1-living-documentation-governor/references/full-guide.md"
+    ]
+  }
+}
