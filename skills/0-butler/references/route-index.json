@@ -5,7 +5,7 @@
     "hubs/*/workflow.json"
   ],
   "schema_version": 1,
-  "skill_count": 293,
+  "skill_count": 294,
   "skills": [
     {
       "cousins": [],
@@ -23,6 +23,7 @@
       "next": [
         "1-ai-suitability",
         "1-context-retrieval-design",
+        "1-llm-cost-design",
         "0-butler",
         "1-asd-ste100",
         "1-agent-evaluation",
@@ -330,6 +331,45 @@
         "or implement one bounded human approval",
         "escalation",
         "or oversight policy for an AI-agent action family"
+      ]
+    },
+    {
+      "cousins": [
+        "1-agent-evaluation",
+        "1-observability-and-instrumentation",
+        "1-performance-optimization"
+      ],
+      "hub": "0-agent-engineering",
+      "memberships": [
+        {
+          "hub": "0-agent-engineering",
+          "role": "leaf"
+        }
+      ],
+      "next": [
+        "0-agent-engineering"
+      ],
+      "not_when": [
+        "live billing changes",
+        "execute provider calls",
+        "implement a pipeline",
+        "run quality evaluation"
+      ],
+      "prev": [
+        "0-agent-engineering"
+      ],
+      "requires_setup": false,
+      "role": "leaf",
+      "skill": "1-llm-cost-design",
+      "source": "catalog",
+      "triggers": [
+        "LLM cost policy",
+        "reduce LLM API spend",
+        "model routing budget",
+        "prompt caching strategy"
+      ],
+      "when": [
+        "design a spending policy or cost-reduction proposal for one LLM workload"
       ]
     },
     {

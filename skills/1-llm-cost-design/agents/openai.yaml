@@ -1,0 +1,6 @@
+interface:
+  display_name: "Llm Cost Design"
+  short_description: "Design LLM spending, routing, retry, and cache policies"
+  default_prompt: "Use $1-llm-cost-design for this scoped request. Design one LLM spending policy with quality and budget controls."
+policy:
+  allow_implicit_invocation: false

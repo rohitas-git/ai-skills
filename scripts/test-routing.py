@@ -487,6 +487,7 @@ class AgentEngineeringHubRouteTests(WorkspaceRouteTests):
         '1-asd-ste100',
         '1-context-retrieval-design',
         '1-human-in-the-loop',
+        '1-llm-cost-design',
         '1-mcp-server-building',
         '1-observability-and-instrumentation',
         '1-parallel-agents',
