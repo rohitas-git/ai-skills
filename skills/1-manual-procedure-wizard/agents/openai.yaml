@@ -1,0 +1,7 @@
+interface:
+  display_name: Manual Procedure Wizard
+  short_description: Author a human-run manual procedure wizard without executing
+    it
+  default_prompt: Use $1-manual-procedure-wizard for the requested scoped task.
+policy:
+  allow_implicit_invocation: false

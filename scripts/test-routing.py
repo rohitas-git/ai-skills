@@ -559,6 +559,7 @@ class DevOpsHubRouteTests(WorkspaceRouteTests):
         '1-identity-and-secrets-management',
         '1-incident-response',
         '1-infrastructure-as-code',
+        '1-manual-procedure-wizard',
         '1-network-and-edge-operations',
         '1-observability-and-instrumentation',
         '1-platform-engineering',

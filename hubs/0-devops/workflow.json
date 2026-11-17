@@ -54,6 +54,14 @@
         "2-security-and-hardening"
       ],
       "note": "Shared delivery and security skills with primary membership elsewhere; CI/CD, observability, and shipping inherit the exact caller/candidate/worktree/authority, operate on one workflow/check, telemetry, or release-candidate contract, and return here; planning never authorizes deployment, hosted telemetry, or remote administration"
+    },
+    {
+      "link_type": "leaf",
+      "skills": [
+        "1-manual-procedure-wizard"
+      ],
+      "primary": true,
+      "note": "One explicitly selected scoped operation; return evidence to caller without automatic follow-ons"
     }
   ],
   "pipeline": [

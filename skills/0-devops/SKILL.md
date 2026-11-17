@@ -1,27 +1,22 @@
 ---
 name: 0-devops
-description: >
-  Route one infrastructure, platform, delivery, reliability, compliance, or operational-security
-  outcome to the narrowest specialist. Not for application feature implementation, broad security
-  review, AI-agent design, or performing operational work in the hub itself.
+description: 'Route one infrastructure, platform, delivery, reliability, compliance, or operational-security outcome to the narrowest specialist. Not for application feature implementation, broad security review, AI-agent design, or performing operational work in the hub itself.
+
+  '
 disable-model-invocation: true
 metadata:
   catalog:
     hub: 0-devops
     role: hub
-    when:
-      - "operating infrastructure, deployment platforms, reliability, or compliance controls"
-      - "choosing a DevOps or production-operations specialist"
-    not_when:
-      - "application feature implementation → 0-implement"
-      - "security audit and findings → 1-security-auditor"
-      - "AI-agent system design → 0-agent-engineering"
+    when: ['operating infrastructure, deployment platforms, reliability, or compliance controls', choosing a DevOps or production-operations specialist]
+    not_when: [application feature implementation → 0-implement, security audit and findings → 1-security-auditor, AI-agent system design → 0-agent-engineering]
     prev: [0-butler]
-    next: [0-butler, 1-infrastructure-as-code, 1-cloud-platform-operations, 1-container-platform-operations, 1-database-and-storage-operations, 1-postgres-read-only, 1-network-and-edge-operations, 1-server-and-fleet-operations, 1-platform-engineering, 1-ai-platform-operations, 1-identity-and-secrets-management, 1-incident-response, 1-resilience-and-disaster-recovery, 1-compliance-engineering, 1-ci-cd-and-automation, 1-observability-and-instrumentation, 1-shipping-and-launch, 2-security-and-hardening]
+    next: [1-manual-procedure-wizard, 0-butler, 1-infrastructure-as-code, 1-cloud-platform-operations, 1-container-platform-operations, 1-database-and-storage-operations, 1-postgres-read-only, 1-network-and-edge-operations, 1-server-and-fleet-operations, 1-platform-engineering, 1-ai-platform-operations, 1-identity-and-secrets-management, 1-incident-response, 1-resilience-and-disaster-recovery, 1-compliance-engineering, 1-ci-cd-and-automation, 1-observability-and-instrumentation, 1-shipping-and-launch, 2-security-and-hardening]
     cousins: [0-implement, 0-diagnosing-bugs, 1-security-auditor, 0-agent-engineering]
     triggers: [devops, infrastructure operations, platform operations, production operations]
     requires_setup: false
 ---
+
 
 # DevOps
 
@@ -45,7 +40,8 @@ authority envelope, then return its evidence and effects to the actual caller. T
 | Active incident containment and recovery | `/1-incident-response` |
 | Disaster recovery and business continuity | `/1-resilience-and-disaster-recovery` |
 | SOC 2, HIPAA, GDPR, PCI DSS, ISO 27001, or FedRAMP controls | `/1-compliance-engineering` |
-| CI/CD pipeline design | `/1-ci-cd-and-automation` |
+| Author a script for a human-only manual procedure | `/1-manual-procedure-wizard` |
+| CI/CD pipeline or local pre-commit check contract | `/1-ci-cd-and-automation` |
 | Telemetry, SLOs, dashboards, or on-call alerts | `/1-observability-and-instrumentation` |
 | Rollout, launch, feature flags, and rollback | `/1-shipping-and-launch` |
 | Apply already accepted security hardening | `/2-security-and-hardening` |

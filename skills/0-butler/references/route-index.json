@@ -5,7 +5,7 @@
     "hubs/*/workflow.json"
   ],
   "schema_version": 1,
-  "skill_count": 294,
+  "skill_count": 295,
   "skills": [
     {
       "cousins": [],
@@ -1061,6 +1061,7 @@
         }
       ],
       "next": [
+        "1-manual-procedure-wizard",
         "0-butler",
         "1-infrastructure-as-code",
         "1-cloud-platform-operations",
@@ -1099,7 +1100,10 @@
         "production operations"
       ],
       "when": [
-        "operating infrastructure, deployment platforms, reliability, or compliance controls",
+        "operating infrastructure",
+        "deployment platforms",
+        "reliability",
+        "or compliance controls",
         "choosing a DevOps or production-operations specialist"
       ]
     },
@@ -1446,6 +1450,38 @@
       ],
       "when": [
         "authoring or reviewing infrastructure-as-code modules and plans"
+      ]
+    },
+    {
+      "cousins": [],
+      "hub": "0-devops",
+      "memberships": [
+        {
+          "hub": "0-devops",
+          "role": "leaf"
+        }
+      ],
+      "next": [
+        "0-devops"
+      ],
+      "not_when": [
+        "perform an operational action → 0-devops",
+        "implement ordinary code → 0-implement"
+      ],
+      "prev": [
+        "0-devops"
+      ],
+      "requires_setup": false,
+      "role": "leaf",
+      "skill": "1-manual-procedure-wizard",
+      "source": "catalog",
+      "triggers": [
+        "manual setup wizard",
+        "interactive Bash wizard",
+        "guided dashboard procedure"
+      ],
+      "when": [
+        "author a guided script for human-only setup or manual operations"
       ]
     },
     {
