@@ -4282,7 +4282,8 @@
         "0-wayfinder",
         "0-implement",
         "1-to-tickets",
-        "1-write-plan"
+        "1-write-plan",
+        "1-design-review"
       ],
       "not_when": [
         "material decisions remain open → 0-grilling",
@@ -4305,7 +4306,8 @@
         "write a spec",
         "draft PRD",
         "publish PRD",
-        "specification from this thread"
+        "specification from this thread",
+        "EGM draft"
       ],
       "when": [
         "a settled request or decision record needs one specification artifact"

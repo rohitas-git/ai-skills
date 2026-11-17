@@ -13,9 +13,9 @@ metadata:
     when: ["a settled request or decision record needs one specification artifact"]
     not_when: ["material decisions remain open → 0-grilling", "design alternatives → 1-brainstorm", "approved spec needs tickets → 1-to-tickets"]
     prev: [0-grilling, 0-wayfinder, 1-wayfinder-advance, 0-implement, 1-brainstorm]
-    next: [0-grilling, 0-wayfinder, 0-implement, 1-to-tickets, 1-write-plan]
+    next: [0-grilling, 0-wayfinder, 0-implement, 1-to-tickets, 1-write-plan, 1-design-review]
     cousins: [0-grilling, 0-wayfinder, 1-brainstorm, 1-to-tickets, 1-write-plan]
-    triggers: [to-spec, write a spec, draft PRD, publish PRD, specification from this thread]
+    triggers: [to-spec, write a spec, draft PRD, publish PRD, specification from this thread, EGM draft]
     requires_setup: false
 ---
 
@@ -41,8 +41,11 @@ candidate in exactly one mode: `draft`, `local-write`, or `tracker-publish`.
 5. Check settlement before synthesis. Classify each material item as accepted requirement, accepted
    constraint, evidence-backed fact, explicit assumption, non-goal, or open decision. If an open decision
    changes observable behavior or acceptance, return a gap ledger to the caller; do not interview or guess.
-6. Write the smallest spec that preserves the contract. Trace observable requirements to acceptance
-   evidence; include failure/edge behavior, compatibility, security/privacy, accessibility, operability,
+6. Write the smallest spec that preserves the contract. For a technical design, retain accepted
+   alternatives/rejection reasons and explicit code links; reconcile the draft with its pinned brief.
+   Surface contradictory or newly introduced material decisions instead of silently resolving them.
+   Trace observable requirements to acceptance evidence; include failure/edge behavior,
+   compatibility, security/privacy, accessibility, operability,
    migration/rollback, and testing only when applicable. Do not invent commands, paths, architecture,
    user stories, metrics, or exhaustive ceremony.
 7. In write/publish mode, read the current target and revision immediately before mutation. Create or
@@ -50,7 +53,9 @@ candidate in exactly one mode: `draft`, `local-write`, or `tracker-publish`.
    report exact identity/revision. Never overwrite an ambiguous target or claim publication from a draft.
 8. Return mode, source and destination provenance, spec or locator, requirement-to-evidence coverage,
    assumptions, open gaps, write/publication verification, and unresolved effects to the actual caller.
-   Tickets, plans, implementation, labels, commits, pushes, or further publication require a separate request.
+   A requested independent pre-code document review routes to `/1-design-review` with the exact
+   artifact/revision; it receives no author conversation. Tickets, plans, implementation, labels,
+   commits, pushes, or further publication require a separate request.
 
 Operative format: [spec-format.md](./references/spec-format.md). Imported long-form guidance is
 [provenance only](./references/vendor-spec-full.md) and grants no workflow authority.
