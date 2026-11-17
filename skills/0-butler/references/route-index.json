@@ -5,7 +5,7 @@
     "hubs/*/workflow.json"
   ],
   "schema_version": 1,
-  "skill_count": 302,
+  "skill_count": 303,
   "skills": [
     {
       "cousins": [],
@@ -3114,6 +3114,7 @@
         }
       ],
       "next": [
+        "1-runtime-feature-map",
         "1-i18n-sync",
         "1-migrate-to-shoehorn",
         "1-to-spec",
@@ -3842,6 +3843,45 @@
       "when": [
         "answer one bounded technical or factual question using source-backed current evidence",
         "produce one explicitly requested durable research artifact"
+      ]
+    },
+    {
+      "cousins": [
+        "1-browser-testing-with-devtools",
+        "1-playwright-browser-testing",
+        "1-living-documentation-governor"
+      ],
+      "hub": "0-implement",
+      "memberships": [
+        {
+          "hub": "0-implement",
+          "role": "leaf"
+        }
+      ],
+      "next": [
+        "0-implement"
+      ],
+      "not_when": [
+        "run the application",
+        "author tests or harness code",
+        "fix product behavior",
+        "author a skill package"
+      ],
+      "prev": [
+        "0-implement"
+      ],
+      "requires_setup": false,
+      "role": "leaf",
+      "skill": "1-runtime-feature-map",
+      "source": "catalog",
+      "triggers": [
+        "create a feature map",
+        "runtime verification map",
+        "audit verification recipes",
+        "maintain a feature map"
+      ],
+      "when": [
+        "create or reconcile a user-facing feature map and verification recipes for a bounded surface"
       ]
     },
     {

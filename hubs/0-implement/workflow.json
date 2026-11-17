@@ -148,7 +148,9 @@
     },
     {
       "link_type": "leaf",
-      "skills": [],
+      "skills": [
+        "1-runtime-feature-map"
+      ],
       "primary": true,
       "note": "Map user paths, preconditions and verification evidence. Preserve caller, candidate, mode and authority; return without automatic follow-ons."
     }
@@ -160,6 +162,7 @@
     "implement surgically; delegation through F-SP is available only when explicitly requested or authorized and ownership boundaries are independent",
     "verify supported claims on the actual candidate; project mutable work may use 1-dev-test → 1-code-review → resolve verified in-scope findings one by one → reverify and re-review until clear or blocked",
     "1-atomic-git-commits only when commit authority exists; 1-finish-branch only for requested integration/PR options; no implicit remote or production effects",
+    "optional W-PS1: selected runtime coverage → 1-runtime-feature-map → authorized project/browser check → evidence and drift reconciliation; no automatic harness install or product fix",
     "optional W-PS3: selected correction-to-enforcement → 1-agent-workflow-observer proposal → requested 1-constraint-driven-development policy → authorized implementation/1-ci-cd-and-automation → negative and clean controls → return"
   ],
   "forks": [
@@ -222,6 +225,7 @@
       "question": "Which optional verification outcome is required?",
       "recommended": "Infer from the requested outcome; ask only for material ambiguity",
       "branches": [
+        "W-PS1 runtime coverage via 1-runtime-feature-map",
         "W-PS3 enforceable lesson via 1-agent-workflow-observer",
         "Agent judgment"
       ]

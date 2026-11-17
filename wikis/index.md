@@ -441,6 +441,7 @@ _Live skills: **174**._
 
 ## Available skill additions
 
+| [[1-runtime-feature-map]] | Map user paths, preconditions and verification evidence. | `skills/1-runtime-feature-map` |
 | [[1-i18n-sync]] | Synchronize selected JSON locale keys with context and validation. | `skills/1-i18n-sync` |
 | [[1-migrate-to-shoehorn]] | Migrate scoped TypeScript test fixtures to Shoehorn. | `skills/1-migrate-to-shoehorn` |
 | [[1-change-impact]] | Trace affected consumers, compatibility, and verification obligations. | `skills/1-change-impact` |

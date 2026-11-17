@@ -96,14 +96,18 @@
 <section>
   <h2>Children</h2>
   <ul>
-    <li><strong>conditional pipeline:</strong> <a href="../../skills/1-to-spec/SKILL.md">1-to-spec</a> · <a href="../../skills/1-to-tickets/SKILL.md">1-to-tickets</a> · <a href="../../skills/1-tdd/SKILL.md">1-tdd</a> · <a href="../../skills/1-code-review/SKILL.md">1-code-review</a> · <a href="../../skills/1-atomic-git-commits/SKILL.md">1-atomic-git-commits</a></li>
+    <li><strong>conditional pipeline:</strong> <a href="../../skills/1-to-spec/SKILL.md">1-to-spec</a> · <a href="../../skills/1-to-tickets/SKILL.md">1-to-tickets</a> · <a href="../../skills/1-tdd/SKILL.md">1-tdd</a> · <a href="../../skills/1-dev-test/SKILL.md">1-dev-test</a> <span class="meta">(project mutable feedback loop)</span> · <a href="../../skills/1-code-review/SKILL.md">1-code-review</a> · <a href="../../skills/1-atomic-git-commits/SKILL.md">1-atomic-git-commits</a></li>
     <li><strong>plan, execution, and workspace:</strong> <a href="../../skills/1-write-plan/SKILL.md">1-write-plan</a> · <a href="../../skills/1-execute-plan/SKILL.md">1-execute-plan</a> · <a href="../../skills/1-subagent-implement/SKILL.md">1-subagent-implement</a> · <a href="../../skills/1-parallel-agents/SKILL.md">1-parallel-agents</a> · <a href="../../skills/1-git-worktrees/SKILL.md">1-git-worktrees</a> · <a href="../../skills/1-resolving-merge-conflicts/SKILL.md">1-resolving-merge-conflicts</a> · <a href="../../skills/1-finish-branch/SKILL.md">1-finish-branch</a></li>
     <li><strong>implementation specialists:</strong> <a href="../../skills/1-constraint-driven-development/SKILL.md">1-constraint-driven-development</a> · <a href="../../skills/1-api-and-interface-design/SKILL.md">1-api-and-interface-design</a> · <a href="../../skills/1-codebase-design/SKILL.md">1-codebase-design</a> · <a href="../../skills/1-coding-standards/SKILL.md">1-coding-standards</a> · <a href="../../skills/1-go-best-practices/SKILL.md">1-go-best-practices</a> · <a href="../../skills/1-deprecation-and-migration/SKILL.md">1-deprecation-and-migration</a> · <a href="../../skills/1-error-handling/SKILL.md">1-error-handling</a> · <a href="../../skills/1-living-documentation-governor/SKILL.md">1-living-documentation-governor</a> · <a href="../../skills/1-frontend-ui-engineering/SKILL.md">1-frontend-ui-engineering</a> · <a href="../../skills/1-ui-styling/SKILL.md">1-ui-styling</a> <span class="meta">(presentation-only; preserves behavior)</span></li>
     <li><strong>Supabase/Postgres:</strong> <a href="../../skills/1-supabase/SKILL.md">product integration</a> · <a href="../../skills/1-supabase-postgres-best-practices/SKILL.md">one measured Postgres concern</a> · <a href="../../skills/1-supabase-schema-migration/SKILL.md">one new local schema concept</a> · <a href="../../skills/1-pending-migration-hygiene/SKILL.md">rewrite only with complete provenance or exact human attestation</a> <span class="meta">(worktrees do not isolate local stacks; no remote migration application)</span></li>
     <li><strong>evidence and process:</strong> <a href="../../skills/2-verify-work/SKILL.md">2-verify-work</a> · <a href="../../skills/1-karpathy-guidelines/SKILL.md">1-karpathy-guidelines</a> <span class="meta">(explicit think/scope/evidence checklist; returns to Ship)</span> · <a href="../../skills/1-research/SKILL.md">1-research</a> <span class="meta">(one bounded answer; persistence only when requested)</span></li>
     <li><strong>comments and layout:</strong> <a href="../../skills/1-code-comments/SKILL.md">one public API-doc surface</a> · <a href="../../skills/1-inline-comments/SKILL.md">one internal why comment</a> · <a href="../../skills/1-execution-flow-comments/SKILL.md">one explicitly requested flow block</a> · <a href="../../skills/1-stepdown-rule/SKILL.md">one behavior-independent file reorder</a> <span class="meta">(exact candidate/worktree; no automatic review)</span></li>
     <li><strong>delivery and measured performance:</strong> <a href="../../skills/1-pr-summarizer/SKILL.md">1-pr-summarizer</a> · <a href="../../skills/1-shipping-and-launch/SKILL.md">1-shipping-and-launch</a> · <a href="../../skills/1-observability-and-instrumentation/SKILL.md">1-observability-and-instrumentation</a> · <a href="../../skills/1-ci-cd-and-automation/SKILL.md">1-ci-cd-and-automation</a> · <a href="../../skills/1-performance-optimization/SKILL.md">1-performance-optimization</a></li>
-  </ul>
+
+<li><a href="../../skills/1-migrate-to-shoehorn/SKILL.md">1-migrate-to-shoehorn</a> — Migrate scoped TypeScript test fixtures to Shoehorn</li>
+<li><a href="../../skills/1-i18n-sync/SKILL.md">1-i18n-sync</a> — Synchronize selected JSON locale keys with context and validation.</li>
+<li><a href="../../skills/1-runtime-feature-map/SKILL.md">1-runtime-feature-map</a> — Map user paths, preconditions and verification evidence.</li>
+</ul>
 </section>
 
 <section>
@@ -112,6 +116,7 @@
 → isolate with 1-git-worktrees only when needed, then resume Ship
 → select one reviewable slice + fitting evidence loop + necessary specialists
 → implement surgically (delegation only when explicitly authorized)
+→ use 1-dev-test for project mutable testing; it hands frozen candidates to pre-merge
 → verify current candidate → 1-code-review
 → resolve verified in-scope findings one by one → reverify/re-review
 → optional authorized atomic commit; finish-branch only when requested
@@ -168,5 +173,11 @@
   chart: <a href="../flows-chart.html">flows-chart.html</a> ·
   workflow: <a href="./workflow.json">workflow.json</a>
 </footer>
-<section><h2>Available specialist additions</h2><ul><li><a href="../../skills/1-dev-test/SKILL.md">1-dev-test</a></li><li><a href="../../skills/1-i18n-sync/SKILL.md">1-i18n-sync</a></li><li><a href="../../skills/1-migrate-to-shoehorn/SKILL.md">1-migrate-to-shoehorn</a></li></ul></section><section><h2>F-PS1</h2><p>Which optional verification outcome is required?</p><p>W-PS3 enforceable lesson via 1-agent-workflow-observer · Agent judgment</p></section></body>
+<section>
+<h2>Optional verification workflows · F-PS1</h2>
+<p>Infer the requested outcome; ask only for material ambiguity and include Agent judgment.</p>
+<ul><li>W-PS1 — runtime feature coverage</li><li>W-PS2 — model, check and reconcile</li><li>W-PS3 — correction to enforcement</li></ul>
+<p><a href="../../skills/0-implement/references/verification-workflows.md">Contracts, phase owners, gates and stop conditions</a>. These are opt-in compositions, not scheduled automation or expanded authority.</p>
+</section>
+</body>
 </html>

@@ -765,6 +765,7 @@ Codex may shorten skill descriptions when the full catalog is installed because 
 ## Available skill additions
 
 | **1-design-rationale** | Explain recorded design decisions and their trade-offs. |
+| **1-runtime-feature-map** | Map user paths, preconditions and verification evidence. |
 | **1-i18n-sync** | Synchronize selected JSON locale keys with context and validation. |
 | **1-prompt-optimizer** | Rewrite one prompt without executing it or inventing requirements. |
 | **1-llm-cost-design** | Design one LLM spending policy with quality and budget controls. |
