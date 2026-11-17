@@ -4,6 +4,7 @@ Draft and host-sourced skills **not yet placed** into `skills/`. Depth-prefix is
 
 ## Skills
 
+- [1-pr-html-explainer](./1-pr-html-explainer/) — local HTML PR walkthrough; reuses Visual Explainer's design and figure guidance
 - [1-to-actionables](./1-to-actionables/) — in-progress / not yet promoted
 - [check-work](./check-work/) — in-progress / not yet promoted
 - [code-review](./code-review/) — in-progress / not yet promoted

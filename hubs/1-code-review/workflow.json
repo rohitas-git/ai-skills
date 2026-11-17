@@ -7,7 +7,7 @@
   "slash": "/1-code-review",
   "path": "skills/1-code-review",
   "package_dir": "hubs/1-code-review/",
-  "role": "Multi-axis closer for Ship — sub-hub under /0-review.",
+  "role": "Multi-axis closer for Ship \u2014 sub-hub under /0-review.",
   "notes": "Review the actual requested candidate, including task-owned uncommitted changes. Run applicable axes locally or with permitted independent reviewers. Return findings to caller; no automatic repair or commit. Parent domain hub is /0-review.",
   "parent": {
     "hub": "0-butler",

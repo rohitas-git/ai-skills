@@ -59,13 +59,13 @@
       "source": "mattpocock/skills",
       "sourceType": "github",
       "skillPath": "skills/skills/0-implement/SKILL.md",
-      "computedHash": "2139cfedf24791adbc839aaab6019cff158af1e28bfead020ec6e0ce01b3e74d"
+      "computedHash": "85e0e079bd191e1e72f329f91ee9be6b2d15dcb2ff11023f0fac0ef57f3a90e3"
     },
     "0-improve-codebase-architecture": {
       "source": "mattpocock/skills",
       "sourceType": "github",
       "skillPath": "skills/skills/0-improve-codebase-architecture/SKILL.md",
-      "computedHash": "66e8a50c83c3c724fcfe0769701b665c56cec220cc4f49cc1aee8bdfc07de94a"
+      "computedHash": "2c4ca239d4064c2f918f1cb326bfcd81361e9295203595dc4cf5b8b00935d72c"
     },
     "1-prototype": {
       "source": "mattpocock/skills",
@@ -101,7 +101,18 @@
       "source": "mattpocock/skills",
       "sourceType": "github",
       "skillPath": "skills/skills/1-to-spec/SKILL.md",
-      "computedHash": "0f544cd0c099c06f0dd0b7b9ee98b4237218e7e95fd3d3c02e791efbaf74bacb"
+      "computedHash": "0f544cd0c099c06f0dd0b7b9ee98b4237218e7e95fd3d3c02e791efbaf74bacb",
+      "referenceImports": [
+        {
+          "source": "addyosmani/agent-skills",
+          "commit": "39b723ceebf81474d0557c1fecd01eddab585563",
+          "upstreamPath": "skills/spec-driven-development/SKILL.md",
+          "targets": [
+            "skills/1-to-spec/references/spec-format.md"
+          ],
+          "sourceManifest": "archive/vendor/addyosmani-agent-skills-2026-11-15/manifest.json"
+        }
+      ]
     },
     "1-to-tickets": {
       "source": "mattpocock/skills",
@@ -418,14 +429,36 @@
       "sourceType": "github",
       "skillPath": "skills/skills/1-constraint-driven-development/SKILL.md",
       "computedHash": "f92b69a8fb13518fca27d6e2759b0b824312ac57abaf0bd0907a0824e6006fd2",
-      "commit": "6ca0cd7db39b41b1c37e26d335c507ee92382c6d"
+      "commit": "6ca0cd7db39b41b1c37e26d335c507ee92382c6d",
+      "referenceImports": [
+        {
+          "source": "addyosmani/agent-skills",
+          "commit": "39b723ceebf81474d0557c1fecd01eddab585563",
+          "upstreamPath": "skills/constraint-driven-development/SKILL.md",
+          "targets": [
+            "skills/1-constraint-driven-development/references/full-guide.md"
+          ],
+          "sourceManifest": "archive/vendor/addyosmani-agent-skills-2026-11-15/manifest.json"
+        }
+      ]
     },
     "1-agent-evaluation": {
       "source": "seb1n/awesome-ai-agent-skills",
       "sourceType": "github",
       "skillPath": "skills/skills/1-agent-evaluation/SKILL.md",
-      "computedHash": "20b491a5ee7659f0883a0e2ba731e2282a9e4e4fd21ff22e347e39aa43bc17bb",
-      "commit": "75865a5d037a4cdaa7f409a4ec14ab9b0292920b"
+      "computedHash": "91f772f7812713785f0a7727f9b39d582510f482527887644b02cc63cfb89bef",
+      "commit": "75865a5d037a4cdaa7f409a4ec14ab9b0292920b",
+      "referenceImports": [
+        {
+          "source": "affaan-m/ECC",
+          "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b",
+          "upstreamPath": "skills/regex-vs-llm-structured-text/SKILL.md",
+          "targets": [
+            "skills/1-agent-evaluation/references/extraction-evaluation.md"
+          ],
+          "sourceManifest": "archive/vendor/ecc-2026-11-15/manifest.json"
+        }
+      ]
     },
     "1-tool-schema-design": {
       "source": "seb1n/awesome-ai-agent-skills",
@@ -608,6 +641,172 @@
       "skillPath": "skills/skills/1-thinking-ethical/SKILL.md",
       "computedHash": "693f8bcb69c292784a316117e74caab113b7b392f4fd4aba6756f34c6dd3b575",
       "commit": "e213af5f6574ea982a64af85b5b1347a816c5bf8"
+    },
+    "1-marketing-blog-editor": {
+      "source": "danielabar/meblog",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-marketing-blog-editor/SKILL.md",
+      "computedHash": "0dad93af49f790928458374401198d915dfc1992172c288b966f81a555b3cafa",
+      "commit": "0d3962332b7c07b0cb4d025d170e9f6e5c1ae292"
+    },
+    "1-asd-ste100": {
+      "source": "danyuchn/asd-ste100-skill",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-asd-ste100/SKILL.md",
+      "computedHash": "f5138c4824ce3b52772e7bb64900077c95333329e15c56dec80a680c2420830e",
+      "commit": "3944283c183eea13fe5bd902b572da3b4de8bf44"
+    },
+    "1-design-review": {
+      "source": "google/elephant-goldfish-model",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-design-review/SKILL.md",
+      "computedHash": "a172962167d174ae49d86833876d6a8508b77135c8e979b18e24d9dc04a67c1c",
+      "commit": "0dfb5bf3eebd551d1e805c3ab16cbaa9b1c2c42a",
+      "upstreamSkill": "egm-review",
+      "archivePath": "skills/archive/vendor/elephant-goldfish-model",
+      "sourceManifest": "archive/vendor/elephant-goldfish-model/manifest.json",
+      "adaptations": {
+        "egm-brainstorm": "skills/1-brainstorm/references/egm-concept-review.md",
+        "egm-draft": "skills/1-to-spec/references/spec-format.md",
+        "egm-review": "skills/1-design-review/SKILL.md",
+        "egm-review-loop": "skills/1-design-review/references/review-protocol.md",
+        "egm-resolve": "skills/1-design-review/references/review-protocol.md",
+        "egm-bootstrap": "skills/1-living-documentation-governor/references/egm-contracts-and-drift.md",
+        "egm-drift-report": "skills/1-living-documentation-governor/references/egm-contracts-and-drift.md"
+      }
+    },
+    "1-to-questionnaire": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-to-questionnaire/SKILL.md",
+      "computedHash": "e037fcbb7baa0d0185dcd51ba8fd690ae870f9f6eee0140c8d86ea6e6cbfcd77",
+      "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa",
+      "upstreamSkill": "productivity/to-questionnaire",
+      "sourceManifest": "archive/vendor/mattpocock-skills-2026-11-12/manifest.json"
+    },
+    "1-manual-procedure-wizard": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-manual-procedure-wizard/SKILL.md",
+      "computedHash": "0d568a81242df7913c4f9623e47acee9653bd8ebc7a913ec7378fbb7b5d9a201",
+      "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa",
+      "upstreamSkill": "engineering/wizard",
+      "sourceManifest": "archive/vendor/mattpocock-skills-2026-11-12/manifest.json"
+    },
+    "1-migrate-to-shoehorn": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-migrate-to-shoehorn/SKILL.md",
+      "computedHash": "594dd98b2d819860bdb267ba9c6a2d1a34b45f0f7da9952cfc9739767a9b7365",
+      "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa",
+      "upstreamSkill": "misc/migrate-to-shoehorn",
+      "sourceManifest": "archive/vendor/mattpocock-skills-2026-11-12/manifest.json"
+    },
+    "1-scaffold-exercises": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-scaffold-exercises/SKILL.md",
+      "computedHash": "673037d564e8319ae80588d6a5167c5a9ee2b2b909752be77b5e22b04c3fedae",
+      "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa",
+      "upstreamSkill": "misc/scaffold-exercises",
+      "sourceManifest": "archive/vendor/mattpocock-skills-2026-11-12/manifest.json"
+    },
+    "1-visual-explainer": {
+      "source": "nicobailon/visual-explainer",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-visual-explainer/SKILL.md",
+      "upstreamSkill": "plugins/visual-explainer",
+      "commit": "9d5f880b7e8e0a9a80c890b8e1bb6918b68481ad",
+      "version": "0.15.0",
+      "computedHash": "87b6a9daf5139a9038d2d0f585dfa2af7b65c95001b796f74a7b5d969fc72618",
+      "sourceManifest": "archive/vendor/visual-explainer-2026-11-12/manifest.json"
+    },
+    "1-i18n-sync": {
+      "source": "affaan-m/ECC",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-i18n-sync/SKILL.md",
+      "computedHash": "8105ec924c808809375f58c0d7e2547cf4bb33feb0c88e7ef392b5ad92b68ea1",
+      "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b",
+      "upstreamSkill": "i18n-sync",
+      "sourceManifest": "archive/vendor/ecc-2026-11-15/manifest.json"
+    },
+    "1-prompt-optimizer": {
+      "source": "affaan-m/ECC",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-prompt-optimizer/SKILL.md",
+      "computedHash": "b1c7f586adcfcc0fa92d1f6f1158f4998a0565313e15715326bb2863f60965a7",
+      "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b",
+      "upstreamSkill": "prompt-optimizer",
+      "sourceManifest": "archive/vendor/ecc-2026-11-15/manifest.json"
+    },
+    "1-llm-cost-design": {
+      "source": "affaan-m/ECC",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-llm-cost-design/SKILL.md",
+      "computedHash": "c011569ebcafaf5bccf03e8b66959fba0353b5ce373e004d7f28bbb196018ee2",
+      "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b",
+      "upstreamSkill": "cost-aware-llm-pipeline",
+      "sourceManifest": "archive/vendor/ecc-2026-11-15/manifest.json"
+    },
+    "1-change-impact": {
+      "source": "affaan-m/ECC",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-change-impact/SKILL.md",
+      "computedHash": "72579def05948cd960d3e0d6039d1b0da8049af0238a293c8e4529decc5f1c26",
+      "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b",
+      "upstreamSkill": "change-impact",
+      "sourceManifest": "archive/vendor/ecc-2026-11-15/manifest.json",
+      "referenceImports": [
+        {
+          "source": "cursor/plugins",
+          "commit": "bf0c7cd80abdbf7fe47b634978a7d1b4071f71a7",
+          "upstreamPath": "pstack/skills/blast-radius/SKILL.md",
+          "targets": [
+            "skills/1-change-impact/references/safety-premise.md"
+          ],
+          "sourceManifest": "archive/vendor/pstack-2026-11-15/manifest.json"
+        }
+      ]
+    },
+    "1-design-rationale": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-design-rationale/SKILL.md",
+      "computedHash": "d62e66cc27b45395d9f8540fdf8d9e2894e60ce3c21a20d16372a76dba091ff1",
+      "commit": "bf0c7cd80abdbf7fe47b634978a7d1b4071f71a7",
+      "upstreamSkill": "pstack/skills/why",
+      "version": "0.15.42",
+      "sourceManifest": "archive/vendor/pstack-2026-11-15/manifest.json"
+    },
+    "1-runtime-feature-map": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-runtime-feature-map/SKILL.md",
+      "computedHash": "976bf32a131edf9f51d74b526ffd1e336690db1102df70acb880d31150324951",
+      "commit": "bf0c7cd80abdbf7fe47b634978a7d1b4071f71a7",
+      "upstreamSkill": "pstack/skills/create-verification-skill",
+      "version": "0.15.42",
+      "sourceManifest": "archive/vendor/pstack-2026-11-15/manifest.json"
+    },
+    "1-statechart-modeling": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-statechart-modeling/SKILL.md",
+      "computedHash": "62e133343d6abf5f509bcc433ea700817864d3bf2db09e061a26196e6f761a01",
+      "commit": "bf0c7cd80abdbf7fe47b634978a7d1b4071f71a7",
+      "upstreamSkill": "pstack/skills/statechart",
+      "version": "0.15.42",
+      "sourceManifest": "archive/vendor/pstack-2026-11-15/manifest.json"
+    },
+    "1-formal-verification": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-formal-verification/SKILL.md",
+      "computedHash": "8867835c15ca3e9f701fbd2ccc21bca587fcd43e7287395b43551e2d6b958d5a",
+      "commit": "bf0c7cd80abdbf7fe47b634978a7d1b4071f71a7",
+      "upstreamSkill": "pstack/skills/create-formal-verification-skill",
+      "version": "0.15.42",
+      "sourceManifest": "archive/vendor/pstack-2026-11-15/manifest.json"
     }
   }
 }

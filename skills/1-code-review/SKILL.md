@@ -1,22 +1,29 @@
 ---
 name: 1-code-review
-description: 'Read-only multi-axis review of a diff, PR, or current implementation including uncommitted work. Use when reviewing changes after implementation. Not for: verification-only checks (2-verify-work), harsh maintainability-only review (2-thermo-nuclear-code-quality-review), or full security audit (1-security-auditor). Hub: /1-code-review; Ship closer under /0-implement.
-
-  '
+description: >
+  Read-only multi-axis review of a diff, PR, or current implementation including uncommitted work.
+  Use when reviewing changes after implementation. Not for: verification-only checks (2-verify-work),
+  harsh maintainability-only review (2-thermo-nuclear-code-quality-review), or full security audit
+  (1-security-auditor). Hub: /1-code-review; Ship closer under /0-implement.
 disable-model-invocation: true
 metadata:
   catalog:
     hub: 1-code-review
     role: sub-hub
-    when: ['multi-axis review of changes, including uncommitted implementation', ship closer after implementation and suitable verification]
-    not_when: [delete-only over-engineering → 2-ponytail-review, harsh maintainability-only → 2-thermo-nuclear-code-quality-review, verification evidence only → 2-verify-work, full security audit → 1-security-auditor]
+    when:
+      - "multi-axis review of changes, including uncommitted implementation"
+      - "ship closer after implementation and suitable verification"
+    not_when:
+      - "delete-only over-engineering → 2-ponytail-review"
+      - "harsh maintainability-only → 2-thermo-nuclear-code-quality-review"
+      - "verification evidence only → 2-verify-work"
+      - "full security audit → 1-security-auditor"
     next: [1-receive-review, 2-software-architect, 2-security-and-hardening]
     prev: [1-tdd, 0-implement]
     cousins: [2-ponytail-review, 2-thermo-nuclear-code-quality-review, 2-verify-work, 2-software-architect, 1-complete-pr-review]
     triggers: [code review, review my changes, multi-axis review, review this PR, review this diff, review uncommitted changes]
     requires_setup: false
 ---
-
 
 # Code Review
 

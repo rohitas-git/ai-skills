@@ -1,22 +1,34 @@
 ---
 name: 0-diagnosing-bugs
-description: 'Route and conduct one bounded technical root-cause diagnosis. Use when asked to diagnose, reproduce, localize, or explain why a specific bug, test, build, or regression occurs. Not for implementing a known fix, repairing a PR, or commanding an active production incident. Hub: /0-diagnosing-bugs.
-
-  '
+description: >
+  Route and conduct one bounded technical root-cause diagnosis. Use when asked to
+  diagnose, reproduce, localize, or explain why a specific bug, test, build, or
+  regression occurs. Not for implementing a known fix, repairing a PR, or commanding
+  an active production incident. Hub: /0-diagnosing-bugs.
 disable-model-invocation: true
 metadata:
   catalog:
     hub: 0-diagnosing-bugs
     role: hub
-    when: ['diagnose, reproduce, or localize one specific technical failure', 'find the supported root cause of a bug, test failure, build failure, or regression']
-    not_when: [implement a known change or approved fix → 0-implement, repair an existing pull request → 1-pr-repair, coordinate an active production incident → 1-incident-response]
+    when:
+      - "diagnose, reproduce, or localize one specific technical failure"
+      - "find the supported root cause of a bug, test failure, build failure, or regression"
+    not_when:
+      - "implement a known change or approved fix → 0-implement"
+      - "repair an existing pull request → 1-pr-repair"
+      - "coordinate an active production incident → 1-incident-response"
     prev: [0-butler]
     next: [1-tdd, 1-performance-optimization, 1-browser-testing-with-devtools, 1-playwright-browser-testing, 1-parallel-agents, 0-improve-codebase-architecture, 0-implement]
     cousins: [1-pr-repair, 1-incident-response, 1-error-handling]
-    triggers: [0-diagnosing-bugs, diagnose this failure, find the root cause, reproduce this bug, debug this regression, why is this test failing]
+    triggers:
+      - "0-diagnosing-bugs"
+      - "diagnose this failure"
+      - "find the root cause"
+      - "reproduce this bug"
+      - "debug this regression"
+      - "why is this test failing"
     requires_setup: false
 ---
-
 
 # Diagnosing bugs
 

@@ -294,7 +294,22 @@ User: "We're ready to ship payment"
 
 | Name | Description |
 |------|-------------|
-| **0-agent-engineering** | Route agent evaluations, tools, MCP servers, oversight, telemetry, and security. |
+| **1-design-rationale** | Explain recorded design decisions and their trade-offs. |
+| **1-runtime-feature-map** | Map user paths, preconditions and verification evidence. |
+| **1-statechart-modeling** | Model states, actions, guards and invariants clearly. |
+| **1-formal-verification** | Evaluate a fixed formal check with explicit scope. |
+| **1-i18n-sync** | Synchronize selected JSON locale keys with context and validation. |
+| **1-prompt-optimizer** | Rewrite one prompt without executing it or inventing requirements. |
+| **1-llm-cost-design** | Design one LLM spending policy with quality and budget controls. |
+| **1-ai-suitability** | Assess AI fit, non-AI alternatives and the level of automation. |
+| **1-context-retrieval-design** | Design relevant, permission-aware context, retrieval and memory. |
+| **1-change-impact** | Trace affected consumers, compatibility, and verification obligations. |
+| **1-visual-explainer** | Create one figure-led, self-contained HTML explanation of a concept, system, or comparison. |
+| **1-scaffold-exercises** | Scaffold course exercise directories from an agreed plan. |
+| **1-migrate-to-shoehorn** | Migrate scoped TypeScript test fixtures to Shoehorn. |
+| **1-manual-procedure-wizard** | Author a human-run manual procedure wizard without executing it. |
+| **1-to-questionnaire** | Discovery questionnaire for an external knowledge holder. |
+| **0-agent-engineering** | Route AI suitability, context, evaluations, tools, oversight, telemetry and security. |
 | **0-butler** | Hub of hubs — navigation for the entire catalog. Use when lost or need orientation. |
 | **0-devops** | Route infrastructure, platform, delivery, reliability, incident, and compliance operations. |
 | **0-marketing** | Route marketing strategy, research, conversion, content, search, paid media, lifecycle, growth, and sales work. |
@@ -313,7 +328,8 @@ User: "We're ready to ship payment"
 | **0-skill-manager** | Apply one bounded catalog change-set or route a read-only catalog operation. |
 | **0-triage** | Route one raw-intake snapshot, assessment, or approved transition. |
 | **0-wayfinder** | Route one multi-session uncertainty-map operation. |
-| **1-agent-evaluation** | Design evaluation sets, graders, baselines, and release gates for agents. |
+| **1-asd-ste100** | Rewrite agent-facing English with STE-inspired clarity and preserve meaning. |
+| **1-agent-evaluation** | Design candidate-specific evaluations for AI applications and agents. |
 | **1-ai-platform-operations** | Operate model serving, RAG, GPU, caching, registry, and LLMOps infrastructure. |
 | **1-action-first-output** | Explicit, reversible session mode for action-first results, visible progress, and small next steps. |
 | **1-anti-sycophancy** | Independent claim assessment; suppress praise/agreement bias; evidence-first. |
@@ -332,8 +348,12 @@ User: "We're ready to ship payment"
 | **1-clean-craftsmanship** | Explain maintainability and Clean Code/Architecture principles with practical trade-offs. |
 | **1-code-comments** | Assess or edit language-native documentation for one public/exported code surface. |
 | **1-code-explainer** | Explain source code at multiple audience levels and depths. |
+| **1-design-review** | Fresh-context Elephant-Goldfish review of a software design/spec/plan before coding; [workflow and concepts](skills/1-design-review/references/workflow-and-connections.md). |
 | **1-code-review** | Multi-axis review of changes — Spec, Standards, Maintainability. |
 | **1-complete-pr-review** | Comprehensive, risk-weighted, read-only review of one fixed pull request. |
+| **1-pre-merge** | Final project frozen-candidate readiness gates and QA handoff; never merges. |
+| **1-pr-walkthrough** | Walk through a project PR with real UI components, non-UI before/after examples and useful engineering diagrams; local-only page. |
+| **1-dev-test** | Focused project development testing and debugging while changes remain mutable. |
 | **1-codebase-design** | Shared vocabulary for designing deep modules and interfaces. |
 | **1-codebase-review-strategy** | Produce one risk-based coverage and evidence plan for an unfamiliar codebase. |
 | **1-coding-standards** | Always-on lean coding standards for naming, modularity, and comments. |
@@ -385,6 +405,7 @@ User: "We're ready to ship payment"
 | **1-marketing-analytics** | Design or audit marketing tracking and measurement. |
 | **1-marketing-aso** | Audit or improve one app-store listing. |
 | **1-marketing-attribution** | Analyze which marketing activity drives conversion or revenue. |
+| **1-marketing-blog-editor** | Review one technical marketing blog post before publication. |
 | **1-marketing-churn-prevention** | Design one customer-retention or cancellation intervention. |
 | **1-marketing-co-marketing** | Plan one co-marketing or partner campaign. |
 | **1-marketing-cold-email** | Draft one B2B cold-email sequence. |
@@ -400,6 +421,8 @@ User: "We're ready to ship payment"
 | **1-marketing-emails** | Create or improve one lifecycle-email sequence. |
 | **1-marketing-events** | Plan one marketing event, webinar, sponsorship, or speaking motion. |
 | **1-marketing-free-tools** | Design one free tool as a marketing asset. |
+| **1-marketing-ecommerce-blog-writing** | Draft or revise one e-commerce guide, tutorial, lifestyle article, or product comparison. |
+| **1-marketing-healthcare-blog-writing** | Draft or revise one evidence-backed healthcare e-commerce blog and its medical/compliance review packet. |
 | **1-marketing-image** | Specify or optimize one marketing-image asset. |
 | **1-marketing-influencer-marketing** | Plan one influencer, creator, or ambassador program. |
 | **1-marketing-launch** | Plan one product-marketing launch or announcement. |
@@ -444,6 +467,7 @@ User: "We're ready to ship payment"
 | **1-ponytail-gain** | Show one pinned upstream agentic benchmark with its methodology and limitations. |
 | **1-ponytail-help** | Catalog-accurate one-shot reference for Ponytail levels and child skills. |
 | **1-pptx** | Create, read, edit, or manipulate PowerPoint presentations (.pptx files). |
+| **1-pr-splitter** | Split a large PR into coherent stacked or parallel PRs while preserving source intent and review drift. |
 | **1-pr-summarizer** | Summarize changes, write PR descriptions, or draft PR comments. |
 | **1-pr-repair** | Repair known findings, CI failures, conflicts, and blockers on one PR without reviewing it. |
 | **1-pr-review-and-repair** | Review, repair, rebase, push, and verify one PR until clean and green. |
@@ -761,30 +785,3 @@ Codex may shorten skill descriptions when the full catalog is installed because 
 ---
 
 **Questions?** Start with `$0-butler` in Codex or `/0-butler` in Claude for navigation. Repository rules live in [`CLAUDE.md`](./CLAUDE.md).
-
-## Available skill additions
-
-| **1-design-rationale** | Explain recorded design decisions and their trade-offs. |
-| **1-runtime-feature-map** | Map user paths, preconditions and verification evidence. |
-| **1-statechart-modeling** | Model states, actions, guards and invariants clearly. |
-| **1-formal-verification** | Evaluate a fixed formal check with explicit scope. |
-| **1-i18n-sync** | Synchronize selected JSON locale keys with context and validation. |
-| **1-prompt-optimizer** | Rewrite one prompt without executing it or inventing requirements. |
-| **1-llm-cost-design** | Design one LLM spending policy with quality and budget controls. |
-| **1-ai-suitability** | Assess AI fit, non-AI alternatives and the level of automation. |
-| **1-context-retrieval-design** | Design relevant, permission-aware context, retrieval and memory. |
-| **1-change-impact** | Trace affected consumers, compatibility, and verification obligations. |
-| **1-visual-explainer** | Create one figure-led, self-contained HTML explanation of a concept, system, or comparison. |
-| **1-scaffold-exercises** | Scaffold course exercise directories from an agreed plan. |
-| **1-migrate-to-shoehorn** | Migrate scoped TypeScript test fixtures to Shoehorn. |
-| **1-manual-procedure-wizard** | Author a human-run manual procedure wizard without executing it. |
-| **1-to-questionnaire** | Discovery questionnaire for an external knowledge holder. |
-| **1-asd-ste100** | Rewrite agent-facing English with STE-inspired clarity and preserve meaning. |
-| **1-design-review** | Fresh-context Elephant-Goldfish review of a software design/spec/plan before coding; [workflow and concepts](skills/1-design-review/references/workflow-and-connections.md). |
-| **1-pre-merge** | Final project frozen-candidate readiness gates and QA handoff; never merges. |
-| **1-pr-walkthrough** | Walk through a project PR with real UI components, non-UI before/after examples and useful engineering diagrams; local-only page. |
-| **1-dev-test** | Focused project development testing and debugging while changes remain mutable. |
-| **1-marketing-blog-editor** | Review one technical marketing blog post before publication. |
-| **1-marketing-ecommerce-blog-writing** | Draft or revise one e-commerce guide, tutorial, lifestyle article, or product comparison. |
-| **1-marketing-healthcare-blog-writing** | Draft or revise one evidence-backed healthcare e-commerce blog and its medical/compliance review packet. |
-| **1-pr-splitter** | Split a large PR into coherent stacked or parallel PRs while preserving source intent and review drift. |

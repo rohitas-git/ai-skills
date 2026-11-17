@@ -86,16 +86,16 @@ flows.md remains SSOT for pipelines/forks; HTML/JSON are projections. **new-hub*
 | | |
 |--|--|
 | **★ Hub** | `/0-grilling` |
-| **Children** | **wrapper:** `1-grill-me`, `1-grill-with-docs` · **on-ramp:** `1-brainstorm` · **pull-in:** `1-domain-modeling` · **leaf:** `1-honest-advisor` · **soft:** `1-thinking-steel-manning`, `1-anti-sycophancy`, `1-critique` · **detour:** `1-handoff` ⇄ `1-prototype` · **satellite:** `1-visual-plan` · **additions:** `1-to-questionnaire` |
+| **Children** | **wrapper:** `1-grill-me`, `1-grill-with-docs` · **on-ramp:** `1-brainstorm` · **pull-in:** `1-domain-modeling` · **leaf:** `1-honest-advisor` · **soft:** `1-thinking-steel-manning`, `1-anti-sycophancy`, `1-critique` · **detour:** `1-handoff` ⇄ `1-prototype` · **satellite:** `1-visual-plan` · **leaf:** `1-to-questionnaire` |
 | **Pipeline** | pin caller + immutable candidate + evidence/authority + optional worktree → direct smallest child or material-only F-B1/F2 → one decision-changing neutral question at a time → optional separately accepted prototype/visual-plan detour returns evidence → one decision record to actual caller; no automatic downstream action |
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F-B1** | Hard brainstorm design-gate or grill interview? | grill if product requirements; brainstorm if greenfield feature design before code | /1-brainstorm · /1-grill-with-docs / /1-grill-me · Agent judgment |
-| **F2** | Do repository facts materially govern the decision? | Yes → 1-grill-with-docs | /1-grill-with-docs · /1-grill-me · Agent judgment |
-| **F3** | Need a runnable prototype answer? | No unless a runnable experiment resolves a design question | stay in grill · /1-prototype and return · Agent judgment |
-| **F-P1** | What question should the prototype answer? | logic/state for behavior; UI alternatives for visual layout | /1-prototype logic/state · /1-prototype local UI alternatives · Agent judgment |
-| **F-B2** | Was a visual review artifact requested? | Keep conversational/text unless explicit | /1-visual-plan · keep conversational/text result · Agent judgment |
+| **F-B1** | Hard brainstorm design-gate or grill interview? | grill if product requirements; brainstorm if greenfield feature design before code | `1-brainstorm` · `1-grill-with-docs` / `1-grill-me` · **Agent judgment** |
+| **F2** | Do repository facts materially govern the decision? | Yes → 1-grill-with-docs | `1-grill-with-docs` · `1-grill-me` · **Agent judgment** |
+| **F3** | Need a runnable prototype answer? | No unless a runnable experiment resolves a design question | stay in grill · `1-prototype` and return · **Agent judgment** |
+| **F-P1** | What question should the prototype answer? | logic/state for behavior; UI alternatives for visual layout | `1-prototype` logic/state · `1-prototype` local UI alternatives · **Agent judgment** |
+| **F-B2** | Was a visual review artifact requested? | Keep conversational/text unless explicit | `1-visual-plan` · keep conversational/text result · **Agent judgment** |
 
 **Return:** accepted/delegated decisions and separately requested prototype/visual evidence return to the actual design caller. Specification, planning, handoff, or implementation requires a separate request. Approval is not execution authority.
 
@@ -106,15 +106,20 @@ flows.md remains SSOT for pipelines/forks; HTML/JSON are projections. **new-hub*
 | | |
 |--|--|
 | **★ Hub** | `/0-implement` |
-| **Children** | **pipeline members (conditional sequence below):** `1-to-spec`, `1-to-tickets`, `0-implement`, `1-tdd`, `1-code-review`, `1-atomic-git-commits` · **soft (plan path):** `1-write-plan`, `1-git-worktrees`, `1-subagent-implement`, `1-execute-plan`, `1-finish-branch` · **satellite:** `1-parallel-agents` · **soft (style/quality/docs):** `1-coding-standards`, `1-go-best-practices` (scoped Go implementation), `1-living-documentation-governor` (code↔canonical-doc obligations), `1-constraint-driven-development`, `1-code-comments` (one public contract surface), `1-inline-comments` (one internal why/constraint), `1-execution-flow-comments` (one explicitly requested function narrative), `1-stepdown-rule` (one behavior-independent file reorder); all return without automatic review · **soft (contract/module/lifecycle):** `1-api-and-interface-design`, `1-codebase-design`, `1-deprecation-and-migration` (design or phase evidence, then return to Ship) · **soft (failure behavior):** `1-error-handling` (bounded implementation; returns to Ship) · **soft (Supabase):** `1-supabase` (one product integration), `1-supabase-postgres-best-practices` (one measured Postgres concern), `1-supabase-schema-migration` (one new local schema concept), `1-pending-migration-hygiene` (rewrite only with complete observed provenance or exact human attestation); all pin local-stack ownership because worktrees do not isolate it, and none applies remotely · **soft (explicit process):** `1-karpathy-guidelines` (inherits and returns candidate/workspace/authority) · **cousin:** `2-verify-work` · **soft (Git cross-links):** `1-atomic-git-commits`, `1-pr-summarizer`, `1-resolving-merge-conflicts` · **soft:** `1-research` (one bounded answer; persistence only when requested) · **soft (delivery/UI/performance):** `1-ci-cd-and-automation` (one candidate-aware workflow/check contract; returns without remote execution), `1-observability-and-instrumentation` (one question-to-signal contract; returns without hosted telemetry), `1-shipping-and-launch` (one immutable release candidate; plan/read-only modes do not deploy), `1-frontend-ui-engineering` (one candidate-bound interaction surface; returns without redesign or publication), `1-ui-styling` (one presentation-only visual delta; preserves behavior and returns candidate/worktree/authority), `1-performance-optimization` (one measured experiment; returns its disposition without shared load) · **additions:** `1-dev-test`, `1-migrate-to-shoehorn`, `1-i18n-sync`, `1-runtime-feature-map` |
+| **Children** | **pipeline members (conditional sequence below):** `1-to-spec`, `1-to-tickets`, `0-implement`, `1-tdd`, `1-dev-test` (project mutable feedback loop), `1-code-review`, `1-atomic-git-commits` · **soft (plan path):** `1-write-plan`, `1-git-worktrees`, `1-subagent-implement`, `1-execute-plan`, `1-finish-branch` · **satellite:** `1-parallel-agents` · **soft (style/quality/docs):** `1-coding-standards`, `1-go-best-practices` (scoped Go implementation), `1-living-documentation-governor` (code↔canonical-doc obligations), `1-constraint-driven-development`, `1-code-comments` (one public contract surface), `1-inline-comments` (one internal why/constraint), `1-execution-flow-comments` (one explicitly requested function narrative), `1-stepdown-rule` (one behavior-independent file reorder); all return without automatic review · **soft (contract/module/lifecycle):** `1-api-and-interface-design`, `1-codebase-design`, `1-deprecation-and-migration` (design or phase evidence, then return to Ship) · **soft (failure behavior):** `1-error-handling` (bounded implementation; returns to Ship) · **soft (Supabase):** `1-supabase` (one product integration), `1-supabase-postgres-best-practices` (one measured Postgres concern), `1-supabase-schema-migration` (one new local schema concept), `1-pending-migration-hygiene` (rewrite only with complete observed provenance or exact human attestation); all pin local-stack ownership because worktrees do not isolate it, and none applies remotely · **soft (explicit process):** `1-karpathy-guidelines` (inherits and returns candidate/workspace/authority) · **cousin:** `2-verify-work` · **soft (Git cross-links):** `1-atomic-git-commits`, `1-pr-summarizer`, `1-resolving-merge-conflicts` · **soft:** `1-research` (one bounded answer; persistence only when requested) · **soft (delivery/UI/performance):** `1-ci-cd-and-automation` (one candidate-aware workflow/check contract; returns without remote execution), `1-observability-and-instrumentation` (one question-to-signal contract; returns without hosted telemetry), `1-shipping-and-launch` (one immutable release candidate; plan/read-only modes do not deploy), `1-frontend-ui-engineering` (one candidate-bound interaction surface; returns without redesign or publication), `1-ui-styling` (one presentation-only visual delta; preserves behavior and returns candidate/worktree/authority), `1-performance-optimization` (one measured experiment; returns its disposition without shared load) · **leaf:** `1-migrate-to-shoehorn` · **leaf:** `1-i18n-sync` · **leaf:** `1-runtime-feature-map` |
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F4** | Is the request already buildable, or does it need specification/ticket decomposition? | direct implementation for a clear bounded request | /1-to-spec → /1-to-tickets for materially unresolved or multi-session work · direct /0-implement for a clear bounded request · Agent judgment |
-| **F-TDD1** | Does this slice have a settled seam, deterministic behavior, independent oracle, and edit authority for a red-green loop? | TDD only when every fit condition is established | /1-tdd for one fitting red-green slice · characterization or /0-diagnosing-bugs when the current behavior/root cause is unknown · /1-write-plan or /1-prototype when the contract or interface is unsettled · /1-agent-evaluation for probabilistic model or RAG behavior · Agent judgment |
-| **F-SP** | Execute directly or use explicitly authorized delegation? | direct execution unless delegation was requested and has safe ownership boundaries | /1-subagent-implement · /1-execute-plan · Agent judgment |
-| **F5** | Does the actual candidate have enough evidence to enter review reconciliation? | review after applicable claims have current evidence or labeled gaps | /1-code-review → fix verified in-scope findings → reverify/re-review → /1-atomic-git-commits when authorized · continue the current slice or next requested ticket · Agent judgment |
-| **F6** | (inside 1-code-review) axes applicable? | every applicable | Spec · Standards · Maintainability · soft-skip · Agent judgment |
+| **F4** | Is the request already buildable, or does it need specification/ticket decomposition? | direct implementation for a clear bounded request | `1-to-spec` → `1-to-tickets` · direct `0-implement` · **Agent judgment** |
+| **F-TDD1** | Does this slice have a settled seam, deterministic behavior, independent oracle, and test/implementation authority? | TDD only when every fit condition is established | `1-tdd` · characterize/`0-diagnosing-bugs` · `1-write-plan`/`1-prototype` · `1-agent-evaluation` · **Agent judgment** |
+| **F-SP** | Execute directly or use explicitly authorized delegation? | direct execution unless delegation was requested and has safe ownership boundaries | `1-subagent-implement` · `1-execute-plan` · **Agent judgment** |
+| **F5** | Does the actual candidate have enough evidence to enter review reconciliation? | review after applicable claims have current evidence or labeled gaps | `1-code-review` → fix verified in-scope findings → reverify/re-review → `1-atomic-git-commits` when authorized · continue slice/ticket · **Agent judgment** |
+| **F6** | (inside 1-code-review sub-hub) axes applicable? | every applicable | Spec / Standards / Maintainability on or soft-skip · **Agent judgment** |
+| **F-PS1** | Which optional verification outcome is required? | Infer from the goal; ask only for material ambiguity | W-PS1 runtime map · W-PS2 model/property check · W-PS3 enforceable lesson · **Agent judgment** |
+
+**Optional verification flows:** [W-PS1 runtime coverage, W-PS2 model/check/reconcile, W-PS3 correction-to-enforcement](../../0-implement/references/verification-workflows.md). Each preserves candidate, scope, execution gates and caller return; no automatic activation.
+
+**project feedback loop:** `1-dev-test` keeps implementation at `ITERATING` or `REVIEW CANDIDATE` using the smallest risk-matched evidence; final frozen-candidate readiness routes to `/1-pre-merge` and does not authorize merge.
 
 **Multi-session pipeline:**
 
@@ -142,22 +147,37 @@ existing plan (1-write-plan only if missing) → exact repo/worktree/branch/HEAD
 | | |
 |--|--|
 | **★ Hub** | `/0-review` |
-| **Children** | **sub-hub:** `1-code-review` · **sub-hub:** `1-security-auditor` · **pipeline:** `1-complete-pr-review` (one PR: comprehensive risk-weighted review, read-only) · **leaf:** `1-agent-pr-review` (agent-generated PR risk pass) · **leaf:** `1-clean-tautological-tests` (tautological and zero-signal test audit) · **security leaves:** `2-prompt-injection-defense`, `2-skill-supply-chain-audit`, `2-dependency-security` (application dependency checks) · **soft:** `1-doubt-driven-development`, `1-receive-review` · **soft (failure behavior):** `1-error-handling` (narrow read-only review; primary Domain 8) · **soft (Go practice):** `1-go-best-practices` (narrow read-only review; primary Domain 8) · **on-ramp:** `1-codebase-review-strategy` · **cousin:** `2-verify-work`, `2-ponytail-review`, `2-thermo-nuclear-code-quality-review` · **satellite:** `1-visual-recap` · **soft (shared):** `2-security-and-hardening` · **soft (dual):** `2-software-architect` (primary Domain 8) · **additions:** `1-pre-merge`, `1-pr-walkthrough`, `1-design-review`, `1-formal-verification` |
-| **Pipeline** | honor selected mode; **F-R1** only if ambiguous → pin scope + actual candidate → sub-hub / skill → read-only report → return to caller · `1-complete-pr-review` combines code + differential security on the same pinned PR, closes material risk-triggered coverage gaps, and returns one ledger · repair, publication and integration need corresponding authority · unfamiliar/whole-repo request → `1-codebase-review-strategy` returns one coverage plan; a specialist runs only when separately/originally authorized on the same candidate · one consequential claim → `1-doubt-driven-development` → keep/revise/reject/unknown · incoming feedback → `/1-receive-review` |
+| **Children** | **pipeline:** `1-design-review` (fresh-context pre-code spec/plan review) · **sub-hub:** `1-code-review` · **sub-hub:** `1-security-auditor` · **pipeline:** `1-complete-pr-review` (one PR: comprehensive risk-weighted review, read-only), `1-pre-merge` (frozen project readiness gates and final QA handoff; no merge) · **leaf:** `1-agent-pr-review` (agent-generated PR risk pass) · **leaf:** `1-clean-tautological-tests` (tautological and zero-signal test audit) · **security leaves:** `2-prompt-injection-defense`, `2-skill-supply-chain-audit`, `2-dependency-security` (application dependency checks) · **soft:** `1-doubt-driven-development`, `1-receive-review` · **soft (failure behavior):** `1-error-handling` (narrow read-only review; primary Domain 8) · **soft (Go practice):** `1-go-best-practices` (narrow read-only review; primary Domain 8) · **on-ramp:** `1-codebase-review-strategy` · **cousin:** `2-verify-work`, `2-ponytail-review`, `2-thermo-nuclear-code-quality-review` · **satellite:** `1-visual-recap`, `1-pr-walkthrough` (project UI and non-UI walkthrough with examples and useful engineering diagrams) · **soft (shared):** `2-security-and-hardening` · **soft (dual):** `2-software-architect` (primary Domain 8) · **leaf:** `1-formal-verification` |
+| **Pipeline** | honor selected mode; **F-R1** only if ambiguous → pin scope + actual candidate → sub-hub / skill → read-only report → return to caller · `1-complete-pr-review` combines code + differential security on the same pinned PR, closes material risk-triggered coverage gaps, and returns one ledger · `1-pre-merge` runs frozen-candidate readiness gates, whole-diff review, and returns `READY TO MERGE` or `NOT READY TO MERGE`; merge approval remains separate · repair, publication and integration need corresponding authority · unfamiliar/whole-repo request → `1-codebase-review-strategy` returns one coverage plan; a specialist runs only when separately/originally authorized on the same candidate · one consequential claim → `1-doubt-driven-development` → keep/revise/reject/unknown · incoming feedback → `/1-receive-review` |
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F-R1** | What kind of review? | Multi-axis **change** review if PR/ship/diff | /1-design-review (pre-code spec/plan) · /1-code-review · /1-complete-pr-review · /1-pre-merge · /1-agent-pr-review · /1-error-handling · /1-go-best-practices · /1-security-auditor · /2-software-architect · /1-codebase-review-strategy (unfamiliar/whole repo) · /1-doubt-driven-development (one consequential claim) · /2-thermo-nuclear-code-quality-review · /2-verify-work · /1-visual-recap · /1-pr-walkthrough (project UI/non-UI examples and supporting diagrams in the panel) · /1-formal-verification (one fixed formal check) · Agent judgment |
-| **F6** | (inside 1-code-review) axes applicable? | every applicable | every applicable axis; missing spec/standards uses labeled baseline, not a false pass · Agent judgment |
-| **F-R2** | (inside 1-security-auditor) audit scope? | full project unless path/PR named | full · scoped module · differential/PR · Agent judgment |
+| **F-R1** | What kind of review? | Multi-axis **change** review if PR/ship/diff | `/1-design-review` (pre-code spec/plan) · `/1-code-review` · `/1-complete-pr-review` (comprehensive risk-weighted review of one PR) · `/1-pre-merge` (frozen project readiness gates) · `/1-agent-pr-review` (AI-authored PR) · `/1-clean-tautological-tests` (test-suite quality) · `/1-error-handling` (narrow failure behavior) · `/1-go-best-practices` (narrow Go-language review) · `/1-security-auditor` · `/2-software-architect` · `/1-codebase-review-strategy` (unfamiliar/whole repo) · `/1-doubt-driven-development` (one consequential claim) · `/2-thermo-nuclear-code-quality-review` (maintainability-only) · `/2-verify-work` (verification only) · `/1-visual-recap` (interactive change overview) · `/1-pr-walkthrough` (project UI/non-UI examples and supporting diagrams in the panel) · `/1-formal-verification` (one fixed formal check) · **Agent judgment** |
+| **F6** | (inside `/1-code-review`) axes applicable? | every applicable | Spec / Standards / Maintainability; missing requirements/rules use a labeled baseline, not a false pass; honor explicit scope override · **Agent judgment** |
+| **F-R2** | (inside `/1-security-auditor`) audit scope? | full project unless path/PR named | full · scoped module · differential/PR · **Agent judgment** |
 | **F-R3** | Which focused security surface? | narrow specialist when scope matches | `2-prompt-injection-defense` · `2-skill-supply-chain-audit` · `2-dependency-security` · general security audit · **Agent judgment** |
+
+### Optional pre-code Elephant-Goldfish path
+
+`1-brainstorm` (context-rich concept/options brief) → settled decisions → `1-to-spec` → requested
+`1-design-review` feature pass → author/owner resolution → requested `1-write-plan` → readiness/full
+`1-design-review` → human design approval and implementation authority → `1-to-tickets` if needed →
+`0-implement` → tests + `1-code-review` → requested `1-living-documentation-governor` drift check.
+An existing design+plan can enter full review directly. Revisions return to the artifact owner;
+findings, review completion and approval remain distinct. Small clear fixes keep the direct Ship path.
+All seven EGM capabilities and their software-development concepts are mapped in
+[workflow and connections](../../1-design-review/references/workflow-and-connections.md).
+
+| Fork | Question | Recommended | Branches |
+|------|----------|-------------|----------|
+| **F-DR1** | Which design-review scope? | infer feature for spec-only; readiness for explicit plan-only; full when both | full · feature · readiness · custom reviewer/rubric scope · **Agent judgment** |
 
 ### Sub-hub `/1-code-review`
 
 | | |
 |--|--|
 | **Role** | Read-only multi-axis review of the actual diff/PR/current implementation, including task-owned staged, unstaged and untracked changes |
-| **Children** | **axis:** Spec, Standards, Maintainability · **cousin:** `2-verify-work`, `2-ponytail-review`, `2-thermo-nuclear-code-quality-review` · **soft:** `2-software-architect` (bounded read-only system review; return to caller), `2-security-and-hardening` · **additions:** `1-pre-merge`, `1-pr-walkthrough`, `1-design-review`, `1-formal-verification` |
+| **Children** | **axis:** Spec, Standards, Maintainability · **cousin:** `2-verify-work`, `2-ponytail-review`, `2-thermo-nuclear-code-quality-review` · **soft:** `2-software-architect` (bounded read-only system review; return to caller), `2-security-and-hardening` |
 | **Pipeline** | pin candidate + caller → applicable axes → validate findings + coverage → return to caller; no automatic repair, publication or commit |
 
 Review and verification use [the shared candidate contract](../../0-review/references/review-candidate.md). Reading needs no new worktree; runtime isolation returns to the paused review. `2-verify-work` reports PASS/FAIL/BLOCKED for supported claims rather than owning a repair loop. Historical `code-review-v2` is not a live route; use `1-code-review`.
@@ -167,7 +187,7 @@ Review and verification use [the shared candidate contract](../../0-review/refer
 | | |
 |--|--|
 | **Role** | Multi-phase security/quality audit + structured findings |
-| **Children** | **soft:** `2-security-and-hardening` (remediate / prevent after findings) · **leaf:** `2-prompt-injection-defense`, `2-skill-supply-chain-audit`, `2-dependency-security` (dependency vulnerability, staleness, and new-package checks) · **additions:** `1-pre-merge`, `1-pr-walkthrough`, `1-design-review`, `1-formal-verification` |
+| **Children** | **soft:** `2-security-and-hardening` (remediate / prevent after findings) · **leaf:** `2-prompt-injection-defense`, `2-skill-supply-chain-audit`, `2-dependency-security` (dependency vulnerability, staleness, and new-package checks) |
 | **Pipeline** | honor caller scope/authority → pinned candidate → applicable recon/hunt/validation → verified report + coverage limits → return to caller; files, remediation and publication only when requested |
 
 Dependency ratchets compare issue identities under equivalent advisory data, not
@@ -218,7 +238,7 @@ partial effects without blind retries. Worktrees do not isolate remote tracker s
 
 | Fork | Question | Recommended | Branches |
 |---|---|---|---|
-| **F-DIAG1** | Which evidence loop best distinguishes this failure? | smallest repository-native focused test, command, request, or observation | core diagnosis loop · /1-performance-optimization · /1-browser-testing-with-devtools · /1-playwright-browser-testing · /1-parallel-agents when explicitly authorized for independent failures · /0-implement when the cause and fix are already known and authorized · Agent judgment |
+| **F-DIAG1** | Which evidence loop best distinguishes this failure? | smallest repository-native focused test, command, request, or observation | core loop · `1-performance-optimization` · `1-browser-testing-with-devtools` · `1-playwright-browser-testing` · explicitly authorized `1-parallel-agents` · known authorized fix → `0-implement` · **Agent judgment** |
 
 ---
 
@@ -248,16 +268,16 @@ databases, services, deployments, or other remote state. Decision/spec approval 
 | | |
 |--|--|
 | **★ Hub** | `/0-improve-codebase-architecture` |
-| **Children** | **vocab:** `1-codebase-design` · **persona:** `2-software-architect` (bounded system decision packet; catalog depth under Review) · **satellite (explicit local graph):** `1-graphify` (pins corpus/worktree/output; never installs, hooks, strict mode, shared output, or backends itself) · **soft (principles):** `1-clean-craftsmanship` · **soft (always-on style):** `1-coding-standards`, `1-go-best-practices` (also Ship) · **soft (failure behavior):** `1-error-handling` (standalone or returns to its caller; F-EH1) · **soft (docs):** `1-project-wiki-manager` (declared sources; query/audit read-only, edits pinned to worktree), `1-living-documentation-governor` (code↔canonical-doc contract; also Ship) · **soft (vendor harvest):** `1-api-and-interface-design`, `1-deprecation-and-migration` · **additions:** `1-change-impact`, `1-statechart-modeling` |
+| **Children** | **vocab:** `1-codebase-design` · **persona:** `2-software-architect` (bounded system decision packet; catalog depth under Review) · **satellite (explicit local graph):** `1-graphify` (pins corpus/worktree/output; never installs, hooks, strict mode, shared output, or backends itself) · **soft (principles):** `1-clean-craftsmanship` · **soft (always-on style):** `1-coding-standards`, `1-go-best-practices` (also Ship) · **soft (failure behavior):** `1-error-handling` (standalone or returns to its caller; F-EH1) · **soft (docs):** `1-project-wiki-manager` (declared sources; query/audit read-only, edits pinned to worktree), `1-living-documentation-governor` (code↔canonical-doc contract; also Ship) · **soft (vendor harvest):** `1-api-and-interface-design`, `1-deprecation-and-migration` · **leaf:** `1-change-impact` · **leaf:** `1-statechart-modeling` |
 | **Pipeline** | pin caller/mode/repository-worktree/evidence → clear request dispatches to one specialist and returns · broad improvement runs a bounded local read-only scan → Markdown or explicitly requested static HTML → F9 selected candidate · requested implementation returns to `/0-implement` |
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F9** | Take a deepening idea to Design? | stay at the report unless the user selects a candidate | stay · /1-grill-with-docs · Agent judgment |
-| **F-EH1** | Define failure behavior or diagnose an unexplained bug? | Failure behavior for handling/recovery requests | /1-error-handling · /0-diagnosing-bugs · Agent judgment |
-| **F-ARCH1** | Design an API contract, a module, or the whole system? | API contract for endpoint/schema requests | /1-api-and-interface-design · /1-codebase-design · /2-software-architect · Agent judgment |
-| **F-C1** | Enforce standards on code now, or discuss clean-code principles? | coding while editing | /1-coding-standards · /1-clean-craftsmanship · Agent judgment |
-| **F-D1** | Concept wiki (docs/wiki) or living docs + code triggers? | wiki if raw→concepts · living if drift/triggers | /1-project-wiki-manager · /1-living-documentation-governor · Agent judgment |
+| **F9** | Take a deepening idea to Design? | stay at the report unless the user selects a candidate | stay · `/1-grill-with-docs` · **Agent judgment** |
+| **F-EH1** | Define failure behavior or diagnose an unexplained bug? | Failure behavior for handling/recovery requests | `/1-error-handling` · `/0-diagnosing-bugs` · **Agent judgment** |
+| **F-ARCH1** | API contract, module design, or system decision? | API contract for endpoint/schema requests | `/1-api-and-interface-design` · `/1-codebase-design` · `/2-software-architect` · **Agent judgment** |
+| **F-C1** | Enforce standards on code now, or discuss clean-code principles? | coding while editing | `/1-coding-standards` · `/1-clean-craftsmanship` · **Agent judgment** |
+| **F-D1** | Concept wiki (`docs/wiki`) or living docs + code triggers? | wiki if raw→concepts · living if drift/triggers | `/1-project-wiki-manager` · `/1-living-documentation-governor` · **Agent judgment** |
 
 **Related atoms (not merge targets):** `1-coding-standards` ↔ `1-clean-craftsmanship` (F-C1); `1-project-wiki-manager` ↔ `1-living-documentation-governor` (F-D1); personal vault is Domain 9 (F-D2).
 
@@ -332,7 +352,7 @@ Optional; not Ship closer.
 | | |
 |--|--|
 | **★ Hub** | `/0-learn` |
-| **Children** | **router:** `1-learning-explainer` → **leaves:** `1-learning-diagnostic`, `1-level-explainer`, `1-mental-model-builder`, `1-progressive-deep-dive` · **leaves:** `1-explain-with-example` (selected material), `1-tutor` (interactive practice) · **leaf (soft cross; code object):** `1-code-explainer` · **satellite router:** `1-teach` → `1-teaching-workspace`, `1-lesson-authoring`, `1-learning-progress-record`, `1-learning-glossary` · **leaf:** `1-story-teacher` · **soft:** `1-resource-summarizer` · **on-ramp (Vault primary):** `1-vault-explain` → explainer · **additions:** `1-scaffold-exercises`, `1-visual-explainer`, `1-design-rationale` |
+| **Children** | **router:** `1-learning-explainer` → **leaves:** `1-learning-diagnostic`, `1-level-explainer`, `1-mental-model-builder`, `1-progressive-deep-dive` · **leaves:** `1-explain-with-example` (selected material), `1-tutor` (interactive practice) · **leaf (soft cross; code object):** `1-code-explainer` · **satellite router:** `1-teach` → `1-teaching-workspace`, `1-lesson-authoring`, `1-learning-progress-record`, `1-learning-glossary` · **leaf:** `1-story-teacher` · **soft:** `1-resource-summarizer` · **on-ramp (Vault primary):** `1-vault-explain` → explainer · **leaf:** `1-scaffold-exercises` · **leaf:** `1-visual-explainer` (one local figure-led explanation; distinct from a single diagram, PR recap, plan, or deck) · **leaf:** `1-design-rationale` |
 | **Pipeline** | direct evidence route → **F-L1** only for material mode ambiguity → optional **F-L2** only for detail-versus-distillation choice → explainer router **F-L3** → load one leaf → return |
 
 | Mode | Skill / load | Default when |
@@ -348,9 +368,9 @@ Optional; not Ship closer.
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F-L1** | Should this be a direct explanation, interactive practice, or a reusable course? | infer from stated outcome; ask only when two modes materially differ | /1-learning-explainer · /1-explain-with-example · /1-tutor · /1-code-explainer · /1-teach · /1-story-teacher · /1-resource-summarizer · vault-explain if vault Concept · Agent judgment |
-| **F-L2** | Should the selected material be explained directly or distilled first? | explain a clear selection directly; distill for source-level summary | /1-resource-summarizer first · /1-explain-with-example directly · Agent judgment |
-| **F-L3** | What focused concept-learning operation is needed? | first explanation at a level | /1-learning-diagnostic · /1-level-explainer · /1-mental-model-builder · /1-progressive-deep-dive · Agent judgment |
+| **F-L1** | Direct explanation, interactive practice, or reusable course? | infer from stated outcome; ask only when two modes materially differ | explainer · 1-explain-with-example · 1-tutor · 1-code-explainer · 1-teach · story · summarizer · 1-vault-explain · **Agent judgment** |
+| **F-L2** | Explain selected material directly or distill first? | explain a clear selection directly; distill for source-level summary | resource-summarizer first · direct selected-material explain · **Agent judgment** |
+| **F-L3** | What focused concept-learning operation is needed? | first explanation at a level | diagnostic · level explainer · mental-model builder · progressive deep dive · **Agent judgment** |
 
 **Not for:** product ship (`/0-implement`), catalog routing (`/0-butler`), vault compile/query (`/1-vault-ingest`, `/1-wiki-query`).
 
@@ -387,7 +407,7 @@ Worktrees isolate repository files, not desktop apps, browser profiles, cloud fi
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F-UI1** | What kind of UI/UX work? | Design intelligence for app/web UI → `/1-ui-ux-pro-max` | design intelligence · customer-experience audit · user research · brand · tokens · presentation-only styling · one logo/icon/social/identity asset · one banner/ad/hero image · one self-contained HTML presentation · production a11y UI · Impeccable tool workflow · live-app visual editing · Agent judgment |
+| **F-UI1** | What kind of UI/UX work? | Design intelligence for app/web UI → `/1-ui-ux-pro-max` | design intelligence · customer-experience audit · user research · brand · tokens · presentation-only styling · one logo/icon/social/identity asset · one banner/ad/hero image · one self-contained HTML presentation · production a11y UI · Impeccable tool workflow · live-app visual editing (`1-visual-edit`) · **Agent judgment** |
 
 **Brand sub-hub F-BR1:** exact brand outcome → guideline authoring/update (`/2-brand-guidelines`), read-only
 compliance review (`/2-brand-review`), read-only context extraction (`/2-brand-context-extract`), or **Agent judgment**.
@@ -425,16 +445,17 @@ compliance review (`/2-brand-review`), read-only context extraction (`/2-brand-c
 | | |
 |--|--|
 | **★ Hub** | `/0-git` |
-| **Children** | **pipeline helpers (caller-return, not an automatic sequence):** `1-git-worktrees`, `1-atomic-git-commits`, `1-finish-branch`; `1-pr-repair`; `1-pr-review-and-repair`; `1-stacked-pr-repair`; `1-stacked-pr-review-and-repair` · **leaves:** `1-git-changelog`, `1-git-text-normalization` (scoped encoding/EOL/attributes), `1-resolving-merge-conflicts`, `1-github-cli`, `1-github-pr-comment-intake` (read-only PR discussion), `1-pr-comment-drafter` (outbound prose, draft only) · **soft (Ship primary):** `1-pr-summarizer` (main PR description) · **additions:** `1-pr-splitter` |
-| **Pipeline** | optional isolation → return to requesting implementation/repair workflow; implementation → authorized atomic commits → return to caller; requested branch outcome → chosen merge/PR/keep option; active conflict → resolve → resume interrupted operation; binary diff or scoped text normalization → Git text normalization → requested atomic commit groups; GitHub PR discussion → comment intake → requested assessment/repair; outbound comment → draft → explicitly authorized GitHub post/edit; one PR or PR stack → scoped repair-only or review/repair convergence |
+| **Children** | **pipeline helpers (caller-return, not an automatic sequence):** `1-git-worktrees`, `1-atomic-git-commits`, `1-finish-branch`; `1-pr-splitter` (one source PR → smaller review units); `1-pr-repair`; `1-pr-review-and-repair`; `1-stacked-pr-repair`; `1-stacked-pr-review-and-repair` · **leaves:** `1-git-changelog`, `1-git-text-normalization` (scoped encoding/EOL/attributes), `1-resolving-merge-conflicts`, `1-github-cli`, `1-github-pr-comment-intake` (read-only PR discussion), `1-pr-comment-drafter` (outbound prose, draft only) · **soft (Ship primary):** `1-pr-summarizer` (main PR description) |
+| **Pipeline** | optional isolation → return to requesting implementation/repair workflow; implementation → authorized atomic commits → return to caller; requested branch outcome → chosen merge/PR/keep option; active conflict → resolve → resume interrupted operation; binary diff or scoped text normalization → Git text normalization → requested atomic commit groups; GitHub PR discussion → comment intake → requested assessment/repair; outbound comment → draft → explicitly authorized GitHub post/edit; large source PR → `1-pr-splitter` → optional descriptions; one PR or PR stack → scoped repair-only or review/repair convergence |
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F-G1** | What Git operation is needed? | infer the narrowest operation from repository state | /1-git-worktrees · /1-atomic-git-commits · /1-git-changelog · /1-git-text-normalization · /1-resolving-merge-conflicts · /1-github-cli · /1-github-pr-comment-intake · /1-pr-comment-drafter · /1-pr-repair · /1-pr-review-and-repair · /1-stacked-pr-repair · /1-stacked-pr-review-and-repair · /1-finish-branch · /1-pr-summarizer · /1-pr-splitter · Agent judgment |
-| **F-G2** | How should mixed changes be grouped? | by independently revertible behavior | proposed atomic groups · user-specified grouping · leave ambiguous changes uncommitted · Agent judgment |
-| **F-G3** | What is the intended base-to-tip PR order? | derive parent-child edges; stop if ambiguity remains | user-supplied order · provider or stack-tool order · Agent judgment |
-| **F-G4** | Which PR should be reviewed and repaired? | current branch's unique open PR | user-named PR · unique current-branch PR · Agent judgment |
-| **F-G5** | What PR prose is needed? | main PR description | /1-pr-summarizer · /1-pr-comment-drafter · Agent judgment |
+| **F-G1** | What Git operation is needed? | infer the narrowest operation from repository state | worktree · atomic commits · changelog · text normalization · conflict resolution · GitHub CLI operation · PR comment intake · PR comment draft · PR description · PR splitting · single-PR repair-only · single-PR review+repair · stack repair-only · stacked review+repair · finish branch · **Agent judgment** |
+| **F-G2** | How should mixed changes be grouped? | by independently revertible behavior | proposed atomic groups · user-specified grouping · leave ambiguous changes uncommitted · **Agent judgment** |
+| **F-G3** | What is the intended base-to-tip PR order? | derive parent-child edges; stop if ambiguity remains | user-supplied order · provider/stack-tool order · **Agent judgment** |
+| **F-G4** | Which PR should be reviewed and repaired? | current branch's unique open PR | user-named PR · unique current-branch PR · **Agent judgment** |
+| **F-G5** | What PR prose is needed? | main PR description | PR description → `1-pr-summarizer` · individual comment → `1-pr-comment-drafter` · **Agent judgment** |
+| **F-G6** | How should these PRs depend on each other? | derive dependencies from coherent review units | stacked · parallel · foundation plus parallel follow-ups · **Agent judgment** |
 
 **Not for:** product implementation (`/0-implement`), code-quality review (`/0-review`), or release rollout (`/1-shipping-and-launch`).
 
@@ -443,12 +464,12 @@ compliance review (`/2-brand-review`), read-only context extraction (`/2-brand-c
 | | |
 |--|--|
 | **★ Hub** | `/0-agent-engineering` |
-| **Children** | **leaf:** `1-agent-evaluation`, `1-tool-schema-design`, `1-human-in-the-loop`, `1-mcp-server-building`, `1-agent-workflow-observer` · **soft (shared):** `1-parallel-agents`, `1-observability-and-instrumentation` (bounded operational metadata; sensitive content omitted by default; no hosted operations) · **security cross-links:** `2-prompt-injection-defense`, `2-skill-supply-chain-audit` · **additions:** `1-asd-ste100`, `1-prompt-optimizer`, `1-llm-cost-design`, `1-ai-suitability`, `1-context-retrieval-design` |
+| **Children** | **leaf:** `1-asd-ste100` (meaning-preserving agent-facing English rewrite), `1-agent-evaluation`, `1-tool-schema-design`, `1-human-in-the-loop`, `1-mcp-server-building`, `1-agent-workflow-observer` · **soft (shared):** `1-parallel-agents`, `1-observability-and-instrumentation` (bounded operational metadata; sensitive content omitted by default; no hosted operations) · **security cross-links:** `2-prompt-injection-defense`, `2-skill-supply-chain-audit` · **leaf:** `1-prompt-optimizer`, `1-llm-cost-design`, `1-ai-suitability` (AI/non-AI fit), `1-context-retrieval-design` (permission-aware context and retrieval) |
 | **Route** | one clear concern → one leaf → candidate/evidence/effects/limits returned to the caller; workflow observation uses a fixed completed/paused snapshot and applies nothing; no mandatory lifecycle |
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F-AE1** | Which one AI application or agent-system outcome is required? | infer the narrowest specialist; ask only when two outcomes materially differ | /1-agent-evaluation · /1-asd-ste100 · /1-tool-schema-design · /1-human-in-the-loop · /1-mcp-server-building · /1-agent-workflow-observer · /1-parallel-agents · /1-observability-and-instrumentation · /2-prompt-injection-defense · /2-skill-supply-chain-audit · /1-prompt-optimizer · /1-llm-cost-design · /1-ai-suitability · /1-context-retrieval-design · Agent judgment |
+| **F-AE1** | Which one AI application or agent-system outcome is required? | infer the narrowest specialist; ask only when two outcomes materially differ | evaluation · agent-facing English rewrite · tool schema · human oversight · MCP server · workflow-improvement observation · orchestration · observability · prompt-injection defense · skill supply-chain audit · `1-ai-suitability` · `1-context-retrieval-design` · **Agent judgment** |
 
 Tool-schema design receives design/read-only-review/authorized-edit mode, provider
 dialect, neighboring tools, candidate and allowed effects. It returns to the hub,
@@ -477,13 +498,13 @@ checks or edits use the matching isolated workspace when needed and return here.
 | | |
 |--|--|
 | **★ Hub** | `/0-devops` |
-| **Children** | **leaf:** `1-infrastructure-as-code`, `1-cloud-platform-operations`, `1-container-platform-operations`, `1-database-and-storage-operations`, `1-postgres-read-only`, `1-network-and-edge-operations`, `1-server-and-fleet-operations`, `1-platform-engineering`, `1-ai-platform-operations`, `1-identity-and-secrets-management`, `1-resilience-and-disaster-recovery`, `1-compliance-engineering` · **pipeline:** `1-incident-response` · **soft (shared):** `1-ci-cd-and-automation` (one workflow/check contract), `1-observability-and-instrumentation` (one question-to-signal contract), `1-shipping-and-launch` (one immutable release candidate; explicit authority per remote stage), `2-security-and-hardening` · **additions:** `1-manual-procedure-wizard` |
+| **Children** | **leaf:** `1-infrastructure-as-code`, `1-cloud-platform-operations`, `1-container-platform-operations`, `1-database-and-storage-operations`, `1-postgres-read-only`, `1-network-and-edge-operations`, `1-server-and-fleet-operations`, `1-platform-engineering`, `1-ai-platform-operations`, `1-identity-and-secrets-management`, `1-resilience-and-disaster-recovery`, `1-compliance-engineering` · **pipeline:** `1-incident-response` · **soft (shared):** `1-ci-cd-and-automation` (one workflow/check contract), `1-observability-and-instrumentation` (one question-to-signal contract), `1-shipping-and-launch` (one immutable release candidate; explicit authority per remote stage), `2-security-and-hardening` · **leaf:** `1-manual-procedure-wizard` |
 | **Pipeline** | pin environment/candidate/worktree/authority → select one specialist → design/read-only diagnosis or authorized local change → verify → return; rollout/remote operations require separate authority |
 | **Source** | `archive/vendor/devops-security-agent-skills/` and `archive/vendor/awesome-copilot/` — untrusted reference snapshots; live skills preserve authority boundaries |
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F-O1** | What operational concern should we handle? | infer the narrowest evidence-backed specialist; ask only when two outcomes materially differ | infrastructure as code · cloud platform · containers and orchestration · databases and storage · network and edge · servers and fleets · platform engineering · AI platform operations · identity and secrets · incident response · resilience and disaster recovery · compliance engineering · CI/CD · observability · shipping and rollout · security hardening · Agent judgment |
+| **F-O1** | What one operational outcome is required? | infer the narrowest evidence-backed specialist; ask only when two outcomes materially differ | IaC · cloud · containers · data/storage · read-only Postgres · network/edge · server/fleet · platform engineering · AI platform · identity/secrets · incident · resilience/DR · compliance · CI/CD · observability · shipping · security hardening · **Agent judgment** |
 
 **Not for:** application feature implementation (`/0-implement`), security findings (`/1-security-auditor`), or agent-system design (`/0-agent-engineering`).
 
@@ -492,13 +513,13 @@ checks or edits use the matching isolated workspace when needed and return here.
 | | |
 |--|--|
 | **★ Hub** | `/0-marketing` |
-| **Children** | **on-ramp:** `1-marketing-product-marketing` · **pipeline:** `1-marketing-marketing-loops` · **leaf:** 48 focused strategy, research, conversion, content, SEO, paid-media, measurement, growth, partnership, lifecycle, and sales skills · **additions:** `1-marketing-blog-editor`, `1-marketing-ecommerce-blog-writing`, `1-marketing-healthcare-blog-writing` |
+| **Children** | **on-ramp:** `1-marketing-product-marketing` · **pipeline:** `1-marketing-marketing-loops` · **leaf:** focused strategy, research, conversion, content (including `1-marketing-blog-editor` `1-marketing-ecommerce-blog-writing`, and `1-marketing-healthcare-blog-writing`), SEO, paid-media, measurement, growth, partnership, lifecycle, and sales skills |
 | **Pipeline** | pin outcome, audience, evidence, jurisdiction, account state, and authority → select one narrow child → advisory or draft deliverable → separate explicit authority for any external effect |
 | **Source** | `coreyhaines31/marketingskills` pinned at `5b2c0007766c6a1cf1d53fd8fc73e979e0821022`; upstream tools, installers, and plugin metadata were not promoted |
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F-M1** | Which marketing outcome is primary? | infer the narrowest evidence-backed specialist; ask only when two categories materially differ | strategy/research · conversion/lifecycle · content/messaging · search/discovery · paid/measurement · growth/partnerships/sales · Agent judgment |
+| **F-M1** | Which marketing outcome is primary? | infer the narrowest evidence-backed specialist; ask only when two categories materially differ | strategy/research · conversion/lifecycle · content/messaging · search/discovery · paid/measurement · growth/partnerships/sales · **Agent judgment** |
 
 **Not for:** product or UX research (`/1-user-research`), general strategy (`/1-strategic-analysis`), brand systems (`/1-brand`), or software release work (`/1-shipping-and-launch`).
 

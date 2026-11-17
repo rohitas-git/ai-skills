@@ -1,21 +1,26 @@
 ---
 name: 0-git
-description: 'Domain hub for safe Git workflows: worktrees, atomic commits, PR splitting, conflicts, and branch completion. Use when: the user asks for Git operations or the correct Git workflow is unclear. Not for: implementing product code (0-implement), reviewing code quality (0-review), or release rollout (1-shipping-and-launch). Hub: /0-git.
-
-  '
+description: >
+  Domain hub for safe Git workflows: worktrees, atomic commits, PR splitting, conflicts, and branch completion.
+  Use when: the user asks for Git operations or the correct Git workflow is unclear.
+  Not for: implementing product code (0-implement), reviewing code quality (0-review), or release rollout (1-shipping-and-launch).
+  Hub: /0-git.
 disable-model-invocation: true
 metadata:
   catalog:
     hub: 0-git
     role: hub
-    when: ['route Git work across isolation, commits, PR splitting, conflicts, and branch completion']
-    not_when: [implement product changes → 0-implement, review code quality → 0-review, plan a release rollout → 1-shipping-and-launch]
+    when:
+      - "route Git work across isolation, commits, PR splitting, conflicts, and branch completion"
+    not_when:
+      - "implement product changes → 0-implement"
+      - "review code quality → 0-review"
+      - "plan a release rollout → 1-shipping-and-launch"
     next: [1-git-worktrees, 1-atomic-git-commits, 1-pr-splitter, 1-git-changelog, 1-git-text-normalization, 1-resolving-merge-conflicts, 1-github-cli, 1-github-pr-comment-intake, 1-pr-comment-drafter, 1-pr-summarizer, 1-pr-repair, 1-pr-review-and-repair, 1-stacked-pr-repair, 1-stacked-pr-review-and-repair, 1-finish-branch]
     cousins: [0-implement, 0-review]
-    triggers: [split large PR, plan stacked PRs, git workflow, git help, commit changes, git changelog, generate changelog, binary diff, git text normalization, GitHub CLI, gh issue, gh repo, gh release, merge conflict, finish branch, fetch PR comments, PR comment intake, draft PR comment, write PR description, repair PR, review and fix PR, fix PR findings one by one, review PR stack, repair PR stack]
+    triggers: ["split large PR", "plan stacked PRs", "git workflow", "git help", "commit changes", "git changelog", "generate changelog", "binary diff", "git text normalization", "GitHub CLI", "gh issue", "gh repo", "gh release", "merge conflict", "finish branch", "fetch PR comments", "PR comment intake", "draft PR comment", "write PR description", "repair PR", "review and fix PR", "fix PR findings one by one", "review PR stack", "repair PR stack"]
     requires_setup: false
 ---
-
 
 # Git
 

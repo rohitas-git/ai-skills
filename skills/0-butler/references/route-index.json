@@ -1142,10 +1142,7 @@
         "production operations"
       ],
       "when": [
-        "operating infrastructure",
-        "deployment platforms",
-        "reliability",
-        "or compliance controls",
+        "operating infrastructure, deployment platforms, reliability, or compliance controls",
         "choosing a DevOps or production-operations specialist"
       ]
     },
@@ -1787,13 +1784,8 @@
         "why is this test failing"
       ],
       "when": [
-        "diagnose",
-        "reproduce",
-        "or localize one specific technical failure",
-        "find the supported root cause of a bug",
-        "test failure",
-        "build failure",
-        "or regression"
+        "diagnose, reproduce, or localize one specific technical failure",
+        "find the supported root cause of a bug, test failure, build failure, or regression"
       ]
     },
     {
@@ -2013,11 +2005,7 @@
         "repair PR stack"
       ],
       "when": [
-        "route Git work across isolation",
-        "commits",
-        "PR splitting",
-        "conflicts",
-        "and branch completion"
+        "route Git work across isolation, commits, PR splitting, conflicts, and branch completion"
       ]
     },
     {
@@ -3224,13 +3212,8 @@
         "make this change"
       ],
       "when": [
-        "implement a clear request",
-        "accepted specification",
-        "ticket",
-        "or plan",
-        "drive a scoped build",
-        "verification",
-        "and review path"
+        "implement a clear request, accepted specification, ticket, or plan",
+        "drive a scoped build, verification, and review path"
       ]
     },
     {
@@ -4451,12 +4434,7 @@
         "gRPC contract design"
       ],
       "when": [
-        "route API",
-        "module",
-        "system",
-        "failure",
-        "retirement",
-        "or architecture-improvement work",
+        "route API, module, system, failure, retirement, or architecture-improvement work",
         "run a bounded architecture deepening scan or candidate report"
       ]
     },
@@ -12260,8 +12238,7 @@
         "review uncommitted changes"
       ],
       "when": [
-        "multi-axis review of changes",
-        "including uncommitted implementation",
+        "multi-axis review of changes, including uncommitted implementation",
         "ship closer after implementation and suitable verification"
       ]
     },

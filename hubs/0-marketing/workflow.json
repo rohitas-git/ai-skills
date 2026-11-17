@@ -20,110 +20,49 @@
   "children": [
     {
       "link_type": "on-ramp",
-      "skills": [
-        "1-marketing-product-marketing"
-      ],
+      "skills": ["1-marketing-product-marketing"],
       "primary": true,
       "note": "Shared positioning, audience, and messaging context used when load-bearing."
     },
     {
       "link_type": "pipeline",
-      "skills": [
-        "1-marketing-marketing-loops"
-      ],
+      "skills": ["1-marketing-marketing-loops"],
       "primary": true,
       "note": "Design-only recurring workflow; no unattended scheduling or external action."
     },
     {
       "link_type": "leaf",
-      "skills": [
-        "1-marketing-marketing-plan",
-        "1-marketing-marketing-ideas",
-        "1-marketing-marketing-council",
-        "1-marketing-marketing-psychology",
-        "1-marketing-offers",
-        "1-marketing-pricing",
-        "1-marketing-customer-research",
-        "1-marketing-competitor-profiling",
-        "1-marketing-competitors"
-      ],
+      "skills": ["1-marketing-marketing-plan", "1-marketing-marketing-ideas", "1-marketing-marketing-council", "1-marketing-marketing-psychology", "1-marketing-offers", "1-marketing-pricing", "1-marketing-customer-research", "1-marketing-competitor-profiling", "1-marketing-competitors"],
       "primary": true,
       "note": "Foundation, strategy, research, positioning, pricing, and offers."
     },
     {
       "link_type": "leaf",
-      "skills": [
-        "1-marketing-cro",
-        "1-marketing-signup",
-        "1-marketing-onboarding",
-        "1-marketing-popups",
-        "1-marketing-paywalls",
-        "1-marketing-churn-prevention",
-        "1-marketing-ab-testing"
-      ],
+      "skills": ["1-marketing-cro", "1-marketing-signup", "1-marketing-onboarding", "1-marketing-popups", "1-marketing-paywalls", "1-marketing-churn-prevention", "1-marketing-ab-testing"],
       "primary": true,
       "note": "Conversion and lifecycle optimization."
     },
     {
       "link_type": "leaf",
-      "skills": [
-        "1-marketing-content-strategy",
-        "1-marketing-copywriting",
-        "1-marketing-copy-editing",
-        "1-marketing-blog-editor",
-        "1-marketing-ecommerce-blog-writing",
-        "1-marketing-healthcare-blog-writing",
-        "1-marketing-emails",
-        "1-marketing-cold-email",
-        "1-marketing-sms",
-        "1-marketing-social",
-        "1-marketing-video",
-        "1-marketing-image",
-        "1-marketing-lead-magnets"
-      ],
+      "skills": ["1-marketing-content-strategy", "1-marketing-copywriting", "1-marketing-copy-editing", "1-marketing-blog-editor", "1-marketing-ecommerce-blog-writing", "1-marketing-healthcare-blog-writing", "1-marketing-emails", "1-marketing-cold-email", "1-marketing-sms", "1-marketing-social", "1-marketing-video", "1-marketing-image", "1-marketing-lead-magnets"],
       "primary": true,
       "note": "Content, messaging, and creative specifications; sending, publishing, and external generation remain separate effects."
     },
     {
       "link_type": "leaf",
-      "skills": [
-        "1-marketing-seo-audit",
-        "1-marketing-ai-seo",
-        "1-marketing-programmatic-seo",
-        "1-marketing-site-architecture",
-        "1-marketing-schema",
-        "1-marketing-aso",
-        "1-marketing-directory-submissions"
-      ],
+      "skills": ["1-marketing-seo-audit", "1-marketing-ai-seo", "1-marketing-programmatic-seo", "1-marketing-site-architecture", "1-marketing-schema", "1-marketing-aso", "1-marketing-directory-submissions"],
       "primary": true,
       "note": "Search, app-store, structured-data, and directory discovery."
     },
     {
       "link_type": "leaf",
-      "skills": [
-        "1-marketing-ads",
-        "1-marketing-ad-creative",
-        "1-marketing-analytics",
-        "1-marketing-attribution"
-      ],
+      "skills": ["1-marketing-ads", "1-marketing-ad-creative", "1-marketing-analytics", "1-marketing-attribution"],
       "primary": true,
       "note": "Paid media and measurement; no live account or spend mutation without explicit approval."
     },
     {
       "link_type": "leaf",
-      "skills": [
-        "1-marketing-co-marketing",
-        "1-marketing-community-marketing",
-        "1-marketing-events",
-        "1-marketing-free-tools",
-        "1-marketing-influencer-marketing",
-        "1-marketing-launch",
-        "1-marketing-prospecting",
-        "1-marketing-public-relations",
-        "1-marketing-referrals",
-        "1-marketing-revops",
-        "1-marketing-sales-enablement"
-      ],
+      "skills": ["1-marketing-co-marketing", "1-marketing-community-marketing", "1-marketing-events", "1-marketing-free-tools", "1-marketing-influencer-marketing", "1-marketing-launch", "1-marketing-prospecting", "1-marketing-public-relations", "1-marketing-referrals", "1-marketing-revops", "1-marketing-sales-enablement"],
       "primary": true,
       "note": "Growth, partnerships, launch, outreach planning, revenue operations, and sales enablement."
     }
@@ -139,15 +78,7 @@
       "id": "F-M1",
       "question": "Which marketing outcome is primary?",
       "recommended": "Infer the narrowest evidence-backed specialist; ask only when two categories materially differ",
-      "branches": [
-        "strategy/research",
-        "conversion/lifecycle",
-        "content/messaging",
-        "search/discovery",
-        "paid/measurement",
-        "growth/partnerships/sales",
-        "Agent judgment"
-      ]
+      "branches": ["strategy/research", "conversion/lifecycle", "content/messaging", "search/discovery", "paid/measurement", "growth/partnerships/sales", "Agent judgment"]
     }
   ],
   "domain_hubs_routed": null,
@@ -159,13 +90,5 @@
     "hubs_index": "../index.html",
     "manifest": "../manifest.json"
   },
-  "rules": [
-    "butler_links_every_domain_hub",
-    "each_domain_hub_has_package_dir",
-    "each_domain_hub_has_hub_html",
-    "each_domain_hub_has_workflow_json",
-    "each_domain_hub_links_flows_chart",
-    "one_hub_per_domain",
-    "forks_ask_user"
-  ]
+  "rules": ["butler_links_every_domain_hub", "each_domain_hub_has_package_dir", "each_domain_hub_has_hub_html", "each_domain_hub_has_workflow_json", "each_domain_hub_links_flows_chart", "one_hub_per_domain", "forks_ask_user"]
 }

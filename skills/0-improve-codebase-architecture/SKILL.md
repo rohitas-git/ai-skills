@@ -1,21 +1,27 @@
 ---
 name: 0-improve-codebase-architecture
-description: 'Route architecture requests or run a bounded, read-only deepening scan. Use when: designing an API/module/system, finding architecture improvements, or requesting an architecture candidate report. Not for: hard bug diagnosis (0-diagnosing-bugs), fixed-diff review (1-code-review), or implementation without a design question (0-implement). Hub: /0-improve-codebase-architecture.
-
-  '
+description: >
+  Route architecture requests or run a bounded, read-only deepening scan. Use when: designing
+  an API/module/system, finding architecture improvements, or requesting an architecture candidate
+  report. Not for: hard bug diagnosis (0-diagnosing-bugs), fixed-diff review (1-code-review), or
+  implementation without a design question (0-implement). Hub: /0-improve-codebase-architecture.
 disable-model-invocation: true
 metadata:
   catalog:
     hub: 0-improve-codebase-architecture
     role: hub
-    when: ['route API, module, system, failure, retirement, or architecture-improvement work', run a bounded architecture deepening scan or candidate report]
-    not_when: [debug hard bug → 0-diagnosing-bugs, fixed PR/diff review → 1-code-review, implement a settled design → 0-implement]
+    when:
+      - "route API, module, system, failure, retirement, or architecture-improvement work"
+      - "run a bounded architecture deepening scan or candidate report"
+    not_when:
+      - "debug hard bug → 0-diagnosing-bugs"
+      - "fixed PR/diff review → 1-code-review"
+      - "implement a settled design → 0-implement"
     next: [1-statechart-modeling, 1-change-impact, 0-grilling, 1-api-and-interface-design, 1-clean-craftsmanship, 1-codebase-design, 1-coding-standards, 1-deprecation-and-migration, 1-error-handling, 1-go-best-practices, 1-graphify, 1-living-documentation-governor, 1-project-wiki-manager, 2-software-architect]
     cousins: [0-diagnosing-bugs, 0-implement, 0-review]
     triggers: [improve architecture, architecture scan, architecture report, API architecture, module design, system design, gRPC contract design]
     requires_setup: false
 ---
-
 
 # Improve Codebase Architecture
 

@@ -75,7 +75,7 @@
       "skills": [
         "software-architecture"
       ],
-      "note": "→ this hub / codebase-design"
+      "note": "\u2192 this hub / codebase-design"
     },
     {
       "link_type": "soft",
@@ -104,10 +104,10 @@
   ],
   "pipeline": [
     "pin caller, mode, repository/worktree identity, scope and evidence boundary",
-    "clear specialist request → selected child → return to caller",
-    "broad improvement request → bounded local read-only scan → Markdown or explicitly requested static HTML report",
-    "F9 selected candidate → 1-grill-with-docs or Agent judgment",
-    "requested implementation → 0-implement owns workspace, edits, verification and review"
+    "clear specialist request \u2192 selected child \u2192 return to caller",
+    "broad improvement request \u2192 bounded local read-only scan \u2192 Markdown or explicitly requested static HTML report",
+    "F9 selected candidate \u2192 1-grill-with-docs or Agent judgment",
+    "requested implementation \u2192 0-implement owns workspace, edits, verification and review"
   ],
   "forks": [
     {
@@ -154,7 +154,7 @@
     {
       "id": "F-D1",
       "question": "Concept wiki (docs/wiki) or living docs + code triggers?",
-      "recommended": "wiki if raw→concepts; living if drift/triggers",
+      "recommended": "wiki if raw\u2192concepts; living if drift/triggers",
       "branches": [
         "1-project-wiki-manager",
         "1-living-documentation-governor",

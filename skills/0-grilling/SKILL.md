@@ -1,22 +1,22 @@
 ---
 name: 0-grilling
-description: 'Run one interactive, consent-respecting interview to resolve material decisions in one fixed plan, requirement, or idea. Not for generating design alternatives, synthesizing a settled thread, multi-session fog mapping, implementation, or assuming authority from approval. Hub: /0-grilling.
-
-  '
+description: >
+  Run one interactive, consent-respecting interview to resolve material decisions in one fixed plan,
+  requirement, or idea. Not for generating design alternatives, synthesizing a settled thread,
+  multi-session fog mapping, implementation, or assuming authority from approval. Hub: /0-grilling.
 disable-model-invocation: true
 metadata:
   catalog:
     hub: 0-grilling
     role: hub
-    when: ['interview or stress-test one plan, requirement, or decision']
-    not_when: [design alternatives → 1-brainstorm, settled thread → 1-to-spec, multi-session uncertainty → 0-wayfinder, implementation → 0-implement]
+    when: ["interview or stress-test one plan, requirement, or decision"]
+    not_when: ["design alternatives → 1-brainstorm", "settled thread → 1-to-spec", "multi-session uncertainty → 0-wayfinder", "implementation → 0-implement"]
     prev: [0-butler]
     next: [1-to-questionnaire, 1-grill-me, 1-grill-with-docs, 1-brainstorm, 1-domain-modeling, 1-visual-plan, 1-handoff, 1-prototype, 1-honest-advisor, 1-thinking-steel-manning, 1-anti-sycophancy, 1-critique, 1-to-spec, 1-write-plan, 0-implement]
     cousins: [1-brainstorm, 0-wayfinder, 0-thinking]
     triggers: [grill me, interview this plan, stress test my requirements, question my assumptions]
     requires_setup: false
 ---
-
 
 # Grilling
 

@@ -160,11 +160,11 @@
     "use 1-git-worktrees only when protected-branch, overlapping-state, concurrent-work, or branch-specific local-state isolation is needed; resume Ship with returned provenance",
     "select one reviewable slice, the fitting evidence loop, and only necessary specialists; every child inherits and returns the same candidate/workspace/authority",
     "implement surgically; delegation through F-SP is available only when explicitly requested or authorized and ownership boundaries are independent",
-    "verify supported claims on the actual candidate; project mutable work may use 1-dev-test → 1-code-review → resolve verified in-scope findings one by one → reverify and re-review until clear or blocked",
+    "verify supported claims on the actual candidate; project mutable work may use 1-dev-test \u2192 1-code-review \u2192 resolve verified in-scope findings one by one \u2192 reverify and re-review until clear or blocked",
     "1-atomic-git-commits only when commit authority exists; 1-finish-branch only for requested integration/PR options; no implicit remote or production effects",
-    "optional W-PS1: selected runtime coverage → 1-runtime-feature-map → authorized project/browser check → evidence and drift reconciliation; no automatic harness install or product fix",
-    "optional W-PS2: selected model/property check → 1-statechart-modeling → 1-formal-verification → authorized counterexample replay or unrun recipe → bounded result; no automatic release approval",
-    "optional W-PS3: selected correction-to-enforcement → 1-agent-workflow-observer proposal → requested 1-constraint-driven-development policy → authorized implementation/1-ci-cd-and-automation → negative and clean controls → return"
+    "optional W-PS1: selected runtime coverage \u2192 1-runtime-feature-map \u2192 authorized project/browser check \u2192 evidence and drift reconciliation; no automatic harness install or product fix",
+    "optional W-PS2: selected model/property check \u2192 1-statechart-modeling \u2192 1-formal-verification \u2192 authorized counterexample replay or unrun recipe \u2192 bounded result; no automatic release approval",
+    "optional W-PS3: selected correction-to-enforcement \u2192 1-agent-workflow-observer proposal \u2192 requested 1-constraint-driven-development policy \u2192 authorized implementation/1-ci-cd-and-automation \u2192 negative and clean controls \u2192 return"
   ],
   "forks": [
     {
@@ -172,7 +172,7 @@
       "question": "Is the request already buildable, or does it need specification/ticket decomposition?",
       "recommended": "Direct implementation for a clear bounded request",
       "branches": [
-        "1-to-spec → 1-to-tickets for materially unresolved or multi-session work",
+        "1-to-spec \u2192 1-to-tickets for materially unresolved or multi-session work",
         "direct 0-implement for a clear bounded request",
         "Agent judgment"
       ]
@@ -204,7 +204,7 @@
       "question": "Does the actual candidate have enough evidence to enter review reconciliation?",
       "recommended": "Review only after applicable claims have current evidence or labeled gaps",
       "branches": [
-        "1-code-review → fix verified in-scope findings → reverify/re-review → 1-atomic-git-commits when authorized",
+        "1-code-review \u2192 fix verified in-scope findings \u2192 reverify/re-review \u2192 1-atomic-git-commits when authorized",
         "continue the current slice or next requested ticket",
         "Agent judgment"
       ]

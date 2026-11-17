@@ -13,6 +13,7 @@ Third-party skill packs kept **out of default discovery**.
 | Pack | Path | Status |
 |------|------|--------|
 | agent-skills (Addy Osmani et al.) | [agent-skills/](./agent-skills/) | Parked `6ca0cd7` (MIT). Selective promotes only via skill-manager ingest. TDD ideas merge into catalog `1-tdd`, not a second skill. |
+| agent-skills selected refresh | [addyosmani-agent-skills-2026-11-15/](./addyosmani-agent-skills-2026-11-15/) | `39b723c` (MIT): five reference merges; all 25 source skills accounted for. [Review and dispositions](../../guidelines/catalog/ingest-addyosmani-2026-11-15.md). Helper archived as text only; original snapshot preserved. |
 | ui-ux-pro-max-skill | [ui-ux-pro-max-skill/](./ui-ux-pro-max-skill/) | Parked. Selective promote into Domain 15 `/0-ui-ux` (see harvest table). CLI/`src`/`stack` stay archive-only. |
 | superpowers (obra/Jesse Vincent) | [superpowers/](./superpowers/) | Parked v6.1.1. Selective promote + merges 2026-07-20. **Never** promote `using-superpowers` (dual meta-router). |
 | bro-skill (luchasarie) | [bro-skill/](./bro-skill/) | Parked `01e51f8`. Promoted live `/1-bro` (0-butler session meta). Do not promote `install.sh`. |
@@ -180,3 +181,11 @@ See also pack `VENDOR-SOURCE.md`.
 - Live: `/1-thinking-lateral`, `/1-thinking-ethical` under `/0-thinking`.
 - Merge: `six-thinking-hats` → `/1-perspective-analysis`.
 - Archive-only: analytical, creative, critical, design, first-principles, strategic, and systems thinking; live catalog winners already cover those jobs.
+
+## ECC selected ingestion (2026-11-15)
+
+- [Selected MIT snapshot](./ecc-2026-11-15/) at `d2ef268`: 314 inventory entries, four new skills, two merges, one supporting source. [Assessment and validation](../../guidelines/catalog/ingest-ecc-2026-11-15.md). No hooks, adapters, installers, or executable source adopted.
+
+## pstack selected ingestion (2026-11-15)
+
+- [Selected MIT source](./pstack-2026-11-15/) at `bf0c7cd`, version `0.15.42`: four skills, two merges and three optional verification workflows. [Inventory, dispositions and review](../../guidelines/catalog/ingest-pstack-2026-11-15.md). No plugin, toolchain, renderer, bots or background automation installed.

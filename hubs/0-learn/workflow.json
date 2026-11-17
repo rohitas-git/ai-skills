@@ -7,7 +7,7 @@
   "slash": "/0-learn",
   "path": "skills/0-learn",
   "package_dir": "hubs/0-learn/",
-  "role": "Domain router for intellectual understanding — explain, tutor, code walkthrough, course, story, summarize.",
+  "role": "Domain router for intellectual understanding \u2014 explain, tutor, code walkthrough, course, story, summarize.",
   "notes": "Read-only router, not a product build path. 1-vault-explain is the Vault on-ramp; 1-tutor owns interactive practice; 1-code-explainer owns source walkthroughs.",
   "parent": {
     "hub": "0-butler",

@@ -29,6 +29,10 @@ Do not re-nest by domain here. Domain grouping is logical (hubs + wiki).
 - [shipping-and-launch](./1-shipping-and-launch/) — vendor harvest (lean); see skill description
 - [tool-schema-design](./1-tool-schema-design/) — model-facing tool schemas
 
+## Design document review
+
+- [1-design-review](./1-design-review/) — Elephant-Goldfish pre-code design/spec/plan review; [workflow, connections and concepts](./1-design-review/references/workflow-and-connections.md)
+
 ## Process hygiene
 
 - [1-karpathy-guidelines](./1-karpathy-guidelines/) — LLM coding process: think, simple, surgical, goal-driven (Ship soft)
@@ -53,6 +57,7 @@ Do not re-nest by domain here. Domain grouping is logical (hubs + wiki).
 - [0-git](./0-git/) — Git workflow router
 - [1-git-worktrees](./1-git-worktrees/) — isolated workspaces and concurrent local-service setup
 - [1-atomic-git-commits](./1-atomic-git-commits/) — small, independently understandable and revertible commit groups
+- [1-pr-splitter](./1-pr-splitter/) — split a source PR into coherent smaller PRs and track review drift
 - [1-git-text-normalization](./1-git-text-normalization/) — diagnose or apply one authorized exact-path text correction
 - [1-resolving-merge-conflicts](./1-resolving-merge-conflicts/) — merge/rebase conflict recovery
 - [1-stacked-pr-review-and-repair](./1-stacked-pr-review-and-repair/) — converge an entire PR stack base-to-tip
@@ -64,7 +69,9 @@ Do not re-nest by domain here. Domain grouping is logical (hubs + wiki).
 
 ## Domain 18 — Agent Engineering (`/0-agent-engineering`)
 
-- [0-agent-engineering](./0-agent-engineering/) — agent-system router
+- [0-agent-engineering](./0-agent-engineering/) — AI application and agent-system router
+- [1-ai-suitability](./1-ai-suitability/) — Assess AI fit, non-AI alternatives and the level of automation.
+- [1-context-retrieval-design](./1-context-retrieval-design/) — Design relevant, permission-aware context, retrieval and memory.
 - [1-agent-evaluation](./1-agent-evaluation/) — evaluations and release gates
 - [1-tool-schema-design](./1-tool-schema-design/) — model-facing tool contracts
 - [1-human-in-the-loop](./1-human-in-the-loop/) — approval and escalation design
@@ -95,7 +102,7 @@ Do not re-nest by domain here. Domain grouping is logical (hubs + wiki).
 - Foundation: [1-marketing-product-marketing](./1-marketing-product-marketing/), [1-marketing-marketing-plan](./1-marketing-marketing-plan/), [1-marketing-marketing-ideas](./1-marketing-marketing-ideas/), [1-marketing-marketing-council](./1-marketing-marketing-council/), [1-marketing-marketing-psychology](./1-marketing-marketing-psychology/), [1-marketing-offers](./1-marketing-offers/), [1-marketing-pricing](./1-marketing-pricing/)
 - Research: [1-marketing-customer-research](./1-marketing-customer-research/), [1-marketing-competitor-profiling](./1-marketing-competitor-profiling/), [1-marketing-competitors](./1-marketing-competitors/)
 - Conversion and lifecycle: [1-marketing-cro](./1-marketing-cro/), [1-marketing-signup](./1-marketing-signup/), [1-marketing-onboarding](./1-marketing-onboarding/), [1-marketing-popups](./1-marketing-popups/), [1-marketing-paywalls](./1-marketing-paywalls/), [1-marketing-churn-prevention](./1-marketing-churn-prevention/), [1-marketing-ab-testing](./1-marketing-ab-testing/)
-- Content and messaging: [1-marketing-content-strategy](./1-marketing-content-strategy/), [1-marketing-copywriting](./1-marketing-copywriting/), [1-marketing-copy-editing](./1-marketing-copy-editing/), [1-marketing-emails](./1-marketing-emails/), [1-marketing-cold-email](./1-marketing-cold-email/), [1-marketing-sms](./1-marketing-sms/), [1-marketing-social](./1-marketing-social/), [1-marketing-video](./1-marketing-video/), [1-marketing-image](./1-marketing-image/), [1-marketing-lead-magnets](./1-marketing-lead-magnets/)
+- Content and messaging: [1-marketing-content-strategy](./1-marketing-content-strategy/), [1-marketing-copywriting](./1-marketing-copywriting/), [1-marketing-copy-editing](./1-marketing-copy-editing/), [1-marketing-blog-editor](./1-marketing-blog-editor/), [1-marketing-emails](./1-marketing-emails/), [1-marketing-cold-email](./1-marketing-cold-email/), [1-marketing-sms](./1-marketing-sms/), [1-marketing-social](./1-marketing-social/), [1-marketing-video](./1-marketing-video/), [1-marketing-image](./1-marketing-image/), [1-marketing-lead-magnets](./1-marketing-lead-magnets/)
 - Search: [1-marketing-seo-audit](./1-marketing-seo-audit/), [1-marketing-ai-seo](./1-marketing-ai-seo/), [1-marketing-programmatic-seo](./1-marketing-programmatic-seo/), [1-marketing-site-architecture](./1-marketing-site-architecture/), [1-marketing-schema](./1-marketing-schema/), [1-marketing-aso](./1-marketing-aso/), [1-marketing-directory-submissions](./1-marketing-directory-submissions/)
 - Paid and measurement: [1-marketing-ads](./1-marketing-ads/), [1-marketing-ad-creative](./1-marketing-ad-creative/), [1-marketing-analytics](./1-marketing-analytics/), [1-marketing-attribution](./1-marketing-attribution/)
 - Growth, partnerships, and sales: [1-marketing-co-marketing](./1-marketing-co-marketing/), [1-marketing-community-marketing](./1-marketing-community-marketing/), [1-marketing-events](./1-marketing-events/), [1-marketing-free-tools](./1-marketing-free-tools/), [1-marketing-influencer-marketing](./1-marketing-influencer-marketing/), [1-marketing-launch](./1-marketing-launch/), [1-marketing-marketing-loops](./1-marketing-marketing-loops/), [1-marketing-prospecting](./1-marketing-prospecting/), [1-marketing-public-relations](./1-marketing-public-relations/), [1-marketing-referrals](./1-marketing-referrals/), [1-marketing-revops](./1-marketing-revops/), [1-marketing-sales-enablement](./1-marketing-sales-enablement/)
@@ -161,23 +168,29 @@ Structured mental models. The core is from `tjboudreaux/cc-thinking-skills` (MIT
 - [1-user-research](./1-user-research/) — research planning and synthesis (UI/UX)
 - [1-customer-experience-audit](./1-customer-experience-audit/) — one evidence-marked external-customer audit (UI/UX)
 
-## Available skill additions
+## Selected Matt Pocock additions (2026-11-12)
 
-- [1-design-review](./1-design-review/) — Elephant-Goldfish pre-code design/spec/plan review; [workflow, connections and concepts](./1-design-review/references/workflow-and-connections.md)
-- [1-pr-splitter](./1-pr-splitter/) — split a source PR into coherent smaller PRs and track review drift
-- [1-ai-suitability](./1-ai-suitability/) — Assess AI fit, non-AI alternatives and the level of automation.
-- [1-context-retrieval-design](./1-context-retrieval-design/) — Design relevant, permission-aware context, retrieval and memory.
-- Content and messaging: [1-marketing-content-strategy](./1-marketing-content-strategy/), [1-marketing-copywriting](./1-marketing-copywriting/), [1-marketing-copy-editing](./1-marketing-copy-editing/), [1-marketing-blog-editor](./1-marketing-blog-editor/), [1-marketing-emails](./1-marketing-emails/), [1-marketing-cold-email](./1-marketing-cold-email/), [1-marketing-sms](./1-marketing-sms/), [1-marketing-social](./1-marketing-social/), [1-marketing-video](./1-marketing-video/), [1-marketing-image](./1-marketing-image/), [1-marketing-lead-magnets](./1-marketing-lead-magnets/)
 - [1-to-questionnaire](./1-to-questionnaire/) — Discovery questionnaire for an external knowledge holder
 - [1-manual-procedure-wizard](./1-manual-procedure-wizard/) — Author a human-run manual procedure wizard without executing it
 - [1-migrate-to-shoehorn](./1-migrate-to-shoehorn/) — Migrate scoped TypeScript test fixtures to Shoehorn
 - [1-scaffold-exercises](./1-scaffold-exercises/) — Scaffold course exercise directories from an agreed plan
+- [1-ci-cd-and-automation](./1-ci-cd-and-automation/) — local pre-commit setup merged into the existing check-contract owner
+
+## Visual explanations
+
 - [1-visual-explainer](./1-visual-explainer/) — source-backed, figure-led HTML pages with optional local interaction; adapted from nicobailon/visual-explainer
+
+## Selected ECC additions (2026-11-15)
+
 - [1-i18n-sync](./1-i18n-sync/) — Synchronize selected JSON locale keys with context and validation.
 - [1-prompt-optimizer](./1-prompt-optimizer/) — Rewrite one prompt without executing it or inventing requirements.
 - [1-llm-cost-design](./1-llm-cost-design/) — Design one LLM spending policy with quality and budget controls.
 - [1-change-impact](./1-change-impact/) — Trace affected consumers, compatibility, and verification obligations.
+
+## Selected pstack skills and workflows (2026-11-15)
+
 - [1-design-rationale](./1-design-rationale/) — Explain recorded design decisions and their trade-offs.
 - [1-runtime-feature-map](./1-runtime-feature-map/) — Map user paths, preconditions and verification evidence.
 - [1-statechart-modeling](./1-statechart-modeling/) — Model states, actions, guards and invariants clearly.
 - [1-formal-verification](./1-formal-verification/) — Evaluate a fixed formal check with explicit scope.
+- [Verification workflows](./0-implement/references/verification-workflows.md) — runtime coverage, model checking and correction-to-enforcement

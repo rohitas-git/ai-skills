@@ -73,6 +73,8 @@
 | [[1-prototype]] | Build a throwaway 1-prototype to answer a design question. Use when the user wants to sanity-check whe… | `skills/1-prototype` |
 | [[1-visual-plan]] | Publish a plan as an interactive visual review artifact. | `skills/1-visual-plan` |
 | [[1-thinking-steel-manning]] | Use before rejecting a proposal or when you're inclined to just agree with the user. Build the stron… | `skills/1-thinking-steel-manning` |
+| [[1-to-questionnaire]] | Discovery questionnaire for an external knowledge holder. | `skills/1-to-questionnaire` |
+
 
 ## Hub: 0-implement
 
@@ -85,6 +87,8 @@
 | [[1-atomic-git-commits]] | Partition changes into small, independently understandable and revertible verified commits. | `skills/1-atomic-git-commits` |
 | [[1-git-worktrees]] | Isolated workspace via platform tools or git worktree. | `skills/1-git-worktrees` |
 | [[0-implement]] | "Implement a piece of work based on a spec or set of tickets." | `skills/0-implement` |
+| [[1-runtime-feature-map]] | Map user paths, preconditions and verification evidence. | `skills/1-runtime-feature-map` |
+| [[1-i18n-sync]] | Synchronize selected JSON locale keys with context and validation. | `skills/1-i18n-sync` |
 | [[1-inline-comments]] | Assess or edit one concise why/constraint comment for one internal code block. | `skills/1-inline-comments` |
 | [[1-karpathy-guidelines]] | Behavioral guidelines that cut common LLM coding mistakes: surface assumptions, simplicity first, surgical diffs, goal-driven verification. | `skills/1-karpathy-guidelines` |
 | [[1-parallel-agents]] | One focused agent per independent problem domain (parallel investigations). | `skills/1-parallel-agents` |
@@ -94,12 +98,14 @@
 | [[1-stepdown-rule]] | Assess or apply one behavior-independent top-down declaration reorder in one source file. | `skills/1-stepdown-rule` |
 | [[1-subagent-implement]] | Same-session plan execution: fresh implementer subagent per task + reviews. | `skills/1-subagent-implement` |
 | [[1-write-plan]] | Bite-sized implementation plan from an approved design/spec before coding. | `skills/1-write-plan` |
-| [[1-to-spec]] | Synthesize one settled source into one right-sized draft, local, or tracker specification artifact. | `skills/1-to-spec` |
+| [[1-to-spec]] | Synthesize one settled source into a right-sized specification, including version scope and shipped-behavior deltas. | `skills/1-to-spec` |
 | [[1-to-tickets]] | Derive or materialize one dependency-aware ticket set from one approved specification. | `skills/1-to-tickets` |
-| [[1-ci-cd-and-automation]] | Build/test/deploy pipelines and quality gates. Use when setting up or changing CI, releas… | `skills/1-ci-cd-and-automation` |
+| [[1-ci-cd-and-automation]] | Design and verify CI workflows, required checks, safe inputs, and scanner report gates. | `skills/1-ci-cd-and-automation` |
 | [[1-observability-and-instrumentation]] | Logging, metrics, tracing, and alerting so production behavior is diagnosable. Use when a… | `skills/1-observability-and-instrumentation` |
 | [[1-shipping-and-launch]] | Pre-launch checklist, staged rollout, monitoring, and rollback planning. Use when prepari… | `skills/1-shipping-and-launch` |
 | [[1-constraint-driven-development]] | Establish a measurable quality contract and detect attempts to weaken it. | `skills/1-constraint-driven-development` |
+| [[1-migrate-to-shoehorn]] | Migrate scoped TypeScript test fixtures to Shoehorn. | `skills/1-migrate-to-shoehorn` |
+
 
 ## Hub: 0-improve-codebase-architecture
 
@@ -112,6 +118,8 @@
 | [[1-go-best-practices]] | Idiomatic Go design, error, concurrency, API, and testing practice for Go changes and reviews. | `skills/1-go-best-practices` |
 | [[1-graphify]] | Build or query an explicitly requested local Graphify codebase graph; never installs or enables persistent behavior. | `skills/1-graphify` |
 | [[0-improve-codebase-architecture]] | Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill throug… | `skills/0-improve-codebase-architecture` |
+| [[1-statechart-modeling]] | Model states, actions, guards and invariants clearly. | `skills/1-statechart-modeling` |
+| [[1-change-impact]] | Trace affected consumers, compatibility, and verification obligations. | `skills/1-change-impact` |
 | [[1-living-documentation-governor]] | Pinned code↔canonical-doc contract: drift assessment, scoped updates, and honest trigger enforcement. | `skills/1-living-documentation-governor` |
 | [[1-project-wiki-manager]] | Grounded in-repository concept wiki from declared project sources; scoped ingest and read-only query/audit. | `skills/1-project-wiki-manager` |
 | [[1-api-and-interface-design]] | Stable APIs and module boundaries (REST/GraphQL/types). Use when designing public interfa… | `skills/1-api-and-interface-design` |
@@ -127,7 +135,9 @@
 |------|-------------|---------|
 | [[1-code-explainer]] | Explain one exact supplied or current-worktree code candidate without reviewing, testing, or editing it. | `skills/1-code-explainer` |
 | [[1-explain-with-example]] | Explain one exact selected object with evidence-preserving lenses, one grounded example, and a non-executing dry run. | `skills/1-explain-with-example` |
+| [[1-visual-explainer]] | Create one figure-led HTML explanation of a concept, system, or supplied comparison. | `skills/1-visual-explainer` |
 | [[0-learn]] | Domain hub for intellectual understanding — how/why something works, not shipping code or vault comp… | `skills/0-learn` |
+| [[1-design-rationale]] | Explain recorded design decisions and their trade-offs. | `skills/1-design-rationale` |
 | [[1-learning-explainer]] | Route one concept request to exactly one diagnostic, first explanation, model, or deep-dive leaf. | `skills/1-learning-explainer` |
 | [[1-learning-diagnostic]] | Return a minimal evidence-labeled learner profile without teaching or persistence. | `skills/1-learning-diagnostic` |
 | [[1-level-explainer]] | Give one truth-preserving first explanation at one evidenced audience level. | `skills/1-level-explainer` |
@@ -142,6 +152,8 @@
 | [[1-learning-progress-record]] | Append one evidence-labeled learning event that changes the next teaching decision. | `skills/1-learning-progress-record` |
 | [[1-learning-glossary]] | Govern one evidence-grounded canonical term without rewriting glossary history. | `skills/1-learning-glossary` |
 | [[1-vault-explain]] | Bind one exact private-vault Concept evidence packet to one Learn explanation and return read-only. | `skills/1-vault-explain` |
+| [[1-scaffold-exercises]] | Scaffold course exercise directories from an agreed plan. | `skills/1-scaffold-exercises` |
+
 
 ## Hub: 0-office
 
@@ -210,12 +222,17 @@
 
 | Page | Description | Sources |
 |------|-------------|---------|
+| [[1-design-review]] | Fresh-context EGM review of a pre-code software design/spec/plan; preserves the full workflow and development concepts. | `skills/1-design-review` |
 | [[1-codebase-review-strategy]] | Produce one risk-based coverage and evidence plan for an unfamiliar codebase. | `skills/1-codebase-review-strategy` |
 | [[1-agent-pr-review]] | Risk-focused review pass for AI-authored pull requests: CI protection, duplicate utilities, critical paths, and agent workflows. | `skills/1-agent-pr-review` |
 | [[1-clean-tautological-tests]] | Audit and rewrite tautological, echo, mock-only and zero-signal unit tests into behavioral tests behind a mutation check. | `skills/1-clean-tautological-tests` |
 | [[1-complete-pr-review]] | Comprehensive, evidence-backed, risk-weighted review of one fixed PR; read-only and scope-bounded. | `skills/1-complete-pr-review` |
+| [[1-pr-walkthrough]] | Walk through a project PR with real UI components, non-UI before/after examples and useful engineering diagrams; local-only page. | `skills/1-pr-walkthrough` |
+| [[1-pre-merge]] | Run frozen-candidate project readiness gates and return a final QA handoff without merging. | `skills/1-pre-merge` |
+| [[1-dev-test]] | Run the project's risk-matched development testing loop before final pre-merge QA. | `skills/1-dev-test` |
 | [[1-receive-review]] | Process incoming code review feedback with technical rigor (verify, evaluate, implement one-by-one). | `skills/1-receive-review` |
 | [[0-review]] | Domain hub for verification modes — multi-axis change 0-review, security audit, architecture 0-review, a… | `skills/0-review` |
+| [[1-formal-verification]] | Evaluate a fixed formal check with explicit scope. | `skills/1-formal-verification` |
 | [[1-doubt-driven-development]] | Run one read-only adversarial pass over a consequential claim or decision. | `skills/1-doubt-driven-development` |
 | [[1-visual-recap]] | Draft, create, or update one private visual orientation artifact for one exact change candidate. | `skills/1-visual-recap` |
 
@@ -297,6 +314,7 @@
 
 | Page | Description | Sources |
 |------|-------------|---------|
+| [[1-pr-splitter]] | Split a source PR into smaller review units with extraction, verification, release-note, and drift tracking. | `skills/1-pr-splitter` |
 | [[0-git]] | Route safe Git workflows: worktrees, atomic commits, conflicts, and branch completion. | `skills/0-git` |
 | [[1-git-worktrees]] | Create or reuse an isolated workspace and choose safe local-service isolation. | `skills/1-git-worktrees` |
 | [[1-atomic-git-commits]] | Partition changes into small, independently understandable and revertible verified commits. | `skills/1-atomic-git-commits` |
@@ -319,7 +337,12 @@ _Live skills: **174**._
 
 | Page | Description | Sources |
 |------|-------------|---------|
-| [[0-agent-engineering]] | Route one AI-agent-system concern to one specialist while preserving candidate, trust, worktree, and authority boundaries. | `skills/0-agent-engineering` |
+| [[0-agent-engineering]] | Route one AI application or agent-system concern to one specialist while preserving candidate, trust, worktree and authority boundaries. | `skills/0-agent-engineering` |
+| [[1-prompt-optimizer]] | Rewrite one prompt without executing it or inventing requirements. | `skills/1-prompt-optimizer` |
+| [[1-llm-cost-design]] | Design one LLM spending policy with quality and budget controls. | `skills/1-llm-cost-design` |
+| [[1-ai-suitability]] | Assess AI fit, non-AI alternatives and the level of automation. | `skills/1-ai-suitability` |
+| [[1-context-retrieval-design]] | Design relevant, permission-aware context, retrieval and memory. | `skills/1-context-retrieval-design` |
+| [[1-asd-ste100]] | Rewrite agent-facing English without changing conditions, uncertainty, or requirement strength. | `skills/1-asd-ste100` |
 | [[1-agent-evaluation]] | Design evaluation sets, graders, baselines, and release gates. | `skills/1-agent-evaluation` |
 | [[1-tool-schema-design]] | Design constrained, model-facing tool schemas. | `skills/1-tool-schema-design` |
 | [[1-human-in-the-loop]] | Design approval gates, escalation paths, and human oversight. | `skills/1-human-in-the-loop` |
@@ -335,6 +358,7 @@ _Live skills: **174**._
 | Page | Description | Sources |
 |------|-------------|---------|
 | [[0-devops]] | Route infrastructure, platform, delivery, reliability, incident, and compliance operations. | `skills/0-devops` |
+| [[1-manual-procedure-wizard]] | Author a human-run manual procedure wizard without executing it. | `skills/1-manual-procedure-wizard` |
 | [[1-infrastructure-as-code]] | Design and verify declarative infrastructure definitions and plans. | `skills/1-infrastructure-as-code` |
 | [[1-cloud-platform-operations]] | Operate AWS, Azure, GCP, and Cloudflare managed resources. | `skills/1-cloud-platform-operations` |
 | [[1-container-platform-operations]] | Operate container images, registries, Kubernetes, Helm, and GitOps. | `skills/1-container-platform-operations` |
@@ -361,6 +385,7 @@ _Live skills: **174**._
 | [[1-marketing-analytics]] | Design or audit marketing tracking and measurement. | `skills/1-marketing-analytics` |
 | [[1-marketing-aso]] | Audit or improve one app-store listing. | `skills/1-marketing-aso` |
 | [[1-marketing-attribution]] | Analyze which marketing activity drives conversion or revenue. | `skills/1-marketing-attribution` |
+| [[1-marketing-blog-editor]] | Review one technical marketing blog post before publication. | `skills/1-marketing-blog-editor` |
 | [[1-marketing-churn-prevention]] | Design one customer-retention or cancellation intervention. | `skills/1-marketing-churn-prevention` |
 | [[1-marketing-co-marketing]] | Plan one co-marketing or partner campaign. | `skills/1-marketing-co-marketing` |
 | [[1-marketing-cold-email]] | Draft one B2B cold-email sequence. | `skills/1-marketing-cold-email` |
@@ -376,6 +401,8 @@ _Live skills: **174**._
 | [[1-marketing-emails]] | Create or improve one lifecycle-email sequence. | `skills/1-marketing-emails` |
 | [[1-marketing-events]] | Plan one marketing event, webinar, sponsorship, or speaking motion. | `skills/1-marketing-events` |
 | [[1-marketing-free-tools]] | Design one free tool as a marketing asset. | `skills/1-marketing-free-tools` |
+| [[1-marketing-ecommerce-blog-writing]] | Draft or revise one e-commerce guide, tutorial, lifestyle article, or product comparison. | `skills/1-marketing-ecommerce-blog-writing` |
+| [[1-marketing-healthcare-blog-writing]] | Draft or revise one evidence-backed healthcare e-commerce blog and its medical/compliance review packet. | `skills/1-marketing-healthcare-blog-writing` |
 | [[1-marketing-image]] | Specify or optimize one marketing-image asset. | `skills/1-marketing-image` |
 | [[1-marketing-influencer-marketing]] | Plan one influencer, creator, or ambassador program. | `skills/1-marketing-influencer-marketing` |
 | [[1-marketing-launch]] | Plan one product-marketing launch or announcement. | `skills/1-marketing-launch` |
@@ -438,30 +465,3 @@ _Live skills: **174**._
 | [[1-thinking-thought-experiment]] | When a real test is too rare, large, or irreversible, run a controlled counterfa… | `skills/1-thinking-thought-experiment` |
 | [[1-thinking-triz]] | When two design requirements seem mutually exclusive, name the contradiction, se… | `skills/1-thinking-triz` |
 | [[1-thinking-via-negativa]] | Use when the reflex is to add a feature, layer, or process. Prefer removing harm… | `skills/1-thinking-via-negativa` |
-
-## Available skill additions
-
-| [[1-to-questionnaire]] | Discovery questionnaire for an external knowledge holder. | `skills/1-to-questionnaire` |
-| [[1-runtime-feature-map]] | Map user paths, preconditions and verification evidence. | `skills/1-runtime-feature-map` |
-| [[1-i18n-sync]] | Synchronize selected JSON locale keys with context and validation. | `skills/1-i18n-sync` |
-| [[1-migrate-to-shoehorn]] | Migrate scoped TypeScript test fixtures to Shoehorn. | `skills/1-migrate-to-shoehorn` |
-| [[1-statechart-modeling]] | Model states, actions, guards and invariants clearly. | `skills/1-statechart-modeling` |
-| [[1-change-impact]] | Trace affected consumers, compatibility, and verification obligations. | `skills/1-change-impact` |
-| [[1-visual-explainer]] | Create one figure-led HTML explanation of a concept, system, or supplied comparison. | `skills/1-visual-explainer` |
-| [[1-design-rationale]] | Explain recorded design decisions and their trade-offs. | `skills/1-design-rationale` |
-| [[1-scaffold-exercises]] | Scaffold course exercise directories from an agreed plan. | `skills/1-scaffold-exercises` |
-| [[1-design-review]] | Fresh-context EGM review of a pre-code software design/spec/plan; preserves the full workflow and development concepts. | `skills/1-design-review` |
-| [[1-pr-walkthrough]] | Walk through a project PR with real UI components, non-UI before/after examples and useful engineering diagrams; local-only page. | `skills/1-pr-walkthrough` |
-| [[1-pre-merge]] | Run frozen-candidate project readiness gates and return a final QA handoff without merging. | `skills/1-pre-merge` |
-| [[1-dev-test]] | Run the project's risk-matched development testing loop before final pre-merge QA. | `skills/1-dev-test` |
-| [[1-formal-verification]] | Evaluate a fixed formal check with explicit scope. | `skills/1-formal-verification` |
-| [[1-pr-splitter]] | Split a source PR into smaller review units with extraction, verification, release-note, and drift tracking. | `skills/1-pr-splitter` |
-| [[1-prompt-optimizer]] | Rewrite one prompt without executing it or inventing requirements. | `skills/1-prompt-optimizer` |
-| [[1-llm-cost-design]] | Design one LLM spending policy with quality and budget controls. | `skills/1-llm-cost-design` |
-| [[1-ai-suitability]] | Assess AI fit, non-AI alternatives and the level of automation. | `skills/1-ai-suitability` |
-| [[1-context-retrieval-design]] | Design relevant, permission-aware context, retrieval and memory. | `skills/1-context-retrieval-design` |
-| [[1-asd-ste100]] | Rewrite agent-facing English without changing conditions, uncertainty, or requirement strength. | `skills/1-asd-ste100` |
-| [[1-manual-procedure-wizard]] | Author a human-run manual procedure wizard without executing it. | `skills/1-manual-procedure-wizard` |
-| [[1-marketing-blog-editor]] | Review one technical marketing blog post before publication. | `skills/1-marketing-blog-editor` |
-| [[1-marketing-ecommerce-blog-writing]] | Draft or revise one e-commerce guide, tutorial, lifestyle article, or product comparison. | `skills/1-marketing-ecommerce-blog-writing` |
-| [[1-marketing-healthcare-blog-writing]] | Draft or revise one evidence-backed healthcare e-commerce blog and its medical/compliance review packet. | `skills/1-marketing-healthcare-blog-writing` |
