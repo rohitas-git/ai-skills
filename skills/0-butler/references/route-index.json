@@ -5,7 +5,7 @@
     "hubs/*/workflow.json"
   ],
   "schema_version": 1,
-  "skill_count": 298,
+  "skill_count": 299,
   "skills": [
     {
       "cousins": [],
@@ -3027,6 +3027,7 @@
       ],
       "next": [
         "1-i18n-sync",
+        "1-migrate-to-shoehorn",
         "1-to-spec",
         "1-to-tickets",
         "1-write-plan",
@@ -3527,6 +3528,38 @@
       "when": [
         "explicit Karpathy-style implementation process request",
         "surface assumptions, keep the diff surgical, and define evidence before editing"
+      ]
+    },
+    {
+      "cousins": [],
+      "hub": "0-implement",
+      "memberships": [
+        {
+          "hub": "0-implement",
+          "role": "leaf"
+        }
+      ],
+      "next": [
+        "0-implement"
+      ],
+      "not_when": [
+        "design a test-first feature → 1-tdd",
+        "production type fix → 0-implement"
+      ],
+      "prev": [
+        "0-implement"
+      ],
+      "requires_setup": false,
+      "role": "leaf",
+      "skill": "1-migrate-to-shoehorn",
+      "source": "catalog",
+      "triggers": [
+        "migrate to shoehorn",
+        "replace test casts",
+        "fromPartial test fixtures"
+      ],
+      "when": [
+        "migrate identified test assertions to Shoehorn fixtures"
       ]
     },
     {

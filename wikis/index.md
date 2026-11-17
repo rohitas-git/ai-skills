@@ -442,6 +442,7 @@ _Live skills: **174**._
 ## Available skill additions
 
 | [[1-i18n-sync]] | Synchronize selected JSON locale keys with context and validation. | `skills/1-i18n-sync` |
+| [[1-migrate-to-shoehorn]] | Migrate scoped TypeScript test fixtures to Shoehorn. | `skills/1-migrate-to-shoehorn` |
 | [[1-change-impact]] | Trace affected consumers, compatibility, and verification obligations. | `skills/1-change-impact` |
 | [[1-design-rationale]] | Explain recorded design decisions and their trade-offs. | `skills/1-design-rationale` |
 | [[1-design-review]] | Fresh-context EGM review of a pre-code software design/spec/plan; preserves the full workflow and development concepts. | `skills/1-design-review` |

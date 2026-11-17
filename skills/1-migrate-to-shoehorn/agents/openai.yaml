@@ -1,0 +1,6 @@
+interface:
+  display_name: Migrate To Shoehorn
+  short_description: Migrate scoped TypeScript test fixtures to Shoehorn
+  default_prompt: Use $1-migrate-to-shoehorn for the requested scoped task.
+policy:
+  allow_implicit_invocation: false
