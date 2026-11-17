@@ -22,7 +22,7 @@ metadata:
 **Hub job:** preserve one requested outcome, candidate, workspace, and authority while selecting only
 the implementation specialists and evidence loops that the change actually needs.
 
-## Pipeline
+## Process
 
 1. **Pin the contract.** Record caller, task/spec/ticket, acceptance criteria, explicit exclusions,
    repository root, requested branch/base, protected/unrelated work, and permitted side effects. A
@@ -37,7 +37,7 @@ the implementation specialists and evidence loops that the change actually needs
    `/1-tdd` only for known deterministic behavior at an agreed seam; otherwise use specification,
    characterization, prototype/evaluation, or focused runtime evidence. See
    [incremental slices](./references/incremental-slices.md) and [confusion handling](./references/confusion-and-inline-plan.md).
-4. **Call specialists conditionally.** Public contract → `/1-api-and-interface-design`; internal seam
+4. **Call specialists conditionally.** JSON locale synchronization → `/1-i18n-sync`; public contract → `/1-api-and-interface-design`; internal seam
    → `/1-codebase-design`; Go → `/1-go-best-practices`; failure policy → `/1-error-handling`; retirement
    → `/1-deprecation-and-migration`; living docs → `/1-living-documentation-governor`; UI behavior →
    `/1-frontend-ui-engineering`; presentation-only UI → `/1-ui-styling`; Supabase product/schema/Postgres/pending cleanup → the corresponding
@@ -58,7 +58,8 @@ the implementation specialists and evidence loops that the change actually needs
    Run the narrowest checks that falsify the changed behavior, then broader checks when risk,
    repository policy, or requested completion requires them. Record PASS/FAIL/BLOCKED/SKIPPED and
    candidate identity; never treat an agent-authored happy-path test, typecheck, or stale run as proof
-   of runtime correctness. `/2-verify-work` can provide a bounded evidence-only pass.
+   of runtime correctness. the project's mutable implementation loop may use `/1-dev-test`;
+   `/2-verify-work` can provide a bounded evidence-only pass.
 7. **Review and reconcile.** Run read-only `/1-code-review` on the actual task candidate, including
    task-owned dirty work. Within existing edit authority, resolve verified in-scope findings one at a
    time, re-run affected evidence, and re-review the changed candidate until no blocking in-scope
@@ -68,6 +69,18 @@ the implementation specialists and evidence loops that the change actually needs
    feature branch. Use `/1-pr-summarizer` for a requested summary and `/1-finish-branch` only for
    requested integration/PR options. Never push/merge a protected branch, deploy, publish, or mutate
    remote/production services merely because implementation is complete.
+
+## Optional verification workflows
+
+For AI apps, integrations or model/prompt/data upgrades, load [AI feature workflow](./references/ai-feature-workflow.md).
+
+For runtime maps (`/1-runtime-feature-map`), model checks, or enforceable lessons, load [verification workflows](./references/verification-workflows.md).
+Use **F-PS1** only for material ambiguity, include **Agent judgment**, and preserve each phase's execution/edit authority.
+
+## Focused test-fixture migration
+
+For an explicit migration of TypeScript test assertions to Shoehorn, use
+`/1-migrate-to-shoehorn` with the same candidate, test paths, and edit authority, then return here.
 
 ## Output contract
 
@@ -79,10 +92,3 @@ blocked evidence, and local artifacts/state left behind. Do not claim completion
 
 - Operative: [definition of done](./references/definition-of-done.md), [incremental slices](./references/incremental-slices.md), [confusion handling](./references/confusion-and-inline-plan.md), [explicit delegation](./references/orchestration-patterns.md)
 - Historical source only: [vendor DoD](./references/definition-of-done-vendor-full.md), [vendor incremental guide](./references/vendor-incremental-full.md)
-
-## Available specialist additions
-
-- `/1-dev-test` — use for its scoped contract; return to this hub.
-- `/1-i18n-sync` — use for its scoped contract; return to this hub.
-- `/1-migrate-to-shoehorn` — use for its scoped contract; return to this hub.
-- `/1-runtime-feature-map` — use for its scoped contract; return to this hub.
