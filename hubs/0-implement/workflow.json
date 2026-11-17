@@ -25,10 +25,11 @@
         "1-to-tickets",
         "0-implement",
         "1-tdd",
+        "1-dev-test",
         "1-code-review",
         "1-atomic-git-commits"
       ],
-      "note": "Conditional sequence, not a mandatory chain: 1-tdd runs only for one settled deterministic behavior with an independent oracle and returns the same candidate/worktree/authority; review and commits have their own gates.",
+      "note": "Conditional sequence, not a mandatory chain: 1-tdd runs only for one settled deterministic behavior with an independent oracle; 1-dev-test owns the project mutable feedback loop and hands a frozen candidate to pre-merge; review and commits have their own gates.",
       "primary": true
     },
     {
@@ -128,6 +129,24 @@
       ],
       "note": "Conditional delivery, UI, and performance specialists preserve the exact Ship candidate/worktree/authority: CI/CD owns one workflow/check contract, observability one telemetry contract, shipping one immutable release candidate, frontend engineering one bounded interaction surface, UI Styling one presentation-only visual delta with protected behavior, and performance one measured experiment. Each returns without unapproved remote execution, hosted changes, redesign, publication, or shared load.",
       "primary": true
+    },
+    {
+      "link_type": "leaf",
+      "skills": [],
+      "primary": true,
+      "note": "One explicitly selected scoped operation; return evidence to caller without automatic follow-ons"
+    },
+    {
+      "link_type": "leaf",
+      "skills": [],
+      "primary": true,
+      "note": "One scoped operation; preserve caller, candidate, mode and authority, then return without automatic follow-ons."
+    },
+    {
+      "link_type": "leaf",
+      "skills": [],
+      "primary": true,
+      "note": "Map user paths, preconditions and verification evidence. Preserve caller, candidate, mode and authority; return without automatic follow-ons."
     }
   ],
   "pipeline": [
@@ -135,8 +154,9 @@
     "use 1-git-worktrees only when protected-branch, overlapping-state, concurrent-work, or branch-specific local-state isolation is needed; resume Ship with returned provenance",
     "select one reviewable slice, the fitting evidence loop, and only necessary specialists; every child inherits and returns the same candidate/workspace/authority",
     "implement surgically; delegation through F-SP is available only when explicitly requested or authorized and ownership boundaries are independent",
-    "verify supported claims on the actual candidate → 1-code-review → resolve verified in-scope findings one by one → reverify and re-review until clear or blocked",
-    "1-atomic-git-commits only when commit authority exists; 1-finish-branch only for requested integration/PR options; no implicit remote or production effects"
+    "verify supported claims on the actual candidate; project mutable work may use 1-dev-test → 1-code-review → resolve verified in-scope findings one by one → reverify and re-review until clear or blocked",
+    "1-atomic-git-commits only when commit authority exists; 1-finish-branch only for requested integration/PR options; no implicit remote or production effects",
+    "optional W-PS3: selected correction-to-enforcement → 1-agent-workflow-observer proposal → requested 1-constraint-driven-development policy → authorized implementation/1-ci-cd-and-automation → negative and clean controls → return"
   ],
   "forks": [
     {
@@ -190,6 +210,15 @@
         "Standards",
         "Maintainability",
         "soft-skip",
+        "Agent judgment"
+      ]
+    },
+    {
+      "id": "F-PS1",
+      "question": "Which optional verification outcome is required?",
+      "recommended": "Infer from the requested outcome; ask only for material ambiguity",
+      "branches": [
+        "W-PS3 enforceable lesson via 1-agent-workflow-observer",
         "Agent judgment"
       ]
     }

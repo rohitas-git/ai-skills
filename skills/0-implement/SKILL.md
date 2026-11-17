@@ -1,29 +1,21 @@
 ---
 name: 0-implement
-description: >
-  Drive a bounded implementation from a clear request, accepted specification, ticket, or plan.
-  Use for building or changing code and repository artifacts through scoped verification and review.
-  Not for: unresolved product discovery (0-grilling / 1-to-spec), review-only work (1-code-review),
-  raw issue triage (0-triage), or requested branch integration options (1-finish-branch).
-  Hub: /0-implement.
+description: 'Drive a bounded implementation from a clear request, accepted specification, ticket, or plan. Use for building or changing code and repository artifacts through scoped verification and review. Not for: unresolved product discovery (0-grilling / 1-to-spec), review-only work (1-code-review), raw issue triage (0-triage), or requested branch integration options (1-finish-branch). Hub: /0-implement.
+
+  '
 disable-model-invocation: true
 metadata:
   catalog:
     hub: 0-implement
     role: hub
-    when:
-      - "implement a clear request, accepted specification, ticket, or plan"
-      - "drive a scoped build, verification, and review path"
-    not_when:
-      - "unresolved product requirements → 0-grilling / 1-to-spec"
-      - "review only → 1-code-review"
-      - "raw issues → 0-triage"
-      - "branch integration/options only → 1-finish-branch"
-    next: [1-to-spec, 1-to-tickets, 1-write-plan, 1-execute-plan, 1-subagent-implement, 1-parallel-agents, 1-constraint-driven-development, 1-git-worktrees, 1-api-and-interface-design, 1-codebase-design, 1-coding-standards, 1-go-best-practices, 1-deprecation-and-migration, 1-error-handling, 1-living-documentation-governor, 1-supabase, 1-supabase-postgres-best-practices, 1-supabase-schema-migration, 1-pending-migration-hygiene, 1-tdd, 2-verify-work, 1-code-review, 1-code-comments, 1-inline-comments, 1-execution-flow-comments, 1-stepdown-rule, 1-karpathy-guidelines, 1-atomic-git-commits, 1-finish-branch, 1-pr-summarizer, 1-resolving-merge-conflicts, 1-research, 1-shipping-and-launch, 1-observability-and-instrumentation, 1-ci-cd-and-automation, 1-frontend-ui-engineering, 1-ui-styling, 1-performance-optimization]
+    when: ['implement a clear request, accepted specification, ticket, or plan', 'drive a scoped build, verification, and review path']
+    not_when: [unresolved product requirements → 0-grilling / 1-to-spec, review only → 1-code-review, raw issues → 0-triage, branch integration/options only → 1-finish-branch]
+    next: [1-to-spec, 1-to-tickets, 1-write-plan, 1-execute-plan, 1-subagent-implement, 1-parallel-agents, 1-constraint-driven-development, 1-git-worktrees, 1-api-and-interface-design, 1-codebase-design, 1-coding-standards, 1-go-best-practices, 1-deprecation-and-migration, 1-error-handling, 1-living-documentation-governor, 1-supabase, 1-supabase-postgres-best-practices, 1-supabase-schema-migration, 1-pending-migration-hygiene, 1-tdd, 1-dev-test, 2-verify-work, 1-code-review, 1-code-comments, 1-inline-comments, 1-execution-flow-comments, 1-stepdown-rule, 1-karpathy-guidelines, 1-atomic-git-commits, 1-finish-branch, 1-pr-summarizer, 1-resolving-merge-conflicts, 1-research, 1-shipping-and-launch, 1-observability-and-instrumentation, 1-ci-cd-and-automation, 1-frontend-ui-engineering, 1-ui-styling, 1-performance-optimization]
     prev: [0-butler, 0-triage, 1-to-tickets, 1-to-spec]
     triggers: [implement, build this, execute this plan, ship tickets, make this change]
     requires_setup: false
 ---
+
 
 # Implement
 
@@ -87,3 +79,7 @@ blocked evidence, and local artifacts/state left behind. Do not claim completion
 
 - Operative: [definition of done](./references/definition-of-done.md), [incremental slices](./references/incremental-slices.md), [confusion handling](./references/confusion-and-inline-plan.md), [explicit delegation](./references/orchestration-patterns.md)
 - Historical source only: [vendor DoD](./references/definition-of-done-vendor-full.md), [vendor incremental guide](./references/vendor-incremental-full.md)
+
+## Available specialist additions
+
+- `/1-dev-test` — use for its scoped contract; return to this hub.

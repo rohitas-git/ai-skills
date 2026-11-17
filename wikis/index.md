@@ -444,6 +444,8 @@ _Live skills: **174**._
 | [[1-change-impact]] | Trace affected consumers, compatibility, and verification obligations. | `skills/1-change-impact` |
 | [[1-design-rationale]] | Explain recorded design decisions and their trade-offs. | `skills/1-design-rationale` |
 | [[1-design-review]] | Fresh-context EGM review of a pre-code software design/spec/plan; preserves the full workflow and development concepts. | `skills/1-design-review` |
+| [[1-pre-merge]] | Run frozen-candidate project readiness gates and return a final QA handoff without merging. | `skills/1-pre-merge` |
+| [[1-dev-test]] | Run the project's risk-matched development testing loop before final pre-merge QA. | `skills/1-dev-test` |
 | [[1-ai-suitability]] | Assess AI fit, non-AI alternatives and the level of automation. | `skills/1-ai-suitability` |
 | [[1-context-retrieval-design]] | Design relevant, permission-aware context, retrieval and memory. | `skills/1-context-retrieval-design` |
 | [[1-asd-ste100]] | Rewrite agent-facing English without changing conditions, uncertainty, or requirement strength. | `skills/1-asd-ste100` |

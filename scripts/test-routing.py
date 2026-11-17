@@ -349,6 +349,7 @@ class ReviewRouteTests(WorkspaceRouteTests):
         "0-review": "0-review",
         "1-code-review": "1-code-review",
         "1-complete-pr-review": "0-review",
+        "1-pre-merge": "0-review",
         "1-agent-pr-review": "0-review",
         "2-verify-work": "1-code-review",
         "2-thermo-nuclear-code-quality-review": "1-code-review",
@@ -2137,6 +2138,44 @@ class ImplementHubRouteTests(WorkspaceRouteTests):
                     "Historical source — not operative instructions",
                     (refs / name).read_text(),
                 )
+
+
+class DevelopmentTestingRouteTests(WorkspaceRouteTests):
+    SKILLS = {"1-dev-test": "0-implement"}
+
+    def test_ship_membership_and_pre_merge_handoff_are_explicit(self):
+        name = "1-dev-test"
+        root = ROOT / "skills" / name
+        main = root.joinpath("SKILL.md").read_text()
+        catalog = GEN["parse_catalog"](main)
+        membership = GEN["skill_membership"]()[name]
+
+        self.assertLessEqual(len(main.splitlines()), 120)
+        self.assertEqual(catalog["hub"], "0-implement")
+        self.assertEqual(catalog["role"], "pipeline")
+        self.assertEqual(membership, [("0-implement", "pipeline")])
+        self.assertIn("1-pre-merge", catalog["next"])
+        self.assertIn(name, GEN["parse_catalog"]((ROOT / "skills/0-implement/SKILL.md").read_text())["next"])
+        self.assertIn(f"../../skills/{name}/SKILL.md", (ROOT / "hubs/0-implement/hub.html").read_text())
+
+    def test_risk_boundary_and_browser_reference_are_present(self):
+        root = ROOT / "skills/1-dev-test"
+        flat = " ".join(root.joinpath("SKILL.md").read_text().split())
+        reference = root.joinpath("references/browser-network-qa.md").read_text()
+
+        for phrase in (
+            "R0 mechanical",
+            "R3 safety",
+            "permission denied",
+            "synthetic browser events",
+            "ITERATING",
+            "REVIEW CANDIDATE",
+            "whole-diff adversarial review",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, flat)
+        self.assertIn("/1-playwright-browser-testing", reference)
+        self.assertIn("local or disposable services", reference)
 
 
 class KarpathyGuidelinesRouteTests(WorkspaceRouteTests):

@@ -10,7 +10,7 @@ metadata:
     role: hub
     when: [pick a review path, pre-code design document or post-build review domain]
     not_when: [build/implement → 0-implement, design grill → 0-grilling, generic idea critique without code evidence → 1-critique]
-    next: [1-design-review, 1-code-review, 1-complete-pr-review, 1-agent-pr-review, 1-error-handling, 1-go-best-practices, 1-security-auditor, 2-software-architect, 1-codebase-review-strategy, 1-doubt-driven-development, 2-verify-work, 2-thermo-nuclear-code-quality-review, 1-visual-recap]
+    next: [1-design-review, 1-code-review, 1-complete-pr-review, 1-pre-merge, 1-agent-pr-review, 1-error-handling, 1-go-best-practices, 1-security-auditor, 2-software-architect, 1-codebase-review-strategy, 1-doubt-driven-development, 2-verify-work, 2-thermo-nuclear-code-quality-review, 1-visual-recap]
     cousins: [0-implement, 0-grilling, 1-critique]
     triggers: [review, which review skill, review this PR, complete PR review, comprehensive PR review, code and security review, security audit, architecture review, design document review, goldfish review, codebase health review, adversarial decision review, verification only, visual change overview]
     requires_setup: false
@@ -93,3 +93,4 @@ metadata:
 ## Available specialist additions
 
 - `/1-design-review` — use for its scoped contract; return to this hub.
+- `/1-pre-merge` — use for its scoped contract; return to this hub.

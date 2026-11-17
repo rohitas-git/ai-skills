@@ -41,7 +41,9 @@
     },
     {
       "link_type": "pipeline",
-      "skills": [],
+      "skills": [
+        "1-pre-merge"
+      ],
       "note": "Frozen project candidate readiness gates and final QA handoff; reports only and never merges, deploys, or changes production controls"
     },
     {
@@ -119,6 +121,7 @@
     "sub-hub or skill → read-only evidence → return to caller",
     "spec/plan → 1-design-review → fresh zoom-out, comprehension, critique, second zoom-out, readiness as scoped → findings to author; approved revisions are new candidates",
     "comprehensive PR review → 1-complete-pr-review → same-candidate code and differential-security passes plus risk-triggered coverage → one returned ledger",
+    "frozen project candidate → 1-pre-merge → required readiness evidence + whole-diff review → READY TO MERGE or NOT READY TO MERGE report; explicit merge approval remains separate",
     "unfamiliar/whole-repo request → 1-codebase-review-strategy returns one coverage plan → separately authorized specialist review on the same candidate",
     "one consequential claim → 1-doubt-driven-development → keep|revise|reject|unknown → return",
     "standalone review stops at report; remediation, publication and integration require corresponding authority",
@@ -133,6 +136,7 @@
         "1-design-review (pre-code spec/plan)",
         "1-code-review",
         "1-complete-pr-review",
+        "1-pre-merge",
         "1-agent-pr-review",
         "1-error-handling",
         "1-go-best-practices",

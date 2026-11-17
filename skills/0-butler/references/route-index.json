@@ -5,7 +5,7 @@
     "hubs/*/workflow.json"
   ],
   "schema_version": 1,
-  "skill_count": 290,
+  "skill_count": 292,
   "skills": [
     {
       "cousins": [],
@@ -2970,6 +2970,7 @@
         "1-supabase-schema-migration",
         "1-pending-migration-hygiene",
         "1-tdd",
+        "1-dev-test",
         "2-verify-work",
         "1-code-review",
         "1-code-comments",
@@ -3013,8 +3014,13 @@
         "make this change"
       ],
       "when": [
-        "implement a clear request, accepted specification, ticket, or plan",
-        "drive a scoped build, verification, and review path"
+        "implement a clear request",
+        "accepted specification",
+        "ticket",
+        "or plan",
+        "drive a scoped build",
+        "verification",
+        "and review path"
       ]
     },
     {
@@ -3147,6 +3153,48 @@
       "when": [
         "a project needs explicit measurable quality thresholds",
         "checks are being weakened to make a build pass"
+      ]
+    },
+    {
+      "cousins": [
+        "1-tdd",
+        "2-verify-work",
+        "1-pre-merge"
+      ],
+      "hub": "0-implement",
+      "memberships": [
+        {
+          "hub": "0-implement",
+          "role": "pipeline"
+        }
+      ],
+      "next": [
+        "0-implement",
+        "0-diagnosing-bugs",
+        "1-pre-merge"
+      ],
+      "not_when": [
+        "final frozen-candidate merge readiness → 1-pre-merge",
+        "a bounded root-cause diagnosis without implementation iteration → 0-diagnosing-bugs",
+        "a single settled red-green slice → 1-tdd"
+      ],
+      "prev": [
+        "0-implement",
+        "0-diagnosing-bugs"
+      ],
+      "requires_setup": false,
+      "role": "pipeline",
+      "skill": "1-dev-test",
+      "source": "catalog",
+      "triggers": [
+        "project dev test",
+        "project development testing",
+        "focused regression",
+        "failing test diagnosis"
+      ],
+      "when": [
+        "test or debug a changing project implementation",
+        "choose focused project browser, network, local-DB, or regression evidence"
       ]
     },
     {
@@ -7825,6 +7873,7 @@
         "1-design-review",
         "1-code-review",
         "1-complete-pr-review",
+        "1-pre-merge",
         "1-agent-pr-review",
         "1-error-handling",
         "1-go-best-practices",
@@ -8123,6 +8172,47 @@
       "when": [
         "one consequential claim or decision needs an evidence-bounded adversarial pass",
         "challenge a confident conclusion before relying on it"
+      ]
+    },
+    {
+      "cousins": [
+        "1-complete-pr-review",
+        "2-verify-work",
+        "1-finish-branch"
+      ],
+      "hub": "0-review",
+      "memberships": [
+        {
+          "hub": "0-review",
+          "role": "pipeline"
+        }
+      ],
+      "next": [
+        "1-finish-branch"
+      ],
+      "not_when": [
+        "iterative feature development → 0-implement",
+        "exploratory debugging → 0-diagnosing-bugs",
+        "a comprehensive review ledger only → 1-complete-pr-review",
+        "merge execution → 1-finish-branch with explicit approval"
+      ],
+      "prev": [
+        "0-implement",
+        "1-complete-pr-review"
+      ],
+      "requires_setup": false,
+      "role": "pipeline",
+      "skill": "1-pre-merge",
+      "source": "catalog",
+      "triggers": [
+        "project pre-merge",
+        "pre-merge checks",
+        "merge readiness",
+        "final QA handoff"
+      ],
+      "when": [
+        "a frozen project PR or branch needs final merge-readiness evidence",
+        "run project pre-merge QA checks or provide a final QA handoff"
       ]
     },
     {
