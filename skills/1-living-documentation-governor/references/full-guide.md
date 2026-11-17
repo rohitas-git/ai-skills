@@ -52,6 +52,17 @@ unrelated docs, and source code. Verify the doc statements against the same cand
 Return a proposed schema, candidate-set semantics, rule examples, exemption model, adoption stages,
 and tests. Implementation goes to Ship/CI; hook installation is never implicit.
 
+## Prose and history checks
+
+Preserve names, units, commands, paths, conditions, alternatives, and uncertainty during prose edits.
+Compare with sources; clearer wording must not strengthen a guarantee or erase a caveat.
+Use code/doc history as an investigation clue, not proof of factual currency. Even docs committed
+with or after code need comparison with the pinned implementation and contract. Divergent/shallow
+history, missing paths, or command failures leave ordering unknown.
+For corrections with a rationale/change log, add the dated reason under the existing convention.
+Preserve previous entries and accepted decisions; supersede changed decisions via the ADR process.
+Adapted from Addy Osmani et al., MIT; [source and review](../../../guidelines/catalog/ingest-addyosmani-2026-11-15.md).
+
 ## Return
 
 Return the obligation ledger, changed or inspected docs, candidate/worktree identity, verification,

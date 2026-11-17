@@ -14,13 +14,14 @@ metadata:
     when:
       - "assess or repair drift between changed code/configuration and canonical living docs"
       - "design a bounded code-to-doc ownership or trigger contract"
+      - "bootstrap scoped source-grounded component contracts and parent documentation maps"
     not_when:
       - "source-ingestion project wiki → 1-project-wiki-manager"
       - "inline or public API comments → 1-code-comments"
       - "personal Obsidian vault → 0-rohitas-vault-wiki"
     prev: [0-improve-codebase-architecture, 0-implement]
     cousins: [1-project-wiki-manager, 1-domain-modeling, 1-code-comments, 1-ci-cd-and-automation, 1-git-worktrees]
-    triggers: [living documentation, documentation drift, keep docs in sync with code, doc triggers, code to docs mapping]
+    triggers: [living documentation, documentation drift, keep docs in sync with code, doc triggers, code to docs mapping, EGM bootstrap, EGM drift report]
     requires_setup: false
 ---
 
@@ -73,6 +74,7 @@ directly and preserve their caller.
 
 ## Progressive disclosure
 
+- EGM component-contract bootstrap or spec-to-code drift: [bounded contracts and drift](./references/egm-contracts-and-drift.md)
 - Operating detail and placement: [full guide](./references/full-guide.md), [placement examples](./references/knowledge-placement-examples.md)
 - Trigger schema/checking: [trigger enforcement](./references/trigger-enforcement.md), [example map](./references/generalized-doc-triggers.json)
 - Optional hook trade-offs: [hook setup](./references/git-hooks-setup.md)

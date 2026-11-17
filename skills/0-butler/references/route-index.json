@@ -4899,11 +4899,14 @@
         "documentation drift",
         "keep docs in sync with code",
         "doc triggers",
-        "code to docs mapping"
+        "code to docs mapping",
+        "EGM bootstrap",
+        "EGM drift report"
       ],
       "when": [
         "assess or repair drift between changed code/configuration and canonical living docs",
-        "design a bounded code-to-doc ownership or trigger contract"
+        "design a bounded code-to-doc ownership or trigger contract",
+        "bootstrap scoped source-grounded component contracts and parent documentation maps"
       ]
     },
     {
