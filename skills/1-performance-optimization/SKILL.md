@@ -105,4 +105,5 @@ ports, load generators, or hosted datasets.
 ## References
 
 - Operative: [experiment guide](./references/full-guide.md), [evidence checklist](./references/performance-checklist.md)
+- Repeated file-processing bottleneck: [content-addressed cache contract](./references/content-cache.md)
 - Provenance: [vendor source](./references/vendor-source.md)

@@ -1787,8 +1787,13 @@
         "why is this test failing"
       ],
       "when": [
-        "diagnose, reproduce, or localize one specific technical failure",
-        "find the supported root cause of a bug, test failure, build failure, or regression"
+        "diagnose",
+        "reproduce",
+        "or localize one specific technical failure",
+        "find the supported root cause of a bug",
+        "test failure",
+        "build failure",
+        "or regression"
       ]
     },
     {

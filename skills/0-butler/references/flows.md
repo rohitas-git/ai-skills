@@ -218,7 +218,7 @@ partial effects without blind retries. Worktrees do not isolate remote tracker s
 
 | Fork | Question | Recommended | Branches |
 |---|---|---|---|
-| **F-DIAG1** | Which evidence loop best distinguishes this failure? | smallest repository-native focused test, command, request, or observation | core loop · `1-performance-optimization` · `1-browser-testing-with-devtools` · `1-playwright-browser-testing` · explicitly authorized `1-parallel-agents` · known authorized fix → `0-implement` · **Agent judgment** |
+| **F-DIAG1** | Which evidence loop best distinguishes this failure? | smallest repository-native focused test, command, request, or observation | core diagnosis loop · /1-performance-optimization · /1-browser-testing-with-devtools · /1-playwright-browser-testing · /1-parallel-agents when explicitly authorized for independent failures · /0-implement when the cause and fix are already known and authorized · Agent judgment |
 
 ---
 
