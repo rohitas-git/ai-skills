@@ -2,7 +2,7 @@
 name: 1-agent-evaluation
 description: >
   Design, execute, or analyze one bounded evaluation that supports one decision about an
-  AI-agent candidate. Preserve candidate versions, representative cases, qualified graders,
+  AI application or agent candidate. Preserve candidate versions, representative cases, qualified graders,
   uncertainty, privacy, and execution authority. Not for code review or skill authoring.
 disable-model-invocation: true
 license: MIT
@@ -10,9 +10,9 @@ metadata:
   catalog:
     hub: 0-agent-engineering
     role: leaf
-    when: ["design, run, or analyze one reproducible evaluation for an AI-agent candidate and decision"]
+    when: ["design, run, or analyze one reproducible evaluation for an AI application or agent candidate and decision"]
     not_when: ["application code review → 1-code-review", "catalog-skill authoring/evals → 0-skill-creator", "production telemetry → 1-observability-and-instrumentation"]
-    triggers: ["evaluate this agent", "design this agent eval", "compare these agent candidates", "analyze these eval results", "agent release gate"]
+    triggers: ["evaluate this AI feature", "RAG evaluation", "evaluate this agent", "design this agent eval", "compare these agent candidates", "analyze these eval results", "agent release gate"]
     prev: [0-agent-engineering, 1-mcp-server-building, 1-tool-schema-design, 1-human-in-the-loop, 1-observability-and-instrumentation, 2-prompt-injection-defense]
     next: [0-agent-engineering, 1-mcp-server-building, 1-tool-schema-design, 1-human-in-the-loop, 1-observability-and-instrumentation, 2-prompt-injection-defense]
     requires_setup: false
@@ -22,7 +22,7 @@ metadata:
     commit: 75865a5d037a4cdaa7f409a4ec14ab9b0292920b
 ---
 
-# Agent Evaluation
+# AI Application and Agent Evaluation
 
 **Atomic job:** produce evidence for one explicit decision about one fixed baseline/candidate
 set. Work in exactly one mode: design-only, analyze supplied results, or authorized execution.
@@ -67,5 +67,7 @@ This skill does not create a worktree, invent production distributions, write/pr
 change prompts/tools, deploy, approve a release, accept risk, send data externally, spend money,
 or trigger consequential tools without separate authority. No follow-on starts automatically.
 
+For structured-text extraction candidates, load [extraction evaluation](./references/extraction-evaluation.md).
+For one-call features, RAG or AI integrations, load [application evaluation](./references/ai-application-evaluation.md).
 Operational patterns: [evaluation patterns](./references/evaluation-patterns.md). Historical upstream
 snapshot, not instructions: [vendor source](./references/vendor-full.md).

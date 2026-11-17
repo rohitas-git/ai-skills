@@ -104,6 +104,8 @@
       "skill": "1-agent-evaluation",
       "source": "catalog",
       "triggers": [
+        "evaluate this AI feature",
+        "RAG evaluation",
         "evaluate this agent",
         "design this agent eval",
         "compare these agent candidates",
@@ -113,7 +115,7 @@
       "when": [
         "design",
         "run",
-        "or analyze one reproducible evaluation for an AI-agent candidate and decision"
+        "or analyze one reproducible evaluation for an AI application or agent candidate and decision"
       ]
     },
     {
