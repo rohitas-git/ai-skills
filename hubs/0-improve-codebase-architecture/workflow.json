@@ -20,7 +20,9 @@
   "children": [
     {
       "link_type": "soft",
-      "skills": ["1-error-handling"],
+      "skills": [
+        "1-error-handling"
+      ],
       "note": "Atomic failure behavior and recovery; standalone or return to the calling design, implementation, or review workflow; F-EH1 distinguishes diagnosis"
     },
     {
@@ -73,7 +75,7 @@
       "skills": [
         "software-architecture"
       ],
-      "note": "\u2192 this hub / codebase-design"
+      "note": "→ this hub / codebase-design"
     },
     {
       "link_type": "soft",
@@ -82,6 +84,20 @@
         "1-deprecation-and-migration"
       ],
       "note": "Consumer-visible contracts and evidence-gated retirement lifecycles; both conditionally return to Ship"
+    },
+    {
+      "link_type": "leaf",
+      "skills": [
+        "1-change-impact"
+      ],
+      "primary": true,
+      "note": "One scoped operation; preserve caller, candidate, mode and authority, then return without automatic follow-ons."
+    },
+    {
+      "link_type": "leaf",
+      "skills": [],
+      "primary": true,
+      "note": "Model states, actions, guards and invariants clearly. Preserve caller, candidate, mode and authority; return without automatic follow-ons."
     }
   ],
   "pipeline": [
@@ -96,7 +112,11 @@
       "id": "F-EH1",
       "question": "Define failure behavior or diagnose an unexplained bug?",
       "recommended": "Failure behavior for error-handling or recovery requests",
-      "branches": ["1-error-handling", "0-diagnosing-bugs", "Agent judgment"]
+      "branches": [
+        "1-error-handling",
+        "0-diagnosing-bugs",
+        "Agent judgment"
+      ]
     },
     {
       "id": "F-ARCH1",
@@ -132,7 +152,7 @@
     {
       "id": "F-D1",
       "question": "Concept wiki (docs/wiki) or living docs + code triggers?",
-      "recommended": "wiki if raw\u2192concepts; living if drift/triggers",
+      "recommended": "wiki if raw→concepts; living if drift/triggers",
       "branches": [
         "1-project-wiki-manager",
         "1-living-documentation-governor",

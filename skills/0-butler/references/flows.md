@@ -248,16 +248,16 @@ databases, services, deployments, or other remote state. Decision/spec approval 
 | | |
 |--|--|
 | **★ Hub** | `/0-improve-codebase-architecture` |
-| **Children** | **vocab:** `1-codebase-design` · **persona:** `2-software-architect` (bounded system decision packet; catalog depth under Review) · **satellite (explicit local graph):** `1-graphify` (pins corpus/worktree/output; never installs, hooks, strict mode, shared output, or backends itself) · **soft (principles):** `1-clean-craftsmanship` · **soft (always-on style):** `1-coding-standards`, `1-go-best-practices` (also Ship) · **soft (failure behavior):** `1-error-handling` (standalone or returns to its caller; F-EH1) · **soft (docs):** `1-project-wiki-manager` (declared sources; query/audit read-only, edits pinned to worktree), `1-living-documentation-governor` (code↔canonical-doc contract; also Ship) · **soft (vendor harvest):** `1-api-and-interface-design`, `1-deprecation-and-migration` |
+| **Children** | `1-error-handling`, `1-codebase-design`, `2-software-architect`, `1-clean-craftsmanship`, `1-coding-standards`, `1-go-best-practices`, `1-project-wiki-manager`, `1-living-documentation-governor`, `1-graphify`, `software-architecture`, `1-api-and-interface-design`, `1-deprecation-and-migration`, `1-change-impact` |
 | **Pipeline** | pin caller/mode/repository-worktree/evidence → clear request dispatches to one specialist and returns · broad improvement runs a bounded local read-only scan → Markdown or explicitly requested static HTML → F9 selected candidate · requested implementation returns to `/0-implement` |
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F9** | Take a deepening idea to Design? | stay at the report unless the user selects a candidate | stay · `/1-grill-with-docs` · **Agent judgment** |
-| **F-EH1** | Define failure behavior or diagnose an unexplained bug? | Failure behavior for handling/recovery requests | `/1-error-handling` · `/0-diagnosing-bugs` · **Agent judgment** |
-| **F-ARCH1** | API contract, module design, or system decision? | API contract for endpoint/schema requests | `/1-api-and-interface-design` · `/1-codebase-design` · `/2-software-architect` · **Agent judgment** |
-| **F-C1** | Enforce standards on code now, or discuss clean-code principles? | coding while editing | `/1-coding-standards` · `/1-clean-craftsmanship` · **Agent judgment** |
-| **F-D1** | Concept wiki (`docs/wiki`) or living docs + code triggers? | wiki if raw→concepts · living if drift/triggers | `/1-project-wiki-manager` · `/1-living-documentation-governor` · **Agent judgment** |
+| **F9** | Take a deepening idea to Design? | stay at the report unless the user selects a candidate | stay · 1-grill-with-docs · Agent judgment |
+| **F-EH1** | Define failure behavior or diagnose an unexplained bug? | Failure behavior for handling/recovery requests | 1-error-handling · 0-diagnosing-bugs · Agent judgment |
+| **F-ARCH1** | Design an API contract, a module, or the whole system? | API contract for endpoint/schema requests | 1-api-and-interface-design · 1-codebase-design · 2-software-architect · Agent judgment |
+| **F-C1** | Enforce standards on code now, or discuss clean-code principles? | coding while editing | 1-coding-standards · 1-clean-craftsmanship · Agent judgment |
+| **F-D1** | Concept wiki (docs/wiki) or living docs + code triggers? | wiki if raw→concepts · living if drift/triggers | 1-project-wiki-manager · 1-living-documentation-governor · Agent judgment |
 
 **Related atoms (not merge targets):** `1-coding-standards` ↔ `1-clean-craftsmanship` (F-C1); `1-project-wiki-manager` ↔ `1-living-documentation-governor` (F-D1); personal vault is Domain 9 (F-D2).
 

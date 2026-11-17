@@ -164,3 +164,4 @@ Structured mental models. The core is from `tjboudreaux/cc-thinking-skills` (MIT
 ## Available skill additions
 
 - [1-ai-suitability](./1-ai-suitability/) — Assess AI fit, non-AI alternatives and the level of automation.
+- [1-change-impact](./1-change-impact/) — Trace affected consumers, compatibility, and verification obligations.

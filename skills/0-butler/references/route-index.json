@@ -5,7 +5,7 @@
     "hubs/*/workflow.json"
   ],
   "schema_version": 1,
-  "skill_count": 286,
+  "skill_count": 287,
   "skills": [
     {
       "cousins": [],
@@ -4001,6 +4001,7 @@
         }
       ],
       "next": [
+        "1-change-impact",
         "0-grilling",
         "1-api-and-interface-design",
         "1-clean-craftsmanship",
@@ -4034,7 +4035,12 @@
         "gRPC contract design"
       ],
       "when": [
-        "route API, module, system, failure, retirement, or architecture-improvement work",
+        "route API",
+        "module",
+        "system",
+        "failure",
+        "retirement",
+        "or architecture-improvement work",
         "run a bounded architecture deepening scan or candidate report"
       ]
     },
@@ -4086,6 +4092,45 @@
       ],
       "when": [
         "designing public interfaces, versioning contracts, or validating at trust boundaries"
+      ]
+    },
+    {
+      "cousins": [
+        "2-software-architect",
+        "1-code-review",
+        "1-deprecation-and-migration"
+      ],
+      "hub": "0-improve-codebase-architecture",
+      "memberships": [
+        {
+          "hub": "0-improve-codebase-architecture",
+          "role": "leaf"
+        }
+      ],
+      "next": [
+        "0-improve-codebase-architecture"
+      ],
+      "not_when": [
+        "design architecture alternatives",
+        "review code correctness",
+        "implement a change",
+        "approve a release"
+      ],
+      "prev": [
+        "0-improve-codebase-architecture"
+      ],
+      "requires_setup": false,
+      "role": "leaf",
+      "skill": "1-change-impact",
+      "source": "catalog",
+      "triggers": [
+        "change impact analysis",
+        "blast radius",
+        "what depends on this change",
+        "planned versus actual impact"
+      ],
+      "when": [
+        "map affected consumers and obligations for one proposed or implemented change"
       ]
     },
     {

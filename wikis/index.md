@@ -441,5 +441,6 @@ _Live skills: **174**._
 
 ## Available skill additions
 
+| [[1-change-impact]] | Trace affected consumers, compatibility, and verification obligations. | `skills/1-change-impact` |
 | [[1-ai-suitability]] | Assess AI fit, non-AI alternatives and the level of automation. | `skills/1-ai-suitability` |
 | [[1-asd-ste100]] | Rewrite agent-facing English without changing conditions, uncertainty, or requirement strength. | `skills/1-asd-ste100` |

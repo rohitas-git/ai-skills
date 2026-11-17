@@ -1,0 +1,6 @@
+interface:
+  display_name: "Change Impact"
+  short_description: "Map consumers and obligations affected by one change"
+  default_prompt: "Use $1-change-impact for this scoped request. Trace affected consumers, compatibility, and verification obligations."
+policy:
+  allow_implicit_invocation: false
