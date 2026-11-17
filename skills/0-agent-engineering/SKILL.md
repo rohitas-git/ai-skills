@@ -1,22 +1,22 @@
 ---
 name: 0-agent-engineering
-description: >
-  Route one AI-agent-system concern involving evaluation, model-facing tools, MCP,
-  human oversight, orchestration, telemetry, workflow observation, or agent-specific
-  security. Not for ordinary product implementation or a broad security audit.
+description: 'Route one AI application or agent-system concern involving suitability, context/retrieval, prompts, spending policies, evaluation, model-facing tools, MCP, human oversight, telemetry or AI-specific security. Use when choosing an AI engineering specialist. Not for ordinary product implementation or a broad security audit. Hub: /0-agent-engineering.
+
+  '
 disable-model-invocation: true
 license: MIT
 metadata:
   catalog:
     hub: 0-agent-engineering
     role: hub
-    when: ["route one design, evaluation, operation, orchestration, observation, or security concern for an AI-agent system"]
-    not_when: ["ordinary application implementation → 0-implement", "broad security audit → 1-security-auditor", "active production incident → 1-incident-response"]
-    triggers: ["agent engineering", "build an agent system", "agent evaluation", "model-facing tool", "MCP server", "agent oversight", "agent telemetry", "agent workflow automation candidate"]
+    when: ['route one suitability, context, design, evaluation, operation or security concern for an AI application or agent system']
+    not_when: [ordinary application implementation → 0-implement, broad security audit → 1-security-auditor, active production incident → 1-incident-response]
+    triggers: [AI engineering, AI application design, agent engineering, build an agent system, agent evaluation, model-facing tool, MCP server, agent oversight, agent telemetry, agent workflow automation candidate]
     prev: [0-butler]
-    next: [0-butler, 1-agent-evaluation, 1-tool-schema-design, 1-human-in-the-loop, 1-mcp-server-building, 1-agent-workflow-observer, 1-parallel-agents, 1-observability-and-instrumentation, 2-prompt-injection-defense, 2-skill-supply-chain-audit]
+    next: [1-ai-suitability, 0-butler, 1-agent-evaluation, 1-tool-schema-design, 1-human-in-the-loop, 1-mcp-server-building, 1-agent-workflow-observer, 1-parallel-agents, 1-observability-and-instrumentation, 2-prompt-injection-defense, 2-skill-supply-chain-audit]
     requires_setup: false
 ---
+
 
 # Agent Engineering
 
@@ -67,3 +67,7 @@ human approval systems, deployments, or other shared services.
 Return the selected leaf's candidate, evidence, effects, limitations, and remaining choices to
 `/0-butler` or the actual caller. Product implementation routes to `/0-implement`; broad security
 review to `/1-security-auditor`; active incident handling to `/1-incident-response`.
+
+## Available specialist additions
+
+- `/1-ai-suitability` — use for its scoped contract; return to this hub.

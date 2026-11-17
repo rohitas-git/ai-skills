@@ -160,3 +160,7 @@ Structured mental models. The core is from `tjboudreaux/cc-thinking-skills` (MIT
 - [1-competitive-analysis](./1-competitive-analysis/) — competitor matrix and positioning (Thinking)
 - [1-user-research](./1-user-research/) — research planning and synthesis (UI/UX)
 - [1-customer-experience-audit](./1-customer-experience-audit/) — one evidence-marked external-customer audit (UI/UX)
+
+## Available skill additions
+
+- [1-ai-suitability](./1-ai-suitability/) — Assess AI fit, non-AI alternatives and the level of automation.

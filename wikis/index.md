@@ -438,3 +438,7 @@ _Live skills: **174**._
 | [[1-thinking-thought-experiment]] | When a real test is too rare, large, or irreversible, run a controlled counterfa… | `skills/1-thinking-thought-experiment` |
 | [[1-thinking-triz]] | When two design requirements seem mutually exclusive, name the contradiction, se… | `skills/1-thinking-triz` |
 | [[1-thinking-via-negativa]] | Use when the reflex is to add a feature, layer, or process. Prefer removing harm… | `skills/1-thinking-via-negativa` |
+
+## Available skill additions
+
+| [[1-ai-suitability]] | Assess AI fit, non-AI alternatives and the level of automation. | `skills/1-ai-suitability` |

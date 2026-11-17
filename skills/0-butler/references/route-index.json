@@ -5,7 +5,7 @@
     "hubs/*/workflow.json"
   ],
   "schema_version": 1,
-  "skill_count": 284,
+  "skill_count": 285,
   "skills": [
     {
       "cousins": [],
@@ -21,6 +21,7 @@
         }
       ],
       "next": [
+        "1-ai-suitability",
         "0-butler",
         "1-agent-evaluation",
         "1-tool-schema-design",
@@ -45,6 +46,8 @@
       "skill": "0-agent-engineering",
       "source": "catalog",
       "triggers": [
+        "AI engineering",
+        "AI application design",
         "agent engineering",
         "build an agent system",
         "agent evaluation",
@@ -55,12 +58,11 @@
         "agent workflow automation candidate"
       ],
       "when": [
-        "route one design",
+        "route one suitability",
+        "context",
+        "design",
         "evaluation",
-        "operation",
-        "orchestration",
-        "observation",
-        "or security concern for an AI-agent system"
+        "operation or security concern for an AI application or agent system"
       ]
     },
     {
@@ -150,6 +152,47 @@
       ],
       "when": [
         "analyze one completed or explicitly paused agent-run snapshot for process improvements"
+      ]
+    },
+    {
+      "cousins": [
+        "1-agent-evaluation",
+        "1-human-in-the-loop",
+        "2-software-architect"
+      ],
+      "hub": "0-agent-engineering",
+      "memberships": [
+        {
+          "hub": "0-agent-engineering",
+          "role": "leaf"
+        }
+      ],
+      "next": [
+        "0-agent-engineering",
+        "2-software-architect",
+        "0-implement"
+      ],
+      "not_when": [
+        "whole-system alternatives → 2-software-architect",
+        "implementation → 0-implement",
+        "model quality evaluation → 1-agent-evaluation"
+      ],
+      "prev": [
+        "0-agent-engineering",
+        "0-implement"
+      ],
+      "requires_setup": false,
+      "role": "leaf",
+      "skill": "1-ai-suitability",
+      "source": "catalog",
+      "triggers": [
+        "should we use AI",
+        "AI suitability",
+        "AI feature feasibility",
+        "automate or augment this task"
+      ],
+      "when": [
+        "assess AI suitability and automation level for one bounded user task"
       ]
     },
     {

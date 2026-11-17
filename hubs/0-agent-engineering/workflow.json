@@ -7,7 +7,7 @@
   "slash": "/0-agent-engineering",
   "path": "skills/0-agent-engineering",
   "package_dir": "hubs/0-agent-engineering/",
-  "role": "Route design, evaluation, operation, and security work for AI-agent systems.",
+  "role": "Route suitability, context, design, evaluation, operation and security work for AI applications and agent systems.",
   "notes": "Choose the narrowest concern at F-AE1; shared engineering and security skills remain single-copy dual links.",
   "parent": {
     "hub": "0-butler",
@@ -25,10 +25,11 @@
         "1-tool-schema-design",
         "1-human-in-the-loop",
         "1-mcp-server-building",
-        "1-agent-workflow-observer"
+        "1-agent-workflow-observer",
+        "1-ai-suitability"
       ],
       "primary": true,
-      "note": "Core agent-system leaves. Workflow observation analyzes one fixed completed/paused snapshot and returns proposals only; tool-schema work preserves design/review/authorized-edit mode and returns to its MCP, oversight, security or hub caller; provider/live-effect tests require separate authority."
+      "note": "Core AI application and agent-system leaves. Suitability and context design return bounded read-only contracts; evaluation preserves design/analysis/authorized-run mode. Core agent-system leaves. Workflow observation analyzes one fixed completed/paused snapshot and returns proposals only; tool-schema work preserves design/review/authorized-edit mode and returns to its MCP, oversight, security or hub caller; provider/live-effect tests require separate authority."
     },
     {
       "link_type": "soft",
@@ -55,7 +56,7 @@
   "forks": [
     {
       "id": "F-AE1",
-      "question": "Which one agent-system outcome is required?",
+      "question": "Which one AI application or agent-system outcome is required?",
       "recommended": "Infer the narrowest evidence-backed specialist; ask only when two outcomes materially differ",
       "branches": [
         "1-agent-evaluation",
@@ -67,6 +68,7 @@
         "1-observability-and-instrumentation",
         "2-prompt-injection-defense",
         "2-skill-supply-chain-audit",
+        "1-ai-suitability",
         "Agent judgment"
       ]
     }

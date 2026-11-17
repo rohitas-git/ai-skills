@@ -1,0 +1,6 @@
+interface:
+  display_name: "AI Suitability"
+  short_description: "Assess AI fit, alternatives, and automation boundaries"
+  default_prompt: "Use $1-ai-suitability to assess this user task against a non-AI baseline, explain the appropriate level of assistance, and identify the smallest evidence needed to decide."
+policy:
+  allow_implicit_invocation: false

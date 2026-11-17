@@ -761,3 +761,7 @@ Codex may shorten skill descriptions when the full catalog is installed because 
 ---
 
 **Questions?** Start with `$0-butler` in Codex or `/0-butler` in Claude for navigation. Repository rules live in [`CLAUDE.md`](./CLAUDE.md).
+
+## Available skill additions
+
+| **1-ai-suitability** | Assess AI fit, non-AI alternatives and the level of automation. |
