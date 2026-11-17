@@ -80,6 +80,8 @@ workflow-improvement proposal. This is a read-only analysis, not live supervisio
    selected implementation, runbook edit, or catalog mutation is a new authorized request; catalog
    work routes through `/0-skill-manager`, which may invoke `/0-skill-creator`. Start none automatically.
 
+For repeated mistakes, load [corrections and enforcement](./references/recurring-corrections.md).
+
 ## Output
 
 ```text
