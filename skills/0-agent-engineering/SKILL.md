@@ -13,7 +13,7 @@ metadata:
     not_when: [ordinary application implementation → 0-implement, broad security audit → 1-security-auditor, active production incident → 1-incident-response]
     triggers: [AI engineering, AI application design, agent engineering, build an agent system, agent evaluation, model-facing tool, MCP server, agent oversight, agent telemetry, agent workflow automation candidate]
     prev: [0-butler]
-    next: [1-ai-suitability, 0-butler, 1-asd-ste100, 1-agent-evaluation, 1-tool-schema-design, 1-human-in-the-loop, 1-mcp-server-building, 1-agent-workflow-observer, 1-parallel-agents, 1-observability-and-instrumentation, 2-prompt-injection-defense, 2-skill-supply-chain-audit]
+    next: [1-ai-suitability, 1-context-retrieval-design, 0-butler, 1-asd-ste100, 1-agent-evaluation, 1-tool-schema-design, 1-human-in-the-loop, 1-mcp-server-building, 1-agent-workflow-observer, 1-parallel-agents, 1-observability-and-instrumentation, 2-prompt-injection-defense, 2-skill-supply-chain-audit]
     requires_setup: false
 ---
 
@@ -72,3 +72,4 @@ review to `/1-security-auditor`; active incident handling to `/1-incident-respon
 
 - `/1-ai-suitability` — use for its scoped contract; return to this hub.
 - `/1-asd-ste100` — use for its scoped contract; return to this hub.
+- `/1-context-retrieval-design` — use for its scoped contract; return to this hub.

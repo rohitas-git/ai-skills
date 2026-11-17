@@ -285,3 +285,4 @@
 ## Available skill additions
 
 ## 2026-10-17 | ingest-asd-ste100 | Adopt `1-asd-ste100` under Agent Engineering from danyuchn/asd-ste100-skill at `3944283c183eea13fe5bd902b572da3b4de8bf44`. Preserve MIT attribution and the local structural linter; correct semantic drift in examples, add meaning/authority boundaries and progressive disclosure, and require manual invocation in both runtimes. Source review and hashes: `skills/1-asd-ste100/references/source-adaptation.md`. No runtime sync or activation.
+## 2026-11-17 | ai-application-engineering | Materialize the preceding AI Engineer research with primary-source provenance. Add 1-ai-suitability and 1-context-retrieval-design under the existing AI/agent hub; extend architecture, interface, evaluation, change-impact, shipping and UI owners with conditional AI guidance; link an optional implementation workflow. Vault ingestion is a separate three-note change set. No runtime sync, provider calls or commits.

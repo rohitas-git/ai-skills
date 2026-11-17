@@ -1,0 +1,6 @@
+interface:
+  display_name: "Context and Retrieval Design"
+  short_description: "Design relevant, permission-aware AI context and retrieval"
+  default_prompt: "Use $1-context-retrieval-design to define the sources, access filters, retrieval or lookup path, freshness and memory rules, and evaluation evidence for this AI feature."
+policy:
+  allow_implicit_invocation: false

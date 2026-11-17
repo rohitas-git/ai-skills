@@ -5,7 +5,7 @@
     "hubs/*/workflow.json"
   ],
   "schema_version": 1,
-  "skill_count": 287,
+  "skill_count": 288,
   "skills": [
     {
       "cousins": [],
@@ -22,6 +22,7 @@
       ],
       "next": [
         "1-ai-suitability",
+        "1-context-retrieval-design",
         "0-butler",
         "1-asd-ste100",
         "1-agent-evaluation",
@@ -237,6 +238,50 @@
         "error messages",
         "prompts",
         "or agent instructions for clarity"
+      ]
+    },
+    {
+      "cousins": [
+        "1-ai-platform-operations",
+        "1-agent-evaluation",
+        "2-prompt-injection-defense"
+      ],
+      "hub": "0-agent-engineering",
+      "memberships": [
+        {
+          "hub": "0-agent-engineering",
+          "role": "leaf"
+        }
+      ],
+      "next": [
+        "0-agent-engineering",
+        "0-implement",
+        "1-agent-evaluation",
+        "1-ai-platform-operations"
+      ],
+      "not_when": [
+        "index or serving operations → 1-ai-platform-operations",
+        "tool execution contract → 1-tool-schema-design",
+        "run quality evaluation → 1-agent-evaluation"
+      ],
+      "prev": [
+        "0-agent-engineering",
+        "0-implement",
+        "2-software-architect"
+      ],
+      "requires_setup": false,
+      "role": "leaf",
+      "skill": "1-context-retrieval-design",
+      "source": "catalog",
+      "triggers": [
+        "design RAG",
+        "context engineering contract",
+        "retrieval design",
+        "permission-aware retrieval",
+        "AI memory policy"
+      ],
+      "when": [
+        "design or assess one context retrieval and memory contract for an AI feature"
       ]
     },
     {

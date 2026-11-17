@@ -27,7 +27,8 @@
         "1-human-in-the-loop",
         "1-mcp-server-building",
         "1-agent-workflow-observer",
-        "1-ai-suitability"
+        "1-ai-suitability",
+        "1-context-retrieval-design"
       ],
       "primary": true,
       "note": "Core AI application and agent-system leaves. Suitability and context design return bounded read-only contracts; evaluation preserves design/analysis/authorized-run mode. Core agent-system leaves. Workflow observation analyzes one fixed completed/paused snapshot and returns proposals only; tool-schema work preserves design/review/authorized-edit mode and returns to its MCP, oversight, security or hub caller; provider/live-effect tests require separate authority."
@@ -71,6 +72,7 @@
         "2-prompt-injection-defense",
         "2-skill-supply-chain-audit",
         "1-ai-suitability",
+        "1-context-retrieval-design",
         "Agent judgment"
       ]
     }
