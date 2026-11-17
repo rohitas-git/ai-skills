@@ -3270,6 +3270,8 @@
       "skill": "1-ci-cd-and-automation",
       "source": "catalog",
       "triggers": [
+        "set up pre-commit hooks",
+        "Husky lint-staged",
         "CI/CD workflow",
         "GitHub Actions workflow",
         "workflow YAML",

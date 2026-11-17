@@ -47,6 +47,9 @@ authorize it.
   deploys and OIDC or another short-lived identity where supported.
 - Treat fork code, PR titles/bodies, branch names, issue text, artifacts, caches, and generated matrices
   as untrusted input. Do not combine untrusted checkout/execution with secrets or write tokens.
+- Pass untrusted workflow values through environment variables or structured arguments; never
+  interpolate expressions directly into shell source. Quote expansions and validate values against
+  the command's accepted domain; quoting alone does not prevent option injection or an unsafe target.
 - Use `pull_request_target` only when its privileged semantics are understood and attacker-controlled
   code is never executed. Check out the intended immutable ref explicitly.
 - Pin third-party actions and tool/dependency inputs according to repository supply-chain policy;
@@ -67,6 +70,10 @@ setup, execution, retry, cache-hit, and critical-path time before optimizing. Pa
 larger runners, or scheduled checks are choices based on evidence and protection needs—not a fixed
 order or universal duration budget.
 
+For package-manager installs, prefer the manager's download cache with keys tied to the relevant
+lockfile/runtime/platform; do not assume restored `node_modules` replaces the project's reproducible
+install step. Preserve existing cache choices when their compatibility and trust boundaries are proven.
+
 Deployment workflow authoring ends with a handoff: `/1-shipping-and-launch` owns rollout decisions,
 `/1-observability-and-instrumentation` owns signals, and `/1-incident-response` owns active failures.
 Creating automation never authorizes running it.
@@ -77,3 +84,7 @@ Record exact candidate and time for syntax/schema validation, reusable-workflow 
 local project entrypoints, representative event/condition evaluation, deliberate-negative controls,
 security/permission review, required-context coverage, and provider-only checks. Label unavailable
 remote evidence BLOCKED or SKIPPED; do not invent a green CI result from local success.
+
+When scanner reports drive a required check, load [report-gate verification](./report-gates.md).
+The shell-input, cache, and scanner additions adapt Addy Osmani et al., MIT;
+[source and review](../../../guidelines/catalog/ingest-addyosmani-2026-11-15.md).

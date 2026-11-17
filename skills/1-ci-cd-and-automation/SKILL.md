@@ -3,7 +3,7 @@ name: 1-ci-cd-and-automation
 description: >
   Design, diagnose, or edit one CI/CD workflow or required-check contract. Use when: creating or
   changing GitHub Actions/build/test/deploy automation, investigating workflow-definition failures,
-  or making required checks honest. Not for: application/test failures in a PR (1-pr-repair or
+  setting up local pre-commit hooks, or making required checks honest. Not for: application/test failures in a PR (1-pr-repair or
   0-diagnosing-bugs), dependency-security policy (2-dependency-security), an active rollout
   (1-shipping-and-launch), or a production incident (1-incident-response). Hub: /0-implement.
 disable-model-invocation: true
@@ -23,6 +23,8 @@ metadata:
     next: [0-implement, 0-devops, 1-pr-repair, 2-dependency-security, 1-shipping-and-launch, 1-observability-and-instrumentation]
     cousins: [1-pr-repair, 2-dependency-security, 1-shipping-and-launch, 1-incident-response, 1-observability-and-instrumentation]
     triggers:
+      - "set up pre-commit hooks"
+      - "Husky lint-staged"
       - "CI/CD workflow"
       - "GitHub Actions workflow"
       - "workflow YAML"
@@ -39,6 +41,8 @@ metadata:
 caller's candidate, worktree, authority, and return path. Load the [operative guide](./references/full-guide.md)
 for provider/security/optimization patterns and [source map](./references/vendor-source.md) only for
 provenance. The [gh-action-gen note](./references/gh-action-gen-source.md) records rejected behavior.
+
+For local pre-commit setup, load [pre-commit guidance](./references/pre-commit.md).
 
 ## Parent behavior
 
