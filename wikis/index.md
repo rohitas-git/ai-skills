@@ -452,3 +452,4 @@ _Live skills: **174**._
 | [[1-context-retrieval-design]] | Design relevant, permission-aware context, retrieval and memory. | `skills/1-context-retrieval-design` |
 | [[1-asd-ste100]] | Rewrite agent-facing English without changing conditions, uncertainty, or requirement strength. | `skills/1-asd-ste100` |
 | [[1-manual-procedure-wizard]] | Author a human-run manual procedure wizard without executing it. | `skills/1-manual-procedure-wizard` |
+| [[1-marketing-blog-editor]] | Review one technical marketing blog post before publication. | `skills/1-marketing-blog-editor` |

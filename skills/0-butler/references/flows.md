@@ -492,13 +492,13 @@ checks or edits use the matching isolated workspace when needed and return here.
 | | |
 |--|--|
 | **★ Hub** | `/0-marketing` |
-| **Children** | **on-ramp:** `1-marketing-product-marketing` · **pipeline:** `1-marketing-marketing-loops` · **leaf:** 48 focused strategy, research, conversion, content, SEO, paid-media, measurement, growth, partnership, lifecycle, and sales skills |
+| **Children** | **on-ramp:** `1-marketing-product-marketing` · **pipeline:** `1-marketing-marketing-loops` · **leaf:** 48 focused strategy, research, conversion, content, SEO, paid-media, measurement, growth, partnership, lifecycle, and sales skills · **additions:** `1-marketing-blog-editor` |
 | **Pipeline** | pin outcome, audience, evidence, jurisdiction, account state, and authority → select one narrow child → advisory or draft deliverable → separate explicit authority for any external effect |
 | **Source** | `coreyhaines31/marketingskills` pinned at `5b2c0007766c6a1cf1d53fd8fc73e979e0821022`; upstream tools, installers, and plugin metadata were not promoted |
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F-M1** | Which marketing outcome is primary? | infer the narrowest evidence-backed specialist; ask only when two categories materially differ | strategy/research · conversion/lifecycle · content/messaging · search/discovery · paid/measurement · growth/partnerships/sales · **Agent judgment** |
+| **F-M1** | Which marketing outcome is primary? | infer the narrowest evidence-backed specialist; ask only when two categories materially differ | strategy/research · conversion/lifecycle · content/messaging · search/discovery · paid/measurement · growth/partnerships/sales · Agent judgment |
 
 **Not for:** product or UX research (`/1-user-research`), general strategy (`/1-strategic-analysis`), brand systems (`/1-brand`), or software release work (`/1-shipping-and-launch`).
 

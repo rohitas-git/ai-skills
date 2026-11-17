@@ -166,6 +166,7 @@ Structured mental models. The core is from `tjboudreaux/cc-thinking-skills` (MIT
 - [1-design-review](./1-design-review/) — Elephant-Goldfish pre-code design/spec/plan review; [workflow, connections and concepts](./1-design-review/references/workflow-and-connections.md)
 - [1-ai-suitability](./1-ai-suitability/) — Assess AI fit, non-AI alternatives and the level of automation.
 - [1-context-retrieval-design](./1-context-retrieval-design/) — Design relevant, permission-aware context, retrieval and memory.
+- Content and messaging: [1-marketing-content-strategy](./1-marketing-content-strategy/), [1-marketing-copywriting](./1-marketing-copywriting/), [1-marketing-copy-editing](./1-marketing-copy-editing/), [1-marketing-blog-editor](./1-marketing-blog-editor/), [1-marketing-emails](./1-marketing-emails/), [1-marketing-cold-email](./1-marketing-cold-email/), [1-marketing-sms](./1-marketing-sms/), [1-marketing-social](./1-marketing-social/), [1-marketing-video](./1-marketing-video/), [1-marketing-image](./1-marketing-image/), [1-marketing-lead-magnets](./1-marketing-lead-magnets/)
 - [1-manual-procedure-wizard](./1-manual-procedure-wizard/) — Author a human-run manual procedure wizard without executing it
 - [1-i18n-sync](./1-i18n-sync/) — Synchronize selected JSON locale keys with context and validation.
 - [1-llm-cost-design](./1-llm-cost-design/) — Design one LLM spending policy with quality and budget controls.

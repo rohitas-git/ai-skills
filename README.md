@@ -775,3 +775,4 @@ Codex may shorten skill descriptions when the full catalog is installed because 
 | **1-design-review** | Fresh-context Elephant-Goldfish review of a software design/spec/plan before coding; [workflow and concepts](skills/1-design-review/references/workflow-and-connections.md). |
 | **1-pre-merge** | Final project frozen-candidate readiness gates and QA handoff; never merges. |
 | **1-dev-test** | Focused project development testing and debugging while changes remain mutable. |
+| **1-marketing-blog-editor** | Review one technical marketing blog post before publication. |

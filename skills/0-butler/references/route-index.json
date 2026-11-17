@@ -5,7 +5,7 @@
     "hubs/*/workflow.json"
   ],
   "schema_version": 1,
-  "skill_count": 295,
+  "skill_count": 296,
   "skills": [
     {
       "cousins": [],
@@ -5454,6 +5454,7 @@
         "1-marketing-analytics",
         "1-marketing-aso",
         "1-marketing-attribution",
+        "1-marketing-blog-editor",
         "1-marketing-churn-prevention",
         "1-marketing-co-marketing",
         "1-marketing-cold-email",
@@ -5772,6 +5773,44 @@
       ],
       "when": [
         "analyze which marketing activity drives conversion or revenue"
+      ]
+    },
+    {
+      "cousins": [
+        "1-marketing-copy-editing",
+        "1-marketing-copywriting",
+        "1-marketing-content-strategy"
+      ],
+      "hub": "0-marketing",
+      "memberships": [
+        {
+          "hub": "0-marketing",
+          "role": "leaf"
+        }
+      ],
+      "next": [
+        "0-marketing",
+        "1-marketing-copy-editing"
+      ],
+      "not_when": [
+        "draft a new post → 1-marketing-copywriting",
+        "edit only existing prose → 1-marketing-copy-editing",
+        "publish or change a live site without separate authority"
+      ],
+      "prev": [
+        "0-marketing"
+      ],
+      "requires_setup": false,
+      "role": "leaf",
+      "skill": "1-marketing-blog-editor",
+      "source": "catalog",
+      "triggers": [
+        "blog editorial review",
+        "review this technical blog post",
+        "blog-editor"
+      ],
+      "when": [
+        "review one existing technical marketing blog post before publication"
       ]
     },
     {
