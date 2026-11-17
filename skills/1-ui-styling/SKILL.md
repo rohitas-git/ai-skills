@@ -103,3 +103,4 @@ bundled examples. For project UI work, `docs/brand.md` is authoritative.
 
 Imported references and helpers are version-sensitive compatibility material, not live authority. See
 the [reference index](./references/index.md) and [compatibility notes](./references/full-guide.md).
+For a requested finishing pass on an existing visual delta, use the [interface detail guide](./references/interface-details.md).
