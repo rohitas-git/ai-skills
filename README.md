@@ -776,4 +776,5 @@ Codex may shorten skill descriptions when the full catalog is installed because 
 | **1-pre-merge** | Final project frozen-candidate readiness gates and QA handoff; never merges. |
 | **1-dev-test** | Focused project development testing and debugging while changes remain mutable. |
 | **1-marketing-blog-editor** | Review one technical marketing blog post before publication. |
+| **1-marketing-ecommerce-blog-writing** | Draft or revise one e-commerce guide, tutorial, lifestyle article, or product comparison. |
 | **1-marketing-healthcare-blog-writing** | Draft or revise one evidence-backed healthcare e-commerce blog and its medical/compliance review packet. |

@@ -5,7 +5,7 @@
     "hubs/*/workflow.json"
   ],
   "schema_version": 1,
-  "skill_count": 297,
+  "skill_count": 298,
   "skills": [
     {
       "cousins": [],
@@ -5470,6 +5470,7 @@
         "1-marketing-emails",
         "1-marketing-events",
         "1-marketing-free-tools",
+        "1-marketing-ecommerce-blog-writing",
         "1-marketing-healthcare-blog-writing",
         "1-marketing-image",
         "1-marketing-influencer-marketing",
@@ -6244,6 +6245,48 @@
       ],
       "when": [
         "prepare a bounded product-directory submission plan"
+      ]
+    },
+    {
+      "cousins": [
+        "1-marketing-healthcare-blog-writing",
+        "1-marketing-copywriting",
+        "1-marketing-blog-editor",
+        "1-marketing-content-strategy"
+      ],
+      "hub": "0-marketing",
+      "memberships": [
+        {
+          "hub": "0-marketing",
+          "role": "leaf"
+        }
+      ],
+      "next": [
+        "0-marketing"
+      ],
+      "not_when": [
+        "healthcare or medical product blog → 1-marketing-healthcare-blog-writing",
+        "editorial roadmap → 1-marketing-content-strategy",
+        "product page or landing page → 1-marketing-copywriting",
+        "existing technical-blog review → 1-marketing-blog-editor"
+      ],
+      "prev": [
+        "0-marketing"
+      ],
+      "requires_setup": false,
+      "role": "leaf",
+      "skill": "1-marketing-ecommerce-blog-writing",
+      "source": "catalog",
+      "triggers": [
+        "e-commerce blog",
+        "ecommerce blog writing",
+        "buyer's guide",
+        "shopping comparison",
+        "product tutorial",
+        "shoppable lifestyle article"
+      ],
+      "when": [
+        "draft or revise one e-commerce blog for shoppers"
       ]
     },
     {
