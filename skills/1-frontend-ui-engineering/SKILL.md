@@ -103,5 +103,6 @@ database, generated asset, or external design service.
 
 ## References
 
+- AI-powered interaction: [AI states and user control](./references/ai-interactions.md)
 - Operative: [implementation guide](./references/full-guide.md), [accessibility checklist](./references/accessibility-checklist.md), [anti-slop scope guard](./references/anti-ui-slop.md)
 - Provenance: [vendor source](./references/vendor-source.md)
