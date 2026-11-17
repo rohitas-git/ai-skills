@@ -5,7 +5,7 @@
     "hubs/*/workflow.json"
   ],
   "schema_version": 1,
-  "skill_count": 289,
+  "skill_count": 290,
   "skills": [
     {
       "cousins": [],
@@ -7822,6 +7822,7 @@
         }
       ],
       "next": [
+        "1-design-review",
         "1-code-review",
         "1-complete-pr-review",
         "1-agent-pr-review",
@@ -7854,6 +7855,8 @@
         "code and security review",
         "security audit",
         "architecture review",
+        "design document review",
+        "goldfish review",
         "codebase health review",
         "adversarial decision review",
         "verification only",
@@ -7861,7 +7864,7 @@
       ],
       "when": [
         "pick a review path",
-        "post-build review domain"
+        "pre-code design document or post-build review domain"
       ]
     },
     {
@@ -8030,6 +8033,55 @@
       "when": [
         "perform a comprehensive risk-weighted review of one pull request",
         "produce a PR-scoped code, security, testing, reliability, delivery, and operability report before repair or approval"
+      ]
+    },
+    {
+      "cousins": [
+        "1-code-review",
+        "2-software-architect",
+        "1-doubt-driven-development",
+        "1-receive-review"
+      ],
+      "hub": "0-review",
+      "memberships": [
+        {
+          "hub": "0-review",
+          "role": "pipeline"
+        }
+      ],
+      "next": [
+        "1-to-spec",
+        "1-write-plan",
+        "1-to-tickets",
+        "0-implement"
+      ],
+      "not_when": [
+        "draft a settled specification → 1-to-spec",
+        "explore concept alternatives → 1-brainstorm",
+        "review code changes → 1-code-review",
+        "evaluate system architecture alone → 2-software-architect",
+        "implement an approved design → 0-implement"
+      ],
+      "prev": [
+        "0-review",
+        "1-brainstorm",
+        "1-to-spec",
+        "1-write-plan"
+      ],
+      "requires_setup": false,
+      "role": "pipeline",
+      "skill": "1-design-review",
+      "source": "catalog",
+      "triggers": [
+        "design document review",
+        "review this spec",
+        "implementation readiness",
+        "goldfish review",
+        "elephant goldfish",
+        "EGM review"
+      ],
+      "when": [
+        "one software design document needs independent review before implementation"
       ]
     },
     {

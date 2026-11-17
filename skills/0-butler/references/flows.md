@@ -142,14 +142,14 @@ existing plan (1-write-plan only if missing) → exact repo/worktree/branch/HEAD
 | | |
 |--|--|
 | **★ Hub** | `/0-review` |
-| **Children** | **sub-hub:** `1-code-review` · **sub-hub:** `1-security-auditor` · **pipeline:** `1-complete-pr-review` (one PR: comprehensive risk-weighted review, read-only) · **leaf:** `1-agent-pr-review` (agent-generated PR risk pass) · **leaf:** `1-clean-tautological-tests` (tautological and zero-signal test audit) · **security leaves:** `2-prompt-injection-defense`, `2-skill-supply-chain-audit`, `2-dependency-security` (application dependency checks) · **soft:** `1-doubt-driven-development`, `1-receive-review` · **soft (failure behavior):** `1-error-handling` (narrow read-only review; primary Domain 8) · **soft (Go practice):** `1-go-best-practices` (narrow read-only review; primary Domain 8) · **on-ramp:** `1-codebase-review-strategy` · **cousin:** `2-verify-work`, `2-ponytail-review`, `2-thermo-nuclear-code-quality-review` · **satellite:** `1-visual-recap` · **soft (shared):** `2-security-and-hardening` · **soft (dual):** `2-software-architect` (primary Domain 8) |
+| **Children** | `1-code-review`, `1-security-auditor`, `1-codebase-review-strategy`, `1-complete-pr-review`, `1-agent-pr-review`, `1-clean-tautological-tests`, `2-security-and-hardening`, `2-software-architect`, `2-verify-work`, `2-ponytail-review`, `2-thermo-nuclear-code-quality-review`, `1-visual-recap`, `1-doubt-driven-development`, `1-error-handling`, `1-go-best-practices`, `1-receive-review`, `1-design-review` |
 | **Pipeline** | honor selected mode; **F-R1** only if ambiguous → pin scope + actual candidate → sub-hub / skill → read-only report → return to caller · `1-complete-pr-review` combines code + differential security on the same pinned PR, closes material risk-triggered coverage gaps, and returns one ledger · repair, publication and integration need corresponding authority · unfamiliar/whole-repo request → `1-codebase-review-strategy` returns one coverage plan; a specialist runs only when separately/originally authorized on the same candidate · one consequential claim → `1-doubt-driven-development` → keep/revise/reject/unknown · incoming feedback → `/1-receive-review` |
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F-R1** | What kind of review? | Multi-axis **change** review if PR/ship/diff | `/1-code-review` · `/1-complete-pr-review` (comprehensive risk-weighted review of one PR) · `/1-agent-pr-review` (AI-authored PR) · `/1-clean-tautological-tests` (test-suite quality) · `/1-error-handling` (narrow failure behavior) · `/1-go-best-practices` (narrow Go-language review) · `/1-security-auditor` · `/2-software-architect` · `/1-codebase-review-strategy` (unfamiliar/whole repo) · `/1-doubt-driven-development` (one consequential claim) · `/2-thermo-nuclear-code-quality-review` (maintainability-only) · `/2-verify-work` (verification only) · `/1-visual-recap` (interactive change overview) · **Agent judgment** |
-| **F6** | (inside `/1-code-review`) axes applicable? | every applicable | Spec / Standards / Maintainability; missing requirements/rules use a labeled baseline, not a false pass; honor explicit scope override · **Agent judgment** |
-| **F-R2** | (inside `/1-security-auditor`) audit scope? | full project unless path/PR named | full · scoped module · differential/PR · **Agent judgment** |
+| **F-R1** | What kind of review? | Multi-axis **change** review if PR/ship/diff | /1-design-review (pre-code spec/plan) · /1-code-review · /1-complete-pr-review · /1-agent-pr-review · /1-error-handling · /1-go-best-practices · /1-security-auditor · /2-software-architect · /1-codebase-review-strategy (unfamiliar/whole repo) · /1-doubt-driven-development (one consequential claim) · /2-thermo-nuclear-code-quality-review · /2-verify-work · /1-visual-recap · Agent judgment |
+| **F6** | (inside 1-code-review) axes applicable? | every applicable | every applicable axis; missing spec/standards uses labeled baseline, not a false pass · Agent judgment |
+| **F-R2** | (inside 1-security-auditor) audit scope? | full project unless path/PR named | full · scoped module · differential/PR · Agent judgment |
 | **F-R3** | Which focused security surface? | narrow specialist when scope matches | `2-prompt-injection-defense` · `2-skill-supply-chain-audit` · `2-dependency-security` · general security audit · **Agent judgment** |
 
 ### Sub-hub `/1-code-review`
@@ -157,7 +157,7 @@ existing plan (1-write-plan only if missing) → exact repo/worktree/branch/HEAD
 | | |
 |--|--|
 | **Role** | Read-only multi-axis review of the actual diff/PR/current implementation, including task-owned staged, unstaged and untracked changes |
-| **Children** | **axis:** Spec, Standards, Maintainability · **cousin:** `2-verify-work`, `2-ponytail-review`, `2-thermo-nuclear-code-quality-review` · **soft:** `2-software-architect` (bounded read-only system review; return to caller), `2-security-and-hardening` |
+| **Children** | `1-code-review`, `1-security-auditor`, `1-codebase-review-strategy`, `1-complete-pr-review`, `1-agent-pr-review`, `1-clean-tautological-tests`, `2-security-and-hardening`, `2-software-architect`, `2-verify-work`, `2-ponytail-review`, `2-thermo-nuclear-code-quality-review`, `1-visual-recap`, `1-doubt-driven-development`, `1-error-handling`, `1-go-best-practices`, `1-receive-review`, `1-design-review` |
 | **Pipeline** | pin candidate + caller → applicable axes → validate findings + coverage → return to caller; no automatic repair, publication or commit |
 
 Review and verification use [the shared candidate contract](../../0-review/references/review-candidate.md). Reading needs no new worktree; runtime isolation returns to the paused review. `2-verify-work` reports PASS/FAIL/BLOCKED for supported claims rather than owning a repair loop. Historical `code-review-v2` is not a live route; use `1-code-review`.
@@ -167,7 +167,7 @@ Review and verification use [the shared candidate contract](../../0-review/refer
 | | |
 |--|--|
 | **Role** | Multi-phase security/quality audit + structured findings |
-| **Children** | **soft:** `2-security-and-hardening` (remediate / prevent after findings) · **leaf:** `2-prompt-injection-defense`, `2-skill-supply-chain-audit`, `2-dependency-security` (dependency vulnerability, staleness, and new-package checks) |
+| **Children** | `1-code-review`, `1-security-auditor`, `1-codebase-review-strategy`, `1-complete-pr-review`, `1-agent-pr-review`, `1-clean-tautological-tests`, `2-security-and-hardening`, `2-software-architect`, `2-verify-work`, `2-ponytail-review`, `2-thermo-nuclear-code-quality-review`, `1-visual-recap`, `1-doubt-driven-development`, `1-error-handling`, `1-go-best-practices`, `1-receive-review`, `1-design-review` |
 | **Pipeline** | honor caller scope/authority → pinned candidate → applicable recon/hunt/validation → verified report + coverage limits → return to caller; files, remediation and publication only when requested |
 
 Dependency ratchets compare issue identities under equivalent advisory data, not
@@ -253,11 +253,11 @@ databases, services, deployments, or other remote state. Decision/spec approval 
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F9** | Take a deepening idea to Design? | stay at the report unless the user selects a candidate | stay · 1-grill-with-docs · Agent judgment |
-| **F-EH1** | Define failure behavior or diagnose an unexplained bug? | Failure behavior for handling/recovery requests | 1-error-handling · 0-diagnosing-bugs · Agent judgment |
-| **F-ARCH1** | Design an API contract, a module, or the whole system? | API contract for endpoint/schema requests | 1-api-and-interface-design · 1-codebase-design · 2-software-architect · Agent judgment |
-| **F-C1** | Enforce standards on code now, or discuss clean-code principles? | coding while editing | 1-coding-standards · 1-clean-craftsmanship · Agent judgment |
-| **F-D1** | Concept wiki (docs/wiki) or living docs + code triggers? | wiki if raw→concepts · living if drift/triggers | 1-project-wiki-manager · 1-living-documentation-governor · Agent judgment |
+| **F9** | Take a deepening idea to Design? | stay at the report unless the user selects a candidate | stay · /1-grill-with-docs · Agent judgment |
+| **F-EH1** | Define failure behavior or diagnose an unexplained bug? | Failure behavior for handling/recovery requests | /1-error-handling · /0-diagnosing-bugs · Agent judgment |
+| **F-ARCH1** | Design an API contract, a module, or the whole system? | API contract for endpoint/schema requests | /1-api-and-interface-design · /1-codebase-design · /2-software-architect · Agent judgment |
+| **F-C1** | Enforce standards on code now, or discuss clean-code principles? | coding while editing | /1-coding-standards · /1-clean-craftsmanship · Agent judgment |
+| **F-D1** | Concept wiki (docs/wiki) or living docs + code triggers? | wiki if raw→concepts · living if drift/triggers | /1-project-wiki-manager · /1-living-documentation-governor · Agent judgment |
 
 **Related atoms (not merge targets):** `1-coding-standards` ↔ `1-clean-craftsmanship` (F-C1); `1-project-wiki-manager` ↔ `1-living-documentation-governor` (F-D1); personal vault is Domain 9 (F-D2).
 
@@ -348,9 +348,9 @@ Optional; not Ship closer.
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F-L1** | Should this be a direct explanation, interactive practice, or a reusable course? | infer from stated outcome; ask only when two modes materially differ | 1-learning-explainer · 1-explain-with-example · 1-tutor · 1-code-explainer · 1-teach · 1-story-teacher · 1-resource-summarizer · vault-explain if vault Concept · Agent judgment |
-| **F-L2** | Should the selected material be explained directly or distilled first? | explain a clear selection directly; distill for source-level summary | 1-resource-summarizer first · 1-explain-with-example directly · Agent judgment |
-| **F-L3** | What focused concept-learning operation is needed? | first explanation at a level | 1-learning-diagnostic · 1-level-explainer · 1-mental-model-builder · 1-progressive-deep-dive · Agent judgment |
+| **F-L1** | Should this be a direct explanation, interactive practice, or a reusable course? | infer from stated outcome; ask only when two modes materially differ | /1-learning-explainer · /1-explain-with-example · /1-tutor · /1-code-explainer · /1-teach · /1-story-teacher · /1-resource-summarizer · vault-explain if vault Concept · Agent judgment |
+| **F-L2** | Should the selected material be explained directly or distilled first? | explain a clear selection directly; distill for source-level summary | /1-resource-summarizer first · /1-explain-with-example directly · Agent judgment |
+| **F-L3** | What focused concept-learning operation is needed? | first explanation at a level | /1-learning-diagnostic · /1-level-explainer · /1-mental-model-builder · /1-progressive-deep-dive · Agent judgment |
 
 **Not for:** product ship (`/0-implement`), catalog routing (`/0-butler`), vault compile/query (`/1-vault-ingest`, `/1-wiki-query`).
 
@@ -448,7 +448,7 @@ compliance review (`/2-brand-review`), read-only context extraction (`/2-brand-c
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F-AE1** | Which one AI application or agent-system outcome is required? | infer the narrowest specialist; ask only when two outcomes materially differ | 1-agent-evaluation · 1-asd-ste100 · 1-tool-schema-design · 1-human-in-the-loop · 1-mcp-server-building · 1-agent-workflow-observer · 1-parallel-agents · 1-observability-and-instrumentation · 2-prompt-injection-defense · 2-skill-supply-chain-audit · 1-ai-suitability · 1-context-retrieval-design · Agent judgment |
+| **F-AE1** | Which one AI application or agent-system outcome is required? | infer the narrowest specialist; ask only when two outcomes materially differ | /1-agent-evaluation · /1-asd-ste100 · /1-tool-schema-design · /1-human-in-the-loop · /1-mcp-server-building · /1-agent-workflow-observer · /1-parallel-agents · /1-observability-and-instrumentation · /2-prompt-injection-defense · /2-skill-supply-chain-audit · /1-ai-suitability · /1-context-retrieval-design · Agent judgment |
 
 Tool-schema design receives design/read-only-review/authorized-edit mode, provider
 dialect, neighboring tools, candidate and allowed effects. It returns to the hub,

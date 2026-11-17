@@ -163,6 +163,7 @@ Structured mental models. The core is from `tjboudreaux/cc-thinking-skills` (MIT
 
 ## Available skill additions
 
+- [1-design-review](./1-design-review/) — Elephant-Goldfish pre-code design/spec/plan review; [workflow, connections and concepts](./1-design-review/references/workflow-and-connections.md)
 - [1-ai-suitability](./1-ai-suitability/) — Assess AI fit, non-AI alternatives and the level of automation.
 - [1-context-retrieval-design](./1-context-retrieval-design/) — Design relevant, permission-aware context, retrieval and memory.
 - [1-change-impact](./1-change-impact/) — Trace affected consumers, compatibility, and verification obligations.

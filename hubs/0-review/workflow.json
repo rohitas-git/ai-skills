@@ -40,6 +40,11 @@
       "note": "One pinned PR, comprehensive risk-weighted coverage, code and differential security, one returned ledger; receive-review or repair only when separately requested"
     },
     {
+      "link_type": "pipeline",
+      "skills": [],
+      "note": "Frozen project candidate readiness gates and final QA handoff; reports only and never merges, deploys, or changes production controls"
+    },
+    {
       "link_type": "leaf",
       "skills": [
         "1-agent-pr-review"
@@ -76,7 +81,7 @@
       "skills": [
         "1-visual-recap"
       ],
-      "note": "One private draft/create/update reviewer-orientation artifact for one exact substantial PR, branch, commit, or diff candidate; no correctness verdict, implicit publication, browser launch, feedback loop, or code/Git effect"
+      "note": "unavailable specialist: project walkthrough with real UI components, non-UI before/after examples and useful engineering diagrams; local-only page, never committed. One private draft/create/update reviewer-orientation artifact for one exact substantial PR, branch, commit, or diff candidate; no correctness verdict, implicit publication, browser launch, feedback loop, or code/Git effect"
     },
     {
       "link_type": "soft",
@@ -93,16 +98,31 @@
         "1-receive-review"
       ],
       "note": "Superpowers harvest: process incoming review feedback"
+    },
+    {
+      "link_type": "pipeline",
+      "skills": [
+        "1-design-review"
+      ],
+      "note": "Pre-code Elephant-Goldfish document review; fresh contexts, five ordered stages, explicit unresolved findings; returns to the author/caller"
+    },
+    {
+      "link_type": "leaf",
+      "skills": [],
+      "primary": true,
+      "note": "Evaluate a fixed formal check with explicit scope. Preserve caller, candidate, mode and authority; return without automatic follow-ons."
     }
   ],
   "pipeline": [
     "honor requested mode; F-R1 only if ambiguous",
     "pin caller, scope, comparison and actual candidate",
     "sub-hub or skill → read-only evidence → return to caller",
+    "spec/plan → 1-design-review → fresh zoom-out, comprehension, critique, second zoom-out, readiness as scoped → findings to author; approved revisions are new candidates",
     "comprehensive PR review → 1-complete-pr-review → same-candidate code and differential-security passes plus risk-triggered coverage → one returned ledger",
     "unfamiliar/whole-repo request → 1-codebase-review-strategy returns one coverage plan → separately authorized specialist review on the same candidate",
     "one consequential claim → 1-doubt-driven-development → keep|revise|reject|unknown → return",
-    "standalone review stops at report; remediation, publication and integration require corresponding authority"
+    "standalone review stops at report; remediation, publication and integration require corresponding authority",
+    "optional EGM lifecycle: 1-brainstorm → 1-to-spec → feature review → owner resolution → 1-write-plan → readiness review → human approval + implementation authority → 0-implement → 1-code-review → requested 1-living-documentation-governor drift assessment"
   ],
   "forks": [
     {
@@ -110,6 +130,7 @@
       "question": "What kind of review?",
       "recommended": "Multi-axis change 0-review if PR/ship/diff",
       "branches": [
+        "1-design-review (pre-code spec/plan)",
         "1-code-review",
         "1-complete-pr-review",
         "1-agent-pr-review",
@@ -142,6 +163,18 @@
         "full",
         "scoped module",
         "differential/PR",
+        "Agent judgment"
+      ]
+    },
+    {
+      "id": "F-DR1",
+      "question": "Which design-review scope?",
+      "recommended": "Infer feature for spec-only, readiness for explicit plan-only, full when both",
+      "branches": [
+        "full",
+        "feature",
+        "readiness",
+        "custom reviewer/rubric scope",
         "Agent judgment"
       ]
     }
