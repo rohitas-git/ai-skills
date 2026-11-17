@@ -1,0 +1,63 @@
+{
+  "source": "https://github.com/nicobailon/visual-explainer",
+  "version": "0.15.0",
+  "commit": "9d5f880b7e8e0a9a80c890b8e1bb6918b68481ad",
+  "scope": "Selected Markdown and metadata only; no executable plugin code",
+  "files": [
+    {
+      "upstreamPath": "LICENSE",
+      "archivePath": "LICENSE",
+      "sha256": "871b3c6c64e030c0647ca33543716bdae9511ae2d6a85d6f4ce63783bab52c8f"
+    },
+    {
+      "upstreamPath": "package.json",
+      "archivePath": "package.json",
+      "sha256": "1975e162b0d6012a6a70d0cc6526ed7e5adbee4d1a9f39a9f8b2d0be542fc168"
+    },
+    {
+      "upstreamPath": "plugins/visual-explainer/.claude-plugin/plugin.json",
+      "archivePath": "plugins/visual-explainer/.claude-plugin/plugin.json",
+      "sha256": "7a5f3744bfe70106e68ee97e990c4615268872c92442bcee8f07280444c57a61"
+    },
+    {
+      "upstreamPath": "plugins/visual-explainer/SKILL.md",
+      "archivePath": "plugins/visual-explainer/SKILL.md",
+      "sha256": "44b9097facd21a313ef1f6f0e3b3fa788613cbdce51e06e65633da767693a438"
+    },
+    {
+      "upstreamPath": "plugins/visual-explainer/references/style-guide.md",
+      "archivePath": "plugins/visual-explainer/references/style-guide.md",
+      "sha256": "f61c31b82e89e668e61859d3c8e8016fe92a29e2aa02f1bfa507697b63769c81"
+    },
+    {
+      "upstreamPath": "plugins/visual-explainer/references/diagrams.md",
+      "archivePath": "plugins/visual-explainer/references/diagrams.md",
+      "sha256": "ecd6c35e52e86169982ea72736ae624c347d340d97cbbf0797467946af5d8c3a"
+    },
+    {
+      "upstreamPath": "plugins/visual-explainer/references/motion.md",
+      "archivePath": "plugins/visual-explainer/references/motion.md",
+      "sha256": "fed82c41a8c56673aa7c4d009e0d3d3f6f180839bc52c9873db0625d2be1cd45"
+    },
+    {
+      "upstreamPath": "plugins/visual-explainer/references/machines.md",
+      "archivePath": "plugins/visual-explainer/references/machines.md",
+      "sha256": "31d285bf643a0b927b6db7fb8600f2e867496948992d80d0cb978840f4d284f5"
+    },
+    {
+      "upstreamPath": "plugins/visual-explainer/commands/generate-web-diagram.md",
+      "archivePath": "plugins/visual-explainer/commands/generate-web-diagram.md",
+      "sha256": "b8a783bfe6fc114f1c655b14d0696032be49b8fa68428036aafd2a3d6041ba9d"
+    },
+    {
+      "upstreamPath": "plugins/visual-explainer/commands/compare.md",
+      "archivePath": "plugins/visual-explainer/commands/compare.md",
+      "sha256": "55f551f4e54bfcf925edfc08fb13f053eab54e2ade504b3f1a57d972c3c3f346"
+    },
+    {
+      "upstreamPath": "plugins/visual-explainer/commands/project-recap.md",
+      "archivePath": "plugins/visual-explainer/commands/project-recap.md",
+      "sha256": "f75cc4d4d97f0c500752dce03a6d637637c5d6f61e71e35b950495f3c53a149e"
+    }
+  ]
+}
