@@ -2,6 +2,7 @@
 name: 1-brainstorm
 description: >
   Produce one evidence-bounded design-options memo for one undecided feature, component, or behavior.
+  Use when exploring design approaches, including an explicitly requested EGM/Goldfish concept pass.
   Not for a full requirements interview, a settled thread, a throwaway feasibility test, automatically
   starting a browser helper, writing/committing a spec, implementation, or forced alternatives.
   Hub: /0-grilling.
@@ -13,9 +14,9 @@ metadata:
     when: ["one undecided design needs viable alternatives, trade-offs, and a recommendation"]
     not_when: ["full requirements interview → 0-grilling", "settled thread → 1-to-spec", "disposable feasibility test → 1-prototype"]
     cousins: [0-grilling, 1-to-spec, 1-prototype, 1-write-plan]
-    triggers: [brainstorm design options, explore design approaches, idea to design, compare feature approaches]
+    triggers: [brainstorm design options, explore design approaches, idea to design, compare feature approaches, EGM brainstorm, Goldfish concept review]
     prev: [0-grilling]
-    next: [0-grilling, 1-to-spec, 1-write-plan]
+    next: [0-grilling, 1-to-spec, 1-write-plan, 1-design-review]
     requires_setup: false
 ---
 
@@ -42,8 +43,10 @@ approval nor creates a durable design/spec unless the caller separately requests
 7. Return problem framing, alternatives, trade-offs, recommendation or open choice, assumptions to test,
    non-goals, and approval state to `/0-grilling` or the actual caller. A confirmed thread may separately
    route to `/1-to-spec` or `/1-write-plan`.
-8. Start no visual companion, server, research, document write, spec review, delegation, commit,
-   prototype, implementation, publication, or external action.
+8. For an explicitly requested EGM/Goldfish concept pass, use the scoped
+   [concept-review procedure](./references/egm-concept-review.md). Otherwise start no delegation.
+   Start no visual companion, server, research, document write, spec review, commit, prototype,
+   implementation, publication, or external action beyond the caller's explicit authority.
 
 Load only when deeper design calibration is needed: [full guide](./references/full-guide.md).
 Vendor examples and the visual companion remain provenance-only and are not live instructions.

@@ -2760,7 +2760,8 @@
       "next": [
         "0-grilling",
         "1-to-spec",
-        "1-write-plan"
+        "1-write-plan",
+        "1-design-review"
       ],
       "not_when": [
         "full requirements interview → 0-grilling",
@@ -2778,7 +2779,9 @@
         "brainstorm design options",
         "explore design approaches",
         "idea to design",
-        "compare feature approaches"
+        "compare feature approaches",
+        "EGM brainstorm",
+        "Goldfish concept review"
       ],
       "when": [
         "one undecided design needs viable alternatives",
