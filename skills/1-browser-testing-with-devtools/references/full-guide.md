@@ -49,6 +49,13 @@ in case.”
 5. Repeat once when reproducibility or timing matters; disclose if the state changed between runs.
 6. Compare observed behavior with the caller's contract and return, without source edits.
 
+After changing viewport or font conditions, capture geometry only after the relevant fonts and
+layout/resize effects have settled. Use bounded, scenario-specific readiness evidence rather than
+a fixed delay as proof. Record the capture point and any continuing animation, font failure, or
+unstable geometry; do not claim a settled layout when readiness could not be established.
+
+This capture detail adapts Addy Osmani et al., MIT; [source and review](../../../guidelines/catalog/ingest-addyosmani-2026-11-15.md).
+
 ## Tool-specific cautions
 
 - A “click” may be an external action, not a read. Treat it by effect, not by tool name.
