@@ -332,7 +332,7 @@ Optional; not Ship closer.
 | | |
 |--|--|
 | **★ Hub** | `/0-learn` |
-| **Children** | **router:** `1-learning-explainer` → **leaves:** `1-learning-diagnostic`, `1-level-explainer`, `1-mental-model-builder`, `1-progressive-deep-dive` · **leaves:** `1-explain-with-example` (selected material), `1-tutor` (interactive practice) · **leaf (soft cross; code object):** `1-code-explainer` · **satellite router:** `1-teach` → `1-teaching-workspace`, `1-lesson-authoring`, `1-learning-progress-record`, `1-learning-glossary` · **leaf:** `1-story-teacher` · **soft:** `1-resource-summarizer` · **on-ramp (Vault primary):** `1-vault-explain` → explainer |
+| **Children** | `1-learning-explainer`, `1-learning-diagnostic`, `1-level-explainer`, `1-mental-model-builder`, `1-progressive-deep-dive`, `1-explain-with-example`, `1-tutor`, `1-code-explainer`, `1-teach`, `1-teaching-workspace`, `1-lesson-authoring`, `1-learning-progress-record`, `1-learning-glossary`, `1-story-teacher`, `1-resource-summarizer`, `1-vault-explain`, `1-design-rationale` |
 | **Pipeline** | direct evidence route → **F-L1** only for material mode ambiguity → optional **F-L2** only for detail-versus-distillation choice → explainer router **F-L3** → load one leaf → return |
 
 | Mode | Skill / load | Default when |
@@ -348,9 +348,9 @@ Optional; not Ship closer.
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F-L1** | Direct explanation, interactive practice, or reusable course? | infer from stated outcome; ask only when two modes materially differ | explainer · 1-explain-with-example · 1-tutor · 1-code-explainer · 1-teach · story · summarizer · 1-vault-explain · **Agent judgment** |
-| **F-L2** | Explain selected material directly or distill first? | explain a clear selection directly; distill for source-level summary | resource-summarizer first · direct selected-material explain · **Agent judgment** |
-| **F-L3** | What focused concept-learning operation is needed? | first explanation at a level | diagnostic · level explainer · mental-model builder · progressive deep dive · **Agent judgment** |
+| **F-L1** | Should this be a direct explanation, interactive practice, or a reusable course? | infer from stated outcome; ask only when two modes materially differ | 1-learning-explainer · 1-explain-with-example · 1-tutor · 1-code-explainer · 1-teach · 1-story-teacher · 1-resource-summarizer · vault-explain if vault Concept · Agent judgment |
+| **F-L2** | Should the selected material be explained directly or distilled first? | explain a clear selection directly; distill for source-level summary | 1-resource-summarizer first · 1-explain-with-example directly · Agent judgment |
+| **F-L3** | What focused concept-learning operation is needed? | first explanation at a level | 1-learning-diagnostic · 1-level-explainer · 1-mental-model-builder · 1-progressive-deep-dive · Agent judgment |
 
 **Not for:** product ship (`/0-implement`), catalog routing (`/0-butler`), vault compile/query (`/1-vault-ingest`, `/1-wiki-query`).
 

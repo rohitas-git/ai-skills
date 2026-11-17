@@ -1,26 +1,21 @@
 ---
 name: 0-learn
-description: >
-  Route requests whose primary outcome is understanding, explanation, tutoring, or
-  learning—not code delivery, review, or vault operations. Use the smallest matching
-  Learn leaf; ask a fork only when the learning mode is materially ambiguous.
-  Hub: /0-learn.
+description: 'Route requests whose primary outcome is understanding, explanation, tutoring, or learning—not code delivery, review, or vault operations. Use the smallest matching Learn leaf; ask a fork only when the learning mode is materially ambiguous. Hub: /0-learn.
+
+  '
 disable-model-invocation: true
 metadata:
   catalog:
     hub: 0-learn
     role: hub
-    when: ["route an understanding, explanation, tutoring, or learning request"]
-    not_when:
-      - "ship code → 0-implement"
-      - "review a candidate → 0-review"
-      - "vault ingestion/query → 0-rohitas-vault-wiki"
-      - "re-explain one prior reply → 1-bro"
-    triggers: ["learn", "explain", "ELI5", "quiz me", "teach me", "study this"]
+    when: ['route an understanding, explanation, tutoring, or learning request']
+    not_when: [ship code → 0-implement, review a candidate → 0-review, vault ingestion/query → 0-rohitas-vault-wiki, re-explain one prior reply → 1-bro]
+    triggers: [learn, explain, ELI5, quiz me, teach me, study this]
     prev: [0-butler]
-    next: [0-butler, 1-learning-explainer, 1-learning-diagnostic, 1-level-explainer, 1-mental-model-builder, 1-progressive-deep-dive, 1-explain-with-example, 1-tutor, 1-code-explainer, 1-teach, 1-teaching-workspace, 1-lesson-authoring, 1-learning-progress-record, 1-learning-glossary, 1-story-teacher, 1-resource-summarizer, 1-vault-explain]
+    next: [1-design-rationale, 0-butler, 1-learning-explainer, 1-learning-diagnostic, 1-level-explainer, 1-mental-model-builder, 1-progressive-deep-dive, 1-explain-with-example, 1-tutor, 1-code-explainer, 1-teach, 1-teaching-workspace, 1-lesson-authoring, 1-learning-progress-record, 1-learning-glossary, 1-story-teacher, 1-resource-summarizer, 1-vault-explain]
     requires_setup: false
 ---
+
 
 # Learn
 
@@ -79,3 +74,7 @@ model, and progressive deep dive. Do not duplicate that fork here.
   allow it.
 
 Compatibility pointer: [former tutor-mode reference](./references/tutor-mode.md).
+
+## Available specialist additions
+
+- `/1-design-rationale` — use for its scoped contract; return to this hub.

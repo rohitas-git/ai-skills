@@ -1,0 +1,6 @@
+interface:
+  display_name: "Design Rationale"
+  short_description: "Explain recorded design decisions and their trade-offs."
+  default_prompt: "Use $1-design-rationale for this scoped request. Explain recorded design decisions and their trade-offs."
+policy:
+  allow_implicit_invocation: false

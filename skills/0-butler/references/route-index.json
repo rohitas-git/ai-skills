@@ -5,7 +5,7 @@
     "hubs/*/workflow.json"
   ],
   "schema_version": 1,
-  "skill_count": 288,
+  "skill_count": 289,
   "skills": [
     {
       "cousins": [],
@@ -4593,6 +4593,7 @@
         }
       ],
       "next": [
+        "1-design-rationale",
         "0-butler",
         "1-learning-explainer",
         "1-learning-diagnostic",
@@ -4674,6 +4675,45 @@
       ],
       "when": [
         "explain one identified source-code scope"
+      ]
+    },
+    {
+      "cousins": [
+        "1-code-explainer",
+        "1-code-review",
+        "1-deprecation-and-migration"
+      ],
+      "hub": "0-learn",
+      "memberships": [
+        {
+          "hub": "0-learn",
+          "role": "leaf"
+        }
+      ],
+      "next": [
+        "0-learn"
+      ],
+      "not_when": [
+        "runtime code walkthrough",
+        "diagnose a failure",
+        "assess correctness",
+        "change the design"
+      ],
+      "prev": [
+        "0-learn"
+      ],
+      "requires_setup": false,
+      "role": "leaf",
+      "skill": "1-design-rationale",
+      "source": "catalog",
+      "triggers": [
+        "why was this added",
+        "why did we choose this design",
+        "design rationale",
+        "why this threshold"
+      ],
+      "when": [
+        "explain the recorded rationale behind one existing design or behavior"
       ]
     },
     {

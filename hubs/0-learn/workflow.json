@@ -7,7 +7,7 @@
   "slash": "/0-learn",
   "path": "skills/0-learn",
   "package_dir": "hubs/0-learn/",
-  "role": "Domain router for intellectual understanding \u2014 explain, tutor, code walkthrough, course, story, summarize.",
+  "role": "Domain router for intellectual understanding — explain, tutor, code walkthrough, course, story, summarize.",
   "notes": "Read-only router, not a product build path. 1-vault-explain is the Vault on-ramp; 1-tutor owns interactive practice; 1-code-explainer owns source walkthroughs.",
   "parent": {
     "hub": "0-butler",
@@ -82,6 +82,26 @@
         "1-vault-explain"
       ],
       "note": "Primary home Vault; hard-loads 1-learning-explainer for pedagogy"
+    },
+    {
+      "link_type": "leaf",
+      "skills": [],
+      "primary": true,
+      "note": "One explicitly selected scoped operation; return evidence to caller without automatic follow-ons"
+    },
+    {
+      "link_type": "leaf",
+      "skills": [],
+      "primary": true,
+      "note": "One local figure-led HTML explanation; dedicated diagram, PR recap, plan, and slide owners remain separate"
+    },
+    {
+      "link_type": "leaf",
+      "skills": [
+        "1-design-rationale"
+      ],
+      "primary": true,
+      "note": "Explain recorded design decisions and their trade-offs. Preserve caller, candidate, mode and authority; return without automatic follow-ons."
     }
   ],
   "pipeline": [
