@@ -281,3 +281,7 @@
 ## 2026-09-11 | software-architect-depth-caller-wiring | Complete the semantic audit of 2-software-architect; reconcile Architecture domain entry with 1-code-review catalog depth, align all three parent surfaces, pin read-only candidate/worktree authority, replace forced pillar scores and 2–4 options with evidence-driven decisions, and prohibit fabricated metrics or implicit redesign/implementation. Evidence: guidelines/catalog/wiring-audit-software-architect.md; 88 routing tests and full lint pass, 46/215 individually reviewed.
 
 ## 2026-11-17 | create-clean-tautological-tests | Create `1-clean-tautological-tests` from the user's text as a 0-review leaf: classify zero-signal, echo, mock-only and always-true-catch tests, rewrite to AAA behavioral tests with oracle values, gate each rewrite with a mutation check. Depth prefix added per catalog rule; description gained Not for / Hub and `metadata.catalog`. Wired workflow, hub page, flows F-R1, wiki index and generated routes on top of uncommitted catalog work. No runtime sync or commits.
+
+## Available skill additions
+
+## 2026-10-17 | ingest-asd-ste100 | Adopt `1-asd-ste100` under Agent Engineering from danyuchn/asd-ste100-skill at `3944283c183eea13fe5bd902b572da3b4de8bf44`. Preserve MIT attribution and the local structural linter; correct semantic drift in examples, add meaning/authority boundaries and progressive disclosure, and require manual invocation in both runtimes. Source review and hashes: `skills/1-asd-ste100/references/source-adaptation.md`. No runtime sync or activation.

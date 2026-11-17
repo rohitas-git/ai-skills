@@ -22,6 +22,7 @@
       "link_type": "leaf",
       "skills": [
         "1-agent-evaluation",
+        "1-asd-ste100",
         "1-tool-schema-design",
         "1-human-in-the-loop",
         "1-mcp-server-building",
@@ -60,6 +61,7 @@
       "recommended": "Infer the narrowest evidence-backed specialist; ask only when two outcomes materially differ",
       "branches": [
         "1-agent-evaluation",
+        "1-asd-ste100",
         "1-tool-schema-design",
         "1-human-in-the-loop",
         "1-mcp-server-building",

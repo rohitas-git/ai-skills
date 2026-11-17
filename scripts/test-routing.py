@@ -483,6 +483,7 @@ class AgentEngineeringHubRouteTests(WorkspaceRouteTests):
         '1-agent-evaluation',
         '1-agent-workflow-observer',
         '1-ai-suitability',
+        '1-asd-ste100',
         '1-human-in-the-loop',
         '1-mcp-server-building',
         '1-observability-and-instrumentation',

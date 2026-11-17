@@ -765,3 +765,4 @@ Codex may shorten skill descriptions when the full catalog is installed because 
 ## Available skill additions
 
 | **1-ai-suitability** | Assess AI fit, non-AI alternatives and the level of automation. |
+| **1-asd-ste100** | Rewrite agent-facing English with STE-inspired clarity and preserve meaning. |

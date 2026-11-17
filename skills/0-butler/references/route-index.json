@@ -5,7 +5,7 @@
     "hubs/*/workflow.json"
   ],
   "schema_version": 1,
-  "skill_count": 285,
+  "skill_count": 286,
   "skills": [
     {
       "cousins": [],
@@ -23,6 +23,7 @@
       "next": [
         "1-ai-suitability",
         "0-butler",
+        "1-asd-ste100",
         "1-agent-evaluation",
         "1-tool-schema-design",
         "1-human-in-the-loop",
@@ -193,6 +194,49 @@
       ],
       "when": [
         "assess AI suitability and automation level for one bounded user task"
+      ]
+    },
+    {
+      "cousins": [
+        "1-tool-schema-design",
+        "1-writing-great-skills",
+        "1-marketing-copywriting"
+      ],
+      "hub": "0-agent-engineering",
+      "memberships": [
+        {
+          "hub": "0-agent-engineering",
+          "role": "leaf"
+        }
+      ],
+      "next": [
+        "0-agent-engineering"
+      ],
+      "not_when": [
+        "tool contract design → 1-tool-schema-design",
+        "skill authoring → 0-skill-creator",
+        "marketing copy → 1-marketing-copywriting"
+      ],
+      "prev": [
+        "0-agent-engineering",
+        "1-tool-schema-design",
+        "0-skill-creator"
+      ],
+      "requires_setup": false,
+      "role": "leaf",
+      "skill": "1-asd-ste100",
+      "source": "catalog",
+      "triggers": [
+        "ASD-STE100",
+        "STE100 rewrite",
+        "Simplified Technical English",
+        "disambiguate agent instructions"
+      ],
+      "when": [
+        "rewrite supplied tool descriptions",
+        "error messages",
+        "prompts",
+        "or agent instructions for clarity"
       ]
     },
     {
