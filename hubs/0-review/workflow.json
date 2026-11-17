@@ -81,9 +81,10 @@
     {
       "link_type": "satellite",
       "skills": [
-        "1-visual-recap"
+        "1-visual-recap",
+        "1-pr-walkthrough"
       ],
-      "note": "unavailable specialist: project walkthrough with real UI components, non-UI before/after examples and useful engineering diagrams; local-only page, never committed. One private draft/create/update reviewer-orientation artifact for one exact substantial PR, branch, commit, or diff candidate; no correctness verdict, implicit publication, browser launch, feedback loop, or code/Git effect"
+      "note": "1-pr-walkthrough: project walkthrough with real UI components, non-UI before/after examples and useful engineering diagrams; local-only page, never committed. One private draft/create/update reviewer-orientation artifact for one exact substantial PR, branch, commit, or diff candidate; no correctness verdict, implicit publication, browser launch, feedback loop, or code/Git effect"
     },
     {
       "link_type": "soft",
@@ -147,6 +148,7 @@
         "2-thermo-nuclear-code-quality-review",
         "2-verify-work",
         "1-visual-recap",
+        "1-pr-walkthrough (project UI/non-UI examples and supporting diagrams in the panel)",
         "Agent judgment"
       ]
     },

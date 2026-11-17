@@ -5,7 +5,7 @@
     "hubs/*/workflow.json"
   ],
   "schema_version": 1,
-  "skill_count": 300,
+  "skill_count": 301,
   "skills": [
     {
       "cousins": [],
@@ -8206,7 +8206,8 @@
         "1-doubt-driven-development",
         "2-verify-work",
         "2-thermo-nuclear-code-quality-review",
-        "1-visual-recap"
+        "1-visual-recap",
+        "1-pr-walkthrough"
       ],
       "not_when": [
         "build/implement → 0-implement",
@@ -8495,6 +8496,46 @@
       "when": [
         "one consequential claim or decision needs an evidence-bounded adversarial pass",
         "challenge a confident conclusion before relying on it"
+      ]
+    },
+    {
+      "cousins": [
+        "1-visual-recap",
+        "1-dev-test"
+      ],
+      "hub": "0-review",
+      "memberships": [
+        {
+          "hub": "0-review",
+          "role": "satellite"
+        }
+      ],
+      "next": [
+        "0-review",
+        "1-pre-merge"
+      ],
+      "not_when": [
+        "standalone visual recap without a project change walkthrough → 1-visual-recap",
+        "merge readiness → 1-pre-merge",
+        "iterative browser debugging → 1-dev-test"
+      ],
+      "prev": [
+        "0-review"
+      ],
+      "requires_setup": false,
+      "role": "satellite",
+      "skill": "1-pr-walkthrough",
+      "source": "catalog",
+      "triggers": [
+        "project PR walkthrough",
+        "show me the changes in the browser",
+        "mark the changes in the panel",
+        "walk me through the UI changes"
+      ],
+      "when": [
+        "show a project PR's UI and non-UI effects in the browser panel",
+        "mark each visible change of a project branch with before and after",
+        "demonstrate backend changes with examples and supporting engineering diagrams"
       ]
     },
     {
