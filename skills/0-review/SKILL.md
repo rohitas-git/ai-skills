@@ -10,7 +10,7 @@ metadata:
     role: hub
     when: [pick a review path, pre-code design document or post-build review domain]
     not_when: [build/implement → 0-implement, design grill → 0-grilling, generic idea critique without code evidence → 1-critique]
-    next: [1-design-review, 1-code-review, 1-complete-pr-review, 1-pre-merge, 1-agent-pr-review, 1-error-handling, 1-go-best-practices, 1-security-auditor, 2-software-architect, 1-codebase-review-strategy, 1-doubt-driven-development, 2-verify-work, 2-thermo-nuclear-code-quality-review, 1-visual-recap, 1-pr-walkthrough]
+    next: [1-formal-verification, 1-design-review, 1-code-review, 1-complete-pr-review, 1-pre-merge, 1-agent-pr-review, 1-error-handling, 1-go-best-practices, 1-security-auditor, 2-software-architect, 1-codebase-review-strategy, 1-doubt-driven-development, 2-verify-work, 2-thermo-nuclear-code-quality-review, 1-visual-recap, 1-pr-walkthrough]
     cousins: [0-implement, 0-grilling, 1-critique]
     triggers: [review, which review skill, review this PR, complete PR review, comprehensive PR review, code and security review, security audit, architecture review, design document review, goldfish review, codebase health review, adversarial decision review, verification only, visual change overview]
     requires_setup: false
@@ -33,8 +33,10 @@ metadata:
 
 | Mode | Skill | Use when |
 |------|--------|----------|
+| **Design document** review | `/1-design-review` | Fresh-context EGM review of one feature spec or implementation plan before coding |
 | Multi-axis **change** review | `/1-code-review` | Fixed diff/PR or current implementation including uncommitted work; Ship closer |
 | **Comprehensive PR** review | `/1-complete-pr-review` | Risk-weighted code, security, testing, reliability, delivery, operability, and user-impact review; read-only |
+| **project pre-merge** | `/1-pre-merge` | Frozen-candidate readiness gates and final QA handoff; reports only, never merges |
 | **Agent PR risk pass** | `/1-agent-pr-review` | AI-authored PR; check CI protection, duplicate helpers, critical path, and agent workflows |
 | **Failure behavior** review | `/1-error-handling` | Review only exceptions/results, propagation, retries, cleanup, or safe public errors within a pinned candidate |
 | **Go-specific** review | `/1-go-best-practices` | Review only Go idioms, package/API mechanics, errors, concurrency, and Go-specific tests within a pinned candidate |
@@ -42,8 +44,10 @@ metadata:
 | **Architecture** 0-review | `/2-software-architect` | System design / pillar trade-offs (primary home: Architecture domain) |
 | **Strategy** on-ramp | `/1-codebase-review-strategy` | Unfamiliar or whole repo — plan risk-based coverage before a health, maintainability, or refactor-readiness review |
 | **Adversarial claim pass** | `/1-doubt-driven-development` | One consequential claim/decision; read-only keep/revise/reject/unknown disposition |
+| **Formal check** | `/1-formal-verification` | Fixed property/model scope; design, supplied-result analysis or authorized existing-tool execution |
 | **Verification only** | `/2-verify-work` | Check scoped outcomes, tests and completion claims without a full review |
 | **Visual change overview** | `/1-visual-recap` | Interactive explanation of a substantial change, not a correctness verdict |
+| **project PR walkthrough** | `/1-pr-walkthrough` | Local walkthrough with live UI components, non-UI before/after examples and useful engineering diagrams |
 | **Hardening** (soft) | `/2-security-and-hardening` | Prevent or remediate while building — not an audit report |
 | Harsh **maintainability-only** | `/2-thermo-nuclear-code-quality-review` | Thermo-nuclear / code-judo / spaghetti / 1k-line files (cousin of `/1-code-review`) |
 
@@ -53,8 +57,10 @@ metadata:
 2. Else ask **F-R1** (one question, recommended first):
 
    **What kind of review?**
+   - **Design document review** (`/1-design-review`) for a pre-code spec/plan or Goldfish review
    - **Multi-axis change review** (`/1-code-review`) — **recommended** for PR, branch, or Ship closer
    - **Comprehensive PR review** (`/1-complete-pr-review`) for one risk-weighted, read-only review across every applicable PR area
+   - **project pre-merge checks** (`/1-pre-merge`) for frozen-candidate readiness evidence and a final QA handoff
    - **Agent PR risk pass** (`/1-agent-pr-review`) for an AI-authored pull request
    - **Failure-behavior review** (`/1-error-handling`) for an explicitly narrow error/retry/recovery review
    - **Go-specific review** (`/1-go-best-practices`) for an explicitly narrow Go-language review
@@ -63,8 +69,10 @@ metadata:
    - **Plan first** (`/1-codebase-review-strategy`) for unfamiliar or whole-repo health, maintainability, or refactor-readiness work
    - **Adversarial claim pass** (`/1-doubt-driven-development`) for one consequential conclusion
    - **Thermo-nuclear maintainability-only** (`/2-thermo-nuclear-code-quality-review`)
+   - **Formal check** (`/1-formal-verification`) for one fixed model/property set
    - **Verification only** (`/2-verify-work`)
    - **Visual change overview** (`/1-visual-recap`)
+   - **project PR walkthrough** (`/1-pr-walkthrough`)
    - **Agent judgment** — select the fitting review mode and proceed without another question
 
 3. Load only the chosen skill. A codebase strategy returns a coverage plan and recommended specialist; execute that
@@ -89,9 +97,3 @@ metadata:
 - **Soft:** `/1-error-handling` (primary: Architecture; preserves this hub's read-only candidate and returns findings)
 - **Soft:** `/1-go-best-practices` (primary: Architecture; preserves this hub's read-only candidate and returns findings)
 - **Cousins:** `/2-verify-work`, `/2-ponytail-review`, `/2-thermo-nuclear-code-quality-review`
-
-## Available specialist additions
-
-- `/1-design-review` — use for its scoped contract; return to this hub.
-- `/1-pr-walkthrough` — use for its scoped contract; return to this hub.
-- `/1-pre-merge` — use for its scoped contract; return to this hub.

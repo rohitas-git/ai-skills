@@ -88,7 +88,9 @@
 <section>
   <h2>Children</h2>
   <ul>
+    <li><strong>pipeline:</strong> <a href="../../skills/1-design-review/SKILL.md">1-design-review</a> <span class="meta">(fresh-context EGM review of a pre-code spec/plan)</span></li>
     <li><strong>pipeline:</strong> 1-complete-pr-review <span class='meta'>(one PR: comprehensive risk-weighted review, read-only)</span></li>
+    <li><strong>pipeline:</strong> <a href="../../skills/1-pre-merge/SKILL.md">1-pre-merge</a> <span class='meta'>(frozen-candidate readiness gates and final QA handoff; no merge)</span></li>
     <li><strong>leaf:</strong> 1-agent-pr-review <span class='meta'>(risk-focused pass for AI-authored pull requests)</span></li>
     <li><strong>leaf:</strong> <a href="../../skills/1-clean-tautological-tests/SKILL.md">1-clean-tautological-tests</a> <span class='meta'>(audit and rewrite tautological, zero-signal tests; mutation-checked)</span></li>
     <li><strong>soft:</strong> 1-receive-review <span class='meta'>(incoming feedback)</span></li>
@@ -97,17 +99,22 @@
 <li><strong>soft:</strong> 2-security-and-hardening, <a href="../../skills/2-software-architect/SKILL.md">2-software-architect</a> <span class='meta'>(bounded read-only system review; Architecture domain entry, catalog depth under 1-code-review)</span></li>
 <li><strong>cousin:</strong> 2-verify-work, <a href="../../skills/2-ponytail-review/SKILL.md">2-ponytail-review</a> <span class='meta'>(read-only removable-complexity pass on one pinned diff)</span>, 2-thermo-nuclear-code-quality-review</li>
 <li><strong>satellite:</strong> <a href="../../skills/1-visual-recap/SKILL.md">1-visual-recap</a> <span class='meta'>(one private draft/create/update orientation artifact; no review verdict or implicit publication)</span></li>
+<li><strong>satellite:</strong> <a href="../../skills/1-pr-walkthrough/SKILL.md">1-pr-walkthrough</a> <span class='meta'>(project UI and non-UI walkthrough with examples and useful engineering diagrams; local-only page)</span></li>
     <li><strong>soft:</strong> <a href="../../skills/1-doubt-driven-development/SKILL.md">1-doubt-driven-development</a> <span class='meta'>(one read-only claim disposition)</span></li>
     <li><strong>soft (failure behavior):</strong> <a href="../../skills/1-error-handling/SKILL.md">1-error-handling</a> <span class='meta'>(narrow read-only review; Architecture-primary)</span></li>
     <li><strong>soft (Go practice):</strong> <a href="../../skills/1-go-best-practices/SKILL.md">1-go-best-practices</a> <span class='meta'>(narrow read-only Go review; Architecture-primary)</span></li>
-  </ul>
+  <li><a href="../../skills/1-formal-verification/SKILL.md">1-formal-verification</a> — Evaluate a fixed formal check with explicit scope.</li>
+</ul>
 </section>
 <section>
   <h2>Pipeline</h2>
   <pre>honor selected mode; F-R1 only if ambiguous
 pin caller, scope, comparison and actual candidate
 sub-hub or skill → read-only report → return to caller
+spec/plan → 1-design-review → fresh-context stages → author/owner resolves findings
+optional EGM: brainstorm → spec → feature review → plan → readiness → approval + authority → implementation → code review → requested drift check
 comprehensive PR review → same-candidate code and differential security + risk-triggered coverage → one ledger
+frozen project candidate → 1-pre-merge → readiness evidence + whole-diff review → report only
 unfamiliar/whole-repo request → 1-codebase-review-strategy coverage plan → separately authorized specialist
 one consequential claim → 1-doubt-driven-development → keep|revise|reject|unknown
 repair, publication and integration require corresponding authority</pre>
@@ -117,9 +124,10 @@ repair, publication and integration require corresponding authority</pre>
   <table>
     <thead><tr><th>ID</th><th>Question</th><th>Recommended</th><th>Branches</th></tr></thead>
     <tbody>
-      <tr><td><code>F-R1</code></td><td>What kind of review?</td><td>Multi-axis change review if PR/ship/diff</td><td>1-code-review · 1-complete-pr-review (comprehensive risk-weighted review of one PR) · 1-agent-pr-review (AI-authored PR) · 1-clean-tautological-tests (test-suite quality) · 1-error-handling (narrow failure behavior) · 1-go-best-practices (narrow Go-language review) · 1-security-auditor · 2-software-architect · 1-codebase-review-strategy (unfamiliar/whole repo) · 1-doubt-driven-development (one consequential claim) · 2-thermo-nuclear-code-quality-review · 2-verify-work (verification only) · 1-visual-recap · Agent judgment</td></tr>
+      <tr><td><code>F-R1</code></td><td>What kind of review?</td><td>Multi-axis change review if PR/ship/diff</td><td>1-design-review (pre-code spec/plan) · 1-code-review · 1-complete-pr-review (comprehensive risk-weighted review of one PR) · 1-pre-merge (frozen project readiness gates) · 1-agent-pr-review (AI-authored PR) · 1-clean-tautological-tests (test-suite quality) · 1-error-handling (narrow failure behavior) · 1-go-best-practices (narrow Go-language review) · 1-security-auditor · 2-software-architect · 1-codebase-review-strategy (unfamiliar/whole repo) · 1-doubt-driven-development (one consequential claim) · 2-thermo-nuclear-code-quality-review · 2-verify-work (verification only) · 1-visual-recap · 1-pr-walkthrough (project UI/non-UI examples and supporting diagrams) · 1-formal-verification (one fixed check) · Agent judgment</td></tr>
 <tr><td><code>F6</code></td><td>(inside 1-code-review) axes applicable?</td><td>Every applicable</td><td>every applicable axis; missing inputs use a labeled baseline · Agent judgment</td></tr>
 <tr><td><code>F-R2</code></td><td>(inside 1-security-auditor) audit scope?</td><td>Full project unless path/PR named</td><td>full · scoped module · differential/PR · Agent judgment</td></tr>
+      <tr><td><code>F-DR1</code></td><td>Which design-review scope?</td><td>Infer feature/spec-only, readiness/plan-only, full/both</td><td>full · feature · readiness · custom · Agent judgment</td></tr>
     </tbody>
   </table>
 </section>
@@ -160,5 +168,5 @@ repair, publication and integration require corresponding authority</pre>
   chart: <a href="../flows-chart.html">flows-chart.html</a> ·
   workflow: <a href="./workflow.json">workflow.json</a>
 </footer>
-<section><h2>Available specialist additions</h2><ul><li><a href="../../skills/1-design-review/SKILL.md">1-design-review</a></li><li><a href="../../skills/1-pr-walkthrough/SKILL.md">1-pr-walkthrough</a></li><li><a href="../../skills/1-pre-merge/SKILL.md">1-pre-merge</a></li></ul></section><section><h2>F-DR1</h2><p>Which design-review scope?</p><p>full · feature · readiness · custom reviewer/rubric scope · Agent judgment</p></section></body>
+</body>
 </html>

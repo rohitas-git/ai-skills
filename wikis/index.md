@@ -445,6 +445,7 @@ _Live skills: **174**._
 | [[1-runtime-feature-map]] | Map user paths, preconditions and verification evidence. | `skills/1-runtime-feature-map` |
 | [[1-i18n-sync]] | Synchronize selected JSON locale keys with context and validation. | `skills/1-i18n-sync` |
 | [[1-migrate-to-shoehorn]] | Migrate scoped TypeScript test fixtures to Shoehorn. | `skills/1-migrate-to-shoehorn` |
+| [[1-statechart-modeling]] | Model states, actions, guards and invariants clearly. | `skills/1-statechart-modeling` |
 | [[1-change-impact]] | Trace affected consumers, compatibility, and verification obligations. | `skills/1-change-impact` |
 | [[1-visual-explainer]] | Create one figure-led HTML explanation of a concept, system, or supplied comparison. | `skills/1-visual-explainer` |
 | [[1-design-rationale]] | Explain recorded design decisions and their trade-offs. | `skills/1-design-rationale` |
@@ -453,6 +454,7 @@ _Live skills: **174**._
 | [[1-pr-walkthrough]] | Walk through a project PR with real UI components, non-UI before/after examples and useful engineering diagrams; local-only page. | `skills/1-pr-walkthrough` |
 | [[1-pre-merge]] | Run frozen-candidate project readiness gates and return a final QA handoff without merging. | `skills/1-pre-merge` |
 | [[1-dev-test]] | Run the project's risk-matched development testing loop before final pre-merge QA. | `skills/1-dev-test` |
+| [[1-formal-verification]] | Evaluate a fixed formal check with explicit scope. | `skills/1-formal-verification` |
 | [[1-pr-splitter]] | Split a source PR into smaller review units with extraction, verification, release-note, and drift tracking. | `skills/1-pr-splitter` |
 | [[1-prompt-optimizer]] | Rewrite one prompt without executing it or inventing requirements. | `skills/1-prompt-optimizer` |
 | [[1-llm-cost-design]] | Design one LLM spending policy with quality and budget controls. | `skills/1-llm-cost-design` |

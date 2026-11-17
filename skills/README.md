@@ -179,3 +179,5 @@ Structured mental models. The core is from `tjboudreaux/cc-thinking-skills` (MIT
 - [1-change-impact](./1-change-impact/) — Trace affected consumers, compatibility, and verification obligations.
 - [1-design-rationale](./1-design-rationale/) — Explain recorded design decisions and their trade-offs.
 - [1-runtime-feature-map](./1-runtime-feature-map/) — Map user paths, preconditions and verification evidence.
+- [1-statechart-modeling](./1-statechart-modeling/) — Model states, actions, guards and invariants clearly.
+- [1-formal-verification](./1-formal-verification/) — Evaluate a fixed formal check with explicit scope.

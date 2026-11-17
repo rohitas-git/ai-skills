@@ -5,7 +5,7 @@
     "hubs/*/workflow.json"
   ],
   "schema_version": 1,
-  "skill_count": 306,
+  "skill_count": 308,
   "skills": [
     {
       "cousins": [],
@@ -4402,6 +4402,7 @@
         }
       ],
       "next": [
+        "1-statechart-modeling",
         "1-change-impact",
         "0-grilling",
         "1-api-and-interface-design",
@@ -4933,6 +4934,44 @@
       ],
       "when": [
         "build, query, or audit a grounded in-repository concept wiki"
+      ]
+    },
+    {
+      "cousins": [
+        "1-formal-verification",
+        "1-codebase-design",
+        "1-visual-explainer"
+      ],
+      "hub": "0-improve-codebase-architecture",
+      "memberships": [
+        {
+          "hub": "0-improve-codebase-architecture",
+          "role": "leaf"
+        }
+      ],
+      "next": [
+        "0-improve-codebase-architecture"
+      ],
+      "not_when": [
+        "execute a formal checker",
+        "claim implementation correctness",
+        "edit product code"
+      ],
+      "prev": [
+        "0-improve-codebase-architecture"
+      ],
+      "requires_setup": false,
+      "role": "leaf",
+      "skill": "1-statechart-modeling",
+      "source": "catalog",
+      "triggers": [
+        "model this state machine",
+        "statechart",
+        "draw this protocol",
+        "state transition model"
+      ],
+      "when": [
+        "model one bounded stateful behavior and explain its transitions and invariants"
       ]
     },
     {
@@ -8383,6 +8422,7 @@
         }
       ],
       "next": [
+        "1-formal-verification",
         "1-design-review",
         "1-code-review",
         "1-complete-pr-review",
@@ -8686,6 +8726,45 @@
       "when": [
         "one consequential claim or decision needs an evidence-bounded adversarial pass",
         "challenge a confident conclusion before relying on it"
+      ]
+    },
+    {
+      "cousins": [
+        "1-statechart-modeling",
+        "1-agent-evaluation",
+        "2-verify-work"
+      ],
+      "hub": "0-review",
+      "memberships": [
+        {
+          "hub": "0-review",
+          "role": "leaf"
+        }
+      ],
+      "next": [
+        "0-review"
+      ],
+      "not_when": [
+        "author a state model",
+        "fix product code",
+        "install a verifier",
+        "certify the whole system"
+      ],
+      "prev": [
+        "0-review"
+      ],
+      "requires_setup": false,
+      "role": "leaf",
+      "skill": "1-formal-verification",
+      "source": "catalog",
+      "triggers": [
+        "formal verification",
+        "check this invariant",
+        "model check this race",
+        "verify proof coverage"
+      ],
+      "when": [
+        "plan or evaluate one formal verification target with explicit assumptions and coverage"
       ]
     },
     {

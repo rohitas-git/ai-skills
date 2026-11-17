@@ -111,7 +111,9 @@
     },
     {
       "link_type": "leaf",
-      "skills": [],
+      "skills": [
+        "1-formal-verification"
+      ],
       "primary": true,
       "note": "Evaluate a fixed formal check with explicit scope. Preserve caller, candidate, mode and authority; return without automatic follow-ons."
     }
@@ -149,6 +151,7 @@
         "2-verify-work",
         "1-visual-recap",
         "1-pr-walkthrough (project UI/non-UI examples and supporting diagrams in the panel)",
+        "1-formal-verification (one fixed formal check)",
         "Agent judgment"
       ]
     },

@@ -95,7 +95,9 @@
     },
     {
       "link_type": "leaf",
-      "skills": [],
+      "skills": [
+        "1-statechart-modeling"
+      ],
       "primary": true,
       "note": "Model states, actions, guards and invariants clearly. Preserve caller, candidate, mode and authority; return without automatic follow-ons."
     }

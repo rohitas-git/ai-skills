@@ -10,7 +10,7 @@ metadata:
     role: hub
     when: ['route API, module, system, failure, retirement, or architecture-improvement work', run a bounded architecture deepening scan or candidate report]
     not_when: [debug hard bug → 0-diagnosing-bugs, fixed PR/diff review → 1-code-review, implement a settled design → 0-implement]
-    next: [1-change-impact, 0-grilling, 1-api-and-interface-design, 1-clean-craftsmanship, 1-codebase-design, 1-coding-standards, 1-deprecation-and-migration, 1-error-handling, 1-go-best-practices, 1-graphify, 1-living-documentation-governor, 1-project-wiki-manager, 2-software-architect]
+    next: [1-statechart-modeling, 1-change-impact, 0-grilling, 1-api-and-interface-design, 1-clean-craftsmanship, 1-codebase-design, 1-coding-standards, 1-deprecation-and-migration, 1-error-handling, 1-go-best-practices, 1-graphify, 1-living-documentation-governor, 1-project-wiki-manager, 2-software-architect]
     cousins: [0-diagnosing-bugs, 0-implement, 0-review]
     triggers: [improve architecture, architecture scan, architecture report, API architecture, module design, system design, gRPC contract design]
     requires_setup: false
@@ -26,6 +26,8 @@ scan below. Selected children return their contract, decision, or findings to th
 
 | Need | Route |
 |---|---|
+| Map one change's downstream impact and obligations | `/1-change-impact` |
+| Model stateful behavior, guards and invariants | `/1-statechart-modeling` |
 | Discover bounded deepening candidates | **this hub's scan** |
 | Public API/GraphQL/gRPC contract | `/1-api-and-interface-design` |
 | One internal module interface or seam | `/1-codebase-design` |
@@ -73,7 +75,3 @@ mode, scope, candidate, workspace, and authority remain unchanged.
 Return scope/worktree identity, evidence sources, ranked candidates or routed child result,
 assumptions, excluded areas, conflicts with existing decisions, and the next user-owned decision.
 Label scans partial whenever evidence does not cover the whole requested repository.
-
-## Available specialist additions
-
-- `/1-change-impact` — use for its scoped contract; return to this hub.

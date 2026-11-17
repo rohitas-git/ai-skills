@@ -1,0 +1,6 @@
+interface:
+  display_name: "Formal Verification"
+  short_description: "Evaluate a fixed formal check with explicit scope."
+  default_prompt: "Use $1-formal-verification for this scoped request. Evaluate a fixed formal check with explicit scope."
+policy:
+  allow_implicit_invocation: false
