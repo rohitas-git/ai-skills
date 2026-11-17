@@ -105,5 +105,6 @@ databases, queues, tenants, dashboards, credentials, or deploy targets.
 
 ## References
 
+- AI-enabled release: [quality, exposure and recovery evidence](./references/ai-release-evidence.md)
 - Operative: [release and rollout guide](./references/full-guide.md), [versioning and changelog](./references/versioning-changelog.md)
 - Provenance: [vendor source](./references/vendor-source.md)
