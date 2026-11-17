@@ -450,6 +450,7 @@ _Live skills: **174**._
 | [[1-pre-merge]] | Run frozen-candidate project readiness gates and return a final QA handoff without merging. | `skills/1-pre-merge` |
 | [[1-dev-test]] | Run the project's risk-matched development testing loop before final pre-merge QA. | `skills/1-dev-test` |
 | [[1-pr-splitter]] | Split a source PR into smaller review units with extraction, verification, release-note, and drift tracking. | `skills/1-pr-splitter` |
+| [[1-prompt-optimizer]] | Rewrite one prompt without executing it or inventing requirements. | `skills/1-prompt-optimizer` |
 | [[1-llm-cost-design]] | Design one LLM spending policy with quality and budget controls. | `skills/1-llm-cost-design` |
 | [[1-ai-suitability]] | Assess AI fit, non-AI alternatives and the level of automation. | `skills/1-ai-suitability` |
 | [[1-context-retrieval-design]] | Design relevant, permission-aware context, retrieval and memory. | `skills/1-context-retrieval-design` |

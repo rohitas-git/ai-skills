@@ -27,6 +27,7 @@
         "1-human-in-the-loop",
         "1-mcp-server-building",
         "1-agent-workflow-observer",
+        "1-prompt-optimizer",
         "1-llm-cost-design",
         "1-ai-suitability",
         "1-context-retrieval-design"
@@ -72,6 +73,7 @@
         "1-observability-and-instrumentation",
         "2-prompt-injection-defense",
         "2-skill-supply-chain-audit",
+        "1-prompt-optimizer",
         "1-llm-cost-design",
         "1-ai-suitability",
         "1-context-retrieval-design",

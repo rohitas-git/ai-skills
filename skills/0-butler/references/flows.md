@@ -443,12 +443,12 @@ compliance review (`/2-brand-review`), read-only context extraction (`/2-brand-c
 | | |
 |--|--|
 | **★ Hub** | `/0-agent-engineering` |
-| **Children** | **leaf:** `1-agent-evaluation`, `1-tool-schema-design`, `1-human-in-the-loop`, `1-mcp-server-building`, `1-agent-workflow-observer` · **soft (shared):** `1-parallel-agents`, `1-observability-and-instrumentation` (bounded operational metadata; sensitive content omitted by default; no hosted operations) · **security cross-links:** `2-prompt-injection-defense`, `2-skill-supply-chain-audit` · **additions:** `1-asd-ste100`, `1-llm-cost-design`, `1-ai-suitability`, `1-context-retrieval-design` |
+| **Children** | **leaf:** `1-agent-evaluation`, `1-tool-schema-design`, `1-human-in-the-loop`, `1-mcp-server-building`, `1-agent-workflow-observer` · **soft (shared):** `1-parallel-agents`, `1-observability-and-instrumentation` (bounded operational metadata; sensitive content omitted by default; no hosted operations) · **security cross-links:** `2-prompt-injection-defense`, `2-skill-supply-chain-audit` · **additions:** `1-asd-ste100`, `1-prompt-optimizer`, `1-llm-cost-design`, `1-ai-suitability`, `1-context-retrieval-design` |
 | **Route** | one clear concern → one leaf → candidate/evidence/effects/limits returned to the caller; workflow observation uses a fixed completed/paused snapshot and applies nothing; no mandatory lifecycle |
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F-AE1** | Which one AI application or agent-system outcome is required? | infer the narrowest specialist; ask only when two outcomes materially differ | /1-agent-evaluation · /1-asd-ste100 · /1-tool-schema-design · /1-human-in-the-loop · /1-mcp-server-building · /1-agent-workflow-observer · /1-parallel-agents · /1-observability-and-instrumentation · /2-prompt-injection-defense · /2-skill-supply-chain-audit · /1-llm-cost-design · /1-ai-suitability · /1-context-retrieval-design · Agent judgment |
+| **F-AE1** | Which one AI application or agent-system outcome is required? | infer the narrowest specialist; ask only when two outcomes materially differ | /1-agent-evaluation · /1-asd-ste100 · /1-tool-schema-design · /1-human-in-the-loop · /1-mcp-server-building · /1-agent-workflow-observer · /1-parallel-agents · /1-observability-and-instrumentation · /2-prompt-injection-defense · /2-skill-supply-chain-audit · /1-prompt-optimizer · /1-llm-cost-design · /1-ai-suitability · /1-context-retrieval-design · Agent judgment |
 
 Tool-schema design receives design/read-only-review/authorized-edit mode, provider
 dialect, neighboring tools, candidate and allowed effects. It returns to the hub,

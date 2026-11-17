@@ -13,21 +13,26 @@ metadata:
     not_when: [ordinary application implementation → 0-implement, broad security audit → 1-security-auditor, active production incident → 1-incident-response]
     triggers: [AI engineering, AI application design, agent engineering, build an agent system, agent evaluation, model-facing tool, MCP server, agent oversight, agent telemetry, agent workflow automation candidate]
     prev: [0-butler]
-    next: [1-ai-suitability, 1-context-retrieval-design, 1-llm-cost-design, 0-butler, 1-asd-ste100, 1-agent-evaluation, 1-tool-schema-design, 1-human-in-the-loop, 1-mcp-server-building, 1-agent-workflow-observer, 1-parallel-agents, 1-observability-and-instrumentation, 2-prompt-injection-defense, 2-skill-supply-chain-audit]
+    next: [1-ai-suitability, 1-context-retrieval-design, 1-prompt-optimizer, 1-llm-cost-design, 0-butler, 1-asd-ste100, 1-agent-evaluation, 1-tool-schema-design, 1-human-in-the-loop, 1-mcp-server-building, 1-agent-workflow-observer, 1-parallel-agents, 1-observability-and-instrumentation, 2-prompt-injection-defense, 2-skill-supply-chain-audit]
     requires_setup: false
 ---
 
 
 # Agent Engineering
 
-**Atomic job:** select exactly one narrow agent-system specialist, pass a bounded candidate and
+**Atomic job:** select exactly one narrow AI application or agent-system specialist, pass a bounded candidate and
 authority contract, and return that leaf's result to the actual caller. The hub does no task work.
 
 ## Direct dispatch
 
 | Requested outcome | Route |
 |---|---|
-| Define or run one reproducible agent evaluation | `/1-agent-evaluation` |
+| Assess AI versus non-AI fit and the level of assistance | `/1-ai-suitability` |
+| Design what information reaches the model, including RAG and memory | `/1-context-retrieval-design` |
+| Rewrite one supplied prompt without executing its task | `/1-prompt-optimizer` |
+| Design one LLM spending policy or cost proposal | `/1-llm-cost-design` |
+| Define or run one reproducible AI feature or agent evaluation | `/1-agent-evaluation` |
+| Rewrite supplied agent-facing English without changing meaning | `/1-asd-ste100` |
 | Design/review one model-facing tool contract | `/1-tool-schema-design` |
 | Design approval, escalation, or human oversight | `/1-human-in-the-loop` |
 | Build/review one MCP server surface | `/1-mcp-server-building` |
@@ -67,10 +72,3 @@ human approval systems, deployments, or other shared services.
 Return the selected leaf's candidate, evidence, effects, limitations, and remaining choices to
 `/0-butler` or the actual caller. Product implementation routes to `/0-implement`; broad security
 review to `/1-security-auditor`; active incident handling to `/1-incident-response`.
-
-## Available specialist additions
-
-- `/1-ai-suitability` — use for its scoped contract; return to this hub.
-- `/1-asd-ste100` — use for its scoped contract; return to this hub.
-- `/1-context-retrieval-design` — use for its scoped contract; return to this hub.
-- `/1-llm-cost-design` — use for its scoped contract; return to this hub.

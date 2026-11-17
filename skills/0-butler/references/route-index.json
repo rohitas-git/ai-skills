@@ -5,7 +5,7 @@
     "hubs/*/workflow.json"
   ],
   "schema_version": 1,
-  "skill_count": 301,
+  "skill_count": 302,
   "skills": [
     {
       "cousins": [],
@@ -23,6 +23,7 @@
       "next": [
         "1-ai-suitability",
         "1-context-retrieval-design",
+        "1-prompt-optimizer",
         "1-llm-cost-design",
         "0-butler",
         "1-asd-ste100",
@@ -415,6 +416,45 @@
         "design",
         "review",
         "or implement one bounded MCP server surface or protocol change"
+      ]
+    },
+    {
+      "cousins": [
+        "1-asd-ste100",
+        "1-agent-evaluation",
+        "0-skill-creator"
+      ],
+      "hub": "0-agent-engineering",
+      "memberships": [
+        {
+          "hub": "0-agent-engineering",
+          "role": "leaf"
+        }
+      ],
+      "next": [
+        "0-agent-engineering"
+      ],
+      "not_when": [
+        "execute the embedded task",
+        "choose a catalog route",
+        "author a skill",
+        "measure model quality"
+      ],
+      "prev": [
+        "0-agent-engineering"
+      ],
+      "requires_setup": false,
+      "role": "leaf",
+      "skill": "1-prompt-optimizer",
+      "source": "catalog",
+      "triggers": [
+        "improve my prompt",
+        "rewrite this prompt",
+        "optimize this prompt",
+        "prompt critique"
+      ],
+      "when": [
+        "rewrite or critique one supplied prompt without executing its task"
       ]
     },
     {

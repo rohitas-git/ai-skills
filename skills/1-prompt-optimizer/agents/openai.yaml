@@ -1,0 +1,6 @@
+interface:
+  display_name: "Prompt Optimizer"
+  short_description: "Rewrite a prompt while preserving intent and authority"
+  default_prompt: "Use $1-prompt-optimizer for this scoped request. Rewrite one prompt without executing it or inventing requirements."
+policy:
+  allow_implicit_invocation: false

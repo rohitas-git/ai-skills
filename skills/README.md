@@ -171,6 +171,7 @@ Structured mental models. The core is from `tjboudreaux/cc-thinking-skills` (MIT
 - [1-manual-procedure-wizard](./1-manual-procedure-wizard/) — Author a human-run manual procedure wizard without executing it
 - [1-migrate-to-shoehorn](./1-migrate-to-shoehorn/) — Migrate scoped TypeScript test fixtures to Shoehorn
 - [1-i18n-sync](./1-i18n-sync/) — Synchronize selected JSON locale keys with context and validation.
+- [1-prompt-optimizer](./1-prompt-optimizer/) — Rewrite one prompt without executing it or inventing requirements.
 - [1-llm-cost-design](./1-llm-cost-design/) — Design one LLM spending policy with quality and budget controls.
 - [1-change-impact](./1-change-impact/) — Trace affected consumers, compatibility, and verification obligations.
 - [1-design-rationale](./1-design-rationale/) — Explain recorded design decisions and their trade-offs.

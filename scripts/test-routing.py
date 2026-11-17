@@ -491,6 +491,7 @@ class AgentEngineeringHubRouteTests(WorkspaceRouteTests):
         '1-mcp-server-building',
         '1-observability-and-instrumentation',
         '1-parallel-agents',
+        '1-prompt-optimizer',
         '1-tool-schema-design',
         '2-prompt-injection-defense',
         '2-skill-supply-chain-audit',
@@ -521,7 +522,7 @@ class AgentEngineeringHubRouteTests(WorkspaceRouteTests):
         flow = " ".join((ROOT / "skills/0-butler/references/flows.md").read_text().split())
         workflow = json.loads((ROOT / "hubs/0-agent-engineering/workflow.json").read_text())
         self.assertLessEqual(len((ROOT / "skills/0-agent-engineering/SKILL.md").read_text().splitlines()), 120)
-        self.assertIn("select exactly one narrow agent-system specialist", main)
+        self.assertIn("select exactly one narrow AI application or agent-system specialist", main)
         self.assertIn("One route is not a mandatory lifecycle", main)
         self.assertEqual(workflow["pipeline"][0], "route one clear concern directly")
         self.assertIn("no mandatory lifecycle", flow)
