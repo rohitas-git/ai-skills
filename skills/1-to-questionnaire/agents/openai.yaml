@@ -1,0 +1,6 @@
+interface:
+  display_name: To Questionnaire
+  short_description: Discovery questionnaire for an external knowledge holder
+  default_prompt: Use $1-to-questionnaire for the requested scoped task.
+policy:
+  allow_implicit_invocation: false

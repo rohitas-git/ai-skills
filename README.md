@@ -775,6 +775,7 @@ Codex may shorten skill descriptions when the full catalog is installed because 
 | **1-scaffold-exercises** | Scaffold course exercise directories from an agreed plan. |
 | **1-migrate-to-shoehorn** | Migrate scoped TypeScript test fixtures to Shoehorn. |
 | **1-manual-procedure-wizard** | Author a human-run manual procedure wizard without executing it. |
+| **1-to-questionnaire** | Discovery questionnaire for an external knowledge holder. |
 | **1-asd-ste100** | Rewrite agent-facing English with STE-inspired clarity and preserve meaning. |
 | **1-design-review** | Fresh-context Elephant-Goldfish review of a software design/spec/plan before coding; [workflow and concepts](skills/1-design-review/references/workflow-and-connections.md). |
 | **1-pre-merge** | Final project frozen-candidate readiness gates and QA handoff; never merges. |

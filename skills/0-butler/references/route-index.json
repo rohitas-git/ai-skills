@@ -5,7 +5,7 @@
     "hubs/*/workflow.json"
   ],
   "schema_version": 1,
-  "skill_count": 304,
+  "skill_count": 305,
   "skills": [
     {
       "cousins": [],
@@ -2660,6 +2660,7 @@
         }
       ],
       "next": [
+        "1-to-questionnaire",
         "1-grill-me",
         "1-grill-with-docs",
         "1-brainstorm",
@@ -3055,6 +3056,38 @@
       ],
       "when": [
         "explicitly build the strongest faithful opposing case for one fixed position"
+      ]
+    },
+    {
+      "cousins": [],
+      "hub": "0-grilling",
+      "memberships": [
+        {
+          "hub": "0-grilling",
+          "role": "leaf"
+        }
+      ],
+      "next": [
+        "0-grilling"
+      ],
+      "not_when": [
+        "interview the current user → 0-grilling",
+        "research study → 1-user-research"
+      ],
+      "prev": [
+        "0-grilling"
+      ],
+      "requires_setup": false,
+      "role": "leaf",
+      "skill": "1-to-questionnaire",
+      "source": "catalog",
+      "triggers": [
+        "discovery questionnaire",
+        "questions for a stakeholder",
+        "turn this into a questionnaire"
+      ],
+      "when": [
+        "draft a questionnaire for an external knowledge holder"
       ]
     },
     {

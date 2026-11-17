@@ -69,6 +69,14 @@
       ],
       "note": "Steel-man an opposing case; apply an explicit evidence-before-agreement posture; or critique one fixed candidate. These response modes return to the caller and do not start research or action.",
       "primary": true
+    },
+    {
+      "link_type": "leaf",
+      "skills": [
+        "1-to-questionnaire"
+      ],
+      "primary": true,
+      "note": "One explicitly selected scoped operation; return evidence to caller without automatic follow-ons"
     }
   ],
   "pipeline": [
@@ -92,7 +100,7 @@
     {
       "id": "F2",
       "question": "Do repository facts materially govern the decision?",
-      "recommended": "Yes \u2192 grill-with-docs; otherwise grill-me",
+      "recommended": "Yes → grill-with-docs; otherwise grill-me",
       "branches": [
         "1-grill-with-docs",
         "1-grill-me",

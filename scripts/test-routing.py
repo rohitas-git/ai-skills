@@ -4069,7 +4069,8 @@ class GrillingHubRouteTests(WorkspaceRouteTests):
 
     def test_parent_child_and_downstream_surfaces_are_complete(self):
         children = [skill for group in self.workflow["children"] for skill in group["skills"]]
-        self.assertEqual(len(children), 11)
+        self.assertEqual(len(children), 12)
+        self.assertIn("1-to-questionnaire", children)
         self.assertEqual(len(children), len(set(children)))
         self.assertTrue(set(children).issubset(set(self.catalog["next"])))
         self.assertTrue({"1-to-spec", "1-write-plan", "0-implement"}.issubset(self.catalog["next"]))

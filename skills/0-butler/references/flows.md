@@ -86,16 +86,16 @@ flows.md remains SSOT for pipelines/forks; HTML/JSON are projections. **new-hub*
 | | |
 |--|--|
 | **★ Hub** | `/0-grilling` |
-| **Children** | **wrapper:** `1-grill-me`, `1-grill-with-docs` · **on-ramp:** `1-brainstorm` · **pull-in:** `1-domain-modeling` · **leaf:** `1-honest-advisor` · **soft:** `1-thinking-steel-manning`, `1-anti-sycophancy`, `1-critique` · **detour:** `1-handoff` ⇄ `1-prototype` · **satellite:** `1-visual-plan` |
+| **Children** | **wrapper:** `1-grill-me`, `1-grill-with-docs` · **on-ramp:** `1-brainstorm` · **pull-in:** `1-domain-modeling` · **leaf:** `1-honest-advisor` · **soft:** `1-thinking-steel-manning`, `1-anti-sycophancy`, `1-critique` · **detour:** `1-handoff` ⇄ `1-prototype` · **satellite:** `1-visual-plan` · **additions:** `1-to-questionnaire` |
 | **Pipeline** | pin caller + immutable candidate + evidence/authority + optional worktree → direct smallest child or material-only F-B1/F2 → one decision-changing neutral question at a time → optional separately accepted prototype/visual-plan detour returns evidence → one decision record to actual caller; no automatic downstream action |
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F-B1** | Hard brainstorm design-gate or grill interview? | grill if product requirements; brainstorm if greenfield feature design before code | `1-brainstorm` · `1-grill-with-docs` / `1-grill-me` · **Agent judgment** |
-| **F2** | Do repository facts materially govern the decision? | Yes → 1-grill-with-docs | `1-grill-with-docs` · `1-grill-me` · **Agent judgment** |
-| **F3** | Need a runnable prototype answer? | No unless a runnable experiment resolves a design question | stay in grill · `1-prototype` and return · **Agent judgment** |
-| **F-P1** | What question should the prototype answer? | logic/state for behavior; UI alternatives for visual layout | `1-prototype` logic/state · `1-prototype` local UI alternatives · **Agent judgment** |
-| **F-B2** | Was a visual review artifact requested? | Keep conversational/text unless explicit | `1-visual-plan` · keep conversational/text result · **Agent judgment** |
+| **F-B1** | Hard brainstorm design-gate or grill interview? | grill if product requirements; brainstorm if greenfield feature design before code | /1-brainstorm · /1-grill-with-docs / /1-grill-me · Agent judgment |
+| **F2** | Do repository facts materially govern the decision? | Yes → 1-grill-with-docs | /1-grill-with-docs · /1-grill-me · Agent judgment |
+| **F3** | Need a runnable prototype answer? | No unless a runnable experiment resolves a design question | stay in grill · /1-prototype and return · Agent judgment |
+| **F-P1** | What question should the prototype answer? | logic/state for behavior; UI alternatives for visual layout | /1-prototype logic/state · /1-prototype local UI alternatives · Agent judgment |
+| **F-B2** | Was a visual review artifact requested? | Keep conversational/text unless explicit | /1-visual-plan · keep conversational/text result · Agent judgment |
 
 **Return:** accepted/delegated decisions and separately requested prototype/visual evidence return to the actual design caller. Specification, planning, handoff, or implementation requires a separate request. Approval is not execution authority.
 
