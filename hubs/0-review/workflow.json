@@ -47,6 +47,13 @@
       "note": "Risk-focused preflight for AI-authored pull requests; normal multi-axis review remains 1-code-review"
     },
     {
+      "link_type": "leaf",
+      "skills": [
+        "1-clean-tautological-tests"
+      ],
+      "note": "Audit tautological, echo, mock-only and zero-signal unit tests; rewrite to behavioral tests behind a mutation check"
+    },
+    {
       "link_type": "soft",
       "skills": [
         "2-security-and-hardening",

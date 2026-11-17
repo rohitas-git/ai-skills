@@ -212,6 +212,7 @@
 |------|-------------|---------|
 | [[1-codebase-review-strategy]] | Produce one risk-based coverage and evidence plan for an unfamiliar codebase. | `skills/1-codebase-review-strategy` |
 | [[1-agent-pr-review]] | Risk-focused review pass for AI-authored pull requests: CI protection, duplicate utilities, critical paths, and agent workflows. | `skills/1-agent-pr-review` |
+| [[1-clean-tautological-tests]] | Audit and rewrite tautological, echo, mock-only and zero-signal unit tests into behavioral tests behind a mutation check. | `skills/1-clean-tautological-tests` |
 | [[1-complete-pr-review]] | Comprehensive, evidence-backed, risk-weighted review of one fixed PR; read-only and scope-bounded. | `skills/1-complete-pr-review` |
 | [[1-receive-review]] | Process incoming code review feedback with technical rigor (verify, evaluate, implement one-by-one). | `skills/1-receive-review` |
 | [[0-review]] | Domain hub for verification modes — multi-axis change 0-review, security audit, architecture 0-review, a… | `skills/0-review` |

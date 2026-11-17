@@ -90,6 +90,7 @@
   <ul>
     <li><strong>pipeline:</strong> 1-complete-pr-review <span class='meta'>(one PR: comprehensive risk-weighted review, read-only)</span></li>
     <li><strong>leaf:</strong> 1-agent-pr-review <span class='meta'>(risk-focused pass for AI-authored pull requests)</span></li>
+    <li><strong>leaf:</strong> <a href="../../skills/1-clean-tautological-tests/SKILL.md">1-clean-tautological-tests</a> <span class='meta'>(audit and rewrite tautological, zero-signal tests; mutation-checked)</span></li>
     <li><strong>soft:</strong> 1-receive-review <span class='meta'>(incoming feedback)</span></li>
     <li><strong>sub-hub:</strong> 1-code-review, 1-security-auditor</li>
 <li><strong>on-ramp:</strong> <a href="../../skills/1-codebase-review-strategy/SKILL.md">1-codebase-review-strategy</a> <span class='meta'>(one read-only coverage plan)</span></li>
@@ -116,7 +117,7 @@ repair, publication and integration require corresponding authority</pre>
   <table>
     <thead><tr><th>ID</th><th>Question</th><th>Recommended</th><th>Branches</th></tr></thead>
     <tbody>
-      <tr><td><code>F-R1</code></td><td>What kind of review?</td><td>Multi-axis change review if PR/ship/diff</td><td>1-code-review · 1-complete-pr-review (comprehensive risk-weighted review of one PR) · 1-agent-pr-review (AI-authored PR) · 1-error-handling (narrow failure behavior) · 1-go-best-practices (narrow Go-language review) · 1-security-auditor · 2-software-architect · 1-codebase-review-strategy (unfamiliar/whole repo) · 1-doubt-driven-development (one consequential claim) · 2-thermo-nuclear-code-quality-review · 2-verify-work (verification only) · 1-visual-recap · Agent judgment</td></tr>
+      <tr><td><code>F-R1</code></td><td>What kind of review?</td><td>Multi-axis change review if PR/ship/diff</td><td>1-code-review · 1-complete-pr-review (comprehensive risk-weighted review of one PR) · 1-agent-pr-review (AI-authored PR) · 1-clean-tautological-tests (test-suite quality) · 1-error-handling (narrow failure behavior) · 1-go-best-practices (narrow Go-language review) · 1-security-auditor · 2-software-architect · 1-codebase-review-strategy (unfamiliar/whole repo) · 1-doubt-driven-development (one consequential claim) · 2-thermo-nuclear-code-quality-review · 2-verify-work (verification only) · 1-visual-recap · Agent judgment</td></tr>
 <tr><td><code>F6</code></td><td>(inside 1-code-review) axes applicable?</td><td>Every applicable</td><td>every applicable axis; missing inputs use a labeled baseline · Agent judgment</td></tr>
 <tr><td><code>F-R2</code></td><td>(inside 1-security-auditor) audit scope?</td><td>Full project unless path/PR named</td><td>full · scoped module · differential/PR · Agent judgment</td></tr>
     </tbody>

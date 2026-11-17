@@ -1,0 +1,5 @@
+interface:
+  display_name: "Clean Tautological Tests"
+  short_description: "Audit and rewrite zero-signal tests"
+policy:
+  allow_implicit_invocation: false
