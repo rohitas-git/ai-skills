@@ -1,21 +1,22 @@
 ---
 name: 0-ui-ux
-description: >
-  Route one UI/UX design, research, review, styling, creative, presentation, or explicit visual-tool request to the
-  smallest specialist. The hub performs no design, implementation, browser, file, or catalog work. Hub: /0-ui-ux.
+description: 'Route one UI/UX design, research, review, styling, creative, presentation, or explicit visual-tool request to the smallest specialist. The hub performs no design, implementation, browser, file, or catalog work. Hub: /0-ui-ux.
+
+  '
 disable-model-invocation: true
 metadata:
   catalog:
     hub: 0-ui-ux
     role: hub
-    when: ["route one UI/UX, brand, design-system, styling, creative, research, audit, or visual-tool request"]
-    not_when: ["feature implementation without a UI outcome → 0-implement", "office artifact format → 0-office", "product requirements interview → 0-grilling"]
+    when: ['route one UI/UX, brand, design-system, styling, creative, research, audit, or visual-tool request']
+    not_when: [feature implementation without a UI outcome → 0-implement, office artifact format → 0-office, product requirements interview → 0-grilling]
     prev: [0-butler]
     next: [1-ui-ux-pro-max, 1-brand, 1-design-system, 1-ui-styling, 1-design, 1-banner-design, 1-slides, 1-user-research, 1-customer-experience-audit, 1-frontend-ui-engineering, 1-impeccable, 1-visual-edit]
     cousins: [0-office, 0-grilling, 0-implement]
     triggers: [UI, UX, design system, brand, UI styling, banner, user research, customer experience audit, Impeccable, live visual edit, F-UI1]
     requires_setup: false
 ---
+
 
 # UI/UX
 

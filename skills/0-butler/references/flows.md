@@ -387,7 +387,7 @@ Worktrees isolate repository files, not desktop apps, browser profiles, cloud fi
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F-UI1** | What kind of UI/UX work? | Design intelligence for app/web UI → `/1-ui-ux-pro-max` | design intelligence · customer-experience audit · user research · brand · tokens · presentation-only styling · one logo/icon/social/identity asset · one banner/ad/hero image · one self-contained HTML presentation · production a11y UI · Impeccable tool workflow · live-app visual editing (`1-visual-edit`) · **Agent judgment** |
+| **F-UI1** | What kind of UI/UX work? | Design intelligence for app/web UI → `/1-ui-ux-pro-max` | design intelligence · customer-experience audit · user research · brand · tokens · presentation-only styling · one logo/icon/social/identity asset · one banner/ad/hero image · one self-contained HTML presentation · production a11y UI · Impeccable tool workflow · live-app visual editing · Agent judgment |
 
 **Brand sub-hub F-BR1:** exact brand outcome → guideline authoring/update (`/2-brand-guidelines`), read-only
 compliance review (`/2-brand-review`), read-only context extraction (`/2-brand-context-extract`), or **Agent judgment**.
