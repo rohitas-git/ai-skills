@@ -1,0 +1,6 @@
+interface:
+  display_name: "Visual Explainer"
+  short_description: "Create figure-led HTML explanations of systems and concepts"
+  default_prompt: "Use $1-visual-explainer to create a local, self-contained HTML explanation with clear figures, short captions, source evidence, and useful interaction where needed."
+policy:
+  allow_implicit_invocation: false

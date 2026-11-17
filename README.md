@@ -772,6 +772,7 @@ Codex may shorten skill descriptions when the full catalog is installed because 
 | **1-ai-suitability** | Assess AI fit, non-AI alternatives and the level of automation. |
 | **1-context-retrieval-design** | Design relevant, permission-aware context, retrieval and memory. |
 | **1-change-impact** | Trace affected consumers, compatibility, and verification obligations. |
+| **1-visual-explainer** | Create one figure-led, self-contained HTML explanation of a concept, system, or comparison. |
 | **1-scaffold-exercises** | Scaffold course exercise directories from an agreed plan. |
 | **1-migrate-to-shoehorn** | Migrate scoped TypeScript test fixtures to Shoehorn. |
 | **1-manual-procedure-wizard** | Author a human-run manual procedure wizard without executing it. |

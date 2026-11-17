@@ -93,7 +93,9 @@
     },
     {
       "link_type": "leaf",
-      "skills": [],
+      "skills": [
+        "1-visual-explainer"
+      ],
       "primary": true,
       "note": "One local figure-led HTML explanation; dedicated diagram, PR recap, plan, and slide owners remain separate"
     },

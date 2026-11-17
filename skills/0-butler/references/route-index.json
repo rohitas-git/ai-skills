@@ -5,7 +5,7 @@
     "hubs/*/workflow.json"
   ],
   "schema_version": 1,
-  "skill_count": 305,
+  "skill_count": 306,
   "skills": [
     {
       "cousins": [],
@@ -4950,6 +4950,7 @@
       ],
       "next": [
         "1-design-rationale",
+        "1-visual-explainer",
         "1-scaffold-exercises",
         "0-butler",
         "1-learning-explainer",
@@ -5652,6 +5653,49 @@
       ],
       "when": [
         "the user wants interactive practice, a quiz, or guided problem solving"
+      ]
+    },
+    {
+      "cousins": [
+        "1-diagram-maker",
+        "1-visual-recap",
+        "1-visual-plan",
+        "1-slides",
+        "1-code-explainer"
+      ],
+      "hub": "0-learn",
+      "memberships": [
+        {
+          "hub": "0-learn",
+          "role": "leaf"
+        }
+      ],
+      "next": [
+        "0-learn"
+      ],
+      "not_when": [
+        "single diagram → 1-diagram-maker",
+        "PR orientation → 1-visual-recap",
+        "implementation plan → 1-visual-plan",
+        "HTML presentation → 1-slides",
+        "product UI → 0-ui-ux"
+      ],
+      "prev": [
+        "0-learn"
+      ],
+      "requires_setup": false,
+      "role": "leaf",
+      "skill": "1-visual-explainer",
+      "source": "catalog",
+      "triggers": [
+        "visual explainer",
+        "figure-led HTML explanation",
+        "explain this system visually",
+        "visual comparison page"
+      ],
+      "when": [
+        "create a local figure-led HTML technical explainer",
+        "explain a system or comparison visually"
       ]
     },
     {
