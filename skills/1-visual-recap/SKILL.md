@@ -11,7 +11,7 @@ metadata:
     hub: 0-review
     role: satellite
     when: ["one non-trivial exact change candidate needs a visual reviewer-orientation artifact"]
-    not_when: ["small or obvious diff → review the diff directly", "plain PR description → 1-pr-summarizer", "correctness/security review → 1-code-review or 1-complete-pr-review", "future implementation plan → 1-visual-plan", "one standalone diagram → 1-diagram-maker"]
+    not_when: ["small or obvious diff → review the diff directly", "plain PR description → 1-pr-summarizer", "correctness/security review → 1-code-review or 1-complete-pr-review", "future implementation plan → 1-visual-plan", "one standalone diagram → 1-diagram-maker", "live project components marked in the browser panel → 1-pr-walkthrough"]
     prev: [0-review]
     next: [0-review, 1-code-review, 1-complete-pr-review, 1-pr-summarizer, 1-visual-plan, 1-diagram-maker, 1-github-cli]
     cousins: [1-code-review, 1-complete-pr-review, 1-pr-summarizer, 1-visual-plan, 1-diagram-maker]

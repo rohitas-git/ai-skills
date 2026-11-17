@@ -8934,7 +8934,8 @@
         "plain PR description → 1-pr-summarizer",
         "correctness/security review → 1-code-review or 1-complete-pr-review",
         "future implementation plan → 1-visual-plan",
-        "one standalone diagram → 1-diagram-maker"
+        "one standalone diagram → 1-diagram-maker",
+        "live project components marked in the browser panel → 1-pr-walkthrough"
       ],
       "prev": [
         "0-review"
