@@ -1,22 +1,22 @@
 ---
 name: 1-brand
-description: >
-  Route one brand request to brand-contract authoring, read-only compliance review, or read-only context extraction.
-  The router performs no research, file, asset, token, approval, publication, or implementation work. Hub: /1-brand
-  under /0-ui-ux.
+description: 'Route one brand request to brand-contract authoring, read-only compliance review, or read-only context extraction. The router performs no research, file, asset, token, approval, publication, or implementation work. Hub: /1-brand under /0-ui-ux.
+
+  '
 disable-model-invocation: true
 metadata:
   catalog:
     hub: 1-brand
     role: sub-hub
-    when: ["create or update a brand contract, review one candidate against it, or extract a bounded brand context packet"]
-    not_when: ["visual direction → 1-ui-ux-pro-max", "durable design tokens → 1-design-system", "one creative asset → 1-design or 1-banner-design", "product UI implementation → 1-frontend-ui-engineering"]
+    when: ['create or update a brand contract, review one candidate against it, or extract a bounded brand context packet']
+    not_when: [visual direction → 1-ui-ux-pro-max, durable design tokens → 1-design-system, one creative asset → 1-design or 1-banner-design, product UI implementation → 1-frontend-ui-engineering]
     prev: [0-ui-ux]
     next: [2-brand-guidelines, 2-brand-review, 2-brand-context-extract, 0-ui-ux, 1-design-system, 1-design, 1-banner-design, 1-frontend-ui-engineering]
     cousins: [1-ui-ux-pro-max, 1-design-system, 1-design, 1-banner-design, 1-frontend-ui-engineering]
     triggers: [brand guidelines, brand voice, brand identity, brand compliance review, extract brand context, F-BR1]
     requires_setup: false
 ---
+
 
 # Brand
 

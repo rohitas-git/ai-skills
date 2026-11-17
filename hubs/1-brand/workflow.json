@@ -22,7 +22,11 @@
   "children": [
     {
       "link_type": "leaf",
-      "skills": ["2-brand-guidelines", "2-brand-review", "2-brand-context-extract"]
+      "skills": [
+        "2-brand-guidelines",
+        "2-brand-review",
+        "2-brand-context-extract"
+      ]
     }
   ],
   "pipeline": [
@@ -36,7 +40,12 @@
       "id": "F-BR1",
       "question": "Which one brand result is needed?",
       "recommended": "Use the explicit verb and candidate state",
-      "branches": ["2-brand-guidelines", "2-brand-review", "2-brand-context-extract", "Agent judgment"]
+      "branches": [
+        "2-brand-guidelines",
+        "2-brand-review",
+        "2-brand-context-extract",
+        "Agent judgment"
+      ]
     }
   ],
   "domain_hubs_routed": null,
