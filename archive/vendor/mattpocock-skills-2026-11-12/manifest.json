@@ -1,0 +1,62 @@
+{
+  "source": "https://github.com/mattpocock/skills",
+  "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa",
+  "scope": "Five selected packages only; executable sources archived as text; no source execution",
+  "files": [
+    {
+      "upstreamPath": "skills/productivity/to-questionnaire/SKILL.md",
+      "archivePath": "skills/productivity/to-questionnaire/SKILL.md",
+      "sha256": "b5eb929842ee0e93d867c5e906d183d350f2f2d149eaeaa86967d94d8eda1d3b"
+    },
+    {
+      "upstreamPath": "skills/productivity/to-questionnaire/agents/openai.yaml",
+      "archivePath": "skills/productivity/to-questionnaire/agents/openai.yaml",
+      "sha256": "9e8a06c38c8842eea8d4922cb9d1ead8e3ace647bab259b943c994a1b4742bc2"
+    },
+    {
+      "upstreamPath": "skills/engineering/wizard/SKILL.md",
+      "archivePath": "skills/engineering/wizard/SKILL.md",
+      "sha256": "bdf31d48211ea559878f95a4f344aeabf8d85897488ba564382bab0b000daac1"
+    },
+    {
+      "upstreamPath": "skills/engineering/wizard/agents/openai.yaml",
+      "archivePath": "skills/engineering/wizard/agents/openai.yaml",
+      "sha256": "98f44d682d58e262f160dc59a8befc365e0aa65820dd0261864af26aa8e59d83"
+    },
+    {
+      "upstreamPath": "skills/engineering/wizard/template.sh",
+      "archivePath": "skills/engineering/wizard/template.sh.txt",
+      "sha256": "6566f147299bc6f1d941e64591ed04385416d543e11f96f564c7228f5018d0ed"
+    },
+    {
+      "upstreamPath": "skills/misc/migrate-to-shoehorn/SKILL.md",
+      "archivePath": "skills/misc/migrate-to-shoehorn/SKILL.md",
+      "sha256": "de4da4c11d924fac79c924b2ee3d2db4a5cb98386eb490a599119463d036ae72"
+    },
+    {
+      "upstreamPath": "skills/misc/migrate-to-shoehorn/agents/openai.yaml",
+      "archivePath": "skills/misc/migrate-to-shoehorn/agents/openai.yaml",
+      "sha256": "395c2db852e66a199f1cd07f7ed92d66cb6f0787460c5475926f1a5e778b699d"
+    },
+    {
+      "upstreamPath": "skills/misc/scaffold-exercises/SKILL.md",
+      "archivePath": "skills/misc/scaffold-exercises/SKILL.md",
+      "sha256": "75f5c9d771606fb9762f16522efc954df11c324f87148d8ff069bce166257de9"
+    },
+    {
+      "upstreamPath": "skills/misc/scaffold-exercises/agents/openai.yaml",
+      "archivePath": "skills/misc/scaffold-exercises/agents/openai.yaml",
+      "sha256": "525b33913340bea7947ad2de17f2a7c5fb94be543345fe80ae753b9a44ba601d"
+    },
+    {
+      "upstreamPath": "skills/misc/setup-pre-commit/SKILL.md",
+      "archivePath": "skills/misc/setup-pre-commit/SKILL.md",
+      "sha256": "c9819d7f1e3b198064edc1faa3154224ed67395e9f07f5d3cea4b67cf0a11a98"
+    },
+    {
+      "upstreamPath": "skills/misc/setup-pre-commit/agents/openai.yaml",
+      "archivePath": "skills/misc/setup-pre-commit/agents/openai.yaml",
+      "sha256": "acf41db398c5c43afe504008bb7d615a97b6498b0f1f6c5b2395254c0bfb57d1"
+    }
+  ]
+}
