@@ -78,6 +78,8 @@ conditions, and migration/verification implications. This is analysis, not imple
 
 ## Output contract
 
+For an AI application or agent decision, load [AI system alternatives](./references/ai-system-decision.md).
+
 Return question/scope, caller and candidate/worktree identity, evidence and limits, current option,
 viable alternatives, criterion comparison, recommendation with assumptions, migration/rollback and
 verification approach, residual risks, and the next user-owned decision. Use a table or diagram only

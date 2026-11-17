@@ -12260,7 +12260,8 @@
         "review uncommitted changes"
       ],
       "when": [
-        "multi-axis review of changes, including uncommitted implementation",
+        "multi-axis review of changes",
+        "including uncommitted implementation",
         "ship closer after implementation and suitable verification"
       ]
     },
