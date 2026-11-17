@@ -5,7 +5,7 @@
     "hubs/*/workflow.json"
   ],
   "schema_version": 1,
-  "skill_count": 303,
+  "skill_count": 304,
   "skills": [
     {
       "cousins": [],
@@ -4917,6 +4917,7 @@
       ],
       "next": [
         "1-design-rationale",
+        "1-scaffold-exercises",
         "0-butler",
         "1-learning-explainer",
         "1-learning-diagnostic",
@@ -5441,6 +5442,38 @@
       ],
       "when": [
         "summarize one supplied long resource or bounded selection"
+      ]
+    },
+    {
+      "cousins": [],
+      "hub": "0-learn",
+      "memberships": [
+        {
+          "hub": "0-learn",
+          "role": "leaf"
+        }
+      ],
+      "next": [
+        "0-learn"
+      ],
+      "not_when": [
+        "write lesson content → 1-lesson-authoring",
+        "set learning mission → 1-teaching-workspace"
+      ],
+      "prev": [
+        "0-learn"
+      ],
+      "requires_setup": false,
+      "role": "leaf",
+      "skill": "1-scaffold-exercises",
+      "source": "catalog",
+      "triggers": [
+        "scaffold exercises",
+        "create exercise stubs",
+        "scaffold course section"
+      ],
+      "when": [
+        "create exercise directory structure from a supplied course plan"
       ]
     },
     {

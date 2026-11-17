@@ -332,7 +332,7 @@ Optional; not Ship closer.
 | | |
 |--|--|
 | **★ Hub** | `/0-learn` |
-| **Children** | **router:** `1-learning-explainer` → **leaves:** `1-learning-diagnostic`, `1-level-explainer`, `1-mental-model-builder`, `1-progressive-deep-dive` · **leaves:** `1-explain-with-example` (selected material), `1-tutor` (interactive practice) · **leaf (soft cross; code object):** `1-code-explainer` · **satellite router:** `1-teach` → `1-teaching-workspace`, `1-lesson-authoring`, `1-learning-progress-record`, `1-learning-glossary` · **leaf:** `1-story-teacher` · **soft:** `1-resource-summarizer` · **on-ramp (Vault primary):** `1-vault-explain` → explainer · **additions:** `1-design-rationale` |
+| **Children** | **router:** `1-learning-explainer` → **leaves:** `1-learning-diagnostic`, `1-level-explainer`, `1-mental-model-builder`, `1-progressive-deep-dive` · **leaves:** `1-explain-with-example` (selected material), `1-tutor` (interactive practice) · **leaf (soft cross; code object):** `1-code-explainer` · **satellite router:** `1-teach` → `1-teaching-workspace`, `1-lesson-authoring`, `1-learning-progress-record`, `1-learning-glossary` · **leaf:** `1-story-teacher` · **soft:** `1-resource-summarizer` · **on-ramp (Vault primary):** `1-vault-explain` → explainer · **additions:** `1-scaffold-exercises`, `1-design-rationale` |
 | **Pipeline** | direct evidence route → **F-L1** only for material mode ambiguity → optional **F-L2** only for detail-versus-distillation choice → explainer router **F-L3** → load one leaf → return |
 
 | Mode | Skill / load | Default when |

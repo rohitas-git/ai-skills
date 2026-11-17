@@ -170,6 +170,7 @@ Structured mental models. The core is from `tjboudreaux/cc-thinking-skills` (MIT
 - Content and messaging: [1-marketing-content-strategy](./1-marketing-content-strategy/), [1-marketing-copywriting](./1-marketing-copywriting/), [1-marketing-copy-editing](./1-marketing-copy-editing/), [1-marketing-blog-editor](./1-marketing-blog-editor/), [1-marketing-emails](./1-marketing-emails/), [1-marketing-cold-email](./1-marketing-cold-email/), [1-marketing-sms](./1-marketing-sms/), [1-marketing-social](./1-marketing-social/), [1-marketing-video](./1-marketing-video/), [1-marketing-image](./1-marketing-image/), [1-marketing-lead-magnets](./1-marketing-lead-magnets/)
 - [1-manual-procedure-wizard](./1-manual-procedure-wizard/) — Author a human-run manual procedure wizard without executing it
 - [1-migrate-to-shoehorn](./1-migrate-to-shoehorn/) — Migrate scoped TypeScript test fixtures to Shoehorn
+- [1-scaffold-exercises](./1-scaffold-exercises/) — Scaffold course exercise directories from an agreed plan
 - [1-i18n-sync](./1-i18n-sync/) — Synchronize selected JSON locale keys with context and validation.
 - [1-prompt-optimizer](./1-prompt-optimizer/) — Rewrite one prompt without executing it or inventing requirements.
 - [1-llm-cost-design](./1-llm-cost-design/) — Design one LLM spending policy with quality and budget controls.

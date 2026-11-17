@@ -1,0 +1,6 @@
+interface:
+  display_name: Scaffold Exercises
+  short_description: Scaffold course exercise directories from an agreed plan
+  default_prompt: Use $1-scaffold-exercises for the requested scoped task.
+policy:
+  allow_implicit_invocation: false

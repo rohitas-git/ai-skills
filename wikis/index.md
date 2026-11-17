@@ -446,6 +446,7 @@ _Live skills: **174**._
 | [[1-migrate-to-shoehorn]] | Migrate scoped TypeScript test fixtures to Shoehorn. | `skills/1-migrate-to-shoehorn` |
 | [[1-change-impact]] | Trace affected consumers, compatibility, and verification obligations. | `skills/1-change-impact` |
 | [[1-design-rationale]] | Explain recorded design decisions and their trade-offs. | `skills/1-design-rationale` |
+| [[1-scaffold-exercises]] | Scaffold course exercise directories from an agreed plan. | `skills/1-scaffold-exercises` |
 | [[1-design-review]] | Fresh-context EGM review of a pre-code software design/spec/plan; preserves the full workflow and development concepts. | `skills/1-design-review` |
 | [[1-pr-walkthrough]] | Walk through a project PR with real UI components, non-UI before/after examples and useful engineering diagrams; local-only page. | `skills/1-pr-walkthrough` |
 | [[1-pre-merge]] | Run frozen-candidate project readiness gates and return a final QA handoff without merging. | `skills/1-pre-merge` |
