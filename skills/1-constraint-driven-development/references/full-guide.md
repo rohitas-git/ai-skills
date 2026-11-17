@@ -78,6 +78,15 @@ External scanners provide independent evidence with their own coverage limits;
 they do not guarantee security, accessibility or correctness. Independently derived
 requirements, representative tests and review remain necessary.
 
+A scanner's successful process exit or JSON report does not by itself prove the
+agreed severity threshold was enforced. Record scanner execution, report completeness
+and coverage, and threshold evaluation separately. Test the actual invocation with a
+clean control, a blocking finding, a below-threshold finding, and scanner/report failure.
+Missing or unsupported evidence must not become a passing result. For requested
+automation, hand the contract to the [CI report-gate guide](../../1-ci-cd-and-automation/references/report-gates.md).
+
+This scanner-gate addition adapts Addy Osmani et al., MIT; [source and review](../../../guidelines/catalog/ingest-addyosmani-2026-11-15.md).
+
 ## 5. Return the contract and evidence
 
 Return policy path/revision or assessment, selected rules and rationale, baseline
