@@ -66,5 +66,7 @@ the [source map](./references/vendor-source.md) for provenance and exclusions.
 
 ## Related
 
+For an AI feature's consumer boundary, load [AI integration contract](./references/ai-integration-contract.md).
+
 - **Primary:** Architecture soft. **Conditional caller:** Ship (`/0-implement`).
 - **Returns:** contract/advice to the requester; implemented diff to Ship, then its normal review path.
