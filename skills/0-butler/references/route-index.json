@@ -5,7 +5,7 @@
     "hubs/*/workflow.json"
   ],
   "schema_version": 1,
-  "skill_count": 296,
+  "skill_count": 297,
   "skills": [
     {
       "cousins": [],
@@ -5470,6 +5470,7 @@
         "1-marketing-emails",
         "1-marketing-events",
         "1-marketing-free-tools",
+        "1-marketing-healthcare-blog-writing",
         "1-marketing-image",
         "1-marketing-influencer-marketing",
         "1-marketing-launch",
@@ -6351,6 +6352,51 @@
       ],
       "when": [
         "design one free tool as a marketing asset"
+      ]
+    },
+    {
+      "cousins": [
+        "1-marketing-blog-editor",
+        "1-marketing-copywriting",
+        "1-marketing-content-strategy",
+        "1-marketing-ai-seo",
+        "1-marketing-copy-editing"
+      ],
+      "hub": "0-marketing",
+      "memberships": [
+        {
+          "hub": "0-marketing",
+          "role": "leaf"
+        }
+      ],
+      "next": [
+        "0-marketing"
+      ],
+      "not_when": [
+        "individualized medical advice or clinical decision support → do not use",
+        "generic marketing page or message → 1-marketing-copywriting",
+        "editorial review of an existing technical blog → 1-marketing-blog-editor",
+        "content portfolio or editorial roadmap → 1-marketing-content-strategy",
+        "sitewide AI-search visibility work → 1-marketing-ai-seo",
+        "publishing or live-site changes require separate authority"
+      ],
+      "prev": [
+        "0-marketing"
+      ],
+      "requires_setup": false,
+      "role": "leaf",
+      "skill": "1-marketing-healthcare-blog-writing",
+      "source": "catalog",
+      "triggers": [
+        "healthcare blog",
+        "medical blog",
+        "health e-commerce article",
+        "supplement blog",
+        "medical-device guide"
+      ],
+      "when": [
+        "draft or revise one consumer healthcare or healthcare e-commerce blog",
+        "create a medically reviewed product-education article with a claim ledger"
       ]
     },
     {

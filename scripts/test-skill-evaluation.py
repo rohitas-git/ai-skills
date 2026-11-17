@@ -149,7 +149,7 @@ class SkillEvaluationTests(unittest.TestCase):
     def test_skill_set_derivation_matches_frozen_catalog_candidates(self):
         full_live = EVAL["derive_skill_set"]("full-live")
         hub_spine = EVAL["derive_skill_set"]("hub-spine")
-        self.assertEqual(len(full_live), 296)
+        self.assertEqual(len(full_live), 297)
         self.assertEqual(len(hub_spine), 28)
         self.assertIn("1-coding-standards", hub_spine)
         self.assertIn("2-verify-work", hub_spine)

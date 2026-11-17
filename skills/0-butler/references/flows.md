@@ -492,7 +492,7 @@ checks or edits use the matching isolated workspace when needed and return here.
 | | |
 |--|--|
 | **★ Hub** | `/0-marketing` |
-| **Children** | **on-ramp:** `1-marketing-product-marketing` · **pipeline:** `1-marketing-marketing-loops` · **leaf:** 48 focused strategy, research, conversion, content, SEO, paid-media, measurement, growth, partnership, lifecycle, and sales skills · **additions:** `1-marketing-blog-editor` |
+| **Children** | **on-ramp:** `1-marketing-product-marketing` · **pipeline:** `1-marketing-marketing-loops` · **leaf:** 48 focused strategy, research, conversion, content, SEO, paid-media, measurement, growth, partnership, lifecycle, and sales skills · **additions:** `1-marketing-blog-editor`, `1-marketing-healthcare-blog-writing` |
 | **Pipeline** | pin outcome, audience, evidence, jurisdiction, account state, and authority → select one narrow child → advisory or draft deliverable → separate explicit authority for any external effect |
 | **Source** | `coreyhaines31/marketingskills` pinned at `5b2c0007766c6a1cf1d53fd8fc73e979e0821022`; upstream tools, installers, and plugin metadata were not promoted |
 
