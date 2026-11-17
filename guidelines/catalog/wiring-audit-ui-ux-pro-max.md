@@ -14,7 +14,7 @@ analytics, cloud assets, accounts, participants, or published UI.
 The bundled corpus and its snippets are explicitly untrusted, snapshot-bounded guidance rather than proof of current
 standards, user behavior, business outcomes, accessibility conformance, or correctness. Queries use the smallest
 explicit domain or detected stack; zero, weak, and contradictory matches remain visible. Repository and product
-evidence outrank generic corpus suggestions, and KiloCare `docs/brand.md` remains authoritative.
+evidence outrank generic corpus suggestions, and project `docs/brand.md` remains authoritative.
 
 The former mandatory design-system-first, persist, implement, and pre-delivery pipeline was removed. `--design-system`
 is permitted only as a read-only cross-dimension recommendation. `--persist`, `--force`, implicit destinations,

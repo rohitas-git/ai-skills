@@ -10,7 +10,7 @@ Reviewed the complete live skill and every operative reference, its Ship and UI/
 across bodies/workflows/HTML/flows/generated routes, neighboring UI specialist boundaries,
 candidate/worktree/service authority, and routing regressions. The archived upstream remains
 source material rather than operative framework policy. This audit changed skill documentation
-and routing only; it did not change or render KiloCare UI, start a browser/server, install tools,
+and routing only; it did not change or render project UI, start a browser/server, install tools,
 publish a preview, or claim accessibility conformance for a product.
 
 ## Decisions and changes

@@ -51,7 +51,7 @@ snapshot is provenance only and may be older.
    installation/update, dependency changes, asset download, and publication are distinct effects and never implicit.
 5. Follow the installed command's current procedure within these boundaries. Preserve incumbent behavior/copy and
    everything outside scope unless redesign or factual-copy change was explicitly authorized. Do not widen a polish
-   request into redesign, invent product claims, or run open-ended visual iteration. For KiloCare UI work, the pinned
+   request into redesign, invent product claims, or run open-ended visual iteration. For project UI work, the pinned
    project `docs/brand.md` remains authoritative.
 6. Verify only the requested command outcome with bounded static/runtime/viewport evidence appropriate to the target.
    Recheck candidate revision and dirty ownership before every write. A detector score, screenshot, or successful

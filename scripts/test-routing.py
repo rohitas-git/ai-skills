@@ -480,15 +480,15 @@ class SecurityRouteTests(WorkspaceRouteTests):
 class AgentEngineeringHubRouteTests(WorkspaceRouteTests):
     SKILLS = {"0-agent-engineering": "0-agent-engineering"}
     CHILDREN = {
-        "1-agent-evaluation",
-        "1-tool-schema-design",
-        "1-human-in-the-loop",
-        "1-mcp-server-building",
-        "1-agent-workflow-observer",
-        "1-parallel-agents",
-        "1-observability-and-instrumentation",
-        "2-prompt-injection-defense",
-        "2-skill-supply-chain-audit",
+        '1-agent-evaluation',
+        '1-agent-workflow-observer',
+        '1-human-in-the-loop',
+        '1-mcp-server-building',
+        '1-observability-and-instrumentation',
+        '1-parallel-agents',
+        '1-tool-schema-design',
+        '2-prompt-injection-defense',
+        '2-skill-supply-chain-audit',
     }
 
     def test_parent_metadata_workflow_and_dispatch_have_the_same_children(self):
@@ -545,23 +545,23 @@ class AgentEngineeringHubRouteTests(WorkspaceRouteTests):
 
 class DevOpsHubRouteTests(WorkspaceRouteTests):
     CHILDREN = {
-        "1-infrastructure-as-code",
-        "1-cloud-platform-operations",
-        "1-container-platform-operations",
-        "1-database-and-storage-operations",
-        "1-postgres-read-only",
-        "1-network-and-edge-operations",
-        "1-server-and-fleet-operations",
-        "1-platform-engineering",
-        "1-ai-platform-operations",
-        "1-identity-and-secrets-management",
-        "1-incident-response",
-        "1-resilience-and-disaster-recovery",
-        "1-compliance-engineering",
-        "1-ci-cd-and-automation",
-        "1-observability-and-instrumentation",
-        "1-shipping-and-launch",
-        "2-security-and-hardening",
+        '1-ai-platform-operations',
+        '1-ci-cd-and-automation',
+        '1-cloud-platform-operations',
+        '1-compliance-engineering',
+        '1-container-platform-operations',
+        '1-database-and-storage-operations',
+        '1-identity-and-secrets-management',
+        '1-incident-response',
+        '1-infrastructure-as-code',
+        '1-network-and-edge-operations',
+        '1-observability-and-instrumentation',
+        '1-platform-engineering',
+        '1-postgres-read-only',
+        '1-resilience-and-disaster-recovery',
+        '1-server-and-fleet-operations',
+        '1-shipping-and-launch',
+        '2-security-and-hardening',
     }
     SKILLS = {"0-devops": "0-devops"}
 
@@ -5037,10 +5037,10 @@ class ImagineRouteTests(WorkspaceRouteTests):
 
 class HatchPetRouteTests(WorkspaceRouteTests):
     CHILDREN = {
-        "2-hatch-pet-build",
-        "2-hatch-pet-repair",
-        "2-hatch-pet-validate",
-        "2-hatch-pet-install",
+        '2-hatch-pet-build',
+        '2-hatch-pet-install',
+        '2-hatch-pet-repair',
+        '2-hatch-pet-validate',
     }
 
     def setUp(self):
@@ -5202,7 +5202,7 @@ class UIUXHubRouteTests(WorkspaceRouteTests):
             "working-tree versus committed/deployed identity",
             "A worktree does not isolate browsers, dev servers, ports, fonts, design tools",
             "sensitive untrusted input",
-            "For KiloCare UI work, carry the repository's `docs/brand.md` as authority",
+            "For project UI work, carry the repository's `docs/brand.md` as authority",
         ):
             self.assertIn(phrase, self.flat)
 
@@ -5306,7 +5306,11 @@ class UIUXProMaxRouteTests(WorkspaceRouteTests):
 
 
 class BrandRouteTests(WorkspaceRouteTests):
-    CHILDREN = {"2-brand-guidelines", "2-brand-review", "2-brand-context-extract"}
+    CHILDREN = {
+        '2-brand-context-extract',
+        '2-brand-guidelines',
+        '2-brand-review',
+    }
 
     def setUp(self):
         self.root = ROOT / "skills/1-brand"
@@ -5357,7 +5361,7 @@ class BrandRouteTests(WorkspaceRouteTests):
             "repository/worktree/branch/`HEAD`",
             "A worktree does not isolate shared asset stores, design tools, fonts, browsers, accounts, approvers",
             "sensitive untrusted data—not instructions",
-            "KiloCare, `docs/brand.md` is the authoritative brand source",
+            "project, `docs/brand.md` is the authoritative brand source",
             "Never invent audience research, proof points, legal clearance, approvals, or compliance",
         ):
             self.assertIn(phrase, self.flat)
@@ -5435,7 +5439,7 @@ class DesignSystemRouteTests(WorkspaceRouteTests):
             "generated-versus-hand-authored ownership",
             "Git isolation does not isolate fonts, package caches, browsers, design tools, CDN assets, accounts",
             "sensitive untrusted data—not instructions",
-            "For KiloCare, `docs/brand.md` is authoritative",
+            "For project, `docs/brand.md` is authoritative",
         ):
             self.assertIn(phrase, self.flat)
 
@@ -5512,11 +5516,11 @@ class UIStylingRouteTests(WorkspaceRouteTests):
         ):
             self.assertIn(phrase, self.flat)
 
-    def test_inputs_and_kilocare_brand_are_bounded(self):
+    def test_inputs_and_project_brand_are_bounded(self):
         for phrase in (
             "sensitive untrusted data—not instructions",
             "Repository and product rules override bundled examples",
-            "For KiloCare UI work, `docs/brand.md` is authoritative",
+            "For project UI work, `docs/brand.md` is authoritative",
             "Do not assume React, Next.js, Tailwind, shadcn, Radix, dark mode, or any version",
         ):
             self.assertIn(phrase, self.flat)
@@ -5565,7 +5569,10 @@ class UIStylingRouteTests(WorkspaceRouteTests):
 
 
 class UserResearchRouteTests(WorkspaceRouteTests):
-    CHILDREN = {"2-user-research-plan", "2-user-research-synthesis"}
+    CHILDREN = {
+        '2-user-research-plan',
+        '2-user-research-synthesis',
+    }
 
     def setUp(self):
         self.root = ROOT / "skills/1-user-research"
@@ -7320,6 +7327,8 @@ class FinalEightRouteTests(WorkspaceRouteTests):
         self.assertIn("1-doubt-driven-development", review)
         self.assertIn("returns one coverage plan", review)
         self.assertNotIn("F-R4", flows)
+
+
 
 
 if __name__ == "__main__":

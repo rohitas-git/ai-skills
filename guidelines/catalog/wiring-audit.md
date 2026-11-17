@@ -55,7 +55,7 @@ Evidence and limits: [workspace audit](./wiring-audit-workspaces.md).
 The UI/UX hub was reviewed; [evidence](./wiring-audit-ui-ux-hub.md) records all twelve real child routes, Butler and
 adjacent-domain boundaries, direct routing with material-only F-UI1, exact caller/candidate/authority and optional
 worktree/runtime/deployment identity, shared browser/server/design/cloud/participant state, untrusted UI/research
-inputs, KiloCare brand authority, no hub tools or verification, removal of automatic multi-leaf chaining, symmetric
+inputs, project brand authority, no hub tools or verification, removal of automatic multi-leaf chaining, symmetric
 workflow/flow/HTML text, clickable children, and corrected package-relative navigation.
 
 ## Impeccable current-install and effect-class batch
