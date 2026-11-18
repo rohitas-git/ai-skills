@@ -1,0 +1,2270 @@
+{
+  "schema_version": 1,
+  "source": "https://github.com/cursor/plugins/tree/e1cc03121a0e71129a4fb730d7c5528a0a3e43c8/pstack",
+  "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+  "plugin_version": "0.15.43",
+  "license": "MIT",
+  "scope": {
+    "principle": 24,
+    "functional": 34,
+    "playbook": 22
+  },
+  "review_date": "2026-11-18",
+  "entries": [
+    {
+      "id": "principle/attack-the-premise",
+      "kind": "principle",
+      "source_path": "skills/principle-attack-the-premise/SKILL.md",
+      "source_sha256": "831e916c540f4b6b720b7472aeea6e6ef93996655e36cc2517221f6f2081b480",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/principle-attack-the-premise/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-diagnosing-bugs"
+      ],
+      "targets": [
+        "skills/0-diagnosing-bugs/references/premises-and-forensics.md"
+      ],
+      "procedure": "After repeated fixes fail the same gate, write and falsify their shared premise before another patch; partition hypotheses and preserve disconfirming evidence.",
+      "adaptation": "Do not force a fix while diagnosis is the requested operation.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "principle/boundary-discipline",
+      "kind": "principle",
+      "source_path": "skills/principle-boundary-discipline/SKILL.md",
+      "source_sha256": "c02c26cca3906bfd57829535f8fa7ee9e00df037b4dbb24e5f85ec9e12710b48",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/principle-boundary-discipline/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-codebase-design",
+        "1-error-handling"
+      ],
+      "targets": [
+        "skills/1-error-handling/references/replay-and-boundaries.md",
+        "skills/1-codebase-design/references/data-shapes-and-ownership.md"
+      ],
+      "procedure": "Parse external data at genuine trust boundaries; keep business transformations cohesive and distinguish legitimate failure states from broken invariants.",
+      "adaptation": "Internal types do not prove current authorization, freshness or concurrent mutable state.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "principle/build-the-lever",
+      "kind": "principle",
+      "source_path": "skills/principle-build-the-lever/SKILL.md",
+      "source_sha256": "753d81cf9ca2a4e9d1f057429f0c63c9c622e6022dd877ec97ec15f442076aac",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/principle-build-the-lever/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-implement"
+      ],
+      "targets": [
+        "skills/0-implement/references/rerunnable-changes.md"
+      ],
+      "procedure": "Prove one representative unit, then use the smallest existing or new deterministic codemod/check when a sweep is safer to repeat than edit manually.",
+      "adaptation": "A mandatory script for every nontrivial task adds needless machinery; a small direct edit can be the adequate artifact.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "principle/encode-lessons-in-structure",
+      "kind": "principle",
+      "source_path": "skills/principle-encode-lessons-in-structure/SKILL.md",
+      "source_sha256": "228963799189f481827d6f28065f278bc2008ffa37030b1234cbd5814d36b9e9",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/principle-encode-lessons-in-structure/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "reviewed-retained",
+      "owners": [
+        "1-agent-workflow-observer"
+      ],
+      "targets": [
+        "skills/1-agent-workflow-observer/references/recurring-corrections.md"
+      ],
+      "procedure": "Retain the existing architecture → types/boundary → actionable lint/CI → behavior test → judgment documentation ladder, with evidence, negative/clean controls and rollout cost.",
+      "adaptation": "The observer proposes; implementation belongs to the authorized caller. One occurrence is not proof of recurrence and one regex does not make a mistake impossible.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "principle/exhaust-the-design-space",
+      "kind": "principle",
+      "source_path": "skills/principle-exhaust-the-design-space/SKILL.md",
+      "source_sha256": "2de83d99f93f60ec6313455b0bc9aa9f0bfb93dd59f414f403691322db00d4db",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/principle-exhaust-the-design-space/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-competing-solutions",
+        "1-prototype"
+      ],
+      "targets": [
+        "skills/1-prototype/references/deciding-with-prototypes.md",
+        "skills/1-competing-solutions/references/recipe.md"
+      ],
+      "procedure": "Use distinct alternatives to answer a consequential unknown; share a brief/rubric, inspect complete artifacts, select a coherent base and reverify synthesis.",
+      "adaptation": "No mandatory agent fan-out, alternative-count quota or second comparison over a settled mechanical design.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "principle/experience-first",
+      "kind": "principle",
+      "source_path": "skills/principle-experience-first/SKILL.md",
+      "source_sha256": "58903529d733b1c1a7c9ccf127d45ef3c7d0d9f0b81164a4dc6b80efe6f2912b",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/principle-experience-first/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-codebase-design",
+        "1-frontend-ui-engineering"
+      ],
+      "targets": [
+        "skills/1-frontend-ui-engineering/references/visual-parity-and-agent-controls.md",
+        "skills/1-codebase-design/references/data-shapes-and-ownership.md"
+      ],
+      "procedure": "Start from the user action and observable benefit; test interaction/accessibility and keep maintainer-facing data ownership intelligible.",
+      "adaptation": "Delight does not override explicit scope, safety or accessibility.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "principle/explain-the-number",
+      "kind": "principle",
+      "source_path": "skills/principle-explain-the-number/SKILL.md",
+      "source_sha256": "e6a3f00991f4949cf18a0b5c77dd3126ca4402b8553f88c9c7905e577512676e",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/principle-explain-the-number/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-performance-optimization"
+      ],
+      "targets": [
+        "skills/1-performance-optimization/references/measurement-integrity.md"
+      ],
+      "procedure": "Audit limiter, comparable tuning, physical bounds, errors, repetitions/noise, user relevance and whether the measured work happened.",
+      "adaptation": "Five samples is a starting protocol, not a proof threshold; ballpark measurements are labeled and invalid comparisons remain inconclusive.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "principle/fix-root-causes",
+      "kind": "principle",
+      "source_path": "skills/principle-fix-root-causes/SKILL.md",
+      "source_sha256": "79afd7e67d8951203231f6f1ccfc7b4a1f30d8d6cdb68e92755c80012414dbeb",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/principle-fix-root-causes/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-diagnosing-bugs"
+      ],
+      "targets": [
+        "skills/0-diagnosing-bugs/references/premises-and-forensics.md"
+      ],
+      "procedure": "Trace symptoms to the earliest invalid transition; enumerate sibling failure paths and distinguish recovery for valid states from masking defects.",
+      "adaptation": "Do not remove necessary boundary validation or broaden a bounded diagnosis into an unrequested cleanup.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "principle/foundational-thinking",
+      "kind": "principle",
+      "source_path": "skills/principle-foundational-thinking/SKILL.md",
+      "source_sha256": "5c63eecf4b83ea5a99eda7a95a96cac0929d2dce7393d7089c83917bc12cf820",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/principle-foundational-thinking/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-codebase-design"
+      ],
+      "targets": [
+        "skills/1-codebase-design/references/data-shapes-and-ownership.md"
+      ],
+      "procedure": "Name domain data, ownership and legal transitions before scattered control flow; order scaffolding only where the actual verification/feature requires it.",
+      "adaptation": "Avoid speculative frameworks and accept repository constraints over an idealized greenfield rewrite.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "principle/guard-the-context-window",
+      "kind": "principle",
+      "source_path": "skills/principle-guard-the-context-window/SKILL.md",
+      "source_sha256": "af0b9dd70b43628ce4a59a4d332e9d9ad055084e460f430e7a757495c627e81a",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/principle-guard-the-context-window/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-context-monitor",
+        "1-parallel-agents"
+      ],
+      "targets": [
+        "skills/1-context-monitor/references/bulk-evidence.md",
+        "skills/1-parallel-agents/references/coverage-and-races.md"
+      ],
+      "procedure": "Use bounded reads, source-backed summaries and preserved raw evidence; pass minimal sufficient worker context when delegation is authorized.",
+      "adaptation": "No automatic delegation, fabricated context telemetry or hidden loss of failure details.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "principle/laziness-protocol",
+      "kind": "principle",
+      "source_path": "skills/principle-laziness-protocol/SKILL.md",
+      "source_sha256": "1be6e7a435f26a75a76eb848b9c3d611b9977d0f5822361753244da25ca3ca45",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/principle-laziness-protocol/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-ponytail"
+      ],
+      "targets": [
+        "skills/0-ponytail/references/reader-load.md"
+      ],
+      "procedure": "Prefer deletion, existing code and the smallest safe change; count indirection and mutable state as reader cost.",
+      "adaptation": "Do not remove safeguards, warranted boundaries, required tests or requested explanatory detail.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "principle/make-operations-idempotent",
+      "kind": "principle",
+      "source_path": "skills/principle-make-operations-idempotent/SKILL.md",
+      "source_sha256": "76ad0a99b6ff2a05a159accfeee48412d62f62774eb8d05bbff26a1f3aa3eab5",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/principle-make-operations-idempotent/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-error-handling"
+      ],
+      "targets": [
+        "skills/1-error-handling/references/replay-and-boundaries.md"
+      ],
+      "procedure": "Define desired state, repeated invocation, crash points and reconciliation; use atomic publish, transaction or idempotency keys at the real invariant.",
+      "adaptation": "Atomic replacement of one file does not prove a multi-resource transaction or permission to retry an external effect.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "principle/migrate-callers-then-delete-legacy-apis",
+      "kind": "principle",
+      "source_path": "skills/principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
+      "source_sha256": "580ad9bb1a0994ecb924321ba49efc38a2f85c64e22c76fb133f57a78272a2e6",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-deprecation-and-migration"
+      ],
+      "targets": [
+        "skills/1-deprecation-and-migration/references/coordinated-cutover.md"
+      ],
+      "procedure": "Identify the closed caller set, migrate all owned callers, check generated/dynamic consumers, then retire the old path at a verified boundary.",
+      "adaptation": "External or independently deployed consumers need coordinated compatibility and rollout; do not universally ban shims or break deployed versions.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "principle/minimize-reader-load",
+      "kind": "principle",
+      "source_path": "skills/principle-minimize-reader-load/SKILL.md",
+      "source_sha256": "22d27deffb0a3726858d0d4b02d71acd4a3eb4d44e218bc89b66e49dc9823937",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/principle-minimize-reader-load/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-ponytail",
+        "1-codebase-design"
+      ],
+      "targets": [
+        "skills/0-ponytail/references/reader-load.md",
+        "skills/1-codebase-design/references/data-shapes-and-ownership.md"
+      ],
+      "procedure": "Trace layers, one-caller wrappers and hidden mutation; put cohesive invariants together and expose meaningful domain names.",
+      "adaptation": "Measure actual comprehension/ownership cost rather than flattening every justified seam.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "principle/model-the-domain",
+      "kind": "principle",
+      "source_path": "skills/principle-model-the-domain/SKILL.md",
+      "source_sha256": "97c6214dc6a18b93177dda6429185a8640878b36ddee6ec9400c23a0eb9be2d8",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/principle-model-the-domain/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-codebase-design",
+        "1-typescript-best-practices"
+      ],
+      "targets": [
+        "skills/1-codebase-design/references/data-shapes-and-ownership.md",
+        "skills/1-typescript-best-practices/references/patterns.md"
+      ],
+      "procedure": "Replace repeated shape assumptions with a discriminated state model, table, reducer, boundary or right collection as the domain warrants.",
+      "adaptation": "A type does not validate unknown input or replace an actual lifecycle/authorization check.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "principle/never-block-on-the-human",
+      "kind": "principle",
+      "source_path": "skills/principle-never-block-on-the-human/SKILL.md",
+      "source_sha256": "05030a7a083c337676f793881b4e93cd218e8f1dd676529f56e6ac1d3efb8d1f",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/principle-never-block-on-the-human/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "reviewed-retained",
+      "owners": [
+        "1-plow-ahead"
+      ],
+      "targets": [
+        "skills/1-plow-ahead/SKILL.md"
+      ],
+      "procedure": "Retain the existing autonomy contract: make conservative reversible implementation assumptions and continue the already authorized workflow with evidence.",
+      "adaptation": "Persistence grants no new product scope, external mutation, merge, purchase, delegation or irreversible choice.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "principle/outcome-oriented-execution",
+      "kind": "principle",
+      "source_path": "skills/principle-outcome-oriented-execution/SKILL.md",
+      "source_sha256": "10eb91633aa570355ba4bb37088fcade2b22e498df7a58edc749e65bc5a78e2d",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/principle-outcome-oriented-execution/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-deprecation-and-migration"
+      ],
+      "targets": [
+        "skills/1-deprecation-and-migration/references/coordinated-cutover.md"
+      ],
+      "procedure": "Pin target architecture, phase exits, temporary state ownership and retirement evidence; converge instead of keeping abandoned migration layers.",
+      "adaptation": "Explicit phase boundaries and consumer compatibility remain binding; do not delete necessary adapters prematurely.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "principle/prove-it-works",
+      "kind": "principle",
+      "source_path": "skills/principle-prove-it-works/SKILL.md",
+      "source_sha256": "3d6c482e341974cfcb8d19ebf66fb1d4274d8673af35e36d3c231a6aa9e03f25",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/principle-prove-it-works/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "reviewed-retained",
+      "owners": [
+        "2-verify-work"
+      ],
+      "targets": [
+        "skills/2-verify-work/SKILL.md",
+        "skills/2-verify-work/references/superpowers-evidence-gate.md"
+      ],
+      "procedure": "Retain fresh candidate-specific evidence for each completion claim and verified/contradicted/blocked/not-applicable dispositions.",
+      "adaptation": "Typechecking, stale results or worker self-report alone do not prove runtime correctness or authorize repair.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "principle/redesign-from-first-principles",
+      "kind": "principle",
+      "source_path": "skills/principle-redesign-from-first-principles/SKILL.md",
+      "source_sha256": "170e0a658783e43fee8ec5a8c2422a4abb8f69cef621dd1819a95910b8207034",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/principle-redesign-from-first-principles/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-codebase-design"
+      ],
+      "targets": [
+        "skills/1-codebase-design/references/data-shapes-and-ownership.md"
+      ],
+      "procedure": "Sketch the domain as if the new requirement were fundamental, compare it to current ownership, then choose the smallest safe migration toward it.",
+      "adaptation": "A design exercise is not authorization for broad replacement or discarding compatibility.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "principle/separate-before-serializing-shared-state",
+      "kind": "principle",
+      "source_path": "skills/principle-separate-before-serializing-shared-state/SKILL.md",
+      "source_sha256": "2e5625d686b657e0b607c329fd8043bf50261b808239308fe4c6776e2817e95a",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/principle-separate-before-serializing-shared-state/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-parallel-agents"
+      ],
+      "targets": [
+        "skills/1-parallel-agents/references/coverage-and-races.md"
+      ],
+      "procedure": "Separate output files, keys and writer ownership before adding serialization; enforce an actual shared invariant with a single writer/lock/transaction.",
+      "adaptation": "Separate branches alone do not isolate services, ports, databases, caches or accounts.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "principle/sequence-verifiable-units",
+      "kind": "principle",
+      "source_path": "skills/principle-sequence-verifiable-units/SKILL.md",
+      "source_sha256": "ab0cc331cf317c07bb0ed6dd13ee9f618338b36e4e851521977bc5c4a8d429e1",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/principle-sequence-verifiable-units/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-implement",
+        "1-write-plan"
+      ],
+      "targets": [
+        "skills/0-implement/references/rerunnable-changes.md",
+        "skills/1-write-plan/references/phase-evidence.md"
+      ],
+      "procedure": "Split into meaningful independently verifiable units, establish baseline evidence and check accepted units before scaling or delivering dependents.",
+      "adaptation": "No forced broken shared commit, speculative ticket/PR identifier or universal test ritual.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "principle/subtract-before-you-add",
+      "kind": "principle",
+      "source_path": "skills/principle-subtract-before-you-add/SKILL.md",
+      "source_sha256": "8c93bb9d1a7f38e2ef37655d93f0e790fa59903105af3d500cc8a663ebe45f3f",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/principle-subtract-before-you-add/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-implement",
+        "0-ponytail"
+      ],
+      "targets": [
+        "skills/0-ponytail/references/reader-load.md",
+        "skills/0-implement/references/feature-and-refactor.md"
+      ],
+      "procedure": "Remove proven dead weight within scope before layering the requested behavior; retain a characterization pin while reshaping internals.",
+      "adaptation": "Deletion remains evidence-backed and scoped; preserve unrelated work and required compatibility.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "principle/test-behavior-not-implementation",
+      "kind": "principle",
+      "source_path": "skills/principle-test-behavior-not-implementation/SKILL.md",
+      "source_sha256": "42afc1a2c7176363b6410cfde06a9fd3e96f5022ba86bdb8de4838ad65c2442d",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/principle-test-behavior-not-implementation/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-tdd"
+      ],
+      "targets": [
+        "skills/1-tdd/references/behavioral-oracles.md"
+      ],
+      "procedure": "Use the user-visible contract, independent requirements and meaningful negative controls; keep tests stable under behavior-preserving internal changes.",
+      "adaptation": "Internal safety/architecture invariants may legitimately deserve checks; do not delete tests merely because they inspect structure.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "principle/type-system-discipline",
+      "kind": "principle",
+      "source_path": "skills/principle-type-system-discipline/SKILL.md",
+      "source_sha256": "9cd1ce345bc9d666c73c64c89c89164217b659aa4c4dde5600cbbe6f6e775461",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/principle-type-system-discipline/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-codebase-design",
+        "1-typescript-best-practices"
+      ],
+      "targets": [
+        "skills/1-typescript-best-practices/references/patterns.md",
+        "skills/1-codebase-design/references/data-shapes-and-ownership.md"
+      ],
+      "procedure": "Use legal-state unions, checked semantic brands, exhaustive handlers and total operations at the right boundary.",
+      "adaptation": "Correct numeric-range, lying-predicate, tuple-index and satisfies-inference claims; runtime data still needs validation.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/architect",
+      "kind": "functional",
+      "source_path": "skills/architect/SKILL.md",
+      "source_sha256": "aea83d7aa109eb73402182701b14c289844663ad9c8f959fedbef2df66787ce0",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/architect/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-codebase-design",
+        "1-competing-solutions"
+      ],
+      "targets": [
+        "skills/1-codebase-design/references/data-shapes-and-ownership.md",
+        "skills/1-competing-solutions/references/recipe.md"
+      ],
+      "procedure": "Ground core data/ownership and compare genuinely different designs against one contract before a consequential choice.",
+      "adaptation": "Do not run an arena across every function boundary or spawn agents for a settled local seam.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/arena",
+      "kind": "functional",
+      "source_path": "skills/arena/SKILL.md",
+      "source_sha256": "04f79ee8239251bc0c8a9e92f895ebe7bff42e785a5f6ef8ed2dc34dae18e85d",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/arena/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-competing-solutions"
+      ],
+      "targets": [
+        "skills/1-competing-solutions/references/recipe.md"
+      ],
+      "procedure": "Same-brief producers, predeclared rubric, complete artifact inspection, selection, coherent base/grafts and fresh synthesis verification.",
+      "adaptation": "Supplied/serial alternatives suffice; independent producers/judges require delegation authority and identity leakage is disclosed.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/automate-me",
+      "kind": "functional",
+      "source_path": "skills/automate-me/SKILL.md",
+      "source_sha256": "ffdb2db6d56b29518f50837d4e5d9194034bb3a767d77eb76efe82351ab1489c",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/automate-me/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-source-backed-skill"
+      ],
+      "targets": [
+        "skills/1-source-backed-skill/references/personal-conventions.md"
+      ],
+      "procedure": "Author non-default conventions from a bounded authorized corpus, preserve prior rules and source evidence, separate explicit preferences from inferred recurrence.",
+      "adaptation": "No private-global transcript sweep, cache edit or automatic runtime installation; an explicit preference needs no repeated observation.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/benchmark-checklist",
+      "kind": "functional",
+      "source_path": "skills/benchmark-checklist/SKILL.md",
+      "source_sha256": "5efd79495e3eebf3b53814861330fe812458212958f8f009492e866c329161f6",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/benchmark-checklist/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-performance-optimization"
+      ],
+      "targets": [
+        "skills/1-performance-optimization/references/measurement-integrity.md"
+      ],
+      "procedure": "Apply the seven measurement-integrity questions before accepting a speedup, regression, throughput or eval number.",
+      "adaptation": "No statistical stamp from a fixed sample count; preserve failed attempts, correctness failures and work-count confounders.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/blast-radius",
+      "kind": "functional",
+      "source_path": "skills/blast-radius/SKILL.md",
+      "source_sha256": "4248d03e22365207d2e5f90c9542720f80a88a6b42fd542ef88dde3cf9f9223f",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/blast-radius/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "reviewed-retained",
+      "owners": [
+        "1-change-impact"
+      ],
+      "targets": [
+        "skills/1-change-impact/references/safety-premise.md"
+      ],
+      "procedure": "Retain explicit safety premise, downstream consumer tracing beyond symbols and evidence levels from assumption to same-candidate runtime reproduction.",
+      "adaptation": "Read-only impact analysis proposes discriminating checks without running/fixing products or inventing likelihood.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/bro",
+      "kind": "functional",
+      "source_path": "skills/bro/SKILL.md",
+      "source_sha256": "aa329d0ceeeecb6822a7174ad76bb07a7826a3c52ceb6a588dec4138815084bb",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/bro/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "reviewed-retained",
+      "owners": [
+        "1-bro"
+      ],
+      "targets": [
+        "skills/1-bro/SKILL.md"
+      ],
+      "procedure": "Retain exact-target simpler re-expression, same language, meaning/commands/citations/uncertainty preserved, no new answer or tools.",
+      "adaptation": "No rigid shortness or deletion of decision-critical caveats.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/correct",
+      "kind": "functional",
+      "source_path": "skills/correct/SKILL.md",
+      "source_sha256": "e347045d00c967a0b831ef883cc6ac79d21329aa10b5968637df95de7febf0ba",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/correct/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "reviewed-retained",
+      "owners": [
+        "0-implement",
+        "1-agent-workflow-observer"
+      ],
+      "targets": [
+        "skills/1-agent-workflow-observer/references/recurring-corrections.md",
+        "skills/0-implement/references/verification-workflows.md"
+      ],
+      "procedure": "Retain mistake-class evidence, ranked structural prevention, actionable enforcement, real negative and clean controls and owner-directed implementation.",
+      "adaptation": "Proposals remain read-only until the existing caller has edit scope; no forced one-commit-per-class, instruction-file rewrite or unapproved exception.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/create-formal-verification-skill",
+      "kind": "functional",
+      "source_path": "skills/create-formal-verification-skill/SKILL.md",
+      "source_sha256": "30ef0ac27612ecd16fdc081112113221d673053cef3f8603db11932193861211",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/create-formal-verification-skill/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-formal-verification",
+        "1-statechart-modeling"
+      ],
+      "targets": [
+        "skills/1-formal-verification/references/rerun-and-maintain.md",
+        "skills/1-statechart-modeling/SKILL.md"
+      ],
+      "procedure": "Separate authoring a faithful model from checking fixed properties; record source/model correspondence, environment and qualified checker recipes.",
+      "adaptation": "No model creation inside fixed-check mode and no pretending a model pass proves implementation correspondence.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/create-verification-skill",
+      "kind": "functional",
+      "source_path": "skills/create-verification-skill/SKILL.md",
+      "source_sha256": "d353973547bf8ad8977eca645f4cd4feaed0d32f4b43d1448f906b0a76c4d694",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/create-verification-skill/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-implement",
+        "1-runtime-feature-map"
+      ],
+      "targets": [
+        "skills/0-implement/references/runtime-verification-maintenance.md",
+        "skills/1-runtime-feature-map/references/feature-contract.md"
+      ],
+      "procedure": "Map real entry paths, prerequisites, launch/health, ordered drive/observe/cleanup, role/state coverage and honest per-entry evidence.",
+      "adaptation": "Map authoring does not drive the app or install/write a harness; Implement coordinates separately authorized phases.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/figure-it-out",
+      "kind": "functional",
+      "source_path": "skills/figure-it-out/SKILL.md",
+      "source_sha256": "30693f2510b111128a6bae0d0ac35f97d972a30c0b84364dc87290b9fdc3b699",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/figure-it-out/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-implement",
+        "1-write-plan"
+      ],
+      "targets": [
+        "skills/0-implement/references/bounded-runs.md",
+        "skills/0-implement/references/rerunnable-changes.md",
+        "skills/1-write-plan/references/phase-evidence.md"
+      ],
+      "procedure": "Frame falsifiable done/scope/rigor, sequence risk-first verifiable experiments, keep an auditable decision trail and check the real artifact.",
+      "adaptation": "Existing Implement owns execution; no second router, forced long run, committed trail, arbitrary model choice or automatic judge.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/how",
+      "kind": "functional",
+      "source_path": "skills/how/SKILL.md",
+      "source_sha256": "23d5cc79a449b9838242e7af5563aa8a4f0417bab136bbcc054b4bebc7284680",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/how/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-code-explainer"
+      ],
+      "targets": [
+        "skills/1-code-explainer/references/mechanism-and-rationale.md"
+      ],
+      "procedure": "Explain a named subsystem through concrete input/state/effect and failure/teardown paths with cited ownership and useful progressive diagrams.",
+      "adaptation": "Explanation stays read-only and diagram count follows complexity rather than a fixed quota.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/in-your-own-words",
+      "kind": "functional",
+      "source_path": "skills/in-your-own-words/SKILL.md",
+      "source_sha256": "fa8ba74e27d7be371dc270ec78bbf816411477d0dfab185356c861ac8dd413ad",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/in-your-own-words/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-implement"
+      ],
+      "targets": [
+        "skills/0-implement/SKILL.md"
+      ],
+      "procedure": "Restate the user goal, intended benefit and unresolved assumptions in the contract phase, or return only that restatement when requested.",
+      "adaptation": "Do not substitute simplifying the last assistant reply or automatically executing an explanation-only request.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/interrogate",
+      "kind": "functional",
+      "source_path": "skills/interrogate/SKILL.md",
+      "source_sha256": "3f3c2e9b8cf6b180dba9f32a4aff85e5691b09805232468e37a0ba45437a9984",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/interrogate/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-code-review"
+      ],
+      "targets": [
+        "skills/1-code-review/references/adversarial-evidence.md"
+      ],
+      "procedure": "Frame actual intent and complete dirty candidate; seek real counterexamples, record command/actual/required output, recheck permitted reproductions and deduplicate every verified root cause without choosing one adversary list.",
+      "adaptation": "Interrogate is adversarial code/design review, not a Grilling interview. Delegation requires explicit authority; preserve source-proven security/contract/maintainability findings rather than discarding everything without an executed repro. Review applies no fixes or external comments.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/ketchup",
+      "kind": "functional",
+      "source_path": "skills/ketchup/SKILL.md",
+      "source_sha256": "f2923ffd14f6fc778f75a47aaed1f317fb5fd00b5701ca769d6446c74106dead",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/ketchup/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-session-catchup"
+      ],
+      "targets": [
+        "skills/1-session-catchup/references/decision-packet.md"
+      ],
+      "procedure": "Current human-message window plus older unresolved calls; evidence-backed changed state and self-contained choices with recommendation, costs and unknowns.",
+      "adaptation": "Agent-owned reversible work is separate; no new task execution, fabricated screenshot or traffic-light-only recap.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/ketchup-video",
+      "kind": "functional",
+      "source_path": "skills/ketchup-video/SKILL.md",
+      "source_sha256": "027aed9a01adf208aeac3a134f47d12f7c1e42d6fea03095aedc2bae58cdcfd1",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/ketchup-video/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-video-recap"
+      ],
+      "targets": [
+        "skills/1-video-recap/SKILL.md"
+      ],
+      "procedure": "Evidence storyboard, stable visuals, separate burned captions, readable full-hold timing and rendered frame/duration inspection.",
+      "adaptation": "Missing existing renderer means blocked render plus labeled storyboard; no install, invented screenshot/MP4 or publication.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/maintain-formal-verification-skill",
+      "kind": "functional",
+      "source_path": "skills/maintain-formal-verification-skill/SKILL.md",
+      "source_sha256": "0c96f54293542d3818b68754562b338073958781a9684454611dca37592e2d2c",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/maintain-formal-verification-skill/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-formal-verification"
+      ],
+      "targets": [
+        "skills/1-formal-verification/references/rerun-and-maintain.md"
+      ],
+      "procedure": "Reconcile changed source/model properties, qualify clean/negative controls and rerun required checks with candidate-specific receipts.",
+      "adaptation": "A failing property is evidence, not permission to weaken the property or silently tune the oracle.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/maintain-verification-skill",
+      "kind": "functional",
+      "source_path": "skills/maintain-verification-skill/SKILL.md",
+      "source_sha256": "515c0eaa054b3f6be1b1fb06f2c2f173c80fddb58bbcac57576f89c479bc68e8",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/maintain-verification-skill/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-implement"
+      ],
+      "targets": [
+        "skills/0-implement/references/runtime-verification-maintenance.md"
+      ],
+      "procedure": "Reconcile startup/health/driver drift, distinguish doctor ownership, re-drive changed recipes and preserve per-entry coverage/failure/teardown.",
+      "adaptation": "No coverage-by-prose, map-as-driver authority, product repair or killing unowned processes.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/make-bot-ui",
+      "kind": "functional",
+      "source_path": "skills/make-bot-ui/SKILL.md",
+      "source_sha256": "ad19d0bc6764287ec08c2521701974e7dac941f72e4d0fe81a24f4614494586f",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/make-bot-ui/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-frontend-ui-engineering"
+      ],
+      "targets": [
+        "skills/1-frontend-ui-engineering/references/visual-parity-and-agent-controls.md"
+      ],
+      "procedure": "Use existing app interaction components and trusted-server/provider boundaries for operator controls; verify real receiver/schema/auth and accessible states.",
+      "adaptation": "No client secrets, guessed webhook contract, universal network exposure, privileged install or unbounded sensitive event logging.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/no-comments",
+      "kind": "functional",
+      "source_path": "skills/no-comments/SKILL.md",
+      "source_sha256": "054a46f2662c725add02d9e0440d8dcb4351f3bd0afcf797acc22a501b527b54",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/no-comments/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-inline-comments"
+      ],
+      "targets": [
+        "skills/1-inline-comments/references/constraint-evidence.md"
+      ],
+      "procedure": "Classify ordinary narrative, domain constraints, legal/tool directives and suppressions; retain evidence-backed constraints and propose enforceable alternatives.",
+      "adaptation": "Never delete ambiguous workarounds, security rationale, licensing or suppressions merely for polish; public API docs keep their owner.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/poteto-help",
+      "kind": "functional",
+      "source_path": "skills/poteto-help/SKILL.md",
+      "source_sha256": "d6d72057e5cdfa5cebeec88ee50d1ebf8f46f2e64788f5580968a73a16aba08d",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-help/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-implement",
+        "1-write-plan",
+        "0-butler"
+      ],
+      "targets": [
+        "skills/1-write-plan/references/phase-evidence.md",
+        "skills/0-implement/references/bounded-runs.md",
+        "skills/0-butler/references/query-workflow.md"
+      ],
+      "procedure": "Adopt goal/current-state/done/constraints/evidence framing and explicit recipe selection in existing phase owners. When asked how to start, Butler may return one copy-ready prompt that preserves the requested effects.",
+      "adaptation": "No foreign slash router or mandated vendor plugin; direct house routes and task authority win.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/poteto-mode",
+      "kind": "functional",
+      "source_path": "skills/poteto-mode/SKILL.md",
+      "source_sha256": "67fd2c54fd25ebfae1e46db62c4b2e54f806a7ea9dfb6c83922de37e9b9635ea",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-mode/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-butler",
+        "0-implement",
+        "1-parallel-agents"
+      ],
+      "targets": [
+        "skills/0-implement/references/bounded-runs.md",
+        "skills/1-parallel-agents/references/coverage-and-races.md",
+        "skills/0-implement/references/rerunnable-changes.md",
+        "skills/0-butler/SKILL.md",
+        "skills/0-butler/references/intent-and-phase.md",
+        "skills/0-implement/references/project-continuity.md"
+      ],
+      "procedure": "Absorb goal-first framing, phase/worker evidence, bounded contexts and conditional method selection into existing owners. Butler adopts bounded accepted-context recovery, goal/phase/constraint matching, one entry owner and a preserved read-only routing recommendation.",
+      "adaptation": "Do not promote a second global mode, inject foreign worker policy, select hardcoded models, force delegation/deslop/comments deletion or auto-finish every task.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/recall",
+      "kind": "functional",
+      "source_path": "skills/recall/SKILL.md",
+      "source_sha256": "1f4eda450650a7bd3948f44489a94f6c692f6a14ab9ce56ab9ed6f60c50e2258",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/recall/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-working-context"
+      ],
+      "targets": [
+        "skills/1-working-context/SKILL.md"
+      ],
+      "procedure": "Reconstruct scoped prior threads from authorized records and relevant current shared state, distinguishing intent, completed work, failed attempts and next move.",
+      "adaptation": "Clips rewind and current-chat recap are different jobs; no broad private history mining or automatic resumption.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/reflect",
+      "kind": "functional",
+      "source_path": "skills/reflect/SKILL.md",
+      "source_sha256": "6f6952f91514dc86257830da93a446c732a1af906f6acd5e5783dc587a29031e",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/reflect/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-skill-creator",
+        "1-session-skill-reflect"
+      ],
+      "targets": [
+        "skills/1-session-skill-reflect/SKILL.md",
+        "skills/0-skill-creator/references/pstack-authoring-and-evaluation.md"
+      ],
+      "procedure": "Review scoped session evidence for durable lessons, read actual owners, reject already-covered/one-off claims and separate proposed wording from enforceable backlog.",
+      "adaptation": "Read-only reflection proposes; an already authorized catalog update can apply through the existing owner without redundant approval. Never edit plugin cache.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/setup-pstack",
+      "kind": "functional",
+      "source_path": "skills/setup-pstack/SKILL.md",
+      "source_sha256": "54ff000a23b5c7e2277be11a0ee1d6a2049a64fb1f59027288cf87ffc8759415",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/setup-pstack/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-write-plan"
+      ],
+      "targets": [
+        "skills/1-write-plan/references/phase-evidence.md"
+      ],
+      "procedure": "Adopt concise task framing and explicit environment/verification prerequisites; reuse existing house setup ownership.",
+      "adaptation": "Vendor-wide configuration/bootstrap, model-rule writes and plugin installation are not part of method adoption. No source setup entry is promoted.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/sharpen",
+      "kind": "functional",
+      "source_path": "skills/sharpen/SKILL.md",
+      "source_sha256": "aac4f8e6a1ffd70e3763314db37d3c2eb0cfea08bc63e98907aca6dae0343031",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/sharpen/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-prompt-optimizer"
+      ],
+      "targets": [
+        "skills/1-prompt-optimizer/references/deeper-without-bigger.md"
+      ],
+      "procedure": "Clarify goal, constraints, falsifying evidence and missing load-bearing assumptions while separating optional semantic changes.",
+      "adaptation": "A sharper prompt does not add scope, execute the prompt or start a product interview by default.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/show-me-your-work",
+      "kind": "functional",
+      "source_path": "skills/show-me-your-work/SKILL.md",
+      "source_sha256": "ec29326ac20515f2941198205bec615320a55b21659692e19650530dbf217bde",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/show-me-your-work/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-implement"
+      ],
+      "targets": [
+        "skills/0-implement/references/rerunnable-changes.md"
+      ],
+      "procedure": "Append consequential choices, failures, hypotheses, unit receipts and superseding corrections under explicit run ownership; audit scoped receipts honestly.",
+      "adaptation": "Use the adopted safe local TSV helper; no cross-vendor reader assumption, forced committed trail, global transcript mining or fabricated row.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/statechart",
+      "kind": "functional",
+      "source_path": "skills/statechart/SKILL.md",
+      "source_sha256": "010b7b4532406739b1c3a426d1a45f02bb618a42561fc96b3976e064a7f8384d",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/statechart/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-formal-verification",
+        "1-statechart-modeling"
+      ],
+      "targets": [
+        "skills/1-statechart-modeling/SKILL.md",
+        "skills/1-formal-verification/references/rerun-and-maintain.md"
+      ],
+      "procedure": "Retain narrow faithful statechart construction, property/counterexample mapping, checker/tool bounds and limitations of unmodeled source behavior.",
+      "adaptation": "Use adopted explicit local tools; no automatic mise/JAR installation or claim that bounded model checking proves all runtime behavior.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/swarm",
+      "kind": "functional",
+      "source_path": "skills/swarm/SKILL.md",
+      "source_sha256": "8558089df5320e4ddf61126ca3d638404341584c8307dd6d20f8984e5ae3bbd1",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/swarm/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-parallel-agents"
+      ],
+      "targets": [
+        "skills/1-parallel-agents/references/coverage-and-races.md"
+      ],
+      "procedure": "Declare coverage/race shape and first-pass/rank-all/best-of selection before dispatch, exact SHA/method briefs, drain results and report dropouts as gaps.",
+      "adaptation": "Inherit host/model settings and explicit delegation authority; no universal cloud environment or unconditional respawn. Artifact synthesis has its own owner.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/tdd",
+      "kind": "functional",
+      "source_path": "skills/tdd/SKILL.md",
+      "source_sha256": "eeb868e2dfebee528d730a67d7b17498fac4bb85dec2e38bc5c5176aca4d5d2f",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/tdd/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-tdd"
+      ],
+      "targets": [
+        "skills/1-tdd/references/behavioral-oracles.md",
+        "skills/1-tdd/SKILL.md"
+      ],
+      "procedure": "Agreed deterministic seam/oracle, meaningful observed red, smallest green and refactor while behavior stays pinned.",
+      "adaptation": "No strict TDD for unsettled interfaces or probabilistic LLM behavior; same-author assumption is not independent validation.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/teach",
+      "kind": "functional",
+      "source_path": "skills/teach/SKILL.md",
+      "source_sha256": "2c17f3c0a79536ca2fa3c20983def027ffd8abb4063d9bb3c97778b77557600d",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/teach/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-code-explainer",
+        "1-level-explainer"
+      ],
+      "targets": [
+        "skills/1-code-explainer/references/mechanism-and-rationale.md",
+        "skills/1-level-explainer/SKILL.md"
+      ],
+      "procedure": "Build a complete small explanation, then add source-backed mechanism/rationale and progressive visuals only where needed.",
+      "adaptation": "Do not use the unrelated durable-course 1-teach router, force three generated diagrams, a quiz or an interview.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/technical-writing",
+      "kind": "functional",
+      "source_path": "skills/technical-writing/SKILL.md",
+      "source_sha256": "0a620885599cdde5a0a31fa39878144c10f61c894b56bf4a9ff779496e718b14",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/technical-writing/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-technical-writing"
+      ],
+      "targets": [
+        "skills/1-technical-writing/references/prose-and-evidence.md"
+      ],
+      "procedure": "Choose tutorial/how-to/reference/explanation, reader goal and evidence; keep examples/procedures accurate, terms consistent and revisions reviewable.",
+      "adaptation": "Existing template/requested depth wins; STE simplification alone is not full technical writing and a fixed PR word cap is not universal.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/typescript-best-practices",
+      "kind": "functional",
+      "source_path": "skills/typescript-best-practices/SKILL.md",
+      "source_sha256": "ec1dac086d3708e5940d45d250c30a37dd953b4e3cb2ca0692f5851d7a039e27",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/typescript-best-practices/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-typescript-best-practices"
+      ],
+      "targets": [
+        "skills/1-typescript-best-practices/references/patterns.md",
+        "skills/1-typescript-best-practices/examples/contracts.ts"
+      ],
+      "procedure": "Checked domain primitives, legal-state unions, total collections, narrowing, structured diagnostics and repository-native compiler settings.",
+      "adaptation": "Correct lying predicates, negative duration, arbitrary tuple indexing, satisfies inference and unknown-field security; avoid universal console bans for CLIs.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/unslop",
+      "kind": "functional",
+      "source_path": "skills/unslop/SKILL.md",
+      "source_sha256": "2b823fd069e031c1420180be8e0d4f5e2fd25bf2c428049e5c835c59a489b5e0",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/unslop/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-bro",
+        "1-technical-writing"
+      ],
+      "targets": [
+        "skills/1-technical-writing/references/prose-and-evidence.md",
+        "skills/1-bro/SKILL.md"
+      ],
+      "procedure": "Edit stock framing, unsupported superlatives, vague nouns, repetition and ornamental structure while retaining causal detail and useful technical terms.",
+      "adaptation": "Keep uncertainty, author voice, required templates and requested length; marketing copy retains its existing specialist.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "functional/why",
+      "kind": "functional",
+      "source_path": "skills/why/SKILL.md",
+      "source_sha256": "6b65b3180f1f1bd3b696d7933daf900747410c82931d220a3f57a98addb1c0fd",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/why/SKILL.md",
+      "review": "full-text-reviewed",
+      "disposition": "reviewed-retained",
+      "owners": [
+        "1-design-rationale"
+      ],
+      "targets": [
+        "skills/1-design-rationale/SKILL.md"
+      ],
+      "procedure": "Retain bounded chronology of introducing/later changes, decision records, alternatives and current purpose with confidence and missing sources.",
+      "adaptation": "Code-derived plausible purpose is not evidence of author intent; no diagnosis, redesign or unrequested history fetch.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "playbook/authoring-a-skill",
+      "kind": "playbook",
+      "source_path": "skills/poteto-mode/playbooks/authoring-a-skill.md",
+      "source_sha256": "f6a13a445c360b48d6cd72780ac01955f45b82826476efe0e67c7559329407aa",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-mode/playbooks/authoring-a-skill.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-skill-creator"
+      ],
+      "targets": [
+        "skills/0-skill-creator/references/pstack-authoring-and-evaluation.md"
+      ],
+      "procedure": "One job/trigger boundary, real failure cases, thin body/conditional depth, explicit output checks and source-aware revision.",
+      "adaptation": "Body authoring, catalog placement and installation stay separate; no unconditional feedback loop until green.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "playbook/autonomous-run",
+      "kind": "playbook",
+      "source_path": "skills/poteto-mode/playbooks/autonomous-run.md",
+      "source_sha256": "613c7b3079779ecfa27e1fb41a082711b5a1207e720b87f75c3aaa9b25aac480",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-mode/playbooks/autonomous-run.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-implement"
+      ],
+      "targets": [
+        "skills/0-implement/references/bounded-runs.md",
+        "skills/0-implement/references/rerunnable-changes.md"
+      ],
+      "procedure": "Done/scope/budget/stop conditions, hypothesis/change/observation/disposition units and durable evidence for long work.",
+      "adaptation": "Time spent is not success; no new schedule, unrelated fixes, global model override or implied commit/merge.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "playbook/autopilot-full",
+      "kind": "playbook",
+      "source_path": "skills/poteto-mode/playbooks/autopilot-full.md",
+      "source_sha256": "2a8856b7e11590f6faba87c11520e0a20f46c78dbfdaac5eceab48ea308bf787",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-mode/playbooks/autopilot-full.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-implement",
+        "1-finish-branch"
+      ],
+      "targets": [
+        "skills/0-implement/references/bounded-runs.md",
+        "skills/1-finish-branch/references/verified-delivery.md"
+      ],
+      "procedure": "Pin independent PR queue, per-operation grants, writer handles, real heads/bases and fresh verification before authorized closure.",
+      "adaptation": "AI countersign is not human merge authorization; stopped writers must be reconciled before replacement.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "playbook/autopilot-stack",
+      "kind": "playbook",
+      "source_path": "skills/poteto-mode/playbooks/autopilot-stack.md",
+      "source_sha256": "3dc6961df12a74a917571c21de482b42939b728cb4879d1852c51fd9fbabd152",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-mode/playbooks/autopilot-stack.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-implement",
+        "1-finish-branch"
+      ],
+      "targets": [
+        "skills/0-implement/references/bounded-runs.md",
+        "skills/1-finish-branch/references/verified-delivery.md"
+      ],
+      "procedure": "Record stack dependencies, exact heads/bases and contiguous verified ceiling; restack only within the selected base/conflict policy.",
+      "adaptation": "Patch-id alone does not preserve runtime verdicts and no-merge queues end without further mutation.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "playbook/babysit",
+      "kind": "playbook",
+      "source_path": "skills/poteto-mode/playbooks/babysit.md",
+      "source_sha256": "06fed1fa997c8899d7365fb0f21c0177084fcb8d0561841d2eca753660f63a85",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-mode/playbooks/babysit.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-git"
+      ],
+      "targets": [
+        "skills/0-git/references/babysit-modes.md"
+      ],
+      "procedure": "Explicit check, threads-only or drive mode; skeptical evidence-based bot triage, owned fixes and shared checkpoint state.",
+      "adaptation": "Status inspection does not post replies, rerun workflows or mutate branches; external messages need explicit authority.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "playbook/bug-fix",
+      "kind": "playbook",
+      "source_path": "skills/poteto-mode/playbooks/bug-fix.md",
+      "source_sha256": "eef68686ea0128d36979c39ce88f5cd5c248eb4e58f1ca3229692b9902961170",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-mode/playbooks/bug-fix.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-diagnosing-bugs",
+        "0-implement"
+      ],
+      "targets": [
+        "skills/0-diagnosing-bugs/references/premises-and-forensics.md",
+        "skills/0-implement/references/feature-and-refactor.md"
+      ],
+      "procedure": "Ground reproducible failure, falsify mechanism, preserve meaningful failing evidence, implement the owned root-cause slice and recheck affected paths.",
+      "adaptation": "Diagnosis-only requests stop with evidence; preserve required guards and avoid sweep beyond scoped siblings.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "playbook/eval",
+      "kind": "playbook",
+      "source_path": "skills/poteto-mode/playbooks/eval.md",
+      "source_sha256": "369bfda8bf305fb57bf4cabada7862c41dc21f1dc0ad7993cfcd29d0a4d99a68",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-mode/playbooks/eval.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-skill-creator"
+      ],
+      "targets": [
+        "skills/0-skill-creator/references/pstack-authoring-and-evaluation.md",
+        "skills/0-skill-creator/references/blinded-comparison.md"
+      ],
+      "procedure": "Freeze independent cases/oracle and matched baselines, preserve raw attempts and failures, inspect traces and discriminate metadata blinding from actual judge independence.",
+      "adaptation": "Current skill-eval scorer is unblinded and substring assertions are smoke signals, not proof of semantic quality gain.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "playbook/feature",
+      "kind": "playbook",
+      "source_path": "skills/poteto-mode/playbooks/feature.md",
+      "source_sha256": "beb7b527049eab12052deac8a32e6ee7f6cf26e7ebffb3c3f5d6cead1ec7df7e",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-mode/playbooks/feature.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-implement"
+      ],
+      "targets": [
+        "skills/0-implement/references/feature-and-refactor.md"
+      ],
+      "procedure": "Frame observable acceptance/non-goals, trace existing owner/seams, choose evidence loop, build a coherent slice and verify real user behavior.",
+      "adaptation": "No mandatory architecture tournament, test framework, unrelated cleanup or PR creation.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "playbook/hillclimb",
+      "kind": "playbook",
+      "source_path": "skills/poteto-mode/playbooks/hillclimb.md",
+      "source_sha256": "a1d71e026d648991646533539939641f33508d5a02340f5041482ddd58116216",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-mode/playbooks/hillclimb.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-performance-optimization"
+      ],
+      "targets": [
+        "skills/1-performance-optimization/references/hillclimb.md",
+        "skills/1-performance-optimization/references/measurement-integrity.md"
+      ],
+      "procedure": "Freeze workload/correctness guard and target/budget, test one causal change, keep/reject with raw samples and stop at diminishing or invalid evidence.",
+      "adaptation": "No forced iteration floor, harness gaming, budget inflation or broad revert of unrelated work.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "playbook/investigation",
+      "kind": "playbook",
+      "source_path": "skills/poteto-mode/playbooks/investigation.md",
+      "source_sha256": "1009fdb6596a9c06cb93e224ec86bfb60226f2c603474c968a4f2c2983e96a69",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-mode/playbooks/investigation.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-code-explainer"
+      ],
+      "targets": [
+        "skills/1-code-explainer/references/mechanism-and-rationale.md"
+      ],
+      "procedure": "Read-only subsystem map from concrete entry/state/effect paths plus recorded rationale and known gaps.",
+      "adaptation": "Do not turn understanding into bug repair, redesign or mandatory diagrams.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "playbook/multi-phase-plan",
+      "kind": "playbook",
+      "source_path": "skills/poteto-mode/playbooks/multi-phase-plan.md",
+      "source_sha256": "98e0ed1acc5410fd23ed52cc399346c7c3f83f9f6f7068f8cc52d95ff84ab653",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-mode/playbooks/multi-phase-plan.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-write-plan"
+      ],
+      "targets": [
+        "skills/1-write-plan/references/phase-evidence.md"
+      ],
+      "procedure": "Explicit dependency edges, relevant per-phase evidence and exit gates, actual identifiers and unknowns, reviewable execution plan.",
+      "adaptation": "Plan-only requests stop; do not invent PR IDs or demand every test modality for every phase.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "playbook/opening-a-pr",
+      "kind": "playbook",
+      "source_path": "skills/poteto-mode/playbooks/opening-a-pr.md",
+      "source_sha256": "a14cf04833cd6a3eb899fb8814759c937294d0faa3da1ef09d568f45002026b4",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-mode/playbooks/opening-a-pr.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-finish-branch"
+      ],
+      "targets": [
+        "skills/1-finish-branch/references/verified-delivery.md"
+      ],
+      "procedure": "Honor repository template, explain concrete trigger/behavior change and meaningful checks for the exact branch candidate.",
+      "adaptation": "No unconditional PR creation/push and no arbitrary universal word cap.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "playbook/pause-safely",
+      "kind": "playbook",
+      "source_path": "skills/poteto-mode/playbooks/pause-safely.md",
+      "source_sha256": "77968cfe5f4a71a8cd33e0ae8ffcdbd88dd693a212c240457773e6c40c96c21d",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-mode/playbooks/pause-safely.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-implement",
+        "1-handoff"
+      ],
+      "targets": [
+        "skills/1-handoff/references/pickup-and-pause.md",
+        "skills/0-implement/references/project-continuity.md"
+      ],
+      "procedure": "At explicit pause, stop starting work, checkpoint owned mutations, preserve dirty work/evidence and record in-flight state and next move.",
+      "adaptation": "No forced WIP commit, stash, push, reset, deletion or false completion.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "playbook/perf-issue",
+      "kind": "playbook",
+      "source_path": "skills/poteto-mode/playbooks/perf-issue.md",
+      "source_sha256": "0eb3130e34798cdc0971eb1b3582856cb81023ccab0abeb64301458660be15a1",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-mode/playbooks/perf-issue.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-performance-optimization"
+      ],
+      "targets": [
+        "skills/1-performance-optimization/references/measurement-integrity.md",
+        "skills/1-performance-optimization/references/hillclimb.md"
+      ],
+      "procedure": "Reproduce measurement, localize limiter, choose one justified treatment and fairly compare raw results with correctness/noise checks.",
+      "adaptation": "Unknown symptoms return to diagnosis; local findings do not prove production gains.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "playbook/prototype",
+      "kind": "playbook",
+      "source_path": "skills/poteto-mode/playbooks/prototype.md",
+      "source_sha256": "7aa1f52c691c3d46d5afc527b23f90977fce869ce33573c73c81a4c7f0cde962",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-mode/playbooks/prototype.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-prototype"
+      ],
+      "targets": [
+        "skills/1-prototype/references/deciding-with-prototypes.md"
+      ],
+      "procedure": "Name a load-bearing uncertainty, bound an experiment, compare alternatives under one question and return decision/evidence/discard conditions.",
+      "adaptation": "No default no-tests/security relaxation, CDN dependency, automatic product promotion or model fan-out.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "playbook/refactoring",
+      "kind": "playbook",
+      "source_path": "skills/poteto-mode/playbooks/refactoring.md",
+      "source_sha256": "f11ff3c3ff0ea09d3ce2db0a3c11be3a3c11c279c04b83324723d0e0f984755b",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-mode/playbooks/refactoring.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-implement",
+        "0-ponytail"
+      ],
+      "targets": [
+        "skills/0-implement/references/feature-and-refactor.md",
+        "skills/0-ponytail/references/reader-load.md"
+      ],
+      "procedure": "Hold observable behavior with characterization, alter one ownership/shape concern at a time and remove only proven obsolete pieces.",
+      "adaptation": "No speculative abstraction, destructive cleanup or accidental feature change.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "playbook/runtime-forensics",
+      "kind": "playbook",
+      "source_path": "skills/poteto-mode/playbooks/runtime-forensics.md",
+      "source_sha256": "79634d9bbc1a6fef3fa5c852c1c723d525f7fab45568e9637121e4afc058405f",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-mode/playbooks/runtime-forensics.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-diagnosing-bugs"
+      ],
+      "targets": [
+        "skills/0-diagnosing-bugs/references/premises-and-forensics.md"
+      ],
+      "procedure": "Record actual build/session identity and minimal permitted observation, discriminate hypotheses and retain evidence before effects disappear.",
+      "adaptation": "Source labels live eval/hotfix as read-only; our adaptation treats those as separately authorized mutations.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "playbook/session-pickup",
+      "kind": "playbook",
+      "source_path": "skills/poteto-mode/playbooks/session-pickup.md",
+      "source_sha256": "15a6b61eeb89e2dd66ab8254f7c6807694a06eb103342983a7620f10c942ecf9",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-mode/playbooks/session-pickup.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-implement",
+        "1-handoff"
+      ],
+      "targets": [
+        "skills/1-handoff/references/pickup-and-pause.md",
+        "skills/0-implement/references/project-continuity.md"
+      ],
+      "procedure": "Read named capsule/trail first, reconcile current workspace and in-flight state, retain valid receipts and name one exact resume point.",
+      "adaptation": "Do not blindly trust old self-report or rerun an entire proven history; revalidate identity and invalidated claims.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "playbook/shipping",
+      "kind": "playbook",
+      "source_path": "skills/poteto-mode/playbooks/shipping.md",
+      "source_sha256": "486a6211859eeacfc9a85c7a9d2632b7dddecad189a6b2551212ef274ef1d85c",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-mode/playbooks/shipping.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-finish-branch"
+      ],
+      "targets": [
+        "skills/1-finish-branch/references/verified-delivery.md"
+      ],
+      "procedure": "Ship only the contiguous verified authorized prefix, with current head/base and check identities, correct destination and queued/merged distinctions.",
+      "adaptation": "No patch-id-only receipt carryover, AI merge approval or bypass of required immediate protected-branch permission.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "playbook/trace-forensics",
+      "kind": "playbook",
+      "source_path": "skills/poteto-mode/playbooks/trace-forensics.md",
+      "source_sha256": "a2d5e20b544835755407b9bdd945e2b595d2e5f826b44c438cbadf92e7efd797",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-mode/playbooks/trace-forensics.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "0-diagnosing-bugs"
+      ],
+      "targets": [
+        "skills/0-diagnosing-bugs/references/premises-and-forensics.md"
+      ],
+      "procedure": "Use supplied immutable trace/candidate/time, distinguish event ordering from causation, test competing mechanisms against recorded paths and missing signals.",
+      "adaptation": "Trace inspection does not authorize live mutation, logging enablement or private broader retrieval.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "playbook/visual-parity",
+      "kind": "playbook",
+      "source_path": "skills/poteto-mode/playbooks/visual-parity.md",
+      "source_sha256": "950ca51999a6454c98eee6bcbc3d1bbe501a4e3a5d5439b6f6ddc378991b256c",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-mode/playbooks/visual-parity.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-frontend-ui-engineering"
+      ],
+      "targets": [
+        "skills/1-frontend-ui-engineering/references/visual-parity-and-agent-controls.md"
+      ],
+      "procedure": "Freeze baseline/candidate environment, capture comparable viewport/data/font/theme state, inspect pixel/structural deltas and accessibility/behavior separately.",
+      "adaptation": "Zero delta applies only to an agreed exact contract; no moving baseline/tolerance after failure or fake visual evidence.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    },
+    {
+      "id": "playbook/worktree-cleanup",
+      "kind": "playbook",
+      "source_path": "skills/poteto-mode/playbooks/worktree-cleanup.md",
+      "source_sha256": "2d4d3dcc9e4ddff4770c5f2a254c7915e6bbed968861cfa0c3c45bd04f99b3a5",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-mode/playbooks/worktree-cleanup.md",
+      "review": "full-text-reviewed",
+      "disposition": "adapted",
+      "owners": [
+        "1-finish-branch"
+      ],
+      "targets": [
+        "skills/1-finish-branch/references/verified-delivery.md"
+      ],
+      "procedure": "Use local audit, enumerate exact owned paths, check untracked/dirty and published/merged identity, retain evidence and identify a safe proposed deletion scope.",
+      "adaptation": "Untracked is not disposable; no --force/rm -rf, cache/simulator sweep or removal without exact deletion authority.",
+      "verification": "Source-to-owner semantic review and structural integrity; runtime limits are recorded in the review report."
+    }
+  ],
+  "supporting_sources": [
+    {
+      "source_path": "skills/typescript-best-practices/references/patterns.md",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/typescript-best-practices/references/patterns.md",
+      "source_sha256": "12e70c9419a8b3f5d6a1ab80e272c1f00a43ac0b3bbf72d68199033570e5de77",
+      "review": "full-text-reviewed"
+    },
+    {
+      "source_path": "skills/poteto-mode/references/bugbot-triage.md",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-mode/references/bugbot-triage.md",
+      "source_sha256": "b2d146c770d8d3593e1ef3d77b668039b8e1f78093ea1a86f1d45d7f99614309",
+      "review": "full-text-reviewed"
+    },
+    {
+      "source_path": "skills/create-verification-skill/references/feature-map-example/README.md",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/create-verification-skill/references/feature-map-example/README.md",
+      "source_sha256": "cb7bd782cf89968a4ba3d58a5151db837430db92d19a6f52a906973b77b516ba",
+      "review": "full-text-reviewed"
+    },
+    {
+      "source_path": "skills/create-verification-skill/references/feature-map-example/create-note.md",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/create-verification-skill/references/feature-map-example/create-note.md",
+      "source_sha256": "644a44c74f35d38c2feb7cd05a0121fdebbb623e8dc376c185b565a581d1ccf7",
+      "review": "full-text-reviewed"
+    },
+    {
+      "source_path": "skills/create-verification-skill/references/feature-map-example/search.md",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/create-verification-skill/references/feature-map-example/search.md",
+      "source_sha256": "6e87b9e7f2791a7776ba1bb83f371cd285c306c67f19d245cc4dd6ca3015c823",
+      "review": "full-text-reviewed"
+    },
+    {
+      "source_path": "skills/poteto-help/references/recipes.md",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-help/references/recipes.md",
+      "source_sha256": "5323aca73a39a3b607c2bb22cd33551fe893563dfd4b104df838da010e9fc702",
+      "review": "full-text-reviewed"
+    },
+    {
+      "source_path": "skills/poteto-help/references/prompting.md",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-help/references/prompting.md",
+      "source_sha256": "463f450c44a60afd001a2f69fdf8a5dea174351f339369b12ec3c41515e564d3",
+      "review": "full-text-reviewed"
+    },
+    {
+      "source_path": "agents/comment-sicko.md",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/agents/comment-sicko.md",
+      "source_sha256": "0fb37221ab2a9159714d38f1528898e82b9758b5750f244bbe2e575bb593a1de",
+      "review": "full-text-reviewed"
+    },
+    {
+      "source_path": "agents/poteto-agent.md",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/agents/poteto-agent.md",
+      "source_sha256": "369065b46c217a5898cb1a400652c3399449252f4d5dbf8937eb8d4922d3cf6b",
+      "review": "full-text-reviewed"
+    },
+    {
+      "source_path": "skills/poteto-mode/worker.md",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/skills/poteto-mode/worker.md",
+      "source_sha256": "d051060527ab1649fb1e69d1e7d416950264f9955c3de3635c0d63569f1b90d8",
+      "review": "full-text-reviewed"
+    },
+    {
+      "source_path": "LICENSE",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/LICENSE",
+      "source_sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e",
+      "review": "full-text-reviewed"
+    },
+    {
+      "source_path": "automations/benny/skills/reproduce-and-fix-issues/SKILL.md",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/automations/benny/skills/reproduce-and-fix-issues/SKILL.md",
+      "source_sha256": "809659da0bbd0303d2a42dbe380dd117ae06b6fa3e19e4a31832a2756ae841fe",
+      "review": "full-text-reviewed"
+    },
+    {
+      "source_path": "automations/benny/skills/setup-benny/SKILL.md",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/automations/benny/skills/setup-benny/SKILL.md",
+      "source_sha256": "1b1298536804eef289718f497a42f48aec135c8f4175b03e5ecfa11075758c59",
+      "review": "full-text-reviewed"
+    },
+    {
+      "source_path": "automations/benny/skills/triage-issue-reports/SKILL.md",
+      "archive_path": "archive/vendor/pstack-methods-2026-11-18/automations/benny/skills/triage-issue-reports/SKILL.md",
+      "source_sha256": "e88bb1ccc619f93d4b787bd9156fba5159f061c653fca00b6f08c65b6c77701a",
+      "review": "full-text-reviewed"
+    }
+  ],
+  "adopted_files": [
+    {
+      "path": "README.md",
+      "sha256": "25b2a9534c3079c44f7a55680cedb2aa59a3478ad9657a984cd7c49db64f7345"
+    },
+    {
+      "path": "archive/vendor/README.md",
+      "sha256": "2355274048ce00a1bb16572c7b352c6216f319724df79bc09b3ae7c3f7365318"
+    },
+    {
+      "path": "docs/agents/issue-tracker.md",
+      "sha256": "0a48fb34316eebfba27d019564c3282438135be00430cb4a05fb01607af0186b"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-11-18-project-continuity.md",
+      "sha256": "4a18411bb73dc3c080c3f464ad1bf0afe2f13e1d462fac7a123fa69075643030"
+    },
+    {
+      "path": "guidelines/catalog/butler-routing-2026-11-18.md",
+      "sha256": "a9cf5e07fa3d21eb51b4d0c95aca6ccfef344df1d9b1c7175b4f44268545ca8c"
+    },
+    {
+      "path": "guidelines/catalog/evals/butler-intent-cases.json",
+      "sha256": "795dd53417f572a854908dcd5f6692f2582fddf83d1e27478ec970caecf114de"
+    },
+    {
+      "path": "guidelines/catalog/evals/pstack-methods-cases.json",
+      "sha256": "5c0071f5352aa04123763663a904eb5967aebb7f0c1e393852a4a548fea66fc7"
+    },
+    {
+      "path": "guidelines/catalog/project-continuity-2026-11-18.md",
+      "sha256": "bad5112bb01882c65e13e355e1b7a126be795e3558be1f54884ae4349fcf025b"
+    },
+    {
+      "path": "guidelines/catalog/pstack-methods-review-2026-11-18.md",
+      "sha256": "52f8228846b7d4c8364244283d0f27453da70ee2edd6f10a205245f6da3697b9"
+    },
+    {
+      "path": "guidelines/catalog/pstack-skill-by-skill-review.md",
+      "sha256": "f33f225ed932eb76913903a40251f09c53d28da0c51d4f6320a1db279d43c37b"
+    },
+    {
+      "path": "hubs/0-butler/hub.html",
+      "sha256": "0dbb7ef8fe6915c4b5b7cd520ea2ef35237cb9b7681ab9bd8d5eb06e8b6dba2f"
+    },
+    {
+      "path": "hubs/0-butler/workflow.json",
+      "sha256": "5cae08c2ec87ffd38510d21e370d448c3328a5dbfce02a9b63ca2eebf0182b99"
+    },
+    {
+      "path": "hubs/0-implement/hub.html",
+      "sha256": "ff71594f0f0c802a4c641245802ca4ac1753b2f7c9dbfd873e218bb808cfa2ed"
+    },
+    {
+      "path": "hubs/0-implement/workflow.json",
+      "sha256": "fdd564e395456219eb9e97fe85be5f91b91f4b8503d1275dd1ade813290f9480"
+    },
+    {
+      "path": "hubs/0-office/hub.html",
+      "sha256": "9f3e175212e2c382a286b5da1eef92b74defa61a6afeb3000add550b5915b22d"
+    },
+    {
+      "path": "hubs/0-office/workflow.json",
+      "sha256": "d3e00f5b1857eefab28058a28c0946ade63aacd1b9463862b69b3d9c80833267"
+    },
+    {
+      "path": "hubs/flows-chart.html",
+      "sha256": "3141a4d109b7dccd55eeb6db9cafd41d8fa316a6ad1515bb6c15527a30831b28"
+    },
+    {
+      "path": "scripts/README.md",
+      "sha256": "2e43e9ae8353200a7eb7d77abc839e54de0f0f5f0d3d4a470d21aef35a56abf8"
+    },
+    {
+      "path": "scripts/check-pstack-methods",
+      "sha256": "0b6903f734bd944a33a2ffd8a878bf0b341a4f7af8ee51220a667dde49c98808"
+    },
+    {
+      "path": "scripts/test-project-continuity.py",
+      "sha256": "92ff284281b088a9b2d18b6d63a8c1cb7af81e91c723005323c2ca0c19ece23a"
+    },
+    {
+      "path": "scripts/test-pstack-methods.py",
+      "sha256": "bf2dc08d88f2ac3d816035da7f9c311f54cb66ef19689ab2a713fddc918f44bb"
+    },
+    {
+      "path": "scripts/test-routing.py",
+      "sha256": "d0f3d1ab135226bd5d49357f927036b0e12e49381b2de40a20fabc44ac61db2f"
+    },
+    {
+      "path": "skills-lock.json",
+      "sha256": "0b64042c13f7818b581d4a99cb8c9ff5e6541a87521bb56b3edfdf3d43c1d336"
+    },
+    {
+      "path": "skills/0-butler/LICENSE-pstack",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/0-butler/SKILL.md",
+      "sha256": "605a002927f53fdfe35bcb87e541d72008e2c87075cc65ccc5ffc93c63e9b449"
+    },
+    {
+      "path": "skills/0-butler/references/flows.md",
+      "sha256": "8b675655e6b5598029572552b92516f848700e74d8710740ab6346ce7f92d5db"
+    },
+    {
+      "path": "skills/0-butler/references/hard-rules.md",
+      "sha256": "85c306bd2256a41f8127e9e9b21c2dbdd3d513866329c42fc0d5ce46cbdaf01a"
+    },
+    {
+      "path": "skills/0-butler/references/intent-and-phase.md",
+      "sha256": "4297ff63d4072af7e994004a06a03c29d9d172c3cc6f27a455f8c4407adc24f2"
+    },
+    {
+      "path": "skills/0-butler/references/playbooks.md",
+      "sha256": "308214ba3024c5b7ce1267dc03e258ce946d923023e31155b4d2804c43415869"
+    },
+    {
+      "path": "skills/0-butler/references/playbooks/build.md",
+      "sha256": "51d47e4f7d674bf103096bae3062346ed91f49e5f1bd6d82bd5201a3de11abf4"
+    },
+    {
+      "path": "skills/0-butler/references/playbooks/continuity.md",
+      "sha256": "11fbb695640450365787db92bdf77df17970d72602af926fd0b9f1a4b6e85ad6"
+    },
+    {
+      "path": "skills/0-butler/references/playbooks/delivery.md",
+      "sha256": "7eaa7b9b481f7f2d47b2c855ab5109c6251a86b53c5469d9a63bd80584718af8"
+    },
+    {
+      "path": "skills/0-butler/references/playbooks/investigation.md",
+      "sha256": "5de88a5e6fe1e30916ec4c1c7faa0ebab4bcbcabc0cd849d229bafbac5967b22"
+    },
+    {
+      "path": "skills/0-butler/references/playbooks/skills-and-evaluation.md",
+      "sha256": "bac35887f9ef16f400322b7ac9699a206d4ea0788fcbfcf1698a769eb2d68c01"
+    },
+    {
+      "path": "skills/0-butler/references/query-workflow.md",
+      "sha256": "208f7ab80589b6716b0e59eb390b48e08cf772ed019fbaa8c59eeccfb60f1212"
+    },
+    {
+      "path": "skills/0-butler/references/route-index.json",
+      "sha256": "9b4815f00f775d9a19f4218f710fdd6f78f263bb456b76178736773af17e6eaa"
+    },
+    {
+      "path": "skills/0-butler/references/route-index.md",
+      "sha256": "1054e41fc3faa93c31efaf6d1306b05ef4e348e255c071030cd033a8d7b35506"
+    },
+    {
+      "path": "skills/0-diagnosing-bugs/LICENSE-pstack",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/0-diagnosing-bugs/SKILL.md",
+      "sha256": "4ceb62283089f7089a2aa3196b09f145aa6c4a12ea1377a5733e0d8710e6e540"
+    },
+    {
+      "path": "skills/0-diagnosing-bugs/references/premises-and-forensics.md",
+      "sha256": "d0ecf471cd9d002675be71297265bcaa0cc900eae4a0870ac6604aa0d1546511"
+    },
+    {
+      "path": "skills/0-git/LICENSE-pstack",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/0-git/SKILL.md",
+      "sha256": "8447dec14e68fd196913e3944539098cdcdc4d7aa2cb0d48032abef3179aa41e"
+    },
+    {
+      "path": "skills/0-git/references/babysit-modes.md",
+      "sha256": "9887247459221ff58930e2b746b6d0bf17c574e93758480953fb9b45158300b0"
+    },
+    {
+      "path": "skills/0-implement/LICENSE-pstack",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/0-implement/SKILL.md",
+      "sha256": "671c1b469d5bc63bd79e1ec340114afe4aa300593f923f22de7c4cde60ebfe13"
+    },
+    {
+      "path": "skills/0-implement/references/bounded-runs.md",
+      "sha256": "a04951a82dd7180f3998200c3110ba3332bc257fdb3a9aee019aee6be23dc578"
+    },
+    {
+      "path": "skills/0-implement/references/feature-and-refactor.md",
+      "sha256": "7b3b4827e158403e881ed71f13a7653b6918759d74afb96425563866e4e9d21a"
+    },
+    {
+      "path": "skills/0-implement/references/project-checkpoint-example.json",
+      "sha256": "dc2190b41103bbb64798b181a092f8eccfab321dccad0e7f12b2f9564efe7499"
+    },
+    {
+      "path": "skills/0-implement/references/project-continuity.md",
+      "sha256": "78ecd73e3cb21c35286ef8c0028a805faf0775e61b8f330258bb02fc78297698"
+    },
+    {
+      "path": "skills/0-implement/references/rerunnable-changes.md",
+      "sha256": "9ec28004d2d0ba4e47d11d9c2edb632bde5768d50db70b638f0daf10d917f205"
+    },
+    {
+      "path": "skills/0-implement/references/runtime-verification-maintenance.md",
+      "sha256": "bfa7778cb5c2787a8b86be4b41dd718d70d404352e7c3e155e1f1dcd2d2e0556"
+    },
+    {
+      "path": "skills/0-implement/references/verification-workflows.md",
+      "sha256": "769a3a187f8b6adb0ef134f4de0ff3afba28921ce72446ca6fce3c261c376ce2"
+    },
+    {
+      "path": "skills/0-implement/scripts/project-checkpoint.py",
+      "sha256": "1a1440bdc00537836ee5482babd363f179325ac20f112ee530b9d7a5285d1bde"
+    },
+    {
+      "path": "skills/0-office/SKILL.md",
+      "sha256": "a21e193d924ae52a082314c327e535831e0b10e9f627aa4570f961078e2f57a9"
+    },
+    {
+      "path": "skills/0-ponytail/LICENSE-pstack",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/0-ponytail/SKILL.md",
+      "sha256": "c2dffa2a52532e9e5457566e181f34d2a5c197e4669d8d4f590c4e3803fa0e11"
+    },
+    {
+      "path": "skills/0-ponytail/references/reader-load.md",
+      "sha256": "9704d3f5c380a232f9eb65f993750b3f3d1fc987fd6b7cd62652d47a2a68c46b"
+    },
+    {
+      "path": "skills/0-skill-creator/LICENSE-pstack",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/0-skill-creator/SKILL.md",
+      "sha256": "f959b791a508715a73e26d6a7586ad641f1becb98e943a74132f8ccbdbb33c50"
+    },
+    {
+      "path": "skills/0-skill-creator/references/blinded-comparison.md",
+      "sha256": "d45026e38ccca1d0665ee3fe85d0accb05bdc9c8461a279ec2eecaaacba23221"
+    },
+    {
+      "path": "skills/0-skill-creator/references/pstack-authoring-and-evaluation.md",
+      "sha256": "99ad8af8b7f72d4d66cb8974b9fe1c0de8fa7a572f4d945283cd8c2c2cda7be9"
+    },
+    {
+      "path": "skills/1-agent-workflow-observer/references/recurring-corrections.md",
+      "sha256": "6ead047bc938e929291739a36567d2753cd49df1c5791b2d06ae32215d0da5ce"
+    },
+    {
+      "path": "skills/1-bro/SKILL.md",
+      "sha256": "f75e3ebdf72986d370022420cb357028651b4c5b470ac05618c228757b0239d5"
+    },
+    {
+      "path": "skills/1-change-impact/references/safety-premise.md",
+      "sha256": "1a3cc27935066b01316686994329dc7c9d69c3cafba9b02a4d839aff48d316a5"
+    },
+    {
+      "path": "skills/1-ci-cd-and-automation/SKILL.md",
+      "sha256": "a58b41b85af16ac0c92a96bea24686776c76467a98200e805b29ceff445a4e50"
+    },
+    {
+      "path": "skills/1-code-explainer/LICENSE-pstack",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/1-code-explainer/SKILL.md",
+      "sha256": "0e88e1f9ab89382d70407b1268018636ab2f4c72ffa1e0d8fa1028110499237f"
+    },
+    {
+      "path": "skills/1-code-explainer/references/mechanism-and-rationale.md",
+      "sha256": "d0c9760444194b2863a2dbafc6a0bb0954b7b771e56b35167c82e4afe5dfd6bf"
+    },
+    {
+      "path": "skills/1-code-review/LICENSE-pstack",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/1-code-review/SKILL.md",
+      "sha256": "e05c48a888edab4ba047a8b0f8179b461abdde6326a65cd73c23a522052a3025"
+    },
+    {
+      "path": "skills/1-code-review/references/adversarial-evidence.md",
+      "sha256": "9009110815631dd9ae5a254d5e21f24c0a8f774cf1f9f0bd8440109074f73bf4"
+    },
+    {
+      "path": "skills/1-codebase-design/LICENSE-pstack",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/1-codebase-design/SKILL.md",
+      "sha256": "3808fb39c01a0c1ee26341e2dc2ae343b23be65885282430027b1a355a913239"
+    },
+    {
+      "path": "skills/1-codebase-design/references/data-shapes-and-ownership.md",
+      "sha256": "372341b14f58d8d768fcef6443f075e81b9ca4e04628143299b7a4e89e0cd4f9"
+    },
+    {
+      "path": "skills/1-competing-solutions/LICENSE",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/1-competing-solutions/SKILL.md",
+      "sha256": "8cf5fdbe421455dbd74fd503ad3224410e18269516637d80733c00abe0989f7b"
+    },
+    {
+      "path": "skills/1-competing-solutions/agents/openai.yaml",
+      "sha256": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94"
+    },
+    {
+      "path": "skills/1-competing-solutions/references/recipe.md",
+      "sha256": "9975366350b2bcdf8ec17da480ec3e81d0bc6fa2845433c881f000293f9f2224"
+    },
+    {
+      "path": "skills/1-context-monitor/LICENSE-pstack",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/1-context-monitor/SKILL.md",
+      "sha256": "91780d89f63e57c6c27dfb65453251e1d8f75411df7cff6dbfd061927ef5d2d3"
+    },
+    {
+      "path": "skills/1-context-monitor/references/bulk-evidence.md",
+      "sha256": "ab6e454f7a2d4969b577c6f41a677f93ff49e274ee55a912add1ba20d665d25d"
+    },
+    {
+      "path": "skills/1-deprecation-and-migration/LICENSE-pstack",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/1-deprecation-and-migration/SKILL.md",
+      "sha256": "1eb163bd364a4e83e09422295dd75cc67d48b71e8c0548140e3736e9bc9ba3ec"
+    },
+    {
+      "path": "skills/1-deprecation-and-migration/references/coordinated-cutover.md",
+      "sha256": "1d58c014ebb942244a57954dcb32e1e2208ddd6541fdab95e12500805af76570"
+    },
+    {
+      "path": "skills/1-design-rationale/SKILL.md",
+      "sha256": "d62e66cc27b45395d9f8540fdf8d9e2894e60ce3c21a20d16372a76dba091ff1"
+    },
+    {
+      "path": "skills/1-error-handling/LICENSE-pstack",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/1-error-handling/SKILL.md",
+      "sha256": "7689746d4ef9382248f928da7f04c3bea902e7c2b9d593023396afee5f487643"
+    },
+    {
+      "path": "skills/1-error-handling/references/replay-and-boundaries.md",
+      "sha256": "26ad1072f6c2daaac20c6adba68de36119b434437faaba01509225c3ca44eea4"
+    },
+    {
+      "path": "skills/1-execute-plan/SKILL.md",
+      "sha256": "27b18d7674d68e62161cacb5e365a1cb0e3e63df0fbc52a052c2f0ee9d9fd309"
+    },
+    {
+      "path": "skills/1-execute-plan/references/full-guide.md",
+      "sha256": "cbd245ab929b56219185a587b13f620287c3722ba6eeca96d98b741ffb9fd95f"
+    },
+    {
+      "path": "skills/1-finish-branch/LICENSE-pstack",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/1-finish-branch/SKILL.md",
+      "sha256": "fbccdfdfc6b967266d3daa1cf944d95b671b16579a3fd363e3aa85c5e4bebbb4"
+    },
+    {
+      "path": "skills/1-finish-branch/references/verified-delivery.md",
+      "sha256": "e1897397486db3cf416706ea2f1f9204f0d67e769435c3115d1d37247532539b"
+    },
+    {
+      "path": "skills/1-formal-verification/LICENSE-pstack",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/1-formal-verification/SKILL.md",
+      "sha256": "8ea601548661cf22e615de8100f2b43c83ae012b9990f245818b108f7493db60"
+    },
+    {
+      "path": "skills/1-formal-verification/references/rerun-and-maintain.md",
+      "sha256": "3b5acd68b57a4f9a586d70202058ef2cad30ee3b6c0222b69252909916e2dd5c"
+    },
+    {
+      "path": "skills/1-frontend-ui-engineering/LICENSE-pstack",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/1-frontend-ui-engineering/SKILL.md",
+      "sha256": "70cde054a26e37059e0f2b6d69b9bd5ed41e56bd02339e72d62a9d875b0f2d9b"
+    },
+    {
+      "path": "skills/1-frontend-ui-engineering/references/visual-parity-and-agent-controls.md",
+      "sha256": "059d1320567553011a1cfd597a94759b70a056ba6637a895b2444205c3563f55"
+    },
+    {
+      "path": "skills/1-handoff/LICENSE-pstack",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/1-handoff/SKILL.md",
+      "sha256": "1a84029f7d1e2ae03ca0992e7db3a27ec39ef74cb4e331df4bbd40d58a4ec3c2"
+    },
+    {
+      "path": "skills/1-handoff/references/pickup-and-pause.md",
+      "sha256": "ecbc05c912ae02ba9762ecff305261afa21c3202c317ccc19039c50bbedc3a9f"
+    },
+    {
+      "path": "skills/1-inline-comments/LICENSE-pstack",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/1-inline-comments/SKILL.md",
+      "sha256": "8bd2bd89903f4fa3db6c001e3d220bfa75fbd23766b49dba88d9b0915c46c0cf"
+    },
+    {
+      "path": "skills/1-inline-comments/references/constraint-evidence.md",
+      "sha256": "e8a4a72a0240c1ec7e371427132a91c0d0bc8ed36b743e09293e8e9d5142ff85"
+    },
+    {
+      "path": "skills/1-level-explainer/SKILL.md",
+      "sha256": "1bd7db8fe4335800d732006ef439fdfcfdb90586a563885cfce57804b99ab7af"
+    },
+    {
+      "path": "skills/1-parallel-agents/LICENSE-pstack",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/1-parallel-agents/SKILL.md",
+      "sha256": "3611c06e64cd93e612a8d9f345ddeaef8a485c414e7e4686305d24864d8ea922"
+    },
+    {
+      "path": "skills/1-parallel-agents/references/coverage-and-races.md",
+      "sha256": "29e508866397184685c5c4fda44d508b4f7c927c88128dc3af614d8c3dfbf7a8"
+    },
+    {
+      "path": "skills/1-performance-optimization/LICENSE-pstack",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/1-performance-optimization/SKILL.md",
+      "sha256": "bb01a1c0b31de7c699e095e82627f222be619dd89f50a2cd96069f418d338570"
+    },
+    {
+      "path": "skills/1-performance-optimization/references/hillclimb.md",
+      "sha256": "2b218141e4b45e2fe80671106f57c602319e5bd5ca651fc635f7f6539cd81227"
+    },
+    {
+      "path": "skills/1-performance-optimization/references/measurement-integrity.md",
+      "sha256": "7683fcb8735ea31c6b79098bfec7e80529335532a1697b0fb1bcae2dd8311cb3"
+    },
+    {
+      "path": "skills/1-plow-ahead/SKILL.md",
+      "sha256": "0e021c3301eacf5434354529a71e9e9b9ca20c08ca01f15c218cb6fbf809fd22"
+    },
+    {
+      "path": "skills/1-prompt-optimizer/LICENSE-pstack",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/1-prompt-optimizer/SKILL.md",
+      "sha256": "876627f97ef61f750f6202328c8fb855525db3a34a133beb626506833c7d2db6"
+    },
+    {
+      "path": "skills/1-prompt-optimizer/references/deeper-without-bigger.md",
+      "sha256": "bd4352e3fbe116411bf94154ddada1b468cabefb27428e2e03d24a8f6c8d465a"
+    },
+    {
+      "path": "skills/1-prototype/LICENSE-pstack",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/1-prototype/SKILL.md",
+      "sha256": "0e9cef37bd05b2f2cf50db2542ee0084a5b7af9b52b51286ee6826c43a355224"
+    },
+    {
+      "path": "skills/1-prototype/references/deciding-with-prototypes.md",
+      "sha256": "de15381aa2919486820bbff2b19aae8630e59bb9e5a00876e28bfdb443dd3c54"
+    },
+    {
+      "path": "skills/1-runtime-feature-map/references/feature-contract.md",
+      "sha256": "2c4537836081e160261433f3fd65f72ea302397ffd7143f59ded700a178ef4a7"
+    },
+    {
+      "path": "skills/1-session-catchup/LICENSE",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/1-session-catchup/SKILL.md",
+      "sha256": "9c5374d1a2c7d819bf5b1c060c7019c64d2be34c21dbee3e1db92261e37b03e9"
+    },
+    {
+      "path": "skills/1-session-catchup/agents/openai.yaml",
+      "sha256": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94"
+    },
+    {
+      "path": "skills/1-session-catchup/references/decision-packet.md",
+      "sha256": "732e7dd6fbc56c797ea86e3f95ba44b745ce7fe26ef5c9f1318b97d894453d86"
+    },
+    {
+      "path": "skills/1-session-skill-reflect/SKILL.md",
+      "sha256": "9a93d33afc33d753b0f61f2ee22b8eb3e4692d044ae2f1fd522b8e717aa61cbb"
+    },
+    {
+      "path": "skills/1-source-backed-skill/LICENSE-pstack",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/1-source-backed-skill/SKILL.md",
+      "sha256": "743bb9965255e2c69997230122f7a92e1132179a7674d5d882772e133421d020"
+    },
+    {
+      "path": "skills/1-source-backed-skill/references/personal-conventions.md",
+      "sha256": "f010de01fca68063c096d65653a03a8ee98bbb7d28319e2942cef8b199cd9974"
+    },
+    {
+      "path": "skills/1-statechart-modeling/SKILL.md",
+      "sha256": "7650dfd9463ed775d60e36d54caf8ddb5dca087421ef0bb4f1ebade4ea328ac3"
+    },
+    {
+      "path": "skills/1-strategic-compact/SKILL.md",
+      "sha256": "37334113828fc74c91a5c343ef4bef593b76acda8fe4c2503ffbf2eee4c4d104"
+    },
+    {
+      "path": "skills/1-tdd/LICENSE-pstack",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/1-tdd/SKILL.md",
+      "sha256": "6d491b1d978142a166541816e8adeffd387c59b2729ba34c01b0198f81fcda0f"
+    },
+    {
+      "path": "skills/1-tdd/references/behavioral-oracles.md",
+      "sha256": "19e982d5ea0c531b94d9bc75243256847ca480722d9f5ab0e242e2eeb03a8e6f"
+    },
+    {
+      "path": "skills/1-technical-writing/LICENSE",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/1-technical-writing/SKILL.md",
+      "sha256": "2e7a537bd8d3b361c9ee4a8a641ce8c58e1f89b564daf15db71fbfd3d0245726"
+    },
+    {
+      "path": "skills/1-technical-writing/agents/openai.yaml",
+      "sha256": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94"
+    },
+    {
+      "path": "skills/1-technical-writing/references/prose-and-evidence.md",
+      "sha256": "0e81f630685abca62b8f10728059cf40757c0ce9e0d3391acf49e88d8c3ccabb"
+    },
+    {
+      "path": "skills/1-triage-assess/SKILL.md",
+      "sha256": "4b17f0b6be726ef2d1797b769906d20a939dc6e2b39bf354cc0e0027408e5e35"
+    },
+    {
+      "path": "skills/1-typescript-best-practices/LICENSE",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/1-typescript-best-practices/SKILL.md",
+      "sha256": "607853c6cdc080dd69d656d52d1b5a42c83796d22f907cbaacb978889f275aa9"
+    },
+    {
+      "path": "skills/1-typescript-best-practices/agents/openai.yaml",
+      "sha256": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94"
+    },
+    {
+      "path": "skills/1-typescript-best-practices/examples/contracts.ts",
+      "sha256": "e3f9b57b09477d2f53917c92544d99977937facdbc41418d532694ba0839a4cd"
+    },
+    {
+      "path": "skills/1-typescript-best-practices/references/patterns.md",
+      "sha256": "f3c35b1ae9f382d9b6ccc7e9914c393066f77bebb7ebf8b8081d97ab8f1ecb33"
+    },
+    {
+      "path": "skills/1-video-recap/LICENSE",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/1-video-recap/SKILL.md",
+      "sha256": "60c54645d68e58c06e3301742393412d27d935cd2f326b7373892febdfa7e1ed"
+    },
+    {
+      "path": "skills/1-video-recap/agents/openai.yaml",
+      "sha256": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94"
+    },
+    {
+      "path": "skills/1-working-context/LICENSE",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/1-working-context/SKILL.md",
+      "sha256": "70ab635a4149cdb1a6c9ec1aed83e5ecfeabcf435065d25f965060c6b965d58c"
+    },
+    {
+      "path": "skills/1-working-context/agents/openai.yaml",
+      "sha256": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94"
+    },
+    {
+      "path": "skills/1-write-plan/LICENSE-pstack",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    {
+      "path": "skills/1-write-plan/SKILL.md",
+      "sha256": "5cd4cbfe4b7d97d5736cd870a2f95c24b965f9ec8ceab08bb8ef5af0b15966b6"
+    },
+    {
+      "path": "skills/1-write-plan/references/phase-evidence.md",
+      "sha256": "528d0386c56d1b6f040a634d23ebe2f3a48034adb91ab12af5bd389d7bcfa71e"
+    },
+    {
+      "path": "skills/2-verify-work/SKILL.md",
+      "sha256": "99ab78652e2bde218a3d6e69edc377c1123987f3cba8ca5adf62787149a41765"
+    },
+    {
+      "path": "skills/2-verify-work/references/superpowers-evidence-gate.md",
+      "sha256": "c97bcaae719cc05348272e4f27123be0d31949724db188b708a0284aa8cffe4b"
+    },
+    {
+      "path": "skills/README.md",
+      "sha256": "61701d92cacbea48bf0ea9508f800b9102fa5f5831f4712fc561ef7c5bc1e66c"
+    },
+    {
+      "path": "wikis/index.md",
+      "sha256": "224457ea408129ba0c12220b4e49c2bb0d2951e6266f54dcc2d64aa108df3f7b"
+    },
+    {
+      "path": "wikis/log.md",
+      "sha256": "b34f4b030c23f2023e58d5ca47ec97cf71cf9a44b96c4595ecde2c7a493823f8"
+    }
+  ],
+  "followups": [
+    {
+      "id": "butler-intent-routing-2026-11-18",
+      "report": "guidelines/catalog/butler-routing-2026-11-18.md",
+      "scope": "Accepted goal/context/phase/constraint routing; direct report-only lint; material clarification; preserved read-only handoff. No provider behavior claim."
+    },
+    {
+      "id": "project-continuity-2026-11-18",
+      "report": "guidelines/catalog/project-continuity-2026-11-18.md",
+      "scope": "Existing owners integrate canonical project-task state; the checkpoint helper/tests are local support, not copied upstream runtime or a new permission grant."
+    },
+    {
+      "id": "butler-playbook-menu",
+      "report": "skills/0-butler/references/playbooks.md",
+      "scope": "Expose all 22 adapted pstack playbooks through existing owners, and add a feature-idea entry."
+    },
+    {
+      "id": "butler-playbook-composition",
+      "report": "skills/0-butler/references/playbooks.md",
+      "scope": "Link all 23 recipes to existing specialist owners, applicable principles, tools and evidence. Define plugin selection and portable package references."
+    },
+    {
+      "id": "pstack-skill-by-skill",
+      "report": "guidelines/catalog/pstack-skill-by-skill-review.md",
+      "scope": "All 61 skill bodies, including Benny. Refine existing owners where there is a gap and preserve the existing mapping for the remaining methods."
+    }
+  ],
+  "skill_review": "guidelines/catalog/pstack-skill-by-skill-review.md"
+}

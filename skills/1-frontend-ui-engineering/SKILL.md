@@ -106,3 +106,7 @@ database, generated asset, or external design service.
 - AI-powered interaction: [AI states and user control](./references/ai-interactions.md)
 - Operative: [implementation guide](./references/full-guide.md), [accessibility checklist](./references/accessibility-checklist.md), [anti-slop scope guard](./references/anti-ui-slop.md)
 - Provenance: [vendor source](./references/vendor-source.md)
+
+## Conditional methods
+
+Load only for the requested phase, within this skill’s authority: [Visual parity and agent-triggered controls](./references/visual-parity-and-agent-controls.md).

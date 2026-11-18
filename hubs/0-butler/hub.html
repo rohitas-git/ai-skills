@@ -89,7 +89,7 @@
     skill path: <code>skills/0-butler/</code> ·
     package: <code>hubs/0-butler/</code>
   </p>
-  <p>Use the smallest direct skill when clear and report its owning hub. Ask F7 only when a material domain choice remains.</p>
+  <p>Recover the goal, target, phase and constraints from accepted conversation context and latest steering. Use the smallest direct skill; preserve its contract and report its hub. Ask F7 only for a material unresolved choice, with plausible outcomes and Agent judgment.</p>
 </section>
 
 <section>
@@ -105,19 +105,21 @@
 
 <section>
   <h2>Pipeline</h2>
-  <pre>explicit routing request → flows + route index
-direct match, or F7 for material ambiguity
-validate live SKILL.md → owning hub + smallest skill + first action
-stop without executing; catalog mutations → skill-manager</pre>
+  <p><a href="../../skills/0-butler/references/playbooks.md">Browse Butler's playbooks</a> for feature work, investigation, delivery and project continuity.</p>
+  <pre>accepted request + context → goal, target, phase and constraints
+flows + route index → one entry owner, or material-only F7
+validate live SKILL.md → owning hub + route + preserved contract/gaps + first action
+stop without executing; report-only health → skill-linter; catalog mutations → skill-manager</pre>
 </section>
 
 
 <section>
-  <h2>Forks (ask user)</h2>
+  <h2>Material unresolved forks</h2>
+  <p>Present two or three plausible outcomes plus Agent judgment. The branches below are an inventory, not a question to show in full. Honor a decision already delegated within scope.</p>
   <table>
     <thead><tr><th>ID</th><th>Question</th><th>Recommended</th><th>Branches</th></tr></thead>
     <tbody>
-      <tr><td><code>F7</code></td><td>What kind of work?</td><td>Narrowest domain supported by the request</td><td>Design · Ship · Review · Triage · Diagnose · Fog · Architecture · Vault · UI/UX · Git · Agent engineering · DevOps · Marketing · Office/artifact · Catalog facilities · Learn · Simplify · Thinking · Agent judgment</td></tr>
+      <tr><td><code>F7</code></td><td>Which outcome should this request produce?</td><td>Narrowest domain supported by the request</td><td>Design · Ship · Review · Triage · Diagnose · Fog · Architecture · Vault · UI/UX · Git · Agent engineering · DevOps · Marketing · Office/artifact · Catalog facilities · Learn · Simplify · Thinking · Agent judgment</td></tr>
     </tbody>
   </table>
 </section>
@@ -154,6 +156,15 @@ stop without executing; catalog mutations → skill-manager</pre>
 <a href="../0-marketing/hub.html" class="">marketing</a>
   </div>
 </section>
+<section>
+<h2>Focused methods</h2>
+<ul>
+<li><a href="../../skills/1-session-catchup/SKILL.md">/1-session-catchup</a> (satellite)</li>
+<li><a href="../../skills/1-working-context/SKILL.md">/1-working-context</a> (satellite)</li>
+</ul>
+<p>Selected only for the matching requested outcome; no automatic execution or follow-on effects.</p>
+</section>
+<section><h2>Project continuity</h2><p>The execution owner reads and maintains one known project-task checkpoint at meaningful safe boundaries. Butler only routes; handoff writes a new note. <a href="../../skills/0-implement/references/project-continuity.md">Lifecycle, local helper and limits</a>.</p></section>
 </main>
 <footer>
   Domain hub package <code>hubs/0-butler/</code> for <code>/0-butler</code> · routes all domain hubs ·

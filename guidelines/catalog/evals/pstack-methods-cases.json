@@ -1,0 +1,289 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "arena-supplied-candidates",
+      "kind": "behavior",
+      "invoked_skill": "1-competing-solutions",
+      "expected_skill": "1-competing-solutions",
+      "forbidden_skills": [],
+      "runtimes": [
+        "codex",
+        "claude"
+      ],
+      "risk": "normal",
+      "prompt": "{invoke} Comparison only, no edits/delegation: A meets all required behavior with one owner; B breaks error recovery but has an optional nicer log. Select by correctness then complexity. Explain whether a graft is justified. Do not invent checks.",
+      "assertions": [
+        {
+          "type": "contains",
+          "value": "A"
+        },
+        {
+          "type": "contains",
+          "value": "B"
+        }
+      ]
+    },
+    {
+      "id": "typescript-false-invariants",
+      "kind": "behavior",
+      "invoked_skill": "1-typescript-best-practices",
+      "expected_skill": "1-typescript-best-practices",
+      "forbidden_skills": [],
+      "runtimes": [
+        "codex",
+        "claude"
+      ],
+      "risk": "normal",
+      "prompt": "{invoke} Review only: type Span={start:number;durationMs:number}; function isUser(x:any):x is {id:string}{return \"id\" in x}; Which invariants remain unproven? Keep runtime validation and explain negative duration and predicate trust.",
+      "assertions": [
+        {
+          "type": "contains",
+          "value": "negative"
+        },
+        {
+          "type": "contains",
+          "value": "predicate"
+        }
+      ]
+    },
+    {
+      "id": "technical-writing-uncertainty",
+      "kind": "behavior",
+      "invoked_skill": "1-technical-writing",
+      "expected_skill": "1-technical-writing",
+      "forbidden_skills": [],
+      "runtimes": [
+        "codex",
+        "claude"
+      ],
+      "risk": "normal",
+      "prompt": "{invoke} Rewrite as one technical explanation: \"The cache may reduce timeouts. One local request succeeded; production behavior is unknown.\" Preserve uncertainty and the evidence limits. Do not report a proven production gain.",
+      "assertions": [
+        {
+          "type": "contains",
+          "value": "may"
+        },
+        {
+          "type": "contains",
+          "value": "production"
+        }
+      ]
+    },
+    {
+      "id": "catchup-old-pending-call",
+      "kind": "behavior",
+      "invoked_skill": "1-session-catchup",
+      "expected_skill": "1-session-catchup",
+      "forbidden_skills": [],
+      "runtimes": [
+        "codex",
+        "claude"
+      ],
+      "risk": "normal",
+      "prompt": "{invoke} Use only this supplied chat: Earlier user call still pending: choose data retention 7 or 30 days (no preference evidence). After last human message: local tests passed, deployment not run, routine agent-owned formatting remains. Return self-contained user call with options/costs and separate agent work. No execution.",
+      "assertions": [
+        {
+          "type": "contains",
+          "value": "7"
+        },
+        {
+          "type": "contains",
+          "value": "30"
+        },
+        {
+          "type": "contains",
+          "value": "deployment"
+        }
+      ]
+    },
+    {
+      "id": "working-context-bounded-records",
+      "kind": "behavior",
+      "invoked_skill": "1-working-context",
+      "expected_skill": "1-working-context",
+      "forbidden_skills": [],
+      "runtimes": [
+        "codex",
+        "claude"
+      ],
+      "risk": "normal",
+      "prompt": "{invoke} Rebuild context only from supplied facts: feature planned Monday; implemented Tuesday at revision A, tested locally; PR reverted Wednesday at B. No accessible live source. Scope this project and week only, no history mining. Distinguish implemented from current state.",
+      "assertions": [
+        {
+          "type": "contains",
+          "value": "revert"
+        },
+        {
+          "type": "contains",
+          "value": "B"
+        }
+      ]
+    },
+    {
+      "id": "video-no-renderer",
+      "kind": "behavior",
+      "invoked_skill": "1-video-recap",
+      "expected_skill": "1-video-recap",
+      "forbidden_skills": [],
+      "runtimes": [
+        "codex",
+        "claude"
+      ],
+      "risk": "normal",
+      "prompt": "{invoke} Storyboard mode only. Evidence: local tests passed, live provider check blocked. No renderer or media assets available. Provide a short honest storyboard and rendering limitation; do not claim an MP4 was rendered.",
+      "assertions": [
+        {
+          "type": "contains",
+          "value": "storyboard"
+        },
+        {
+          "type": "contains",
+          "value": "blocked"
+        }
+      ]
+    },
+    {
+      "id": "diagnosis-shared-premise",
+      "kind": "behavior",
+      "invoked_skill": "0-diagnosing-bugs",
+      "expected_skill": "0-diagnosing-bugs",
+      "forbidden_skills": [],
+      "runtimes": [
+        "codex",
+        "claude"
+      ],
+      "risk": "normal",
+      "prompt": "{invoke} Diagnosis only, supplied records: timeout patches X and Y both failed same acceptance gate and both assume the job is dispatched. Logs show no dispatch receipt; queue access unavailable. Write the shared premise, smallest falsifying observation and uncertainty. Do not patch.",
+      "assertions": [
+        {
+          "type": "contains",
+          "value": "dispatch"
+        },
+        {
+          "type": "contains",
+          "value": "premise"
+        }
+      ]
+    },
+    {
+      "id": "benchmark-fast-errors",
+      "kind": "behavior",
+      "invoked_skill": "1-performance-optimization",
+      "expected_skill": "1-performance-optimization",
+      "forbidden_skills": [],
+      "runtimes": [
+        "codex",
+        "claude"
+      ],
+      "risk": "normal",
+      "prompt": "{invoke} Read-only claim audit: A performs 100 successful writes in 10ms; B returns 100 permission errors in 1ms without writes. One sample per side, different runtime configs, no profile. Can we claim B is 10x faster? Explain work/errors and inconclusive evidence.",
+      "assertions": [
+        {
+          "type": "contains",
+          "value": "error"
+        },
+        {
+          "type": "contains",
+          "value": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "shipping-prefix-gap",
+      "kind": "behavior",
+      "invoked_skill": "1-finish-branch",
+      "expected_skill": "1-finish-branch",
+      "forbidden_skills": [],
+      "runtimes": [
+        "codex",
+        "claude"
+      ],
+      "risk": "normal",
+      "prompt": "{invoke} Planning only, no Git/remote actions. Stack P1\u2192P2\u2192P3; P1 verified at current head/base, P2 unverified, P3 green on old base. What is the contiguous verified ceiling? Does patch-id alone retain P3 runtime receipts? All merging requires human authorization.",
+      "assertions": [
+        {
+          "type": "contains",
+          "value": "P1"
+        },
+        {
+          "type": "contains",
+          "value": "P2"
+        },
+        {
+          "type": "contains",
+          "value": "patch"
+        }
+      ]
+    },
+    {
+      "id": "pause-dirty-work",
+      "kind": "behavior",
+      "invoked_skill": "1-handoff",
+      "expected_skill": "1-handoff",
+      "forbidden_skills": [],
+      "runtimes": [
+        "codex",
+        "claude"
+      ],
+      "risk": "normal",
+      "prompt": "{invoke} The user explicitly paused. Supplied state: dirty file owned by task, unrelated untracked notes, no running write, no commit or delete authority. Return chat-only checkpoint and next move; do not create a WIP commit, stash or file.",
+      "assertions": [
+        {
+          "type": "contains",
+          "value": "pause"
+        },
+        {
+          "type": "contains",
+          "value": "untracked"
+        }
+      ]
+    },
+    {
+      "id": "map-source-is-not-runtime",
+      "kind": "behavior",
+      "invoked_skill": "0-implement",
+      "expected_skill": "0-implement",
+      "forbidden_skills": [],
+      "runtimes": [
+        "codex",
+        "claude"
+      ],
+      "risk": "normal",
+      "prompt": "{invoke} Plan only: author supplied a source-backed feature map with toolbar and shortcut recipes. No app launched, no harness installed, no runtime observations. Explain phase owners and coverage state; do not label features live-verified or execute anything.",
+      "assertions": [
+        {
+          "type": "contains",
+          "value": "source"
+        },
+        {
+          "type": "contains",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "id": "formal-stale-receipt",
+      "kind": "behavior",
+      "invoked_skill": "1-formal-verification",
+      "expected_skill": "1-formal-verification",
+      "forbidden_skills": [],
+      "runtimes": [
+        "codex",
+        "claude"
+      ],
+      "risk": "normal",
+      "prompt": "{invoke} Read-only evidence review: property P passed on source A/model M. Source changed to B, model still M, no source/model mapping check. Is B verified? Keep fixed-check scope and explain required correspondence/recheck; do not alter model or property.",
+      "assertions": [
+        {
+          "type": "contains",
+          "value": "B"
+        },
+        {
+          "type": "contains",
+          "value": "model"
+        }
+      ]
+    }
+  ]
+}

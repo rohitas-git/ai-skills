@@ -194,3 +194,14 @@ Structured mental models. The core is from `tjboudreaux/cc-thinking-skills` (MIT
 - [1-statechart-modeling](./1-statechart-modeling/) — Model states, actions, guards and invariants clearly.
 - [1-formal-verification](./1-formal-verification/) — Evaluate a fixed formal check with explicit scope.
 - [Verification workflows](./0-implement/references/verification-workflows.md) — runtime coverage, model checking and correction-to-enforcement
+
+## Focused pstack method adoptions
+
+| Skill | Owner | Job |
+|---|---|---|
+| [1-competing-solutions](./1-competing-solutions/SKILL.md) | /0-implement | competing solutions |
+| [1-typescript-best-practices](./1-typescript-best-practices/SKILL.md) | /0-implement | typescript best practices |
+| [1-technical-writing](./1-technical-writing/SKILL.md) | /0-implement | technical writing |
+| [1-session-catchup](./1-session-catchup/SKILL.md) | /0-butler | session catchup |
+| [1-working-context](./1-working-context/SKILL.md) | /0-butler | working context |
+| [1-video-recap](./1-video-recap/SKILL.md) | /0-office | video recap |

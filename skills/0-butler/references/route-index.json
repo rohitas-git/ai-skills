@@ -5,7 +5,7 @@
     "hubs/*/workflow.json"
   ],
   "schema_version": 1,
-  "skill_count": 308,
+  "skill_count": 314,
   "skills": [
     {
       "cousins": [],
@@ -549,7 +549,9 @@
         "1-quick-recap",
         "1-rewind",
         "1-webmcp",
-        "1-pi-agent-rust"
+        "1-pi-agent-rust",
+        "1-session-catchup",
+        "1-working-context"
       ],
       "not_when": [
         "one available skill directly matches → use that skill",
@@ -1010,6 +1012,46 @@
     },
     {
       "cousins": [
+        "1-working-context",
+        "1-quick-recap",
+        "1-handoff",
+        "1-video-recap"
+      ],
+      "hub": "0-butler",
+      "memberships": [
+        {
+          "hub": "0-butler",
+          "role": "satellite"
+        }
+      ],
+      "next": [
+        "0-butler"
+      ],
+      "not_when": [
+        "cross-session recall",
+        "one-line completion status",
+        "PR description",
+        "task execution"
+      ],
+      "prev": [
+        "0-butler"
+      ],
+      "requires_setup": false,
+      "role": "satellite",
+      "skill": "1-session-catchup",
+      "source": "catalog",
+      "triggers": [
+        "catch me up on this chat",
+        "session catchup",
+        "what changed while I was away",
+        "ketchup"
+      ],
+      "when": [
+        "catch the user up on this conversation and make pending decisions self-contained"
+      ]
+    },
+    {
+      "cousins": [
         "1-context-monitor",
         "1-handoff",
         "1-response-effort-calibrator"
@@ -1082,6 +1124,46 @@
       ],
       "when": [
         "the user specifies a web app/URL and asks to open it or use its page-provided tools"
+      ]
+    },
+    {
+      "cousins": [
+        "1-session-catchup",
+        "1-handoff",
+        "1-rewind",
+        "1-design-rationale"
+      ],
+      "hub": "0-butler",
+      "memberships": [
+        {
+          "hub": "0-butler",
+          "role": "satellite"
+        }
+      ],
+      "next": [
+        "0-butler"
+      ],
+      "not_when": [
+        "screen memory",
+        "current-chat recap",
+        "durable handoff file",
+        "automatic task resumption"
+      ],
+      "prev": [
+        "0-butler"
+      ],
+      "requires_setup": false,
+      "role": "satellite",
+      "skill": "1-working-context",
+      "source": "catalog",
+      "triggers": [
+        "recall my work",
+        "rebuild working context",
+        "where did I leave off",
+        "recent work on this topic"
+      ],
+      "when": [
+        "rebuild current working context for an explicit topic workspace and time window"
       ]
     },
     {
@@ -1885,7 +1967,8 @@
       ],
       "when": [
         "a repeatable benchmark, trace, profile, query plan, field metric, or budget identifies one bottleneck",
-        "running one controlled optimization experiment with before-and-after evidence"
+        "running one controlled optimization experiment with before-and-after evidence",
+        "audit a supplied benchmark claim for comparable work, errors and measurement confounders"
       ]
     },
     {
@@ -3186,7 +3269,10 @@
         "1-ci-cd-and-automation",
         "1-frontend-ui-engineering",
         "1-ui-styling",
-        "1-performance-optimization"
+        "1-performance-optimization",
+        "1-competing-solutions",
+        "1-typescript-best-practices",
+        "1-technical-writing"
       ],
       "not_when": [
         "unresolved product requirements → 0-grilling / 1-to-spec",
@@ -3209,11 +3295,13 @@
         "build this",
         "execute this plan",
         "ship tickets",
-        "make this change"
+        "make this change",
+        "resume project task"
       ],
       "when": [
         "implement a clear request, accepted specification, ticket, or plan",
-        "drive a scoped build, verification, and review path"
+        "drive a scoped build, verification, and review path",
+        "resume an accepted project task from its checkpoint and maintain meaningful progress boundaries"
       ]
     },
     {
@@ -3314,6 +3402,46 @@
       ],
       "when": [
         "assess or edit language-native documentation for one public/exported code surface"
+      ]
+    },
+    {
+      "cousins": [
+        "1-parallel-agents",
+        "1-prototype",
+        "1-code-review"
+      ],
+      "hub": "0-implement",
+      "memberships": [
+        {
+          "hub": "0-implement",
+          "role": "satellite"
+        }
+      ],
+      "next": [
+        "0-implement"
+      ],
+      "not_when": [
+        "independent workstream coverage",
+        "ordinary code review",
+        "one feasibility experiment"
+      ],
+      "prev": [
+        "0-implement",
+        "1-codebase-design",
+        "1-prototype"
+      ],
+      "requires_setup": false,
+      "role": "satellite",
+      "skill": "1-competing-solutions",
+      "source": "catalog",
+      "triggers": [
+        "arena",
+        "competing solutions",
+        "compare implementations",
+        "select and synthesize candidates"
+      ],
+      "when": [
+        "compare competing artifacts against one brief and synthesize one result"
       ]
     },
     {
@@ -3765,7 +3893,8 @@
         "1-code-review"
       ],
       "not_when": [
-        "ordered or shared-state tasks → 1-subagent-implement or one agent"
+        "ordered or shared-state tasks → 1-subagent-implement or one agent",
+        "synthesize competing implementations or designs → 1-competing-solutions"
       ],
       "prev": [
         "0-implement",
@@ -3777,13 +3906,17 @@
       "skill": "1-parallel-agents",
       "source": "catalog",
       "triggers": [
+        "swarm",
+        "swarm this",
         "parallel agents",
         "independent failures",
         "parallel investigation",
         "1-parallel-agents"
       ],
       "when": [
-        "requested parallel work on two or more independent outputs with non-conflicting state and satisfied dependencies"
+        "requested parallel work on two or more independent outputs with non-conflicting state and satisfied dependencies",
+        "an explicitly requested isolated report race with a declared selection rule",
+        "requested mixed swarm with required coverage and an isolated report race within one or more slices"
       ]
     },
     {
@@ -4243,6 +4376,49 @@
     },
     {
       "cousins": [
+        "1-asd-ste100",
+        "1-code-comments",
+        "1-pr-summarizer",
+        "1-living-documentation-governor"
+      ],
+      "hub": "0-implement",
+      "memberships": [
+        {
+          "hub": "0-implement",
+          "role": "soft"
+        }
+      ],
+      "next": [
+        "0-implement"
+      ],
+      "not_when": [
+        "product marketing or UI copy",
+        "public API comment blocks",
+        "PR evidence collection",
+        "certified STE compliance"
+      ],
+      "prev": [
+        "0-implement",
+        "1-living-documentation-governor",
+        "1-pr-summarizer"
+      ],
+      "requires_setup": false,
+      "role": "soft",
+      "skill": "1-technical-writing",
+      "source": "catalog",
+      "triggers": [
+        "technical writing",
+        "write a README",
+        "write an RFC",
+        "technical tutorial",
+        "edit technical prose"
+      ],
+      "when": [
+        "write or edit one reader-focused technical document with source-backed claims"
+      ]
+    },
+    {
+      "cousins": [
         "0-grilling",
         "0-wayfinder",
         "1-brainstorm",
@@ -4335,6 +4511,48 @@
       ],
       "when": [
         "one approved specification needs a dependency-aware agent-ready ticket set"
+      ]
+    },
+    {
+      "cousins": [
+        "1-coding-standards",
+        "1-codebase-design",
+        "1-error-handling",
+        "1-api-and-interface-design"
+      ],
+      "hub": "0-implement",
+      "memberships": [
+        {
+          "hub": "0-implement",
+          "role": "soft"
+        }
+      ],
+      "next": [
+        "0-implement"
+      ],
+      "not_when": [
+        "generic maintainability conventions",
+        "whole public API design",
+        "compiler or dependency upgrades"
+      ],
+      "prev": [
+        "0-implement",
+        "1-codebase-design",
+        "1-coding-standards"
+      ],
+      "requires_setup": false,
+      "role": "soft",
+      "skill": "1-typescript-best-practices",
+      "source": "catalog",
+      "triggers": [
+        "TypeScript best practices",
+        "discriminated union",
+        "branded types",
+        "unsafe type assertion",
+        "schema-derived types"
+      ],
+      "when": [
+        "apply TypeScript type and boundary discipline to scoped code"
       ]
     },
     {
@@ -7785,7 +8003,8 @@
         "1-json-canvas",
         "1-defuddle",
         "1-internal-comms",
-        "1-slides"
+        "1-slides",
+        "1-video-recap"
       ],
       "not_when": [
         "product UI or brand → 0-ui-ux",
@@ -8163,6 +8382,47 @@
       ],
       "when": [
         "one PowerPoint PPTX operation with PPTX as primary input or output"
+      ]
+    },
+    {
+      "cousins": [
+        "1-session-catchup",
+        "1-slides",
+        "1-visual-recap"
+      ],
+      "hub": "0-office",
+      "memberships": [
+        {
+          "hub": "0-office",
+          "role": "leaf"
+        }
+      ],
+      "next": [
+        "0-office"
+      ],
+      "not_when": [
+        "record a live app",
+        "invent UI evidence",
+        "text-only recap",
+        "media publication",
+        "tool installation"
+      ],
+      "prev": [
+        "0-office",
+        "1-session-catchup"
+      ],
+      "requires_setup": false,
+      "role": "leaf",
+      "skill": "1-video-recap",
+      "source": "catalog",
+      "triggers": [
+        "video recap",
+        "ketchup video",
+        "captioned progress video",
+        "short video catchup"
+      ],
+      "when": [
+        "produce one captioned recap video or explicitly requested storyboard from supplied evidence"
       ]
     },
     {
@@ -12235,7 +12495,9 @@
         "multi-axis review",
         "review this PR",
         "review this diff",
-        "review uncommitted changes"
+        "review uncommitted changes",
+        "adversarial review",
+        "interrogate this change"
       ],
       "when": [
         "multi-axis review of changes, including uncommitted implementation",

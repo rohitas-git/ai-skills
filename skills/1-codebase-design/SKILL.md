@@ -64,3 +64,7 @@ without overriding established project/domain terminology.
 - Full codebase survey of deepening opportunities → `/0-improve-codebase-architecture`
 - Grandmaster system design persona review → `/2-software-architect` (user-invoked)
 - Implementing a settled design without further module-shape work → `/0-implement`
+
+## Conditional methods
+
+Load only for the requested phase, within this skill’s authority: [Data shape before branching](./references/data-shapes-and-ownership.md).

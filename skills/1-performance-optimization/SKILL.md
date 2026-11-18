@@ -2,7 +2,7 @@
 name: 1-performance-optimization
 description: >
   Run one controlled optimization experiment against a measured bottleneck and an
-  explicit performance claim. Use when a budget, trace, profile, query plan, or repeatable
+  explicit performance claim, or audit the integrity of supplied benchmark evidence. Use when a budget, trace, profile, query plan, or repeatable
   benchmark identifies a slow or resource-heavy path. Not for unexplained failures,
   speculative tuning, durable telemetry design, or database advice without a measured query.
   Primary hub: /0-diagnosing-bugs; shared with /0-implement.
@@ -14,6 +14,7 @@ metadata:
     when:
       - "a repeatable benchmark, trace, profile, query plan, field metric, or budget identifies one bottleneck"
       - "running one controlled optimization experiment with before-and-after evidence"
+      - "audit a supplied benchmark claim for comparable work, errors and measurement confounders"
     not_when:
       - "performance symptom has no reproducible measurement loop → 0-diagnosing-bugs"
       - "greenfield or speculative tuning without a performance claim → 0-implement"
@@ -66,7 +67,9 @@ ports, load generators, or hosted datasets.
 
 1. **Pin the claim.** Name the user/system behavior, primary metric and unit, target or regression
    comparison, exact candidate, workload, environment, and correctness invariants. If no repeatable
-   red-capable measurement exists, return to Diagnose rather than optimizing a hunch.
+   red-capable measurement exists, return to Diagnose rather than optimizing a hunch. In a read-only
+   evidence audit, use the measurement-integrity reference and return valid, invalid or inconclusive
+   without starting an optimization or inventing missing runs.
 2. **Establish a comparable baseline.** Run the approved protocol enough to expose variability;
    record raw samples and summary, warm/cold state, machine/load, fixture, tool versions, time,
    and confounders. Field and synthetic data answer different questions; do not substitute one.
@@ -107,3 +110,7 @@ ports, load generators, or hosted datasets.
 - Operative: [experiment guide](./references/full-guide.md), [evidence checklist](./references/performance-checklist.md)
 - Repeated file-processing bottleneck: [content-addressed cache contract](./references/content-cache.md)
 - Provenance: [vendor source](./references/vendor-source.md)
+
+## Conditional methods
+
+Load only for the requested phase, within this skill’s authority: [Measurement integrity](./references/measurement-integrity.md); [Sustained measured improvement](./references/hillclimb.md).

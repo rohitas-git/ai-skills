@@ -189,3 +189,10 @@ See also pack `VENDOR-SOURCE.md`.
 ## pstack selected ingestion (2026-11-15)
 
 - [Selected MIT source](./pstack-2026-11-15/) at `bf0c7cd`, version `0.15.42`: four skills, two merges and three optional verification workflows. [Inventory, dispositions and review](../../guidelines/catalog/ingest-pstack-2026-11-15.md). No plugin, toolchain, renderer, bots or background automation installed.
+
+
+## pstack tooling adoption (2026-11-18)
+
+- [Superseded entry points](./pstack-tooling-2026-11-17/) from `e1cc031` (0.15.43), MIT. These originals are provenance only and are never discovered or executed. [Live adaptations and verification](../../guidelines/catalog/pstack-tooling.md).
+
+- [pstack method sources, 2026-11-18](./pstack-methods-2026-11-18/README.md): pinned prose provenance for the detailed principles, functional skills and playbook adoption; not host-discovered or installed.

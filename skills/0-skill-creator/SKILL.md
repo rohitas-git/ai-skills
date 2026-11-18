@@ -60,6 +60,7 @@ Produce one reviewable skill-body candidate. Catalog citizenship and runtime ins
 | Operational detail | [full guide](./references/full-guide.md) |
 | Portable format and house deltas | [specification](./references/agentskills-io-specification.md) |
 | Output cases and grading | [evaluation](./references/agentskills-io-evaluating-skills.md) |
+| A substantial behavior change needs a matched comparison | [blinded comparison](./references/blinded-comparison.md), using `scripts/blind-packets.py` |
 | Trigger misses/false fires | [description evaluation](./references/agentskills-io-optimizing-descriptions.md) |
 | Safe helper design | [scripts](./references/agentskills-io-using-scripts.md) |
 | Craft vocabulary | `/1-writing-great-skills` |
@@ -68,3 +69,6 @@ Produce one reviewable skill-body candidate. Catalog citizenship and runtime ins
 
 Entry: `/1-create-skill` · reflection input: `/1-session-skill-reflect` · optional catalog change: `/0-skill-manager` · return: `/0-butler`.
 
+## Conditional methods
+
+Load only for the requested phase, within this skill’s authority: [Author and evaluate a bounded skill change](./references/pstack-authoring-and-evaluation.md).

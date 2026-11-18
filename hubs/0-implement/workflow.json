@@ -8,7 +8,7 @@
   "path": "skills/0-implement",
   "package_dir": "hubs/0-implement/",
   "role": "Drive one bounded implementation through workspace selection, scoped specialists, evidence, review reconciliation, and authorized closure.",
-  "notes": "Clear requests enter directly. Every child inherits the task, exact worktree/candidate, dirty ownership, and authority, then returns to Ship. Delegation and finish actions are conditional, never automatic.",
+  "notes": "Clear requests enter directly. Every child inherits the task, exact worktree/candidate, dirty ownership, and authority, then returns to Ship. Delegation and finish actions are conditional, never automatic. Project continuity uses one known task record; the execution owner alone maintains checkpoints at meaningful safe boundaries.",
   "parent": {
     "hub": "0-butler",
     "slash": "/0-butler",
@@ -153,6 +153,30 @@
       ],
       "primary": true,
       "note": "Map user paths, preconditions and verification evidence. Preserve caller, candidate, mode and authority; return without automatic follow-ons."
+    },
+    {
+      "link_type": "satellite",
+      "skills": [
+        "1-competing-solutions"
+      ],
+      "primary": true,
+      "note": "One explicitly selected bounded operation; preserve caller, evidence and authority, then return without automatic follow-ons."
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "1-typescript-best-practices"
+      ],
+      "primary": true,
+      "note": "One explicitly selected bounded operation; preserve caller, evidence and authority, then return without automatic follow-ons."
+    },
+    {
+      "link_type": "soft",
+      "skills": [
+        "1-technical-writing"
+      ],
+      "primary": true,
+      "note": "One explicitly selected bounded operation; preserve caller, evidence and authority, then return without automatic follow-ons."
     }
   ],
   "pipeline": [
@@ -164,7 +188,8 @@
     "1-atomic-git-commits only when commit authority exists; 1-finish-branch only for requested integration/PR options; no implicit remote or production effects",
     "optional W-PS1: selected runtime coverage \u2192 1-runtime-feature-map \u2192 authorized project/browser check \u2192 evidence and drift reconciliation; no automatic harness install or product fix",
     "optional W-PS2: selected model/property check \u2192 1-statechart-modeling \u2192 1-formal-verification \u2192 authorized counterexample replay or unrun recipe \u2192 bounded result; no automatic release approval",
-    "optional W-PS3: selected correction-to-enforcement \u2192 1-agent-workflow-observer proposal \u2192 requested 1-constraint-driven-development policy \u2192 authorized implementation/1-ci-cd-and-automation \u2192 negative and clean controls \u2192 return"
+    "optional W-PS3: selected correction-to-enforcement \u2192 1-agent-workflow-observer proposal \u2192 requested 1-constraint-driven-development policy \u2192 authorized implementation/1-ci-cd-and-automation \u2192 negative and clean controls \u2192 return",
+    "for multi-step or resumed project work: read the canonical task record, reconcile candidate/evidence, and maintain meaningful safe checkpoints; no host hooks or extra authority"
   ],
   "forks": [
     {

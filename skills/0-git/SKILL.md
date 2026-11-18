@@ -90,3 +90,7 @@ Text normalization does not imply staging or a commit; `/1-atomic-git-commits` i
 ## Shared reference
 
 Single and stacked PR repair children load [PR repair checkpoints](./references/pr-repair-checkpoints.md) for workspace identity, scope reconstruction, contract reconciliation, and CI provenance. Read-only Git intake and prose need no worktree setup; mutation helpers retain the caller's checked workspace.
+
+## Conditional methods
+
+Load only for the requested phase, within this skill’s authority: [Bounded PR status and repair modes](./references/babysit-modes.md).

@@ -67,3 +67,7 @@ or publication follows automatically. If the user changes the request to executi
 to the caller with that new request; do not insist on the obsolete advisory mode.
 
 Source: [ECC adaptation and review](../../guidelines/catalog/ingest-ecc-2026-11-15.md), [MIT license](./LICENSE).
+
+## Conditional methods
+
+Load only for the requested phase, within this skill’s authority: [Deepen a prompt without expanding its task](./references/deeper-without-bigger.md).

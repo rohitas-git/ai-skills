@@ -60,3 +60,10 @@ Give an implementer enough grounded context to execute small, verifiable tasks. 
 
 - Ship soft under `/0-implement`
 - Upstream: `archive/vendor/superpowers` (`writing-plans`)
+
+## Conditional methods
+
+Load only for the requested phase, within this skill’s authority: [Plan phases a caller can verify](./references/phase-evidence.md).
+
+For multi-session work, name the [canonical project record](../0-implement/references/project-continuity.md),
+its next dependency and checkpoint boundaries in the plan; plan-only authoring does not create/update that execution record.

@@ -53,6 +53,14 @@ behavior versus desired behavior; never silently turn a proposed rule into a cla
    claims to the caller. A requested check goes separately to `/1-formal-verification` with the exact
    model and config. Counterexamples remain model findings until replayed against the implementation.
 
+## Bundled tooling
+
+The adopted `scripts/statechart` CLI, tests and corpus are documented in
+[tooling and execution boundaries](../../guidelines/catalog/pstack-tooling.md#statecharts).
+Execution still belongs to `/1-formal-verification`; model authoring does not run this helper.
+The optional [rendering reference](./references/render.md) supplies theme CSS; its setup examples
+do not authorize installation or rendering.
+
 ## Boundary
 
 | Need | Owner |

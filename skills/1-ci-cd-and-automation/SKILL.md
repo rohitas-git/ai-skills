@@ -87,6 +87,9 @@ For local pre-commit setup, load [pre-commit guidance](./references/pre-commit.m
    merely to author a workflow.
 8. **Verify the actual candidate.** Parse/lint workflow syntax with already-approved tooling, run the
    repository's local CI entrypoints or focused equivalents, and test skip/failure behavior when safe.
+   If the workflow loads repository-owned instructions or configuration, use stable relative paths
+   and verify them in the workflow's intended checkout revision. With an authorized dry run or
+   isolated event, check an eligible target and an ineligible target that should produce no write.
    Remote status proves only the exact pushed SHA/event; never push or rerun CI merely to obtain proof.
    Record PASS/FAIL/BLOCKED/SKIPPED and remaining provider-only evidence.
 9. **Return.** Report mode, candidate/worktree/run identity, check-contract changes or diagnosis,

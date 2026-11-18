@@ -57,3 +57,7 @@ default result is zero comments when names, types, or structure already make the
 6. Return caller, candidate/worktree, block identity, mode, evidence, exact comment delta/findings, checks,
    and limitations. Do not change behavior, add comments elsewhere, start another comment skill, commit,
    push, or invoke review automatically.
+
+## Conditional methods
+
+Load only for the requested phase, within this skill’s authority: [Comments, constraints and enforcement](./references/constraint-evidence.md).

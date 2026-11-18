@@ -60,6 +60,11 @@ Refresh stale evidence after the relevant head/base changes. Poll a known run wi
 bounded snapshots when a watcher yields no useful output; missing access or an unknown
 required-check set must be reported, not treated as green.
 
+For a bounded status snapshot, use the [local PR watcher](../../../guidelines/catalog/pstack-tooling.md#pr-status)
+in `skills/1-pr-repair/scripts/watch-pr/watch-pr`. It is optional, reads through `gh`, and grants no merge
+authority. Inspect its payload even when `--status-only` exits 0. Keep required-check and tested-SHA
+provenance checks above; the watcher is an observation source, not a replacement for them.
+
 ## Repair contracts and browser checks
 
 Before changing product behavior for a failing test, reconcile adjacent unit tests,

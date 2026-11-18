@@ -15,12 +15,14 @@
 | [[layout]] | Six-folder catalog layout | guidelines/layout.md |
 | [[flows]] | Domain hubs + forks | skills/0-butler/references/flows.md |
 | [[hubs]] | Hub packages | hubs/ |
+| [Daily workflows](../guidelines/catalog/daily-workflows.md) | Generated task recipes using existing owners | guidelines/catalog/daily-workflows.json + live route metadata |
+| [Local pstack tooling](../guidelines/catalog/pstack-tooling.md) | Statecharts, PR status, local worktree audits, decision logs and blinded packets | guidelines/catalog/pstack-tooling-manifest.json |
 
 ## Hub: 0-butler
 
 | Page | Description | Sources |
 |------|-------------|---------|
-| [[0-butler]] | Hub of hubs for this skills catalog — real-life butler. Use when lost ("which skill?"), need orienta… | `skills/0-butler` |
+| [[0-butler]] | Read-only goal- and phase-aware route selection with bounded conversation context, preserved constraints and material-only clarification. | `skills/0-butler` |
 | [[1-bro]] | Re-explain the previous assistant message in plain language (`/bro`). | `skills/1-bro` |
 | [[1-caveman]] | Compress a response into terse, technically precise prose on explicit request. | `skills/1-caveman` |
 | [[1-action-first-output]] | Maintain an explicit action-first session-output mode with visible progress and small next steps. | `skills/1-action-first-output` |
@@ -34,6 +36,9 @@
 | [[1-strategic-compact]] | Produce a host-neutral same-session continuation capsule at a safe task boundary. | `skills/1-strategic-compact` |
 | [[1-webmcp]] | Perform one scoped open/read/write request through a specified page's own tools with verified readback. | `skills/1-webmcp` |
 | [[1-pi-agent-rust]] | Supply current-checkout pi_agent_rust surfaces and command candidates to the owning engineering workflow. | `skills/1-pi-agent-rust` |
+| [[1-session-catchup]] | One bounded session catchup result. | `skills/1-session-catchup` |
+| [[1-working-context]] | One bounded working context result. | `skills/1-working-context` |
+
 
 ## Hub: 1-code-review
 
@@ -105,6 +110,9 @@
 | [[1-shipping-and-launch]] | Pre-launch checklist, staged rollout, monitoring, and rollback planning. Use when prepari… | `skills/1-shipping-and-launch` |
 | [[1-constraint-driven-development]] | Establish a measurable quality contract and detect attempts to weaken it. | `skills/1-constraint-driven-development` |
 | [[1-migrate-to-shoehorn]] | Migrate scoped TypeScript test fixtures to Shoehorn. | `skills/1-migrate-to-shoehorn` |
+| [[1-competing-solutions]] | One bounded competing solutions result. | `skills/1-competing-solutions` |
+| [[1-typescript-best-practices]] | One bounded typescript best practices result. | `skills/1-typescript-best-practices` |
+| [[1-technical-writing]] | One bounded technical writing result. | `skills/1-technical-writing` |
 
 
 ## Hub: 0-improve-codebase-architecture
@@ -174,6 +182,8 @@
 | [[1-pptx]] | "Use this skill any time a .pptx file is involved in any way — as input, output, or both. This inclu… | `skills/1-pptx` |
 | [[1-pdf]] | Safely inspect, create, edit, and verify PDF files. | `skills/1-pdf` |
 | [[1-xlsx]] | "Use this skill any time a spreadsheet file is the primary input or output. This means any task wher… | `skills/1-xlsx` |
+| [[1-video-recap]] | One bounded video recap result. | `skills/1-video-recap` |
+
 
 ## Hub: 0-ui-ux
 
@@ -465,3 +475,5 @@ _Live skills: **174**._
 | [[1-thinking-thought-experiment]] | When a real test is too rare, large, or irreversible, run a controlled counterfa… | `skills/1-thinking-thought-experiment` |
 | [[1-thinking-triz]] | When two design requirements seem mutually exclusive, name the contradiction, se… | `skills/1-thinking-triz` |
 | [[1-thinking-via-negativa]] | Use when the reflex is to add a feature, layer, or process. Prefer removing harm… | `skills/1-thinking-via-negativa` |
+
+Project-task continuation: [lifecycle and checkpoint helper](../skills/0-implement/references/project-continuity.md). Existing execution owners maintain state; Butler remains read-only.

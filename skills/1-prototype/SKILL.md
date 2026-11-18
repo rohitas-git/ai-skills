@@ -64,3 +64,7 @@ Throwaway describes intended lifetime, not permission to skip safety or delete w
 |-----------|------|
 | Logic, state transitions or data shape | [LOGIC.md](./LOGIC.md) |
 | Local visual alternatives | [UI.md](./UI.md) |
+
+## Conditional methods
+
+Load only for the requested phase, within this skill’s authority: [Decide with a bounded prototype](./references/deciding-with-prototypes.md).

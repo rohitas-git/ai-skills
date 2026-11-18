@@ -21,7 +21,7 @@ metadata:
     next: [1-receive-review, 2-software-architect, 2-security-and-hardening]
     prev: [1-tdd, 0-implement]
     cousins: [2-ponytail-review, 2-thermo-nuclear-code-quality-review, 2-verify-work, 2-software-architect, 1-complete-pr-review]
-    triggers: [code review, review my changes, multi-axis review, review this PR, review this diff, review uncommitted changes]
+    triggers: [code review, review my changes, multi-axis review, review this PR, review this diff, review uncommitted changes, adversarial review, interrogate this change]
     requires_setup: false
 ---
 
@@ -94,3 +94,7 @@ do not claim “ready to merge” from code inspection alone.
 | Historical source only; not execution instructions | [vendor-code-review-full.md](./references/vendor-code-review-full.md) |
 
 Primary parent is `/0-review`; the `/0-implement` closer calls this sub-hub directly.
+
+## Conditional methods
+
+Load only for the requested phase, within this skill’s authority: [Adversarial review with falsifying evidence](./references/adversarial-evidence.md).

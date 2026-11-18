@@ -8,7 +8,7 @@
   "path": "skills/0-butler",
   "package_dir": "hubs/0-butler/",
   "role": "Read-only route selector for ambiguous, cross-domain, or explicit catalog questions.",
-  "notes": "Use the smallest direct skill when clear and report its owning hub. F7 applies only to material ambiguity; catalog mutations are delegated and not executed here.",
+  "notes": "Recover goal, target, current phase and constraints from accepted conversation context; select one entry owner and preserve the contract. F7 presents only plausible unresolved outcomes. Routing stays read-only; health reports select the direct linter and catalog mutations the manager. Project continuity uses one known task record; the execution owner alone maintains checkpoints at meaningful safe boundaries.",
   "parent": null,
   "children": [
     {
@@ -73,19 +73,35 @@
         "1-pi-agent-rust"
       ],
       "note": "Project-specific residual (not a domain hub)"
+    },
+    {
+      "link_type": "satellite",
+      "skills": [
+        "1-session-catchup"
+      ],
+      "primary": true,
+      "note": "One explicitly selected bounded operation; preserve caller, evidence and authority, then return without automatic follow-ons."
+    },
+    {
+      "link_type": "satellite",
+      "skills": [
+        "1-working-context"
+      ],
+      "primary": true,
+      "note": "One explicitly selected bounded operation; preserve caller, evidence and authority, then return without automatic follow-ons."
     }
   ],
   "pipeline": [
-    "parse explicit shortcut or routing request",
-    "read flows and route index; inspect pinned repository evidence only if route-relevant",
-    "select a direct skill when clear or ask F7 once for material domain ambiguity",
-    "validate the selected live SKILL.md and report its owning hub",
-    "return route and first action without executing it; delegate catalog mutations"
+    "parse explicit routing request and recover the accepted goal, target, current phase, constraints and latest steering",
+    "shortlist from flows and route index by operation, exclusions and allowed effects; inspect pinned repository evidence only if route-relevant",
+    "select one entry owner for the whole accepted outcome; ask F7 once only for a material unresolved distinction not already delegated",
+    "validate the selected live SKILL.md and conditional workflow reference without executing either",
+    "return owning hub, route, goal, target, constraints, authority limits, material gaps and selected owner first action; stop"
   ],
   "forks": [
     {
       "id": "F7",
-      "question": "What kind of work?",
+      "question": "Which outcome should this request produce?",
       "recommended": "Narrowest domain supported by the request",
       "branches": [
         "Design",
@@ -107,7 +123,8 @@
         "DevOps",
         "Marketing",
         "Agent judgment"
-      ]
+      ],
+      "note": "Branches are the domain inventory. Ask a concrete question with two or three plausible outcomes plus Agent judgment, not the entire inventory. Honor prior delegation within scope; inspect only permitted route-relevant facts."
     }
   ],
   "domain_hubs_routed": [

@@ -38,8 +38,10 @@ ephemeral state. Report the next safe checkpoint instead.
 ## Procedure
 
 1. Pin the next-session focus from the user's argument or the active objective.
-2. Use an explicit user path when supplied. Otherwise create a new, non-overwriting
-   file in the platform-approved OS temporary directory and report its exact path.
+2. Use an explicit user path when supplied. With known project/task identity, create a new, non-overwriting file
+   at `.scratch/<task>/handoff-<timestamp>-<unique>.md` in that project and report its path.
+   If identity is unknown, create a new file in the platform-approved OS temporary directory and
+   identify that durability limit. Never guess another project or overwrite an existing note.
 3. Record:
    - objective, accepted/excluded scope, controlling instructions, and decisions;
    - exact repository/worktree/branch/`HEAD`, candidate, dirty-state ownership, and
@@ -49,6 +51,7 @@ ephemeral state. Report the next safe checkpoint instead.
    - current operation state, remaining tasks, immediate next action, and authority
      still required;
    - links/paths to existing specs, plans, ADRs, issues, commits, diffs, and reports;
+   - the canonical project checkpoint path/revision/digest when known, with the exact resume point;
    - the smallest relevant suggested skill set, with purpose and ordering.
 4. Redact secrets, credentials, tokens, personal data, sensitive payloads, and
    unnecessary absolute home paths. Label observation, inference, and unknown.
@@ -78,3 +81,10 @@ ephemeral state. Report the next safe checkpoint instead.
 
 Return the artifact to the actual caller (`/0-butler` or `/0-grilling`); do not
 silently start the suggested next skill.
+
+## Conditional methods
+
+Load only for the requested phase, within this skill’s authority: [Pickup and explicit pause](./references/pickup-and-pause.md).
+
+For a project task, the caller maintains its [continuation record](../0-implement/references/project-continuity.md).
+This skill writes only the new handoff note, never refreshes the canonical record or resumes work.

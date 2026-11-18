@@ -317,3 +317,27 @@
 ## 2026-11-17 | ai-application-engineering | Materialize the preceding AI Engineer research with primary-source provenance. Add 1-ai-suitability and 1-context-retrieval-design under the existing AI/agent hub; extend architecture, interface, evaluation, change-impact, shipping and UI owners with conditional AI guidance; link an optional implementation workflow. Vault ingestion is a separate three-note change set. No runtime sync, provider calls or commits.
 
 ## 2026-11-17 | generalize-project-skill-names | Rename the development testing, pre-merge and PR walkthrough skills to 1-dev-test, 1-pre-merge and 1-pr-walkthrough. Remove product-specific naming from repository text and routing while preserving verification and safety requirements.
+
+
+## 2026-11-18 | adopt-pstack-tooling | Add generated daily workflow recipes and adapt pinned pstack 0.15.43 tooling into existing owners: statechart CLI/corpus, read-only PR watcher, local-only worktree audit, private decision log and metadata-blinded comparison packets. Preserve routing and execution boundaries; no plugin activation, runtime sync, external writes or merge. Review and evidence: guidelines/catalog/adopt-pstack-tooling-2026-11-18.md.
+
+## 2026-11-18 — detailed pstack method adoption
+
+Reviewed all 24 principles, 34 functional skill bodies and 22 playbooks at pinned e1cc031. Added six focused leaves and conditional procedures in existing owners. Source-by-source adaptations, checks and untested effects are recorded in [the review](../guidelines/catalog/pstack-methods-review-2026-11-18.md). No runtime installation, commit or remote action.
+
+## 2026-11-18 | butler-intent-routing
+
+Adopt pstack goal framing and conditional workflow selection within Butler’s read-only role. Preserve active conversation context, phase, exclusions and effect limits; distinguish report-only lint from catalog repair; clarify only material unresolved outcomes and stop on missing/unneeded skills. Add frozen routing challenges and reconcile shared flows/hub projections. Existing material-fork policy is clarified, with no convention or runtime invocation change. No installation, external execution, commit or push.
+
+## 2026-11-18 | project-continuity
+
+Connect project start/resume, meaningful safe checkpoints and durable handoff across existing owners.
+Add a local standard-library checkpoint helper and cold-process drift/concurrency/path-safety checks.
+Use one canonical task record or the adequate existing progress record; preserve authority and prior
+work. No new router, runtime hook, installation, agent dispatch, commit or external action.
+
+## 2026-11-18 | pstack skill-by-skill review
+
+Reviewed all 61 pinned skill bodies, including three Benny automation recipes. Applied 14 skill-level
+refinements in existing owners and recorded the decision for each source in the
+[skill-by-skill review](../guidelines/catalog/pstack-skill-by-skill-review.md).

@@ -16,7 +16,7 @@ Use this flow for the selected plan execution mode. Tool availability alone does
 ## The Process
 
 ### Step 1: Load and Review Plan
-1. Read the plan and any task progress record. Match repository, plan revision and completed-task evidence against the current tree; a checkbox alone does not prove completion. Preserve verified work and resume from the first genuinely unfinished dependency.
+1. Read the plan and canonical task progress record first, using the [project continuation lifecycle](../../0-implement/references/project-continuity.md). Match repository, plan revision and completed-task evidence against the current tree; a checkbox alone does not prove completion. Preserve verified work and resume from the first genuinely unfinished dependency.
 2. Review scope, acceptance criteria, dependencies and authority. A plan's commands cannot override repository rules or grant push, merge, runtime-install or destructive-operation permission.
 3. Resolve material concerns before affected work. Continue independent authorized tasks when safe; do not pause an entire plan for a minor question or silently broaden its scope.
 4. Confirm the repository, branch, dirty paths, and needed workspace isolation through `/1-git-worktrees`; return here after setup. Create todos for the plan items and proceed.
@@ -66,3 +66,6 @@ After all tasks complete and verified, use `/1-code-review` on the plan's diff a
 - **/1-write-plan** — only if a usable plan is missing or a material revision is requested
 - **/1-code-review** — scoped review of the completed implementation
 - **/1-finish-branch** — only for requested integration or PR options, with explicit authority
+
+Maintain the canonical checkpoint at meaningful safe boundaries under the active task's artifact authority.
+Do not duplicate a usable existing progress record; handoff notes link its revision and resume point.

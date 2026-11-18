@@ -37,6 +37,14 @@
       "skills": [
         "1-hatch-pet"
       ]
+    },
+    {
+      "link_type": "leaf",
+      "skills": [
+        "1-video-recap"
+      ],
+      "primary": true,
+      "note": "One explicitly selected bounded operation; preserve caller, evidence and authority, then return without automatic follow-ons."
     }
   ],
   "pipeline": [
@@ -62,6 +70,7 @@
         "1-json-canvas",
         "1-defuddle",
         "1-internal-comms",
+        "1-video-recap",
         "Agent judgment"
       ]
     }

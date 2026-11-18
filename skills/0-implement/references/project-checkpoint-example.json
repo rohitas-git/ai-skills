@@ -1,0 +1,19 @@
+{
+  "goal": "Add CSV export while preserving displayed row order",
+  "status": "in_progress",
+  "phase": "implementation",
+  "scope": ["Existing export surface only"],
+  "exclusions": ["No redesign or unrelated cleanup"],
+  "authority_limits": ["Local task edits and checks only; no commit, push, merge or external action"],
+  "decisions": ["Reuse the existing exporter"],
+  "owned_paths": ["src/export.ts"],
+  "protected_paths": ["unrelated-notes.md"],
+  "artifacts": ["docs/export-plan.md"],
+  "evidence": [
+    {"claim": "Export order remains to be verified", "result": "NOT_RUN", "locator": "docs/export-plan.md"}
+  ],
+  "remaining": ["Implement export", "Verify stored values and order"],
+  "next_action": "Implement the smallest export slice",
+  "operation_state": "Safe boundary; no task-owned write in flight",
+  "services": []
+}

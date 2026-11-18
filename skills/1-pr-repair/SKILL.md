@@ -107,4 +107,7 @@ State that no fresh code review was performed and the PR was not merged.
 
 ## Related
 
+Optional read-only `scripts/watch-pr/watch-pr`: [usage and limits](../../guidelines/catalog/pstack-tooling.md#pr-status).
+The shared checkpoints expose it to the other PR workflows without duplicating its policy.
+
 Parent: `/0-git`. Review-first sibling: `/1-pr-review-and-repair`. Optional next: `/1-pr-summarizer`.

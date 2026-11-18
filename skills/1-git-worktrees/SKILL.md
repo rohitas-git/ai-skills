@@ -62,6 +62,7 @@ metadata:
 | Load when | File |
 |-----------|------|
 | Full detect/create steps | [references/full-guide.md](./references/full-guide.md) |
+| Local-only inventory before a workspace decision | [worktree audit](../../guidelines/catalog/pstack-tooling.md#local-worktree-audit), using `scripts/worktree-audit.py` |
 | Concurrent local Supabase stacks | [references/concurrent-local-services.md](./references/concurrent-local-services.md) |
 
 ## Related

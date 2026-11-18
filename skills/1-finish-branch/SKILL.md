@@ -69,3 +69,7 @@ metadata:
 - Git pipeline under `/0-git`; Ship cross-link after 1-tdd / 1-code-review green
 - Upstream: `archive/vendor/superpowers` (`finishing-a-development-branch`)
 - Additional safety adaptation: [great_cto source](./references/great-cto-source.md)
+
+## Conditional methods
+
+Load only for the requested phase, within this skill’s authority: [Verified delivery and scoped cleanup](./references/verified-delivery.md).

@@ -66,3 +66,7 @@ prepare a same-session compact, or create a durable handoff.
 | Make this response shorter | `/1-response-effort-calibrator` |
 
 Return to `/0-butler` only if the next substantive route remains ambiguous.
+
+## Conditional methods
+
+Load only for the requested phase, within this skill’s authority: [Keep bulky evidence bounded](./references/bulk-evidence.md).

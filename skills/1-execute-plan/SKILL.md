@@ -41,7 +41,7 @@ metadata:
 
 ## Process
 
-1. Load the plan and any progress record; reconcile completed tasks against current code and verification evidence before resuming. Raise material scope or dependency concerns before affected work.
+1. Load the plan and known canonical project continuation record before broad discovery; reconcile completed tasks against current code and verification evidence before resuming. Raise material scope or dependency concerns before affected work.
 2. Confirm repository, branch, and existing changes; use `/1-git-worktrees` for needed isolation, then resume this plan at the current task. Create todos; for each task: in progress → follow steps → verify → complete.
 3. Use `/1-tdd` when the agreed plan has a known deterministic behavior and independent acceptance criteria; exploratory or probabilistic work needs a specification/prototype or evaluation rubric, not an assumed TDD loop.
 4. When all tasks are verified, review the scoped diff through `/1-code-review`; handle findings within the plan's scope. Use `/1-finish-branch` when integration or PR options are requested, carrying the verified SHA and workspace ownership.
@@ -56,3 +56,6 @@ metadata:
 
 - Ship soft under `/0-implement` · **F-SP** with `/1-subagent-implement`
 - Upstream: `archive/vendor/superpowers` (`executing-plans`)
+
+For multi-step execution, maintain the [project checkpoint lifecycle](../0-implement/references/project-continuity.md)
+at verified units, decisions, blockers and safe pause/finish boundaries; a plan or read-only request grants no extra effects.

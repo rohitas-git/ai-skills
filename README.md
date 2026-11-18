@@ -65,6 +65,12 @@ A comprehensive, depth-organized catalog of Codex and Claude agent skills for so
 
 Canonical catalog lives under [`skills/`](./skills/). See [`skills/README.md`](./skills/README.md) and [`skills/CLAUDE.md`](./skills/CLAUDE.md) for catalog structure and invocation details.
 
+For common tasks, start with the [daily workflow guide](./guidelines/catalog/daily-workflows.md).
+Use `?? show me the playbooks` to browse [Butler's playbooks](./skills/0-butler/references/playbooks.md)
+and find the specialist, tool and verification steps for a specific task.
+Its recipes are generated from one source and validated against live routes. Local helpers are documented
+in [adopted pstack tooling](./guidelines/catalog/pstack-tooling.md).
+
 ## Getting Started
 
 **One-time setup:**
@@ -292,237 +298,9 @@ User: "We're ready to ship payment"
 
 ## All Skills (with Brief Descriptions)
 
-| Name | Description |
-|------|-------------|
-| **1-design-rationale** | Explain recorded design decisions and their trade-offs. |
-| **1-runtime-feature-map** | Map user paths, preconditions and verification evidence. |
-| **1-statechart-modeling** | Model states, actions, guards and invariants clearly. |
-| **1-formal-verification** | Evaluate a fixed formal check with explicit scope. |
-| **1-i18n-sync** | Synchronize selected JSON locale keys with context and validation. |
-| **1-prompt-optimizer** | Rewrite one prompt without executing it or inventing requirements. |
-| **1-llm-cost-design** | Design one LLM spending policy with quality and budget controls. |
-| **1-ai-suitability** | Assess AI fit, non-AI alternatives and the level of automation. |
-| **1-context-retrieval-design** | Design relevant, permission-aware context, retrieval and memory. |
-| **1-change-impact** | Trace affected consumers, compatibility, and verification obligations. |
-| **1-visual-explainer** | Create one figure-led, self-contained HTML explanation of a concept, system, or comparison. |
-| **1-scaffold-exercises** | Scaffold course exercise directories from an agreed plan. |
-| **1-migrate-to-shoehorn** | Migrate scoped TypeScript test fixtures to Shoehorn. |
-| **1-manual-procedure-wizard** | Author a human-run manual procedure wizard without executing it. |
-| **1-to-questionnaire** | Discovery questionnaire for an external knowledge holder. |
-| **0-agent-engineering** | Route AI suitability, context, evaluations, tools, oversight, telemetry and security. |
-| **0-butler** | Hub of hubs — navigation for the entire catalog. Use when lost or need orientation. |
-| **0-devops** | Route infrastructure, platform, delivery, reliability, incident, and compliance operations. |
-| **0-marketing** | Route marketing strategy, research, conversion, content, search, paid media, lifecycle, growth, and sales work. |
-| **0-diagnosing-bugs** | Systematic diagnosis loop for hard bugs and performance regressions. |
-| **0-grilling** | Relentlessly stress-test a plan, decision, or idea. |
-| **0-git** | Route safe Git workflows: worktrees, atomic commits, conflicts, and branch completion. |
-| **0-implement** | Implement a piece of work based on a spec or set of tickets. |
-| **0-improve-codebase-architecture** | Scan codebase for deepening opportunities with visual HTML report. |
-| **0-learn** | Domain hub for learning — how/why something works (not shipping code). |
-| **0-office** | Route one document, media, extraction, canvas, pet, or internal-communication artifact to one leaf. |
-| **0-ponytail** | Explicit coding-only overlay for the smallest correct, repository-aligned solution. |
-| **0-review** | Domain hub for verification (code review, security audit, architecture review). |
-| **0-rohitas-vault-wiki** | Steward Rohitas's Notes Obsidian vault — Atlas hubs, Concepts, Inbox, Guides. |
-| **0-setup-rohitas-skills** | Configure this repo for engineering skills — issue tracker, labels, docs. |
-| **0-skill-creator** | Author or evaluate one pinned skill-body candidate; placement stays separate. |
-| **0-skill-manager** | Apply one bounded catalog change-set or route a read-only catalog operation. |
-| **0-triage** | Route one raw-intake snapshot, assessment, or approved transition. |
-| **0-wayfinder** | Route one multi-session uncertainty-map operation. |
-| **1-asd-ste100** | Rewrite agent-facing English with STE-inspired clarity and preserve meaning. |
-| **1-agent-evaluation** | Design candidate-specific evaluations for AI applications and agents. |
-| **1-ai-platform-operations** | Operate model serving, RAG, GPU, caching, registry, and LLMOps infrastructure. |
-| **1-action-first-output** | Explicit, reversible session mode for action-first results, visible progress, and small next steps. |
-| **1-anti-sycophancy** | Independent claim assessment; suppress praise/agreement bias; evidence-first. |
-| **1-api-and-interface-design** | Design stable APIs and module boundaries (REST, GraphQL, types). |
-| **1-bro** | Re-explain the last assistant reply in plain language (`/bro`). |
-| **1-browser-testing-with-devtools** | Runtime browser verification via Chrome DevTools MCP (DOM, console, network). |
-| **1-brand** | Route one brand request to guideline authoring, read-only review, or context extraction. |
-| **2-brand-guidelines** | Draft or apply one evidence-backed brand-guideline contract. |
-| **2-brand-review** | Read-only review one candidate against one approved brand contract. |
-| **2-brand-context-extract** | Extract one minimal brand context packet for one named consumer. |
-| **1-user-research** | Route one user-research request to study planning or completed-evidence synthesis. |
-| **2-user-research-plan** | Author one decision-linked research protocol without executing the study. |
-| **2-user-research-synthesis** | Synthesize one fixed participant-evidence set with provenance, dissent, and privacy limits. |
-| **1-ci-cd-and-automation** | Build/test/deploy pipelines and quality gates. |
-| **1-cloud-platform-operations** | Operate AWS, Azure, GCP, and Cloudflare managed resources. |
-| **1-clean-craftsmanship** | Explain maintainability and Clean Code/Architecture principles with practical trade-offs. |
-| **1-code-comments** | Assess or edit language-native documentation for one public/exported code surface. |
-| **1-code-explainer** | Explain source code at multiple audience levels and depths. |
-| **1-design-review** | Fresh-context Elephant-Goldfish review of a software design/spec/plan before coding; [workflow and concepts](skills/1-design-review/references/workflow-and-connections.md). |
-| **1-code-review** | Multi-axis review of changes — Spec, Standards, Maintainability. |
-| **1-complete-pr-review** | Comprehensive, risk-weighted, read-only review of one fixed pull request. |
-| **1-pre-merge** | Final project frozen-candidate readiness gates and QA handoff; never merges. |
-| **1-pr-walkthrough** | Walk through a project PR with real UI components, non-UI before/after examples and useful engineering diagrams; local-only page. |
-| **1-dev-test** | Focused project development testing and debugging while changes remain mutable. |
-| **1-codebase-design** | Shared vocabulary for designing deep modules and interfaces. |
-| **1-codebase-review-strategy** | Produce one risk-based coverage and evidence plan for an unfamiliar codebase. |
-| **1-coding-standards** | Always-on lean coding standards for naming, modularity, and comments. |
-| **1-error-handling** | Failure contracts, TS/JS errors, safe recovery, and cleanup. |
-| **1-compliance-engineering** | Translate compliance obligations into technical controls and evidence. |
-| **1-container-platform-operations** | Operate containers, registries, Kubernetes, Helm, Kustomize, and GitOps. |
-| **1-context-monitor** | Monitor context usage, warn at ~50%, suggest token optimizations. |
-| **1-constraint-driven-development** | Define measurable quality floors and detect attempts to weaken them. |
-| **1-create-skill** | Thin entry that returns one new body candidate through skill-creator. |
-| **1-critique** | Explicit rigorous critique / devil's advocate of ideas and reasoning. |
-| **1-defuddle** | Extract clean markdown from web pages, removing clutter and navigation. |
-| **1-deprecation-and-migration** | Sunset APIs/features and migrate callers safely. |
-| **1-diagram-maker** | Create SVG/HTML or Excalidraw diagrams for concepts, flows, architecture. |
-| **1-discover-skills** | Discover and vet external skill candidates without installing them. |
-| **1-docx** | Create, read, edit, or manipulate Word documents (.docx files). |
-| **1-domain-modeling** | Build and sharpen project domain model — ubiquitous language. |
-| **1-doubt-driven-development** | One read-only adversarial pass over a consequential claim or decision. |
-| **1-database-and-storage-operations** | Operate databases, durable storage, backups, and restore paths. |
-| **1-execution-flow-comments** | Assess or edit one explicitly requested numbered flow block for one function. |
-| **1-explain-with-example** | Explain selected material with grounded lenses, one example, and a non-executing dry run. |
-| **1-frontend-ui-engineering** | Accessible, responsive, production-quality UI (not generic aesthetics). |
-| **1-atomic-git-commits** | Partition changes into small, independently understandable and revertible verified commits. |
-| **1-grill-me** | Relentless interview to sharpen a plan or design. |
-| **1-grill-with-docs** | Relentless interview that also creates ADRs and glossary as you go. |
-| **1-graphify** | Build or query an explicitly requested local Graphify codebase graph; no install or persistent behavior by default. |
-| **1-grok-help** | Grok documentation and configuration help (setup, MCP, skills, keybindings). |
-| **1-handoff** | Compact current conversation into a handoff document for another agent. |
-| **1-hatch-pet** | Route one Codex v2 pet build, repair, validation, or local-install operation. |
-| **2-hatch-pet-build** | Build one new validated v2 pet candidate without installation. |
-| **2-hatch-pet-repair** | Repair one verified pet defect in a copied candidate. |
-| **2-hatch-pet-validate** | Read-only validate one immutable v2 pet atlas or package. |
-| **2-hatch-pet-install** | Explicitly install one already validated pet candidate locally. |
-| **1-human-in-the-loop** | Design approval gates, escalation paths, and human oversight for agents. |
-| **1-identity-and-secrets-management** | Operate IAM, SSO, access reviews, KMS, Vault, and secret lifecycle. |
-| **1-imagine** | Generate or edit one raster result through the current host image capability. |
-| **1-impeccable** | Run one explicit current-installed Impeccable command on one pinned UI surface. |
-| **1-inline-comments** | Assess or edit one concise why/constraint comment for one internal block. |
-| **1-infrastructure-as-code** | Design and verify Terraform, OpenTofu, CloudFormation, and Bicep. |
-| **1-incident-response** | Coordinate active production incident containment, recovery, and evidence. |
-| **1-json-canvas** | Create and edit JSON Canvas files (.canvas) with nodes and connections. |
-| **1-karpathy-guidelines** | LLM coding process hygiene: think before coding, simplicity, surgical diffs, goals. |
-| **1-learning-explainer** | Structured multi-level explanations with mental models and progressive deep-dive. |
-| **1-living-documentation-governor** | Govern a pinned code↔canonical-doc contract: drift assessment, scoped updates, and honest trigger enforcement. |
-| **1-mcp-server-building** | Design, implement, and validate MCP servers and tool manifests. |
-| **1-marketing-ab-testing** | Plan and assess one marketing A/B experiment. |
-| **1-marketing-ad-creative** | Draft and iterate paid-ad creative. |
-| **1-marketing-ads** | Plan or audit one paid-advertising campaign. |
-| **1-marketing-ai-seo** | Improve one site's visibility in AI-generated search answers. |
-| **1-marketing-analytics** | Design or audit marketing tracking and measurement. |
-| **1-marketing-aso** | Audit or improve one app-store listing. |
-| **1-marketing-attribution** | Analyze which marketing activity drives conversion or revenue. |
-| **1-marketing-blog-editor** | Review one technical marketing blog post before publication. |
-| **1-marketing-churn-prevention** | Design one customer-retention or cancellation intervention. |
-| **1-marketing-co-marketing** | Plan one co-marketing or partner campaign. |
-| **1-marketing-cold-email** | Draft one B2B cold-email sequence. |
-| **1-marketing-community-marketing** | Plan one community-led marketing program. |
-| **1-marketing-competitor-profiling** | Build an evidence-backed marketing profile of named competitors. |
-| **1-marketing-competitors** | Create one competitor-comparison or alternative-page plan. |
-| **1-marketing-content-strategy** | Plan one marketing content portfolio or roadmap. |
-| **1-marketing-copy-editing** | Edit one existing piece of marketing copy. |
-| **1-marketing-copywriting** | Write one bounded marketing page or message. |
-| **1-marketing-cro** | Audit or improve conversion on one marketing page or form. |
-| **1-marketing-customer-research** | Conduct or synthesize customer research for a marketing decision. |
-| **1-marketing-directory-submissions** | Prepare a bounded product-directory submission plan. |
-| **1-marketing-emails** | Create or improve one lifecycle-email sequence. |
-| **1-marketing-events** | Plan one marketing event, webinar, sponsorship, or speaking motion. |
-| **1-marketing-free-tools** | Design one free tool as a marketing asset. |
-| **1-marketing-ecommerce-blog-writing** | Draft or revise one e-commerce guide, tutorial, lifestyle article, or product comparison. |
-| **1-marketing-healthcare-blog-writing** | Draft or revise one evidence-backed healthcare e-commerce blog and its medical/compliance review packet. |
-| **1-marketing-image** | Specify or optimize one marketing-image asset. |
-| **1-marketing-influencer-marketing** | Plan one influencer, creator, or ambassador program. |
-| **1-marketing-launch** | Plan one product-marketing launch or announcement. |
-| **1-marketing-lead-magnets** | Plan or improve one lead magnet. |
-| **1-marketing-marketing-council** | Compare several named marketing perspectives on one question. |
-| **1-marketing-marketing-ideas** | Generate and prioritize marketing tactics for a software product. |
-| **1-marketing-marketing-loops** | Design one bounded recurring marketing workflow. |
-| **1-marketing-marketing-plan** | Build one evidence-bounded marketing plan. |
-| **1-marketing-marketing-psychology** | Apply behavioral principles to one marketing decision. |
-| **1-marketing-offers** | Design or improve one commercial offer. |
-| **1-marketing-onboarding** | Optimize one post-signup activation or onboarding flow. |
-| **1-marketing-paywalls** | Optimize one in-product paywall or upgrade prompt. |
-| **1-marketing-popups** | Optimize one marketing popup, modal, overlay, or banner. |
-| **1-marketing-pricing** | Research or design one pricing and packaging decision. |
-| **1-marketing-product-marketing** | Create or update one product-marketing context document. |
-| **1-marketing-programmatic-seo** | Plan one template-and-data programmatic SEO system. |
-| **1-marketing-prospecting** | Build an evidence-backed prospecting plan or shortlist. |
-| **1-marketing-public-relations** | Plan one earned-media or public-relations motion. |
-| **1-marketing-referrals** | Design one referral or affiliate program. |
-| **1-marketing-revops** | Design one revenue-operations lifecycle, routing, or reporting change. |
-| **1-marketing-sales-enablement** | Create one bounded sales-enablement asset. |
-| **1-marketing-schema** | Design or audit website structured-data markup. |
-| **1-marketing-seo-audit** | Audit one site's technical and on-page SEO. |
-| **1-marketing-signup** | Optimize one signup, registration, or trial-start flow. |
-| **1-marketing-site-architecture** | Plan one marketing-site hierarchy, navigation, and URL structure. |
-| **1-marketing-sms** | Plan or draft one compliant SMS or MMS marketing sequence. |
-| **1-marketing-social** | Plan or draft one social-media content program. |
-| **1-marketing-video** | Plan one marketing-video concept, script, or production specification. |
-| **1-network-and-edge-operations** | Operate DNS, load balancers, CDNs, proxies, meshes, firewalls, VPNs, and TLS. |
-| **1-observability-and-instrumentation** | Logging, metrics, tracing, and alerting for diagnosable production behavior. |
-| **1-obsidian-bases** | Create and edit Obsidian Bases (.base files) with views and formulas. |
-| **1-obsidian-cli** | Interact with Obsidian vaults — read, search, manage notes and tasks. |
-| **1-obsidian-markdown** | Create and edit Obsidian Flavored Markdown (wikilinks, embeds, callouts). |
-| **1-performance-optimization** | Measure-first perf work (FE/BE/DB) — Core Web Vitals, N+1 queries, profiling. |
-| **1-pdf** | Safely inspect, create, edit, and verify PDF files. |
-| **1-pi-agent-rust** | Speed up pi_agent_rust development and verification workflows. |
-| **1-plan-arbiter** | Compare competing plans and choose one executable direction. |
-| **1-platform-engineering** | Build internal developer platforms, golden paths, and reproducible environments. |
-| **1-plow-ahead** | Continue through routine ambiguity when the user explicitly requests autonomy. |
-| **1-ponytail-audit** | Read-only audit of evidence-backed removable complexity in one bounded repository snapshot. |
-| **1-ponytail-debt** | Return a bounded read-only ledger of exact `0-ponytail:` markers. |
-| **1-ponytail-gain** | Show one pinned upstream agentic benchmark with its methodology and limitations. |
-| **1-ponytail-help** | Catalog-accurate one-shot reference for Ponytail levels and child skills. |
-| **1-pptx** | Create, read, edit, or manipulate PowerPoint presentations (.pptx files). |
-| **1-pr-splitter** | Split a large PR into coherent stacked or parallel PRs while preserving source intent and review drift. |
-| **1-pr-summarizer** | Summarize changes, write PR descriptions, or draft PR comments. |
-| **1-pr-repair** | Repair known findings, CI failures, conflicts, and blockers on one PR without reviewing it. |
-| **1-pr-review-and-repair** | Review, repair, rebase, push, and verify one PR until clean and green. |
-| **1-project-wiki-manager** | Grounded in-repository concept wiki from declared sources; scoped ingest and read-only query/audit. |
-| **1-prototype** | Build throwaway prototype to sanity-check state model or UI. |
-| **1-quick-recap** | End work with a concise green, yellow, or red completion-state signal. |
-| **1-research** | Answer one bounded question from current authoritative sources; persist only when requested. |
-| **1-resilience-and-disaster-recovery** | Design and test backup, failover, disaster-recovery, and continuity plans. |
-| **1-resolving-merge-conflicts** | Resolve in-progress git merge/rebase conflicts. |
-| **1-resource-summarizer** | Distill long resources (PDF, video, article) into learning-focused notes. |
-| **1-response-effort-calibrator** | Guide response effort and depth based on prompt cues. |
-| **1-rewind** | Recover recent local screen context through Clips Rewind. |
-| **1-security-auditor** | Multi-phase security auditor for codebases — OWASP, vulnerability review. |
-| **1-server-and-fleet-operations** | Operate Linux/Windows hosts, services, SSH, patches, and managed devices. |
-| **1-session-skill-reflect** | Read-only reflection that proposes one evidence-backed skill improvement. |
-| **1-shipping-and-launch** | Pre-flight checklist, canary rollout, monitoring, rollback planning. |
-| **1-skill-atomize** | Assess or repair one pinned cluster of overlapping live skills. |
-| **1-skill-linter** | Report structural and routing health for one pinned catalog snapshot. |
-| **1-stepdown-rule** | Assess or apply one behavior-independent top-down declaration reorder in one file. |
-| **1-story-teacher** | Turn lessons/articles/transcripts into engaging stories that teach invisibly. |
-| **1-strategic-compact** | Suggest manual context compaction at logical task intervals. |
-| **1-stacked-pr-review-and-repair** | Review, repair, rebase, and verify every PR in a dependent stack. |
-| **1-stacked-pr-repair** | Repair known findings, CI failures, conflicts, and blockers across a PR stack without reviewing it. |
-| **1-tdd** | Test-driven development — red → green → refactor at agreed seams. |
-| **1-tool-schema-design** | Design constrained, model-facing tool schemas and validate their safety surface. |
-| **1-teach** | Multi-session teaching workspace (MISSION.md, lessons, learning-records). |
-| **1-thinking-steel-manning** | Build strongest version of opposing case before engaging. |
-| **1-thinking-ethical** | Map values, harms, power, and safeguards before a normative decision. |
-| **1-thinking-lateral** | Escape a stuck framing with safe provocations and testable candidates. |
-| **1-triage-inbox** | Read one cutoff-bounded snapshot of raw tracker items needing attention. |
-| **1-triage-assess** | Assess one issue or external PR without applying tracker state. |
-| **1-triage-apply** | Apply and verify one explicitly approved triage transition. |
-| **1-to-spec** | Synthesize one settled source into one right-sized specification artifact. |
-| **1-to-tickets** | Derive one dependency-aware ticket set from one approved specification. |
-| **1-wayfinder-chart** | Produce one new uncertainty-map set from an accepted destination. |
-| **1-wayfinder-advance** | Advance one existing map through one frontier decision-ticket cycle. |
-| **1-vault-explain** | Explain a concept from Rohitas's Notes vault for learning. |
-| **1-vault-inbox** | Fast-capture notes into Rohitas's Notes Inbox. |
-| **1-vault-ingest** | Ingest knowledge into Rohitas's Notes — create/update Concepts. |
-| **1-vault-lint** | Health-check vault — broken links, orphans, duplicates, drift. |
-| **1-visual-edit** | Inspect or edit a running local app through Agent-Native Design. |
-| **1-visual-plan** | Publish a plan as an interactive visual review artifact. |
-| **1-visual-recap** | Draft, create, or update one private visual orientation artifact for one exact change candidate. |
-| **1-webmcp** | Operate a user-specified web app through its MCP or WebMCP tools. |
-| **1-wiki-query** | Answer questions against personal LLM wiki / Obsidian vault. |
-| **1-source-backed-skill** | Author one private reference-skill candidate from an authorized fixed corpus. |
-| **1-writing-great-skills** | Apply concise invocation, disclosure, completion, and pruning craft to one body. |
-| **1-xlsx** | Create, read, edit, or manipulate spreadsheets (.xlsx, .csv, .tsv). |
-| **2-ponytail-review** | Read-only review of one pinned diff solely for evidence-backed removable complexity. |
-| **2-prompt-injection-defense** | Design and verify prompt-injection defenses at agent trust boundaries. |
-| **2-skill-supply-chain-audit** | Audit third-party agent skills and packages for provenance and risky behavior. |
-| **2-thermo-nuclear-code-quality-review** | Harsh maintainability-only review — code judo, giant files, spaghetti growth. |
-| **2-security-and-hardening** | Harden code against vulnerabilities while building or remediating. |
-| **2-software-architect** | Bounded, evidence-backed system decision analysis with viable alternatives, conditions, and migration/verification implications. |
-| **2-verify-work** | Verification subagent — diffs, builds, tests, correctness evaluation. |
+Use the [generated skill index](./skills/0-butler/references/route-index.md) for current skills, owning domains, use cases, exclusions, and handoffs. Its entries come from live skill metadata and hub membership.
+
+The [wiki index](./wikis/index.md) provides a domain view, and the [daily workflow guide](./guidelines/catalog/daily-workflows.md) provides task examples. These indexes replace a separately maintained skill table here.
 
 ## Quick Reference
 
@@ -785,3 +563,6 @@ Codex may shorten skill descriptions when the full catalog is installed because 
 ---
 
 **Questions?** Start with `$0-butler` in Codex or `/0-butler` in Claude for navigation. Repository rules live in [`CLAUDE.md`](./CLAUDE.md).
+
+Detailed pstack principles, functional skills and playbook adoption: [review and method guide](./guidelines/catalog/pstack-methods-review-2026-11-18.md). The live owners retain their existing routing and effect boundaries.
+The [skill-by-skill follow-up](./guidelines/catalog/pstack-skill-by-skill-review.md) covers every skill at the pinned revision, including the three Benny automation recipes.

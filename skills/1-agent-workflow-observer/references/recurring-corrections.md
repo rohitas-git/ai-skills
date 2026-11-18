@@ -16,6 +16,9 @@ Record correction/evidence → failure mechanism → existing rule → proposed 
 negative control and clean control → exceptions/rollout cost. Prefer preventing new occurrences
 over expanding into a broad cleanup; legitimate exceptions require their actual policy owner.
 
+Name the existing authoring path that should use the proposed guard. If its canonical examples would
+still teach the failing pattern, include the smallest correction to those examples in the proposal.
+
 A mechanism can enforce a syntactic rule without guaranteeing the product outcome. Existing
 documentation still preserves rationale even when a check exists; do not delete it automatically.
 Do not claim a mistake is impossible from one passing example or one regex rule.

@@ -12,7 +12,7 @@ metadata:
     when: ["one office, media, extraction, or internal-communication artifact is requested"]
     not_when: ["product UI or brand → 0-ui-ux", "personal vault → 0-rohitas-vault-wiki", "code comments → 1-code-comments"]
     prev: [0-butler]
-    next: [1-docx, 1-pdf, 1-pptx, 1-xlsx, 1-diagram-maker, 1-imagine, 1-hatch-pet, 1-json-canvas, 1-defuddle, 1-internal-comms, 1-slides]
+    next: [1-docx, 1-pdf, 1-pptx, 1-xlsx, 1-diagram-maker, 1-imagine, 1-hatch-pet, 1-json-canvas, 1-defuddle, 1-internal-comms, 1-slides, 1-video-recap]
     cousins: [0-ui-ux, 0-rohitas-vault-wiki, 1-code-comments, 1-slides]
     triggers: [Word document, PDF artifact, PowerPoint, spreadsheet, diagram, generate image, JSON canvas, extract article, animated pet, internal communication]
     requires_setup: false
@@ -38,6 +38,7 @@ actual caller. The hub never opens, converts, creates, edits, renders, downloads
 | JSON/Obsidian canvas | `/1-json-canvas` |
 | Clean text extraction from one web page | `/1-defuddle` |
 | Internal update, FAQ, newsletter, or incident communication | `/1-internal-comms` |
+| Captioned recap video or evidence storyboard | `/1-video-recap` |
 
 1. Pin actual caller, one immutable request/version, operation, source artifacts/URLs and revisions, desired
    output type, exact destination or chat-only result, quality/compatibility constraints, sensitivity,

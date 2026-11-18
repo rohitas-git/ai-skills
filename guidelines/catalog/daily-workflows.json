@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "workflows": [
+    {
+      "id": "build",
+      "goal": "Build a bounded change",
+      "entry": "0-implement",
+      "example": "Add a CSV export to the existing orders screen. Include filtered rows, preserve their displayed order, and verify the exported values locally.",
+      "steps": ["0-implement", "1-codebase-design", "1-tdd", "1-code-review"],
+      "finish": "The requested behavior works on the tested candidate; relevant checks and review are reconciled. Design and TDD apply when their seams are settled."
+    },
+    {
+      "id": "diagnose-fix",
+      "goal": "Reproduce, diagnose, and fix a bug",
+      "entry": "0-diagnosing-bugs",
+      "example": "Reproduce the duplicate final CSV row, identify its root cause, then fix it and verify the boundary cases. Preserve unrelated work.",
+      "steps": ["0-diagnosing-bugs", "0-implement", "1-code-review"],
+      "finish": "A reproduction establishes the cause; the accepted fix passes a focused regression check. A diagnosis-only request stops before implementation."
+    },
+    {
+      "id": "review",
+      "goal": "Review a supplied change",
+      "entry": "1-code-review",
+      "example": "Review this diff read-only for correctness and maintainability. Cite concrete evidence and leave the files unchanged.",
+      "steps": ["1-code-review"],
+      "finish": "Findings identify the candidate, location, impact, and supporting evidence. Repair remains a separate outcome."
+    },
+    {
+      "id": "runtime",
+      "goal": "Verify a user journey",
+      "entry": "0-implement",
+      "example": "Verify order export in the permitted local stack. Reuse the existing feature map and harness, exercise the real user path, retain evidence, and clean up only the instance you started.",
+      "steps": ["0-implement", "1-runtime-feature-map", "2-verify-work"],
+      "finish": "The execution owner records PASS, FAIL, BLOCKED, or NOT RUN for each selected entry point, with candidate identity and evidence surviving teardown."
+    },
+    {
+      "id": "model",
+      "goal": "Model and check stateful behavior",
+      "entry": "1-statechart-modeling",
+      "example": "Model the export job's queued, running, cancelled, and completed states. With the reviewed local checker, check that cancelled jobs never publish a result and explain any counterexample.",
+      "steps": ["1-statechart-modeling", "1-formal-verification"],
+      "finish": "The model maps to source and each property has its own result, bounds, and gaps. Rendering a chart alone does not establish correctness."
+    },
+    {
+      "id": "repair-pr",
+      "goal": "Repair known PR blockers",
+      "entry": "1-pr-repair",
+      "example": "Repair the known CI failure on this PR, preserve its intended scope, and verify the published head. Do not merge it.",
+      "steps": ["1-pr-repair", "1-git-worktrees", "1-ci-cd-and-automation"],
+      "finish": "Known findings and CI blockers have evidence-backed dispositions for the final head. The status watcher reports observations and grants no merge authority."
+    }
+  ]
+}

@@ -113,4 +113,4 @@ share this task's worktree or mutable test state, and never stash/reset/delete u
   Real payments, messages, accounts, production data, or remote schema changes require
   separate explicit authority and ordinarily do not belong in this loop.
 
-Focused guidance: [tests](./tests.md) · [mocking](./mocking.md) · [bug reproduction](./references/prove-it.md) · [test portfolio](./references/test-pyramid.md) · [browser/runtime](./references/browser-and-runtime.md) · [additional patterns](./references/writing-good-tests.md). Upstream material is retained only as [historical source snapshots](./references/source-snapshots.md).
+Focused guidance: [tests](./tests.md) · [mocking](./mocking.md) · [bug reproduction](./references/prove-it.md) · [test portfolio](./references/test-pyramid.md) · [browser/runtime](./references/browser-and-runtime.md) · [additional patterns](./references/writing-good-tests.md) · [behavior oracles](./references/behavioral-oracles.md). Upstream material is retained only as [historical source snapshots](./references/source-snapshots.md).

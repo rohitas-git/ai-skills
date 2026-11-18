@@ -14,14 +14,15 @@ metadata:
     when:
       - "implement a clear request, accepted specification, ticket, or plan"
       - "drive a scoped build, verification, and review path"
+      - "resume an accepted project task from its checkpoint and maintain meaningful progress boundaries"
     not_when:
       - "unresolved product requirements → 0-grilling / 1-to-spec"
       - "review only → 1-code-review"
       - "raw issues → 0-triage"
       - "branch integration/options only → 1-finish-branch"
-    next: [1-runtime-feature-map, 1-i18n-sync, 1-migrate-to-shoehorn, 1-to-spec, 1-to-tickets, 1-write-plan, 1-execute-plan, 1-subagent-implement, 1-parallel-agents, 1-constraint-driven-development, 1-git-worktrees, 1-api-and-interface-design, 1-codebase-design, 1-coding-standards, 1-go-best-practices, 1-deprecation-and-migration, 1-error-handling, 1-living-documentation-governor, 1-supabase, 1-supabase-postgres-best-practices, 1-supabase-schema-migration, 1-pending-migration-hygiene, 1-tdd, 1-dev-test, 2-verify-work, 1-code-review, 1-code-comments, 1-inline-comments, 1-execution-flow-comments, 1-stepdown-rule, 1-karpathy-guidelines, 1-atomic-git-commits, 1-finish-branch, 1-pr-summarizer, 1-resolving-merge-conflicts, 1-research, 1-shipping-and-launch, 1-observability-and-instrumentation, 1-ci-cd-and-automation, 1-frontend-ui-engineering, 1-ui-styling, 1-performance-optimization]
+    next: [1-runtime-feature-map, 1-i18n-sync, 1-migrate-to-shoehorn, 1-to-spec, 1-to-tickets, 1-write-plan, 1-execute-plan, 1-subagent-implement, 1-parallel-agents, 1-constraint-driven-development, 1-git-worktrees, 1-api-and-interface-design, 1-codebase-design, 1-coding-standards, 1-go-best-practices, 1-deprecation-and-migration, 1-error-handling, 1-living-documentation-governor, 1-supabase, 1-supabase-postgres-best-practices, 1-supabase-schema-migration, 1-pending-migration-hygiene, 1-tdd, 1-dev-test, 2-verify-work, 1-code-review, 1-code-comments, 1-inline-comments, 1-execution-flow-comments, 1-stepdown-rule, 1-karpathy-guidelines, 1-atomic-git-commits, 1-finish-branch, 1-pr-summarizer, 1-resolving-merge-conflicts, 1-research, 1-shipping-and-launch, 1-observability-and-instrumentation, 1-ci-cd-and-automation, 1-frontend-ui-engineering, 1-ui-styling, 1-performance-optimization, 1-competing-solutions, 1-typescript-best-practices, 1-technical-writing]
     prev: [0-butler, 0-triage, 1-to-tickets, 1-to-spec]
-    triggers: [implement, build this, execute this plan, ship tickets, make this change]
+    triggers: [implement, build this, execute this plan, ship tickets, make this change, resume project task]
     requires_setup: false
 ---
 
@@ -35,13 +36,17 @@ the implementation specialists and evidence loops that the change actually needs
 1. **Pin the contract.** Record caller, task/spec/ticket, acceptance criteria, explicit exclusions,
    repository root, requested branch/base, protected/unrelated work, and permitted side effects. A
    concise clear request is enough; route materially unresolved product choices to `/0-grilling` or
-   `/1-to-spec`, but do not manufacture a planning ceremony for a small reversible change.
+   `/1-to-spec`, but do not manufacture a planning ceremony for a small reversible change. When
+   requested, restate the user's goal, intended benefit and unresolved assumptions in your own words
+   and stop at that explanation; a restatement request does not execute the task.
 2. **Resolve the workspace.** Inspect exact repo/worktree path, branch/HEAD, status, dirty-file
    ownership, concurrent writers, and local-service ownership. Reuse a matching task workspace. Use
    `/1-git-worktrees` when work would otherwise occur on a protected primary branch, another task owns
    the checkout, unrelated changes overlap, concurrent work needs isolation, or branch-specific local
    state must differ; then resume this pipeline with returned provenance.
-3. **Select the slice and evidence loop.** Prefer one independently reviewable outcome. Use
+3. **Select the slice and evidence loop.** For multi-step work or explicit resume, use the
+   [project continuation lifecycle](./references/project-continuity.md), maintaining its owned checkpoint
+   at meaningful safe boundaries within existing edit authority. Prefer one independently reviewable outcome. Use
    `/1-tdd` only for known deterministic behavior at an agreed seam; otherwise use specification,
    characterization, prototype/evaluation, or focused runtime evidence. See
    [incremental slices](./references/incremental-slices.md) and [confusion handling](./references/confusion-and-inline-plan.md).
@@ -80,6 +85,12 @@ the implementation specialists and evidence loops that the change actually needs
 
 ## Optional verification workflows
 
+When Butler supplies a playbook recipe, open its selected section and keep the accepted contract. Apply its specialist, tool and evidence steps as they fit the task.
+
+Common task examples are in the generated [daily workflows](../../guidelines/catalog/daily-workflows.md).
+For a requested decision trail, use the local [decision log](../../guidelines/catalog/pstack-tooling.md#decision-logs)
+(`scripts/log-decision.py`); this records choices without starting a retrospective or changing authority.
+
 For AI apps, integrations or model/prompt/data upgrades, load [AI feature workflow](./references/ai-feature-workflow.md).
 
 For runtime maps (`/1-runtime-feature-map`), model checks, or enforceable lessons, load [verification workflows](./references/verification-workflows.md).
@@ -100,3 +111,9 @@ blocked evidence, and local artifacts/state left behind. Do not claim completion
 
 - Operative: [definition of done](./references/definition-of-done.md), [incremental slices](./references/incremental-slices.md), [confusion handling](./references/confusion-and-inline-plan.md), [explicit delegation](./references/orchestration-patterns.md)
 - Historical source only: [vendor DoD](./references/definition-of-done-vendor-full.md), [vendor incremental guide](./references/vendor-incremental-full.md)
+
+## Conditional methods
+
+Load only for the requested phase, within this skill’s authority: [Rerunnable changes and an honest decision trail](./references/rerunnable-changes.md); [Feature and refactoring recipes](./references/feature-and-refactor.md); [Bounded unattended and multi-PR work](./references/bounded-runs.md); [Generate and maintain a real verification recipe](./references/runtime-verification-maintenance.md).
+
+For a matching direct request, use `/1-competing-solutions`, `/1-typescript-best-practices`, `/1-technical-writing` and return its bounded result.

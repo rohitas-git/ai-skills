@@ -36,6 +36,10 @@ checkout merely to demonstrate it. Use an authorized isolated candidate or anoth
 safe independent oracle. Preserved-behavior refactors can correctly pass before and
 after; their evidence must establish equivalence, not manufacture an initial failure.
 
+If the result is surprising or the check could pass without reaching its target, verify the
+observation path first. Confirm the active target and input. When permitted, try a known violating
+case or an independent readback. A check that cannot distinguish the two outcomes is inconclusive.
+
 No permission to commit, push, deploy, mutate resources or repair follows from this
 gate. Evidence from an earlier candidate is historical evidence, not proof of the
 current one. Missing or unavailable evidence must remain explicitly unverified.

@@ -85,3 +85,7 @@ the narrowest shared root cause supported by caller and behavior evidence, not a
 Follow required response formats and explicit explanation requests. Brevity never overrides the caller's
 reporting contract. Return what changed, verification, deliberate omissions, and the condition that would
 justify more complexity; do not automatically review, commit, push, or start another workflow.
+
+## Conditional methods
+
+Load only for the requested phase, within this skill’s authority: [Reader load and justified subtraction](./references/reader-load.md).

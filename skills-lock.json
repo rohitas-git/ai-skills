@@ -11,19 +11,179 @@
       "source": "mattpocock/skills",
       "sourceType": "github",
       "skillPath": "skills/skills/1-code-review/SKILL.md",
-      "computedHash": "31d149a480eaa68c11e32f5ee77f0fd0b98a906834d531d881d502352edd0b8e"
+      "computedHash": "e05c48a888edab4ba047a8b0f8179b461abdde6326a65cd73c23a522052a3025",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/interrogate/SKILL.md",
+          "targets": [
+            "skills/1-code-review/references/adversarial-evidence.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
     },
     "1-codebase-design": {
       "source": "mattpocock/skills",
       "sourceType": "github",
       "skillPath": "skills/skills/1-codebase-design/SKILL.md",
-      "computedHash": "6d9d51d8caa01633fd00cf87089c5618c982321f942ac69f62565dc001c6b22f"
+      "computedHash": "3808fb39c01a0c1ee26341e2dc2ae343b23be65885282430027b1a355a913239",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-boundary-discipline/SKILL.md",
+          "targets": [
+            "skills/1-codebase-design/references/data-shapes-and-ownership.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-experience-first/SKILL.md",
+          "targets": [
+            "skills/1-codebase-design/references/data-shapes-and-ownership.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-foundational-thinking/SKILL.md",
+          "targets": [
+            "skills/1-codebase-design/references/data-shapes-and-ownership.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-minimize-reader-load/SKILL.md",
+          "targets": [
+            "skills/1-codebase-design/references/data-shapes-and-ownership.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-model-the-domain/SKILL.md",
+          "targets": [
+            "skills/1-codebase-design/references/data-shapes-and-ownership.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-redesign-from-first-principles/SKILL.md",
+          "targets": [
+            "skills/1-codebase-design/references/data-shapes-and-ownership.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-type-system-discipline/SKILL.md",
+          "targets": [
+            "skills/1-codebase-design/references/data-shapes-and-ownership.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/architect/SKILL.md",
+          "targets": [
+            "skills/1-codebase-design/references/data-shapes-and-ownership.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
     },
     "0-diagnosing-bugs": {
       "source": "mattpocock/skills",
       "sourceType": "github",
       "skillPath": "skills/skills/0-diagnosing-bugs/SKILL.md",
-      "computedHash": "fd6c99466b7ba43be624e6e66ed6d7af2796ded7218f24c83820823977819e22"
+      "computedHash": "4ceb62283089f7089a2aa3196b09f145aa6c4a12ea1377a5733e0d8710e6e540",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-attack-the-premise/SKILL.md",
+          "targets": [
+            "skills/0-diagnosing-bugs/references/premises-and-forensics.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-fix-root-causes/SKILL.md",
+          "targets": [
+            "skills/0-diagnosing-bugs/references/premises-and-forensics.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/bug-fix.md",
+          "targets": [
+            "skills/0-diagnosing-bugs/references/premises-and-forensics.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/runtime-forensics.md",
+          "targets": [
+            "skills/0-diagnosing-bugs/references/premises-and-forensics.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/trace-forensics.md",
+          "targets": [
+            "skills/0-diagnosing-bugs/references/premises-and-forensics.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
     },
     "1-domain-modeling": {
       "source": "mattpocock/skills",
@@ -53,13 +213,272 @@
       "source": "mattpocock/skills",
       "sourceType": "github",
       "skillPath": "skills/skills/1-handoff/SKILL.md",
-      "computedHash": "ad03e8d4ea3cbbff66420eb7ba3cc375b5cbe1821a2449b53e863256cf5b5cde"
+      "computedHash": "1a84029f7d1e2ae03ca0992e7db3a27ec39ef74cb4e331df4bbd40d58a4ec3c2",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/pause-safely.md",
+          "targets": [
+            "skills/1-handoff/references/pickup-and-pause.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/session-pickup.md",
+          "targets": [
+            "skills/1-handoff/references/pickup-and-pause.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ],
+      "continuitySupport": {
+        "origin": "local lifecycle integration",
+        "reference": "skills/0-implement/references/project-continuity.md",
+        "report": "guidelines/catalog/project-continuity-2026-11-18.md"
+      }
     },
     "0-implement": {
       "source": "mattpocock/skills",
       "sourceType": "github",
       "skillPath": "skills/skills/0-implement/SKILL.md",
-      "computedHash": "85e0e079bd191e1e72f329f91ee9be6b2d15dcb2ff11023f0fac0ef57f3a90e3"
+      "computedHash": "671c1b469d5bc63bd79e1ec340114afe4aa300593f923f22de7c4cde60ebfe13",
+      "toolingSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "upstreamPath": "pstack/skills/show-me-your-work/scripts/log.sh",
+          "version": "0.15.43",
+          "sourceManifest": "guidelines/catalog/pstack-tooling-manifest.json",
+          "license": "MIT"
+        }
+      ],
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-build-the-lever/SKILL.md",
+          "targets": [
+            "skills/0-implement/references/rerunnable-changes.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-sequence-verifiable-units/SKILL.md",
+          "targets": [
+            "skills/0-implement/references/rerunnable-changes.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-subtract-before-you-add/SKILL.md",
+          "targets": [
+            "skills/0-implement/references/feature-and-refactor.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/correct/SKILL.md",
+          "targets": [
+            "skills/0-implement/references/verification-workflows.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/create-verification-skill/SKILL.md",
+          "targets": [
+            "skills/0-implement/references/runtime-verification-maintenance.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/figure-it-out/SKILL.md",
+          "targets": [
+            "skills/0-implement/references/bounded-runs.md",
+            "skills/0-implement/references/rerunnable-changes.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/in-your-own-words/SKILL.md",
+          "targets": [
+            "skills/0-implement/SKILL.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/maintain-verification-skill/SKILL.md",
+          "targets": [
+            "skills/0-implement/references/runtime-verification-maintenance.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-help/SKILL.md",
+          "targets": [
+            "skills/0-implement/references/bounded-runs.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/SKILL.md",
+          "targets": [
+            "skills/0-implement/references/bounded-runs.md",
+            "skills/0-implement/references/rerunnable-changes.md",
+            "skills/0-implement/references/project-continuity.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/show-me-your-work/SKILL.md",
+          "targets": [
+            "skills/0-implement/references/rerunnable-changes.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/autonomous-run.md",
+          "targets": [
+            "skills/0-implement/references/bounded-runs.md",
+            "skills/0-implement/references/rerunnable-changes.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/autopilot-full.md",
+          "targets": [
+            "skills/0-implement/references/bounded-runs.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/autopilot-stack.md",
+          "targets": [
+            "skills/0-implement/references/bounded-runs.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/bug-fix.md",
+          "targets": [
+            "skills/0-implement/references/feature-and-refactor.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/feature.md",
+          "targets": [
+            "skills/0-implement/references/feature-and-refactor.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/pause-safely.md",
+          "targets": [
+            "skills/0-implement/references/project-continuity.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/refactoring.md",
+          "targets": [
+            "skills/0-implement/references/feature-and-refactor.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/session-pickup.md",
+          "targets": [
+            "skills/0-implement/references/project-continuity.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ],
+      "continuitySupport": {
+        "origin": "local lifecycle integration",
+        "reference": "skills/0-implement/references/project-continuity.md",
+        "report": "guidelines/catalog/project-continuity-2026-11-18.md"
+      }
     },
     "0-improve-codebase-architecture": {
       "source": "mattpocock/skills",
@@ -71,7 +490,31 @@
       "source": "mattpocock/skills",
       "sourceType": "github",
       "skillPath": "skills/skills/1-prototype/SKILL.md",
-      "computedHash": "faba901c53a6ca245174c4ba5db3929d14253232b3050fdbd46539720adf1ab8"
+      "computedHash": "0e9cef37bd05b2f2cf50db2542ee0084a5b7af9b52b51286ee6826c43a355224",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-exhaust-the-design-space/SKILL.md",
+          "targets": [
+            "skills/1-prototype/references/deciding-with-prototypes.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/prototype.md",
+          "targets": [
+            "skills/1-prototype/references/deciding-with-prototypes.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
     },
     "1-research": {
       "source": "mattpocock/skills",
@@ -89,7 +532,32 @@
       "source": "mattpocock/skills",
       "sourceType": "github",
       "skillPath": "skills/skills/1-tdd/SKILL.md",
-      "computedHash": "81eca2a5b53a63f481c0849be7a663a8cd43d5cf53f32b644ec0a2f50cf91aa2"
+      "computedHash": "6d491b1d978142a166541816e8adeffd387c59b2729ba34c01b0198f81fcda0f",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-test-behavior-not-implementation/SKILL.md",
+          "targets": [
+            "skills/1-tdd/references/behavioral-oracles.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/tdd/SKILL.md",
+          "targets": [
+            "skills/1-tdd/references/behavioral-oracles.md",
+            "skills/1-tdd/SKILL.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
     },
     "1-teach": {
       "source": "mattpocock/skills",
@@ -344,8 +812,32 @@
       "source": "luchasarie/bro-skill",
       "sourceType": "github",
       "skillPath": "skills/skills/1-bro/SKILL.md",
-      "computedHash": "7f3515d2557643f27d42a419d4a5c97b55e133259d0eaf915a07f87e32b4b76d",
-      "commit": "01e51f8092973be58eff3b7271282bd8488a02ae"
+      "computedHash": "f75e3ebdf72986d370022420cb357028651b4c5b470ac05618c228757b0239d5",
+      "commit": "01e51f8092973be58eff3b7271282bd8488a02ae",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/bro/SKILL.md",
+          "targets": [
+            "skills/1-bro/SKILL.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/unslop/SKILL.md",
+          "targets": [
+            "skills/1-bro/SKILL.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
     },
     "1-impeccable": {
       "source": "pbakaus/impeccable",
@@ -379,8 +871,21 @@
       "source": "BuilderIO/skills",
       "sourceType": "github",
       "skillPath": "skills/skills/1-plow-ahead/SKILL.md",
-      "computedHash": "c0098feada99914db73538f8fe48c2e5d3a7edcb5eec3636be41c12f867d4947",
-      "commit": "8cd59582774e0badf23796a6fc86c26c7117988e"
+      "computedHash": "0e021c3301eacf5434354529a71e9e9b9ca20c08ca01f15c218cb6fbf809fd22",
+      "commit": "8cd59582774e0badf23796a6fc86c26c7117988e",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-never-block-on-the-human/SKILL.md",
+          "targets": [
+            "skills/1-plow-ahead/SKILL.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
     },
     "1-quick-recap": {
       "source": "BuilderIO/skills",
@@ -734,10 +1239,23 @@
       "source": "affaan-m/ECC",
       "sourceType": "github",
       "skillPath": "skills/skills/1-prompt-optimizer/SKILL.md",
-      "computedHash": "b1c7f586adcfcc0fa92d1f6f1158f4998a0565313e15715326bb2863f60965a7",
+      "computedHash": "876627f97ef61f750f6202328c8fb855525db3a34a133beb626506833c7d2db6",
       "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b",
       "upstreamSkill": "prompt-optimizer",
-      "sourceManifest": "archive/vendor/ecc-2026-11-15/manifest.json"
+      "sourceManifest": "archive/vendor/ecc-2026-11-15/manifest.json",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/sharpen/SKILL.md",
+          "targets": [
+            "skills/1-prompt-optimizer/references/deeper-without-bigger.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
     },
     "1-llm-cost-design": {
       "source": "affaan-m/ECC",
@@ -752,7 +1270,7 @@
       "source": "affaan-m/ECC",
       "sourceType": "github",
       "skillPath": "skills/skills/1-change-impact/SKILL.md",
-      "computedHash": "72579def05948cd960d3e0d6039d1b0da8049af0238a293c8e4529decc5f1c26",
+      "computedHash": "9cf45e36c05da763cb435ab59bcbb8dcbe99011d5bac31b8229d2898297cf294",
       "commit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b",
       "upstreamSkill": "change-impact",
       "sourceManifest": "archive/vendor/ecc-2026-11-15/manifest.json",
@@ -766,6 +1284,19 @@
           ],
           "sourceManifest": "archive/vendor/pstack-2026-11-15/manifest.json"
         }
+      ],
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/blast-radius/SKILL.md",
+          "targets": [
+            "skills/1-change-impact/references/safety-premise.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
       ]
     },
     "1-design-rationale": {
@@ -776,7 +1307,20 @@
       "commit": "bf0c7cd80abdbf7fe47b634978a7d1b4071f71a7",
       "upstreamSkill": "pstack/skills/why",
       "version": "0.15.42",
-      "sourceManifest": "archive/vendor/pstack-2026-11-15/manifest.json"
+      "sourceManifest": "archive/vendor/pstack-2026-11-15/manifest.json",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/why/SKILL.md",
+          "targets": [
+            "skills/1-design-rationale/SKILL.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
     },
     "1-runtime-feature-map": {
       "source": "cursor/plugins",
@@ -786,27 +1330,987 @@
       "commit": "bf0c7cd80abdbf7fe47b634978a7d1b4071f71a7",
       "upstreamSkill": "pstack/skills/create-verification-skill",
       "version": "0.15.42",
-      "sourceManifest": "archive/vendor/pstack-2026-11-15/manifest.json"
+      "sourceManifest": "archive/vendor/pstack-2026-11-15/manifest.json",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/create-verification-skill/SKILL.md",
+          "targets": [
+            "skills/1-runtime-feature-map/references/feature-contract.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
     },
     "1-statechart-modeling": {
       "source": "cursor/plugins",
       "sourceType": "github",
       "skillPath": "skills/skills/1-statechart-modeling/SKILL.md",
-      "computedHash": "62e133343d6abf5f509bcc433ea700817864d3bf2db09e061a26196e6f761a01",
+      "computedHash": "7650dfd9463ed775d60e36d54caf8ddb5dca087421ef0bb4f1ebade4ea328ac3",
       "commit": "bf0c7cd80abdbf7fe47b634978a7d1b4071f71a7",
       "upstreamSkill": "pstack/skills/statechart",
       "version": "0.15.42",
-      "sourceManifest": "archive/vendor/pstack-2026-11-15/manifest.json"
+      "sourceManifest": "archive/vendor/pstack-2026-11-15/manifest.json",
+      "toolingSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "upstreamPath": "pstack/skills/statechart/scripts",
+          "version": "0.15.43",
+          "sourceManifest": "guidelines/catalog/pstack-tooling-manifest.json",
+          "license": "MIT"
+        }
+      ],
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/create-formal-verification-skill/SKILL.md",
+          "targets": [
+            "skills/1-statechart-modeling/SKILL.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/statechart/SKILL.md",
+          "targets": [
+            "skills/1-statechart-modeling/SKILL.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
     },
     "1-formal-verification": {
       "source": "cursor/plugins",
       "sourceType": "github",
       "skillPath": "skills/skills/1-formal-verification/SKILL.md",
-      "computedHash": "8867835c15ca3e9f701fbd2ccc21bca587fcd43e7287395b43551e2d6b958d5a",
+      "computedHash": "8ea601548661cf22e615de8100f2b43c83ae012b9990f245818b108f7493db60",
       "commit": "bf0c7cd80abdbf7fe47b634978a7d1b4071f71a7",
       "upstreamSkill": "pstack/skills/create-formal-verification-skill",
       "version": "0.15.42",
-      "sourceManifest": "archive/vendor/pstack-2026-11-15/manifest.json"
+      "sourceManifest": "archive/vendor/pstack-2026-11-15/manifest.json",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/create-formal-verification-skill/SKILL.md",
+          "targets": [
+            "skills/1-formal-verification/references/rerun-and-maintain.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/maintain-formal-verification-skill/SKILL.md",
+          "targets": [
+            "skills/1-formal-verification/references/rerun-and-maintain.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/statechart/SKILL.md",
+          "targets": [
+            "skills/1-formal-verification/references/rerun-and-maintain.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
+    },
+    "0-git": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": "skills/skills/0-git/SKILL.md",
+      "computedHash": "8447dec14e68fd196913e3944539098cdcdc4d7aa2cb0d48032abef3179aa41e",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/babysit.md",
+          "targets": [
+            "skills/0-git/references/babysit-modes.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
+    },
+    "0-ponytail": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": "skills/skills/0-ponytail/SKILL.md",
+      "computedHash": "c2dffa2a52532e9e5457566e181f34d2a5c197e4669d8d4f590c4e3803fa0e11",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-laziness-protocol/SKILL.md",
+          "targets": [
+            "skills/0-ponytail/references/reader-load.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-minimize-reader-load/SKILL.md",
+          "targets": [
+            "skills/0-ponytail/references/reader-load.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-subtract-before-you-add/SKILL.md",
+          "targets": [
+            "skills/0-ponytail/references/reader-load.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/refactoring.md",
+          "targets": [
+            "skills/0-ponytail/references/reader-load.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
+    },
+    "0-skill-creator": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": "skills/skills/0-skill-creator/SKILL.md",
+      "computedHash": "f959b791a508715a73e26d6a7586ad641f1becb98e943a74132f8ccbdbb33c50",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/reflect/SKILL.md",
+          "targets": [
+            "skills/0-skill-creator/references/pstack-authoring-and-evaluation.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/authoring-a-skill.md",
+          "targets": [
+            "skills/0-skill-creator/references/pstack-authoring-and-evaluation.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/eval.md",
+          "targets": [
+            "skills/0-skill-creator/references/pstack-authoring-and-evaluation.md",
+            "skills/0-skill-creator/references/blinded-comparison.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
+    },
+    "1-agent-workflow-observer": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": "skills/skills/1-agent-workflow-observer/SKILL.md",
+      "computedHash": "43212b9cebdfe26036130444b5a1aaeeeeaf2c4bd8cd40894e7e30991b5e2215",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-encode-lessons-in-structure/SKILL.md",
+          "targets": [
+            "skills/1-agent-workflow-observer/references/recurring-corrections.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/correct/SKILL.md",
+          "targets": [
+            "skills/1-agent-workflow-observer/references/recurring-corrections.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
+    },
+    "1-code-explainer": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": "skills/skills/1-code-explainer/SKILL.md",
+      "computedHash": "0e88e1f9ab89382d70407b1268018636ab2f4c72ffa1e0d8fa1028110499237f",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/how/SKILL.md",
+          "targets": [
+            "skills/1-code-explainer/references/mechanism-and-rationale.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/teach/SKILL.md",
+          "targets": [
+            "skills/1-code-explainer/references/mechanism-and-rationale.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/investigation.md",
+          "targets": [
+            "skills/1-code-explainer/references/mechanism-and-rationale.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
+    },
+    "1-competing-solutions": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-competing-solutions/SKILL.md",
+      "computedHash": "8cf5fdbe421455dbd74fd503ad3224410e18269516637d80733c00abe0989f7b",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-exhaust-the-design-space/SKILL.md",
+          "targets": [
+            "skills/1-competing-solutions/references/recipe.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/architect/SKILL.md",
+          "targets": [
+            "skills/1-competing-solutions/references/recipe.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/arena/SKILL.md",
+          "targets": [
+            "skills/1-competing-solutions/references/recipe.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ],
+      "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+      "version": "0.15.43",
+      "upstreamSkill": "pstack/skills/arena",
+      "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json"
+    },
+    "1-context-monitor": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": "skills/skills/1-context-monitor/SKILL.md",
+      "computedHash": "91780d89f63e57c6c27dfb65453251e1d8f75411df7cff6dbfd061927ef5d2d3",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-guard-the-context-window/SKILL.md",
+          "targets": [
+            "skills/1-context-monitor/references/bulk-evidence.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
+    },
+    "1-deprecation-and-migration": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": "skills/skills/1-deprecation-and-migration/SKILL.md",
+      "computedHash": "1eb163bd364a4e83e09422295dd75cc67d48b71e8c0548140e3736e9bc9ba3ec",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
+          "targets": [
+            "skills/1-deprecation-and-migration/references/coordinated-cutover.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-outcome-oriented-execution/SKILL.md",
+          "targets": [
+            "skills/1-deprecation-and-migration/references/coordinated-cutover.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
+    },
+    "1-error-handling": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": "skills/skills/1-error-handling/SKILL.md",
+      "computedHash": "7689746d4ef9382248f928da7f04c3bea902e7c2b9d593023396afee5f487643",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-boundary-discipline/SKILL.md",
+          "targets": [
+            "skills/1-error-handling/references/replay-and-boundaries.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-make-operations-idempotent/SKILL.md",
+          "targets": [
+            "skills/1-error-handling/references/replay-and-boundaries.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
+    },
+    "1-finish-branch": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": "skills/skills/1-finish-branch/SKILL.md",
+      "computedHash": "fbccdfdfc6b967266d3daa1cf944d95b671b16579a3fd363e3aa85c5e4bebbb4",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/autopilot-full.md",
+          "targets": [
+            "skills/1-finish-branch/references/verified-delivery.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/autopilot-stack.md",
+          "targets": [
+            "skills/1-finish-branch/references/verified-delivery.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/opening-a-pr.md",
+          "targets": [
+            "skills/1-finish-branch/references/verified-delivery.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/shipping.md",
+          "targets": [
+            "skills/1-finish-branch/references/verified-delivery.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/worktree-cleanup.md",
+          "targets": [
+            "skills/1-finish-branch/references/verified-delivery.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
+    },
+    "1-frontend-ui-engineering": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": "skills/skills/1-frontend-ui-engineering/SKILL.md",
+      "computedHash": "70cde054a26e37059e0f2b6d69b9bd5ed41e56bd02339e72d62a9d875b0f2d9b",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-experience-first/SKILL.md",
+          "targets": [
+            "skills/1-frontend-ui-engineering/references/visual-parity-and-agent-controls.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/make-bot-ui/SKILL.md",
+          "targets": [
+            "skills/1-frontend-ui-engineering/references/visual-parity-and-agent-controls.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/visual-parity.md",
+          "targets": [
+            "skills/1-frontend-ui-engineering/references/visual-parity-and-agent-controls.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
+    },
+    "1-inline-comments": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": "skills/skills/1-inline-comments/SKILL.md",
+      "computedHash": "8bd2bd89903f4fa3db6c001e3d220bfa75fbd23766b49dba88d9b0915c46c0cf",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/no-comments/SKILL.md",
+          "targets": [
+            "skills/1-inline-comments/references/constraint-evidence.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
+    },
+    "1-level-explainer": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": "skills/skills/1-level-explainer/SKILL.md",
+      "computedHash": "1bd7db8fe4335800d732006ef439fdfcfdb90586a563885cfce57804b99ab7af",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/teach/SKILL.md",
+          "targets": [
+            "skills/1-level-explainer/SKILL.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
+    },
+    "1-parallel-agents": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": "skills/skills/1-parallel-agents/SKILL.md",
+      "computedHash": "3611c06e64cd93e612a8d9f345ddeaef8a485c414e7e4686305d24864d8ea922",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-guard-the-context-window/SKILL.md",
+          "targets": [
+            "skills/1-parallel-agents/references/coverage-and-races.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-separate-before-serializing-shared-state/SKILL.md",
+          "targets": [
+            "skills/1-parallel-agents/references/coverage-and-races.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/SKILL.md",
+          "targets": [
+            "skills/1-parallel-agents/references/coverage-and-races.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/swarm/SKILL.md",
+          "targets": [
+            "skills/1-parallel-agents/references/coverage-and-races.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
+    },
+    "1-performance-optimization": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": "skills/skills/1-performance-optimization/SKILL.md",
+      "computedHash": "bb01a1c0b31de7c699e095e82627f222be619dd89f50a2cd96069f418d338570",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-explain-the-number/SKILL.md",
+          "targets": [
+            "skills/1-performance-optimization/references/measurement-integrity.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/benchmark-checklist/SKILL.md",
+          "targets": [
+            "skills/1-performance-optimization/references/measurement-integrity.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/hillclimb.md",
+          "targets": [
+            "skills/1-performance-optimization/references/hillclimb.md",
+            "skills/1-performance-optimization/references/measurement-integrity.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/perf-issue.md",
+          "targets": [
+            "skills/1-performance-optimization/references/measurement-integrity.md",
+            "skills/1-performance-optimization/references/hillclimb.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
+    },
+    "1-session-catchup": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-session-catchup/SKILL.md",
+      "computedHash": "9c5374d1a2c7d819bf5b1c060c7019c64d2be34c21dbee3e1db92261e37b03e9",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/ketchup/SKILL.md",
+          "targets": [
+            "skills/1-session-catchup/references/decision-packet.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ],
+      "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+      "version": "0.15.43",
+      "upstreamSkill": "pstack/skills/ketchup",
+      "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json"
+    },
+    "1-session-skill-reflect": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": "skills/skills/1-session-skill-reflect/SKILL.md",
+      "computedHash": "9a93d33afc33d753b0f61f2ee22b8eb3e4692d044ae2f1fd522b8e717aa61cbb",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/reflect/SKILL.md",
+          "targets": [
+            "skills/1-session-skill-reflect/SKILL.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
+    },
+    "1-source-backed-skill": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": "skills/skills/1-source-backed-skill/SKILL.md",
+      "computedHash": "743bb9965255e2c69997230122f7a92e1132179a7674d5d882772e133421d020",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/automate-me/SKILL.md",
+          "targets": [
+            "skills/1-source-backed-skill/references/personal-conventions.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
+    },
+    "1-technical-writing": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-technical-writing/SKILL.md",
+      "computedHash": "2e7a537bd8d3b361c9ee4a8a641ce8c58e1f89b564daf15db71fbfd3d0245726",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/technical-writing/SKILL.md",
+          "targets": [
+            "skills/1-technical-writing/references/prose-and-evidence.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/unslop/SKILL.md",
+          "targets": [
+            "skills/1-technical-writing/references/prose-and-evidence.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ],
+      "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+      "version": "0.15.43",
+      "upstreamSkill": "pstack/skills/technical-writing",
+      "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json"
+    },
+    "1-typescript-best-practices": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-typescript-best-practices/SKILL.md",
+      "computedHash": "607853c6cdc080dd69d656d52d1b5a42c83796d22f907cbaacb978889f275aa9",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-model-the-domain/SKILL.md",
+          "targets": [
+            "skills/1-typescript-best-practices/references/patterns.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-type-system-discipline/SKILL.md",
+          "targets": [
+            "skills/1-typescript-best-practices/references/patterns.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/typescript-best-practices/SKILL.md",
+          "targets": [
+            "skills/1-typescript-best-practices/references/patterns.md",
+            "skills/1-typescript-best-practices/examples/contracts.ts"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ],
+      "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+      "version": "0.15.43",
+      "upstreamSkill": "pstack/skills/typescript-best-practices",
+      "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json"
+    },
+    "1-video-recap": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-video-recap/SKILL.md",
+      "computedHash": "60c54645d68e58c06e3301742393412d27d935cd2f326b7373892febdfa7e1ed",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/ketchup-video/SKILL.md",
+          "targets": [
+            "skills/1-video-recap/SKILL.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ],
+      "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+      "version": "0.15.43",
+      "upstreamSkill": "pstack/skills/ketchup-video",
+      "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json"
+    },
+    "1-working-context": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "skillPath": "skills/skills/1-working-context/SKILL.md",
+      "computedHash": "70ab635a4149cdb1a6c9ec1aed83e5ecfeabcf435065d25f965060c6b965d58c",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/recall/SKILL.md",
+          "targets": [
+            "skills/1-working-context/SKILL.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ],
+      "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+      "version": "0.15.43",
+      "upstreamSkill": "pstack/skills/recall",
+      "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+      "continuitySupport": {
+        "origin": "local lifecycle integration",
+        "reference": "skills/0-implement/references/project-continuity.md",
+        "report": "guidelines/catalog/project-continuity-2026-11-18.md"
+      }
+    },
+    "1-write-plan": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": "skills/skills/1-write-plan/SKILL.md",
+      "computedHash": "5cd4cbfe4b7d97d5736cd870a2f95c24b965f9ec8ceab08bb8ef5af0b15966b6",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-sequence-verifiable-units/SKILL.md",
+          "targets": [
+            "skills/1-write-plan/references/phase-evidence.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/figure-it-out/SKILL.md",
+          "targets": [
+            "skills/1-write-plan/references/phase-evidence.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-help/SKILL.md",
+          "targets": [
+            "skills/1-write-plan/references/phase-evidence.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/setup-pstack/SKILL.md",
+          "targets": [
+            "skills/1-write-plan/references/phase-evidence.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        },
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/playbooks/multi-phase-plan.md",
+          "targets": [
+            "skills/1-write-plan/references/phase-evidence.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ],
+      "continuitySupport": {
+        "origin": "local lifecycle integration",
+        "reference": "skills/0-implement/references/project-continuity.md",
+        "report": "guidelines/catalog/project-continuity-2026-11-18.md"
+      }
+    },
+    "2-verify-work": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": "skills/skills/2-verify-work/SKILL.md",
+      "computedHash": "99ab78652e2bde218a3d6e69edc377c1123987f3cba8ca5adf62787149a41765",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/principle-prove-it-works/SKILL.md",
+          "targets": [
+            "skills/2-verify-work/SKILL.md",
+            "skills/2-verify-work/references/superpowers-evidence-gate.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
+    },
+    "0-butler": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": "skills/skills/0-butler/SKILL.md",
+      "computedHash": "605a002927f53fdfe35bcb87e541d72008e2c87075cc65ccc5ffc93c63e9b449",
+      "methodSources": [
+        {
+          "source": "cursor/plugins",
+          "commit": "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8",
+          "version": "0.15.43",
+          "upstreamPath": "pstack/skills/poteto-mode/SKILL.md",
+          "targets": [
+            "skills/0-butler/SKILL.md",
+            "skills/0-butler/references/intent-and-phase.md"
+          ],
+          "sourceManifest": "guidelines/catalog/pstack-methods-manifest.json",
+          "license": "MIT"
+        }
+      ]
+    },
+    "1-execute-plan": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": "skills/skills/1-execute-plan/SKILL.md",
+      "computedHash": "27b18d7674d68e62161cacb5e365a1cb0e3e63df0fbc52a052c2f0ee9d9fd309",
+      "continuitySupport": {
+        "origin": "local lifecycle integration",
+        "reference": "skills/0-implement/references/project-continuity.md",
+        "report": "guidelines/catalog/project-continuity-2026-11-18.md"
+      }
+    },
+    "1-strategic-compact": {
+      "source": "local",
+      "sourceType": "local",
+      "skillPath": "skills/skills/1-strategic-compact/SKILL.md",
+      "computedHash": "37334113828fc74c91a5c343ef4bef593b76acda8fe4c2503ffbf2eee4c4d104",
+      "continuitySupport": {
+        "origin": "local lifecycle integration",
+        "reference": "skills/0-implement/references/project-continuity.md",
+        "report": "guidelines/catalog/project-continuity-2026-11-18.md"
+      }
     }
   }
 }

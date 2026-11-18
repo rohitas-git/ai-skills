@@ -1,0 +1,105 @@
+#!/usr/bin/env python3
+"""Check the pinned method ledger and adopted prose; not a behavioral evaluator."""
+
+from __future__ import annotations
+
+import argparse
+from collections import Counter
+import hashlib
+import json
+from pathlib import Path
+import re
+import sys
+
+ROOT = Path(__file__).resolve().parents[1]
+MANIFEST = "guidelines/catalog/pstack-methods-manifest.json"
+EXPECTED = {"principle": 24, "functional": 34, "playbook": 22}
+COMMIT = "e1cc03121a0e71129a4fb730d7c5528a0a3e43c8"
+
+
+def local_file(root: Path, value: str) -> Path:
+    relative = Path(value)
+    if not value or relative.is_absolute() or ".." in relative.parts:
+        raise ValueError(f"unsafe relative path: {value}")
+    target = root / relative
+    if not target.is_file() or target.is_symlink() or not target.resolve().is_relative_to(root.resolve()):
+        raise ValueError(f"missing or nonlocal file: {value}")
+    return target
+
+
+def check(root: Path) -> tuple[int, int, int]:
+    data = json.loads(local_file(root, MANIFEST).read_text())
+    if data["schema_version"] != 1 or data["commit"] != COMMIT or data["scope"] != EXPECTED:
+        raise ValueError("unexpected schema, source revision or review scope")
+    entries = data["entries"]
+    if Counter(item["kind"] for item in entries) != Counter(EXPECTED):
+        raise ValueError("missing or extra source entries")
+    if len({item["id"] for item in entries}) != 80 or len({item["source_path"] for item in entries}) != 80:
+        raise ValueError("duplicate method identity or source path")
+    for item in entries:
+        if item["review"] != "full-text-reviewed" or item["disposition"] not in {"adapted", "reviewed-retained"}:
+            raise ValueError(f"unreviewed or unmapped method: {item['id']}")
+        if not item["procedure"].strip() or not item["adaptation"].strip() or not item["targets"] or not item["owners"]:
+            raise ValueError(f"incomplete adoption decision: {item['id']}")
+        for target in item["targets"]:
+            local_file(root, target)
+        for owner in item["owners"]:
+            local_file(root, f"skills/{owner}/SKILL.md")
+    for item in entries + data["supporting_sources"]:
+        actual = hashlib.sha256(local_file(root, item["archive_path"]).read_bytes()).hexdigest()
+        if actual != item["source_sha256"]:
+            raise ValueError(f"source archive drift: {item['source_path']}")
+    archived = root / "archive/vendor/pstack-methods-2026-11-18/skills"
+    source_set = {p.relative_to(archived.parent).as_posix() for p in archived.glob("*/SKILL.md")}
+    source_set.update(p.relative_to(archived.parent).as_posix() for p in (archived / "poteto-mode/playbooks").glob("*.md"))
+    if source_set != {item["source_path"] for item in entries}:
+        raise ValueError("source archive and ledger inventories disagree")
+
+    benny = {
+        path.relative_to(archived.parent).as_posix()
+        for path in archived.parent.glob("automations/benny/skills/*/SKILL.md")
+    }
+    benny_sources = [item for item in data["supporting_sources"] if item["source_path"].endswith("/SKILL.md")]
+    if len(benny) != 3 or Counter(benny) != Counter(item["source_path"] for item in benny_sources):
+        raise ValueError("Benny archive and supporting-source inventory disagree")
+    expected_review = [item["archive_path"] for item in entries if item["kind"] != "playbook"]
+    expected_review.extend(item["archive_path"] for item in benny_sources)
+    report = local_file(root, data["skill_review"]).read_text()
+    review_rows = re.findall(
+        r"^\| \[[^\]\n]+\]\(\.\./\.\./(archive/vendor/[^)\n]+/SKILL\.md)\) "
+        r"\| \[/[^\]\n]+\]\(\.\./\.\./(skills/[^)\n]+\.md)\) \| (?:Applied|Kept)\b[^|\n]+ \|$",
+        report,
+        re.MULTILINE,
+    )
+    if Counter(source for source, _ in review_rows) != Counter(expected_review):
+        raise ValueError("missing, duplicate or unexpected skill-by-skill review row")
+    for _, target in review_rows:
+        local_file(root, target)
+
+    adopted = data["adopted_files"]
+    if not adopted or len({item["path"] for item in adopted}) != len(adopted):
+        raise ValueError("empty or duplicate adopted-file inventory")
+    for item in adopted:
+        actual = hashlib.sha256(local_file(root, item["path"]).read_bytes()).hexdigest()
+        if actual != item["sha256"]:
+            raise ValueError(f"adopted-file drift: {item['path']}")
+    return len(entries), len(adopted), len(review_rows)
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--root", type=Path, default=ROOT, help="catalog fixture root (default: this repository)")
+    args = parser.parse_args()
+    try:
+        sources, adopted, reviewed_skills = check(args.root)
+    except (OSError, ValueError, KeyError, TypeError) as error:
+        print(f"FAIL: {error}", file=sys.stderr)
+        return 1
+    print(f"PASS: {sources} reviewed methods; {adopted} adopted files; source/target hashes match")
+    print(f"PASS: skill-by-skill review has one entry per pinned skill ({reviewed_skills}, including Benny)")
+    print("Structural integrity only; see the review for semantic checks and untested runtime paths.")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

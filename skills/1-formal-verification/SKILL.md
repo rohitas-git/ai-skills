@@ -38,6 +38,9 @@ or authorized execution of an existing toolchain. Load the [review candidate con
 | Ordinary runtime/test verification | `/2-verify-work` |
 | Fix the product | `/0-implement` |
 
+The bundled [statechart/TLC runner](../../guidelines/catalog/pstack-tooling.md#statecharts) can be selected
+in run mode after reviewing its model/config/view and existing toolchain. It never installs tools.
+
 ## Process
 
 1. Pin caller/mode, property and intended harm, model/proof/code/config versions and hashes, covered
@@ -66,3 +69,7 @@ or authorized execution of an existing toolchain. Load the [review candidate con
    identity, findings and gaps. No result automatically authorizes product fixes or release.
 
 Source: [pstack ingestion and review](../../guidelines/catalog/ingest-pstack-2026-11-15.md), [MIT license](./LICENSE).
+
+## Conditional methods
+
+Load only for the requested phase, within this skill’s authority: [Qualify and maintain a formal check](./references/rerun-and-maintain.md).

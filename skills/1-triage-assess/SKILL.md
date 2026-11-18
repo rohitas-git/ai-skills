@@ -34,6 +34,9 @@ external-PR candidate. It neither verifies itself through another workflow nor m
 4. Separate reporter claims, observed tracker/repository facts, inferences, contradictions, and unknowns.
    Search for existing behavior or prior rejection only in bounded relevant sources and report coverage;
    similarity is a lead, not proof that work is implemented, duplicate, or out of scope.
+   For an issue that originated elsewhere, include its stable source link if available and look for
+   an exact link before matching on symptoms. For a likely duplicate, compare trigger, affected
+   version or time window, and observed result. A long-closed match can be a regression lead.
 5. Apply only the configured category/state model. A bug that needs reproduction returns a bounded handoff
    to `/0-diagnosing-bugs`; a PR needing code judgment returns to `/1-code-review` or
    `/1-complete-pr-review`; material requirements gaps return to `/0-grilling`. Do not run those workflows.

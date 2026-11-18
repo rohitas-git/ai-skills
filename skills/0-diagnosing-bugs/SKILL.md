@@ -112,3 +112,7 @@ command, evidence provenance, hypothesis disposition, supported causal chain and
 confidence, unknowns/blockers, temporary state remaining, and the recommended next route.
 
 Operational detail: [full guide](./references/full-guide.md) · [concise extras](./references/vendor-debugging-extras.md) · [HITL template](./scripts/hitl-loop.template.sh). Upstream material is retained only as [historical source snapshots](./references/source-snapshots.md).
+
+## Conditional methods
+
+Load only for the requested phase, within this skill’s authority: [Premises and forensic evidence](./references/premises-and-forensics.md).

@@ -69,3 +69,7 @@ separately authorized removal. Load the [adapted lifecycle guide](./references/f
 
 - **Primary:** Architecture soft. **Conditional caller:** Ship (`/0-implement`).
 - **Returns:** lifecycle ledger to the requester; implemented phase to Ship and its normal review.
+
+## Conditional methods
+
+Load only for the requested phase, within this skill’s authority: [Coordinated internal cutover](./references/coordinated-cutover.md).

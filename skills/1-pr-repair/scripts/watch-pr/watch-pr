@@ -1,0 +1,9 @@
+#!/usr/bin/env bun
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+if (!existsSync(join(import.meta.dir, "../node_modules/commander/package.json"))) {
+  console.error("Missing local dependencies. In the parent scripts directory, run: rtk bun install --frozen-lockfile --ignore-scripts");
+  process.exit(2);
+}
+const { main } = await import("./cli.ts");
+process.exitCode = await main(process.argv.slice(2));

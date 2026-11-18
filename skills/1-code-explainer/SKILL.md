@@ -59,3 +59,7 @@ metadata:
   Review, or Ship; do not smuggle those jobs into the walkthrough.
 - This skill performs no mutation, runtime test, broad repository scan, external
   research/action, commit, push, publish, or merge.
+
+## Conditional methods
+
+Load only for the requested phase, within this skill’s authority: [Explain mechanics and reasons together](./references/mechanism-and-rationale.md).

@@ -49,3 +49,6 @@ Turn one fixed, user-authorized corpus into one private, reviewable skill candid
 
 Authoring parent/return: `/0-skill-creator` · one-off source: `/1-resource-summarizer` · vault: `/1-vault-ingest` · optional later placement: `/0-skill-manager`.
 
+## Conditional methods
+
+Load only for the requested phase, within this skill’s authority: [Author conventions from an authorized work corpus](./references/personal-conventions.md).

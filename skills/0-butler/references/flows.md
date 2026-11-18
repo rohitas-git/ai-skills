@@ -24,9 +24,9 @@ Live skill id = **`{depth}-{kebab-slug}`** (dir, frontmatter `name`, slash, hub 
 
 ### Fork (◆)
 
-Any branch in a pipeline is a **fork**. Agents **must ask the user** one question (recommended option first) and wait — never silent branch.
+A pipeline branch is a **fork**. Ask only when an unresolved choice materially changes the requested outcome or authority. Infer routine reversible branches from the request and evidence; honor choices already delegated within scope. For a material unresolved fork, ask one decision-changing question with plausible options and a grounded recommendation, then wait.
 
-**Every fork’s options must include:**
+**Every presented fork’s options must include:**
 
 | Option | Meaning |
 |--------|---------|
@@ -42,13 +42,11 @@ Concrete branches still appear first; **Agent judgment** is always listed last a
 |--|--|
 | **★ Hub** | `/0-butler` |
 | **Children** | All domain hubs below (routing targets): 0-setup-rohitas-skills, 0-grilling, 0-implement, 0-review, 0-triage, 0-diagnosing-bugs, 0-wayfinder, 0-improve-codebase-architecture, 0-rohitas-vault-wiki, 0-skill-manager, 0-skill-creator, 0-ponytail, 0-learn, 0-office, 0-ui-ux, 0-thinking, 0-git, 0-agent-engineering, 0-devops, 0-marketing |
-| **Session meta (soft)** | `1-grok-help` (local Grok evidence), `1-context-monitor` (no guessed telemetry) → `1-strategic-compact` (same-session capsule) / `1-handoff` (durable file; also Design detour), `1-response-effort-calibrator`, `1-action-first-output` (explicit, persistent action-first mode), `1-caveman` (explicit ultra-terse style), `1-bro`, `1-plow-ahead`, `1-quick-recap` · **satellite:** `1-rewind`, `1-webmcp` |
+| **Session meta (soft)** | `1-grok-help` (local Grok evidence), `1-context-monitor` (no guessed telemetry) → `1-strategic-compact` (same-session capsule) / `1-handoff` (durable file; also Design detour), `1-response-effort-calibrator`, `1-action-first-output` (explicit, persistent action-first mode), `1-caveman` (explicit ultra-terse style), `1-bro`, `1-plow-ahead`, `1-quick-recap` · **satellite:** `1-rewind`, `1-webmcp`, `1-session-catchup` (current conversation and pending calls), `1-working-context` (bounded prior-work reconstruction) |
 | **Project adapter (soft)** | `1-pi-agent-rust` → supplies current-checkout surface/invariants/check candidates, then routes to Diagnose, Ship, Review, or CI/CD |
 | **Mutations** | **Not here** → `/0-skill-manager` |
 
-**Pipeline:** explicit routing request → read flows/index → direct matching skill
-when clear, otherwise **F7** → validate live `SKILL.md` → report owning hub +
-smallest skill + first action → stop. Butler is read-only and never executes the
+**Pipeline:** recover goal + target + phase + constraints from the request and accepted conversation context or supplied project checkpoint → shortlist from flows/index → direct matching skill when clear, otherwise material-only **F7** with plausible outcomes → validate live `SKILL.md` → report owning hub + one entry owner + preserved contract/gaps + first action → stop. Butler is read-only and never executes the
 selected workflow. Catalog mutation routes to `0-skill-manager`; skill-body craft
 routes to `0-skill-creator`.
 
@@ -106,7 +104,7 @@ flows.md remains SSOT for pipelines/forks; HTML/JSON are projections. **new-hub*
 | | |
 |--|--|
 | **★ Hub** | `/0-implement` |
-| **Children** | **pipeline members (conditional sequence below):** `1-to-spec`, `1-to-tickets`, `0-implement`, `1-tdd`, `1-dev-test` (project mutable feedback loop), `1-code-review`, `1-atomic-git-commits` · **soft (plan path):** `1-write-plan`, `1-git-worktrees`, `1-subagent-implement`, `1-execute-plan`, `1-finish-branch` · **satellite:** `1-parallel-agents` · **soft (style/quality/docs):** `1-coding-standards`, `1-go-best-practices` (scoped Go implementation), `1-living-documentation-governor` (code↔canonical-doc obligations), `1-constraint-driven-development`, `1-code-comments` (one public contract surface), `1-inline-comments` (one internal why/constraint), `1-execution-flow-comments` (one explicitly requested function narrative), `1-stepdown-rule` (one behavior-independent file reorder); all return without automatic review · **soft (contract/module/lifecycle):** `1-api-and-interface-design`, `1-codebase-design`, `1-deprecation-and-migration` (design or phase evidence, then return to Ship) · **soft (failure behavior):** `1-error-handling` (bounded implementation; returns to Ship) · **soft (Supabase):** `1-supabase` (one product integration), `1-supabase-postgres-best-practices` (one measured Postgres concern), `1-supabase-schema-migration` (one new local schema concept), `1-pending-migration-hygiene` (rewrite only with complete observed provenance or exact human attestation); all pin local-stack ownership because worktrees do not isolate it, and none applies remotely · **soft (explicit process):** `1-karpathy-guidelines` (inherits and returns candidate/workspace/authority) · **cousin:** `2-verify-work` · **soft (Git cross-links):** `1-atomic-git-commits`, `1-pr-summarizer`, `1-resolving-merge-conflicts` · **soft:** `1-research` (one bounded answer; persistence only when requested) · **soft (delivery/UI/performance):** `1-ci-cd-and-automation` (one candidate-aware workflow/check contract; returns without remote execution), `1-observability-and-instrumentation` (one question-to-signal contract; returns without hosted telemetry), `1-shipping-and-launch` (one immutable release candidate; plan/read-only modes do not deploy), `1-frontend-ui-engineering` (one candidate-bound interaction surface; returns without redesign or publication), `1-ui-styling` (one presentation-only visual delta; preserves behavior and returns candidate/worktree/authority), `1-performance-optimization` (one measured experiment; returns its disposition without shared load) · **leaf:** `1-migrate-to-shoehorn` · **leaf:** `1-i18n-sync` · **leaf:** `1-runtime-feature-map` |
+| **Children** | **pipeline members (conditional sequence below):** `1-to-spec`, `1-to-tickets`, `0-implement`, `1-tdd`, `1-dev-test` (project mutable feedback loop), `1-code-review`, `1-atomic-git-commits` · **soft (plan path):** `1-write-plan`, `1-git-worktrees`, `1-subagent-implement`, `1-execute-plan`, `1-finish-branch` · **satellite:** `1-parallel-agents`, `1-competing-solutions` (same-brief alternatives and verified synthesis) · **soft (style/quality/docs):** `1-typescript-best-practices` (one TypeScript contract), `1-technical-writing` (one technical document), `1-coding-standards`, `1-go-best-practices` (scoped Go implementation), `1-living-documentation-governor` (code↔canonical-doc obligations), `1-constraint-driven-development`, `1-code-comments` (one public contract surface), `1-inline-comments` (one internal why/constraint), `1-execution-flow-comments` (one explicitly requested function narrative), `1-stepdown-rule` (one behavior-independent file reorder); all return without automatic review · **soft (contract/module/lifecycle):** `1-api-and-interface-design`, `1-codebase-design`, `1-deprecation-and-migration` (design or phase evidence, then return to Ship) · **soft (failure behavior):** `1-error-handling` (bounded implementation; returns to Ship) · **soft (Supabase):** `1-supabase` (one product integration), `1-supabase-postgres-best-practices` (one measured Postgres concern), `1-supabase-schema-migration` (one new local schema concept), `1-pending-migration-hygiene` (rewrite only with complete observed provenance or exact human attestation); all pin local-stack ownership because worktrees do not isolate it, and none applies remotely · **soft (explicit process):** `1-karpathy-guidelines` (inherits and returns candidate/workspace/authority) · **cousin:** `2-verify-work` · **soft (Git cross-links):** `1-atomic-git-commits`, `1-pr-summarizer`, `1-resolving-merge-conflicts` · **soft:** `1-research` (one bounded answer; persistence only when requested) · **soft (delivery/UI/performance):** `1-ci-cd-and-automation` (one candidate-aware workflow/check contract; returns without remote execution), `1-observability-and-instrumentation` (one question-to-signal contract; returns without hosted telemetry), `1-shipping-and-launch` (one immutable release candidate; plan/read-only modes do not deploy), `1-frontend-ui-engineering` (one candidate-bound interaction surface; returns without redesign or publication), `1-ui-styling` (one presentation-only visual delta; preserves behavior and returns candidate/worktree/authority), `1-performance-optimization` (one measured experiment; returns its disposition without shared load) · **leaf:** `1-migrate-to-shoehorn` · **leaf:** `1-i18n-sync` · **leaf:** `1-runtime-feature-map` |
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
@@ -383,7 +381,7 @@ Optional; not Ship closer.
 | | |
 |--|--|
 | **★ Hub** | `/0-office` |
-| **Children** | **leaf:** `1-docx`, `1-pdf`, `1-pptx`, `1-xlsx`, `1-diagram-maker`, `1-imagine`, `1-json-canvas`, `1-defuddle`, `1-internal-comms` · **sub-hub:** `1-hatch-pet` |
+| **Children** | **leaf:** `1-docx`, `1-pdf`, `1-pptx`, `1-xlsx`, `1-diagram-maker`, `1-imagine`, `1-json-canvas`, `1-defuddle`, `1-internal-comms`, `1-video-recap` (evidence-grounded captioned video/storyboard) · **sub-hub:** `1-hatch-pet` |
 | **Pipeline** | pin caller + immutable request/source/destination + sensitivity/authority + optional worktree identity → direct final-artifact route or material-only F-misc → exactly one leaf or the Pet operation sub-hub → return artifact/result provenance, verification, effects, and limits to actual caller |
 
 | Fork | Question | Recommended | Branches |
@@ -528,9 +526,9 @@ checks or edits use the matching isolated workspace when needed and return here.
 
 | Fork | Question | Recommended | Branches |
 |------|----------|-------------|----------|
-| **F7** | What kind of work? | Narrowest domain supported by the request | Design · Ship · Review · Triage · Diagnose · Fog · Architecture · Vault · UI/UX · Git · Agent engineering · DevOps · Marketing · Office/artifact · Catalog facilities · Learn · Simplify · Thinking · **Agent judgment** |
+| **F7** | Which outcome should this request produce? | Narrowest domain supported by the request | Design · Ship · Review · Triage · Diagnose · Fog · Architecture · Vault · UI/UX · Git · Agent engineering · DevOps · Marketing · Office/artifact · Catalog facilities · Learn · Simplify · Thinking · **Agent judgment** |
 
-Butler asks **F7** when intent is unclear.
+The branches above are the domain inventory. Butler asks **F7** only for a material unresolved distinction after using accepted context and route evidence; present two or three plausible outcomes plus **Agent judgment**, not the entire inventory. A prior delegation remains in force within its scope.
 
 ---
 
@@ -572,3 +570,11 @@ Open-ended review request → ★ 0-review (F-R1) → one review specialist.
 | **Package** | `personal/` (not a domain hub) |
 | **Skills** | `1-pi-agent-rust` (project-specific) |
 | **Rule** | Not promoted; hub membership optional / personal residual |
+
+## Optional project continuity
+
+`/0-implement` or `/1-execute-plan` owns start/resume → scoped work → meaningful safe checkpoints
+→ exact next action. Use the existing project progress record or `.scratch/<task>/continuation.json`.
+`/1-handoff` writes a new project-local note referencing it; `/1-working-context` only reconstructs
+missing context, and Butler only routes. See [the lifecycle](../../0-implement/references/project-continuity.md).
+No automatic host hook, task execution, installation, publication or historical-permission grant follows.
